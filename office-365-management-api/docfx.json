@@ -5,7 +5,7 @@
                                       "files":  [
                                                     "**/*.md",
                                                     "**/*.yml",
-                                                    "toc.yml"
+                                                    "toc.md"
                                                 ],
                                       "exclude":  [
                                                       "**/obj/**",
@@ -15,8 +15,7 @@
                                                       "README.md",
                                                       "LICENSE",
                                                       "LICENSE-CODE",
-                                                      "ThirdPartyNotices",
-                                                      "**/toc.md"
+                                                      "ThirdPartyNotices"                                                   
                                                   ]
                                   }
                               ],
