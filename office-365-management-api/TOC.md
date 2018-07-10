@@ -1,1 +1,6 @@
-# [Index](index.md)
+# [Office 365 Management APIs](office-365-management-apis-overview.md)
+## [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md)
+## [Office 365 Service Communications API (preview)](office-365-service-communications-api-reference.md)
+## [Office 365 Management Activity API](office-365-management-activity-api-reference.md)
+## [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md)
+## [Troubleshooting the Office 365 Management Activity API](troubleshooting-the-office-365-management-activity-api.md)
