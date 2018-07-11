@@ -3,6 +3,7 @@ ms.TocTitle: Office 365 Management Activity API schema
 title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in  two layers - Common schema and product-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
+ms.prod: office-365
 ms.topic: reference (API)
 ms.date: 05/22/2018
 ---

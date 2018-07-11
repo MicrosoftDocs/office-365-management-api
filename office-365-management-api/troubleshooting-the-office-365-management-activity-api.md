@@ -3,6 +3,7 @@ ms.TocTitle: Troubleshooting the Office 365 Management Activity API
 title: Troubleshooting the Office 365 Management Activity API
 description: Summarizes the most common questions Microsoft Support receives in supporting this API.
 ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
+ms.prod: office-365
 ms.topic: reference (API)
 ms.date: 01/10/2018
 ---

@@ -1,4 +1,16 @@
+---
+ms.TocTitle: Office 365 Management APIs
+title: Welcome to Office 365 Management APIs
+description: The Office 365 Management APIs provide a single extensibility platform for all Office 365 customers' and partners' management tasks, including service communications, security, compliance, reporting, and auditing. 
+ms.ContentId: a11a6d30-f6b7-3629-28b6-cbab527d8a5e
+ms.prod: office-365
+ms.topic: reference (API)
+ms.date: 07/10/2018
+---
+
 # Welcome to Office 365 Management APIs
+
+The Office 365 Management APIs provide a single extensibility platform for all Office 365 customers' and partners' management tasks, including service communications, security, compliance, reporting, and auditing.
 
 ## In this section
 
