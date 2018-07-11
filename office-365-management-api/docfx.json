@@ -1,47 +1,68 @@
 {
-  "build": {
-    "content": [
-      {
-        "files": [
-          "**/*.md",
-          "**/*.yml"
-        ],
-        "exclude": [
-          "**/obj/**",
-          "**/includes/**",
-          "_themes/**",
-          "_themes.pdf/**",
-          "README.md",
-          "LICENSE",
-          "LICENSE-CODE",
-          "ThirdPartyNotices"
-        ]
-      }
-    ],
-    "resource": [
-      {
-        "files": [
-          "**/*.png",
-          "**/*.jpg"
-        ],
-        "exclude": [
-          "**/obj/**",
-          "**/includes/**",
-          "_themes/**",
-          "_themes.pdf/**"
-        ]
-      }
-    ],
-    "overwrite": [],
-    "externalReference": [],
-    "globalMetadata": {
-      "breadcrumb_path": "/office/office-365-management-api/breadcrumb/toc.json",
-      "extendBreadcrumb": true,
-      "feedback_system": "None"
-    },
-    "fileMetadata": {},
-    "template": [],
-    "dest": "office-365-management-api",
-    "markdownEngineName": "markdig"
-  }
+
+    "build":  {
+                  "content":  [
+                                  {
+                                      "files":  [
+                                                    "**/*.md",
+                                                    "**/*.yml",
+                                                    "toc.md"
+                                                ],
+                                      "exclude":  [
+                                                      "**/obj/**",
+                                                      "**/includes/**",
+                                                      "_themes/**",
+                                                      "_themes.pdf/**",
+                                                      "README.md",
+                                                      "LICENSE",
+                                                      "LICENSE-CODE",
+                                                      "ThirdPartyNotices"                                                   
+                                                  ]
+                                  }
+                              ],
+                  "resource":  [
+                                   {
+                                       "files":  [
+                                                     "**/*.png",
+                                                     "**/*.jpg",
+                                                     "**/*.gif",
+                                                     "**/*.bmp",
+                                                     "**/*.jpeg"
+                                                 ],
+                                       "exclude":  [
+                                                       "**/obj/**",
+                                                       "**/includes/**",
+                                                       "_themes/**",
+                                                       "_themes.pdf/**"
+                                                   ]
+                                   }
+                               ],
+                  "overwrite":  [
+
+                                ],
+                  "externalReference":  [
+
+                                        ],
+                  "globalMetadata":  {
+                                         "breadcrumb_path":  "/office/office-365-management-api/breadcrumb/toc.json",
+                                         "extendBreadcrumb":  true,
+                                         "feedback_system":  "None",
+                                         "ROBOTS":  "INDEX,FOLLOW",
+                                         "is_archived":  false,
+                                         "uhfHeaderId":  "MSDocsHeader-Dev_Office",
+                                         "author":  "o365devx",
+                                         "ms.author":  "o365devx",
+                                         "ms.prod": "office-365",
+                                         "ms.technology":  "",
+                                         "ms.topic":  "conceptual"
+                                     },
+                  "fileMetadata":  {
+
+                                   },
+                  "template":  [
+
+                               ],
+                  "dest":  "office-365-management-api",
+                  "markdownEngineName":  "markdig"
+              }
 }
