@@ -165,7 +165,7 @@ ELSE exit the loop
 
 It will be difficult to test this looping code unless you have a very active tenant. In our testing, we tried to execute several thousand update operations in a script and was unable to generate a large enough number of notifications to require the **NextPageUrl** header to be sent.
 
-## Webhooks
+## Using webhooks
 
 There two ways to get a notification that content blobs have been created. The *push* approach is implemented with a webhook endpoint, which is a web application that you create and host yourself or on a cloud platform. You register the webhook at the time you create a subscription to an audited content type. You may also add a webhook registration to an existing subscription using the approach shown below. The *pull* approach requires you to query for a particular timespan (no more than 24 hours) using the [/content operation](office-365-management-activity-api-reference.md#list-available-content). The response will tell you which content blobs were created during the period specified.
 
