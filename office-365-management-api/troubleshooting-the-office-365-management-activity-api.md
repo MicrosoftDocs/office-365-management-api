@@ -9,9 +9,6 @@ ms.date: 01/10/2018
 
 # Troubleshooting the Office 365 Management Activity API
 
-**Applies to:** Office 365
- 
-
 The Office 365 Management Activity API (also known as the *Unified Auditing API*) is just one part of Office 365 security and compliance offerings, but it gets a lot of attention because it:
 
 - Allows programmatic access to multiple auditing pipeline workloads (such as SharePoint and Exchange)
@@ -116,9 +113,9 @@ Invoke-WebRequest -Method Post -Headers $headerParams -Uri https://manage.office
 ```
 
 > [!NOTE] 
-> Remember that *$headerParams* was populated in the first part of the script listed in the "Connecting to the API" section in this article.
+> Remember that `$headerParams` was populated in the first part of the script listed in the [Connecting to the API](#connecting-to-the-api) section in this article.
 
-The previous code will create a new subscription to the Audit.AzureActiveDirectory content type, with a webhook that is null. You can then check your subscriptions using the code in "Check your subscriptions" section in this article.
+The previous code will create a new subscription to the Audit.AzureActiveDirectory content type, with a webhook that is null. You can then check your subscriptions using the code in the [Checking your subscriptions](#checking-your-subscriptions) section in this article.
 
 ## Checking content availability
 
@@ -201,7 +198,7 @@ It’s important to distinguish between the /notifications operation and the /co
 
 ## Requesting content blobs and throttling
 
-After you’ve obtained a list of content URIs, you must request the blobs specified by the URIs. The following is an example of requesting a content blob using PowerShell. This example assumes you have already used the previous example in the "Getting an access token" section in this article to get an access token and have populated the $headerParams variable appropriately.
+After you’ve obtained a list of content URIs, you must request the blobs specified by the URIs. The following is an example of requesting a content blob using PowerShell. This example assumes you have already used the previous example in the [Getting an access token](#getting-an-access-token) section in this article to get an access token and have populated the `$headerParams` variable appropriately.
 
 ```powershell
 # Get a content blob

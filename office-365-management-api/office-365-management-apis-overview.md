@@ -9,8 +9,6 @@ ms.date: 09/28/2016
 
 # Office 365 Management APIs overview
 
-**Applies to:** Office 365
-
 The Office 365 Management APIs provide a single extensibility platform for all Office 365 customers' and partners' management tasks, including service communications, security, compliance, reporting, and auditing. All of the Office 365 Management APIs are consistent in design and implementation with the current suite of Office 365 REST APIs, using common industry-standard approaches, including OAuth v2, OData v4, and JSON. Like the other Office 365 APIs, applications are registered in Azure Active Directory, giving developers a consistent way to authenticate and authorize their apps.
 
 If you have questions about the Office 365 Management APIs, post your question on [Stack Overflow](http://stackoverflow.com/tags/office365), using the [office365] tag.
@@ -29,4 +27,10 @@ For the operations reference, see [Office 365 Service Communications API referen
 The Office 365 Management Activity API provides information about various user, admin, system, and policy actions and events from Office 365 and Azure Active Directory activity logs. Customers and partners can use this information to create new or enhance existing operations, security, and compliance-monitoring solutions for the enterprise. 
 
 For the operations reference, see [Office 365 Management Activity API reference](office-365-management-activity-api-reference.md).
+
+## See also
+
+- [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md)
+- [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md)
+- [Troubleshooting the Office 365 Management Activity API](troubleshooting-the-office-365-management-activity-ap.md)
 

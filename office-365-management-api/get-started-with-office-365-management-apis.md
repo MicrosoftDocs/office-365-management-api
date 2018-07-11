@@ -9,19 +9,15 @@ ms.date: 11/22/2016
 
 # Get started with Office 365 Management APIs
 
-**Applies to:** Office 365
-
-## Overview
-
 When you create an application that needs access to secured services like the Office 365 Management APIs, you need to provide a way to let the service know if your application has rights to access it. The Office 365 Management APIs use Azure AD to provide authentication services that you can use to grant rights for your application to access them. 
 
 There are four key steps:
 
-1. **Application registration in Azure AD**. To allow your application access to the Office 365 Management APIs, you need to register your application in Azure AD. This will allow you to establish an identity for your application and specify the permission levels it needs in order to access the APIs.
+1. **Register your application in Azure AD**. To allow your application access to the Office 365 Management APIs, you need to register your application in Azure AD. This allows you to establish an identity for your application and specify the permission levels it needs to access the APIs.
     
-2. **Office 365 tenant admin consent**. An Office 365 tenant admin must explicitly grant consent to allow your application to access their tenant data by means of the Office 365 Management APIs. The consent process is a browser-based experience that requires the tenant admin to sign in to the **Azure AD consent UI** and review the access permissions that your application is requesting, and then either grant or deny the request. After consent is granted, the UI will redirect the user back to your application with an authorization code in the URL. Your application will make a service-to-service call to Azure AD to exchange this authorization code for an access token, which contains information about both the tenant admin and your application. The tenant ID must be extracted from the access token and stored for future use.
+2. **Get Office 365 tenant admin consent**. An Office 365 tenant admin must explicitly grant consent to allow your application to access their tenant data by means of the Office 365 Management APIs. The consent process is a browser-based experience that requires the tenant admin to sign in to the **Azure AD consent UI** and review the access permissions that your application is requesting, and then either grant or deny the request. After consent is granted, the UI redirects the user back to your application with an authorization code in the URL. Your application makes a service-to-service call to Azure AD to exchange this authorization code for an access token, which contains information about both the tenant admin and your application. The tenant ID must be extracted from the access token and stored for future use.
     
-3. **Requesting access tokens from Azure AD**. Using your application's credentials as configured in Azure AD, your application will request additional access tokens for a consented tenant on an ongoing basis, without the need for further tenant admin interaction. These access tokens are called app-only tokens because they do not include information about the tenant admin.
+3. **Request access tokens from Azure AD**. Using your application's credentials as configured in Azure AD, your application requests additional access tokens for a consented tenant on an ongoing basis, without the need for further tenant admin interaction. These access tokens are called app-only tokens because they do not include information about the tenant admin.
     
 4. **Call the Office 365 Management APIs**. The app-only access tokens are passed to the Office 365 Management APIs to authenticate and authorize your application.
     
@@ -31,14 +27,14 @@ The following diagram shows the sequence of consent and access token requests.
 ![Management APIs getting started authorization flow](images/authorization-flow.png)
 
 
-## Application registration in Azure AD
+## Register your application in Azure AD
 
-The Office 365 Management APIs use Azure AD to provide secure authentication to Office 365 tenant data. To access the Office 365 Management APIs, you need to register your app in Azure AD, and as part of the configuration you will specify the permission levels your app needs to access the APIs.
+The Office 365 Management APIs use Azure AD to provide secure authentication to Office 365 tenant data. To access the Office 365 Management APIs, you need to register your app in Azure AD, and as part of the configuration, you will specify the permission levels your app needs to access the APIs.
 
 
 ### Prerequisites
 
-To register your app in Azure AD, you'll need a subscription to Office 365 and a subscription to Azure that has been associated with your Office 365 subscription. You can use trial subscriptions to both Office 365 and Azure to get started. For more details, see [Welcome to the Office 365 Developer Program](https://docs.microsoft.com/en-us/office/developer-program/office-365-developer-program).
+To register your app in Azure AD, you need a subscription to Office 365 and a subscription to Azure that has been associated with your Office 365 subscription. You can use trial subscriptions to both Office 365 and Azure to get started. For more details, see [Welcome to the Office 365 Developer Program](https://docs.microsoft.com/en-us/office/developer-program/office-365-developer-program).
 
 
 ### Use the Azure Management Portal to register your application in Azure AD
@@ -47,14 +43,14 @@ After you have a Microsoft tenant with the proper subscriptions, you can registe
 
 1. Sign into the [Azure management portal](https://manage.windowsazure.com/), using the credential of your Microsoft tenant that has the subscription to Office 365 you wish to use. You can also access the Azure Management Portal via a link that appears in the left navigation pane in the [Office admin portal](https://portal.office.com/).
     
-2. In the left navigation panel, select Active Directory (1). Make sure the Directory tab (2) is selected, and then click on the directory name (3).
+2. In the left navigation panel, choose Active Directory (1). Make sure the Directory tab (2) is selected, and then select the directory name (3).
     
    ![O365 Sign-up page](images/o365-sign-up-page.png)
     
     
 3. On the directory page, select **Applications**. Azure AD displays a list of the applications currently installed in your tenancy.
     
-4. Click **Add**.
+4. Choose **Add**.
     
    ![Office 365 Admin page](images/o365-admin-page.png)
     
@@ -85,7 +81,7 @@ For more information about Azure AD application configuration in general, see [A
     
 3. **REPLY URL**. This is the URL that a tenant admin will be redirected to after granting consent to allow your application to access their data by using the Office 365 Management APIs. You can configure multiple reply URLs as needed. Azure automatically sets the first one to match the sign-on URL you specified when you created the application, but you can change this value as needed.
     
-Be sure to click **Save** after making any changes to these properties.
+Be sure to choose **Save** after making any changes to these properties.
 
 
 ### Generate a new key for your application
@@ -95,12 +91,12 @@ Keys, also known as client secrets, are used when exchanging an authorization co
 
 1. In the Azure Management Portal, select your application and choose **Configure** in the top menu. Scroll down to **keys**.
     
-2. Select the duration for your key, and click **Save**.
+2. Select the duration for your key, and choose **Save**.
     
    ![Azure subscription page](images/azure-subscription-page.png)
     
     
-3. Azure displays the app secret only after saving it. Click the Clipboard icon to copy the client secret to the Clipboard.
+3. Azure displays the app secret only after saving it. Select the Clipboard icon to copy the client secret to the Clipboard.
     
    ![Azure portal page](images/azure-portal-page.png)
 
@@ -119,7 +115,7 @@ You must configure an X.509 certificate with your application to be used as clie
     
 - Modify your application manifest to include the thumbprint and public key of your certificate.
     
-The following instructions show you how to use the Visual Studio or Windows SDK  _makecert_ tool to generate a self-signed certificate and export the public key to a base64-encoded file.
+The following instructions show you how to use the Visual Studio or Windows SDK _makecert_ tool to generate a self-signed certificate and export the public key to a base64-encoded file.
 
 
 1. From the command line, run the following:
@@ -129,11 +125,11 @@ The following instructions show you how to use the Visual Studio or Windows SDK 
    ```
 
    > [!NOTE] 
-   > When you are generating the X.509 certificate, make sure the key length is at least 2048 . Shorter key lengths are not accepted as valid keys.
+   > When you are generating the X.509 certificate, make sure the key length is at least 2048. Shorter key lengths are not accepted as valid keys.
 
 2. Open the Certificates MMC snap-in and connect to your user account. 
     
-3. Find the new certificate in the Personal folder and export the public key to a base64-encoded file (for example, mycompanyname.cer). Your application will use this certificate to communicate with AAD, so make sure you retain access to the private key as well.
+3. Find the new certificate in the Personal folder and export the public key to a base64-encoded file (for example, mycompanyname.cer). Your application will use this certificate to communicate with Azure AD, so make sure you retain access to the private key as well.
     
    > [!NOTE] 
    > You can use Windows PowerShell to extract the thumbprint and base64-encoded public key. Other platforms provide similar tools to retrieve properties of certificates.
@@ -156,7 +152,7 @@ The following instructions show you how to use the Visual Studio or Windows SDK 
     
 6. In the Azure Management Portal, select your application and choose **Configure** in the top menu.
     
-7. In the command bar, click **Manage manifest** and select **Download Manifest**.
+7. In the command bar, choose **Manage manifest**, and then choose **Download Manifest**.
     
    ![Command line certificate display](images/command-line-certificate-display.png)
     
@@ -179,7 +175,7 @@ The following instructions show you how to use the Visual Studio or Windows SDK 
    > [!NOTE] 
    > The [KeyCredentials](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#KeyCredentialType) property is a collection, making it possible to upload multiple X.509 certificates for rollover scenarios or delete certificates for compromise scenarios.
 
-9. Save your changes and upload the updated manifest by clicking **Manage manifest** in the command bar, selecting **Upload manifest**, browsing to your updated manifest file, and then selecting it.
+9. Save your changes and upload the updated manifest by choosing **Manage manifest** in the command bar, choosing **Upload manifest**, browsing to your updated manifest file, and then selecting it.
     
 
 ### Specify the permissions your app requires to access the Office 365 Management APIs
@@ -187,30 +183,30 @@ The following instructions show you how to use the Visual Studio or Windows SDK 
 Finally, you need to specify exactly what permissions your app requires of the Office 365 Management APIs. To do so, you add access to the Office 365 Management APIs to your app, and then you specify the permission(s) you need.
 
 
-1. In the Azure Management Portal, select your application and choose **Configure** in the top menu. Scroll down to **permissions to other applications**, and click **Add application**.
+1. In the Azure Management Portal, select your application, and choose **Configure** in the top menu. Scroll down to **permissions to other applications**, and choose **Add application**.
     
    ![Azure AD page](images/azure-ad-page.png)
     
     
-2. Select the Office 365 Management APIs (1) so that it appears in the **Selected** column (2), then click the check mark in the lower right (3) to save your selection and return to the main configuration page for your application.
+2. Select the **Office 365 Management APIs** (1) so that it appears in the **Selected** column (2), and then select the check mark in the lower right (3) to save your selection and return to the main configuration page for your application.
     
    ![Azure AD apps page](images/azure-ad-apps-page.png)
     
     
-3. The Office Management APIs will now appear in the list of applications to which your application requires permissions. Under both Application Permissions and Delegated Permissions, select the permissions your application requires. Refer to the specific API reference for more details about each permission.  
+3. The Office Management APIs now appear in the list of applications to which your application requires permissions. Under both **Application Permissions** and **Delegated Permissions**, select the permissions your application requires. Refer to the specific API reference for more details about each permission.  
 
    > [!NOTE] 
-   > There are currently 4 unused permissions related to activity reports and threat intelligence that will be removed in the future.  Do not select any of these permissions as they are unnecessary.
+   > There are currently four unused permissions related to activity reports and threat intelligence that will be removed in the future. Do not select any of these permissions because they are unnecessary.
     
    ![Add an application dialog](images/add-an-application-dialog.png)
     
     
-4. Click **Save** to save the configuration.
+4. Choose **Save** to save the configuration.
     
 
-## Office 365 tenant admin consent
+## Get Office 365 tenant admin consent
 
-Now that your application is configured with the permissions it needs to use the Office 365 Management APIs, a tenant admin must explicitly grant your application these permissions in order to access their tenant's data by using the APIs. To grant consent, the tenant admin must log in to Azure AD, using the following specially constructed URL, where they can review your application's requested permissions. This step is not required when using the APIs to access data from your own tenant.
+Now that your application is configured with the permissions it needs to use the Office 365 Management APIs, a tenant admin must explicitly grant your application these permissions in order to access their tenant's data by using the APIs. To grant consent, the tenant admin must sign in to Azure AD by using the following specially constructed URL, where they can review your application's requested permissions. This step is not required when using the APIs to access data from your own tenant.
 
 
 ```http
@@ -225,12 +221,12 @@ For example:
 https://login.windows.net/common/oauth2/authorize?response_type=code&resource=https%3A%2F%2Fmanage.office.com&client_id=2d4d11a2-f814-46a7-890a-274a72a7309e&redirect_uri=http%3A%2F%2Fwww.mycompany.com%2Fmyapp%2F
 ```
 
-You can test the consent URL by pasting it into a browser and logging in using the credentials of an Office 365 admin for a tenant other than the tenant that you used to register the application. You will see the request to grant your application permission to use the Office Management APIs.
+You can test the consent URL by pasting it into a browser and signing in using the credentials of an Office 365 admin for a tenant other than the tenant that you used to register the application. You will see the request to grant your application permission to use the Office Management APIs.
 
 
 ![Azure AD app added page](images/azure-ad-app-added-page.png)
 
-After clicking **Accept**, you will be redirected to the specified page, and there will be a code in the query string. 
+After choosing **Accept**, you are redirected to the specified page, and there will be a code in the query string. 
 
 For example:
 
@@ -238,28 +234,27 @@ For example:
 http://www.mycompany.com/myapp/?code=AAABAAAAvPM1KaPlrEqdFSB...
 ```
 
-Your application will use this authorization code to obtain an access token from Azure AD, from which the tenant ID can be extracted. Once you have extracted and stored the tenant ID, you can obtain subsequent access tokens without requiring the tenant admin to log in.
+Your application uses this authorization code to obtain an access token from Azure AD, from which the tenant ID can be extracted. After you have extracted and stored the tenant ID, you can obtain subsequent access tokens without requiring the tenant admin to sign in.
 
 
-## Requesting access tokens from Azure AD
+## Request access tokens from Azure AD
 
 There are two methods for requesting access tokens from Azure AD:
 
-
-1. The [Authorization Code Grant Flow](https://msdn.microsoft.com/en-us/library/azure/dn645542.aspx) involves a tenant admin granting explicit consent, which returns an authorization code to your application. Your application then exchanges the authorization code for an access token. This method is required to obtain the initial consent that your application needs to access the tenant data by using the API, and this first access token is needed in order to obtain and store the tenant ID.
+- The [Authorization Code Grant Flow](https://msdn.microsoft.com/en-us/library/azure/dn645542.aspx) involves a tenant admin granting explicit consent, which returns an authorization code to your application. Your application then exchanges the authorization code for an access token. This method is required to obtain the initial consent that your application needs to access the tenant data by using the API, and this first access token is needed in order to obtain and store the tenant ID.
     
-2. The [Client Credentials Grant Flow](https://msdn.microsoft.com/en-us/library/azure/dn645543.aspx) allows your application to request subsequent access tokens as old ones expire, without requiring the tenant admin to log in and explicitly grant consent. This method must be used for applications that run continuously in the background calling the APIs once the initial tenant admin consent has been granted.
+- The [Client Credentials Grant Flow](https://msdn.microsoft.com/en-us/library/azure/dn645543.aspx) allows your application to request subsequent access tokens as old ones expire, without requiring the tenant admin to sign in and explicitly grant consent. This method must be used for applications that run continuously in the background calling the APIs once the initial tenant admin consent has been granted.
     
 
-### Requesting an access token using the authorization code
+### Request an access token using the authorization code
 
-After a tenant admin grants consent, your application will receive an authorization code as a query string parameter when Azure AD redirects the tenant admin to your designated URL.
+After a tenant admin grants consent, your application receives an authorization code as a query string parameter when Azure AD redirects the tenant admin to your designated URL.
 
 ```http
 http://www.mycompany.com/myapp/?code=AAABAAAAvPM1KaPlrEqdFSB...
 ```
 
-Your application will make an HTTP REST POST to Azure AD to exchange the authorization code for an access token. Because the tenant ID is not yet known, the POST will be to the "common" endpoint, which does not have the tenant ID embedded in the URL:
+Your application makes an HTTP REST POST to Azure AD to exchange the authorization code for an access token. Because the tenant ID is not yet known, the POST will be to the "common" endpoint, which does not have the tenant ID embedded in the URL:
 
 ```http
 https://login.windows.net/common/oauth2/token
@@ -281,6 +276,8 @@ Content-Length: 944
 
 resource=https%3A%2F%2Fmanage.office.com&amp;client_id=a6099727-6b7b-482c-b509-1df309acc563 &amp;redirect_uri= http%3A%2F%2Fwww.mycompany.com%2Fmyapp%2F &amp;client_secret={your_client_key}&amp;grant_type=authorization_code&amp;code=AAABAAAAvPM1KaPlrEqdFSB...
 ```
+
+<br/>
 
 The body of the response will include several properties, including the access token. 
 
@@ -326,9 +323,9 @@ The access token that is returned is a JWT token that includes information about
 ```
 
 
-### Requesting an access token by using client credentials
+### Request an access token by using client credentials
 
-Once the tenant ID is known, your application can make service-to-service calls to Azure AD to request additional access tokens as they expire. These tokens include information only about the requesting application and not about the admin that originally granted consent. Service-to-service calls require that your application use an X.509 certificate to create client assertion in the form of a base64-encoded, SHA256 signed JWT bearer token.
+After the tenant ID is known, your application can make service-to-service calls to Azure AD to request additional access tokens as they expire. These tokens include information only about the requesting application and not about the admin that originally granted consent. Service-to-service calls require that your application use an X.509 certificate to create client assertion in the form of a base64-encoded, SHA256 signed JWT bearer token.
 
 When you are developing your application in .NET, you can use the [Azure AD Authentication Library (ADAL)](https://msdn.microsoft.com/en-us/library/azure/jj573266.aspx) to create client assertions. Other development platforms should have similar libraries.
 
@@ -439,17 +436,17 @@ Content-Length: 1276
 ```
 
 
-## Building an app
+## Build your app
 
 Now that you have registered your app in Azure AD and configured it with the necessary permissions, you're ready to build your app. The following are some of the key aspects to consider when designing and building your app:
 
-1. **The consent experience**. To obtain consent from your customers, you must direct them in a browser to the Azure AD website, using the specially constructed URL described previously, and you must have a website to which Azure AD will redirect the admin once they grant consent. This website must extract the authorization code from the URL and use it to request an access token from which it can obtain the tenant ID.
+- **The consent experience**. To obtain consent from your customers, you must direct them in a browser to the Azure AD website, using the specially constructed URL described previously, and you must have a website to which Azure AD will redirect the admin once they grant consent. This website must extract the authorization code from the URL and use it to request an access token from which it can obtain the tenant ID.
     
-2. **Store the tenant ID in your system**. This will be needed when requesting access tokens from Azure AD and when calling the Office Management APIs.
+- **Store the tenant ID in your system**. This will be needed when requesting access tokens from Azure AD and when calling the Office Management APIs.
     
-3. **Managing access tokens**. You will need a component that requests and manages access tokens as needed. If your app calls the APIs periodically, it can request tokens on demand, or if it calls the APIs continuously to retrieve data, it can request tokens at regular intervals (for example, every 45 minutes).
+- **Managing access tokens**. You will need a component that requests and manages access tokens as needed. If your app calls the APIs periodically, it can request tokens on demand, or if it calls the APIs continuously to retrieve data, it can request tokens at regular intervals (for example, every 45 minutes).
     
-4. **Implement a webhook listener** as needed by the particular API you are using.
+- **Implement a webhook listener** as needed by the particular API you are using.
     
-5. **Data retrieval and storage**. You'll need a component that retrieves data for each tenant, either by using continuous polling or in response to webhook notifications, depending on the particular API you are using.
+- **Data retrieval and storage**. You'll need a component that retrieves data for each tenant, either by using continuous polling or in response to webhook notifications, depending on the particular API you are using.
     

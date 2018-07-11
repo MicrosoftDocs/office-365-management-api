@@ -9,8 +9,6 @@ ms.date: 09/28/2016
 
 # Office 365 Service Communications API reference (preview)
 
-**Applies to:** Office 365
-
 > [!NOTE] 
 > This documentation covers features that are currently in preview.
 
@@ -30,7 +28,7 @@ Currently, the Office 365 Service Communications API contains data for the follo
 
 The root URL of the API includes a tenant identifier that scopes the operations to a single tenant:
 
-```
+```http
 https://manage.office.com/api/v1.0/{tenant_identifier}/ServiceComms/{operation}
 ```
 
@@ -38,7 +36,7 @@ The **Office 365 Service Communications API** is a REST service that allows you 
 
 All API requests require an Authorization HTTP header that has a valid OAuth2 JWT access token obtained from Azure AD that contains the **ServiceHealth.Read** claim; and the tenant identifier must match the tenant identifier in the root URL.
 
-```
+```json
 Authorization: Bearer {OAuth2 token}
 ```
 
@@ -48,8 +46,8 @@ These are the supported request headers for all Office 365 Service Communication
 
 |Header|Description|
 |:-----|:-----|
-|**Accept (Optional)**|The following are acceptable representations for the response: **application/json;odata.metadata=full** **application/json;odata.metadata=minimal** [The default if header not specified] **application/json;odata.metadata=none**|
-|**Authorization (Required)**|Authorization token (Bearer JWT AAD Token) for the request.|
+|**Accept (Optional)**|The following are acceptable representations for the response:<br/>**application/json;odata.metadata=full**<br/>**application/json;odata.metadata=minimal**<br/>[The default if header not specified] **application/json;odata.metadata=none**|
+|**Authorization (Required)**|Authorization token (Bearer JWT Azure AD Token) for the request.|
 
 
 <br/>
@@ -61,7 +59,7 @@ These are the response headers returned for all Office 365 Service Communication
 |Header|Description|
 |:-----|:-----|
 |**Content-Length**|The length of the response body.|
-|**Content-Type**|Representation of the response: **application/json** **application/json;odata.metadata=full** **application/json;odata.metadata=minimal** **application/json;odata.metadata=none** **odata.streaming=true**|
+|**Content-Type**|Representation of the response:<br/>**application/json**<br/>**application/json;odata.metadata=full**<br/>**application/json;odata.metadata=minimal**<br/>**application/json;odata.metadata=none**<br/>**odata.streaming=true**|
 |**Cache-Control**|Used to specify directives that all caching mechanisms along the request/response chain must obey.|
 |**Pragma**|Implementation-specific behaviors.|
 |**Expires**|When the client should make the resource expire.|
@@ -74,9 +72,12 @@ These are the response headers returned for all Office 365 Service Communication
 |**X-ASPNET-Version**|The version of ASP.Net used by the server that generated the response (for debugging purposes).|
 |**X-Powered-By**|The technologies used in the server that generated the response (for debugging purposes).|
 
-## Office 365 Service Communications API operations
+<br/>
 
-### Get Services
+Following are the Office 365 Service Communications API operations.
+
+
+## Get Services
 
 Returns the list of subscribed services.
 
@@ -132,7 +133,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 ```
 
 
-### Get Current Status
+## Get Current Status
 
 Returns the current status of the service.
 
@@ -141,7 +142,7 @@ Returns the current status of the service.
 |**Path**| `/CurrentStatus`||
 |**Filter**|Workload|Filter by workload (String, default: all).|
 |**Query-option**|$select|Pick a subset of properties.|
-|**Response**|List of "WorkloadStatus" entities.|"WorkloadStatus" entity contains "Id" (String), "Workload" (String), "StatusTime"(DateTimeOffset), "WorkloadDisplayName" (String), "Status" (String), "IncidentIds" (list of Strings), and FeatureGroupStatusCollection (list of "FeatureStatus")."FeatureStatus" entity contains "Feature" (String), "FeatureGroupDisplayName" (String) and "FeatureStatus" (String).|
+|**Response**|List of "WorkloadStatus" entities.|"WorkloadStatus" entity contains "Id" (String), "Workload" (String), "StatusTime"(DateTimeOffset), "WorkloadDisplayName" (String), "Status" (String), "IncidentIds" (list of Strings), and FeatureGroupStatusCollection (list of "FeatureStatus").<br/><br/>"FeatureStatus" entity contains "Feature" (String), "FeatureGroupDisplayName" (String), and "FeatureStatus" (String).|
 
 #### Sample request
 
@@ -256,7 +257,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 ```
 
 
-### Get Historical Status
+## Get Historical Status
 
 Returns the historical status of the service, by day, over a certain time range.
 
@@ -266,7 +267,7 @@ Returns the historical status of the service, by day, over a certain time range.
 |**Filters**|Workload|Filter by workload (String, default: all).|
 ||StatusTime|Filter by days greater than StatusTime (DateTimeOffset, default: ge CurrentTime - 7 days).|
 |**Query-option**|$select|Pick a subset of properties.|
-|**Response**|List of "WorkloadStatus" entities.|"WorkloadStatus" entity contains "Id" (String), "Workload" (String), "StatusTime"(DateTimeOffset), "WorkloadDisplayName" (String), "Status" (String), "IncidentIds" (list of Strings), and FeatureGroupStatusCollection (list of "FeatureStatus")."FeatureStatus" entity contains "Feature" (String), "FeatureGroupDisplayName" (String) and "FeatureStatus" (String).|
+|**Response**|List of "WorkloadStatus" entities.|"WorkloadStatus" entity contains "Id" (String), "Workload" (String), "StatusTime"(DateTimeOffset), "WorkloadDisplayName" (String), "Status" (String), "IncidentIds" (list of Strings), and FeatureGroupStatusCollection (list of "FeatureStatus").<br/><br/>"FeatureStatus" entity contains "Feature" (String), "FeatureGroupDisplayName" (String), and "FeatureStatus" (String).|
 
 #### Sample request
 
@@ -359,7 +360,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 ```
 
 
-### Get Messages
+## Get Messages
 
 Returns the messages about the service over a certain time range. Use the type filter to filter for "Service Incident", "Planned Maintenance", or "Message Center" messages.
 
@@ -374,7 +375,7 @@ Returns the messages about the service over a certain time range. Use the type f
 |**Query-option**|$select|Pick a subset of properties.|
 ||$top|Pick the top number of results (default and max $top=100).|
 ||$skip|Skip number of results (default: $skip=0).|
-|**Response**|List of "Message" entities.|"Message" entity contains "Id" (String), "StartTime" (DateTimeOffset), "EndTime" (DateTimeOffset), "Status" (String), "Messages" (list of "MessagHistory" entity), "LastUpdatedTime" (DateTimeOffset), "Workload" (String), "WorkloadDisplayName" (String), "Feature" (String), "FeatureDisplayName" (String), "MessageType" (Enum, default: all)."MessageHistory" entity contains "PublishedTime" (DateTimeOffset), "MessageText" (String).|
+|**Response**|List of "Message" entities.|"Message" entity contains "Id" (String), "StartTime" (DateTimeOffset), "EndTime" (DateTimeOffset), "Status" (String), "Messages" (list of "MessagHistory" entity), "LastUpdatedTime" (DateTimeOffset), "Workload" (String), "WorkloadDisplayName" (String), "Feature" (String), "FeatureDisplayName" (String), "MessageType" (Enum, default: all).<br/><br/>"MessageHistory" entity contains "PublishedTime" (DateTimeOffset), "MessageText" (String).|
 
 #### Sample request
 

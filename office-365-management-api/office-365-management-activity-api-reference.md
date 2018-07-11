@@ -9,8 +9,6 @@ ms.date: 01/10/2018
 
 # Office 365 Management Activity API reference
 
-**Applies to:** Office 365
-
 Use the Office 365 Management Activity API to retrieve information about user, admin, system, and policy actions and events from Office 365 and Azure AD activity logs. 
 
 You can use the actions and events from the Office 365 and Microsoft Azure Active Directory audit and activity logs to create solutions that provide monitoring, analysis, and data visualization. These solutions give organizations greater visibility into actions taken on their content. These actions and events are also available in the Office 365 Activity Reports. For more information, see [Search the audit log in the Office 365 Security & Compliance Center](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c).
@@ -54,7 +52,7 @@ After you create a subscription, you can poll regularly to discover new content 
 All API operations are scoped to a single tenant and the root URL of the API includes a tenant ID that specifies the tenant context. The tenant ID is a GUID. For information about how to get the GUID, see [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md).
 
 
-```
+```http
 https://manage.office.com/api/v1.0/{tenant_id}/activity/feed/{operation}
 ```
 
@@ -62,7 +60,7 @@ Because the notifications we send to your webhook include the **tenant ID**, you
 
 All API operations require an Authorization HTTP header with an access token obtained from Azure AD. The tenant ID in the access token must match the tenant ID in the root URL of the API and the access token must contain the ActivityFeed.Read claim (this corresponds to the permission [Read activity data for an organization] that you configured for you application in Azure AD).
 
-```
+```json
 Authorization: Bearer eyJ0e...Qa6wg
 ```
 
@@ -85,7 +83,7 @@ The Activity API supports the following operations:
 - **Retrieve resource friendly names** for objects in the data feed identified by guids.
     
 
-### Start a subscription
+## Start a subscription
 
 This operation starts a subscription to the specified content type. If a subscription to the specified content type already exists, this operation is used to:
 
@@ -145,7 +143,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 
-### Webhook validation
+## Webhook validation
 
 When the /start operation is called and a webhook is specified, we will send a validation notification to the specified webhook address to validate that an active listener can accept and process notifications. If we do not receive an HTTP 200 OK response, the subscription will not be created. Or, if /start is being called to add a webhook to an existing subscription and a response of HTTP 200 OK is not received, the webhook will not be added and the subscription will remain unchanged.
 
@@ -173,7 +171,7 @@ HTTP/1.1 200 OK
 ```
 
 
-### Stop a subscription
+## Stop a subscription
 
 This operation stops a subscription to the specified content type. 
 
@@ -203,7 +201,7 @@ HTTP/1.1 200 OK
 ```
 
 
-### List current subscriptions
+## List current subscriptions
 
 This operation returns a collection of the current subscriptions together with the associated webhooks.
 
@@ -252,7 +250,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 
-### List available content
+## List available content
 
 This operation lists the content currently available for retrieval for the specified content type. The content is an aggregation of actions and events harvested from multiple servers across multiple datacenters. The content will be listed in the order in which the aggregations become available, but the events and actions within the aggregations are not guaranteed to be sequential. An error is returned if the subscription status is disabled.
 
@@ -294,7 +292,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 
-#### Pagination
+### Pagination
 
 When listing available content for a time range, the number of results returned is limited to prevent response timeouts. If there are more results in the specified time range than can be returned in single response, the results will be truncated and a header will be added to the response indicating the URL to use to retrieve the next page of results. The URL will contain the same  _startTime_ and _endTime_ parameters that were specified in the original request, together with a parameter indicating the internal ID of the next page. If _startTime_ and _endTime_ were not specified in the original request, they will be set to reflect the 24-hour interval that preceded the original request.
 
@@ -309,14 +307,13 @@ NextPageUrl: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscrip
 To list all available content for a specified time range, you might need to retrieve multiple pages until a response without the **NextPageUrl** header is received.
 
 
-### Receiving notifications
+## Receiving notifications
 
 Notifications are sent to the configured webhook for a subscription as new content becomes available. Because the notification includes the tenant identifier, you can use the same webhook to receive notifications for all tenants for which you have subscriptions.
 
 The notification is made as an HTTP POST over TLS (TLS 1.0 and later versions) to the specified webhook address. If the webhook configuration includes an auth ID, we will send it as an HTTP header: Webhook-AuthID. Any response other than HTTP 200 OK will be considered a failure and the notification will be retried. You can also configure your webhook to require client certificate-based authentication and we will authenticate using the manage.office.com certificate.
 
 The body of the request will contain an array of one or more JSON objects that represent the available content blobs. The number of content blobs in each notification is limited to keep the size of the notification relatively small. Because this limit might change, your implementation should query for the length of the array instead of expecting a fixed size. Each object will include the same properties returned by the /content operation, together with the GUID of the tenant to which the data belongs and the GUID of your application that created the subscriptions. This allows the webhook to establish context when it is being used with multiple tenants and applications.
-
 
 - **tenantId**: The GUID of the tenant to which the content belongs.
     
@@ -355,12 +352,12 @@ Webhook-AuthID: o365activityapinotification
 ```
 
 
-### Notification failure and retry
+## Notification failure and retry
 
 The notification system sends notifications as new content becomes available. If we encounter excessive failures when sending notifications, our retry mechanism will exponentially increase the time between retries. If we continue to encounter failures, we reserve the right to disable the webhook and stop sending notifications to it altogether. The /start operation can be used to re-enable a disabled webhook.
 
 
-### Retrieving content
+## Retrieving content
 
 To retrieve a content blob, make a GET request against the corresponding content URI that is included in the list of available content and in the notifications sent to a webhook. The returned content will be a collection of one more actions or events in JSON format.
 
@@ -467,7 +464,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 
-### List notifications
+## List notifications
 
 This operation lists all notification attempts for the specified content type. If you did not include a webhook when starting the subscription to the content type, there will be no notifications to retrieve. Because we retry notifications in the event of failure, this operation can return multiple notifications for the same content, and the order in which the notifications are sent will not necessarily match the order in which the content became available (especially when there are failures and retries). 
 
@@ -479,8 +476,8 @@ You can use this operation to help investigate issues related to webhooks and no
 |**Path**| `/subscriptions/notifications?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`||
 |**Parameters**|contentType|Must be a valid content type.|
 ||PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
-||startTimeendTime|Optional datetimes (UTC) that indicate the time range of content to return, based on when the content became available. The time range is inclusive with respect to  _startTime_ ( _startTime_ <= contentCreated) and exclusive with respect to _endTime_ ( _contentCreated_ < endTime), so that non-overlapping, incrementing time intervals can used to page through available content.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>Both must be specified (or both omitted) and they must be no more than 24 hours apart, with the start time no more than 7 days in the past. By default, if  _startTime_ and _endTime_ are omitted, the content available in the last 24 hours is returned.|
-|**Response**|JSON array|The notifications will be represented by JSON objects with the following properties: **contentType**: indicates the content type. **contentId**: an opaque string that uniquely identifies the content. **contentUri**: the URL to use when retrieving the content. **contentCreated**: the datetime when the content was made available. **contentExpiration**: the datetime after which the content will no longer be available for retrieval. **notificationSent**: the datetime when the notification was sent. **notificationStatus**: indicates the success or failure of the notification attempt.|
+||startTimeendTime|Optional datetimes (UTC) that indicate the time range of content to return, based on when the content became available. The time range is inclusive with respect to  _startTime_ ( _startTime_ <= contentCreated) and exclusive with respect to _endTime_ (_contentCreated_ < endTime), so that non-overlapping, incrementing time intervals can used to page through available content.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>Both must be specified (or both omitted) and they must be no more than 24 hours apart, with the start time no more than 7 days in the past. By default, if  _startTime_ and _endTime_ are omitted, the content available in the last 24 hours is returned.|
+|**Response**|JSON array|The notifications will be represented by JSON objects with the following properties: <ul><li>**contentType**: indicates the content type.</li><li>**contentId**: an opaque string that uniquely identifies the content.</li><li>**contentUri**: the URL to use when retrieving the content. </li><li>**contentCreated**: the datetime when the content was made available.</li><li>**contentExpiration**: the datetime after which the content will no longer be available for retrieval.</li><li>**notificationSent**: the datetime when the notification was sent.</li><li>**notificationStatus**: indicates the success or failure of the notification attempt.</li></ul>|
 
 #### Sample request
 
@@ -513,7 +510,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 
-#### Pagination
+### Pagination
 
 When listing notification history for a time range, the number of results returned is limited to prevent response timeouts. If there are more results in the specified time range than can be returned in a single response, the results are truncated and a header is added to the response indicating the URL to use to retrieve the next page of results. The URL will contain the same  _startTime_ and _endTime_ parameters that were specified in the original request, together with a parameter indicating the internal ID of the next page. If _startTime_ and _endTime_ were not specified in the original request, they will be set to reflect the 24-hour interval that preceded the original request.
 
@@ -526,7 +523,7 @@ NextPageUrl: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscrip
 
 To list all available content for a specified time range, you might need to retrieve multiple pages until a response without the **NextPageUrl** header is received.
 
-### Retrieve resource friendly names
+## Retrieve resource friendly names
 
 This operation retrieves friendly names for objects in the data feed identified by guids. Currently "DlpSensitiveType" is the only supported object. 
 
