@@ -32,5 +32,5 @@ For the operations reference, see [Office 365 Management Activity API reference]
 
 - [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md)
 - [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md)
-- [Troubleshooting the Office 365 Management Activity API](troubleshooting-the-office-365-management-activity-ap.md)
+- [Troubleshooting the Office 365 Management Activity API](troubleshooting-the-office-365-management-activity-api.md)
 

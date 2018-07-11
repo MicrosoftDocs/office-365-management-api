@@ -7,7 +7,7 @@
 - [Office 365 Service Communications API reference (preview)](office-365-service-communications-api-reference.md)
 - [Office 365 Management Activity API reference](office-365-management-activity-api-reference.md)
 - [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md)
-- [Troubleshooting the Office 365 Management Activity API](troubleshooting-the-office-365-management-activity-ap.md)
+- [Troubleshooting the Office 365 Management Activity API](troubleshooting-the-office-365-management-activity-api.md)
 
 ## See also
 

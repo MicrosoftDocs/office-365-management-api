@@ -40,7 +40,7 @@ All API requests require an Authorization HTTP header that has a valid OAuth2 JW
 Authorization: Bearer {OAuth2 token}
 ```
 
-**Request header**
+**Request headers**
 
 These are the supported request headers for all Office 365 Service Communications API operations.
 
