@@ -128,9 +128,9 @@ Invoke-WebRequest -Method GET -Headers $headerParams -Uri https://manage.office.
 The previous example will get all the content notifications that became available today, which means from 12:00 AM UTC to the current time. If you want to specify a different time period (keeping in mind that the maximum period for which you can query is 24 hours), add the *starttime* and *endtime* parameters to the URI; for example:
 
 ```powershell
-Invoke-WebRequest -Method GET -Headers $headerParams -Uri https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint &startTime=2017-10-13T000:00&endTime=2017-10-13T11:59
+Invoke-WebRequest -Method GET -Headers $headerParams -Uri https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint"&"startTime=2017-10-13T000:00"&"endTime=2017-10-13T11:59
 ```
-
+"
 > [!NOTE] 
 > You must use either both *starttime* and *endtime* parameters or neither.
 
@@ -145,6 +145,11 @@ The previous request will return a JSON object with a collection of notification
 }]
 ```
 
+You can use the following PowerShell commands to view the content of the JSON object:
+```powershell
+$J = Invoke-WebRequest -Method GET -Headers $headerParams -Uri https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.General | ConvertFrom-Json
+$J 
+```
 > [!IMPORTANT] 
 > - The *contentUri* property is the URI from which you can retrieve the content blob. The blob itself is what contains the event details; it will contain details about 1 – N events. While there may be 30 JSON objects in the collection, there may be many more events detailed in those 30 content URIs.
 > - The *contentCreated* property is not the date that the event being notified was created. This is the date the notification was created. The events detailed in that blob may have been created well before the content blob was created. Therefore, you can never query the API directly for events that occurred within any given period.
