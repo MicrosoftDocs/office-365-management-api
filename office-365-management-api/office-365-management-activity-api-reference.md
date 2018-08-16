@@ -574,6 +574,9 @@ If Office 365 needs to reverse escalate to you in certain issues, make sure the 
 
 For customers who are developing their own solutions using this API, we recommend using your own tenant GUID to avoid competition caused by a limited shared quota.
 
+> [!NOTE] 
+> Even though each publisher can submit up to 60K requests per minute, Microsoft cannot guarantee a response rate. The response rate depends on various factors, such as client system performance, network capacity, and network speed.  A publisher can submit up to 60K requests per minute, but should not expect to receive responses for all 60K requests within that same minute. If anything, should a publisher want to benchmark a client application, they should do so in each different environment that they are planning on running the client application in because results will vary from environment to environment.
+
 ## Errors
 
 When the service encounters an error, it will report the error response code to the caller, using standard HTTP error-code syntax. . Additional information is included in the body of the failed call as a single JSON object. An example of a full JSON error body is shown below: 
