@@ -54,7 +54,7 @@
                                          "ms.author":  "o365devx",
                                          "ms.prod": "office 365",                                         
                                          "ms.topic":  "conceptual",
-                                        "contributors_to_exclude":["nivnar"]
+                                         "contributors_to_exclude": ["nivnar"]
                                      },
                   "fileMetadata":  {
 
