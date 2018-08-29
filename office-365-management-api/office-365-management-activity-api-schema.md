@@ -855,7 +855,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 
 ## Microsoft Teams Add-ons schema
 
-r|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |AddOnType|Self.[AddOnType](#addontype)|No|The type of add-on that generated this event.|
 |AddonName|Edm.String|No|The name of the add-on that generated this event.|
