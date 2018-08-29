@@ -128,7 +128,7 @@ Invoke-WebRequest -Method GET -Headers $headerParams -Uri https://manage.office.
 The previous example will get all the content notifications that became available today, which means from 12:00 AM UTC to the current time. If you want to specify a different time period (keeping in mind that the maximum period for which you can query is 24 hours), add the *starttime* and *endtime* parameters to the URI; for example:
 
 ```powershell
-Invoke-WebRequest -Method GET -Headers $headerParams -Uri https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint&startTime=2017-10-13T00:00&endTime=2017-10-13T11:59
+Invoke-WebRequest -Method GET -Headers $headerParams -Uri 'https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint&startTime=2017-10-13T00:00&endTime=2017-10-13T11:59'
 ```
 
 > [!NOTE] 
