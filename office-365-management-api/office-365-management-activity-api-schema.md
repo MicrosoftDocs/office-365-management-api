@@ -888,10 +888,14 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 |:-----|:-----|:-----|:-----|
 |AttachmentData|Collection(Self.[AttachmentData](#AttachmentData))|No|Data about attachments in the email message that triggered the event.|
 |DetectionType|Self.[DetectionType](#DetectionType)|Yes|The type of detection.|
+|DetectionMethod|Self.[DetectionMethod](#DetectionMethod)|Yes|The method or technology used by Office 365 ATP for the detection.|
+|InternetMessageId|Edm.String|Yes|The Interenet Message Id.|
 |NetworkMessageId|Edm.String|Yes|The Exchange Online Network Message Id.|
-|P1Sender|Edm.String|Yes|The sender of the email message.|
+|P1Sender|Edm.String|Yes|The return path of sender of the email message.|
+|P2Sender|Edm.String|Yes|The from sender of the email message.|
 |Recipients|Collection(Edm.String)|Yes|An array of recipients of the email message.|
 |SenderIp|Edm.String|Yes|The IP address that submitted the email of Office 365. The IP address is displayed in either an IPv4 or IPv6 address format.|
+|Subject|Edm.String|Yes|The subject line of the message.|
 |Verdict|Edm.String|Yes|The message verdict.|
 
 ### Enum: DetectionType - Type: Edm.Int32
