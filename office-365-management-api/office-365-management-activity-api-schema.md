@@ -29,6 +29,7 @@ This article provides details on the Common schema as well as each of the produc
 |[SharePoint File Operations](#sharepoint-file-operations)|Extends the SharePoint Base schema with properties specific to file access and manipulation in SharePoint.|
 |[SharePoint Sharing schema](#sharepoint-sharing-schema)|Extends the SharePoint Base schema with properties specific to file sharing.|
 |[SharePoint schema](#sharepoint-schema)|Extends the SharePoint Base schema with the properties specific to SharePoint, but unrelated to file access and manipulation.|
+|[Project schema](#project-schema)|Extends the SharePoint Base schema with the properties specific to Project.|
 |[Exchange Admin schema](#exchange-admin-schema)|Extends the Common schema with the properties specific to all Exchange admin audit data.|
 |[Exchange Mailbox schema](#exchange-mailbox-schema)|Extends the Common schema with the properties, specific to all Exchange mailbox audit data.|
 |[Azure Active Directory Base schema](#azure-active-directory-base-schema)|Extends the Common schema with the properties specific to all Azure Active Directory audit data.|
@@ -364,6 +365,14 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |EventData|Edm.String|No|Optional payload for custom events.|
 |ModifiedProperties|Collection(ModifiedProperty)|No|The property is included for admin events, such as adding a user as a member of a site or a site collection admin group. The property includes the name of the property that was modified (for example, the Site Admin group), the new value of the modified property (such the user who was added as a site admin), and the previous value of the modified object.|
 
+
+## Project schema
+
+|**Parameter**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Entity|Edm.String|Yes|ProjectEntity the audit was for|
+|Action|Edm.String|Yes|EdmProjectAction that was taken|
+|OnBehalfOfResId|Edm.Guid|No|The resource Id the action was taken on behalf of.|
 
 ## Exchange Admin schema
 
