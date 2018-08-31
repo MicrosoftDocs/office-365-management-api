@@ -370,9 +370,71 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Entity|Edm.String|Yes|ProjectEntity the audit was for|
-|Action|Edm.String|Yes|EdmProjectAction that was taken|
+|Entity|Edm.String|Yes| [ProjectEntity](#projectentity) the audit was for|
+|Action|Edm.String|Yes|[ProjectAction](#projectaction) that was taken|
 |OnBehalfOfResId|Edm.Guid|No|The resource Id the action was taken on behalf of.|
+
+
+### Enum: Project Action - Type: Edm.Int32
+
+|**Member name**|**Description**|
+|Accepted|The user accepted an event or workflow.|
+|Accessed|The user accessed an entity.|
+|Activated|The user activated an entity, event or workflow.|
+|Cancelled|The user cancelled an event or workflow.|
+|CheckedIn|The user check in an entity.|
+|CheckedOut|The user checkout an entity.|
+|Copied|The user copied an entity.|
+|Created|The user created an entity.|
+|Deactivated|The user deactivated an entity.|
+|Deleted|The user deleted an entity.|
+|Exported|The user exported an entity.|
+|ForceCheckedIn|The user caused an entity to be force checked in.|
+|Modified|The user modified an entity.|
+|Published|The user published an entity.|
+|Redacted|The user redacted an entity.|
+|Rejected|The user rejected an entity.|
+|Restarted|The user restarted an event or workflow.|
+|Saved|The user saved an entity.|
+|Sent|The user sent an entity.|
+|Submitted|The user submitted an entity for review or workflow.|
+
+
+### Enum: Project Entity - Type: Edm.Int32
+
+|**Member name**|**Description**|
+|CustomField|Represents an enterprise custom field.|
+|Driver|Represents a portfolio driver.|
+|DriverPrioritization|Represents a portfolio prioritization.|
+|Engagement|Represents a resource engagement.|
+|EnterpriseCalendar|Represents a enterprise  resource calendar.|
+|EnterpriseProjectType|Represents an enterprise project type.|
+|FiscalPeriod|Represents a fiscal period.|
+|GanttChartFormat|Represents a gantt chart format.|
+|GroupingFormat|Represents a view grouping format.|
+|LineClassification|Represents a timesheet line classification.|
+|LookupTable|Represents a enterprise lookup table.|
+|PermissionTemplate|Represents a security permission template.|
+|PortfolioAnalysis|Represents a portfolio analysis.|
+|Project|Represents a project.|
+|QueueJob|Represents a queue job.|
+|QuickLaunch|Represents a quick launch item.|
+|Reporting|Represents the reporting endpoint.|
+|Resource|Represents an enterprise resource.|
+|ResourcePlan|Represents a resource plan associated with A project.|
+|SecurityCategory|Represents a security category.|
+|SecurityGroup|Represents a security group.|
+|Setting|Represents a Project Web App setting|
+|Statusing|Represents a task status update.|
+|StatusReport|Represents a status report.|
+|TimeReportingPeriod|Represents a period of time for a timesheet|
+|Timesheet|Represents a timesheet entity.|
+|TimesheetAuditLog|Represents a timesheetsheet audit log.|
+|TimesheetManager|Represents the manager of a timehseet.|
+|UserDelegate|Represents a user delegation for another user.|
+|View|Represents a view definition.|
+|WorkflowPhase|Represents a phase in a workflow.|
+|WorkflowStage|Represents a stage in a workflow.|
 
 ## Exchange Admin schema
 
