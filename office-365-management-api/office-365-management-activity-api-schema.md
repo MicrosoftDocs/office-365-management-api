@@ -378,6 +378,7 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 ### Enum: Project Action - Type: Edm.Int32
 
 |**Member name**|**Description**|
+|:-----|:-----|
 |Accepted|The user accepted an event or workflow.|
 |Accessed|The user accessed an entity.|
 |Activated|The user activated an entity, event or workflow.|
@@ -403,6 +404,7 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 ### Enum: Project Entity - Type: Edm.Int32
 
 |**Member name**|**Description**|
+|:-----|:-----|
 |CustomField|Represents an enterprise custom field.|
 |Driver|Represents a portfolio driver.|
 |DriverPrioritization|Represents a portfolio prioritization.|
