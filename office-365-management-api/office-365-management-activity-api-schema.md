@@ -370,12 +370,13 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Entity|Edm.String|Yes| [ProjectEntity](#project-entity) the audit was for|
+|Entity|Edm.String|Yes| [ProjectEntity](#enum:-project-entity) the audit was for|
 |Action|Edm.String|Yes|[ProjectAction](#project-action) that was taken|
 |OnBehalfOfResId|Edm.Guid|No|The resource Id the action was taken on behalf of.|
 
-
+<a name="project-action"></a>
 ### Enum: Project Action - Type: Edm.Int32
+
 
 |**Member name**|**Description**|
 |:-----|:-----|
