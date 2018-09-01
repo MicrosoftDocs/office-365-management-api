@@ -368,6 +368,8 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 
 ## Project schema
 
+
+
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |Entity|Edm.String|Yes| [ProjectEntity](#project-entity) the audit was for|
