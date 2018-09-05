@@ -327,7 +327,7 @@ The access token that is returned is a JWT token that includes information about
 
 After the tenant ID is known, your application can make service-to-service calls to Azure AD to request additional access tokens as they expire. These tokens include information only about the requesting application and not about the admin that originally granted consent. Service-to-service calls require that your application use an X.509 certificate to create client assertion in the form of a base64-encoded, SHA256 signed JWT bearer token.
 
-When you are developing your application in .NET, you can use the [Azure AD Authentication Library (ADAL)](https://msdn.microsoft.com/en-us/library/azure/jj573266.aspx) to create client assertions. Other development platforms should have similar libraries.
+When you are developing your application in .NET, you can use the [Azure AD Authentication Library (ADAL)](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-authentication-libraries) to create client assertions. Other development platforms should have similar libraries.
 
 An un-encoded JWT token consists of a header and payload that have the following properties.
 

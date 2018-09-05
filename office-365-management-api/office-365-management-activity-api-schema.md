@@ -25,22 +25,22 @@ This article provides details on the Common schema as well as each of the produc
 |Name of schema|Description|
 |:-----|:-----|
 |[Common schema](#common-schema)|The view to extract Record Type, User ID, Client IP, User type and Action along with core dimensions such as user properties (such as UserID), location properties (such as Client IP), and product-specific properties (such as Object Id).|
-|[SharePoint Base schema](#sharepoint-base-schema)|Extends the Common schema with properties specific to all SharePoint audit data.|
-|[SharePoint File Operations](#sharepoint-file-operations)|Extends the SharePoint Base schema with properties specific to file access and manipulation in SharePoint.|
-|[SharePoint Sharing schema](#sharepoint-sharing-schema)|Extends the SharePoint Base schema with properties specific to file sharing.|
+|[SharePoint Base schema](#sharepoint-base-schema)|Extends the Common schema with the properties specific to all SharePoint audit data.|
+|[SharePoint File Operations](#sharepoint-file-operations)|Extends the SharePoint Base schema with the properties specific to file access and manipulation in SharePoint.|
+|[SharePoint Sharing schema](#sharepoint-sharing-schema)|Extends the SharePoint Base schema with the properties specific to file sharing.|
 |[SharePoint schema](#sharepoint-schema)|Extends the SharePoint Base schema with the properties specific to SharePoint, but unrelated to file access and manipulation.|
 |[Project schema](#project-schema)|Extends the SharePoint Base schema with the properties specific to Project.|
 |[Exchange Admin schema](#exchange-admin-schema)|Extends the Common schema with the properties specific to all Exchange admin audit data.|
-|[Exchange Mailbox schema](#exchange-mailbox-schema)|Extends the Common schema with the properties, specific to all Exchange mailbox audit data.|
+|[Exchange Mailbox schema](#exchange-mailbox-schema)|Extends the Common schema with the properties specific to all Exchange mailbox audit data.|
 |[Azure Active Directory Base schema](#azure-active-directory-base-schema)|Extends the Common schema with the properties specific to all Azure Active Directory audit data.|
 |[Azure Active Directory Account Logon schema](#azure-active-directory-account-logon-schema)|Extends the Azure Active Directory Base schema with the properties specific to all Azure Active Directory logon events.|
 |[Azure Active Directory STS Logon schema](#azure-active-directory-sts-logon-schema)|Extends the Azure Active Directory Base schema with the properties specific to all Azure Active Directory STS logon events.|
 |[Azure Active Directory schema](#azure-active-directory-schema)|Extends the Common schema with the properties specific to all Azure Active Directory audit data.|
-|[DLP schema](#dlp-schema)|Extends the Common schema with properties specific to Data Loss Prevention events.|
-|[Security and Compliance Center schema](#security-and-compliance-center-schema)|Extends the Common schema with properties specific to all Security & Compliance Center events.|
-|[Yammer schema](#yammer-schema)|Extends the Common schema with properties specific to all Yammer events.|
-|[Sway schema](#sway-schema)|Extends the Common schema with properties specific to all Sway events.|
-|[Data Center Security Base schema](#data-center-security-base-schema)|Extends the Common schema with the properties specific to all data center security audit data.|
+|[DLP schema](#dlp-schema)|Extends the Common schema with the properties specific to Data Loss Prevention events.|
+|[Security and Compliance Center schema](#security-and-compliance-center-schema)|Extends the Common schema with the properties specific to all Security and Compliance Center events.|
+|[Yammer schema](#yammer-schema)|Extends the Common schema with the properties specific to all Yammer events.|
+|[Sway schema](#sway-schema)|Extends the Common schema with the properties specific to all Sway events.|
+|[Data Center Security Base schema](#data-center-security-base-schema)|Extends the Common schema with the the properties specific to all data center security audit data.|
 |[Data Center Security Cmdlet schema](#data-center-security-cmdlet-schema)|Extends the Data Center Security Base schema with the properties specific to all data center security cmdlet audit data.|
 |[Microsoft Teams schema](#microsoft-teams-schema)|Extends the Common schema with the properties specific to all Microsoft Teams events.|
 |[Microsoft Teams Add-ons schema](#microsoft-teams-add-ons-schema)|Extends the Microsoft Teams schema with the properties specific to Microsoft Teams Add-ons.|
@@ -368,15 +368,14 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 
 ## Project schema
 
-
-
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Entity|Edm.String|Yes| [ProjectEntity](#project-entity) the audit was for|
-|Action|Edm.String|Yes|[ProjectAction](#project-action) that was taken|
+|Entity|Edm.String|Yes| [ProjectEntity](#project-entity) the audit was for.|
+|Action|Edm.String|Yes|[ProjectAction](#project-action) that was taken.|
 |OnBehalfOfResId|Edm.Guid|No|The resource Id the action was taken on behalf of.|
 
 <a name="project-action"></a>
+
 ### Enum: Project Action - Type: Edm.Int32
 
 
