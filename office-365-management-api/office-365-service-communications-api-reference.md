@@ -14,8 +14,8 @@ ms.date: 09/05/2018
 
 > [!NOTE] 
 > This documentation is available to use in the government cloud. For the US, the endpoints are as follows:
-> https://servicecommsgcchigh.cloudapp.net/api/v1.0/{0}/ServiceComms/Services
-> https://servicecommsdod.cloudapp.net/api/v1.0/{0}/ServiceComms/Services
+> `https://servicecommsgcchigh.cloudapp.net/api/v1.0/{0}/ServiceComms/Services`
+> `https://servicecommsdod.cloudapp.net/api/v1.0/{0}/ServiceComms/Services`
 
 
 You can use the Office 365 Service Communications API V2 to access the following data:
