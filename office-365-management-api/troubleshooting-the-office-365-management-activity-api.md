@@ -4,7 +4,7 @@ title: Troubleshooting the Office 365 Management Activity API
 description: Summarizes the most common questions Microsoft Support receives in supporting this API.
 ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
-ms.date: 01/10/2018
+ms.date: 09/05/2018
 ---
 
 # Troubleshooting the Office 365 Management Activity API
@@ -109,7 +109,7 @@ This says that the tenant has both Audit.Exchange and Audit.SharePoint subscript
 To create a new subscription, you use the /start operation:
 
 ```powershell
-Invoke-WebRequest -Method Post -Headers $headerParams -Uri https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/start?contentType=Audit.AzureActiveDirectory
+Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/start?contentType=Audit.AzureActiveDirectory"
 ```
 
 > [!NOTE] 
@@ -122,13 +122,13 @@ The previous code will create a new subscription to the Audit.AzureActiveDirecto
 To check what content blobs were created during a certain period, you can add the following line to the script in the "Connecting to the API" section:
 
 ```powershell
-Invoke-WebRequest -Method GET -Headers $headerParams -Uri https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint
+Invoke-WebRequest -Method GET -Headers $headerParams -Uri "https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint"
 ```
 
 The previous example will get all the content notifications that became available today, which means from 12:00 AM UTC to the current time. If you want to specify a different time period (keeping in mind that the maximum period for which you can query is 24 hours), add the *starttime* and *endtime* parameters to the URI; for example:
 
 ```powershell
-Invoke-WebRequest -Method GET -Headers $headerParams -Uri 'https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint&startTime=2017-10-13T00:00&endTime=2017-10-13T11:59'
+Invoke-WebRequest -Method GET -Headers $headerParams -Uri "https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint&startTime=2017-10-13T00:00&endTime=2017-10-13T11:59"
 ```
 
 > [!NOTE] 
@@ -141,7 +141,7 @@ The previous request will return a JSON object with a collection of notification
 		"contentId" : "20171014180051748005825$20171014180051748005825$audit_sharepoint$Audit_SharePoint",
 		"contentType" : "Audit.SharePoint",
 		"contentCreated" : "2017-10-13T18:00:51.748Z",
-		"contentExpiration" : "2017-10-20T18:00:51.748Z" },…
+		"contentExpiration" : "2017-10-20T18:00:51.748Z",
 }]
 ```
 
@@ -202,7 +202,7 @@ After you’ve obtained a list of content URIs, you must request the blobs speci
 
 ```powershell
 # Get a content blob
-$uri = 'https://manage.office.com/api/v1.0/<<Your-Teanant-guid>>/activity/feed/audit/<<ContentID>$audit_sharepoint$Audit_SharePoint'
+$uri = 'https://manage.office.com/api/v1.0/<<your-tenant-guid>>/activity/feed/audit/<<ContentID>$audit_sharepoint$Audit_SharePoint'
 $contents = Invoke-WebRequest -Method GET -Headers $headerParams -Uri $uri
 ```
 
