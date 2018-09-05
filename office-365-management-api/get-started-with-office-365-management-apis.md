@@ -4,7 +4,7 @@ title: Get started with Office 365 Management APIs
 description: The APIs use Azure AD to provide authentication services that you can use to grant rights for your application to access them. 
 ms.ContentId: 74137c9a-29e0-b588-6122-26f4d2c5e3fc
 ms.topic: reference (API)
-ms.date: 11/22/2016
+ms.date: 09/05/2018
 ---
 
 # Get started with Office 365 Management APIs
