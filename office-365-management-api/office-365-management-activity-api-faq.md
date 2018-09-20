@@ -9,7 +9,7 @@ ms.date: 09/21/2018
 
 # Office 365 Management Activity API frequently asked questions
 
-#### Where can I see which events are captured for a specific Office 365 service?
+#### What events are audited for a specific Office 365 service?
 
 Office 365 Management Activity API schema documentation has a comprehensive list of events. For details, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md).
 
