@@ -1009,19 +1009,25 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|ModifiedProperty|Common.ModifiedProperty|No|The property that was modified. It will contain the **Name**, **OldValue** and **NewValue** of the property.|
-|ExtendedProperties|Collection(Common.NameValuePair)|No|A list of extended properties for the setting being changed. Each propery will have a **Name** and **Value**.|
+|ModifiedProperty|Common.ModifiedProperty|No|The property that was modified. It will contain the **Name**, **OldValue**, and **NewValue** of the property.|
+|ExtendedProperties|Collection(Common.NameValuePair)|No|A list of extended properties for the setting being changed. Each property will have a **Name** and **Value**.|
 
 ## Office 365 Advanced Threat Protection and Threat Intelligence schema
 
-Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are available for Office 365 customers who have a ATP or Threat Intelligence or E5 subscription. Each event in the ATP and Threat Intelligence feed corresponds to an email message sent by or received by a user in the organization that was determined to contain a threat. Detections are made on messages at delivery time and from [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15).
+Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are available for Office 365 customers who have an ATP,  Threat Intelligence, or E5 subscription. Each event in the ATP and Threat Intelligence feed corresponds to the following that were determined to contain a threat:
+
+- An email message sent by or received by a user in the organization with detections are made on messages at delivery time and from [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15). 
+
+- URLs clicked by a user in the organization that were detected as malicious at time-of-click based on [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.  
+
+### Email message events
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |AttachmentData|Collection(Self.[AttachmentData](#AttachmentData))|No|Data about attachments in the email message that triggered the event.|
 |DetectionType|Self.[DetectionType](#DetectionType)|Yes|The type of detection.|
 |DetectionMethod|Edm.String|Yes|The method or technology used by Office 365 ATP for the detection.|
-|InternetMessageId|Edm.String|Yes|The Interenet Message Id.|
+|InternetMessageId|Edm.String|Yes|The Internet Message Id.|
 |NetworkMessageId|Edm.String|Yes|The Exchange Online Network Message Id.|
 |P1Sender|Edm.String|Yes|The return path of sender of the email message.|
 |P2Sender|Edm.String|Yes|The from sender of the email message.|
@@ -1047,7 +1053,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|FileName|Edm.String|Yes|The filename of the attachment.|
+|FileName|Edm.String|Yes|The file name of the attachment.|
 |FileType|Edm.String|Yes|The file type of the attachment.|
 |FileVerdict|Self.[FileVerdict](#FileVerdict)|Yes|The file malware verdict.|
 |MalwareFamily|Edm.String|No|The file malware family.|
@@ -1064,4 +1070,23 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 |-1|Error|Scan / analysis error.|
 |-2|Timeout|Scan / analysis timeout.|
 |-3|Pending|Scan / analysis not complete.|
+
+### URL time-of-click events
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|UserId|Edm.String|Yes|Identifier (e.g. email address) for the user who clicked on the URL.|
+|AppName|Edm.String|Yes|Office 365 service from which the URL was clicked (e.g. Mail).|
+|Blocked|Edm.Boolean|Yes|This is true if the URL click is blocked by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.|
+|ClickedThrough|Edm.Boolean|Yes|This is true if the URL block is clicked through (overridden) by the user based on the organization's policies for [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.|
+|SourceId|Edm.String|Yes|Identifier for the Office 365 service from which the URL was clicked (e.g. for Mail, this is the Exchange Online Network Message Id).|
+|TimeOfClick|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the user clicked the URL.|
+|URL|Edm.String|Yes|URL clicked by the user.|
+|UserIp|Edm.String|Yes|The IP address for the user who clicked the URL. The IP address is displayed in either an IPv4 or IPv6 address format.|
+
+
+
+
+
+
 
