@@ -1014,7 +1014,13 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 
 ## Office 365 Advanced Threat Protection and Threat Intelligence schema
 
-Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are available for Office 365 customers who have a ATP or Threat Intelligence or E5 subscription. Each event in the ATP and Threat Intelligence feed corresponds to an email message sent by or received by a user in the organization that was determined to contain a threat. Detections are made on messages at delivery time and from [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15).
+Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are available for Office 365 customers who have an ATP,  Threat Intelligence, or E5 subscription. Each event in the ATP and Threat Intelligence feed corresponds to the following that were determined to contain a threat:
+
+(a) An email message sent by or received by a user in the organization with detections are made on messages at delivery time and from [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15). 
+
+(b) URLs clicked by a user in the organization that was detected as malicious at time-of-click based on [Office 365 ATP Safe Links](https://docs.microsoft.com/en-us/office365/securitycompliance/atp-safe-links) protection.  
+
+### Email message events
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -1064,4 +1070,23 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 |-1|Error|Scan / analysis error.|
 |-2|Timeout|Scan / analysis timeout.|
 |-3|Pending|Scan / analysis not complete.|
+
+### URL time-of-click events
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|UserId|Edm.String|Yes|Identifier (e.g. email address) for the user who clicked on the URL.|
+|AppName|Edm.String|Yes|Office 365 service from which the URL was clicked (e.g. Mail).|
+|Blocked|Edm.Boolean|Yes|This is true if the URL click is blocked by [Office 365 ATP Safe Links](https://docs.microsoft.com/en-us/office365/securitycompliance/atp-safe-links) protection.|
+|ClickedThrough|Edm.Boolean|Yes|This is true if the URL block is clicked through (overriden) by the user based on the organizaitons policies for [Office 365 ATP Safe Links](https://docs.microsoft.com/en-us/office365/securitycompliance/atp-safe-links) protection.|
+|SourceId|Edm.String|Yes|Identifier for the Office 365 service from which the URL was clicked (e.g. for Mail, this is the Exchange Online Network Message Id).|
+|TimeOfClick|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the user clicked the URL.|
+|URL|Edm.String|Yes|URL clicked by the user.|
+|UserIp|Edm.String|Yes|The IP address for the user who clicked the URL. The IP address is displayed in either an IPv4 or IPv6 address format.|
+
+
+
+
+
+
 
