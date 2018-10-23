@@ -92,7 +92,7 @@ This article provides details on the Common schema as well as each of the produc
 |25|MicrosoftTeams|Events from Microsoft Teams.|
 |26|MicrosoftTeamsAddOns|Events from Microsoft Teams Add-ons.|
 |27|MicrosoftTeamsSettingsOperation|Settings changes from Microsoft Teams.|
-
+MISSING RECORDTYPE LIKE 21,22,23,29,30,32,35,36
 
 ### Enum: User Type - Type: Edm.Int32
 
