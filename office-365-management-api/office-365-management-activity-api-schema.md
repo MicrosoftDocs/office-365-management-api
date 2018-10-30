@@ -38,6 +38,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Azure Active Directory schema](#azure-active-directory-schema)|Extends the Common schema with the properties specific to all Azure Active Directory audit data.|
 |[DLP schema](#dlp-schema)|Extends the Common schema with the properties specific to Data Loss Prevention events.|
 |[Security and Compliance Center schema](#security-and-compliance-center-schema)|Extends the Common schema with the properties specific to all Security and Compliance Center events.|
+|[Security and Compliance Alerts schema](#security-and-compliance-alerts-schema)|Extends the Common schema with the properties specific to all Office 365 security and compliance alerts.|
 |[Yammer schema](#yammer-schema)|Extends the Common schema with the properties specific to all Yammer events.|
 |[Sway schema](#sway-schema)|Extends the Common schema with the properties specific to all Sway events.|
 |[Data Center Security Base schema](#data-center-security-base-schema)|Extends the Common schema with the the properties specific to all data center security audit data.|
@@ -92,6 +93,7 @@ This article provides details on the Common schema as well as each of the produc
 |25|MicrosoftTeams|Events from Microsoft Teams.|
 |26|MicrosoftTeamsAddOns|Events from Microsoft Teams Add-ons.|
 |27|MicrosoftTeamsSettingsOperation|Settings changes from Microsoft Teams.|
+|40|SecurityComplianceAlerts|Security and compliance alert signals.|
 
 
 ### Enum: User Type - Type: Edm.Int32
@@ -813,8 +815,6 @@ DLP sensitive data is only available in the activity feed API to users that have
 |Parameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that do not include Personally Identifiable Information.|
 |NonPiiParameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that include Personally Identifiable Information. (Deprecated: This field will stop appearing in the future and its content merged with the Parameters field.)|
 
-
-
 ## Yammer schema
 
 The Yammer events listed in [Search the audit log in the Office 365 Protection Center](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US) will use this schema.
@@ -833,8 +833,6 @@ The Yammer events listed in [Search the audit log in the Office 365 Protection C
 |TargetUserId|Edm.String|No|Email of target user in the operation. Will appear blank if not relevant to the operation.|
 |TargetYammerUserId|Edm.Int32|No|ID of target user in the operation.|
 |VersionId|Edm.Int32|No|Version ID of the file in the operation.|
-
-
 
 ## Sway schema
 
