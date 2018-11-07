@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in  two layers - Common schema and product-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
-ms.date: 09/05/2018
+ms.date: 
 ---
 
 # Office 365 Management Activity API schema
@@ -89,12 +89,16 @@ This article provides details on the Common schema as well as each of the produc
 |15|AzureActiveDirectoryStsLogon|Secure Token Service (STS) logon events in Azure Active Directory.|
 |18|SecurityComplianceCenterEOPCmdlet|Admin actions from the Security & Compliance Center.|
 |20|PowerBIAudit|Power BI events.|
+|22|Yammer|Yammer events.|
 |24|Discovery|Events for eDiscovery activities performed by running content searches and managing eDiscovery cases in the Security & Compliance Center.|
 |25|MicrosoftTeams|Events from Microsoft Teams.|
 |26|MicrosoftTeamsAddOns|Events from Microsoft Teams Add-ons.|
 |27|MicrosoftTeamsSettingsOperation|Settings changes from Microsoft Teams.|
+|28|ThreatIntelligence|Office 365 Advanced Threat Protection and Threat Intelligence events.|
+|30|MicrosoftFlow|Microsoft Flow events.|
+|32|MicrosoftStream|Microsoft Stream events.|
+|35|Project|Microsoft Project events.|
 |40|SecurityComplianceAlerts|Security and compliance alert signals.|
-
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -689,16 +693,17 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |Client|Edm.String|No|Client device information, provided by the browser performing the login.|
 |LogonError|Edm.String|No|For failed logins, contains the reason why the login failed.|
 
-
-
-
 ## DLP schema
-DLP events are available for Exchange Online, SharePoint Online, and OneDrive For Business. Note that DLP events in Exchange are only available for events based on unified DLP policy (e.g. configured via Security and Compliance Center). DLP events based on Exchange Transport Rules are not supported.
 
-DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the common schema. There are 3 types of DlpEvents which which are stored as the value of the Operation property of the common schema:
-- "DlpRuleMatch":  This indicates a rule was matched. These events exist in both Exchange and SharePoint Online and OneDrive for Business. For Exchange it includes false positive and override information. For SharePoint Online and OneDrive for Business, false positive and overrides generate separate events.
-- "DlpRuleUndo": These only exist in SharePoint Online and OneDrive for Business, and indicate a previously applied policy action has been “undone” – either because of false positive/override designation by user, or because the document is no longer subject to policy (either due to policy change or change to content in doc).
-- "DlpInfo": These only exist in SharePoint Online and OneDrive for Business and indicate a false positive designation but no action was “undone.”
+DLP events are available for Exchange Online, SharePoint Online, and OneDrive For Business. Note that DLP events in Exchange are only available for events based on unified DLP policy (e.g. configured via Security & Compliance Center). DLP events based on Exchange Transport Rules are not supported.
+
+DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the common schema. There are three types of DlpEvents which which are stored as the value of the Operation property of the common schema:
+
+- DlpRuleMatch - This indicates a rule was matched. These events exist in both Exchange and SharePoint Online and OneDrive for Business. For Exchange it includes false positive and override information. For SharePoint Online and OneDrive for Business, false positive and overrides generate separate events.
+
+- DlpRuleUndo - These only exist in SharePoint Online and OneDrive for Business, and indicate a previously applied policy action has been “undone” – either because of false positive/override designation by user, or because the document is no longer subject to policy (either due to policy change or change to content in doc).
+
+- DlpInfo - These only exist in SharePoint Online and OneDrive for Business and indicate a false positive designation but no action was “undone.”
 
 
 
@@ -798,11 +803,7 @@ DLP sensitive data is only available in the activity feed API to users that have
 |Justification|Edm.String|No|If the user chose to override policy, any user-specified justification is captured here.|
 |Rules|Collection(Edm.Guid)|No|A collection of guids for each rule that was designated as a false positive or override, or for which an action was undone.|
 
-
-
 ## Security and Compliance Center schema
-
-
 
 |**Parameters**|**Type**|**Mandatory**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -814,6 +815,34 @@ DLP sensitive data is only available in the activity feed API to users that have
 |ClientApplication|Edm.String|No|If the cmdlet was executed by an application, as opposed to remote powershell, this field contains that application’s name.|
 |Parameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that do not include Personally Identifiable Information.|
 |NonPiiParameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that include Personally Identifiable Information. (Deprecated: This field will stop appearing in the future and its content merged with the Parameters field.)|
+
+## Security and Compliance Alerts schema
+
+Alert signals include:
+
+- All alerts generated based on [Alert policies in Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/alert-policies#default-alert-policies).
+- Office 365 related alerts generated in [Office 365 Cloud App Security](https://docs.microsoft.com/office365/securitycompliance/office-365-cas-overview) and [Microsoft Cloud App Security](https://docs.microsoft.com/en-us/cloud-app-security/what-is-cloud-app-security).
+
+The UserId and UserKey of these events are always SecurityComplianceAlerts. There are two types of alert signals which are stored as the value of the Operation property of the common schema:
+
+- AlertTriggered - A new alert is generated due to a policy match.
+
+- AlertEntityGenerated - A new entity is added to an alert. This event is only applicable to alerts generated based on Alert policies in the Office 365 Security & Compliance Center. Each generated alert can be associated with one or multiple of these events. For example, an alert policy is defined to trigger an alert if any user deletes more than 100 files in 5 minutes. If two users exceed the threshold around the same time, there will be two AlertEntityGenerated events, but only one AlertTriggered event.
+
+|**Parameters**|**Type**|**Mandatory**|**Description**|
+|:-----|:-----|:-----|:-----|
+|AlertId|Edi.Guid|Yes|The Guid of the alert.|
+|AlertType|Self.String|Yes|Type of the alert. Alert types include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>System</p></li><li><p>Custom</p></li>|
+|Name|Edm.String|Yes|Name of the alert.|
+|PolicyId|Edm.Guid|No|The Guid of the policy that triggered the alert.|
+|Status|Edm.String|No|Status of the alert. Statuses include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Active</p></li><li><p>Investigating</p></li><li><p>Resolved</p></li><li><p>Dismissed</p></li></ul>|
+|Severity|Edm.String|No|Severity of the alert. Severity levels include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Low</p></li><li><p>Medium</p></li><li><p>High</p></li></ul>|
+|Category|Edm.String|No|Category of the alert. Categories include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>DataLossPrevention</p></li><li><p>ThreatManagement</p></li><li><p>DataGovernance</p></li><li><p>AccessGovernance</p></li><li><p>MailFlow</p></li><li><p>Other</p></li></ul>|
+|Source|Edm.String|No|Source of the alert. Sources include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Office 365 Security & Compliance</p></li><li><p>Cloud App Security</p></li></ul>|
+|Comments|Edm.String|No|Comments left by the users who have viewed the alert. By default, it's "New alert".|
+|Data|Edm.String|No|The detailed data blob of the alert or alert entity.|
+|AlertEntityId|Edm.String|No|The identitifier for the alert entity. This parameter is only applicable to AlertEntityGenerated events.|
+|EntityType|Edm.String|No|Type of the alert or alert entity. Entity types include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>User</p></li><li><p>Recipients</p></li><li><p>Sender</p></li><li><p>MalwareFamily</p></li></ul>This parameter is only applicable to AlertEntityGenerated events.|
 
 ## Yammer schema
 
