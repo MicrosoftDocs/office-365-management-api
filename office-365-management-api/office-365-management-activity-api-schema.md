@@ -89,12 +89,16 @@ This article provides details on the Common schema as well as each of the produc
 |15|AzureActiveDirectoryStsLogon|Secure Token Service (STS) logon events in Azure Active Directory.|
 |18|SecurityComplianceCenterEOPCmdlet|Admin actions from the Security & Compliance Center.|
 |20|PowerBIAudit|Power BI events.|
+|22|Yammer|Yammer events.|
 |24|Discovery|Events for eDiscovery activities performed by running content searches and managing eDiscovery cases in the Security & Compliance Center.|
 |25|MicrosoftTeams|Events from Microsoft Teams.|
 |26|MicrosoftTeamsAddOns|Events from Microsoft Teams Add-ons.|
 |27|MicrosoftTeamsSettingsOperation|Settings changes from Microsoft Teams.|
+|28|ThreatIntelligence|Office 365 Advanced Threat Protection and Threat Intelligence events.|
+|30|MicrosoftFlow|Microsoft Flow events.|
+|32|MicrosoftStream|Microsoft Stream events.|
+|35|Project|Microsoft Project events.|
 |40|SecurityComplianceAlerts|Security and compliance alert signals.|
-
 
 ### Enum: User Type - Type: Edm.Int32
 
