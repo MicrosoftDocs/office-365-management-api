@@ -831,7 +831,7 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 
 |**Parameters**|**Type**|**Mandatory**|**Description**|
 |:-----|:-----|:-----|:-----|
-|AlertId|Edi.Guid|Yes|The Guid of the alert.|
+|AlertId|Edm.Guid|Yes|The Guid of the alert.|
 |AlertType|Self.String|Yes|Type of the alert. Alert types include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>System</p></li><li><p>Custom</p></li>|
 |Name|Edm.String|Yes|Name of the alert.|
 |PolicyId|Edm.Guid|No|The Guid of the policy that triggered the alert.|
