@@ -44,3 +44,8 @@ At times, there are instances of a temporary outage or other issues in the Offic
 #### I am encountering a throttling error in the Management Activity API. What should I do?
 
 Open a ticket with [Microsoft Support](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online) and request a new throttling limit, and include a business justification for increasing the limit. We will evaluate the request, and if accepted, we will increase the throttling limit.
+
+#### What happens if I disable Auditing for my tenant. Will I still get events via the management Activty API ?
+
+No. Enabling Auditing at tenant level is a pre-requiste to pull records via the Management Activity API. 
+
