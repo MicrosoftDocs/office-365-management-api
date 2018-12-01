@@ -41,7 +41,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Security and Compliance Alerts schema](#security-and-compliance-alerts-schema)|Extends the Common schema with the properties specific to all Office 365 security and compliance alerts.|
 |[Yammer schema](#yammer-schema)|Extends the Common schema with the properties specific to all Yammer events.|
 |[Sway schema](#sway-schema)|Extends the Common schema with the properties specific to all Sway events.|
-|[Data Center Security Base schema](#data-center-security-base-schema)|Extends the Common schema with the the properties specific to all data center security audit data.|
+|[Data Center Security Base schema](#data-center-security-base-schema)|Extends the Common schema with the properties specific to all data center security audit data.|
 |[Data Center Security Cmdlet schema](#data-center-security-cmdlet-schema)|Extends the Data Center Security Base schema with the properties specific to all data center security cmdlet audit data.|
 |[Microsoft Teams schema](#microsoft-teams-schema)|Extends the Common schema with the properties specific to all Microsoft Teams events.|
 |[Microsoft Teams Add-ons schema](#microsoft-teams-add-ons-schema)|Extends the Microsoft Teams schema with the properties specific to Microsoft Teams Add-ons.|
