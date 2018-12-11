@@ -91,7 +91,7 @@ This article provides details on the Common schema as well as each of the produc
 |20|PowerBIAudit|Power BI events.|
 |21|CRM|Microsoft CRM events.|
 |22|Yammer|Yammer events.|
-|23|Skype for business|Microsoft Skype for business events.|
+|23|SkypeForBusinessCmdlets|Skype for Business events.|
 |24|Discovery|Events for eDiscovery activities performed by running content searches and managing eDiscovery cases in the Security & Compliance Center.|
 |25|MicrosoftTeams|Events from Microsoft Teams.|
 |26|MicrosoftTeamsAddOns|Events from Microsoft Teams Add-ons.|
