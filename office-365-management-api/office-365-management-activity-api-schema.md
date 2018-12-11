@@ -47,6 +47,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Microsoft Teams Add-ons schema](#microsoft-teams-add-ons-schema)|Extends the Microsoft Teams schema with the properties specific to Microsoft Teams Add-ons.|
 |[Microsoft Teams Settings schema](#microsoft-teams-settings-schema)|Extends the Microsoft Teams schema with the properties specific to Microsoft Teams settings change events.|
 |[Office 365 Advanced Threat Protection and Threat Intelligence schema](#office-365-advanced-threat-protection-and-threat-intelligence-schema)|Extends the Common schema with the properties specific to Office 365 Advanced Threat Protection and Threat Intelligence data.|
+|[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
 
 ## Common schema
 
@@ -1111,9 +1112,34 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 |URL|Edm.String|Yes|URL clicked by the user.|
 |UserIp|Edm.String|Yes|The IP address for the user who clicked the URL. The IP address is displayed in either an IPv4 or IPv6 address format.|
 
+## Power BI schema
 
+The Power BI events listed in [Search the audit log in the Office 365 Protection Center](/power-bi/service-admin-auditing#activities-audited-by-power-bi) will use this schema.
 
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+| AppName               | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the app where the event occured. |
+| DashboardName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the dashboard where the event occured. |
+| DataClassification    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The [data classification](/power-bi/service-data-classification), if any, for the dashboard where the event occured. |
+| DatasetName           | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the dataset where the event occured. |
+| MembershipInformation | Collection([MembershipInformationType](#MembershipInformationType))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | Membership information about the group. |
+| OrgAppPermission      | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | Permissions list for an organizational app (entire organization, specific users, or specific groups). |
+| ReportName            | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the report where the event occured. |
+| SharingInformation    | Collection([SharingInformationType](#SharingInformationType))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"    |  No  | Information about the person to whom a sharing invitation is sent. |
+| SwitchState           | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | Information about the state of various tenant level switches. |
+| WorkSpaceName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the workspace where the event occured. |
 
+### MembershipInformationType complex type
 
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+| MemberEmail | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The email address of the group. |
+| Status      | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | Not currently populated. |
 
+### SharingInformationType complex type
 
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+| RecipientEmail    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The email address of the recipient of a sharing invitation. |
+| RecipientName    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The name of the recipient of a sharing invitation. |
+| ResharePermission | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The permission being granted to the recipient. |
