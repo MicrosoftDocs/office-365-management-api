@@ -1133,7 +1133,7 @@ The Power BI events listed in [Search the audit log in the Office 365 Protection
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-| MemberEmail | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | Email address of the group. |
+| MemberEmail | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The email address of the group. |
 | Status      | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | Not currently populated. |
 
 ### SharingInformationType complex type
