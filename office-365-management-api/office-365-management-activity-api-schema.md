@@ -5,6 +5,7 @@ description: The Office 365 Management Activity API schema is provided as a data
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: 
+localization_priority: Priority
 ---
 
 # Office 365 Management Activity API schema
