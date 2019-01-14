@@ -218,7 +218,7 @@ When attempting to retrieve the available content blobs, many customers (mostly 
 Response Code 403: {'error':{'code':'AF429','message':'Too many requests. Method=GetBlob, PublisherId=00000000-0000-0000-0000-000000000000'}}
 ```
 
-This is likely due to throttling. Note that the value of the Publisherid parameter likely indicates that the client didn’t specify the *PublisherIdentifier* in the request. Also, keep in mind that the correct parameter name is *PublisherIdentifier* even though you see *PublisherId* listed in the 403 error responses.
+This is likely due to throttling. Note that the value of the PublisherId parameter likely indicates that the client didn’t specify the *PublisherIdentifier* in the request. Also, keep in mind that the correct parameter name is *PublisherIdentifier* even though you see *PublisherId* listed in the 403 error responses.
 
 > [!NOTE] 
 > In the API reference, the *PublisherIdentifier* parameter is listed in every operation of the API, but it should also be included in the GET request to the contentUri URL when retrieving the content blob.
@@ -227,7 +227,7 @@ If you’re doing simple API calls to troubleshoot problems (for example, checki
 
 If you’re implementing a client for your company’s tenant, the *PublisherIdentifier* is the Tenant GUID. If you are creating an ISV application or add-in for multiple customers, the *PublisherIdentifier* should be the ISV’s Tenant GUID, and not the tenant GUID of end user’s company.
 
-If you include the valid *PublisherIdentifier*, then you will be in a pool that is allotted 60K requests per minute per tenant. This is an exceptionally large number of requests. However, if you don’t include the *PublishisherIdentifier* parameter, you will be in the general pool allotted 60K requests per minute for all tenants. In this case, you will more than likely find that your calls are getting throttled. To prevent this, here’s how you would request a content blob using the *PublisherIdentifier*:
+If you include the valid *PublisherIdentifier*, then you will be in a pool that is allotted 60K requests per minute per tenant. This is an exceptionally large number of requests. However, if you don’t include the *PublisherIdentifier* parameter, you will be in the general pool allotted 60K requests per minute for all tenants. In this case, you will more than likely find that your calls are getting throttled. To prevent this, here’s how you would request a content blob using the *PublisherIdentifier*:
 
 ```powershell
 $contentUri = ($response.Content | ConvertFrom-Json).contentUri[0]
@@ -235,7 +235,7 @@ $uri = $contentUri + '?PublisherIdentifier=82b24b6d-0591-4604-827b-705d55d0992f'
 $contents = Invoke-WebRequest -Method GET -Headers $headerParams -Uri $uri
 ```
 
-The previous example assumes that the *$response* variable was populated with the response to a request to the /content endpoint and that the *$hearderParams* variable includes a valid access token. The script grabs the first item in the array of content URIs from the response and then invokes the GET to download that blob and put it in the *$contents* variable. Your code will likely loop through the contentUri collection, issuing the GET for each *contentUri*.
+The previous example assumes that the *$response* variable was populated with the response to a request to the /content endpoint and that the *$headerParams* variable includes a valid access token. The script grabs the first item in the array of content URIs from the response and then invokes the GET to download that blob and put it in the *$contents* variable. Your code will likely loop through the contentUri collection, issuing the GET for each *contentUri*.
 
 ## Frequently asked questions about the Office 365 Management API
 
