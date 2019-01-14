@@ -64,7 +64,7 @@ This article provides details on the Common schema as well as each of the produc
 |UserType|Self.[UserType](#user-type)|Yes|The type of user that performed the operation. See the [UserType](#user-type) table for details on the types of users.|
 |UserKey|Edm.String|Yes|An alternative ID for the user identified in the UserId property. For example, this property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange. This property may also specify the same value as the UserID property for events occurring in other services and events performed by system accounts.|
 |Workload|Edm.String|No|The Office 365 service where the activity occurred in the Workload string. The possible values for this property are:<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Exchange</p></li><li><p>SharePoint</p></li><li><p>OneDrive</p></li><li><p>Azure Active Directory</p></li><li><p>SecurityComplianceCenter</p></li><li><p>Sway</p></li><li><p>ThreatIntelligence</p></li></ul>|
-|ResultStatus|Edm.String|No|Indicates whether the action (specified in the Operation property) was successful or not. Possible values are **Succeeded**, **PartiallySucceded**, or **Failed**. For Exchange admin activity, the value is either **True** or **False**.|
+|ResultStatus|Edm.String|No|Indicates whether the action (specified in the Operation property) was successful or not. Possible values are **Succeeded**, **PartiallySucceeded**, or **Failed**. For Exchange admin activity, the value is either **True** or **False**.|
 |ObjectId|Edm.string|No|For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. For Exchange admin audit logging, the name of the object that was modified by the cmdlet.|
 |UserId|Edm.string|Yes|The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, `my_name@my_domain_name`. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included.|
 |ClientIp|Edm.String|Yes|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.|
@@ -195,7 +195,7 @@ This article provides details on the Common schema as well as each of the produc
 |CollaborationTypeModified*|The type of collaboration allowed on sites (for example, intranet, extranet, or public) has been modified.|
 |ConnectedSiteSettingModified|User has either created, modified or deleted the link between a project and a project site or the user modifies the synchronization setting on the link in Project Web App.|
 |CreateSSOApplication*|Target application created in Secure store service.|
-|CustomFieldOrLookupTableCreated|User created a custom frield or lookup table/item in Project Web App.|
+|CustomFieldOrLookupTableCreated|User created a custom field or lookup table/item in Project Web App.|
 |CustomFieldOrLookupTableDeleted|User deleted a custom field or lookup table/item in Project Web App.|
 |CustomFieldOrLookupTableModified|User modified a custom field or lookup table/item in Project Web App.|
 |CustomizeExemptUsers*|Global administrator customized the list of exempt user agents in SharePoint admin center. You can specify which user agents to exempt from receiving an entire Web page to index. This means when a user agent you've specified as exempt encounters an InfoPath form, the form will be returned as an XML file instead of an entire Web page. This makes indexing InfoPath forms faster.|
@@ -249,7 +249,7 @@ This article provides details on the Common schema as well as each of the produc
 |LanguageAddedToTermStore*|Language added to the terminology store.|
 |LanguageRemovedFromTermStore*|Language removed from the terminology store.|
 |LegacyWorkflowEnabledSet*|Site administrator or owner adds theSharePoint Workflow Task content type to the site. Global administrators can also enable work flows for the entire organization in theSharePoint admin center.|
-|LookAndFeelModified|User modifies a quick launch, gantt chart formats, or group formats.  Or the user creats, modifies, or deletes a view in Project Web App.|
+|LookAndFeelModified|User modifies a quick launch, gantt chart formats, or group formats.  Or the user creates, modifies, or deletes a view in Project Web App.|
 |ManagedSyncClientAllowed|User successfully establishes a sync relationship with a SharePoint or OneDrive for Business site. The sync relationship is successful because the user's computer is a member of a domain that's been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. For more information about this feature, see [Use Windows PowerShell cmdlets to enable OneDrive sync for domains that are on the safe recipients list](http://go.microsoft.com/fwlink/p/?LinkID=534609).|
 |MaxQuotaModified*|The maximum quota for a site has been modified.|
 |MaxResourceUsageModified*|The maximum allowable resource usage for a site has been modified.|
@@ -261,8 +261,8 @@ This article provides details on the Common schema as well as each of the produc
 |PeopleResultsScopeSet*|Site administrator creates or changes the result source for People Searches for a SharePoint site.|
 |PermissionSyncSettingModified|User modifies the project permission sync settings in Project Web App.|
 |PermissionTemplateModified|User creates, modifies or deletes a permissions template in Project Web App.|
-|PortfolioDataAccessed|User accesses portfolio content (driver library, driver priortization, portfolio analyses) in Project Web App.|
-|PortfolioDataModified|User creates, modifies, or deletes portfolio data (driver library, driver priortization, portfolio analyses) in Project Web App.|
+|PortfolioDataAccessed|User accesses portfolio content (driver library, driver prioritization, portfolio analyses) in Project Web App.|
+|PortfolioDataModified|User creates, modifies, or deletes portfolio data (driver library, driver prioritization, portfolio analyses) in Project Web App.|
 |PreviewModeEnabledSet*|Site administrator enables document preview for a SharePoint site.|
 |ProjectAccessed|User accesses project content in Project Web App.|
 |ProjectCheckedIn|User checks in a project that they checked out from a Project Web App.|
@@ -446,8 +446,8 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |StatusReport|Represents a status report.|
 |TimeReportingPeriod|Represents a period of time for a timesheet|
 |Timesheet|Represents a timesheet entity.|
-|TimesheetAuditLog|Represents a timesheetsheet audit log.|
-|TimesheetManager|Represents the manager of a timehseet.|
+|TimesheetAuditLog|Represents a timesheet audit log.|
+|TimesheetManager|Represents the manager of a timesheet.|
 |UserDelegate|Represents a user delegation for another user.|
 |View|Represents a view definition.|
 |WorkflowPhase|Represents a phase in a workflow.|
@@ -536,7 +536,7 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |SendAsUserSmtp|Edm.String|No|SMTP address of the user who is being impersonated.|
 |SendAsUserMailboxGuid|Edm.Guid|No|The Exchange GUID of the mailbox that was accessed to send email as.|
 |SendOnBehalfOfUserSmtp|Edm.String|No|SMTP address of the user on whose behalf the email is sent.|
-|SendonBehalfOfUserMailboxGuid|Edm.Guid|No|The Exchange GUID of the mailbox that was accessed to send mail on behalf of.|
+|SendOnBehalfOfUserMailboxGuid|Edm.Guid|No|The Exchange GUID of the mailbox that was accessed to send mail on behalf of.|
 
 
 ### ExchangeItem complex type
@@ -737,7 +737,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |FileOwner|Edm.String|Yes|The document owner.|
 |FilePathUrl|Edm.String|Yes|The URL of the document|
 |DocumentLastModifier|Edm.String|Yes|The user who last modified the document.|
-|DocumentSharer|Edm.String|Yes|The user who last modiifed sharing of the document.|
+|DocumentSharer|Edm.String|Yes|The user who last modified sharing of the document.|
 |UniqueId|Edm.String|Yes|A guid that identifies the file.|
 |LastModifiedTime|Edm.DateTime|Yes|Timestamp in UTC for when doc was last modified.|
 
@@ -751,7 +751,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |To|Collection(Edm.String)|No|A collection of email addresses that were on the To line of the message.|
 |CC|Collection(Edm.String)|No|A collection of email addresses that were on the CC line of the message.|
 |BCC|Collection(Edm.String)|No|A collection of email addresses that were on the BCC line of the message.|
-|Subject|Edm.String|Yes|Suject of the email message.|
+|Subject|Edm.String|Yes|Subject of the email message.|
 |Sent|Edm.DateTime|Yes|The time in UTC of when the email was sent.|
 |RecipientCount|Edm.Int32|Yes|The total number of all recipients on the TO, CC, and BCC lines of the message.|
 
@@ -790,7 +790,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |:-----|:-----|:-----|:-----|
 |Confidence|Edm.Int|Yes|The confidence of pattern that matched the detection.|
 |Count|Edm.Int|Yes|The number of sensitive instances detected.|
-|SensitiveType|Edm.Guid|Yes|A guid that indentifies the type of sensitive data detected.|
+|SensitiveType|Edm.Guid|Yes|A guid that identifies the type of sensitive data detected.|
 |SensitiveInformationDetections|Self.SensitiveInformationDetections|No|An array of objects that contain sensitive information data with the following details – matched value and context of matched value.|
 
 ### SensitiveInformationDetections complex type 
@@ -848,7 +848,7 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 |Source|Edm.String|No|Source of the alert. Sources include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Office 365 Security & Compliance</p></li><li><p>Cloud App Security</p></li></ul>|
 |Comments|Edm.String|No|Comments left by the users who have viewed the alert. By default, it's "New alert".|
 |Data|Edm.String|No|The detailed data blob of the alert or alert entity.|
-|AlertEntityId|Edm.String|No|The identitifier for the alert entity. This parameter is only applicable to AlertEntityGenerated events.|
+|AlertEntityId|Edm.String|No|The identifier for the alert entity. This parameter is only applicable to AlertEntityGenerated events.|
 |EntityType|Edm.String|No|Type of the alert or alert entity. Entity types include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>User</p></li><li><p>Recipients</p></li><li><p>Sender</p></li><li><p>MalwareFamily</p></li></ul>This parameter is only applicable to AlertEntityGenerated events.|
 
 ## Yammer schema
@@ -863,7 +863,7 @@ The Yammer events listed in [Search the audit log in the Office 365 Protection C
 |FileId|Edm.Int32|No|ID of the file in the operation. |
 |FileName|Edm.String|No|Name of the file in the operation. Will appear blank if not relevant to the operation.|
 |GroupName|Edm.String|No|Name of the group in the operation. Will appear blank if not relevant to the operation.|
-|IsSoftDelete|Edm.Boolean|No|Returns "true" if the network's data reteion policy is set to Soft Delete; returns "false" if the network's data retention policy is set to Hard Delete.|
+|IsSoftDelete|Edm.Boolean|No|Returns "true" if the network's data retention policy is set to Soft Delete; returns "false" if the network's data retention policy is set to Hard Delete.|
 |MessageId|Edm.Int32|No|ID of the message in the operation.|
 |YammerNetworkId|Edm.Int32|No|Network ID of the user that performed the operation.|
 |TargetUserId|Edm.String|No|Email of target user in the operation. Will appear blank if not relevant to the operation.|
@@ -1124,16 +1124,16 @@ The Power BI events listed in [Search the audit log in the Office 365 Protection
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-| AppName               | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the app where the event occured. |
-| DashboardName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the dashboard where the event occured. |
-| DataClassification    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The [data classification](/power-bi/service-data-classification), if any, for the dashboard where the event occured. |
-| DatasetName           | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the dataset where the event occured. |
+| AppName               | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the app where the event occurred. |
+| DashboardName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the dashboard where the event occurred. |
+| DataClassification    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The [data classification](/power-bi/service-data-classification), if any, for the dashboard where the event occurred. |
+| DatasetName           | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the dataset where the event occurred. |
 | MembershipInformation | Collection([MembershipInformationType](#MembershipInformationType))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | Membership information about the group. |
 | OrgAppPermission      | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | Permissions list for an organizational app (entire organization, specific users, or specific groups). |
-| ReportName            | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the report where the event occured. |
+| ReportName            | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the report where the event occurred. |
 | SharingInformation    | Collection([SharingInformationType](#SharingInformationType))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"    |  No  | Information about the person to whom a sharing invitation is sent. |
 | SwitchState           | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | Information about the state of various tenant level switches. |
-| WorkSpaceName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the workspace where the event occured. |
+| WorkSpaceName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the workspace where the event occurred. |
 
 ### MembershipInformationType complex type
 

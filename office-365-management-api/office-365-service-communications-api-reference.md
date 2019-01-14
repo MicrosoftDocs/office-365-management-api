@@ -376,7 +376,7 @@ Returns the messages about the service over a certain time range. Use the type f
 |**Query-option**|$select|Pick a subset of properties.|
 ||$top|Pick the top number of results (default and max $top=100).|
 ||$skip|Skip number of results (default: $skip=0).|
-|**Response**|List of "Message" entities.|"Message" entity contains "Id" (String), "StartTime" (DateTimeOffset), "EndTime" (DateTimeOffset), "Status" (String), "Messages" (list of "MessagHistory" entity), "LastUpdatedTime" (DateTimeOffset), "Workload" (String), "WorkloadDisplayName" (String), "Feature" (String), "FeatureDisplayName" (String), "MessageType" (Enum, default: all).<br/><br/>"MessageHistory" entity contains "PublishedTime" (DateTimeOffset), "MessageText" (String).|
+|**Response**|List of "Message" entities.|"Message" entity contains "Id" (String), "StartTime" (DateTimeOffset), "EndTime" (DateTimeOffset), "Status" (String), "Messages" (list of "MessageHistory" entity), "LastUpdatedTime" (DateTimeOffset), "Workload" (String), "WorkloadDisplayName" (String), "Feature" (String), "FeatureDisplayName" (String), "MessageType" (Enum, default: all).<br/><br/>"MessageHistory" entity contains "PublishedTime" (DateTimeOffset), "MessageText" (String).|
 
 #### Sample request
 
