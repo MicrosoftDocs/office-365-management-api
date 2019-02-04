@@ -1061,7 +1061,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |AttachmentData|Collection(Self.[AttachmentData](#AttachmentData))|No|Data about attachments in the email message that triggered the event.|
-|DetectionType|Edm.String|Yes|The type of detection (such as, Inline - detected at delivery time; Delayed - detected after delivery; ZAP - messages removed by [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15). Events with ZAP detection type will typically be preceded by a message with a “Delayed” detection type.|
+|DetectionType|Edm.String|Yes|The type of detection (for example, **Inline** - detected at delivery time; **Delayed** - detected after delivery; **ZAP** - messages removed by [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15)). Events with ZAP detection type will typically be preceded by a message with a **Delayed** detection type.|
 |DetectionMethod|Edm.String|Yes|The method or technology used by Office 365 ATP for the detection.|
 |InternetMessageId|Edm.String|Yes|The Internet Message Id.|
 |NetworkMessageId|Edm.String|Yes|The Exchange Online Network Message Id.|
@@ -1102,11 +1102,11 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|UserId|Edm.String|Yes|Identifier (for example, an email address) for the user who clicked on the URL.|
+|UserId|Edm.String|Yes|Identifier (for example, email address) for the user who clicked on the URL.|
 |AppName|Edm.String|Yes|Office 365 service from which the URL was clicked (for example, Mail).|
-|AppVersion|Edm.String|No|Version of the application (where applicable) from where the URL was clicked (for example, 0.0.00000).|
-|URLClickAction|Self.[URLClickAction](#URClickAction)|Yes|The URL click action taken by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.|
-|SourceId|Edm.String|Yes|Identifier for the Office 365 service from which the URL was clicked (for example, for Mail, this is the Exchange Online Network Message Id).|
+|Blocked|Edm.Boolean|Yes|This is true if the URL click is blocked by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.|
+|ClickedThrough|Edm.Boolean|Yes|This is true if the URL block is clicked through (overridden) by the user based on the organization's policies for [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.|
+|SourceId|Edm.String|Yes|Identifier for the Office 365 service from which the URL was clicked (for example, for mail this is the Exchange Online Network Message Id).|
 |TimeOfClick|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the user clicked the URL.|
 |URL|Edm.String|Yes|URL clicked by the user.|
 |UserIp|Edm.String|Yes|The IP address for the user who clicked the URL. The IP address is displayed in either an IPv4 or IPv6 address format.|
@@ -1118,9 +1118,9 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
 |0|None|No clicks detected.|
-|1|Allowed|User allowed to navigate to the URL - i.e. URL considered safe by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
-|2|Blockpage|User blocked from navigating to the URL by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) .|
-|3|PendingDetonationPage|User presented with the detonation pending page by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) .|
+|1|Allowed|User allowed to navigate to the URL (because URL considered safe by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)).|
+|2|Blockpage|User blocked from navigating to the URL by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
+|3|PendingDetonationPage|User presented with the detonation pending page by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
 |4|BlockPageOverride|User blocked from navigating to the URL by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links); however user overrode block to navigate to the URL.|
 |5|PendingDetonationPageOverride|User presented with the detonation page by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links); however user overrode to navigate to the URL.|
 
@@ -1130,7 +1130,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |FileData|Self.[FileData](#FileData)|Yes|Data about the file that triggered the event.|
-|SourceWorkload|Self.[SourceWorkload](#SourceWorkload)|Yes|Workload or service where teh file was found (for example, SharePointOnline, OneDriveforBusiness, or Microsoft Teams)
+|SourceWorkload|Self.[SourceWorkload](#SourceWorkload)|Yes|Workload or service where teh file was found (for example, SharePoint Online, OneDrive for Business, or Microsoft Teams)
 |DetectionMethod|Edm.String|Yes|The method or technology used by Office 365 ATP for the detection.|
 |LastModifiedDate|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the file was created or last modified.|
 |LastModifiedBy|Edm.String|Yes|Identifier (for example, an email address) for the user who created or last modified the file.|
