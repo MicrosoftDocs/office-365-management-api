@@ -1048,20 +1048,20 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 
 ## Office 365 Advanced Threat Protection and Threat Intelligence schema
 
-Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are available for Office 365 customers who have an ATP,  Threat Intelligence, or E5 subscription. Each event in the ATP and Threat Intelligence feed corresponds to the following that were determined to contain a threat:
+Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are available for Office 365 customers who have an ATP,  Threat Intelligence, or an E5 subscription. Each event in the ATP and Threat Intelligence feed corresponds to the following that were determined to contain a threat:
 
 - An email message sent by or received by a user in the organization with detections are made on messages at delivery time and from [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15). 
 
 - URLs clicked by a user in the organization that were detected as malicious at time-of-click based on [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.  
 
-- A file within SharePoint Online, OneDrive for Business or Microsoft Teams detected as malicious by [Office 365 ATP](https://docs.microsoft.com/en-us/office365/securitycompliance/atp-for-spo-odb-and-teams) protection.  
+- A file within SharePoint Online, OneDrive for Business, or Microsoft Teams that was detected as malicious by [Office 365 ATP](https://docs.microsoft.com/en-us/office365/securitycompliance/atp-for-spo-odb-and-teams) protection.  
 
 ### Email message events
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |AttachmentData|Collection(Self.[AttachmentData](#AttachmentData))|No|Data about attachments in the email message that triggered the event.|
-|DetectionType|Edm.String|Yes|The type of detection (e.g. Inline - detected at delivery time; Delayed - detected after delivery; ZAP - messages removed by [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15). Events with ZAP detection type will typically be preceded by a message with a “Delayed” detection type.|
+|DetectionType|Edm.String|Yes|The type of detection (such as, Inline - detected at delivery time; Delayed - detected after delivery; ZAP - messages removed by [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15). Events with ZAP detection type will typically be preceded by a message with a “Delayed” detection type.|
 |DetectionMethod|Edm.String|Yes|The method or technology used by Office 365 ATP for the detection.|
 |InternetMessageId|Edm.String|Yes|The Internet Message Id.|
 |NetworkMessageId|Edm.String|Yes|The Exchange Online Network Message Id.|
@@ -1072,7 +1072,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 |Subject|Edm.String|Yes|The subject line of the message.|
 |Verdict|Edm.String|Yes|The message verdict.|
 |MessageTime|Edm.Date|Yes|Date and time in Coordinated Universal Time (UTC) the email message was received or sent.|
-|EventDeepLink|Edm.String|Yes|Deep-link to the email event in Explorer or Real-time reports in the Security and Compliance Center.|
+|EventDeepLink|Edm.String|Yes|Deep-link to the email event in Explorer or Real-time reports in the Office 365 Security & Compliance Center.|
 
 ### AttachmentData complex type
 
@@ -1102,11 +1102,11 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|UserId|Edm.String|Yes|Identifier (e.g. email address) for the user who clicked on the URL.|
-|AppName|Edm.String|Yes|Office 365 service from which the URL was clicked (e.g. Mail).|
-|AppVersion|Edm.String|No|Version of the application (where applicable) from where the URL was clicked (e.g. 0.0.00000).|
+|UserId|Edm.String|Yes|Identifier (for example, an email address) for the user who clicked on the URL.|
+|AppName|Edm.String|Yes|Office 365 service from which the URL was clicked (for example, Mail).|
+|AppVersion|Edm.String|No|Version of the application (where applicable) from where the URL was clicked (for example, 0.0.00000).|
 |URLClickAction|Self.[URLClickAction](#URClickAction)|Yes|The URL click action taken by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.|
-|SourceId|Edm.String|Yes|Identifier for the Office 365 service from which the URL was clicked (e.g. for Mail, this is the Exchange Online Network Message Id).|
+|SourceId|Edm.String|Yes|Identifier for the Office 365 service from which the URL was clicked (for example, for Mail, this is the Exchange Online Network Message Id).|
 |TimeOfClick|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the user clicked the URL.|
 |URL|Edm.String|Yes|URL clicked by the user.|
 |UserIp|Edm.String|Yes|The IP address for the user who clicked the URL. The IP address is displayed in either an IPv4 or IPv6 address format.|
@@ -1130,11 +1130,11 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |FileData|Self.[FileData](#FileData)|Yes|Data about the file that triggered the event.|
-|SourceWorkload|Self.[SourceWorkload](#SourceWorkload)|Yes|Workload or service where teh file was found (e.g. SharePointOnline, OneDriveforBusiness, Microsoft Teams)
+|SourceWorkload|Self.[SourceWorkload](#SourceWorkload)|Yes|Workload or service where teh file was found (for example, SharePointOnline, OneDriveforBusiness, or Microsoft Teams)
 |DetectionMethod|Edm.String|Yes|The method or technology used by Office 365 ATP for the detection.|
 |LastModifiedDate|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the file was created or last modified.|
-|LastModifiedBy|Edm.String|Yes|Identifier (e.g. email address) for the user who created or last modified the file.|
-|EventDeepLink|Edm.String|Yes|Deep-link to the file event in Explorer or Real-time reports in the Security and Compliance Center.|
+|LastModifiedBy|Edm.String|Yes|Identifier (for example, an email address) for the user who created or last modified the file.|
+|EventDeepLink|Edm.String|Yes|Deep-link to the file event in Explorer or Real-time reports in the Security & Compliance Center.|
 
 ### FileData complex type
 
@@ -1142,9 +1142,9 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|DocumentId|Edm.String|Yes|Unique identifier for the file in SharePoint, OneDrive or Microsoft Teams.|
+|DocumentId|Edm.String|Yes|Unique identifier for the file in SharePoint, OneDrive, or Microsoft Teams.|
 |FileName|Edm.String|Yes|Name of the file that triggered the event.|
-|FilePath|Edm.String|Yes|Path (location) for the file in SharePoint, OneDrive or Microsoft Teams.|
+|FilePath|Edm.String|Yes|Path (location) for the file in SharePoint, OneDrive, or Microsoft Teams.|
 |FileVerdict||Self.[FileVerdict](#FileVerdict)|Yes|The file malware verdict.|
 |MalwareFamily|Edm.String|No|The file malware family.|
 |SHA256|Edm.String|Yes|The file SHA256 hash.|
