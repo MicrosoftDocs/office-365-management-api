@@ -1109,11 +1109,11 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|UserId|Edm.String|Yes|Identifier (e.g. email address) for the user who clicked on the URL.|
-|AppName|Edm.String|Yes|Office 365 service from which the URL was clicked (e.g. Mail).|
+|UserId|Edm.String|Yes|Identifier (for example, email address) for the user who clicked on the URL.|
+|AppName|Edm.String|Yes|Office 365 service from which the URL was clicked (for example, Mail).|
 |Blocked|Edm.Boolean|Yes|This is true if the URL click is blocked by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.|
 |ClickedThrough|Edm.Boolean|Yes|This is true if the URL block is clicked through (overridden) by the user based on the organization's policies for [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.|
-|SourceId|Edm.String|Yes|Identifier for the Office 365 service from which the URL was clicked (e.g. for Mail, this is the Exchange Online Network Message Id).|
+|SourceId|Edm.String|Yes|Identifier for the Office 365 service from which the URL was clicked (for example, for mail this is the Exchange Online Network Message Id).|
 |TimeOfClick|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the user clicked the URL.|
 |URL|Edm.String|Yes|URL clicked by the user.|
 |UserIp|Edm.String|Yes|The IP address for the user who clicked the URL. The IP address is displayed in either an IPv4 or IPv6 address format.|
