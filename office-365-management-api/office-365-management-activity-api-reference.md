@@ -1,7 +1,7 @@
 ---
 ms.TocTitle: Office 365 Management Activity API reference
 title: Office 365 Management Activity API reference
-description: Use the Office 365 Management Activity API to retrieve information about user, admin, system, and policy actions and events from Office 365 and Azure AD activity logs. 
+description: Use the Office 365 Management Activity API to retrieve information about user, admin, system, and policy actions and events from Office 365 and Azure AD activity logs.
 ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
 ms.date: 01/10/2018
@@ -10,13 +10,13 @@ localization_priority: Priority
 
 # Office 365 Management Activity API reference
 
-Use the Office 365 Management Activity API to retrieve information about user, admin, system, and policy actions and events from Office 365 and Azure AD activity logs. 
+Use the Office 365 Management Activity API to retrieve information about user, admin, system, and policy actions and events from Office 365 and Azure AD activity logs.
 
 You can use the actions and events from the Office 365 and Microsoft Azure Active Directory audit and activity logs to create solutions that provide monitoring, analysis, and data visualization. These solutions give organizations greater visibility into actions taken on their content. These actions and events are also available in the Office 365 Activity Reports. For more information, see [Search the audit log in the Office 365 Security & Compliance Center](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c).
 
 The Office 365 Management Activity API is a REST web service that you can use to develop solutions using any language and hosting environment that supports HTTPS and X.509 certificates. The API relies on Azure AD and the OAuth2 protocol for authentication and authorization. To access the API from your application, you'll need to first register it in Azure AD and configure it with appropriate permissions. This will enable your application to request the OAuth2 access tokens it needs to call the API. For more information, see [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md).
 
-> [!NOTE] 
+> [!NOTE]
 > For information about the schema of the data that the Office 365 Management Activity API returns, including known issues and upcoming changes, that might affect your implementation, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md).
 
 
@@ -25,15 +25,15 @@ The Office 365 Management Activity API is a REST web service that you can use to
 The Office 365 Management Activity API aggregates actions and events into tenant-specific content blobs, which are classified by the type and source of the content they contain. Currently, these content types are supported:
 
 - Audit.AzureActiveDirectory
-    
+
 - Audit.Exchange
-    
+
 - Audit.SharePoint
-    
+
 - Audit.General (includes all other workloads not included in the previous content types)
 
 - DLP.All (DLP events only for all workloads)
-    
+
 For details about the events and properties associated with these content types, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md).
 
 To begin retrieving content blobs for a tenant, you first a create subscription to the desired content types. If you are retrieving content blobs for multiple tenants, you create multiple subscriptions to each of the desired content types, one for each tenant.
@@ -41,11 +41,11 @@ To begin retrieving content blobs for a tenant, you first a create subscription 
 After you create a subscription, you can poll regularly to discover new content blobs that are available for download, or you can register a webhook endpoint with the subscription and we will send notifications to this endpoint as new content blobs are available.
 
 
-> [!NOTE] 
+> [!NOTE]
 > When a subscription is created, it can take up to 12 hours for the first content blobs to become available for that subscription. The content blobs are created by collecting and aggregating actions and events across multiple servers and datacenters. As a result of this distributed process, the actions and events contained in the content blobs will not necessarily appear in the order in which they occurred. One content blob can contain actions and events that occurred prior to the actions and events contained in an earlier content blob. We are working to decrease the latency between the occurrence of actions and events and their availability within a content blob, but we can't guarantee that they appear sequentially.
 
 
-> [!NOTE] 
+> [!NOTE]
 > DLP sensitive data is only available in the activity feed API to users that have been granted “Read DLP sensitive data” permissions. For more on Data Loss Prevention (DLP) see [Overview of Data Loss Prevention Policies](https://support.office.com/en-us/article/Overview-of-data-loss-prevention-policies-1966b2a7-d1e2-4d92-ab61-42efbb137f5e)
 
 ## Activity API operations
@@ -68,37 +68,37 @@ Authorization: Bearer eyJ0e...Qa6wg
 The Activity API supports the following operations:
 
 - **Start a subscription** to begin receiving notifications and retrieving activity data for a tenant.
-    
+
 - **Stop a subscription** to discontinue retrieving data for a tenant.
-    
+
 - **List current subscriptions**
-    
+
 - **List available content** and the corresponding content URLs.
-    
+
 - **Receiving notifications** sent by a webhook when new content is available.
-    
+
 - **Retrieving content** by using the content URL.
-    
+
 - **List notifications** sent by a webhook.
 
 - **Retrieve resource friendly names** for objects in the data feed identified by guids.
-    
+
 
 ## Start a subscription
 
 This operation starts a subscription to the specified content type. If a subscription to the specified content type already exists, this operation is used to:
 
 - Update the properties of an active webhook.
-    
+
 - Enable a webhook that was disabled because of excessive failed notifications.
-    
+
 - Re-enable an expired webhook by specifying a later or null expiration date.
-    
+
 - Remove a webhook.
-    
+
 ||Subscription|Description|
 |:-----|:-----|:-----|
-|**Path**| `/subscriptions/start?contentType={ContentType}`||
+|**Path**|`/subscriptions/start?contentType={ContentType}`||
 |**Parameters**|contentType|Must be a valid content type.|
 ||PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
 |**Body**|webhook|Optional JSON object with three properties:<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>address</b>: Required HTTPS endpoint that can receive notifications.  A test message will be sent to the webhook to validate the webhook before creating the subscription.</p></li><li><p><b>authId</b>: Optional string that will be included as the WebHook-AuthID header in notifications sent to the webhook as a means of identifying and authorizing the source of the request to the webhook.</p></li><li><p><b>expiration</b>: Optional datetime that indicates a datetime after which notifications should no longer be sent to the webhook.</p></li></ul>|
@@ -174,14 +174,14 @@ HTTP/1.1 200 OK
 
 ## Stop a subscription
 
-This operation stops a subscription to the specified content type. 
+This operation stops a subscription to the specified content type.
 
 When a subscription is stopped, you will no longer receive notifications and you will not be able to retrieve available content. If the subscription is later restarted, you will have access to new content from that point forward. You will not be able to retrieve content that was available between the time the subscription was stopped and restarted.
 
 
 ||Subscription|Description|
 |:-----|:-----|:-----|
-|**Path**| `/subscriptions/stop?contentType={ContentType}`||
+|**Path**|`/subscriptions/stop?contentType={ContentType}`||
 |**Parameters**|contentType|Must be a valid content type.|
 ||PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
 |**Body**|(empty)||
@@ -208,7 +208,7 @@ This operation returns a collection of the current subscriptions together with t
 
 ||Subscription|Description|
 |:-----|:-----|:-----|
-|**Path**| `/subscriptions/list`||
+|**Path**|`/subscriptions/list`||
 |**Parameters**|PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
 |**Body**|(empty)||
 |**Response**|JSON array|Each subscription will be represented by a JSON object with three properties:<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>contentType</b>: Indicates the content type.</p></li><li><p><b>status</b>: Indicates the status of the subscription.</p></li><li><p><b>webhook</b>: Indicates the configured webhook, together with the status (enabled, disabled, expired) of the webhook.  If a subscription does not have a webhook, the webhook property will be present but with null value.</p></li></ul>|
@@ -258,7 +258,7 @@ This operation lists the content currently available for retrieval for the speci
 
 ||Subscription|Description|
 |:-----|:-----|:-----|
-|**Path**| `/subscriptions/content?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`||
+|**Path**|`/subscriptions/content?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`||
 |**Parameters**|contentType|Must be a valid content type.|
 ||PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
 ||startTime endTime|Optional datetimes (UTC) indicating the time range of content to return, based on when the content became available. The time range is inclusive with respect to startTime (startTime <= contentCreated) and exclusive with respect to endTime (contentCreated < endTime), so that non-overlapping, incrementing time intervals can used to page through available content.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>Both must be specified (or both omitted) and they must be no more than 24 hours apart, with the start time no more than 7 days in the past. By default, if startTime and endTime are omitted, then the content available in the last 24 hours is returned.<p>**NOTE**: Even though it is possible to specify a startTime and endTime more than 24 hours apart, this is not recommended. Furthermore, if you do get any results in response to a request for more than 24 hours, these could be partial results and should not be taken into account. The request should be issued with an interval of no more than 24 hours between the startTime and endTime.</p>|
@@ -317,23 +317,23 @@ The notification is made as an HTTP POST over TLS (TLS 1.0 and later versions) t
 The body of the request will contain an array of one or more JSON objects that represent the available content blobs. The number of content blobs in each notification is limited to keep the size of the notification relatively small. Because this limit might change, your implementation should query for the length of the array instead of expecting a fixed size. Each object will include the same properties returned by the /content operation, together with the GUID of the tenant to which the data belongs and the GUID of your application that created the subscriptions. This allows the webhook to establish context when it is being used with multiple tenants and applications.
 
 - **tenantId**: The GUID of the tenant to which the content belongs.
-    
+
 - **clientId**: The GUID of your application that created the subscription.
-    
+
 - **contentType**: Indicates the content type.
-    
+
 - **contentId**: An opaque string that uniquely identifies the content.
-    
+
 - **contentUri**: The URL to use when retrieving the content.
-    
+
 - **contentCreated**: The datetime when the content was made available.
-    
+
 - **contentExpiration**: The datetime after which the content will no longer be available for retrieval.
-    
+
 The following is an example of a notification.
 
 ```json
-POST https://webhook.myapp.com/o365/ 
+POST https://webhook.myapp.com/o365/
 Content-Type: application/json; utf-8
 Webhook-AuthID: o365activityapinotification
 
@@ -467,14 +467,14 @@ Content-Type: application/json; charset=utf-8
 
 ## List notifications
 
-This operation lists all notification attempts for the specified content type. If you did not include a webhook when starting the subscription to the content type, there will be no notifications to retrieve. Because we retry notifications in the event of failure, this operation can return multiple notifications for the same content, and the order in which the notifications are sent will not necessarily match the order in which the content became available (especially when there are failures and retries). 
+This operation lists all notification attempts for the specified content type. If you did not include a webhook when starting the subscription to the content type, there will be no notifications to retrieve. Because we retry notifications in the event of failure, this operation can return multiple notifications for the same content, and the order in which the notifications are sent will not necessarily match the order in which the content became available (especially when there are failures and retries).
 
 You can use this operation to help investigate issues related to webhooks and notifications, but you should not use it to determine what content is currently available for retrieval. Use the /content operation instead. We return an error if the subscription status is disabled.
 
 
 ||Subscription|Description|
 |:-----|:-----|:-----|
-|**Path**| `/subscriptions/notifications?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`||
+|**Path**|`/subscriptions/notifications?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`||
 |**Parameters**|contentType|Must be a valid content type.|
 ||PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
 ||startTime endTime|Optional datetimes (UTC) that indicate the time range of content to return, based on when the content became available. The time range is inclusive with respect to  _startTime_ ( _startTime_ <= contentCreated) and exclusive with respect to _endTime_ (_contentCreated_ < endTime), so that non-overlapping, incrementing time intervals can used to page through available content.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>Both must be specified (or both omitted) and they must be no more than 24 hours apart, with the start time no more than 7 days in the past. By default, if  _startTime_ and _endTime_ are omitted, the content available in the last 24 hours is returned.|
@@ -526,12 +526,12 @@ To list all available content for a specified time range, you might need to retr
 
 ## Retrieve resource friendly names
 
-This operation retrieves friendly names for objects in the data feed identified by guids. Currently "DlpSensitiveType" is the only supported object. 
+This operation retrieves friendly names for objects in the data feed identified by guids. Currently "DlpSensitiveType" is the only supported object.
 
 
 ||Subscription|Description|
 |:-----|:-----|:-----|
-|**Path**| `/resources/dlpSensitiveTypes`||
+|**Path**|`/resources/dlpSensitiveTypes`||
 |**Parameters**|PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
 |**Headers**|Accept-Language|Header to specify the desired language for localized names. For example, use "en-US" for English or "es" for Spanish. The default language (en-US) will be returned if this header is not present.|
 |**Body**|(empty)||
@@ -542,7 +542,7 @@ This operation retrieves friendly names for objects in the data feed identified 
 ```json
 GET {root}/resources/dlpSensitiveTypes?PublisherIdentifier=46b472a7-c68e-4adf-8ade-3db49497518e
 Authorization: Bearer eyJ0e...Qa6wg
-Accept-Language: {language code} 
+Accept-Language: {language code}
 
 ```
 
@@ -555,11 +555,11 @@ HTTP/1.1 200 OK
     {
         "id": "50842eb7-edc8-4019-85dd-5a5c1f2bb085",
         "name": "CreditCardNumber"
-    }, 
+    },
     {
         "id": "0e9b3178-9678-47dd-a509-37222ca96b42",
         "name": "EUDebitCardNumber"
-    }, 
+    },
     ...
     {
     }
@@ -575,20 +575,20 @@ If Office 365 needs to reverse escalate to you in certain issues, make sure the 
 
 For customers who are developing their own solutions using this API, we recommend using your own tenant GUID to avoid competition caused by a limited shared quota.
 
-> [!NOTE] 
+> [!NOTE]
 > Even though each publisher can submit up to 60K requests per minute, Microsoft cannot guarantee a response rate. The response rate depends on various factors, such as client system performance, network capacity, and network speed.  A publisher can submit up to 60K requests per minute, but should not expect to receive responses for all 60K requests within that same minute. If anything, should a publisher want to benchmark a client application, they should do so in each different environment that they are planning on running the client application in because results will vary from environment to environment.
 
 ## Errors
 
-When the service encounters an error, it will report the error response code to the caller, using standard HTTP error-code syntax. . Additional information is included in the body of the failed call as a single JSON object. An example of a full JSON error body is shown below: 
+When the service encounters an error, it will report the error response code to the caller, using standard HTTP error-code syntax. . Additional information is included in the body of the failed call as a single JSON object. An example of a full JSON error body is shown below:
 
 ```json
 
-{ 
-    "error":{ 
+{
+    "error":{
         "code":"AF50000",
         "message": "An internal server error occurred. Retry the request."
-    } 
+    }
 }
 
 ```
