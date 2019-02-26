@@ -105,6 +105,7 @@ This article provides details on the Common schema as well as each of the produc
 |36|SharepointListOperation|Sharepoint List events.|
 |40|SecurityComplianceAlerts|Security and compliance alert signals.|
 |41|ThreatIntelligenceUrl|Safe links time-of-block and block override events from Office 365 Advanced Threat Protection.|
+|45|PowerAppsApp|PowerApps app events.|
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
 
 ### Enum: User Type - Type: Edm.Int32
