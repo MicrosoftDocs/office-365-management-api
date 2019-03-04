@@ -17,7 +17,7 @@ You can use the actions and events from the Office 365 and Microsoft Azure Activ
 The Office 365 Management Activity API is a REST web service that you can use to develop solutions using any language and hosting environment that supports HTTPS and X.509 certificates. The API relies on Azure AD and the OAuth2 protocol for authentication and authorization. To access the API from your application, you'll need to first register it in Azure AD and configure it with appropriate permissions. This will enable your application to request the OAuth2 access tokens it needs to call the API. For more information, see [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md).
 
 > [!NOTE] 
-> For information about the schema of the data that the Office 365 Management Activity API returns, including known issues and upcoming changes, that might affect your implementation, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md).
+> For information about the schema of the data that the Office 365 Management Activity API returns, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md).
 
 
 ## Working with the Office 365 Management Activity API
