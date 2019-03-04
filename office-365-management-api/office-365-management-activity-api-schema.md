@@ -103,10 +103,13 @@ This article provides details on the Common schema as well as each of the produc
 |32|MicrosoftStream|Microsoft Stream events.|
 |35|Project|Microsoft Project events.|
 |36|SharepointListOperation|Sharepoint List events.|
+|38|DataGovernance|Events related to retention policies and retention labels in the Security & Compliance Center|
 |40|SecurityComplianceAlerts|Security and compliance alert signals.|
 |41|ThreatIntelligenceUrl|Safe links time-of-block and block override events from Office 365 Advanced Threat Protection.|
+|44|WorkplaceAnalytics|Workplace Analytics events.|
 |45|PowerAppsApp|PowerApps app events.|
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
+||||
 
 ### Enum: User Type - Type: Edm.Int32
 
