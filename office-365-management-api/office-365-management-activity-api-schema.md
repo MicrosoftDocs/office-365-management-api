@@ -1064,7 +1064,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|AttachmentData|Collection(Self.[AttachmentData](#AttachmentData))|No|Data about attachments in the email message that triggered the event.|
+|AttachmentData|Collection(Self.[AttachmentData](#attachmentdata)|No|Data about attachments in the email message that triggered the event.|
 |DetectionType|Edm.String|Yes|The type of detection (for example, **Inline** - detected at delivery time; **Delayed** - detected after delivery; **ZAP** - messages removed by [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15)). Events with ZAP detection type will typically be preceded by a message with a **Delayed** detection type.|
 |DetectionMethod|Edm.String|Yes|The method or technology used by Office 365 ATP for the detection.|
 |InternetMessageId|Edm.String|Yes|The Internet Message Id.|
@@ -1086,7 +1086,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 |:-----|:-----|:-----|:-----|
 |FileName|Edm.String|Yes|The file name of the attachment.|
 |FileType|Edm.String|Yes|The file type of the attachment.|
-|FileVerdict|Self.[FileVerdict](#FileVerdict)|Yes|The file malware verdict.|
+|FileVerdict|Self.[FileVerdict](#fileverdict)|Yes|The file malware verdict.|
 |MalwareFamily|Edm.String|No|The file malware family.|
 |SHA256|Edm.String|Yes|The file SHA256 hash.|
 
@@ -1108,7 +1108,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 |:-----|:-----|:-----|:-----|
 |UserId|Edm.String|Yes|Identifier (for example, email address) for the user who clicked on the URL.|
 |AppName|Edm.String|Yes|Office 365 service from which the URL was clicked (for example, Mail).|
-|URLClickAction|Self.[URLClickAction](#URLClickAction)|Yes|Click action for the URL based on the organization's policies for [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
+|URLClickAction|Self.[URLClickAction](#urlclickaction)|Yes|Click action for the URL based on the organization's policies for [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
 |SourceId|Edm.String|Yes|Identifier for the Office 365 service from which the URL was clicked (for example, for mail this is the Exchange Online Network Message Id).|
 |TimeOfClick|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the user clicked the URL.|
 |URL|Edm.String|Yes|URL clicked by the user.|
@@ -1132,8 +1132,8 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|FileData|Self.[FileData](#FileData)|Yes|Data about the file that triggered the event.|
-|SourceWorkload|Self.[SourceWorkload](#SourceWorkload)|Yes|Workload or service where teh file was found (for example, SharePoint Online, OneDrive for Business, or Microsoft Teams)
+|FileData|Self.[FileData](#filedata)|Yes|Data about the file that triggered the event.|
+|SourceWorkload|Self.[SourceWorkload](#sourceworkload)|Yes|Workload or service where teh file was found (for example, SharePoint Online, OneDrive for Business, or Microsoft Teams)
 |DetectionMethod|Edm.String|Yes|The method or technology used by Office 365 ATP for the detection.|
 |LastModifiedDate|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the file was created or last modified.|
 |LastModifiedBy|Edm.String|Yes|Identifier (for example, an email address) for the user who created or last modified the file.|
@@ -1148,7 +1148,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are a
 |DocumentId|Edm.String|Yes|Unique identifier for the file in SharePoint, OneDrive, or Microsoft Teams.|
 |FileName|Edm.String|Yes|Name of the file that triggered the event.|
 |FilePath|Edm.String|Yes|Path (location) for the file in SharePoint, OneDrive, or Microsoft Teams.|
-|FileVerdict|Self.[FileVerdict](#FileVerdict)|Yes|The file malware verdict.|
+|FileVerdict|Self.[FileVerdict](#fileverdict)|Yes|The file malware verdict.|
 |MalwareFamily|Edm.String|No|The file malware family.|
 |SHA256|Edm.String|Yes|The file SHA256 hash.|
 |FileSize|Edm.String|Yes|Size for the file in bytes.|
