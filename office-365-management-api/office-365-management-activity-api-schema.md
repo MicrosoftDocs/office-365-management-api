@@ -49,6 +49,8 @@ This article provides details on the Common schema as well as each of the produc
 |[Microsoft Teams Settings schema](#microsoft-teams-settings-schema)|Extends the Microsoft Teams schema with the properties specific to Microsoft Teams settings change events.|
 |[Office 365 Advanced Threat Protection and Threat Intelligence schema](#office-365-advanced-threat-protection-and-threat-intelligence-schema)|Extends the Common schema with the properties specific to Office 365 Advanced Threat Protection and Threat Intelligence data.|
 |[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
+|[Workplace Analytics](#workplace-analytics-schema)|Extends the Common schema with the properties specific to all Microsoft Workplace Analytics events.|
+|||
 
 ## Common schema
 
@@ -958,8 +960,6 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 
 ## Data Center Security Base schema
 
-
-
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |DataCenterSecurityEventType|Self.[DataCenterSecurityEventType](#datacentersecurityeventtype)|Yes|The type of dmdlet event in lock box.|
@@ -1194,3 +1194,14 @@ The Power BI events listed in [Search the audit log in the Office 365 Protection
 | RecipientEmail    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The email address of the recipient of a sharing invitation. |
 | RecipientName    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The name of the recipient of a sharing invitation. |
 | ResharePermission | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The permission being granted to the recipient. |
+
+## Workplace Analytics schema
+
+The WorkPlace Analytics events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities) will use this schema.
+
+| **Parameters**     | **Type**            | **Mandatory?** | **Description**|
+|:------------------ | :------------------ | :--------------|:--------------|
+| WpaUserRole        | Edm.String | No     | The Workplace Analytics role of the user who performed the action.                                                                                            |
+| ModifiedProperties | Collection (Common.ModifiedProperty) | No | This property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
+| OperationDetails   | Collection (Common.NameValuePair)    | No | A list of extended properties for the setting that was changed. Each property will have a **Name** and **Value**.|
+||||
