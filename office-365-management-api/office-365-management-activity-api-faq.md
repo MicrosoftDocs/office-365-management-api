@@ -4,7 +4,7 @@ title: Office 365 Management Activity API frequently asked questions
 description: Frequently asked questions about using the Office 365 Management Activity API
 ms.ContentId:
 ms.topic: reference (API)
-ms.date: 09/21/2018
+ms.date: 
 localization_priority: Priority
 ---
 
