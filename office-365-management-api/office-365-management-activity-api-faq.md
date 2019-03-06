@@ -50,3 +50,6 @@ Open a ticket with [Microsoft Support](https://support.office.com/article/contac
 
 No. Auditing must be enabled for your organization to pull records via the Management Activity API.
 
+#### Why are TargetUpdatedProperties no longer in ExtendedProperties in the audit logs for Azure Active Directory activities?
+
+TargetUpdatedProperties were appearing in ExtendedProperties. However, they have been removed from ExtendedProperties and will now appear in ModifiedProperties.
