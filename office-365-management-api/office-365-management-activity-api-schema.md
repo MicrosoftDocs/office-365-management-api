@@ -47,7 +47,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Microsoft Teams schema](#microsoft-teams-schema)|Extends the Common schema with the properties specific to all Microsoft Teams events.|
 |[Microsoft Teams Add-ons schema](#microsoft-teams-add-ons-schema)|Extends the Microsoft Teams schema with the properties specific to Microsoft Teams Add-ons.|
 |[Microsoft Teams Settings schema](#microsoft-teams-settings-schema)|Extends the Microsoft Teams schema with the properties specific to Microsoft Teams settings change events.|
-|[Office 365 Advanced Threat Protection and Threat Intelligence schema](#office-365-advanced-threat-protection-and-threat-intelligence-schema)|Extends the Common schema with the properties specific to Office 365 Advanced Threat Protection and Threat Intelligence data.|
+|[Office 365 Advanced Threat Protection and Threat Investigation and Response schema](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Extends the Common schema with the properties specific to Office 365 Advanced Threat Protection and Threat Investigation and Response data.|
 |[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
 |[Workplace Analytics](#workplace-analytics-schema)|Extends the Common schema with the properties specific to all Microsoft Workplace Analytics events.|
 |||
@@ -1050,21 +1050,24 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |ModifiedProperty|Common.ModifiedProperty|No|The property that was modified. It will contain the **Name**, **OldValue**, and **NewValue** of the property.|
 |ExtendedProperties|Collection(Common.NameValuePair)|No|A list of extended properties for the setting being changed. Each property will have a **Name** and **Value**.|
 
-## Office 365 Advanced Threat Protection and Threat Intelligence schema
+## Office 365 Advanced Threat Protection and Threat Investigation and Response schema
 
-Office 365 Advanced Threat Protection (ATP) and Threat Intelligence events are available for Office 365 customers who have an ATP,  Threat Intelligence, or an E5 subscription. Each event in the ATP and Threat Intelligence feed corresponds to the following that were determined to contain a threat:
+Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Response events are available for Office 365 customers who have an Office 365 Advanced Threat Protection Plan 1, Office 365 Advanced Threat Protection Plan 2, or an E5 subscription. Each event in the Office 365 ATP feed corresponds to the following that were determined to contain a threat:
 
 - An email message sent by or received by a user in the organization with detections are made on messages at delivery time and from [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15). 
 
 - URLs clicked by a user in the organization that were detected as malicious at time-of-click based on [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.  
 
-- A file within SharePoint Online, OneDrive for Business, or Microsoft Teams that was detected as malicious by [Office 365 ATP](https://docs.microsoft.com/en-us/office365/securitycompliance/atp-for-spo-odb-and-teams) protection.  
+- A file within SharePoint Online, OneDrive for Business, or Microsoft Teams that was detected as malicious by [Office 365 ATP](https://docs.microsoft.com/en-us/office365/securitycompliance/atp-for-spo-odb-and-teams) protection.
+
+> [!NOTE]
+> Office 365 Advanced Threat Protection and Office 365 Threat Invesitgation and Response (formerly known as Office 365 Threat Intelligence) capabilites are now part of Office 365 Advanced Threat Protection Plan 2, with additional threat protection capabilities. To learn more, see [Office 365 ATP plans and pricing](https://products.office.com/exchange/advance-threat-protection) and the [Office 365 ATP Service Description](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description).
 
 ### Email message events
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|AttachmentData|Collection(Self.[AttachmentData](#attachmentdata)|No|Data about attachments in the email message that triggered the event.|
+|AttachmentData|Collection(Self.[AttachmentData](#attachmentdata))|No|Data about attachments in the email message that triggered the event.|
 |DetectionType|Edm.String|Yes|The type of detection (for example, **Inline** - detected at delivery time; **Delayed** - detected after delivery; **ZAP** - messages removed by [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15)). Events with ZAP detection type will typically be preceded by a message with a **Delayed** detection type.|
 |DetectionMethod|Edm.String|Yes|The method or technology used by Office 365 ATP for the detection.|
 |InternetMessageId|Edm.String|Yes|The Internet Message Id.|
