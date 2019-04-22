@@ -136,7 +136,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 ## Get Current Status
 
-Returns the current status of the service.
+Returns the status of the service over the previous 24 hours.
 
 ||Service|Description|
 |:-----|:-----|:-----|
