@@ -864,17 +864,17 @@ The Yammer events listed in [Search the audit log in the Office 365 Protection C
 |**Parameters**|**Type**|**Mandatory**|**Description**|
 |:-----|:-----|:-----|:-----|
 |ActorUserId|Edm.String|No|Email of user that performed the operation.|
-|ActorYammerUserId|Edm.Int32|No|ID of user that performed the operation.|
+|ActorYammerUserId|Edm.Int64|No|ID of user that performed the operation.|
 |DataExportType|Edm.String|No|Returns "data" if data export includes messages, notes, files, topics, users and groups; returns "user" if data export includes users only.|
-|FileId|Edm.Int32|No|ID of the file in the operation. |
+|FileId|Edm.Int64|No|ID of the file in the operation. |
 |FileName|Edm.String|No|Name of the file in the operation. Will appear blank if not relevant to the operation.|
 |GroupName|Edm.String|No|Name of the group in the operation. Will appear blank if not relevant to the operation.|
 |IsSoftDelete|Edm.Boolean|No|Returns "true" if the network's data retention policy is set to Soft Delete; returns "false" if the network's data retention policy is set to Hard Delete.|
-|MessageId|Edm.Int32|No|ID of the message in the operation.|
-|YammerNetworkId|Edm.Int32|No|Network ID of the user that performed the operation.|
+|MessageId|Edm.Int64|No|ID of the message in the operation.|
+|YammerNetworkId|Edm.Int64|No|Network ID of the user that performed the operation.|
 |TargetUserId|Edm.String|No|Email of target user in the operation. Will appear blank if not relevant to the operation.|
-|TargetYammerUserId|Edm.Int32|No|ID of target user in the operation.|
-|VersionId|Edm.Int32|No|Version ID of the file in the operation.|
+|TargetYammerUserId|Edm.Int64|No|ID of target user in the operation.|
+|VersionId|Edm.Int64|No|Version ID of the file in the operation.|
 
 ## Sway schema
 
