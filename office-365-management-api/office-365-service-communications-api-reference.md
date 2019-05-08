@@ -138,7 +138,8 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 Returns the status of the service over the previous 24 hours.
 
-> [!NOTE] Please note the service response will contain the status as of 24 hours from when the request was made. The StatusDate or StatusTime value returned will be exactly 24 hours in the past. 
+> [!NOTE] 
+> Please note the service response will contain the status as of 24 hours from when the request was made. The StatusDate or StatusTime value returned will be exactly 24 hours in the past. 
 
 ||Service|Description|
 |:-----|:-----|:-----|
