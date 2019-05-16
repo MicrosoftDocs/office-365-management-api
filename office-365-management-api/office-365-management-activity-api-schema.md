@@ -102,7 +102,7 @@ This article provides details on the Common schema as well as each of the produc
 |27|MicrosoftTeamsSettingsOperation|Settings changes from Microsoft Teams.|
 |28|ThreatIntelligence|Phishing and malware events from Exchange Online Protection and Office 365 Advanced Threat Protection.|
 |30|MicrosoftFlow|Microsoft Flow events.|
-|31|Advanced eDiscovery events.|
+|31|AeD|Advanced eDiscovery events.|
 |32|MicrosoftStream|Microsoft Stream events.|
 |35|Project|Microsoft Project events.|
 |36|SharepointListOperation|Sharepoint List events.|
