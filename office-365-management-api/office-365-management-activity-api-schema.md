@@ -35,7 +35,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Exchange Mailbox schema](#exchange-mailbox-schema)|Extends the Common schema with the properties specific to all Exchange mailbox audit data.|
 |[Azure Active Directory Base schema](#azure-active-directory-base-schema)|Extends the Common schema with the properties specific to all Azure Active Directory audit data.|
 |[Azure Active Directory Account Logon schema](#azure-active-directory-account-logon-schema)|Extends the Azure Active Directory Base schema with the properties specific to all Azure Active Directory logon events.|
-|[Azure Active Directory STS Logon schema](#azure-active-directory-sts-logon-schema)|Extends the Azure Active Directory Base schema with the properties specific to all Azure Active Directory STS logon events.|
+|[Azure Active Directory Secure STS Logon schema](#azure-active-directory-secure-token-service-sts-logon-schema)|Extends the Azure Active Directory Base schema with the properties specific to all Azure Active Directory Secure Token Service (STS) logon events.|
 |[Azure Active Directory schema](#azure-active-directory-schema)|Extends the Common schema with the properties specific to all Azure Active Directory audit data.|
 |[DLP schema](#dlp-schema)|Extends the Common schema with the properties specific to Data Loss Prevention events.|
 |[Security and Compliance Center schema](#security-and-compliance-center-schema)|Extends the Common schema with the properties specific to all Security and Compliance Center events.|
@@ -66,7 +66,7 @@ This article provides details on the Common schema as well as each of the produc
 |UserType|Self.[UserType](#user-type)|Yes|The type of user that performed the operation. See the [UserType](#user-type) table for details on the types of users.|
 |UserKey|Edm.String|Yes|An alternative ID for the user identified in the UserId property. For example, this property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange. This property may also specify the same value as the UserID property for events occurring in other services and events performed by system accounts.|
 |Workload|Edm.String|No|The Office 365 service where the activity occurred in the Workload string. The possible values for this property are:<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Exchange</p></li><li><p>SharePoint</p></li><li><p>OneDrive</p></li><li><p>Azure Active Directory</p></li><li><p>SecurityComplianceCenter</p></li><li><p>Sway</p></li><li><p>ThreatIntelligence</p></li></ul>|
-|ResultStatus|Edm.String|No|Indicates whether the action (specified in the Operation property) was successful or not. Possible values are **Succeeded**, **PartiallySucceeded**, or **Failed**. For Exchange admin activity, the value is either **True** or **False**.|
+|ResultStatus|Edm.String|No|Indicates whether the action (specified in the Operation property) was successful or not. Possible values are **Succeeded**, **PartiallySucceeded**, or **Failed**. For Exchange admin activity, the value is either **True** or **False**.<br/><br/>**Important**: Different workloads may overwrite the value of the ResultStatus property. For example, for Azure Active Directory STS logon events, a value of **Succeeded** for ResultStatus indicates only that the HTTP operation was successful; it doesn't mean the logon was successful. To determine if the actual logon was successful or not, see the LogonError property in the [Azure Active Directory STS Logon schema](#azure-active-directory-secure-token-service-sts-logon-schema). If the logon failed, the value of this property will contain the reason for the failed logon attempt. |
 |ObjectId|Edm.string|No|For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. For Exchange admin audit logging, the name of the object that was modified by the cmdlet.|
 |UserId|Edm.string|Yes|The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, `my_name@my_domain_name`. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included.|
 |ClientIP|Edm.String|Yes|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.|
@@ -102,6 +102,7 @@ This article provides details on the Common schema as well as each of the produc
 |27|MicrosoftTeamsSettingsOperation|Settings changes from Microsoft Teams.|
 |28|ThreatIntelligence|Phishing and malware events from Exchange Online Protection and Office 365 Advanced Threat Protection.|
 |30|MicrosoftFlow|Microsoft Flow events.|
+|31|Advanced eDiscovery events.|
 |32|MicrosoftStream|Microsoft Stream events.|
 |35|Project|Microsoft Project events.|
 |36|SharepointListOperation|Sharepoint List events.|
@@ -111,6 +112,8 @@ This article provides details on the Common schema as well as each of the produc
 |44|WorkplaceAnalytics|Workplace Analytics events.|
 |45|PowerAppsApp|PowerApps app events.|
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
+|54|SharePointListItemOperation|SharePoint list events.|
+|55|SharePointContentTypeOperation|SharePoint list content type events.|
 ||||
 
 ### Enum: User Type - Type: Edm.Int32
@@ -696,9 +699,7 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |UPN|The user principal name.|
 
 
-## Azure Active Directory STS Logon schema
-
-
+## Azure Active Directory Secure Token Service (STS) Logon schema
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -718,8 +719,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 
 - DlpInfo - These only exist in SharePoint Online and OneDrive for Business and indicate a false positive designation but no action was “undone.”
 
-
-
 |**Parameters**|**Type**|**Mandatory**|**Description**|
 |:-----|:-----|:-----|:-----|
 |SharePointMetaData|Self.[SharePointMetadata](#sharepointmetadata-complex-type)|No|Describes metadata about the document in SharePoint or OneDrive for Business that contained the sensitive information.|
@@ -727,9 +726,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |ExceptionInfo|Edm.String|No|Identifies reasons why a policy no longer applies and/or any information about false positive and/or override noted by the end user.|
 |PolicyDetails|Collection(Self.[PolicyDetails](#policydetails-complex-type))|Yes|Information about 1 or more policies that triggered the DLP event.|
 |SensitiveInfoDetectionIsIncluded|Boolean|Yes|Indicates whether the event contains the value of the sensitive data type and surrounding context from the source content. Accessing sensitive data requires the "Read DLP policy events including sensitive details" permission in Azure Active Directory.|
-
-
-
 
 ### SharePointMetadata complex type
 
