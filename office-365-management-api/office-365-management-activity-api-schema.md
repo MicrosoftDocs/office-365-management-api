@@ -1119,8 +1119,6 @@ Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Respons
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
-|0|None|No clicks detected.|
-|1|Allowed|User allowed to navigate to the URL (because URL considered safe by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)).|
 |2|Blockpage|User blocked from navigating to the URL by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
 |3|PendingDetonationPage|User presented with the detonation pending page by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
 |4|BlockPageOverride|User blocked from navigating to the URL by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links); however user overrode block to navigate to the URL.|
