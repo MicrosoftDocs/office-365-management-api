@@ -136,10 +136,10 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 ## Get Current Status
 
-Returns the status of the service over the previous 24 hours.
+Returns the status of the service from the previous 24 hours.
 
 > [!NOTE] 
-> The service response will contain the status as of 24 hours from when the request was made. The StatusDate or StatusTime value returned will be exactly 24 hours in the past. 
+> The service response will contain the status and any incidents within the previous 24 hours. The StatusDate or StatusTime value returned will be exactly 24 hours in the past. 
 
 ||Service|Description|
 |:-----|:-----|:-----|
