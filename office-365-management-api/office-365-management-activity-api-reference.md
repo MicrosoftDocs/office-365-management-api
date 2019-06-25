@@ -153,7 +153,7 @@ When the /start operation is called and a webhook is specified, we will send a v
 ```json
 POST {webhook address}
 Content-Type: application/json; charset=utf-8
-Webhook-AuthID: (webhook authId) if provided)
+Webhook-AuthID: (webhook authId, if provided)
 Webhook-ValidationCode: (random opaque string)
 
 {
