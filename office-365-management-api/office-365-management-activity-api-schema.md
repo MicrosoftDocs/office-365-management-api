@@ -98,8 +98,6 @@ This article provides details on the Common schema as well as each of the produc
 |23|SkypeForBusinessCmdlets|Skype for Business events.|
 |24|Discovery|Events for eDiscovery activities performed by running content searches and managing eDiscovery cases in the Security & Compliance Center.|
 |25|MicrosoftTeams|Events from Microsoft Teams.|
-|26|MicrosoftTeamsAddOns|Events from Microsoft Teams Add-ons.|
-|27|MicrosoftTeamsSettingsOperation|Settings changes from Microsoft Teams.|
 |28|ThreatIntelligence|Phishing and malware events from Exchange Online Protection and Office 365 Advanced Threat Protection.|
 |30|MicrosoftFlow|Microsoft Flow events.|
 |31|AeD|Advanced eDiscovery events.|
