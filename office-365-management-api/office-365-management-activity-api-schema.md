@@ -71,6 +71,7 @@ This article provides details on the Common schema as well as each of the produc
 |UserId|Edm.string|Yes|The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, `my_name@my_domain_name`. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included.|
 |ClientIP|Edm.String|Yes|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.|
 |Scope|Self.[AuditLogScope](#auditlogscope)|No|Was this event created by a hosted O365 service or an on-premises server? Possible values are **online** and **onprem**. Note that SharePoint is the only workload currently sending events from on-premises to O365.|
+|||||
 
 ### Enum: AuditLogRecordType - Type: Edm.Int32
 
@@ -127,6 +128,7 @@ This article provides details on the Common schema as well as each of the produc
 |4|System|A system account.|
 |5|Application|An application.|
 |6|ServicePrincipal|A service principal.|
+||||
 
 > [!NOTE] 
 > Only Exchange operations include a user type. SharePoint operations don't specify a user type. 
@@ -139,6 +141,7 @@ This article provides details on the Common schema as well as each of the produc
 |:-----|:-----|:-----|
 |0|Online|This event was created by a hosted O365 service.|
 |1|Onprem|This event was created by an on-premises server.|
+||||
 
 
 ## SharePoint Base schema
@@ -152,7 +155,7 @@ This article provides details on the Common schema as well as each of the produc
 |UserAgent|Edm.String|No|Information about the user's client or browser. This information is provided by the client or browser.|
 |MachineDomainInfo|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|Information about device sync operations. This information is reported only if it's present in the request.|
 |MachineId|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|Information about device sync operations. This information is reported only if it's present in the request.|
-
+|||||
 
 ### Enum: ItemType - Type: Edm.Int32
 
@@ -168,6 +171,7 @@ This article provides details on the Common schema as well as each of the produc
 |8|Tenant|The item is a tenant.|
 |9|DocumentLibrary|The item is a document library.|
 |11|Page|The item is a Page.|
+||||
 
 ### Enum: EventSource - Type: Edm.Int32
 
@@ -177,6 +181,7 @@ This article provides details on the Common schema as well as each of the produc
 |:-----|:-----|:-----|
 |0|SharePoint|The event source is SharePoint.|
 |1|ObjectModel|The event source is ObjectModel.|
+||||
 
 
 ### Enum: SharePointAuditOperation - Type: Edm.Int32
@@ -333,6 +338,7 @@ This article provides details on the Common schema as well as each of the produc
 |UserAddedToGroup*|Site administrator or owner adds a person to a group on a SharePoint or OneDrive for Business site. Adding a person to a group grants the user the permissions that were assigned to the group. |
 |UserRemovedFromGroup*|Site administrator or owner removes a person from a group on a SharePoint or OneDrive for Business site. After the person is removed, they no longer are granted the permissions that were assigned to the group. |
 |WorkflowModified|User creates, modifies, or deletes an Enterprise Project Type or Workflow phases or stages in Project Web App.|
+|||||
 
 
 > [!NOTE] 
@@ -357,7 +363,7 @@ The file-related SharePoint events listed in the "File and folder activities" se
 |DestinationFileExtension|Edm.String|No|The file extension of a file that is copied or moved. This property is displayed only for FileCopied and FileMoved events.|
 |UserSharedWith|Edm.String|No|The user that a resource was shared with.|
 |SharingType|Edm.String|No|The type of sharing permissions that were assigned to the user that the resource was shared with. This user is identified by the  _UserSharedWith_ parameter.|
-
+|||||
 
 
 ## SharePoint Sharing schema
@@ -371,6 +377,7 @@ The file-related SharePoint events listed in the "File and folder activities" se
 |TargetUserOrGroupName |Edm.String|No|Stores the UPN or name of the target user or group that a resource was shared with.|
 |TargetUserOrGroupType|Edm.String|No|Identifies whether the target user or group is a Member, Guest, Group, or Partner. |
 |EventData|XML code|No|Conveys follow-up information about the sharing action that has occurred, such as adding a user to a group or granting edit permissions.|
+|||||
 
 
 ## SharePoint schema
@@ -378,13 +385,12 @@ The file-related SharePoint events listed in the "File and folder activities" se
 The SharePoint events listed in [Search the audit log in the Office 365 Protection Center](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US) (excluding the file and folder events) use this schema.
 
 
-
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |CustomEvent|Edm.String|No|Optional string for custom events.|
 |EventData|Edm.String|No|Optional payload for custom events.|
 |ModifiedProperties|Collection(ModifiedProperty)|No|The property is included for admin events, such as adding a user as a member of a site or a site collection admin group. The property includes the name of the property that was modified (for example, the Site Admin group), the new value of the modified property (such the user who was added as a site admin), and the previous value of the modified object.|
-
+|||||
 
 ## Project schema
 
@@ -393,8 +399,7 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |Entity|Edm.String|Yes| [ProjectEntity](#project-entity) the audit was for.|
 |Action|Edm.String|Yes|[ProjectAction](#project-action) that was taken.|
 |OnBehalfOfResId|Edm.Guid|No|The resource Id the action was taken on behalf of.|
-
-<a name="project-action"></a>
+|||||
 
 ### Enum: Project Action - Type: Edm.Int32
 
@@ -421,8 +426,8 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |Saved|The user saved an entity.|
 |Sent|The user sent an entity.|
 |Submitted|The user submitted an entity for review or workflow.|
+|||||
 
-<a name="project-entity"></a>
 ### Enum: Project Entity - Type: Edm.Int32
 
 |**Member name**|**Description**|
@@ -459,9 +464,9 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |View|Represents a view definition.|
 |WorkflowPhase|Represents a phase in a workflow.|
 |WorkflowStage|Represents a stage in a workflow.|
+|||||
 
 ## Exchange Admin schema
-
 
 
 |**Parameters**|**Type**|**Mandatory**|**Description**|
@@ -472,10 +477,9 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |ExternalAccess|Edm.Boolean|Yes|Specifies whether the cmdlet was run by a user in your organization, by Microsoft datacenter personnel or a datacenter service account, or by a delegated administrator. The value **False** indicates that the cmdlet was run by someone in your organization. The value **True** indicates that the cmdlet was run by datacenter personnel, a datacenter service account, or a delegated administrator.|
 |OriginatingServer|Edm.String|No|The name of the server from which the cmdlet was executed.|
 |OrganizationName|Edm.String|No|The name of the tenant.|
-
+|||||
 
 ## Exchange Mailbox schema
-
 
 
 |**Parameters**|**Type**|**Mandatory**|**Description**|
@@ -496,7 +500,7 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |ClientMachineName|Edm.String|No|The machine name that hosts the Outlook client.|
 |ClientProcessName|Edm.String|No|The email client that was used to access the mailbox. |
 |ClientVersion|Edm.String|No|The version of the email client .|
-
+|||||
 
 ### Enum: LogonType - Type: Edm.Int32
 
@@ -512,10 +516,9 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |4|SystemService|A service account in the Microsoft datacenter|
 |5|BestAccess|Reserved for internal use.|
 |6|DelegatedAdmin|A delegated administrator.|
-
+|||||
 
 ### ExchangeMailboxAuditGroupRecord schema
-
 
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -529,11 +532,10 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |DestFolder|Self.[ExchangeFolder](#exchangefolder-complex-type)|No|The destination folder, for operations such as Move.|
 |Folders|Collection(Self.[ExchangeFolder](#exchangefolder-complex-type))|No|Information about the source folders involved in an operation; for example, if folders are selected and then deleted.|
 |AffectedItems|Collection(Self.[ExchangeItem](#exchangeitem-complex-type))|No|Information about each item in the group.|
-
+|||||
 
 
 ### ExchangeMailboxAuditRecord schema
-
 
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -544,7 +546,7 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |SendAsUserMailboxGuid|Edm.Guid|No|The Exchange GUID of the mailbox that was accessed to send email as.|
 |SendOnBehalfOfUserSmtp|Edm.String|No|SMTP address of the user on whose behalf the email is sent.|
 |SendOnBehalfOfUserMailboxGuid|Edm.Guid|No|The Exchange GUID of the mailbox that was accessed to send mail on behalf of.|
-
+|||||
 
 ### ExchangeItem complex type
 
@@ -555,20 +557,19 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |Subject|Edm.String|No|The subject line of the message that was accessed.|
 |ParentFolder|Edm.ExchangeFolder|No|The name of the folder where the item is located.|
 |Attachments|Edm.String|No|A list of the names and file size of all items that are attached to the message.|
+|||||
 
 ### ExchangeFolder complex type
-
 
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |Id|Edm.String|Yes|The store ID of the folder object.|
 |Path|Edm.String|No|The name of the mailbox folder where the message that was accessed is located.|
-
+|||||
 
 
 ## Azure Active Directory Base schema
-
 
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -576,6 +577,7 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |AzureActiveDirectoryEventType|Self.[AzureActiveDirectoryEventType](#azureactivedirectoryeventtype)|Yes|The type of Azure AD event. |
 |ExtendedProperties|Collection(Common.NameValuePair)|No|The extended properties of the Azure AD event.|
 |ModifiedProperties|Collection(Common.ModifiedProperty)|No|This property is included for admin events. The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
+|||||
 
 ### Enum: AzureActiveDirectoryEventType - Type -Edm.Int32
 
@@ -585,9 +587,9 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |:-----|:-----|
 |AccountLogon|The account login event.|
 |AzureApplicationAuditEvent|The Azure application security event.|
+|||||
 
 ## Azure Active Directory Account Logon schema
-
 
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -596,11 +598,10 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |Client|Edm.String|No|Details about the client device, device OS, and device browser that was used for the of the account login event.|
 |LoginStatus|Edm.Int32|Yes|This property is from OrgIdLogon.LoginStatus directly. The mapping of various interesting logon failures could be done by alerting algorithms.|
 |UserDomain|Edm.String|Yes|The Tenant Identity Information (TII).|
-
+|||||
 
 
 ### Enum: CredentialType - Type: Edm.Int32
-
 
 
 |**Value**|**Member name**|**Description**|
@@ -615,9 +616,9 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |14|PasswordIndexCredentialType|User credential is PasswordIndexCredentialType.|
 |16|Device|User credential is a device.|
 |17|ForeignRealmIndex|User credential is ForeignRealmIndex.|
+|||||
 
 ### Enum: LoginType - Type: Edm.Int32
-
 
 
 |**Value**|**Member name**|**Description**|
@@ -626,10 +627,9 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |1|InitialAuth|Login with initial authentication|
 |2|CookieCopy|Login with cookie.|
 |3|SilentReAuth|Login with silent re-authentication.|
-
+|||||
 
 ### Enum: AuthenticationMethod - Type: Edm.Int32
-
 
 
 |**Value**|**Member name**|**Description**|
@@ -654,11 +654,10 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |17|SAML20PostSimpleSign|The authentication method is a SAML20PostSimpleSign.|
 |18|SAML20Post|The authentication method is a SAML20Post.|
 |19|OneTimeCode|The authentication method is a one-time code.|
-
+|||||
 
 
 ## Azure Active Directory schema
-
 
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -671,17 +670,16 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |SupportTicketId|Edm.String|No|The customer support ticket ID for the action in "act-on-behalf-of" situations.|
 |Target|Collection(Self.[IdentityTypeValuePair](#complex-type-identitytypevaluepair))|No|The user that the action (identified by the Operation property) was performed on.|
 |TargetContextId|Edm.String|No|The GUID of the organization that the targeted user belongs to.|
-
-
+|||||
 
 ### Complex Type IdentityTypeValuePair
-
 
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |ID|Edm.String|Yes|The value of the identity given the type.|
 |Type|Self.IdentityType|Yes|The type of the identity.|
+|||||
 
 ### Enum: IdentityType - Type: Edm.Int32
 
@@ -695,6 +693,7 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |PUID|The audit action actor or the target passport unique ID (PUID).|
 |SPN|The identity of a service principal if the action is performed by the Office 365 service.|
 |UPN|The user principal name.|
+|||||
 
 
 ## Azure Active Directory Secure Token Service (STS) Logon schema
@@ -704,6 +703,7 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |ApplicationId|Edm.String|No|The GUID that represents the application that is requesting the login. The display name can be looked up via the Azure Active Directory Graph API.|
 |Client|Edm.String|No|Client device information, provided by the browser performing the login.|
 |LogonError|Edm.String|No|For failed logins, contains the reason why the login failed.|
+|||||
 
 ## DLP schema
 
@@ -724,6 +724,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |ExceptionInfo|Edm.String|No|Identifies reasons why a policy no longer applies and/or any information about false positive and/or override noted by the end user.|
 |PolicyDetails|Collection(Self.[PolicyDetails](#policydetails-complex-type))|Yes|Information about 1 or more policies that triggered the DLP event.|
 |SensitiveInfoDetectionIsIncluded|Boolean|Yes|Indicates whether the event contains the value of the sensitive data type and surrounding context from the source content. Accessing sensitive data requires the "Read DLP policy events including sensitive details" permission in Azure Active Directory.|
+|||||
 
 ### SharePointMetadata complex type
 
@@ -740,6 +741,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |DocumentSharer|Edm.String|Yes|The user who last modified sharing of the document.|
 |UniqueId|Edm.String|Yes|A guid that identifies the file.|
 |LastModifiedTime|Edm.DateTime|Yes|Timestamp in UTC for when doc was last modified.|
+|||||
 
 
 ### ExchangeMetadata complex type
@@ -754,7 +756,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |Subject|Edm.String|Yes|Subject of the email message.|
 |Sent|Edm.DateTime|Yes|The time in UTC of when the email was sent.|
 |RecipientCount|Edm.Int32|Yes|The total number of all recipients on the TO, CC, and BCC lines of the message.|
-
+|||||
 
 ### PolicyDetails complex type
 
@@ -763,6 +765,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |PolicyId|Edm.Guid|Yes|The guid of the DLP policy for this event.|
 |PolicyName|Edm.String|Yes|The friendly name of the DLP policy for this event.|
 |Rules|Collection(Self.[Rules](#rules-complex-type))|Yes|Information about the rules within the policy that were matched for this event.|
+|||||
 
 ### Rules complex type
 
@@ -775,6 +778,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |Severity|Edm.String|No|The severity (Low, Medium and High) of the rule match.|
 |RuleMode|Edm.String|Yes|Indicate whether the DLP Rule was set to Enforce, Audit with Notify, or Audit only.|
 |ConditionsMatched|Self.[ConditionsMatched](#conditionsmatched-complex-type)|No|Details about what conditions of the rule were matched for this event.|
+|||||
 
 ### ConditionsMatched complex type
 
@@ -783,6 +787,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |SensitiveInformation|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|No|Information about the type of sensitive information detected.|
 |DocumentProperties|Collection(NameValuePair)|No|Information about document properties that triggered a rule match.|
 |OtherConditions|Collection(NameValuePair)|No|A list of key value pairs describing any other conditions that were matched.|
+|||||
 
 ### SensitiveInformation complex type
 
@@ -792,6 +797,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |Count|Edm.Int|Yes|The number of sensitive instances detected.|
 |SensitiveType|Edm.Guid|Yes|A guid that identifies the type of sensitive data detected.|
 |SensitiveInformationDetections|Self.SensitiveInformationDetections|No|An array of objects that contain sensitive information data with the following details – matched value and context of matched value.|
+|||||
 
 ### SensitiveInformationDetections complex type 
 DLP sensitive data is only available in the activity feed API to users that have been granted “Read DLP sensitive data” permissions. 
@@ -800,6 +806,7 @@ DLP sensitive data is only available in the activity feed API to users that have
 |:-----|:-----|:-----|:-----|
 |Detections|Collection(Self.Detections)|Yes|An array of sensitive information that was detected. Information contains key value pairs with Value = matched value (eg. Value of credit card of SSN) and Context = an excerpt from source content that contains the matched value. |
 |ResultsTruncated|Edm.Boolean|Yes|Indicates if the logs were truncated due to large number of results. |
+|||||
 
 ### ExceptionInfo complex type
 
@@ -809,6 +816,7 @@ DLP sensitive data is only available in the activity feed API to users that have
 |FalsePositive|Edm.Boolean|No|Indicates whether the user designated this event as a false positive.|
 |Justification|Edm.String|No|If the user chose to override policy, any user-specified justification is captured here.|
 |Rules|Collection(Edm.Guid)|No|A collection of guids for each rule that was designated as a false positive or override, or for which an action was undone.|
+|||||
 
 ## Security and Compliance Center schema
 
@@ -822,6 +830,7 @@ DLP sensitive data is only available in the activity feed API to users that have
 |ClientApplication|Edm.String|No|If the cmdlet was executed by an application, as opposed to remote powershell, this field contains that application’s name.|
 |Parameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that do not include Personally Identifiable Information.|
 |NonPiiParameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that include Personally Identifiable Information. (Deprecated: This field will stop appearing in the future and its content merged with the Parameters field.)|
+|||||
 
 ## Security and Compliance Alerts schema
 
@@ -850,6 +859,7 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 |Data|Edm.String|No|The detailed data blob of the alert or alert entity.|
 |AlertEntityId|Edm.String|No|The identifier for the alert entity. This parameter is only applicable to AlertEntityGenerated events.|
 |EntityType|Edm.String|No|Type of the alert or alert entity. Entity types include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>User</p></li><li><p>Recipients</p></li><li><p>Sender</p></li><li><p>MalwareFamily</p></li></ul>This parameter is only applicable to AlertEntityGenerated events.|
+|||||
 
 ## Yammer schema
 
@@ -869,6 +879,7 @@ The Yammer events listed in [Search the audit log in the Office 365 Protection C
 |TargetUserId|Edm.String|No|Email of target user in the operation. Will appear blank if not relevant to the operation.|
 |TargetYammerUserId|Edm.Int64|No|ID of target user in the operation.|
 |VersionId|Edm.Int64|No|Version ID of the file in the operation.|
+|||||
 
 ## Sway schema
 
@@ -883,6 +894,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |SwayLookupId|Edm.String|No|The Sway ID. |
 |SiteUrl|Edm.String|No|The URL for the Sway.|
 |OperationResult|Self.[OperationResult](#operationresult)|No|Either success or fail.|
+|||||
 
 
 ### Enum: ObjectType - Type Edm.Int32
@@ -894,6 +906,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |0|Sway|The event was triggered from a Sway.|
 |1|SwayEmbedded|The event was triggered from a Sway, which is embedded in a host.|
 |2|SwayAdminPortal|The event was triggered from Sway service settings in Office 365 admin portal.|
+|||||
 
 
 ### Enum: OperationResult - Type Edm.Int32
@@ -904,6 +917,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |:-----|:-----|:-----|
 |0|Succeeded|The event was successful.|
 |1|Failed|The event failed.|
+|||||
 
 
 ### Enum: Endpoint - Type Edm.Int32
@@ -916,7 +930,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |1|SwayIOS|The event was triggered using the iOS client of Sway.|
 |2|SwayWindows|The event was triggered using the Windows client of Sway.|
 |3|SwayAndroid|The event was triggered using the Android client of Sway.|
-
+|||||
 
 
 ### Enum: DeviceType - Type Edm.Int32
@@ -928,6 +942,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |0|Desktop|The event was triggered using the desktop.|
 |1|Mobile|The event was triggered using a mobile device.|
 |2|Tablet|The event was triggered using a tablet device.|
+|||||
 
 
 
@@ -951,12 +966,14 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |13|ServiceOff|The user disables Sway for the entire organization via the Office 365 admin center (off by default).|
 |14|ExternalSharingOn|The user enables external sharing for the entire organization via the Office 365 admin center.|
 |15|ExternalSharingOff|The user disables external sharing for the entire organization via the Office 365 admin center.|
+|||||
 
 ## Data Center Security Base schema
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |DataCenterSecurityEventType|Self.[DataCenterSecurityEventType](#datacentersecurityeventtype)|Yes|The type of dmdlet event in lock box.|
+|||||
 
 ### Enum: DataCenterSecurityEventType - Type: Edm.Int32
 
@@ -966,12 +983,10 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |**Member name**|**Description**|
 |:-----|:-----|
 |DataCenterSecurityCmdletAuditEvent|This is the enum value for cmdlet audit type event.|
-
+|||
 
 
 ## Data Center Security Cmdlet schema
-
-
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -984,6 +999,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |ElevationRole|Edm.String|No|The role the elevation was requested for.|
 |ElevationDuration|Edm.Int32|Yes|The duration for which the elevation was active.|
 |GenericInfo|Edm.String|No|Used for comments and other generic information.|
+|||||
 
 
 ## Microsoft Teams schema
@@ -995,8 +1011,19 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |Members|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|No|A list of users within a Team.|
 |TeamName|Edm.String|No|The name of the team being audited.|
 |TeamGuid|Edm.Guid|No|A unique identifier for the team being audited.|
+|ChannelType|Edm.String|No|The type of channel being audited (Standard/Private).|
 |ChannelName|Edm.String|No|The name of the channel being audited.|
 |ChannelGuid|Edm.Guid|No|A unique identifier for the channel being audited.|
+|ExtraProperties|Collection(Self.[KeyValuePair](#keyvaluepair-complex-type))|No|A list of extra properties.|
+|AddOnType|Self.[AddOnType](#addontype)|No|The type of add-on that generated this event.|
+|AddonName|Edm.String|No|The name of the add-on that generated the event.|
+|AddOnGuid|Edm.Guid|No|A unique identifier for the add-on that generated the event.|
+|TabType|Edm.String|No|Only present for tab events. The type of tab that generated the event.|
+|Name|Edm.String|No|Only present for settings events. Name of the setting that changed.|
+|OldValue|Edm.String|No|Only present for settings events. Old value of the setting.|
+|NewValue|Edm.String|No|Only present for settings events. New value of the setting.|
+||||
+
 
 ### MicrosoftTeamsMember complex type
 
@@ -1005,6 +1032,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |UPN|Edm.String|No|The user principal name of the user.|
 |Role|Self.[MemberRoleType](#memberroletype)|No|The role of the user within the team.|
 |DisplayName|Edm.String|No|The display name of the user.|
+|||||
 
 ### Enum: MemberRoleType - Type: Edm.Int32
 
@@ -1015,16 +1043,16 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |0|Member|A user who is a member of the team.|
 |1|Owner|A user who is the owner of the team.|
 |2|Guest|A user who is not a member of the team.|
+||||
 
-
-## Microsoft Teams Add-ons schema
+### KeyValuePair complex type
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|AddOnType|Self.[AddOnType](#addontype)|No|The type of add-on that generated this event.|
-|AddonName|Edm.String|No|The name of the add-on that generated this event.|
-|AddOnGuid|Edm.Guid|No|A unique identifier for the add-on that generated this event.|
-|TabType|Edm.String|No|The type of tab that generated this event.|
+|Key|Edm.String|No|The key of the key-value pair.|
+|Value|Edm.String|No|The value of the key-value pair.|
+|||||
+
 
 ### Enum: AddOnType - Type: Edm.Int32
 
@@ -1035,14 +1063,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |1|Bot|A Microsoft Teams bot.|
 |2|Connector|A Microsoft Teams connector.|
 |3|Tab|A Microsoft Teams tab.|
-
-
-## Microsoft Teams Settings schema
-
-|**Parameters**|**Type**|**Mandatory?**|**Description**|
-|:-----|:-----|:-----|:-----|
-|ModifiedProperty|Common.ModifiedProperty|No|The property that was modified. It will contain the **Name**, **OldValue**, and **NewValue** of the property.|
-|ExtendedProperties|Collection(Common.NameValuePair)|No|A list of extended properties for the setting being changed. Each property will have a **Name** and **Value**.|
+||||
 
 ## Office 365 Advanced Threat Protection and Threat Investigation and Response schema
 
@@ -1074,6 +1095,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Respons
 |Verdict|Edm.String|Yes|The message verdict.|
 |MessageTime|Edm.Date|Yes|Date and time in Coordinated Universal Time (UTC) the email message was received or sent.|
 |EventDeepLink|Edm.String|Yes|Deep-link to the email event in Explorer or Real-time reports in the Office 365 Security & Compliance Center.|
+|||||
 
 ### AttachmentData complex type
 
@@ -1086,6 +1108,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Respons
 |FileVerdict|Self.[FileVerdict](#fileverdict)|Yes|The file malware verdict.|
 |MalwareFamily|Edm.String|No|The file malware family.|
 |SHA256|Edm.String|Yes|The file SHA256 hash.|
+|||||
 
 ### Enum: FileVerdict - Type: Edm.Int32
 
@@ -1098,6 +1121,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Respons
 |-1|Error|Scan / analysis error.|
 |-2|Timeout|Scan / analysis timeout.|
 |-3|Pending|Scan / analysis not complete.|
+|||||
 
 ### URL time-of-click events
 
@@ -1110,6 +1134,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Respons
 |TimeOfClick|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the user clicked the URL.|
 |URL|Edm.String|Yes|URL clicked by the user.|
 |UserIp|Edm.String|Yes|The IP address for the user who clicked the URL. The IP address is displayed in either an IPv4 or IPv6 address format.|
+|||||
 
 ### Enum: URLClickAction - Type: Edm.Int32
 
@@ -1121,6 +1146,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Respons
 |3|PendingDetonationPage|User presented with the detonation pending page by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
 |4|BlockPageOverride|User blocked from navigating to the URL by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links); however user overrode block to navigate to the URL.|
 |5|PendingDetonationPageOverride|User presented with the detonation page by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links); however user overrode to navigate to the URL.|
+|||||
 
 
 ### File events
@@ -1133,6 +1159,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Respons
 |LastModifiedDate|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the file was created or last modified.|
 |LastModifiedBy|Edm.String|Yes|Identifier (for example, an email address) for the user who created or last modified the file.|
 |EventDeepLink|Edm.String|Yes|Deep-link to the file event in Explorer or Real-time reports in the Security & Compliance Center.|
+|||||
 
 ### FileData complex type
 
@@ -1147,6 +1174,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Respons
 |MalwareFamily|Edm.String|No|The file malware family.|
 |SHA256|Edm.String|Yes|The file SHA256 hash.|
 |FileSize|Edm.String|Yes|Size for the file in bytes.|
+|||||
 
 ### Enum: SourceWorkload - Type: Edm.Int32
 
@@ -1157,6 +1185,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Respons
 |0|SharePoint Online|
 |1|OneDrive for Business|
 |2|Microsoft Teams|
+|||||
 
 ## Power BI schema
 
@@ -1174,6 +1203,7 @@ The Power BI events listed in [Search the audit log in the Office 365 Protection
 | SharingInformation    | Collection([SharingInformationType](#sharinginformationtype-complex-type))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"    |  No  | Information about the person to whom a sharing invitation is sent. |
 | SwitchState           | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | Information about the state of various tenant level switches. |
 | WorkSpaceName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the workspace where the event occurred. |
+|||||
 
 ### MembershipInformationType complex type
 
@@ -1181,6 +1211,7 @@ The Power BI events listed in [Search the audit log in the Office 365 Protection
 |:-----|:-----|:-----|:-----|
 | MemberEmail | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The email address of the group. |
 | Status      | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | Not currently populated. |
+|||||
 
 ### SharingInformationType complex type
 
@@ -1189,6 +1220,7 @@ The Power BI events listed in [Search the audit log in the Office 365 Protection
 | RecipientEmail    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The email address of the recipient of a sharing invitation. |
 | RecipientName    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The name of the recipient of a sharing invitation. |
 | ResharePermission | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The permission being granted to the recipient. |
+|||||
 
 ## Workplace Analytics schema
 
