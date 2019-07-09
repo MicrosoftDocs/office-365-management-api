@@ -1007,7 +1007,6 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |MessageId|Edm.String|No|An identifier for a chat or channel message.|
-|MeetupId|Edm.String|No|An identifier for a scheduled or ad-hoc meeting.|
 |Members|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|No|A list of users within a Team.|
 |TeamName|Edm.String|No|The name of the team being audited.|
 |TeamGuid|Edm.Guid|No|A unique identifier for the team being audited.|
