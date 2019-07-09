@@ -45,8 +45,6 @@ This article provides details on the Common schema as well as each of the produc
 |[Data Center Security Base schema](#data-center-security-base-schema)|Extends the Common schema with the properties specific to all data center security audit data.|
 |[Data Center Security Cmdlet schema](#data-center-security-cmdlet-schema)|Extends the Data Center Security Base schema with the properties specific to all data center security cmdlet audit data.|
 |[Microsoft Teams schema](#microsoft-teams-schema)|Extends the Common schema with the properties specific to all Microsoft Teams events.|
-|[Microsoft Teams Add-ons schema](#microsoft-teams-add-ons-schema)|Extends the Microsoft Teams schema with the properties specific to Microsoft Teams Add-ons.|
-|[Microsoft Teams Settings schema](#microsoft-teams-settings-schema)|Extends the Microsoft Teams schema with the properties specific to Microsoft Teams settings change events.|
 |[Office 365 Advanced Threat Protection and Threat Investigation and Response schema](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Extends the Common schema with the properties specific to Office 365 Advanced Threat Protection and Threat Investigation and Response data.|
 |[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
 |[Workplace Analytics](#workplace-analytics-schema)|Extends the Common schema with the properties specific to all Microsoft Workplace Analytics events.|
@@ -403,6 +401,7 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 
 ### Enum: Project Action - Type: Edm.Int32
 
+#### Project action
 
 |**Member name**|**Description**|
 |:-----|:-----|
@@ -429,6 +428,8 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |||||
 
 ### Enum: Project Entity - Type: Edm.Int32
+
+#### Project entity
 
 |**Member name**|**Description**|
 |:-----|:-----|
