@@ -274,7 +274,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 |**PostIncidentReportPublished** | We’ve published a Post Incident Report for a specific issue that includes root cause information and next steps to ensure a similar issue doesn’t reoccur. |
 
 > [!NOTE] 
-> For more information on Office 365 service health please visit [How to check Office 365 service health](https://docs.microsoft.com/en-us/office365/enterprise/view-service-health).
+> For more information on Office 365 service health please visit [How to check Office 365 service health](https://docs.microsoft.com/office365/enterprise/view-service-health).
 
 ## Get Historical Status
 
