@@ -72,6 +72,7 @@ These are the response headers returned for all Office 365 Service Communication
 |**Server**|The server used to generate the response (for debugging purposes).|
 |**X-ASPNET-Version**|The version of ASP.Net used by the server that generated the response (for debugging purposes).|
 |**X-Powered-By**|The technologies used in the server that generated the response (for debugging purposes).|
+|||
 
 <br/>
 
@@ -87,6 +88,7 @@ Returns the list of subscribed services.
 |**Path**| `/Services`||
 |**Query-option**|$select|Pick a subset of properties.|
 |**Response**|List of "Service" entities|"Service" entity contains "Id" (String), "DisplayName" (String), and "FeatureNames" (list of Strings).|
+||||
 
 #### Sample request
 
@@ -130,7 +132,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
         }
     ]
 }
-
 ```
 
 
@@ -148,6 +149,7 @@ Returns the status of the service from the previous 24 hours.
 |**Filter**|Workload|Filter by workload (String, default: all).|
 |**Query-option**|$select|Pick a subset of properties.|
 |**Response**|List of "WorkloadStatus" entities.|"WorkloadStatus" entity contains "Id" (String), "Workload" (String), "StatusTime"(DateTimeOffset), "WorkloadDisplayName" (String), "Status" (String), "IncidentIds" (list of Strings), and FeatureGroupStatusCollection (list of "FeatureStatus").<br/><br/>"FeatureStatus" entity contains "Feature" (String), "FeatureGroupDisplayName" (String), and "FeatureStatus" (String).|
+||||
 
 #### Sample request
 
@@ -258,7 +260,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
         }
     ]
 }
-
 ```
 #### Status definitions
 
@@ -272,6 +273,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 |**InvestigationSuspended** | If our detailed investigation of a potential issue results in a request for additional information from customers to allow us to investigate further, you'll see this status. If we need you to act, we'll let you know what data or logs we need. |
 |**ServiceRestored** | We've confirmed that corrective action has resolved the underlying problem and the service has been restored to a healthy state. To find out what went wrong, view the issue details. |
 |**PostIncidentReportPublished** | We’ve published a Post Incident Report for a specific issue that includes root cause information and next steps to ensure a similar issue doesn’t reoccur. |
+|||
 
 > [!NOTE] 
 > For more information on Office 365 service health please visit [How to check Office 365 service health](https://docs.microsoft.com/office365/enterprise/view-service-health).
@@ -287,6 +289,7 @@ Returns the historical status of the service, by day, over a certain time range.
 ||StatusTime|Filter by days greater than StatusTime (DateTimeOffset, default: ge CurrentTime - 7 days).|
 |**Query-option**|$select|Pick a subset of properties.|
 |**Response**|List of "WorkloadStatus" entities.|"WorkloadStatus" entity contains "Id" (String), "Workload" (String), "StatusTime"(DateTimeOffset), "WorkloadDisplayName" (String), "Status" (String), "IncidentIds" (list of Strings), and FeatureGroupStatusCollection (list of "FeatureStatus").<br/><br/>"FeatureStatus" entity contains "Feature" (String), "FeatureGroupDisplayName" (String), and "FeatureStatus" (String).|
+||||
 
 #### Sample request
 
@@ -374,8 +377,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
         }
     ]
 }
-
-
 ```
 
 
@@ -395,6 +396,7 @@ Returns the messages about the service over a certain time range. Use the type f
 ||$top|Pick the top number of results (default and max $top=100).|
 ||$skip|Skip number of results (default: $skip=0).|
 |**Response**|List of "Message" entities.|"Message" entity contains "Id" (String), "StartTime" (DateTimeOffset), "EndTime" (DateTimeOffset), "Status" (String), "Messages" (list of "MessageHistory" entity), "LastUpdatedTime" (DateTimeOffset), "Workload" (String), "WorkloadDisplayName" (String), "Feature" (String), "FeatureDisplayName" (String), "MessageType" (Enum, default: all).<br/><br/>"MessageHistory" entity contains "PublishedTime" (DateTimeOffset), "MessageText" (String).|
+||||
 
 #### Sample request
 
@@ -461,7 +463,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
         }
     ]
 }
-
 ```
 
 
@@ -478,6 +479,5 @@ When the service encounters an error, it reports the error response code to the 
         "message": "Retry the request." 
     } 
 }
-
 ```
 
