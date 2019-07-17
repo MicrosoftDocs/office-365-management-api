@@ -12,7 +12,7 @@ localization_priority: Priority
 
 #### What events are audited for a specific Office 365 service?
 
-Office 365 Management Activity API schema documentation has a comprehensive list of events. For details, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md).
+Office 365 Management Activity API schema documentation has a comprehensive list of events. For details, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md). Also see the "Audited activities" section in [Search the audit log in the Security & Compliance Center](https://docs.microsoft.com/en-us/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#audited-activities) for a list of events for most of the Office 365 services that are audited.
 
 #### How do I onboard to the Management Activity API?
 
@@ -28,7 +28,7 @@ You can do this by using the Office 365 Management Activity API. Also, we recomm
 
 #### Is it true that mailbox auditing in Exchange Online can only be enabled by using PowerShell?
 
-Yes. However, we are working on enabling mailbox auditing by default for all mailboxes in an Office 365 organization. For more information, see "Exchange mailbox auditing will be enabled by default" in the [Microsoft Security, Privacy, and Compliance blog](https://techcommunity.microsoft.com/t5/Security-Privacy-and-Compliance/Exchange-Mailbox-Auditing-will-be-enabled-by-default/ba-p/215171).
+That used to be the case but since January 2019, mailbox auditing is now turned on by default for all Office 365 organizations. For more information, see [Manage mailbox auditing](https://docs.microsoft.com/office365/securitycompliance/enable-mailbox-auditing).
 
 #### Are there any differences in the records that are fetched by the Management Activity API versus the records that are returned by using the audit log search tool in the Office 365 Security & Compliance Center?
 
@@ -52,4 +52,4 @@ No. Auditing must be enabled for your organization to pull records via the Manag
 
 #### Why are TargetUpdatedProperties no longer in ExtendedProperties in the audit logs for Azure Active Directory activities?
 
-TargetUpdatedProperties were appearing in ExtendedProperties. However, they have been removed from ExtendedProperties and will now appear in ModifiedProperties.
+TargetUpdatedProperties were appearing in ExtendedProperties. However, they have been removed from ExtendedProperties and now appear in ModifiedProperties.
