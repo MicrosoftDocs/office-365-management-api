@@ -41,7 +41,7 @@ All API requests require an Authorization HTTP header that has a valid OAuth2 JW
 Authorization: Bearer {OAuth2 token}
 ```
 
-**Request headers**
+### Request headers
 
 These are the supported request headers for all Office 365 Service Communications API operations.
 
@@ -53,7 +53,7 @@ These are the supported request headers for all Office 365 Service Communication
 
 <br/>
 
-**Response headers**
+### Response headers
 
 These are the response headers returned for all Office 365 Service Communications API operations:
 
@@ -90,7 +90,7 @@ Returns the list of subscribed services.
 |**Response**|List of "Service" entities|"Service" entity contains "Id" (String), "DisplayName" (String), and "FeatureNames" (list of Strings).|
 ||||
 
-#### Sample request
+### Sample request
 
 ```json
 GET https://manage.office.com/api/v1.0/contoso.com/ServiceComms/Services 
@@ -98,7 +98,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 ```
 
-#### Sample response
+### Sample response
 
 ```json
 {
@@ -141,7 +141,9 @@ Returns the status of the service from the previous 24 hours.
 
 > [!NOTE] 
 > The service response will contain the status and any incidents within the previous 24 hours. The StatusDate or StatusTime value returned will be exactly 24 hours in the past. 
-> To get the last update for a particular incident, use the Get Messages functionality and read the LastUpdatedTime value from the response record that matches your incident ID. 
+> To get the last update for a particular incident, use the Get Messages functionality and read the LastUpdatedTime value from the response record that matches your incident ID. <br/>
+
+<br/>
 
 ||Service|Description|
 |:-----|:-----|:-----|
@@ -151,14 +153,14 @@ Returns the status of the service from the previous 24 hours.
 |**Response**|List of "WorkloadStatus" entities.|"WorkloadStatus" entity contains "Id" (String), "Workload" (String), "StatusTime"(DateTimeOffset), "WorkloadDisplayName" (String), "Status" (String), "IncidentIds" (list of Strings), and FeatureGroupStatusCollection (list of "FeatureStatus").<br/><br/>"FeatureStatus" entity contains "Feature" (String), "FeatureGroupDisplayName" (String), and "FeatureStatus" (String).|
 ||||
 
-#### Sample request
+### Sample request
 
 ```json
 GET https://manage.office.com/api/v1.0/contoso.com/ServiceComms/CurrentStatus
 Authorization: Bearer {AAD_Bearer_JWT_Token}
 ```
 
-#### Sample response
+### Sample response
 
 ```json
 {
@@ -262,12 +264,21 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 }
 ```
 
+### Status definitions
 
-#### Status definitions
+The status definitions include the following values: 
 
-The status definitions include the following values: ExtendedRecovery, Investigating, PostIncidentReportPublished, RestoringService, ServiceDegradation, ServiceInterruption, ServiceOperational, ServiceRestored, andVerifyingService. 
+- Investigating
+- ServiceDegradation
+- ServiceInterruption 
+- RestoringService
+- ExtendedRecovery
+- ServiceRestored
+- PostIncidentReportPublished 
+- VerifyingService
+- ServiceOperational
 
-These statuses are documented on the [How to check Office 365 service health](https://docs.microsoft.com/office365/enterprise/view-service-health) page, which contains the most up to date list of statuses and definitions. 
+For an up-to-date list and description of these status definitions, see [How to check Office 365 service health](https://docs.microsoft.com/office365/enterprise/view-service-health#status-definitions).
 
 
 ## Get Historical Status
@@ -283,14 +294,14 @@ Returns the historical status of the service, by day, over a certain time range.
 |**Response**|List of "WorkloadStatus" entities.|"WorkloadStatus" entity contains "Id" (String), "Workload" (String), "StatusTime"(DateTimeOffset), "WorkloadDisplayName" (String), "Status" (String), "IncidentIds" (list of Strings), and FeatureGroupStatusCollection (list of "FeatureStatus").<br/><br/>"FeatureStatus" entity contains "Feature" (String), "FeatureGroupDisplayName" (String), and "FeatureStatus" (String).|
 ||||
 
-#### Sample request
+### Sample request
 
 ```json
 GET https://manage.office.com/api/v1.0/contoso.com/ServiceComms/HistoricalStatus
 Authorization: Bearer {AAD_Bearer_JWT_Token}
 ```
 
-#### Sample response
+### Sample response
 
 ```json
 {
@@ -371,7 +382,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 }
 ```
 
-
 ## Get Messages
 
 Returns the messages about the service over a certain time range. Use the type filter to filter for "Service Incident", "Planned Maintenance", or "Message Center" messages.
@@ -390,14 +400,14 @@ Returns the messages about the service over a certain time range. Use the type f
 |**Response**|List of "Message" entities.|"Message" entity contains "Id" (String), "StartTime" (DateTimeOffset), "EndTime" (DateTimeOffset), "Status" (String), "Messages" (list of "MessageHistory" entity), "LastUpdatedTime" (DateTimeOffset), "Workload" (String), "WorkloadDisplayName" (String), "Feature" (String), "FeatureDisplayName" (String), "MessageType" (Enum, default: all).<br/><br/>"MessageHistory" entity contains "PublishedTime" (DateTimeOffset), "MessageText" (String).|
 ||||
 
-#### Sample request
+### Sample request
 
 ```json
 GET https://manage.office.com/api/v1.0/contoso.com/ServiceComms/Messages
 Authorization: Bearer {AAD_Bearer_JWT_Token}
 ```
 
-#### Sample response
+### Sample response
 
 ```json
 {
@@ -464,7 +474,6 @@ When the service encounters an error, it reports the error response code to the 
 
 
 ```json
-
 { 
     "error":{ 
         "code":"AF5000.  An internal server error occurred.",

@@ -21,6 +21,10 @@ Despite having a relatively few operations and a simple REST interface, there’
 
 This article summarizes the most common questions Microsoft Support receives in supporting this API.  We’ll show a selection of simple PowerShell scripts that can help you answer the most common questions asked by customers or get you started implementing a custom solution by demonstrating the main operations.  Not all the operations are explained in this article, but they are all listed in [Office 365 Management Activity API reference](office-365-management-activity-api-reference.md).
 
+## Enabling unified audit logging in Office 365
+
+If you've just set up an app that's trying to use the Management Activity API and it's not working, be sure that you've enabled unified audit logging for your Office 365 organization. You do this by turning on the Office 365 audit log. For instructions, see [Turn Office 365 audit log search on or off](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
+
 ## Questions about third-party tools and clients
 
 The most common category of questions we’re currently fielding in support come from customers using third-party products to download and aggregate auditing data. Depending on the third-party product, customers may encounter difficulty with the setup or experience an interruption or an inconsistency in the data exposed in those products. Here it should be stated that the first action such customers should take is to contact their vendor’s support organization. In all the service requests that have come to Support, engineers have seen only a single case where a tenant-specific service problem was the cause.

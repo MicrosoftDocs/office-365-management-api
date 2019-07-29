@@ -27,6 +27,8 @@ The following diagram shows the sequence of consent and access token requests.
 
 ![Management APIs getting started authorization flow](images/authorization-flow.png)
 
+> [!IMPORTANT]
+> Before you can access data through the Office 365 Management APIs, you must enable unified audit logging for your Office 365 organization. You do this by turning on the Office 365 audit log. For instructions, see [Turn Office 365 audit log search on or off](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
 
 ## Register your application in Azure AD
 

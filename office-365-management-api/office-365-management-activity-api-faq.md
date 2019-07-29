@@ -33,7 +33,11 @@ That used to be the case but since January 2019, mailbox auditing is now turned 
 #### Are there any differences in the records that are fetched by the Management Activity API versus the records that are returned by using the audit log search tool in the Office 365 Security & Compliance Center?
 
 The data that is returned by both methods is the same. There is no filtering that happens. The only difference is that with the API, you can get data for the last 7 days at a time. When searching the audit log in the Security & Compliance Center (or by using the corresponding [Search-UnifiedAuditLog](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/search-unifiedauditlog) cmdlet in Exchange Online), you can get data for the last 90 days. 
- 
+
+#### What happens if I disable auditing for my Office 365 organization? Will I still get events via the Management Activity API?
+
+No. Office 365 unified auditing must be enabled for your organization to pull records via the Management Activity API. For instructions, see [Turn Office 365 audit log search on or off](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
+
 #### Aren’t webhook notifications more immediate? After all, aren’t they event-driven?
 
 No. Webhook notifications aren't event-driven in the sense that the event triggers the notification. The content blob must still be created, and the creation of the content blob is what triggers the notification delivery. Recently, there have been longer wait times for notifications when using a webhook compared to querying the API directly with the */content* operation. Therefore, the Management Activity API shouldn’t be thought of as a real-time security alert system. Microsoft has other products for that. As far as security is concerned, Management Activity API event notifications can more appropriately be used to determine usage patterns over extended periods of time.
@@ -45,10 +49,6 @@ At times, there are instances of a temporary outage or other issues in the Offic
 #### I'm encountering a throttling error in the Management Activity API. What should I do?
 
 Open a ticket with [Microsoft Support](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online) and request a new throttling limit, and include a business justification for increasing the limit. We will evaluate the request, and if accepted, we will increase the throttling limit.
-
-#### What happens if I disable auditing for my Office 365 organization? Will I still get events via the Management Activity API?
-
-No. Auditing must be enabled for your organization to pull records via the Management Activity API.
 
 #### Why are TargetUpdatedProperties no longer in ExtendedProperties in the audit logs for Azure Active Directory activities?
 
