@@ -4,7 +4,7 @@ title: Troubleshooting the Office 365 Management Activity API
 description: Summarizes the most common questions Microsoft Support receives in supporting this API.
 ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
-ms.date: 09/05/2018
+ms.date: 
 localization_priority: Priority
 ---
 
@@ -21,15 +21,17 @@ Despite having a relatively few operations and a simple REST interface, there’
 
 This article summarizes the most common questions Microsoft Support receives in supporting this API.  We’ll show a selection of simple PowerShell scripts that can help you answer the most common questions asked by customers or get you started implementing a custom solution by demonstrating the main operations.  Not all the operations are explained in this article, but they are all listed in [Office 365 Management Activity API reference](office-365-management-activity-api-reference.md).
 
-## Enabling unified audit logging in Office 365
-
-If you've just set up an app that's trying to use the Management Activity API and it's not working, be sure that you've enabled unified audit logging for your Office 365 organization. You do this by turning on the Office 365 audit log. For instructions, see [Turn Office 365 audit log search on or off](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
-
 ## Questions about third-party tools and clients
 
 The most common category of questions we’re currently fielding in support come from customers using third-party products to download and aggregate auditing data. Depending on the third-party product, customers may encounter difficulty with the setup or experience an interruption or an inconsistency in the data exposed in those products. Here it should be stated that the first action such customers should take is to contact their vendor’s support organization. In all the service requests that have come to Support, engineers have seen only a single case where a tenant-specific service problem was the cause.
 
 Nevertheless, these customers may still have some unanswered questions. Their vendors may be insisting that it is a service issue, or they may just want to do some initial checking before contacting their vendor. 
+
+## Enabling unified audit logging in Office 365
+
+If you've just set up an app that's trying to use the Management Activity API and it's not working, be sure that you've enabled unified audit logging for your Office 365 organization. You do this by turning on the Office 365 audit log. For instructions, see [Turn Office 365 audit log search on or off](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
+
+If unified auditing isn't enabled, you will typically receive an error that contains the following string: `Microsoft.Office.Compliance.Audit.DataServiceException: Tenant <tenantID> does not exist.`
 
 ## Connecting to the API
 
@@ -38,6 +40,7 @@ Most applications connect to the API using a straightforward Client Credentials 
 ### Azure application permissions
 
 The three permissions currently used for the Office 365 Management Activity API are:
+
 1. Read activity data for your organization
 2. Read service health information for your organization
 3. Read Data Loss Prevention (DLP) policy events, including detected sensitive information 
