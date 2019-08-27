@@ -1089,6 +1089,9 @@ Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Respons
 |NetworkMessageId|Edm.String|Yes|The Exchange Online Network Message Id.|
 |P1Sender|Edm.String|Yes|The return path of sender of the email message.|
 |P2Sender|Edm.String|Yes|The from sender of the email message.|
+|Policy|Self.[Policy](#policy-type-and-action-type)|Yes|The type of filtering policy (for example **Anti-spam** or **Anti-phish**) and related action type (such as **High Confidence Spam**, **Spam**, or **Phish**) relevant to the email message.|
+|Policy|Self.[PolicyAction](#policy-action)|Yes|The action configured in the filtering policy (for example, **Move to Junk Mail folder** or **Quarantine**) relevant to the email message.|
+|P2Sender|Edm.String|Yes|The **From:** sender of the email message.|
 |Recipients|Collection(Edm.String)|Yes|An array of recipients of the email message.|
 |SenderIp|Edm.String|Yes|The IP address that submitted the email of Office 365. The IP address is displayed in either an IPv4 or IPv6 address format.|
 |Subject|Edm.String|Yes|The subject line of the message.|
@@ -1122,6 +1125,37 @@ Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Respons
 |-2|Timeout|Scan / analysis timeout.|
 |-3|Pending|Scan / analysis not complete.|
 |||||
+
+### Enum: Policy - Type: Edm.Int32
+
+#### Policy type and action type
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|1|Anti-spam, HSPM|High Confidence Spam (HSPM) action in the Anti-spam policy.|
+|2|Anti-spam, SPM|Spam (SPM) action in the Anti-spam policy.|
+|3|Anti-spam, Bulk|Bulk action in the Anti-spam policy.|
+|4|Anti-spam, PHSH|Phish (PHSH) action in the Anti-spam policy.|
+|5|Anti-phish, DIMP|Domain Impersonation (DIMP) action in the Anti-phish policy.|
+|6|Anti-phish, UIMP|User Impersonation (UIMP) action in the Anti-phish policy.|
+|7|Anti-phish, SPOOF|Spoof action in the Anti-phish policy.|
+
+
+### Enum: PolicyAction - Type: Edm.Int32
+
+#### Policy action
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|MoveToJMF|Policy action is to move to Junk Mail folder.|
+|1|AddXHeader|Policy action is to add X-header to the email message.|
+|2|ModifySubject|Policy action is to modify subject in the email message with information specified by the filtering policy.|
+|3|Redirect|Policy action is to redirect email message to email address specificed by the filtering policy.|
+|4|Delete|Policy action is to delete (drop) the email message.|
+|5|Quarantine|Policy action is to quarantine the email message.|
+|6|NoAction| Policy is configured to take no action on the email message.|
+|7|BccMessage|Policy action is to Bcc the email message to email address specificed by the filtering policy.|
+
 
 ### URL time-of-click events
 
