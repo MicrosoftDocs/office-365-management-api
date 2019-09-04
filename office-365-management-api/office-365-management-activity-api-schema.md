@@ -1303,6 +1303,12 @@ Currently, only automated investigation are logged. (Events for manually generat
 
 #### Mailbox (also equivalent to the user) 
 
+|Field	|Type	|Description |
+|----|----|----|
+|Type	|Edm.String	|mailbox  |
+|MailboxPrimaryAddress	|Edm.String	|The mailbox's primary address  |
+|DisplayName	|Edm.String	|The mailbox's display name |
+|Upn	|Edm.String	|The mailbox's UPN  |
 
 
 
