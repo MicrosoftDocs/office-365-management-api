@@ -1320,6 +1320,13 @@ FileHashes |Collection (Edm.String)	|The file hashes associated with the file |
 
 #### FileHash
 
+|Field	|Type	|Description |
+|----|----|----|
+|Type	|Edm.String	|filehash |
+|Algorithm	|Edm.String	|The hash algorithm type, which can be one of these values:<br/>- Unknown<br/>- MD5<br/>- SHA1<br/>- SHA256<br/>- SHA256AC
+|Value	|Edm.String	|The hash value  |
+
+
 ## Power BI schema
 
 The Power BI events listed in [Search the audit log in the Office 365 Protection Center](/power-bi/service-admin-auditing#activities-audited-by-power-bi) will use this schema.
