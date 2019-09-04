@@ -1250,7 +1250,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |Status 	|Edm.String 	|State of investigation, Running, Pending Actions, etc. |
 |DeeplinkURL	|Edm.String	|Deep link URL to an investigation in Office 365 Security & Compliance Center |
 |Actions |Collection (Edm.String)	|Collection of actions recommended by an investigation |
-|Data	|Edm.String	|Data string which contains more details about investigation entities, and information about alerts related to the investigation. <p>Entities is available as a separate node within the data blob. |
+|Data	|Edm.String	|Data string which contains more details about investigation entities, and information about alerts related to the investigation. Entities are available in a separate node within the data blob. |
 
 #### Actions
 
