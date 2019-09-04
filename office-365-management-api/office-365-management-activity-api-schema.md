@@ -1298,8 +1298,8 @@ Currently, only automated investigation are logged. (Events for manually generat
 
 |Field	|Type	|Description  |
 |----|----|----|
-|Type	|Edm.String	|url |
-|Url	|Edm.String	|A full URL the entity points to |
+|Type	|Edm.String	|"url" |
+|Url	|Edm.String	|The full URL to which an entity points  |
 
 #### Mailbox (also equivalent to the user) 
 
