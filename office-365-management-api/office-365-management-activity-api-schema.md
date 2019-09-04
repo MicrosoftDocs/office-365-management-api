@@ -1276,7 +1276,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 
 |Field	|Type	|Description  |
 |----|----|----|
-|Type	|Edm.String	|mail-message  |
+|Type	|Edm.String	|"mail-message"  |
 |Files	|Collection (Self.File) |Details about the files of this message's attachments |
 |Recipient	|Edm.String	|The recipient of this mail message |
 |Urls	|Collection(Self.URL) |The Urls contained in this mail message  |
@@ -1291,7 +1291,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 
 |Field	|Type	|Description  |
 |----|----|----|
-|Type	|Edm.String	|ip |
+|Type	|Edm.String	|"ip" |
 |Address	|Edm.String	|The IP address as a string, such as `127.0.0.1`
 
 #### URL
