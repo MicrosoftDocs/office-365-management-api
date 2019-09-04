@@ -1334,7 +1334,7 @@ FileHashes |Collection (Edm.String)	|The file hashes associated with the file |
 |NetworkMessageIds	|Collection (Edm.String)	|List of the mail message IDs that are part of the mail cluster |
 |CountByDeliveryStatus	|Collections (Edm.String)	|Count of mail messages by DeliveryStatus string representation |
 |CountByThreatType	|Collections (Edm.String) |Count of mail messages by ThreatType string representation |
-|Threats	|Collections (Edm.String)	|The threats of mail messages that are part of the mail cluster. Threats include values like Phish and Malware |
+|Threats	|Collections (Edm.String)	|The threats of mail messages that are part of the mail cluster. Threats include values like Phish and Malware. |
 |Query	|Edm.String	|The query that was used to identify the messages of the mail cluster  |
 |QueryTime	|Edm.DateTime	|The query time  |
 |MailCount	|Edm.int	|The number of mail messages that are part of the mail cluster  |
