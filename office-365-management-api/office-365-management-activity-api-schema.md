@@ -1221,6 +1221,23 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |2|Microsoft Teams|
 |||||
 
+### Automated investigation and response events
+
+Office 365 Advanced Threat Protection – Automated Investigation Response (AIR) events are available for Office 365 Customers who have an Office 365 Advanced Threat Protection Plan 2 or an Office 365 E5 subscription. Investigation events are logged based on a change in investigation status. For example, when an administrator takes an action that changes the status of an investigation from Pending Actions to Completed, an event is logged. 
+
+Currently, only automated investigation are logged. (Events for manually generated investigations are coming soon.) The following status values are logged: 
+- Investigation was created
+- No threats found 
+- Terminated by system 
+- Pending Action 
+- Threats found 
+- Remediated 
+- Failed 
+- Terminated by Throttling 
+- Terminated by User 
+
+
+
 ## Power BI schema
 
 The Power BI events listed in [Search the audit log in the Office 365 Protection Center](/power-bi/service-admin-auditing#activities-audited-by-power-bi) will use this schema.
