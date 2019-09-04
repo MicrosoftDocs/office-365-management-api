@@ -1270,6 +1270,30 @@ Currently, only automated investigation are logged. (Events for manually generat
 |Entities	|Collection(Edm.String)	|List of one or more affected entities by action |
 |Related Alert IDs	|Edm.String	|Alert related to an investigation |
 
+#### Entities
+
+##### MailMessage (email) 
+
+|Field	|Type	|Description  |
+|----|----|----|
+|Type	|Edm.String	|mail-message  |
+|Files	|Collection (Self.File) |Details about the files of this message's attachments |
+|Recipient	|Edm.String	|The recipient of this mail message |
+|Urls	|Collection(Self.URL) |The Urls contained in this mail message  |
+|Sender	|Edm.String	|The sender's email address  |
+|SenderIP	|Edm.String	The sender's IP address  |
+|ReceivedDate	|Edm.DateTime	|The received date of this message  |
+|NetworkMessageId	|Edm.Guid 	|The network message id of this mail message  |
+|InternetMessageId	|Edm.String  |The internet message id of this mail message |
+|Subject	|Edm.String	|The subject of this mail message  |
+
+#### IP
+
+|Field	|Type	|Description  |
+|Type	|Edm.String	|ip |
+|Address	|Edm.String	|The IP address as a string, such as `127.0.0.1`
+
+
 
 ## Power BI schema
 
