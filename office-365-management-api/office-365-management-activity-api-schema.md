@@ -1330,7 +1330,7 @@ FileHashes |Collection (Edm.String)	|The file hashes associated with the file |
 
 |Field	|Type	|Description   |
 |----|----|----|
-|Type	|Edm.String	|MailCluster <p> This determines the type of entity being discussed |
+|Type	|Edm.String	|MailCluster. This determines the type of entity being discussed |
 |NetworkMessageIds	|Collection (Edm.String)	|List of the mail message IDs that are part of the mail cluster |
 |CountByDeliveryStatus	|Collections (Edm.String)	|Count of mail messages by DeliveryStatus string representation |
 |CountByThreatType	|Collections (Edm.String) |Count of mail messages by ThreatType string representation |
