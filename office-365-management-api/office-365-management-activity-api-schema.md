@@ -1301,6 +1301,9 @@ Currently, only automated investigation are logged. (Events for manually generat
 |Type	|Edm.String	|url |
 |Url	|Edm.String	|A full URL the entity points to |
 
+#### Mailbox (also equivalent to the user) 
+
+
 
 
 ## Power BI schema
