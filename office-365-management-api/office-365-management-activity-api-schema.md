@@ -1236,6 +1236,37 @@ Currently, only automated investigation are logged. (Events for manually generat
 - Terminated by Throttling 
 - Terminated by User 
 
+#### Main investigation schema 
+
+|Name	|Type	|Description  |
+|----|----|----|
+|InvestigationId	|Edm.String	|Investigation ID/GUID |
+|InvestigationName	|Edm.String	|Name of the investigation |
+|InvestigationType	|Edm.String	|Type of the investigation<p>Can take one of the following values:<br/>- User-Reported Messages<br/>- Zapped Malware<br/>- Zapped Phish<br/>- Url Verdict Change<p>(Manual investigations are currently not available and are coming soon.) |
+|LastUpdateTimeUtc	|Edm.Date	|UTC time of the last update for an investigation |
+|StartTimeUtc	|Edm.Date	|Start time for an investigation |
+|Status 	|Edm.String 	|State of investigation, Running, Pending Actions, etc. |
+|DeeplinkURL	|Edm.String	|Deep link URL to an investigation in Office 365 Security & Compliance Center |
+|Actions |Collection (Edm.String)	|Collection of actions recommended by an investigation |
+|Data	|Edm.String	|Data string which contains more details about investigation entities, and information about alerts related to the investigation. <p>Entities is available as a separate node within the data blob. |
+
+#### Actions
+
+|Field	|Type	|Description |
+|----|----|----|
+|ID 	|Edm.String	|Action ID|
+|ActionType	|Edm.String	|The type of the action, such as email remediation |
+|ActionStatus	|Edm.String	|Pending, Running, Waiting on resource, Completed, or Failed |
+|ApprovedBy	|Edm.String	|Null if auto approved, otherwise the username/id (this is coming soon) |
+|TimestampUtc	|Edm.DateTime	|The timestamp of the action status change |
+|ActionId	|Edm.String	|Unique identifier for action |
+InvestigationId	Edm.String	Unique identifier for investigation
+RelatedAlertIds	Collection(Edm.String)	The related alerts to the investigation
+StartTimeUtc	Edm.DateTime	Timestamp of action creation
+EndTimeUtc	Edm.DateTime	Action final status update timestamp
+Resource Identifiers 	Edm.String	 Consists of the AAD tenant ID.
+Entities	Collection(Edm.String)	List of 1 or more affected entities by the Action
+Related Alert IDs	Edm.String	Related alert to the investigation
 
 
 ## Power BI schema
