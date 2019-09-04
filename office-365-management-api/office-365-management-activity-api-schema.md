@@ -1281,7 +1281,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |Recipient	|Edm.String	|The recipient of this mail message |
 |Urls	|Collection(Self.URL) |The Urls contained in this mail message  |
 |Sender	|Edm.String	|The sender's email address  |
-|SenderIP	|Edm.String	The sender's IP address  |
+|SenderIP	|Edm.String	|The sender's IP address  |
 |ReceivedDate	|Edm.DateTime	|The received date of this message  |
 |NetworkMessageId	|Edm.Guid 	|The network message id of this mail message  |
 |InternetMessageId	|Edm.String  |The internet message id of this mail message |
