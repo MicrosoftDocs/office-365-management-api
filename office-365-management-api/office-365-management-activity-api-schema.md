@@ -1326,6 +1326,22 @@ FileHashes |Collection (Edm.String)	|The file hashes associated with the file |
 |Algorithm	|Edm.String	|The hash algorithm type, which can be one of these values:<br/>- Unknown<br/>- MD5<br/>- SHA1<br/>- SHA256<br/>- SHA256AC
 |Value	|Edm.String	|The hash value  |
 
+#### MailCluster
+
+|Field	|Type	|Description   |
+|----|----|----|
+|Type	|Edm.String	|MailCluster <p> This determines the type of entity being discussed |
+|NetworkMessageIds	|Collection (Edm.String)	|List of the mail message IDs that are part of the mail cluster |
+|CountByDeliveryStatus	|Collections (Edm.String)	|Count of mail messages by DeliveryStatus string representation |
+CountByThreatType	Collections (Edm.String)
+Count of mail messages by ThreatType string representation
+Threats	Collections (Edm.String)	The threats of mail messages that are part of the mail cluster. Threats include values like Phish and Malware
+Query	Edm.String	The query that was used to identify the messages of the mail cluster
+QueryTime	Edm.DateTime	The query time
+MailCount	Edm.int	The number of mail messages that are part of the mail cluster
+Source	String	The source of the mail cluster –
+Value of the cluster source. 
+
 
 ## Power BI schema
 
