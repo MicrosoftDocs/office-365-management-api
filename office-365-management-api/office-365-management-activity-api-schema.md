@@ -1258,7 +1258,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |----|----|----|
 |ID 	|Edm.String	|Action ID|
 |ActionType	|Edm.String	|The type of the action, such as email remediation |
-|ActionStatus	|Edm.String	|Pending, Running, Waiting on resource, Completed, or Failed |
+|ActionStatus	|Edm.String	|Values include: <br/>- Pending<br/>- Running<br/>- Waiting on resource<br/>- Completed<br/>- Failed |
 |ApprovedBy	|Edm.String	|Null if auto approved; otherwise, the username/id (this is coming soon) |
 |TimestampUtc	|Edm.DateTime	|The timestamp of the action status change |
 |ActionId	|Edm.String	|Unique identifier for action |
