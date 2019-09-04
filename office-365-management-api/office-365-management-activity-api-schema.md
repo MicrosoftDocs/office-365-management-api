@@ -1067,7 +1067,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 
 ## Office 365 Advanced Threat Protection and Threat Investigation and Response schema
 
-Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Response events are available for Office 365 customers who have an Office 365 Advanced Threat Protection Plan 1, Office 365 Advanced Threat Protection Plan 2, or an E5 subscription. Each event in the Office 365 ATP feed corresponds to the following that were determined to contain a threat:
+[Office 365 Advanced Threat Protection](https://docs.microsoft.com/office365/securitycompliance/office-365-atp) (ATP) and Threat Investigation and Response events are available for Office 365 customers who have an Office 365 Advanced Threat Protection Plan 1, Office 365 Advanced Threat Protection Plan 2, or an E5 subscription. Each event in the Office 365 ATP feed corresponds to the following that were determined to contain a threat:
 
 - An email message sent by or received by a user in the organization with detections are made on messages at delivery time and from [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15). 
 
@@ -1076,7 +1076,7 @@ Office 365 Advanced Threat Protection (ATP) and Threat Investigation and Respons
 - A file within SharePoint Online, OneDrive for Business, or Microsoft Teams that was detected as malicious by [Office 365 ATP](https://docs.microsoft.com/en-us/office365/securitycompliance/atp-for-spo-odb-and-teams) protection.
 
 > [!NOTE]
-> Office 365 Advanced Threat Protection and Office 365 Threat Invesitgation and Response (formerly known as Office 365 Threat Intelligence) capabilites are now part of Office 365 Advanced Threat Protection Plan 2, with additional threat protection capabilities. To learn more, see [Office 365 ATP plans and pricing](https://products.office.com/exchange/advance-threat-protection) and the [Office 365 ATP Service Description](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description).
+> Office 365 Advanced Threat Protection and Office 365 Threat Investigation and Response (formerly known as Office 365 Threat Intelligence) capabilites are now part of Office 365 Advanced Threat Protection Plan 2, with additional threat protection capabilities. To learn more, see [Office 365 ATP plans and pricing](https://products.office.com/exchange/advance-threat-protection) and the [Office 365 ATP Service Description](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description).
 
 ### Email message events
 
