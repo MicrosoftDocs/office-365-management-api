@@ -1225,7 +1225,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 
 ### Automated investigation and response events
 
-Office 365 Advanced Threat Protection – Automated Investigation Response (AIR) events are available for Office 365 Customers who have an Office 365 Advanced Threat Protection Plan 2 or an Office 365 E5 subscription. Investigation events are logged based on a change in investigation status. For example, when an administrator takes an action that changes the status of an investigation from Pending Actions to Completed, an event is logged. 
+[Office 365 automated investigation and response (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) events are available for Office 365 Customers who have a subscription that includes Office 365 Advanced Threat Protection Plan 2 or Office 365 E5. Investigation events are logged based on a change in investigation status. For example, when an administrator takes an action that changes the status of an investigation from Pending Actions to Completed, an event is logged. 
 
 Currently, only automated investigation are logged. (Events for manually generated investigations are coming soon.) The following status values are logged: 
 - Investigation was created
