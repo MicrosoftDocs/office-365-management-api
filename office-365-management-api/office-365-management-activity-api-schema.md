@@ -1333,15 +1333,183 @@ FileHashes |Collection (Edm.String)	|The file hashes associated with the file |
 |Type	|Edm.String	|MailCluster <p> This determines the type of entity being discussed |
 |NetworkMessageIds	|Collection (Edm.String)	|List of the mail message IDs that are part of the mail cluster |
 |CountByDeliveryStatus	|Collections (Edm.String)	|Count of mail messages by DeliveryStatus string representation |
-CountByThreatType	Collections (Edm.String)
-Count of mail messages by ThreatType string representation
-Threats	Collections (Edm.String)	The threats of mail messages that are part of the mail cluster. Threats include values like Phish and Malware
-Query	Edm.String	The query that was used to identify the messages of the mail cluster
-QueryTime	Edm.DateTime	The query time
-MailCount	Edm.int	The number of mail messages that are part of the mail cluster
-Source	String	The source of the mail cluster –
-Value of the cluster source. 
+|CountByThreatType	|Collections (Edm.String) |Count of mail messages by ThreatType string representation |
+|Threats	|Collections (Edm.String)	|The threats of mail messages that are part of the mail cluster. Threats include values like Phish and Malware |
+|Query	|Edm.String	|The query that was used to identify the messages of the mail cluster  |
+|QueryTime	|Edm.DateTime	|The query time  |
+|MailCount	|Edm.int	|The number of mail messages that are part of the mail cluster  |
+|Source	|String	|The source of the mail cluster; the value of the cluster source. |
 
+#### Sample audit record
+
+```
+e3d69322-d40b-45c2-b17c-7d6b981d7c7b,af62b4b1-dc2c-46ae-bc33-eab54a1dfd07,2019-07-29T23:13:15.835Z,AirInvestigation," {
+    "" CreationTime "": "" 2019 - 07 - 29T23: 13: 15 "",
+    "" Id "": "" af62b4b1 - dc2c - 46ae - bc33 - eab54a1dfd07 "",
+    "" Operation "": "" AirInvestigationData "",
+    "" OrganizationId "": "" e4d69122 – d22z – 90x1 – c21d - 7d6bx382828"",
+    "" RecordType "": 64,
+    "" UserKey "": "" AirInvestigation "",
+    "" UserType "": 4,
+    "" Version "": 1,
+    "" Workload "": "" AirInvestigation "",
+    "" ObjectId "": "" af62b4b1 - dc2c - 46ae - bc33 - eab54a1dfd07 "",
+    "" UserId "": "" AirInvestigation "",
+    "" Actions "": ["" {
+             \ "" $id \ "":  \ "" 1 \ "",
+             \ "" ActionType \ "":  \ "" EmailRemediation \ "",
+             \ "" ActionStatus \ "":  \ "" Pending \ "",
+             \ "" TimestampUtc \ "":  \ "" 2019 - 07 - 29T23: 12: 25 \ "",
+             \ "" ActionId \ "":  \ "" urn: EmailZapper: f6d885231f84ce9bb5c94378e54a8efc \ "",
+             \ "" InvestigationId \ "":  \ "" urn: ZappedMalwareInvestigati: cc6ba95199bad6dec2c1b003a1a74977 \ "",
+             \ "" Entities \ "": [{
+                     \ "" $id \ "":  \ "" 2 \ "",
+                     \ "" NetworkMessageIds \ "": [ \ "" e7a24527 - 04ea - 4b75 - 91f5 - 08d71477c88d \ "",  \ "" 437490cc - 6a4e - 427d - 59b6 - 08d71477c9fc \ "",  \ "" ce2a3d81 - 371f - 4ffe - 0ff4 - 08d714781717 \ "",  \ "" 4f2cd2c4 - 3e42 - 417f - aac1 - 08d71478171e \ "",  \ "" 640bba79 - 0292 - 4170 - 592a - 08d714781cc9 \ "",  \ "" dc39d271 - 26c4 - 48b9 - 827e-08d714781714 \ "",  \ "" 8a44e6f8 - d808 - 419a - 7a3d - 08d71477c88b \ ""],
+                     \ "" CountByThreatType \ "": {
+                         \ "" Phish \ "": 1,
+                         \ "" Malware \ "": 6
+                    },
+                     \ "" Threats \ "": [ \ "" Phish \ "",  \ "" Malware \ ""],
+                     \ "" Query \ "":  \ ""(AttachmentFileHash:  \\  \ "" w3FRtHaSXkD9BP9UUDrwheZHmzH2pK9PchGxHnIoO1A =  \\  \ "") \ "",
+                     \ "" QueryTime \ "":  \ "" 2019 - 07 - 29T23: 10: 29.5027713Z \ "",
+                     \ "" MailCount \ "": 9,
+                     \ "" Source \ "":  \ "" w3FRtHaSXkD9BP9UUDrwheZHmzH2pK9PchGxHnIoO1A =  \ "",
+                     \ "" Type \ "":  \ "" mailCluster \ ""
+                }
+            ],
+             \ "" RelatedAlertIds \ "": [ \ "" c6d010cf - a900 - af5a - 7000 - 08d714790abd \ ""],
+             \ "" StartTimeUtc \ "":  \ "" 2019 - 07 - 29T23: 12: 25 \ "",
+             \ "" ResourceIdentifiers \ "": [{
+                     \ "" $id \ "":  \ "" 3 \ "",
+                     \ "" AadTenantId \ "":  \ "" e4d69122 – d22z – 90x1 – c21d - 7d6bx382828\ "",
+                     \ "" Type \ "":  \ "" AAD \ ""
+                }
+            ]
+        }
+        ""],
+    "" Data "": "" {
+         \ "" Version \ "":  \ "" 3.0 \ "",
+         \ "" VendorName \ "":  \ "" Microsoft \ "",
+         \ "" ProviderName \ "":  \ "" OATP \ "",
+         \ "" AlertType \ "":  \ "" ThreatManagement \ "",
+         \ "" StartTimeUtc \ "":  \ "" 2019 - 07 - 29T23: 04: 28Z \ "",
+         \ "" EndTimeUtc \ "":  \ "" 2019 - 07 - 29T23: 04: 28Z \ "",
+         \ "" TimeGenerated \ "":  \ "" 2019 - 07 - 29T23: 04: 28Z \ "",
+         \ "" ProcessingEndTime \ "":  \ "" 2019 - 07 - 29T23: 13: 15.8071986Z \ "",
+         \ "" Status \ "": 1,
+         \ "" Severity \ "":  \ "" Informational \ "",
+         \ "" ConfidenceLevel \ "":  \ "" Unknown \ "",
+         \ "" ConfidenceScore \ "": 1.0,
+         \ "" IsIncident \ "": false,
+         \ "" ProviderAlertId \ "":  \ "" c6d010cf - a900 - af5a - 7000 - 08d714790abd \ "",
+         \ "" SystemAlertId \ "": null,
+         \ "" CorrelationKey \ "":  \ "" df1a9e6f - d629 - 4a8f - b0f4 - 8f91cc6df75d \ "",
+         \ "" Intent \ "":  \ "" Probing \ "",
+         \ "" ResourceIdentifiers \ "": [{
+                 \ "" $id \ "":  \ "" 1 \ "",
+                 \ "" AadTenantId \ "":  \ "" e4d69122 – d22z – 90x1 – c21d - 7d6bx382828\ "",
+                 \ "" Type \ "":  \ "" AAD \ ""
+            }
+        ],
+         \ "" AzureResourceId \ "": null,
+         \ "" WorkspaceId \ "": null,
+         \ "" WorkspaceSubscriptionId \ "": null,
+         \ "" WorkspaceResourceGroup \ "": null,
+         \ "" AgentId \ "": null,
+         \ "" AlertDisplayName \ "":  \ "" Email messages containing malware removed after delivery \ "",
+         \ "" Description \ "":  \ "" Emails with malware that were delivered and later removed - V1.0.0.3 \ "",
+         \ "" ExtendedLinks \ "": [{
+                 \ "" Href \ "":  \ "" https:  \  /  \  / protection.office.com \  / viewalerts ? id = c6d010cf - a900 - af5a - 7000 - 08d714790abd \ "",
+                 \ "" Category \ "" : null,
+                 \ "" Label \ "":  \ "" alert \ "",
+                 \ "" Type \ "":  \ "" webLink \ ""
+            }
+        ],
+         \ "" Metadata \ "": {
+             \ "" CustomApps \ "": null,
+             \ "" GenericInfo \ "": null
+        },
+         \ "" Entities \ "": [{
+                 \ "" $id \ "":  \ "" 2 \ "",
+                 \ "" MailboxPrimaryAddress \ "":  \ "" jonathan.wolcott @ o365tisdfv2.onmicrosoft.com \ "",
+                 \ "" Upn \ "":  \ "" jonathan.wolcott @ o365tisdfv2.onmicrosoft.com \ "",
+                 \ "" Type \ "":  \ "" mailbox \ ""
+            }, {
+                 \ "" $id \ "":  \ "" 3 \ "",
+                 \ "" Name \ "":  \ "" annualpass0707.doc \ "",
+                 \ "" FileHashes \ "": [{
+                         \ "" $id \ "":  \ "" 4 \ "",
+                         \ "" Algorithm \ "":  \ "" SHA256 \ "",
+                         \ "" Value \ "":  \ "" C37151B476925E40FD04FF54503AF085E6479B31F6A4AF4F7211B11E72283B50 \ "",
+                         \ "" Type \ "":  \ "" filehash \ ""
+                    }
+                ],
+                 \ "" Type \ "":  \ "" file \ ""
+            }, {
+                 \ "" $id \ "":  \ "" 5 \ "",
+                 \ "" Files \ "": [{
+                         \ "" $id \ "":  \ "" 6 \ "",
+                         \ "" Name \ "":  \ "" annualpass0707.doc \ "",
+                         \ "" FileHashes \ "": [{
+                                 \ "" $id \ "":  \ "" 7 \ "",
+                                 \ "" Algorithm \ "":  \ "" SHA256 \ "",
+                                 \ "" Value \ "":  \ "" C37151B476925E40FD04FF54503AF085E6479B31F6A4AF4F7211B11E72283B50 \ "",
+                                 \ "" Type \ "":  \ "" filehash \ ""
+                            }
+                        ],
+                         \ "" Type \ "":  \ "" file \ ""
+                    }, {
+                         \ "" $id \ "":  \ "" 8 \ "",
+                         \ "" Name \ "":  \ "" contoso.png \ "",
+                         \ "" FileHashes \ "": [{
+                                 \ "" $id \ "":  \ "" 9 \ "",
+                                 \ "" Algorithm \ "":  \ "" SHA256 \ "",
+                                 \ "" Value \ "":  \ "" 4C93FD17298D1D50DEFEB7BDAACF3A43445F08C27D05798916C000E56606D89D \ "",
+                                 \ "" Type \ "":  \ "" filehash \ ""
+                            }
+                        ],
+                         \ "" Type \ "":  \ "" file \ ""
+                    }
+                ],
+                 \ "" Recipient \ "":  \ "" jonathan.wolcott @ o365tisdfv2.onmicrosoft.com \ "",
+                 \ "" Sender \ "":  \ "" greatskiingwhistler @ yahoo.com \ "",
+                 \ "" SenderIP \ "":  \ "" 98.137.64.234 \ "",
+                 \ "" ReceivedDate \ "":  \ "" 2019 - 07 - 29T22: 55: 02 \ "",
+                 \ "" InternetMessageId \ "":  \ "" < 25d2cbea - 6c7d - 4131 - adde - d8d6678e234c @ DM3NAM06FT009.Eop - nam06.prod.protection.outlook.com >  \ "",
+                 \ "" Subject \ "":  \ "" FW: Hi pass holder \ "",
+                 \ "" Type \ "":  \ "" mailMessage \ "",
+                 \ "" NetworkMessageId \ "":  \ "" e7a24527 - 04ea - 4b75 - 91f5 - 08d71477c88d \ ""
+            }, {
+                 \ "" $id \ "":  \ "" 10 \ "",
+                 \ "" NetworkMessageIds \ "": [ \ "" e7a24527 - 04ea - 4b75 - 91f5 - 08d71477c88d \ "",  \ "" 437490cc - 6a4e - 427d - 59b6 - 08d71477c9fc \ "",  \ "" ce2a3d81 - 371f - 4ffe - 0ff4 - 08d714781717 \ "",  \ "" 4f2cd2c4 - 3e42 - 417f - aac1 - 08d71478171e \ "",  \ "" 640bba79 - 0292 - 4170 - 592a - 08d714781cc9 \ "",  \ "" dc39d271 - 26c4 - 48b9 - 827e-08d714781714 \ "",  \ "" 8a44e6f8 - d808 - 419a - 7a3d - 08d71477c88b \ ""],
+                 \ "" CountByThreatType \ "": {
+                     \ "" Phish \ "": 1,
+                     \ "" Malware \ "": 6
+                },
+                 \ "" Threats \ "": [ \ "" Phish \ "",  \ "" Malware \ ""],
+                 \ "" Query \ "":  \ ""(AttachmentFileHash:  \\  \ "" w3FRtHaSXkD9BP9UUDrwheZHmzH2pK9PchGxHnIoO1A =  \\  \ "") \ "",
+                 \ "" QueryTime \ "":  \ "" 2019 - 07 - 29T23: 10: 29.5027713Z \ "",
+                 \ "" MailCount \ "": 9,
+                 \ "" Source \ "":  \ "" w3FRtHaSXkD9BP9UUDrwheZHmzH2pK9PchGxHnIoO1A =  \ "",
+                 \ "" Type \ "":  \ "" mailCluster \ ""
+            }
+        ],
+         \ "" OATPInvestigationId \ "":  \ "" urn: ZappedMalwareInvestigati: cc6ba95199bad6dec2c1b003a1a74977 \ "",
+         \ "" LogCreationTime \ "":  \ "" 2019 - 07 - 29T23: 13: 15.8071986Z \ "",
+         \ "" MachineName \ "":  \ "" BL2NAM06BG401 \ ""
+    }
+    "",
+    "" DeepLinkUrl "": "" https:  \  /  \  / protection.office.com \  / threatinvestigation ? urn = urn : ZappedMalwareInvestigati: cc6ba95199bad6dec2c1b003a1a74977 "",
+    "" EndTimeUtc "": "" 2019 - 07 - 29T23: 13: 15 "",
+    "" InvestigationId "": "" urn: ZappedMalwareInvestigati: cc6ba95199bad6dec2c1b003a1a74977 "",
+    "" InvestigationName "": "" Mail with Malware is zapped - urn: ZappedMalwareInvestigati: cc6ba95199bad6dec2c1b003a1a74977 "",
+    "" InvestigationType "": "" ZappedMalwareInvestigation "",
+    "" LastUpdateTimeUtc "": "" 2019 - 07 - 29T23: 08: 05 "",
+    "" StartTimeUtc "": "" 2019 - 07 - 29T23: 08: 05 "",
+    "" Status "": "" Pending Action ""
+}
+"
+```
 
 ## Power BI schema
 
