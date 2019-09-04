@@ -1310,7 +1310,15 @@ Currently, only automated investigation are logged. (Events for manually generat
 |DisplayName	|Edm.String	|The mailbox's display name |
 |Upn	|Edm.String	|The mailbox's UPN  |
 
+#### File
 
+|Field	|Type	|Description  |
+|----|----|----|
+|Type	|Edm.String	|file |
+|Name	|Edm.String	|The file name without path |
+FileHashes |Collection (Edm.String)	|The file hashes associated with the file |
+
+#### FileHash
 
 ## Power BI schema
 
