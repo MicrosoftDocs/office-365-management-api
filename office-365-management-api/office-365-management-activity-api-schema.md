@@ -1244,7 +1244,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |----|----|----|
 |InvestigationId	|Edm.String	|Investigation ID/GUID |
 |InvestigationName	|Edm.String	|Name of the investigation |
-|InvestigationType	|Edm.String	|Type of the investigation<p>Can take one of the following values:<br/>- User-Reported Messages<br/>- Zapped Malware<br/>- Zapped Phish<br/>- Url Verdict Change<p>(Manual investigations are currently not available and are coming soon.) |
+|InvestigationType	|Edm.String	|Type of the investigation. Can take one of the following values:<br/>- User-Reported Messages<br/>- Zapped Malware<br/>- Zapped Phish<br/>- Url Verdict Change<p>(Manual investigations are currently not available and are coming soon.) |
 |LastUpdateTimeUtc	|Edm.Date	|UTC time of the last update for an investigation |
 |StartTimeUtc	|Edm.Date	|Start time for an investigation |
 |Status 	|Edm.String 	|State of investigation, Running, Pending Actions, etc. |
