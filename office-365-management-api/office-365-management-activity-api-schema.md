@@ -1290,8 +1290,16 @@ Currently, only automated investigation are logged. (Events for manually generat
 #### IP
 
 |Field	|Type	|Description  |
+|----|----|----|
 |Type	|Edm.String	|ip |
 |Address	|Edm.String	|The IP address as a string, such as `127.0.0.1`
+
+#### URL
+
+|Field	|Type	|Description  |
+|----|----|----|
+|Type	|Edm.String	|url |
+|Url	|Edm.String	|A full URL the entity points to |
 
 
 
