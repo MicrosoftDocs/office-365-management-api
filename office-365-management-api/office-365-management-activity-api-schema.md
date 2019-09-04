@@ -1305,7 +1305,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 
 |Field	|Type	|Description |
 |----|----|----|
-|Type	|Edm.String	|mailbox  |
+|Type	|Edm.String	|"mailbox"  |
 |MailboxPrimaryAddress	|Edm.String	|The mailbox's primary address  |
 |DisplayName	|Edm.String	|The mailbox's display name |
 |Upn	|Edm.String	|The mailbox's UPN  |
@@ -1314,7 +1314,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 
 |Field	|Type	|Description  |
 |----|----|----|
-|Type	|Edm.String	|file |
+|Type	|Edm.String	|"file" |
 |Name	|Edm.String	|The file name without path |
 FileHashes |Collection (Edm.String)	|The file hashes associated with the file |
 
@@ -1322,7 +1322,7 @@ FileHashes |Collection (Edm.String)	|The file hashes associated with the file |
 
 |Field	|Type	|Description |
 |----|----|----|
-|Type	|Edm.String	|filehash |
+|Type	|Edm.String	|"filehash" |
 |Algorithm	|Edm.String	|The hash algorithm type, which can be one of these values:<br/>- Unknown<br/>- MD5<br/>- SHA1<br/>- SHA256<br/>- SHA256AC
 |Value	|Edm.String	|The hash value  |
 
