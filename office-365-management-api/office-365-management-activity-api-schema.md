@@ -703,7 +703,7 @@ The SharePoint events listed in [Search the audit log in the Office 365 Protecti
 |:-----|:-----|:-----|:-----|
 |ApplicationId|Edm.String|No|The GUID that represents the application that is requesting the login. The display name can be looked up via the Azure Active Directory Graph API.|
 |Client|Edm.String|No|Client device information, provided by the browser performing the login.|
-|LogonError|Edm.String|No|For failed logins, contains the reason why the login failed.|
+|LogonError|Edm.String|No|For failed logins, contains the reason why the login failed. For a complete description of LogonErrors refer to the list of [Authentication and authorization error codes](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes).
 |||||
 
 ## DLP schema
