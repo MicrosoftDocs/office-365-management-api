@@ -1,6 +1,6 @@
 ---
-ms.TocTitle: Office 365 Service Communications API reference (Preview)
-title: Office 365 Service Communications API reference (Preview)
+ms.TocTitle: Office 365 Service Communications API reference
+title: Office 365 Service Communications API reference
 description: Use this API to access the following data - Get Services, Get Current Status, Get Historical Status, and Get Messages.
 ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
@@ -8,22 +8,19 @@ ms.date:
 localization_priority: Priority
 ---
 
-# Office 365 Service Communications API reference (Preview)
-
-> [!NOTE] 
-> This documentation covers features that are currently in preview.
+# Office 365 Service Communications API reference
 
 You can use the Office 365 Service Communications API V2 to access the following data:
 
 - **Get Services**: Get the list of subscribed services.
     
-- **Get Current Status**: Get a real-time view of current and ongoing service incidents and maintenance events
+- **Get Current Status**: Get a real-time view of current and ongoing service incidents.
     
-- **Get Historical Status**: Get a historical view of service health, including service incidents and maintenance events.
+- **Get Historical Status**: Get a historical view of service incidents.
     
-- **Get Messages**: Find Incident, Planned Maintenance, and Message Center communications.
+- **Get Messages**: Find Incident and Message Center communications.
     
-Currently, the Office 365 Service Communications API contains data for the following services: Dynamics CRM, Dynamics Marketing, Exchange Online, Exchange Online Protection, Identity Service, Mobile Device Management, Office 365 Partner Admin Center, OneDrive for Business, Parature, OneDrive for Business, Power BI for Office 365, Rights Management Service, SharePoint Online, SHD Admin, Skype for Business, Social Engagement, and Yammer Enterprise.
+Currently, the Office 365 Service Communications API contains data for Office 365, Yammer, Dynamics CRM and Microsoft Intune cloud services.
 
 ## The fundamentals
 
