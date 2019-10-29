@@ -1141,6 +1141,13 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |5|Anti-phish, DIMP|Domain Impersonation (DIMP) action in the Anti-phish policy.|
 |6|Anti-phish, UIMP|User Impersonation (UIMP) action in the Anti-phish policy.|
 |7|Anti-phish, SPOOF|Spoof action in the Anti-phish policy.|
+|8|Anti-phish, GIMP|Mailbox intelligence  action in the Anti-phish policy.|
+|9|Anti-malware, AMP| Malware policy action in the Anti-malware policy.|
+|10|Safe attachment, SAP| Policy action in the Office 365 ATP safe attachments policy.|
+|11|Exchange transport rule, ETR| Policy action in the Exchange Transport Rule.|
+|12|Anti-malware, ZAPM| Malware policy action in the Anti-malware policy applied to Zero-hour auto purge (ZAP).|
+|13|Anti-phish, ZAPP| Phish policy action in the Anti-phish policy applied to ZAP.|
+|14|Anti-phish, ZAPS| Spam policy action in the Anti-spam policy applied to ZAP.|
 
 
 ### Enum: PolicyAction - Type: Edm.Int32
