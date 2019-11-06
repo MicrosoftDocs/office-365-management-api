@@ -48,6 +48,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Office 365 Advanced Threat Protection and Threat Investigation and Response schema](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Extends the Common schema with the properties specific to Office 365 Advanced Threat Protection and Threat Investigation and Response data.|
 |[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
 |[Workplace Analytics](#workplace-analytics-schema)|Extends the Common schema with the properties specific to all Microsoft Workplace Analytics events.|
+|[Microsoft Forms schema](#microsoft-forms-schema)|Extends the Common schema with the properties specific to all Microsoft Forms events.|
 |||
 
 ## Common schema
@@ -111,6 +112,7 @@ This article provides details on the Common schema as well as each of the produc
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
 |54|SharePointListItemOperation|SharePoint list events.|
 |55|SharePointContentTypeOperation|SharePoint list content type events.|
+|64|MicrosoftForms|Microsoft Forms events.|
 ||||
 
 ### Enum: User Type - Type: Edm.Int32
@@ -1391,4 +1393,41 @@ The WorkPlace Analytics events listed in [Search the audit log in the Office 365
 | WpaUserRole        | Edm.String | No     | The Workplace Analytics role of the user who performed the action.                                                                                            |
 | ModifiedProperties | Collection (Common.ModifiedProperty) | No | This property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
 | OperationDetails   | Collection (Common.NameValuePair)    | No | A list of extended properties for the setting that was changed. Each property will have a **Name** and **Value**.|
+||||
+
+## Microsoft Forms schema
+
+The WorkPlace Analytics events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) will use this schema.
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|FormsUserTypes|Collection(Self.[FormsUserTypes](#formsusertypes))|Yes|The role of the user who performed the action.  Either Admin, Owner, Responder, or Coauthor.|
+|SourceApp|Edm.String|Yes|Inidates if the action is from Forms website or from another App.|
+|FormName|Edm.String|No|The name of the current form.|
+|FormId |Edm.String|No|The Id of the target form.|
+|FormTypes|Collection(Self.[FormTypes](#formtypes))|No|Indicates whether this is a Form, Quiz, or Survey.|
+|ActivityParameters|Edm.String|No|JSON string containing activitiy parameters. See [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) for more details.|
+||||
+
+### Enum: FormsUserTypes - Type: Edm.Int32
+
+#### FormsUserTypes
+
+|**Value**|**Form User Type**|**Description**|
+|:-----|:-----|:-----|
+|0|Admin|An administrator who has access to the Form.|
+|1|Owner|A user who is the owner of the Form.|
+|2|Responder|A user who has submitted a response to a Form.|
+|3|Coauthor|A user who has used a collaboration link provided by the form Owner to login and edit a Form.|
+||||
+
+### Enum: FormTypes - Type: Edm.Int32
+
+#### FormTypes
+
+|**Value**|**Form Types**|**Description**|
+|:-----|:-----|:-----|
+|0|Form|Forms are creating via the New Form option.|
+|1|Quiz|Quizzes are creating via the New Quiz option.  A Quiz is a speical type of Form that includes additional features such as point values, auto and manual grading, commenting, and more.|
+|2|Survey|Surveys are creating via the New Survey option.  A Survey is a special type of Form that includes additional features such as CMS integration and support for Flow rules.|
 ||||
