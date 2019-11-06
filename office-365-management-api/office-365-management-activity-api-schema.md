@@ -1397,7 +1397,7 @@ The WorkPlace Analytics events listed in [Search the audit log in the Office 365
 
 ## Microsoft Forms schema
 
-The WorkPlace Analytics events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) will use this schema.
+The Micorosft Forms events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) will use this schema.
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
