@@ -1164,6 +1164,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |5|Quarantine|Policy action is to quarantine the email message.|
 |6|NoAction| Policy is configured to take no action on the email message.|
 |7|BccMessage|Policy action is to Bcc the email message to email address specificed by the filtering policy.|
+|8|ReplaceAttachment|Policy action is to replace the attachment in the email message as specified by the filtering policy.|
 
 
 ### URL time-of-click events
@@ -1235,15 +1236,16 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 [Office 365 automated investigation and response (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) events are available for Office 365 Customers who have a subscription that includes Office 365 Advanced Threat Protection Plan 2 or Office 365 E5. Investigation events are logged based on a change in investigation status. For example, when an administrator takes an action that changes the status of an investigation from Pending Actions to Completed, an event is logged. 
 
 Currently, only automated investigation are logged. (Events for manually generated investigations are coming soon.) The following status values are logged: 
-- Investigation was created
-- No threats found 
-- Terminated by system 
+- Investigation Started
+- No threats found 
+- Terminated by System
 - Pending Action 
-- Threats found 
+- Threats Found 
 - Remediated 
 - Failed 
-- Terminated by Throttling 
-- Terminated by User 
+- Terminated by throttling 
+- Terminated By User
+- Running
 
 #### Main investigation schema 
 
