@@ -1386,7 +1386,7 @@ The Power BI events listed in [Search the audit log in the Office 365 Protection
 
 ## Workplace Analytics schema
 
-The WorkPlace Analytics events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities) will use this schema.
+The WorkPlace Analytics events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities) will use this schema.
 
 | **Parameters**     | **Type**            | **Mandatory?** | **Description**|
 |:------------------ | :------------------ | :--------------|:--------------|
@@ -1397,16 +1397,16 @@ The WorkPlace Analytics events listed in [Search the audit log in the Office 365
 
 ## Microsoft Forms schema
 
-The Micorosft Forms events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) will use this schema.
+The Micorosft Forms events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) will use this schema.
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|FormsUserTypes|Collection(Self.[FormsUserTypes](#formsusertypes))|Yes|The role of the user who performed the action.  Either Admin, Owner, Responder, or Coauthor.|
-|SourceApp|Edm.String|Yes|Inidates if the action is from Forms website or from another App.|
+|FormsUserTypes|Collection(Self.[FormsUserTypes](#formsusertypes))|Yes|The role of the user who performed the action.  The values for this parameter are Admin, Owner, Responder, or Coauthor.|
+|SourceApp|Edm.String|Yes|Indicates if the action is from Forms website or from another App.|
 |FormName|Edm.String|No|The name of the current form.|
 |FormId |Edm.String|No|The Id of the target form.|
 |FormTypes|Collection(Self.[FormTypes](#formtypes))|No|Indicates whether this is a Form, Quiz, or Survey.|
-|ActivityParameters|Edm.String|No|JSON string containing activitiy parameters. See [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) for more details.|
+|ActivityParameters|Edm.String|No|JSON string containing activity parameters. See [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) for more details.|
 ||||
 
 ### Enum: FormsUserTypes - Type: Edm.Int32
@@ -1415,10 +1415,10 @@ The Micorosft Forms events listed in [Search the audit log in the Office 365 Sec
 
 |**Value**|**Form User Type**|**Description**|
 |:-----|:-----|:-----|
-|0|Admin|An administrator who has access to the Form.|
-|1|Owner|A user who is the owner of the Form.|
-|2|Responder|A user who has submitted a response to a Form.|
-|3|Coauthor|A user who has used a collaboration link provided by the form Owner to login and edit a Form.|
+|0|Admin|An administrator who has access to the form.|
+|1|Owner|A user who is the owner of the form.|
+|2|Responder|A user who has submitted a response to a form.|
+|3|Coauthor|A user who has used a collaboration link provided by the form owner to login and edit a form.|
 ||||
 
 ### Enum: FormTypes - Type: Edm.Int32
@@ -1427,7 +1427,7 @@ The Micorosft Forms events listed in [Search the audit log in the Office 365 Sec
 
 |**Value**|**Form Types**|**Description**|
 |:-----|:-----|:-----|
-|0|Form|Forms are creating via the New Form option.|
-|1|Quiz|Quizzes are creating via the New Quiz option.  A Quiz is a speical type of Form that includes additional features such as point values, auto and manual grading, commenting, and more.|
-|2|Survey|Surveys are creating via the New Survey option.  A Survey is a special type of Form that includes additional features such as CMS integration and support for Flow rules.|
+|0|Form|Forms that are created with the New Form option.|
+|1|Quiz|Quizzes that are created with the New Quiz option.  A quiz is a special type of form that includes additional features such as point values, auto and manual grading, and commenting.|
+|2|Survey|Surveys that are created with the New Survey option.  A survey is a special type of form that includes additional features such as CMS integration and support for Flow rules.|
 ||||
