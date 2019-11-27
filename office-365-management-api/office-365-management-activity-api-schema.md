@@ -112,7 +112,7 @@ This article provides details on the Common schema as well as each of the produc
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
 |54|SharePointListItemOperation|SharePoint list events.|
 |55|SharePointContentTypeOperation|SharePoint list content type events.|
-|64|MicrosoftForms|Microsoft Forms events.|
+|66|MicrosoftForms|Microsoft Forms events.|
 ||||
 
 ### Enum: User Type - Type: Edm.Int32
@@ -1237,7 +1237,8 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 
 [Office 365 automated investigation and response (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) events are available for Office 365 Customers who have a subscription that includes Office 365 Advanced Threat Protection Plan 2 or Office 365 E5. Investigation events are logged based on a change in investigation status. For example, when an administrator takes an action that changes the status of an investigation from Pending Actions to Completed, an event is logged. 
 
-Currently, only automated investigation are logged. (Events for manually generated investigations are coming soon.) The following status values are logged: 
+Currently, only automated investigation are logged. (Events for manually generated investigations are coming soon.) The following status values are logged:
+
 - Investigation Started
 - No threats found 
 - Terminated by System
@@ -1262,6 +1263,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |DeeplinkURL	|Edm.String	|Deep link URL to an investigation in Office 365 Security & Compliance Center |
 |Actions |Collection (Edm.String)	|Collection of actions recommended by an investigation |
 |Data	|Edm.String	|Data string which contains more details about investigation entities, and information about alerts related to the investigation. Entities are available in a separate node within the data blob. |
+||||
 
 #### Actions
 
@@ -1280,6 +1282,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |Resource Identifiers 	|Edm.String	 |Consists of the Azure Active Directory tenant ID.|
 |Entities	|Collection(Edm.String)	|List of one or more affected entities by action |
 |Related Alert IDs	|Edm.String	|Alert related to an investigation |
+||||
 
 #### Entities
 
@@ -1297,6 +1300,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |NetworkMessageId	|Edm.Guid 	|The network message id of this mail message  |
 |InternetMessageId	|Edm.String  |The internet message id of this mail message |
 |Subject	|Edm.String	|The subject of this mail message  |
+||||
 
 #### IP
 
@@ -1304,6 +1308,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |----|----|----|
 |Type	|Edm.String	|"ip" |
 |Address	|Edm.String	|The IP address as a string, such as `127.0.0.1`
+||||
 
 #### URL
 
@@ -1311,6 +1316,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |----|----|----|
 |Type	|Edm.String	|"url" |
 |Url	|Edm.String	|The full URL to which an entity points  |
+||||
 
 #### Mailbox (also equivalent to the user) 
 
@@ -1320,6 +1326,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |MailboxPrimaryAddress	|Edm.String	|The mailbox's primary address  |
 |DisplayName	|Edm.String	|The mailbox's display name |
 |Upn	|Edm.String	|The mailbox's UPN  |
+||||
 
 #### File
 
@@ -1328,6 +1335,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |Type	|Edm.String	|"file" |
 |Name	|Edm.String	|The file name without path |
 FileHashes |Collection (Edm.String)	|The file hashes associated with the file |
+||||
 
 #### FileHash
 
@@ -1336,6 +1344,7 @@ FileHashes |Collection (Edm.String)	|The file hashes associated with the file |
 |Type	|Edm.String	|"filehash" |
 |Algorithm	|Edm.String	|The hash algorithm type, which can be one of these values:<br/>- Unknown<br/>- MD5<br/>- SHA1<br/>- SHA256<br/>- SHA256AC
 |Value	|Edm.String	|The hash value  |
+||||
 
 #### MailCluster
 
@@ -1350,6 +1359,7 @@ FileHashes |Collection (Edm.String)	|The file hashes associated with the file |
 |QueryTime	|Edm.DateTime	|The query time  |
 |MailCount	|Edm.int	|The number of mail messages that are part of the mail cluster  |
 |Source	|String	|The source of the mail cluster; the value of the cluster source. |
+||||
 
 ## Power BI schema
 
