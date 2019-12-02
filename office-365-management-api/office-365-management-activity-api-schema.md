@@ -46,6 +46,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Data Center Security Cmdlet schema](#data-center-security-cmdlet-schema)|Extends the Data Center Security Base schema with the properties specific to all data center security cmdlet audit data.|
 |[Microsoft Teams schema](#microsoft-teams-schema)|Extends the Common schema with the properties specific to all Microsoft Teams events.|
 |[Office 365 Advanced Threat Protection and Threat Investigation and Response schema](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Extends the Common schema with the properties specific to Office 365 Advanced Threat Protection and Threat Investigation and Response data.|
+|[Automated investigation and response events](#automated-investigation-and-response-events-in-office-365)|Extends the Common schema with the properties specific to Office 365 automated investigation and response (AIR) events.|
 |[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
 |[Workplace Analytics](#workplace-analytics-schema)|Extends the Common schema with the properties specific to all Microsoft Workplace Analytics events.|
 |[Microsoft Forms schema](#microsoft-forms-schema)|Extends the Common schema with the properties specific to all Microsoft Forms events.|
@@ -112,6 +113,7 @@ This article provides details on the Common schema as well as each of the produc
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
 |54|SharePointListItemOperation|SharePoint list events.|
 |55|SharePointContentTypeOperation|SharePoint list content type events.|
+|64|AirInvestigation|Automated incident response (AIR) events.|
 |66|MicrosoftForms|Microsoft Forms events.|
 ||||
 
@@ -1233,9 +1235,9 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |2|Microsoft Teams|
 |||||
 
-### Automated investigation and response events
+## Automated investigation and response events in Office 365
 
-[Office 365 automated investigation and response (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) events are available for Office 365 Customers who have a subscription that includes Office 365 Advanced Threat Protection Plan 2 or Office 365 E5. Investigation events are logged based on a change in investigation status. For example, when an administrator takes an action that changes the status of an investigation from Pending Actions to Completed, an event is logged. 
+[Office 365 automated investigation and response (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) events are available for Office 365 customers who have a subscription that includes Office 365 Advanced Threat Protection Plan 2 or Office 365 E5. Investigation events are logged based on a change in investigation status. For example, when an administrator takes an action that changes the status of an investigation from Pending Actions to Completed, an event is logged. 
 
 Currently, only automated investigation are logged. (Events for manually generated investigations are coming soon.) The following status values are logged:
 
@@ -1250,7 +1252,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 - Terminated By User
 - Running
 
-#### Main investigation schema 
+### Main investigation schema 
 
 |Name	|Type	|Description  |
 |----|----|----|
@@ -1265,7 +1267,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |Data	|Edm.String	|Data string which contains more details about investigation entities, and information about alerts related to the investigation. Entities are available in a separate node within the data blob. |
 ||||
 
-#### Actions
+### Actions
 
 |Field	|Type	|Description |
 |----|----|----|
@@ -1284,9 +1286,9 @@ Currently, only automated investigation are logged. (Events for manually generat
 |Related Alert IDs	|Edm.String	|Alert related to an investigation |
 ||||
 
-#### Entities
+### Entities
 
-##### MailMessage (email) 
+#### MailMessage (email) 
 
 |Field	|Type	|Description  |
 |----|----|----|
