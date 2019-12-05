@@ -103,16 +103,21 @@ This article provides details on the Common schema as well as each of the produc
 |30|MicrosoftFlow|Microsoft Flow events.|
 |31|AeD|Advanced eDiscovery events.|
 |32|MicrosoftStream|Microsoft Stream events.|
+|33|ComplianceDLPSharePointClassification|Events related to DLP classification in SharePoint.|
 |35|Project|Microsoft Project events.|
-|36|SharepointListOperation|Sharepoint List events.|
+|36|SharePointListOperation|SharePoint List events.|
 |38|DataGovernance|Events related to retention policies and retention labels in the Security & Compliance Center|
 |40|SecurityComplianceAlerts|Security and compliance alert signals.|
 |41|ThreatIntelligenceUrl|Safe links time-of-block and block override events from Office 365 Advanced Threat Protection.|
+|42|SecurityComplianceInsights|Events related to insights and reports in the Office 365 security and compliance center.|
 |44|WorkplaceAnalytics|Workplace Analytics events.|
 |45|PowerAppsApp|PowerApps app events.|
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
-|54|SharePointListItemOperation|SharePoint list events.|
+|49|TeamsHealthcare|Events related to the [Patients application](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit) in Microsoft Teams for Healthcare.|
+|52|DataInsightsRestApiAudit|Data Insights REST API events.|
+|54|SharePointListItemOperation|SharePoint list item events.|
 |55|SharePointContentTypeOperation|SharePoint list content type events.|
+|56|SharePointFieldOperation|SharePoint list field events.|
 |64|AirInvestigation|Automated incident response (AIR) events.|
 |66|MicrosoftForms|Microsoft Forms events.|
 ||||
@@ -130,10 +135,9 @@ This article provides details on the Common schema as well as each of the produc
 |4|System|A system account.|
 |5|Application|An application.|
 |6|ServicePrincipal|A service principal.|
+|7|CustomPolicy|A custom policy.|
+|8|SystemPolicy|A system policy.|
 ||||
-
-> [!NOTE] 
-> Only Exchange operations include a user type. SharePoint operations don't specify a user type. 
 
 ### Enum: AuditLogScope - Type: Edm.Int32
 
