@@ -100,7 +100,7 @@ This article provides details on the Common schema as well as each of the produc
 |24|Discovery|Events for eDiscovery activities performed by running content searches and managing eDiscovery cases in the Security & Compliance Center.|
 |25|MicrosoftTeams|Events from Microsoft Teams.|
 |28|ThreatIntelligence|Phishing and malware events from Exchange Online Protection and Office 365 Advanced Threat Protection.|
-|30|MicrosoftFlow|Microsoft Flow events.|
+|30|MicrosoftFlow|Microsoft Power Automate (formerly called Microsoft Flow) events.|
 |31|AeD|Advanced eDiscovery events.|
 |32|MicrosoftStream|Microsoft Stream events.|
 |33|ComplianceDLPSharePointClassification|Events related to DLP classification in SharePoint.|
@@ -111,7 +111,7 @@ This article provides details on the Common schema as well as each of the produc
 |41|ThreatIntelligenceUrl|Safe links time-of-block and block override events from Office 365 Advanced Threat Protection.|
 |42|SecurityComplianceInsights|Events related to insights and reports in the Office 365 security and compliance center.|
 |44|WorkplaceAnalytics|Workplace Analytics events.|
-|45|PowerAppsApp|PowerApps app events.|
+|45|PowerAppsApp|Power Apps events.|
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
 |49|TeamsHealthcare|Events related to the [Patients application](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit) in Microsoft Teams for Healthcare.|
 |52|DataInsightsRestApiAudit|Data Insights REST API events.|
