@@ -100,7 +100,7 @@ This article provides details on the Common schema as well as each of the produc
 |24|Discovery|Events for eDiscovery activities performed by running content searches and managing eDiscovery cases in the Security & Compliance Center.|
 |25|MicrosoftTeams|Events from Microsoft Teams.|
 |28|ThreatIntelligence|Phishing and malware events from Exchange Online Protection and Office 365 Advanced Threat Protection.|
-|30|MicrosoftFlow|Microsoft Flow events.|
+|30|MicrosoftFlow|Microsoft Power Automate (formerly called Microsoft Flow) events.|
 |31|AeD|Advanced eDiscovery events.|
 |32|MicrosoftStream|Microsoft Stream events.|
 |33|ComplianceDLPSharePointClassification|Events related to DLP classification in SharePoint.|
@@ -111,7 +111,7 @@ This article provides details on the Common schema as well as each of the produc
 |41|ThreatIntelligenceUrl|Safe links time-of-block and block override events from Office 365 Advanced Threat Protection.|
 |42|SecurityComplianceInsights|Events related to insights and reports in the Office 365 security and compliance center.|
 |44|WorkplaceAnalytics|Workplace Analytics events.|
-|45|PowerAppsApp|PowerApps app events.|
+|45|PowerAppsApp|Power Apps events.|
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
 |49|TeamsHealthcare|Events related to the [Patients application](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit) in Microsoft Teams for Healthcare.|
 |52|DataInsightsRestApiAudit|Data Insights REST API events.|
@@ -354,7 +354,7 @@ This article provides details on the Common schema as well as each of the produc
 
 ## SharePoint file operations
 
-The file-related SharePoint events listed in the "File and folder activities" section in [Search the audit log in the Office 365 Protection Center](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US) use this schema.
+The file-related SharePoint events listed in the "File and folder activities" section in [Search the audit log in security and compliance center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) use this schema.
 
 
 
@@ -374,7 +374,8 @@ The file-related SharePoint events listed in the "File and folder activities" se
 
 ## SharePoint Sharing schema
 
- The file share-related SharePoint events. They are different from file- and folder-related events in that a user is taking an action that has some effect on another user. For information about the SharePoint Sharing schema, see [Use sharing auditing in the Office 365 audit log](https://support.office.com/en-us/article/Use-sharing-auditing-in-the-Office-365-audit-log-50bbf89f-7870-4c2a-ae14-42635e0cfc01?ui=en-US&amp;rs=en-US&amp;ad=US).
+ The file share-related SharePoint events. They are different from file- and folder-related events in that a user is taking an action that has some effect on another user. For information about the SharePoint Sharing schema, see [Use sharing auditing in the Office 365 audit log](https://docs.microsoft.com/microsoft-365/compliance/use-sharing-auditing
+).
 
 
 
@@ -388,7 +389,7 @@ The file-related SharePoint events listed in the "File and folder activities" se
 
 ## SharePoint schema
 
-The SharePoint events listed in [Search the audit log in the Office 365 Protection Center](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US) (excluding the file and folder events) use this schema.
+The SharePoint events listed in [Search the audit log in security and compliance center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) (excluding the file and folder events) use this schema.
 
 
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
@@ -892,7 +893,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 
 ## Sway schema
 
-The Sway events listed in [Search the audit log in the Office 365 Protection Center](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US) (excluding the file and folder events) will use this schema.
+The Sway events listed in [Search the audit log in the Office 365 Protection Center](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US) (excluding the file and folder events) will use this schema.
 
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -1077,7 +1078,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 
 [Office 365 Advanced Threat Protection](https://docs.microsoft.com/office365/securitycompliance/office-365-atp) (ATP) and Threat Investigation and Response events are available for Office 365 customers who have an Office 365 Advanced Threat Protection Plan 1, Office 365 Advanced Threat Protection Plan 2, or an E5 subscription. Each event in the Office 365 ATP feed corresponds to the following that were determined to contain a threat:
 
-- An email message sent by or received by a user in the organization with detections that are made on messages at delivery time and from [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15). 
+- An email message sent by or received by a user in the organization with detections that are made on messages at delivery time and from [Zero hour auto purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15). 
 
 - URLs clicked by a user in the organization that were detected as malicious at time-of-click based on [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.  
 
@@ -1093,7 +1094,7 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |AttachmentData|Collection(Self.[AttachmentData](#attachmentdata))|No|Data about attachments in the email message that triggered the event.|
-|DetectionType|Edm.String|Yes|The type of detection (for example, **Inline** - detected at delivery time; **Delayed** - detected after delivery; **ZAP** - messages removed by [Zero hour auto purge](https://support.office.com/en-us/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15)). Events with ZAP detection type will typically be preceded by a message with a **Delayed** detection type.|
+|DetectionType|Edm.String|Yes|The type of detection (for example, **Inline** - detected at delivery time; **Delayed** - detected after delivery; **ZAP** - messages removed by [Zero hour auto purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15)). Events with ZAP detection type will typically be preceded by a message with a **Delayed** detection type.|
 |DetectionMethod|Edm.String|Yes|The method or technology used by Office 365 ATP for the detection.|
 |InternetMessageId|Edm.String|Yes|The Internet Message Id.|
 |NetworkMessageId|Edm.String|Yes|The Exchange Online Network Message Id.|
