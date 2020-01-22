@@ -35,7 +35,7 @@ If unified auditing isn't enabled, you will typically receive an error that cont
 
 ## Connecting to the API
 
-Most applications connect to the API using a straightforward Client Credentials OAuth2 flow. Therefore, the first step is to create an Azure AD application that has the permissions needed to access the Management Activity API data. It’s outside the scope of this article to explain the steps to create an Azure AD App registration. For more information, see [Register your application with your Azure Active Directory tenant](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications).
+Most applications connect to the API using a straightforward Client Credentials OAuth2 flow. Therefore, the first step is to create an Azure AD application that has the permissions needed to access the Management Activity API data. It’s outside the scope of this article to explain the steps to create an Azure AD App registration. For more information, see [Register your application with your Azure Active Directory tenant](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
 
 ### Azure application permissions
 
