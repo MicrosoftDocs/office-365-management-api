@@ -24,4 +24,4 @@ The Office 365 Management APIs provide a single extensibility platform for all O
 
 ## See also
 
-- [Office 365 REST APIs](https://docs.microsoft.com/en-us/previous-versions/office/office-365-api/how-to/platform-development-overview)
+- [Office 365 REST APIs](https://docs.microsoft.com/previous-versions/office/office-365-api/how-to/platform-development-overview)

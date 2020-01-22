@@ -12,7 +12,7 @@ localization_priority: Priority
 
 #### What events are audited for a specific Office 365 service?
 
-Office 365 Management Activity API schema documentation has a comprehensive list of events. For details, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md). Also see the "Audited activities" section in [Search the audit log in the Security & Compliance Center](https://docs.microsoft.com/en-us/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#audited-activities) for a list of events for most of the Office 365 services that are audited.
+Office 365 Management Activity API schema documentation has a comprehensive list of events. For details, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md). Also see the "Audited activities" section in [Search the audit log in the Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#audited-activities) for a list of events for most of the Office 365 services that are audited.
 
 #### How do I onboard to the Management Activity API?
 
