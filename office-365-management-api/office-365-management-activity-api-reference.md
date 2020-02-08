@@ -571,14 +571,12 @@ HTTP/1.1 200 OK
 
 ## API throttling
 
-Each vendor coding against the API has a dedicated quota for request throttling at 60K per minute. To get the dedicated quota, specify the parameter PublisherIdentifier in all your requests. Requests with the same PublisherIdentifier will share the same quota. All requests without the PublisherIdentifier specified will share the same quota as GUID 00000000-0000-0000-0000-000000000000.
+Organizations that access auditing logs through the Office 365 Management Activity API were restricted by throttling limits at the publisher level. This means that for a publisher pulling data on behalf of multiple customers, the limit was shared by all those customers.
 
-If Office 365 needs to reverse escalate to you in certain issues, make sure the subscription for the tenant whose GUID is used as your PublisherIdentifier is current and updated with the correct contact information. There is no subscription requirement for this tenant.
-
-For customers who are developing their own solutions using this API, we recommend using your own tenant GUID to avoid competition caused by a limited shared quota.
+We're moving from a publisher-level limit to a tenant-level limit. The result is that each organization will get their own fully allocated bandwidth quota to access their auditing data. All organizations are initially allocated a baseline of 2,000 requests per minute. This is not a static, predefined limit but is modeled on a combination of factors including the number of seats in the organization and that Office 365 and Microsoft 365 E5 organizations will get approximately twice as much bandwidth as non-E5 organizations. There will also be cap on the maximum bandwidth to protect the health of the service.
 
 > [!NOTE] 
-> Even though each publisher can submit up to 60K requests per minute, Microsoft cannot guarantee a response rate. The response rate depends on various factors, such as client system performance, network capacity, and network speed.  A publisher can submit up to 60K requests per minute, but should not expect to receive responses for all 60K requests within that same minute. If anything, should a publisher want to benchmark a client application, they should do so in each different environment that they are planning on running the client application in because results will vary from environment to environment.
+> Even though each tenant can initially submit up to 2,000 requests per minute, Microsoft cannot guarantee a response rate. The response rate depends on various factors, such as client system performance, network capacity, and network speed. 
 
 ## Errors
 
