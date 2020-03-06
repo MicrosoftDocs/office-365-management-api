@@ -68,7 +68,7 @@ This article provides details on the Common schema as well as each of the produc
 |Workload|Edm.String|No|The Office 365 service where the activity occurred. 
 |ResultStatus|Edm.String|No|Indicates whether the action (specified in the Operation property) was successful or not. Possible values are **Succeeded**, **PartiallySucceeded**, or **Failed**. For Exchange admin activity, the value is either **True** or **False**.<br/><br/>**Important**: Different workloads may overwrite the value of the ResultStatus property. For example, for Azure Active Directory STS logon events, a value of **Succeeded** for ResultStatus indicates only that the HTTP operation was successful; it doesn't mean the logon was successful. To determine if the actual logon was successful or not, see the LogonError property in the [Azure Active Directory STS Logon schema](#azure-active-directory-secure-token-service-sts-logon-schema). If the logon failed, the value of this property will contain the reason for the failed logon attempt. |
 |ObjectId|Edm.string|No|For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. For Exchange admin audit logging, the name of the object that was modified by the cmdlet.|
-|UserId|Edm.string|Yes|The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, `my_name@my_domain_name`. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included.|
+|UserId|Edm.string|Yes|The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, `my_name@my_domain_name`. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see [The app@sharepoint user in audit records](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records). |
 |ClientIP|Edm.String|Yes|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.<br/><br/>For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. <br/><br/>Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is `null`.|
 |Scope|Self.[AuditLogScope](#auditlogscope)|No|Was this event created by a hosted O365 service or an on-premises server? Possible values are **online** and **onprem**. Note that SharePoint is the only workload currently sending events from on-premises to O365.|
 |||||
@@ -724,9 +724,9 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 
 - DlpRuleMatch - This indicates a rule was matched. These events exist in both Exchange and SharePoint Online and OneDrive for Business. For Exchange it includes false positive and override information. For SharePoint Online and OneDrive for Business, false positive and overrides generate separate events.
 
-- DlpRuleUndo - These only exist in SharePoint Online and OneDrive for Business, and indicate a previously applied policy action has been “undone” – either because of false positive/override designation by user, or because the document is no longer subject to policy (either due to policy change or change to content in doc).
+- DlpRuleUndo - These only exist in SharePoint Online and OneDrive for Business, and indicate a previously applied policy action has been "undone" – either because of false positive/override designation by user, or because the document is no longer subject to policy (either due to policy change or change to content in doc).
 
-- DlpInfo - These only exist in SharePoint Online and OneDrive for Business and indicate a false positive designation but no action was “undone.”
+- DlpInfo - These only exist in SharePoint Online and OneDrive for Business and indicate a false positive designation but no action was "undone."
 
 |**Parameters**|**Type**|**Mandatory**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -811,7 +811,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |||||
 
 ### SensitiveInformationDetections complex type 
-DLP sensitive data is only available in the activity feed API to users that have been granted “Read DLP sensitive data” permissions. 
+DLP sensitive data is only available in the activity feed API to users that have been granted "Read DLP sensitive data" permissions. 
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -838,7 +838,7 @@ DLP sensitive data is only available in the activity feed API to users that have
 |CmdletVersion|Edm.String|No|The build version of the cmdlet when it was executed.|
 |EffectiveOrganization|Edm.String|No|The GUID for the organization impacted by the cmdlet. (Deprecated: This parameter will stop appearing in the future.)|
 |UserServicePlan|Edm.String|No|The Exchange Online Protection service plan assigned to the user that executed the cmdlet.|
-|ClientApplication|Edm.String|No|If the cmdlet was executed by an application, as opposed to remote powershell, this field contains that application’s name.|
+|ClientApplication|Edm.String|No|If the cmdlet was executed by an application, as opposed to remote powershell, this field contains that application's name.|
 |Parameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that do not include Personally Identifiable Information.|
 |NonPiiParameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that include Personally Identifiable Information. (Deprecated: This field will stop appearing in the future and its content merged with the Parameters field.)|
 |||||
@@ -1260,113 +1260,113 @@ Currently, only automated investigation are logged. (Events for manually generat
 
 ### Main investigation schema 
 
-|Name	|Type	|Description  |
+|Name    |Type    |Description  |
 |----|----|----|
-|InvestigationId	|Edm.String	|Investigation ID/GUID |
-|InvestigationName	|Edm.String	|Name of the investigation |
-|InvestigationType	|Edm.String	|Type of the investigation. Can take one of the following values:<br/>- User-Reported Messages<br/>- Zapped Malware<br/>- Zapped Phish<br/>- Url Verdict Change<p>(Manual investigations are currently not available and are coming soon.) |
-|LastUpdateTimeUtc	|Edm.Date	|UTC time of the last update for an investigation |
-|StartTimeUtc	|Edm.Date	|Start time for an investigation |
-|Status 	|Edm.String 	|State of investigation, Running, Pending Actions, etc. |
-|DeeplinkURL	|Edm.String	|Deep link URL to an investigation in Office 365 Security & Compliance Center |
-|Actions |Collection (Edm.String)	|Collection of actions recommended by an investigation |
-|Data	|Edm.String	|Data string which contains more details about investigation entities, and information about alerts related to the investigation. Entities are available in a separate node within the data blob. |
+|InvestigationId    |Edm.String    |Investigation ID/GUID |
+|InvestigationName    |Edm.String    |Name of the investigation |
+|InvestigationType    |Edm.String    |Type of the investigation. Can take one of the following values:<br/>- User-Reported Messages<br/>- Zapped Malware<br/>- Zapped Phish<br/>- Url Verdict Change<p>(Manual investigations are currently not available and are coming soon.) |
+|LastUpdateTimeUtc    |Edm.Date    |UTC time of the last update for an investigation |
+|StartTimeUtc    |Edm.Date    |Start time for an investigation |
+|Status     |Edm.String     |State of investigation, Running, Pending Actions, etc. |
+|DeeplinkURL    |Edm.String    |Deep link URL to an investigation in Office 365 Security & Compliance Center |
+|Actions |Collection (Edm.String)    |Collection of actions recommended by an investigation |
+|Data    |Edm.String    |Data string which contains more details about investigation entities, and information about alerts related to the investigation. Entities are available in a separate node within the data blob. |
 ||||
 
 ### Actions
 
-|Field	|Type	|Description |
+|Field    |Type    |Description |
 |----|----|----|
-|ID 	|Edm.String	|Action ID|
-|ActionType	|Edm.String	|The type of the action, such as email remediation |
-|ActionStatus	|Edm.String	|Values include: <br/>- Pending<br/>- Running<br/>- Waiting on resource<br/>- Completed<br/>- Failed |
-|ApprovedBy	|Edm.String	|Null if auto approved; otherwise, the username/id (this is coming soon) |
-|TimestampUtc	|Edm.DateTime	|The timestamp of the action status change |
-|ActionId	|Edm.String	|Unique identifier for action |
-|InvestigationId	|Edm.String	|Unique identifier for investigation |
-|RelatedAlertIds	|Collection(Edm.String)	|Alerts related to an investigation |
-|StartTimeUtc	|Edm.DateTime	|Timestamp of action creation |
-|EndTimeUtc	|Edm.DateTime	|Action final status update timestamp |
-|Resource Identifiers 	|Edm.String	 |Consists of the Azure Active Directory tenant ID.|
-|Entities	|Collection(Edm.String)	|List of one or more affected entities by action |
-|Related Alert IDs	|Edm.String	|Alert related to an investigation |
+|ID     |Edm.String    |Action ID|
+|ActionType    |Edm.String    |The type of the action, such as email remediation |
+|ActionStatus    |Edm.String    |Values include: <br/>- Pending<br/>- Running<br/>- Waiting on resource<br/>- Completed<br/>- Failed |
+|ApprovedBy    |Edm.String    |Null if auto approved; otherwise, the username/id (this is coming soon) |
+|TimestampUtc    |Edm.DateTime    |The timestamp of the action status change |
+|ActionId    |Edm.String    |Unique identifier for action |
+|InvestigationId    |Edm.String    |Unique identifier for investigation |
+|RelatedAlertIds    |Collection(Edm.String)    |Alerts related to an investigation |
+|StartTimeUtc    |Edm.DateTime    |Timestamp of action creation |
+|EndTimeUtc    |Edm.DateTime    |Action final status update timestamp |
+|Resource Identifiers     |Edm.String     |Consists of the Azure Active Directory tenant ID.|
+|Entities    |Collection(Edm.String)    |List of one or more affected entities by action |
+|Related Alert IDs    |Edm.String    |Alert related to an investigation |
 ||||
 
 ### Entities
 
 #### MailMessage (email) 
 
-|Field	|Type	|Description  |
+|Field    |Type    |Description  |
 |----|----|----|
-|Type	|Edm.String	|"mail-message"  |
-|Files	|Collection (Self.File) |Details about the files of this message's attachments |
-|Recipient	|Edm.String	|The recipient of this mail message |
-|Urls	|Collection(Self.URL) |The Urls contained in this mail message  |
-|Sender	|Edm.String	|The sender's email address  |
-|SenderIP	|Edm.String	|The sender's IP address  |
-|ReceivedDate	|Edm.DateTime	|The received date of this message  |
-|NetworkMessageId	|Edm.Guid 	|The network message id of this mail message  |
-|InternetMessageId	|Edm.String  |The internet message id of this mail message |
-|Subject	|Edm.String	|The subject of this mail message  |
+|Type    |Edm.String    |"mail-message"  |
+|Files    |Collection (Self.File) |Details about the files of this message's attachments |
+|Recipient    |Edm.String    |The recipient of this mail message |
+|Urls    |Collection(Self.URL) |The Urls contained in this mail message  |
+|Sender    |Edm.String    |The sender's email address  |
+|SenderIP    |Edm.String    |The sender's IP address  |
+|ReceivedDate    |Edm.DateTime    |The received date of this message  |
+|NetworkMessageId    |Edm.Guid     |The network message id of this mail message  |
+|InternetMessageId    |Edm.String  |The internet message id of this mail message |
+|Subject    |Edm.String    |The subject of this mail message  |
 ||||
 
 #### IP
 
-|Field	|Type	|Description  |
+|Field    |Type    |Description  |
 |----|----|----|
-|Type	|Edm.String	|"ip" |
-|Address	|Edm.String	|The IP address as a string, such as `127.0.0.1`
+|Type    |Edm.String    |"ip" |
+|Address    |Edm.String    |The IP address as a string, such as `127.0.0.1`
 ||||
 
 #### URL
 
-|Field	|Type	|Description  |
+|Field    |Type    |Description  |
 |----|----|----|
-|Type	|Edm.String	|"url" |
-|Url	|Edm.String	|The full URL to which an entity points  |
+|Type    |Edm.String    |"url" |
+|Url    |Edm.String    |The full URL to which an entity points  |
 ||||
 
 #### Mailbox (also equivalent to the user) 
 
-|Field	|Type	|Description |
+|Field    |Type    |Description |
 |----|----|----|
-|Type	|Edm.String	|"mailbox"  |
-|MailboxPrimaryAddress	|Edm.String	|The mailbox's primary address  |
-|DisplayName	|Edm.String	|The mailbox's display name |
-|Upn	|Edm.String	|The mailbox's UPN  |
+|Type    |Edm.String    |"mailbox"  |
+|MailboxPrimaryAddress    |Edm.String    |The mailbox's primary address  |
+|DisplayName    |Edm.String    |The mailbox's display name |
+|Upn    |Edm.String    |The mailbox's UPN  |
 ||||
 
 #### File
 
-|Field	|Type	|Description  |
+|Field    |Type    |Description  |
 |----|----|----|
-|Type	|Edm.String	|"file" |
-|Name	|Edm.String	|The file name without path |
-FileHashes |Collection (Edm.String)	|The file hashes associated with the file |
+|Type    |Edm.String    |"file" |
+|Name    |Edm.String    |The file name without path |
+FileHashes |Collection (Edm.String)    |The file hashes associated with the file |
 ||||
 
 #### FileHash
 
-|Field	|Type	|Description |
+|Field    |Type    |Description |
 |----|----|----|
-|Type	|Edm.String	|"filehash" |
-|Algorithm	|Edm.String	|The hash algorithm type, which can be one of these values:<br/>- Unknown<br/>- MD5<br/>- SHA1<br/>- SHA256<br/>- SHA256AC
-|Value	|Edm.String	|The hash value  |
+|Type    |Edm.String    |"filehash" |
+|Algorithm    |Edm.String    |The hash algorithm type, which can be one of these values:<br/>- Unknown<br/>- MD5<br/>- SHA1<br/>- SHA256<br/>- SHA256AC
+|Value    |Edm.String    |The hash value  |
 ||||
 
 #### MailCluster
 
-|Field	|Type	|Description   |
+|Field    |Type    |Description   |
 |----|----|----|
-|Type	|Edm.String	|"MailCluster" <br/>Determines the type of entity being discussed |
-|NetworkMessageIds	|Collection (Edm.String)	|List of the mail message IDs that are part of the mail cluster |
-|CountByDeliveryStatus	|Collections (Edm.String)	|Count of mail messages by DeliveryStatus string representation |
-|CountByThreatType	|Collections (Edm.String) |Count of mail messages by ThreatType string representation |
-|Threats	|Collections (Edm.String)	|The threats of mail messages that are part of the mail cluster. Threats include values like Phish and Malware. |
-|Query	|Edm.String	|The query that was used to identify the messages of the mail cluster  |
-|QueryTime	|Edm.DateTime	|The query time  |
-|MailCount	|Edm.int	|The number of mail messages that are part of the mail cluster  |
-|Source	|String	|The source of the mail cluster; the value of the cluster source. |
+|Type    |Edm.String    |"MailCluster" <br/>Determines the type of entity being discussed |
+|NetworkMessageIds    |Collection (Edm.String)    |List of the mail message IDs that are part of the mail cluster |
+|CountByDeliveryStatus    |Collections (Edm.String)    |Count of mail messages by DeliveryStatus string representation |
+|CountByThreatType    |Collections (Edm.String) |Count of mail messages by ThreatType string representation |
+|Threats    |Collections (Edm.String)    |The threats of mail messages that are part of the mail cluster. Threats include values like Phish and Malware. |
+|Query    |Edm.String    |The query that was used to identify the messages of the mail cluster  |
+|QueryTime    |Edm.DateTime    |The query time  |
+|MailCount    |Edm.int    |The number of mail messages that are part of the mail cluster  |
+|Source    |String    |The source of the mail cluster; the value of the cluster source. |
 ||||
 
 ## Power BI schema
