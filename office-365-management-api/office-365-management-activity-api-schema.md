@@ -120,6 +120,7 @@ This article provides details on the Common schema as well as each of the produc
 |55|SharePointContentTypeOperation|SharePoint list content type events.|
 |56|SharePointFieldOperation|SharePoint list field events.|
 |64|AirInvestigation|Automated incident response (AIR) events.|
+|65|Quarantine|Quarantine events.|
 |66|MicrosoftForms|Microsoft Forms events.|
 ||||
 
