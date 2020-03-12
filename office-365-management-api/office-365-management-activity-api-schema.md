@@ -9,13 +9,13 @@ localization_priority: Priority
 ---
 
 # Office 365 Management Activity API schema
- 
+
 The Office 365 Management Activity API schema is provided as a data service in  two layers:
 
 - **Common schema**. The interface to access core Office 365 auditing concepts such as Record Type, Creation Time, User Type, and Action as well as to provide core dimensions (such as User ID), location specifics (such as Client IP address), and product-specific properties (such as Object ID). It establishes consistent and uniform views for users to extract all Office 365 audit data in a few top level views with the appropriate parameters, and provides a fixed schema for all the data sources, which significantly reduces the cost of learning. Common schema is sourced from product data that is owned by each product team, such as Exchange, SharePoint, Azure Active Directory, Yammer, and OneDrive for Business. The Object ID field can be extended by product teams to add product specific properties.
-    
+
 - **Product-specific schema**. Built on top of the Common schema to provide a set of product-specific attributes; for example, Sway schema, SharePoint schema, OneDrive for Business schema, and Exchange admin schema.
-    
+
 **Which layer should you use for your scenario?**
 In general, if the data is available in a higher layer, don't go back to a lower layer. In other words, if the data requirement can be fit in a product-specific schema, you don't need to go back to the Common schema. 
 
@@ -46,9 +46,10 @@ This article provides details on the Common schema as well as each of the produc
 |[Data Center Security Cmdlet schema](#data-center-security-cmdlet-schema)|Extends the Data Center Security Base schema with the properties specific to all data center security cmdlet audit data.|
 |[Microsoft Teams schema](#microsoft-teams-schema)|Extends the Common schema with the properties specific to all Microsoft Teams events.|
 |[Office 365 Advanced Threat Protection and Threat Investigation and Response schema](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Extends the Common schema with the properties specific to Office 365 Advanced Threat Protection and Threat Investigation and Response data.|
-|[Automated investigation and response events](#automated-investigation-and-response-events-in-office-365)|Extends the Common schema with the properties specific to Office 365 automated investigation and response (AIR) events.|
+|[Automated investigation and response events schema](#automated-investigation-and-response-events-in-office-365)|Extends the Common schema with the properties specific to Office 365 automated investigation and response (AIR) events.|
 |[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
-|[Workplace Analytics](#workplace-analytics-schema)|Extends the Common schema with the properties specific to all Microsoft Workplace Analytics events.|
+|[Workplace Analytics schema](#workplace-analytics-schema)|Extends the Common schema with the properties specific to all Microsoft Workplace Analytics events.|
+|[Quarantine schema](#quarantine-schema)|Extends the Common schema with the properties specific to all quarantine events.|
 |[Microsoft Forms schema](#microsoft-forms-schema)|Extends the Common schema with the properties specific to all Microsoft Forms events.|
 |||
 
@@ -1416,6 +1417,38 @@ The WorkPlace Analytics events listed in [Search the audit log in the Office 365
 | OperationDetails   | Collection (Common.NameValuePair)    | No | A list of extended properties for the setting that was changed. Each property will have a **Name** and **Value**.|
 ||||
 
+## Quarantine schema
+
+The quarantine events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#quarantine-activities) will use this schema. For more information about quarantine, see [Quarantine email messages in Office 365](../security/office-365-security/quarantine-email-messages.md).
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RequestType|Self.[RequestType](#enum-requesttype---type-edmint32)|||
+|RequestSource|Self.[RequestSource](#enum-requestsource---type-edmint32)|||
+|NetworkMessageId|Edm.String|||
+|ReleaseTo|Edm.String|||
+|||||
+
+### Enum: RequestType - Type: Edm.Int32
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|Preview||
+|1|Delete||
+|2|Release||
+|3|Export||
+|4|ViewHeader||
+||||
+
+### Enum: RequestSource - Type: Edm.Int32
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|SCC||
+|1|Cmdlet||
+|2|URLlink||
+||||
+
 ## Microsoft Forms schema
 
 The Micorosft Forms events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) will use this schema.
@@ -1452,3 +1485,4 @@ The Micorosft Forms events listed in [Search the audit log in the Office 365 Sec
 |1|Quiz|Quizzes that are created with the New Quiz option.  A quiz is a special type of form that includes additional features such as point values, auto and manual grading, and commenting.|
 |2|Survey|Surveys that are created with the New Survey option.  A survey is a special type of form that includes additional features such as CMS integration and support for Flow rules.|
 ||||
+
