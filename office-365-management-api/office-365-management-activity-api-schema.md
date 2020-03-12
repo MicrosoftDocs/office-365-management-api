@@ -1419,7 +1419,7 @@ The WorkPlace Analytics events listed in [Search the audit log in the Office 365
 
 ## Quarantine schema
 
-The quarantine events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#quarantine-activities) will use this schema. For more information about quarantine, see [Quarantine email messages in Office 365](../security/office-365-security/quarantine-email-messages.md).
+The quarantine events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#quarantine-activities) will use this schema. For more information about quarantine, see [Quarantine email messages in Office 365](https://docs.microsoft.com/microsoft-365/security/office-365-security/quarantine-email-messages).
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
