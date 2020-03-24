@@ -1433,20 +1433,20 @@ The quarantine events listed in [Search the audit log in the Office 365 Security
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
-|0|Preview||
-|1|Delete||
-|2|Release||
-|3|Export||
-|4|ViewHeader||
+|0|Preview|This is a request from a user to preview an email that is deemed to be harmful|
+|1|Delete|This is a request from a user to delete an email that is deemed to be harmful|
+|2|Release|This is a request from a user to release an email that is deemed to be harmful|
+|3|Export|This is a request from a user to export an email that is deemed to be harmful|
+|4|ViewHeader|This is a request from a user to view the header an email that is deemed to be harmful|
 ||||
 
 ### Enum: RequestSource - Type: Edm.Int32
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
-|0|SCC||
-|1|Cmdlet||
-|2|URLlink||
+|0|SCC|security and Compliance center (SCC)is a source where the request from a user to preview, delete, release, export, and viewheader of potentially harmful mail can originate from |
+|1|Cmdlet|This is a source where the request from a user to preview, delete, release, export, and viewheader of potentially harmful mail can originate from|
+|2|URLlink|This is a source where the request from a user to preview, delete, release, export, and viewheader of potentially harmful mail can originate from|
 ||||
 
 ## Microsoft Forms schema
