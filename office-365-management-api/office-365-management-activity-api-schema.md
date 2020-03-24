@@ -1423,10 +1423,10 @@ The quarantine events listed in [Search the audit log in the Office 365 Security
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|RequestType|Self.[RequestType](#enum-requesttype---type-edmint32)|||
-|RequestSource|Self.[RequestSource](#enum-requestsource---type-edmint32)|||
-|NetworkMessageId|Edm.String|||
-|ReleaseTo|Edm.String|||
+|RequestType|Self.[RequestType](#enum-requesttype---type-edmint32)|No|A User request could comprise of Preview, Delete, Release, Export, or ViewHeader of a mail|
+|RequestSource|Self.[RequestSource](#enum-requestsource---type-edmint32)|No|The source of a user request can come from the security and compliance center (SCC), Cmdlet, or URLlINK |
+|NetworkMessageId|Edm.String|No|The network message id of this mail message|
+|ReleaseTo|Edm.String|No|This is the reciepient of the mail|
 |||||
 
 ### Enum: RequestType - Type: Edm.Int32
