@@ -1423,30 +1423,30 @@ The quarantine events listed in [Search the audit log in the Office 365 Security
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|RequestType|Self.[RequestType](#enum-requesttype---type-edmint32)|||
-|RequestSource|Self.[RequestSource](#enum-requestsource---type-edmint32)|||
-|NetworkMessageId|Edm.String|||
-|ReleaseTo|Edm.String|||
+|RequestType|Self.[RequestType](#enum-requesttype---type-edmint32)|No|A User request could comprise of Preview, Delete, Release, Export, or ViewHeader of a mail|
+|RequestSource|Self.[RequestSource](#enum-requestsource---type-edmint32)|No|The source of a user request can come from the security and compliance center (SCC), Cmdlet, or URLlINK |
+|NetworkMessageId|Edm.String|No|The network message id of this mail message|
+|ReleaseTo|Edm.String|No|This is the reciepient of the mail|
 |||||
 
 ### Enum: RequestType - Type: Edm.Int32
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
-|0|Preview||
-|1|Delete||
-|2|Release||
-|3|Export||
-|4|ViewHeader||
+|0|Preview|This is a request from a user to preview an email that is deemed to be harmful|
+|1|Delete|This is a request from a user to delete an email that is deemed to be harmful|
+|2|Release|This is a request from a user to release an email that is deemed to be harmful|
+|3|Export|This is a request from a user to export an email that is deemed to be harmful|
+|4|ViewHeader|This is a request from a user to view the header an email that is deemed to be harmful|
 ||||
 
 ### Enum: RequestSource - Type: Edm.Int32
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
-|0|SCC||
-|1|Cmdlet||
-|2|URLlink||
+|0|SCC|security and Compliance center (SCC)is a source where the request from a user to preview, delete, release, export, and viewheader of potentially harmful mail can originate from |
+|1|Cmdlet|This is a source where the request from a user to preview, delete, release, export, and viewheader of potentially harmful mail can originate from|
+|2|URLlink|This is a source where the request from a user to preview, delete, release, export, and viewheader of potentially harmful mail can originate from|
 ||||
 
 ## Microsoft Forms schema
