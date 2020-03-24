@@ -1423,30 +1423,30 @@ The quarantine events listed in [Search the audit log in the Office 365 Security
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|RequestType|Self.[RequestType](#enum-requesttype---type-edmint32)|No|A User request could comprise of Preview, Delete, Release, Export, or ViewHeader of a mail|
-|RequestSource|Self.[RequestSource](#enum-requestsource---type-edmint32)|No|The source of a user request can come from the security and compliance center (SCC), Cmdlet, or URLlINK |
-|NetworkMessageId|Edm.String|No|The network message id of this mail message|
-|ReleaseTo|Edm.String|No|This is the reciepient of the mail|
+|RequestType|Self.[RequestType](#enum-requesttype---type-edmint32)|No|The type of quarantine request performed by a user.|
+|RequestSource|Self.[RequestSource](#enum-requestsource---type-edmint32)|No|The source of a quantine request can come from the Security & Compliance Center (SCC), a cmdlet, or a URLlink.|
+|NetworkMessageId|Edm.String|No|The network message id of quarantined email message.|
+|ReleaseTo|Edm.String|No|The reciepient of the email message.|
 |||||
 
 ### Enum: RequestType - Type: Edm.Int32
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
-|0|Preview|This is a request from a user to preview an email that is deemed to be harmful|
-|1|Delete|This is a request from a user to delete an email that is deemed to be harmful|
-|2|Release|This is a request from a user to release an email that is deemed to be harmful|
-|3|Export|This is a request from a user to export an email that is deemed to be harmful|
-|4|ViewHeader|This is a request from a user to view the header an email that is deemed to be harmful|
+|0|Preview|This is a request from a user to preview an email message that is deemed to be harmful.|
+|1|Delete|This is a request from a user to delete an email message that is deemed to be harmful.|
+|2|Release|This is a request from a user to release an email message that is deemed to be harmful.|
+|3|Export|This is a request from a user to export an email message that is deemed to be harmful.|
+|4|ViewHeader|This is a request from a user to view the header an email message that is deemed to be harmful.|
 ||||
 
 ### Enum: RequestSource - Type: Edm.Int32
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
-|0|SCC|security and Compliance center (SCC)is a source where the request from a user to preview, delete, release, export, and viewheader of potentially harmful mail can originate from |
-|1|Cmdlet|This is a source where the request from a user to preview, delete, release, export, and viewheader of potentially harmful mail can originate from|
-|2|URLlink|This is a source where the request from a user to preview, delete, release, export, and viewheader of potentially harmful mail can originate from|
+|0|SCC|The Security & Compliance center (SCC) is the source where the request from a user to preview, delete, release, export, or view the header of a potentially harmful email message can originate from. |
+|1|Cmdlet|A cmdlet is the source where the request from a user to preview, delete, release, export, or view the header of a potentially harmful email message can originate from.|
+|2|URLlink|This is a source where the request from a user to preview, delete, release, export, or view the header of potentially harmful email message can originate from.|
 ||||
 
 ## Microsoft Forms schema
