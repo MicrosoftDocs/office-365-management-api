@@ -117,6 +117,7 @@ This article provides details on the Common schema as well as each of the produc
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
 |48|LabelContentExplorer|Events related to [data classification content explorer](https://docs.microsoft.com/microsoft-365/compliance/data-classification-content-explorer).|
 |49|TeamsHealthcare|Events related to the [Patients application](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit) in Microsoft Teams for Healthcare.|
+|51|HygieneEvent|Events related to [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security).|
 |52|DataInsightsRestApiAudit|Data Insights REST API events.|
 |54|SharePointListItemOperation|SharePoint list item events.|
 |55|SharePointContentTypeOperation|SharePoint list content type events.|
@@ -1153,14 +1154,16 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |5|Anti-phish, DIMP|Domain Impersonation (DIMP) action in the Anti-phish policy.|
 |6|Anti-phish, UIMP|User Impersonation (UIMP) action in the Anti-phish policy.|
 |7|Anti-phish, SPOOF|Spoof action in the Anti-phish policy.|
-|8|Anti-phish, GIMP|Mailbox intelligence  action in the Anti-phish policy.|
+|8|Anti-phish, GIMP|Mailbox intelligence action in the Anti-phish policy.|
 |9|Anti-malware, AMP| Malware policy action in the Anti-malware policy.|
 |10|Safe attachment, SAP| Policy action in the Office 365 ATP safe attachments policy.|
 |11|Exchange transport rule, ETR| Policy action in the Exchange Transport Rule.|
 |12|Anti-malware, ZAPM| Malware policy action in the Anti-malware policy applied to Zero-hour auto purge (ZAP).|
 |13|Anti-phish, ZAPP| Phish policy action in the Anti-phish policy applied to ZAP.|
 |14|Anti-phish, ZAPS| Spam policy action in the Anti-spam policy applied to ZAP.|
-
+|15|Anti-spam, High confidence phish email (HPHISH)|High confidence Phish policy action in Anti-spam policy.|
+|17|Anti-spam, Outbound spam policy (OSPM)|Policy action in the outbound spam filter policy in Anti-spam.|
+||||
 
 ### Enum: PolicyAction - Type: Edm.Int32
 
