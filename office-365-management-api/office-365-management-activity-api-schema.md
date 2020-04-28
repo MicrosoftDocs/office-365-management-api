@@ -51,7 +51,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Workplace Analytics schema](#workplace-analytics-schema)|Extends the Common schema with the properties specific to all Microsoft Workplace Analytics events.|
 |[Quarantine schema](#quarantine-schema)|Extends the Common schema with the properties specific to all quarantine events.|
 |[Microsoft Forms schema](#microsoft-forms-schema)|Extends the Common schema with the properties specific to all Microsoft Forms events.|
-|[MIP Label schema](#mip-label-schema)|Extends the Common schema with the properties specific to sensitivity labels manually or automatically applied to email messages.|
+|[MIP label schema](#mip-label-schema)|Extends the Common schema with the properties specific to sensitivity labels manually or automatically applied to email messages.|
 |||
 
 ## Common schema
@@ -1491,16 +1491,15 @@ The Micorosft Forms events listed in [Search the audit log in the Office 365 Sec
 |2|Survey|Surveys that are created with the New Survey option.  A survey is a special type of form that includes additional features such as CMS integration and support for Flow rules.|
 ||||
 
-## MIP Label schema
+## MIP label schema
 
-Events in the MIP Label schema are triggered when Microsoft 365 detects that an email message currently being processed by agents in the Transport pipeline has a sensitivity label applied to it. The sensitivity label may have been applied manually or automatically,and it may have been applied within or outside of the Transport pipeline. Sensitiviy labels can be automatically applied to email messages as a result of auto-applying label policies.
+Events in the Microsoft Information Protection (MIP) label schema are triggered when Microsoft 365 detects an email message processed by agents in the Transport pipeline that has a sensitivity label applied to it. The sensitivity label may have been applied manually or automatically, and it may have been applied within or outside of the Transport pipeline. Sensitiviy labels can be automatically applied to email messages by auto-apply label policies.
 
-The intention of this audit schema is to represent the sum of all email activity that involves sensitivity labels. In other words, there should be at least one audit record for each email message that is sent to or from users in the organization that has a sensitivity label applied to it, regardless of when or how that sensitivity label was applied. For more information about sensitivity labels, see:
+The intent of this audit schema is to represent the sum of all email activity that involves sensitivity labels. In other words, there should be an recored audit activity for each email message that is sent to or from users in the organization that has a sensitivity label applied to it, regardless of when or how the sensitivity label was applied. For more information about sensitivity labels, see:
 
 - [Learn about sensitivity labels](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels)
 
 - [Apply a sensitivity label to content automatically](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically)
-
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -1511,5 +1510,5 @@ The intention of this audit schema is to represent the sum of all email activity
 |LabelName|Edm.String|No|The name of the sensitivity label applied to the email message.|
 |LabelAction|Edm.String|No|The actions specified in the sensitivity label that were applied to the email message before the message entered the mail transport pipeline.|
 |LabelAppliedDateTime|Edm.Date|No|The date that the sensitivity label was applied to the email message.|
-|ApplicationMode|Edm.String|No|Specifies how the sensitivity label was applied to the email message. The value **Privileged** means that the label was manually applied by a user. The value **Standard** means that the label was auto-applied by a client-side or service-side labeling process.|
+|ApplicationMode|Edm.String|No|Specifies how the sensitivity label was applied to the email message. The **Privileged** value means indicates the label was manually applied by a user. The **Standard** value indicates the label was auto-applied by a client-side or service-side labeling process.|
 |||||
