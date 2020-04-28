@@ -1503,12 +1503,12 @@ The intent of this audit schema is to represent the sum of all email activity th
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Sender|Edm.String|No|The email address in the From: field of the email message.|
-|Receivers|Collection(Edm.String)|No|All email addresses in the To, CC, and Bcc, fields of the email message.|
+|Sender|Edm.String|No|The email address in the From field of the email message.|
+|Receivers|Collection(Edm.String)|No|All email addresses in the To, CC, and Bcc fields of the email message.|
 |ItemName|Edm.String|No|The string in the Subject field of the email message.|
-|LabelId|Edm.Guid|No|The Guid of the sensitiviy label applied to the email message.|
+|LabelId|Edm.Guid|No|The GUID of the sensitiviy label applied to the email message.|
 |LabelName|Edm.String|No|The name of the sensitivity label applied to the email message.|
-|LabelAction|Edm.String|No|The actions specified in the sensitivity label that were applied to the email message before the message entered the mail transport pipeline.|
-|LabelAppliedDateTime|Edm.Date|No|The date that the sensitivity label was applied to the email message.|
-|ApplicationMode|Edm.String|No|Specifies how the sensitivity label was applied to the email message. The **Privileged** value means indicates the label was manually applied by a user. The **Standard** value indicates the label was auto-applied by a client-side or service-side labeling process.|
+|LabelAction|Edm.String|No|The actions specified by the sensitivity label that were applied to the email message before the message entered the mail transport pipeline.|
+|LabelAppliedDateTime|Edm.Date|No|The date the sensitivity label was applied to the email message.|
+|ApplicationMode|Edm.String|No|Specifies how the sensitivity label was applied to the email message. The **Privileged** value indicates the label was manually applied by a user. The **Standard** value indicates the label was auto-applied by a client-side or service-side labeling process.|
 |||||
