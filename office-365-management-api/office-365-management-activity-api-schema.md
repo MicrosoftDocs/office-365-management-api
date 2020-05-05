@@ -52,6 +52,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Workplace Analytics schema](#workplace-analytics-schema)|Extends the Common schema with the properties specific to all Microsoft Workplace Analytics events.|
 |[Quarantine schema](#quarantine-schema)|Extends the Common schema with the properties specific to all quarantine events.|
 |[Microsoft Forms schema](#microsoft-forms-schema)|Extends the Common schema with the properties specific to all Microsoft Forms events.|
+|[MIP label schema](#mip-label-schema)|Extends the Common schema with the properties specific to sensitivity labels manually or automatically applied to email messages.|
 |||
 
 ## Common schema
@@ -113,6 +114,7 @@ This article provides details on the Common schema as well as each of the produc
 |40|SecurityComplianceAlerts|Security and compliance alert signals.|
 |41|ThreatIntelligenceUrl|Safe links time-of-block and block override events from Office 365 Advanced Threat Protection.|
 |42|SecurityComplianceInsights|Events related to insights and reports in the Office 365 security and compliance center.|
+|43|MIPLabel|Events related to the detection in the Transport pipeline of email messages that have been tagged (manually or automatically) with sensitivity labels. |
 |44|WorkplaceAnalytics|Workplace Analytics events.|
 |45|PowerAppsApp|Power Apps events.|
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
@@ -1502,3 +1504,24 @@ The Micorosft Forms events listed in [Search the audit log in the Office 365 Sec
 |2|Survey|Surveys that are created with the New Survey option.  A survey is a special type of form that includes additional features such as CMS integration and support for Flow rules.|
 ||||
 
+## MIP label schema
+
+Events in the Microsoft Information Protection (MIP) label schema are triggered when Microsoft 365 detects an email message processed by agents in the Transport pipeline that has a sensitivity label applied to it. The sensitivity label may have been applied manually or automatically, and it may have been applied within or outside of the Transport pipeline. Sensitiviy labels can be automatically applied to email messages by auto-apply label policies.
+
+The intent of this audit schema is to represent the sum of all email activity that involves sensitivity labels. In other words, there should be an recored audit activity for each email message that is sent to or from users in the organization that has a sensitivity label applied to it, regardless of when or how the sensitivity label was applied. For more information about sensitivity labels, see:
+
+- [Learn about sensitivity labels](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels)
+
+- [Apply a sensitivity label to content automatically](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically)
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Sender|Edm.String|No|The email address in the From field of the email message.|
+|Receivers|Collection(Edm.String)|No|All email addresses in the To, CC, and Bcc fields of the email message.|
+|ItemName|Edm.String|No|The string in the Subject field of the email message.|
+|LabelId|Edm.Guid|No|The GUID of the sensitiviy label applied to the email message.|
+|LabelName|Edm.String|No|The name of the sensitivity label applied to the email message.|
+|LabelAction|Edm.String|No|The actions specified by the sensitivity label that were applied to the email message before the message entered the mail transport pipeline.|
+|LabelAppliedDateTime|Edm.Date|No|The date the sensitivity label was applied to the email message.|
+|ApplicationMode|Edm.String|No|Specifies how the sensitivity label was applied to the email message. The **Privileged** value indicates the label was manually applied by a user. The **Standard** value indicates the label was auto-applied by a client-side or service-side labeling process.|
+|||||
