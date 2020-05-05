@@ -47,7 +47,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Microsoft Teams schema](#microsoft-teams-schema)|Extends the Common schema with the properties specific to all Microsoft Teams events.|
 |[Office 365 Advanced Threat Protection and Threat Investigation and Response schema](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Extends the Common schema with the properties specific to Office 365 Advanced Threat Protection and Threat Investigation and Response data.|
 |[Automated investigation and response events schema](#automated-investigation-and-response-events-in-office-365)|Extends the Common schema with the properties specific to Office 365 automated investigation and response (AIR) events.|
-|[Hygiene events schema](#hygiene-events-schema)|Extends the Common schema with the properties specific to events in Microsoft Cloud App Security.|
+|[Hygiene events schema](#hygiene-events-schema)|Extends the Common schema with the properties specific to events in Exchange Online Protection and Advanced Threat Protection.|
 |[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
 |[Workplace Analytics schema](#workplace-analytics-schema)|Extends the Common schema with the properties specific to all Microsoft Workplace Analytics events.|
 |[Quarantine schema](#quarantine-schema)|Extends the Common schema with the properties specific to all quarantine events.|
@@ -120,7 +120,7 @@ This article provides details on the Common schema as well as each of the produc
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
 |48|LabelContentExplorer|Events related to [data classification content explorer](https://docs.microsoft.com/microsoft-365/compliance/data-classification-content-explorer).|
 |49|TeamsHealthcare|Events related to the [Patients application](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit) in Microsoft Teams for Healthcare.|
-|51|HygieneEvent|Events related to Anti-spam and mail hygiene.|
+|51|HygieneEvent|Events related to outbound spam protection. |
 |52|DataInsightsRestApiAudit|Data Insights REST API events.|
 |54|SharePointListItemOperation|SharePoint list item events.|
 |55|SharePointContentTypeOperation|SharePoint list content type events.|
@@ -1378,15 +1378,19 @@ FileHashes |Collection (Edm.String)    |The file hashes associated with the file
 
 ## Hygiene events schema
 
-add intro here.
+Hygiene events are related to outbound spam protection. These events are related to users who are restricted from sending email. For more information, see:
+
+- [Outbound spam protection](https://docs.microsoft.com/microsoft-365/security/office-365-security/outbound-spam-controls)
+
+- [Remove blocked users from the Restricted Users portal in Office 365](https://docs.microsoft.com/microsoft-365/security/office-365-security/removing-user-from-restricted-users-portal-after-spam)
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Audit|Edm.String|No||
-|Event|Edm.String|No||
-|EventId|Edm.Int64|No||
-|EventValue|Edm.String|No||
-|Reason|Edm.String|No||
+|Audit|Edm.String|No|System information related to the hygiene event.|
+|Event|Edm.String|No|The type of hygiene event. The values for this parameter are **Listed** or **Delisted**.|
+|EventId|Edm.Int64|No|The ID of the hygiene event type.|
+|EventValue|Edm.String|No|The user who was impacted.|
+|Reason|Edm.String|No|Details about the hygiene event.|
 |||||
 
 ## Power BI schema
