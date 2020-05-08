@@ -52,14 +52,29 @@ After you create a subscription, you can poll regularly to discover new content 
 
 ## Activity API operations
 
-All API operations are scoped to a single tenant and the root URL of the API includes a tenant ID that specifies the tenant context. The tenant ID is a GUID. For information about how to get the GUID, see [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md).
+All API operations are scoped to a single tenant and the root URL of the API includes a tenant ID that specifies the tenant context. The tenant ID is a GUID. For information about how to get the GUID, see [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md). 
 
+Because the notifications we send to your webhook include the tenant ID, you can use the same webhook to receive notifications for all tenants.
+
+The URL for the API endpoint that you use is based on the type of Microsoft 365 or Office 365 subscription plan for your organization.
+
+**Enterprise plan and GCC government plan**
 
 ```http
 https://manage.office.com/api/v1.0/{tenant_id}/activity/feed/{operation}
 ```
 
-Because the notifications we send to your webhook include the **tenant ID**, you can use the same webhook to receive notifications for all tenants.
+**GCC High government plan**
+
+```http
+https://manage.office365.us/api/v1.0/{tenant_id}/activity/feed/{operation}
+```
+
+**DoD government plan**
+
+```http
+https://manage.protection.apps.mil/api/v1.0/{tenant_id}/activity/feed/{operation}
+```
 
 All API operations require an Authorization HTTP header with an access token obtained from Azure AD. The tenant ID in the access token must match the tenant ID in the root URL of the API and the access token must contain the ActivityFeed.Read claim (this corresponds to the permission [Read activity data for an organization] that you configured for you application in Azure AD).
 
