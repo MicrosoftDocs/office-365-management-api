@@ -50,7 +50,13 @@ The three permissions currently used for the Office 365 Management Activity API 
 
 ### Getting an access token
 
-The following PowerShell script uses the App ID and a Client Secret to obtain the OAuth2 token from the Management Activity API authentication endpoint. It then places the access token into the `$headerParams` array variable, which you’ll attach to your HTTP request: 
+The following PowerShell script uses the App ID and a Client Secret to obtain the OAuth2 token from the Management Activity API authentication endpoint. It then places the access token into the `$headerParams` array variable, which you’ll attach to your HTTP request. For the value for the API endpoint (in the $resource variable) use one of the following values based on your organization's Microsoft 365 or Office 365 subscription plan:
+
+- Enterprise plan and GCC government plan: `manage.office.com`
+
+- GCC High government plan: `manage.office365.us`
+
+- DoD government plan: `manage.protection.apps.mil`
 
 ```powershell
 # Create app of type Web app / API in Azure AD, generate a Client Secret, and update the client id and client secret here
