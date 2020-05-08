@@ -58,9 +58,9 @@ $ClientID = "<YOUR_APPLICATION_ID"
 $ClientSecret = "<YOUR_CLIENT_SECRET>"
 $loginURL = "https://login.microsoftonline.com/"
 $tenantdomain = "<YOUR_DOMAIN>.onmicrosoft.com"
-# Get the tenant GUID from Properties | Directory ID under the Azure Active Directory section
+# Get the tenant GUID from Properties | Directory ID under the Azure Active Directory section. For $resource, use one of these endpoint values based on your subscription plan: Enterprise and GCC - manage.office.com; GCC High: manage.office365.us; DoD: manage.protection.apps.mil
 $TenantGUID = "<YOUR_TENANT_GUID>"
-$resource = "https://manage.office.com"
+$resource = "https://<YOUR_API_ENDPOINT>"
 # auth
 $body = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
 $oauth = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
@@ -84,7 +84,7 @@ access_token   : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjJLVmN1enFBaWRPTHF
 If you’ve experienced an interruption in data flowing to an existing Management Activity API client or solution, you might wonder if something happened to your subscription. To check your active subscriptions, add the following to the previous script:
 
 ```powershell
-Invoke-WebRequest -Headers $headerParams -Uri "https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/list" 
+Invoke-WebRequest -Headers $headerParams -Uri "$resource/api/v1.0/$tenantGUID/activity/feed/subscriptions/list" 
 ```
 
 #### Sample response 
@@ -114,10 +114,16 @@ This says that the tenant has both Audit.Exchange and Audit.SharePoint subscript
 
 ## Creating a new subscription
 
-To create a new subscription, you use the /start operation:
+To create a new subscription, you use the /start operation. For the API endpoint, use one of these values base on your subscription plan:
+
+- Enterprise plan and GCC government plan: `manage.office.com`
+
+- GCC High government plan: `manage.office365.us`
+
+- DoD government plan: `manage.protection.apps.mil`
 
 ```powershell
-Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/start?contentType=Audit.AzureActiveDirectory"
+Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://<YOUR_API_ENDPOINT>/api/v1.0/$tenantGUID/activity/feed/subscriptions/start?contentType=Audit.AzureActiveDirectory"
 ```
 
 > [!NOTE] 
@@ -127,25 +133,25 @@ The previous code will create a new subscription to the Audit.AzureActiveDirecto
 
 ## Checking content availability
 
-To check what content blobs were created during a certain period, you can add the following line to the script in the "Connecting to the API" section:
+To check what content blobs were created during a certain period, you can add the following line to the script in the "Connecting to the API" section.
 
 ```powershell
-Invoke-WebRequest -Method GET -Headers $headerParams -Uri "https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint"
+Invoke-WebRequest -Method GET -Headers $headerParams -Uri "$resource/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint"
 ```
 
 The previous example will get all the content notifications that became available today, which means from 12:00 AM UTC to the current time. If you want to specify a different time period (keeping in mind that the maximum period for which you can query is 24 hours), add the *starttime* and *endtime* parameters to the URI; for example:
 
 ```powershell
-Invoke-WebRequest -Method GET -Headers $headerParams -Uri "https://manage.office.com/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint&startTime=2017-10-13T00:00&endTime=2017-10-13T11:59"
+Invoke-WebRequest -Method GET -Headers $headerParams -Uri "$resource/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint&startTime=2017-10-13T00:00&endTime=2017-10-13T11:59"
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > You must use either both *starttime* and *endtime* parameters or neither.
 
 The previous request will return a JSON object with a collection of notifications that became available during the time period you specify. The response will look like this:
 
 ```json
-[{		"contentUri" : "https://manage.office.com/api/v1.0/<<your_tenant_guid>>/activity/feed/audit/20171014180051748005825$20171014180051748005825$audit_sharepoint$Audit_SharePoint",
+[{		"contentUri" : "https://<your_API_endpoint>/api/v1.0/<your_tenant_guid>/activity/feed/audit/20171014180051748005825$20171014180051748005825$audit_sharepoint$Audit_SharePoint",
 		"contentId" : "20171014180051748005825$20171014180051748005825$audit_sharepoint$Audit_SharePoint",
 		"contentType" : "Audit.SharePoint",
 		"contentCreated" : "2017-10-13T18:00:51.748Z",
@@ -153,8 +159,10 @@ The previous request will return a JSON object with a collection of notification
 }]
 ```
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
+>
 > - The *contentUri* property is the URI from which you can retrieve the content blob. The blob itself is what contains the event details; it will contain details about 1 – N events. While there may be 30 JSON objects in the collection, there may be many more events detailed in those 30 content URIs.
+>
 > - The *contentCreated* property is not the date that the event being notified was created. This is the date the notification was created. The events detailed in that blob may have been created well before the content blob was created. Therefore, you can never query the API directly for events that occurred within any given period.
 
 ### Paging contents for busy tenants
@@ -206,7 +214,7 @@ It’s important to distinguish between the /notifications operation and the /co
 
 ## Requesting content blobs and throttling
 
-After you’ve obtained a list of content URIs, you must request the blobs specified by the URIs. The following is an example of requesting a content blob using PowerShell. This example assumes you have already used the previous example in the [Getting an access token](#getting-an-access-token) section in this article to get an access token and have populated the `$headerParams` variable appropriately.
+After you’ve obtained a list of content URIs, you must request the blobs specified by the URIs. The following is an example of requesting a content blob (using the manage.office.com API endpoint for Enterprise or GCC organizations) using PowerShell. This example assumes you have already used the previous example in the [Getting an access token](#getting-an-access-token) section in this article to get an access token and have populated the `$headerParams` variable appropriately.
 
 ```powershell
 # Get a content blob
