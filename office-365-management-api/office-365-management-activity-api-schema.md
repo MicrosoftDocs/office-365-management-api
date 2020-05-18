@@ -53,6 +53,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Quarantine schema](#quarantine-schema)|Extends the Common schema with the properties specific to all quarantine events.|
 |[Microsoft Forms schema](#microsoft-forms-schema)|Extends the Common schema with the properties specific to all Microsoft Forms events.|
 |[MIP label schema](#mip-label-schema)|Extends the Common schema with the properties specific to sensitivity labels manually or automatically applied to email messages.|
+|[Communication compliance Exchange schema](#communication-compliance-exchange-schema)|Extends the Common schema with the properties specific to the Communication compliance offensive language model.|
 |||
 
 ## Common schema
@@ -128,6 +129,7 @@ This article provides details on the Common schema as well as each of the produc
 |64|AirInvestigation|Automated incident response (AIR) events.|
 |65|Quarantine|Quarantine events.|
 |66|MicrosoftForms|Microsoft Forms events.|
+|68|ComplianceSupervisionExchange|Events tracked by the Communication compliance offensive language model.|
 ||||
 
 ### Enum: User Type - Type: Edm.Int32
@@ -1529,3 +1531,39 @@ The intent of this audit schema is to represent the sum of all email activity th
 |LabelAppliedDateTime|Edm.Date|No|The date the sensitivity label was applied to the email message.|
 |ApplicationMode|Edm.String|No|Specifies how the sensitivity label was applied to the email message. The **Privileged** value indicates the label was manually applied by a user. The **Standard** value indicates the label was auto-applied by a client-side or service-side labeling process.|
 |||||
+
+## Communication compliance Exchange schema
+
+The communication compliance events listed in the Office 365 audit log use this schema. This includes audit records for the **SupervisoryReviewOLAudit** operation that's generated when email message content contains offensive language identified by anti-spam models with a match accuracy of \>= 99.5%.
+
+|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+|:---------------|:-------|:--------------|:--------------|
+| ExchangeDetails |[ExchangeDetails](#exchangedetails)|No|Properties of the email message that triggered the SupervisoryReviewOLAudit event.|
+|||||
+
+### Enum: ExchangeDetails - Type: ExchangeDetails
+
+#### ExchangeDetails
+
+| **Member name**   | **Type**| **Description**|
+|:----------------- | :-------|:---------------|
+| NetworkMessageId  |Edm.Guid|The network message ID of the email message.|
+| InternetMessageId |Edm.String|The internet message ID of the email message.|
+| AttachmentData|Collection([AttachmentDetails](#attachmentdetails))|Information about files attached to the email message.|
+| Recipients|Collection(Edm.String)|The email addresses in the To, Cc, and Bcc fields of the email message. |
+| Subject|Edm.String|The text in the Subject field of the email message.|
+| MessageTime|Edm.Date|The date and time the email message was sent.|
+| From| Edm.String|The email address in the From field of the email message.|
+| Directionality|Edm.String|The origination status of the email message.|
+||||
+
+### Enum: AttachmentDetails - Type: Edm.Int32
+
+#### AttachmentDetails
+
+| **Member name** | **Type**   | **Description**|
+|:--------------- |:---------- | :--------------|
+| FileName        | Edm.String | The name of the file attached to the email message.|
+| FileType        | Edm.String | The file extension of the file attached to the email message.|
+| SHA256          | Edm.String | The SHA-256 hash of the file attached to the email message.|
+||||
