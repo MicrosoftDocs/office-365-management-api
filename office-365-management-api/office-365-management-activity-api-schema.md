@@ -49,6 +49,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Automated investigation and response events schema](#automated-investigation-and-response-events-in-office-365)|Extends the Common schema with the properties specific to Office 365 automated investigation and response (AIR) events.|
 |[Hygiene events schema](#hygiene-events-schema)|Extends the Common schema with the properties specific to events in Exchange Online Protection and Advanced Threat Protection.|
 |[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
+|[Dynamics 365 schema](#dynamics-365-schema)|Extends the Common schema with the properties specific to Dynamics 365 events.|
 |[Workplace Analytics schema](#workplace-analytics-schema)|Extends the Common schema with the properties specific to all Microsoft Workplace Analytics events.|
 |[Quarantine schema](#quarantine-schema)|Extends the Common schema with the properties specific to all quarantine events.|
 |[Microsoft Forms schema](#microsoft-forms-schema)|Extends the Common schema with the properties specific to all Microsoft Forms events.|
@@ -98,7 +99,7 @@ This article provides details on the Common schema as well as each of the produc
 |15|AzureActiveDirectoryStsLogon|Secure Token Service (STS) logon events in Azure Active Directory.|
 |18|SecurityComplianceCenterEOPCmdlet|Admin actions from the Security & Compliance Center.|
 |20|PowerBIAudit|Power BI events.|
-|21|CRM|Microsoft CRM events.|
+|21|CRM|Dynamics 365 events.|
 |22|Yammer|Yammer events.|
 |23|SkypeForBusinessCmdlets|Skype for Business events.|
 |24|Discovery|Events for eDiscovery activities performed by running content searches and managing eDiscovery cases in the Security & Compliance Center.|
@@ -357,8 +358,6 @@ This article provides details on the Common schema as well as each of the produc
 
 > [!NOTE] 
 > *This operation is in Preview.
-
-
 
 ## SharePoint file operations
 
@@ -962,8 +961,6 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |2|Tablet|The event was triggered using a tablet device.|
 |||||
 
-
-
 ### Enum: SwayAuditOperation - Type Edm.Int32
 
 #### SwayAuditOperation
@@ -1430,13 +1427,42 @@ The Power BI events listed in [Search the audit log in the Office 365 Protection
 | ResharePermission | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The permission being granted to the recipient. |
 |||||
 
+## Dynamics 365 schema
+
+The audit records for events related to model-driven apps in Dynamics 365 events use both a base and an entity operation schema. For more information, see [Enable and use Activity Logging](https://docs.microsoft.com/power-platform/admin/enable-use-comprehensive-auditing#model-driven-apps-in-dynamics-365-schema).
+
+### Dynamics 365 base schema
+
+| **Parameters**     | **Type**            | **Mandatory?** | **Description**|
+|:------------------ | :------------------ | :--------------|:--------------|
+|CrmOrganizationUniqueName|Edm.String|Yes|The unique name of the organization.|
+|InstanceUrl|Edm.String|Yes|The URL to the instance.|
+|ItemUrl|Edm.String|No|The URL to the record emitting the log.|
+|ItemType|Edm.String|No|The naame of the entity.|
+|UserAgent|Edm.String|No|The unique identifier of the user GUID in the organization.|
+|Fields|Collection(Common.NameValuePair)|No|The JSON object that contains the property key-value pairs that were created or updated.|
+|||||
+
+### Dynamics 365 entity operation schema
+
+Entity events from model-driven apps in Dynamics 365 use this schema to build on the Dynamics 365 base schema. This schema includes information about the entity operation that triggered the audited event.
+
+| **Parameters**     | **Type**            | **Mandatory?** | **Description**|
+|:------------------ | :------------------ | :--------------|:--------------|
+|EntityId|Edm.Guid|No|The unique identifier of the entity.|
+|EntityName|Edm.String|Yes|The name of the entity in the organization. Example of entities include `contact` or `authentication`.|
+|Message|Edm.String|Yes|This parameter contains the operation that was performed in related to the entity. For example, if a new contact was created, the value of the Message property is  `Create` and the corresponding value of the EntityName property is `contact`.|
+|Query|Edm.String|No|The parameters of the filter query that was used while executing the FetchXML operation.|
+|PrimaryFieldValue|Edm.String|No|Indicates the value for the attribute that is the primary field for the entity.|
+|||||
+
 ## Workplace Analytics schema
 
 The WorkPlace Analytics events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities) will use this schema.
 
 | **Parameters**     | **Type**            | **Mandatory?** | **Description**|
 |:------------------ | :------------------ | :--------------|:--------------|
-| WpaUserRole        | Edm.String | No     | The Workplace Analytics role of the user who performed the action.                                                                                            |
+| WpaUserRole        | Edm.String | No     | The Workplace Analytics role of the user who performed the action.|
 | ModifiedProperties | Collection (Common.ModifiedProperty) | No | This property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
 | OperationDetails   | Collection (Common.NameValuePair)    | No | A list of extended properties for the setting that was changed. Each property will have a **Name** and **Value**.|
 ||||
