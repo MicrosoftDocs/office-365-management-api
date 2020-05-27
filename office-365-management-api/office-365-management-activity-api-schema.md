@@ -1440,7 +1440,7 @@ The audit records for events related to model-driven apps in Dynamics 365 events
 |ItemUrl|Edm.String|No|The URL to the record emitting the log.|
 |ItemType|Edm.String|No|The naame of the entity.|
 |UserAgent|Edm.String|No|The unique identifier of the user GUID in the organization.|
-|Fields|Collection(Common.NameValuePair)|No|The JSON object that contains the property key-value pairs that were created or updated.|
+|Fields|Collection(Common.NameValuePair)|No|A JSON object that contains the property key-value pairs that were created or updated.|
 |||||
 
 ### Dynamics 365 entity operation schema
