@@ -856,11 +856,13 @@ Alert signals include:
 - All alerts generated based on [Alert policies in Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/alert-policies#default-alert-policies).
 - Office 365 related alerts generated in [Office 365 Cloud App Security](https://docs.microsoft.com/office365/securitycompliance/office-365-cas-overview) and [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security).
 
-The UserId and UserKey of these events are always SecurityComplianceAlerts. There are two types of alert signals which are stored as the value of the Operation property of the common schema:
+The UserId and UserKey of these events are always SecurityComplianceAlerts. There are three types of alert events that are stored as the value of the Operation property of the common schema:
 
 - AlertTriggered - A new alert is generated due to a policy match.
 
-- AlertEntityGenerated - A new entity is added to an alert. This event is only applicable to alerts generated based on Alert policies in the Office 365 Security & Compliance Center. Each generated alert can be associated with one or multiple of these events. For example, an alert policy is defined to trigger an alert if any user deletes more than 100 files in 5 minutes. If two users exceed the threshold around the same time, there will be two AlertEntityGenerated events, but only one AlertTriggered event.
+- AlertEntityGenerated - A new entity is added to an alert. This event is only applicable to alerts generated based on Alert policies in the security and compliance center. Each generated alert can be associated with one or multiple of these events. For example, an alert policy is defined to trigger an alert if any user deletes more than 100 files in 5 minutes. If two users exceed the threshold around the same time, there will be two AlertEntityGenerated events, but only one AlertTriggered event.
+
+- AlertUpdated - An update was made to the metadata of an alert. This event is logged when the status of an alert is changed (for example, from "Active" to "Resolved") and when someone adds a comment to the alert.
 
 |**Parameters**|**Type**|**Mandatory**|**Description**|
 |:-----|:-----|:-----|:-----|
