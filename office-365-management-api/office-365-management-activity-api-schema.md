@@ -862,7 +862,7 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 
 - AlertEntityGenerated - A new entity is added to an alert. This event is only applicable to alerts generated based on Alert policies in the security and compliance center. Each generated alert can be associated with one or multiple of these events. For example, an alert policy is defined to trigger an alert if any user deletes more than 100 files in 5 minutes. If two users exceed the threshold around the same time, there will be two AlertEntityGenerated events, but only one AlertTriggered event.
 
-- AlertUpdated - An update was made to the alert event metadata. This event is logged when the status of the alert is changed (for example, from "Active" to "Resolved") and when someone adds a comment to the alert.
+- AlertUpdated - An update was made to the metadata of an alert. This event is logged when the status of an alert is changed (for example, from "Active" to "Resolved") and when someone adds a comment to the alert.
 
 |**Parameters**|**Type**|**Mandatory**|**Description**|
 |:-----|:-----|:-----|:-----|
