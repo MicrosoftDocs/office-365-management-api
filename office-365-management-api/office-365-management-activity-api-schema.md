@@ -122,6 +122,7 @@ This article provides details on the Common schema as well as each of the produc
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
 |48|LabelContentExplorer|Events related to [data classification content explorer](https://docs.microsoft.com/microsoft-365/compliance/data-classification-content-explorer).|
 |49|TeamsHealthcare|Events related to the [Patients application](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit) in Microsoft Teams for Healthcare.|
+|50|ExchangeItemAggregated|Events related to the [MailItemsAccessed mailbox auditing action](https://docs.microsoft.com/microsoft-365/compliance/mailitemsaccessed-forensics-investigations).|
 |51|HygieneEvent|Events related to outbound spam protection. |
 |52|DataInsightsRestApiAudit|Data Insights REST API events.|
 |54|SharePointListItemOperation|SharePoint list item events.|
