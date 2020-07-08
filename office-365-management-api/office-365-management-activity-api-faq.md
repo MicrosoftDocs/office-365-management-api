@@ -42,10 +42,6 @@ No. Office 365 unified auditing must be enabled for your organization to pull re
 
 No. Webhook notifications aren't event-driven in the sense that the event triggers the notification. The content blob must still be created, and the creation of the content blob is what triggers the notification delivery. Recently, there have been longer wait times for notifications when using a webhook compared to querying the API directly with the */content* operation. Therefore, the Management Activity API shouldn’t be thought of as a real-time security alert system. Microsoft has other products for that. As far as security is concerned, Management Activity API event notifications can more appropriately be used to determine usage patterns over extended periods of time.
 
-#### When pulling the data from the Management Activity API, there is sometimes a delay of more than 3 to 5 days. Why is this?
-
-At times, there are instances of a temporary outage or other issues in the Office 365 service. In those cases, some audit records are dropped and the service tries to backfill them. Although this happens for only about 5% to 10% of the records, these are the records that may be delayed in certain situations. If the delay is more than 5 days, check the Service Health Dashboard in the Office 365 admin center. If needed, you can also open a ticket with [Microsoft support](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online).
-
 #### I'm encountering a throttling error in the Management Activity API. What should I do?
 
 Open a ticket with [Microsoft Support](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online) and request a new throttling limit, and include a business justification for increasing the limit. We will evaluate the request, and if accepted, we will increase the throttling limit.
