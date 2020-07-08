@@ -283,15 +283,3 @@ Content blobs are available 7 days after the notification of the content blob’
 #### If there is a 24-hour delay in getting a notification, doesn’t that mean I will have only 6 days to retrieve the content blob?
 
 No. Even if the notification is delayed for an unusually long period (for example, in the case of a service interruption), you would still have 7 days after the first availability of the notification to download the content blob related to the originating event.
-
-
-
-
-
-
-
-
-
-
-
-
