@@ -24,7 +24,6 @@ There are four key steps:
     
 The following diagram shows the sequence of consent and access token requests.
 
-
 ![Management APIs getting started authorization flow](images/authorization-flow.png)
 
 > [!IMPORTANT]
@@ -324,7 +323,6 @@ The access token that is returned is a JWT token that includes information about
   "acr": "1"
 }
 ```
-
 
 ### Request an access token by using client credentials
 
