@@ -52,7 +52,9 @@ The three permissions currently used for the Office 365 Management Activity API 
 
 The following PowerShell script uses the App ID and a Client Secret to obtain the OAuth2 token from the Management Activity API authentication endpoint. It then places the access token into the `$headerParams` array variable, which you’ll attach to your HTTP request. For the value for the API endpoint (in the $resource variable) use one of the following values based on your organization's Microsoft 365 or Office 365 subscription plan:
 
-- Enterprise plan and GCC government plan: `manage.office.com`
+- Enterprise plan: `manage.office.com`
+
+- GCC government plan: `manage-gcc.office.com`
 
 - GCC High government plan: `manage.office365.us`
 
@@ -64,7 +66,7 @@ $ClientID = "<YOUR_APPLICATION_ID"
 $ClientSecret = "<YOUR_CLIENT_SECRET>"
 $loginURL = "https://login.microsoftonline.com/"
 $tenantdomain = "<YOUR_DOMAIN>.onmicrosoft.com"
-# Get the tenant GUID from Properties | Directory ID under the Azure Active Directory section. For $resource, use one of these endpoint values based on your subscription plan: Enterprise and GCC - manage.office.com; GCC High: manage.office365.us; DoD: manage.protection.apps.mil
+# Get the tenant GUID from Properties | Directory ID under the Azure Active Directory section. For $resource, use one of these endpoint values based on your subscription plan: Enterprise - manage.office.com; GCC - manage-gcc.office.com; GCC High: manage.office365.us; DoD: manage.protection.apps.mil
 $TenantGUID = "<YOUR_TENANT_GUID>"
 $resource = "https://<YOUR_API_ENDPOINT>"
 # auth
@@ -122,7 +124,9 @@ This says that the tenant has both Audit.Exchange and Audit.SharePoint subscript
 
 To create a new subscription, you use the /start operation. For the API endpoint, use one of these values base on your subscription plan:
 
-- Enterprise plan and GCC government plan: `manage.office.com`
+- Enterprise plan: `manage.office.com`
+
+- GCC government plan: `manage-gcc.office.com`
 
 - GCC High government plan: `manage.office365.us`
 
@@ -132,7 +136,7 @@ To create a new subscription, you use the /start operation. For the API endpoint
 Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://<YOUR_API_ENDPOINT>/api/v1.0/$tenantGUID/activity/feed/subscriptions/start?contentType=Audit.AzureActiveDirectory"
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Remember that `$headerParams` was populated in the first part of the script listed in the [Connecting to the API](#connecting-to-the-api) section in this article.
 
 The previous code will create a new subscription to the Audit.AzureActiveDirectory content type, with a webhook that is null. You can then check your subscriptions using the code in the [Checking your subscriptions](#checking-your-subscriptions) section in this article.
@@ -220,7 +224,7 @@ It’s important to distinguish between the /notifications operation and the /co
 
 ## Requesting content blobs and throttling
 
-After you’ve obtained a list of content URIs, you must request the blobs specified by the URIs. The following is an example of requesting a content blob (using the manage.office.com API endpoint for Enterprise or GCC organizations) using PowerShell. This example assumes you have already used the previous example in the [Getting an access token](#getting-an-access-token) section in this article to get an access token and have populated the `$headerParams` variable appropriately.
+After you’ve obtained a list of content URIs, you must request the blobs specified by the URIs. The following is an example of requesting a content blob (using the manage.office.com API endpoint for Enterprise organizations) using PowerShell. This example assumes you have already used the previous example in the [Getting an access token](#getting-an-access-token) section in this article to get an access token and have populated the `$headerParams` variable appropriately.
 
 ```powershell
 # Get a content blob
