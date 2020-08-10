@@ -58,10 +58,16 @@ Because the notifications we send to your webhook include the tenant ID, you can
 
 The URL for the API endpoint that you use is based on the type of Microsoft 365 or Office 365 subscription plan for your organization.
 
-**Enterprise plan and GCC government plan**
+**Enterprise plan**
 
 ```http
 https://manage.office.com/api/v1.0/{tenant_id}/activity/feed/{operation}
+```
+
+**GCC government plan**
+
+```http
+https://manage-gcc.office.com/api/v1.0/{tenant_id}/activity/feed/{operation}
 ```
 
 **GCC High government plan**
