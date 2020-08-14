@@ -14,14 +14,14 @@ The Office 365 Management Activity API schema is provided as a data service in  
 
 - **Common schema**. The interface to access core Office 365 auditing concepts such as Record Type, Creation Time, User Type, and Action as well as to provide core dimensions (such as User ID), location specifics (such as Client IP address), and product-specific properties (such as Object ID). It establishes consistent and uniform views for users to extract all Office 365 audit data in a few top level views with the appropriate parameters, and provides a fixed schema for all the data sources, which significantly reduces the cost of learning. Common schema is sourced from product data that is owned by each product team, such as Exchange, SharePoint, Azure Active Directory, Yammer, and OneDrive for Business. The Object ID field can be extended by product teams to add product specific properties.
 
-- **Product-specific schema**. Built on top of the Common schema to provide a set of product-specific attributes; for example, Sway schema, SharePoint schema, OneDrive for Business schema, and Exchange admin schema.
+- **Product-specific schema**. Built on top of the Common schema to provide a set of product-specific attributes; for example, SharePoint schema, OneDrive for Business schema, and Exchange admin schema.
 
 **Which layer should you use for your scenario?**
 In general, if the data is available in a higher layer, don't go back to a lower layer. In other words, if the data requirement can be fit in a product-specific schema, you don't need to go back to the Common schema. 
 
 ## Office 365 Management API schemas
 
-This article provides details on the Common schema as well as each of the product specific schemas. The following table describes the available schemas. 
+This article provides details on the Common schema as well as each of the product specific schemas. The following table describes the available schemas.
 
 |Name of schema|Description|
 |:-----|:-----|
@@ -41,7 +41,6 @@ This article provides details on the Common schema as well as each of the produc
 |[Security and Compliance Center schema](#security-and-compliance-center-schema)|Extends the Common schema with the properties specific to all Security and Compliance Center events.|
 |[Security and Compliance Alerts schema](#security-and-compliance-alerts-schema)|Extends the Common schema with the properties specific to all Office 365 security and compliance alerts.|
 |[Yammer schema](#yammer-schema)|Extends the Common schema with the properties specific to all Yammer events.|
-|[Sway schema](#sway-schema)|Extends the Common schema with the properties specific to all Sway events.|
 |[Data Center Security Base schema](#data-center-security-base-schema)|Extends the Common schema with the properties specific to all data center security audit data.|
 |[Data Center Security Cmdlet schema](#data-center-security-cmdlet-schema)|Extends the Data Center Security Base schema with the properties specific to all data center security cmdlet audit data.|
 |[Microsoft Teams schema](#microsoft-teams-schema)|Extends the Common schema with the properties specific to all Microsoft Teams events.|
@@ -93,7 +92,6 @@ This article provides details on the Common schema as well as each of the produc
 |9|AzureActiveDirectoryAccountLogon|Azure Active Directory OrgId logon events (deprecating).|
 |10|DataCenterSecurityCmdlet|Data Center security cmdlet events.|
 |11|ComplianceDLPSharePoint|Data loss protection (DLP) events in SharePoint and OneDrive for Business.|
-|12|Sway|Events from the Sway service and clients.|
 |13|ComplianceDLPExchange|Data loss protection (DLP) events in Exchange, when configured via Unified DLP Policy. DLP events based on Exchange Transport Rules are not supported.|
 |14|SharePointSharingOperation|SharePoint sharing events.|
 |15|AzureActiveDirectoryStsLogon|Secure Token Service (STS) logon events in Azure Active Directory.|
@@ -204,47 +202,47 @@ This article provides details on the Common schema as well as each of the produc
 
 |**Member name**|**Description**|
 |:-----|:-----|
-|AccessInvitationAccepted*|The recipient of an invitation to view or edit a shared file (or folder) has accessed the shared file by clicking on the link in the invitation.|
-|AccessInvitationCreated*|User sends an invitation to another person (inside or outside their organization) to view or edit a shared file or folder on a SharePoint or OneDrive for Business site. The details of the event entry identifies the name of the file that was shared, the user the invitation was sent to, and the type of the sharing permission selected by the person who sent the invitation.|
-|AccessInvitationExpired*|An invitation sent to an external user expires. By default, an invitation sent to a user outside of your organization expires after 7 days if the invitation isn't accepted.|
-|AccessInvitationRevoked*|The site administrator or owner of a site or document in SharePoint or OneDrive for Business withdraws an invitation that was sent to a user outside your organization. An invitation can be withdrawn only before it's accepted.|
-|AccessInvitationUpdated*|The user who created and sent an invitation to another person to view or edit a shared file (or folder) on a SharePoint or OneDrive for Business site resends the invitation.|
+|AccessInvitationAccepted|The recipient of an invitation to view or edit a shared file (or folder) has accessed the shared file by clicking on the link in the invitation.|
+|AccessInvitationCreated|User sends an invitation to another person (inside or outside their organization) to view or edit a shared file or folder on a SharePoint or OneDrive for Business site. The details of the event entry identifies the name of the file that was shared, the user the invitation was sent to, and the type of the sharing permission selected by the person who sent the invitation.|
+|AccessInvitationExpired|An invitation sent to an external user expires. By default, an invitation sent to a user outside of your organization expires after 7 days if the invitation isn't accepted.|
+|AccessInvitationRevoked|The site administrator or owner of a site or document in SharePoint or OneDrive for Business withdraws an invitation that was sent to a user outside your organization. An invitation can be withdrawn only before it's accepted.|
+|AccessInvitationUpdated|The user who created and sent an invitation to another person to view or edit a shared file (or folder) on a SharePoint or OneDrive for Business site resends the invitation.|
 |AccessRequestApproved|The site administrator or owner of a site or document in SharePoint or OneDrive for Business approves a user request to access the site or document.|
 |AccessRequestCreated|User requests access to a site or document in SharePoint or OneDrive for Business that they don't have permission to access. |
-|AccessRequestRejected*|The site administrator or owner of a site or document in SharePoint declines a user request to access the site or document.|
-|ActivationEnabled*|Users can browser-enable form templates that don't contain form code, require full trust, enable rendering on a mobile device, or use a data connection managed by a server administrator.|
-|AdministratorAddedToTermStore*|Term store administrator added.|
-|AdministratorDeletedFromTermStore*|Term store administrator deleted.|
-|AllowGroupCreationSet*|Site administrator or owner adds a permission level to a SharePoint or OneDrive for Business site that allows a user assigned that permission to create a group for that site.|
-|AppCatalogCreated*|App catalog created to make custom business apps available for your SharePoint Environment.|
-|AuditPolicyRemoved*|Document LifeCycle Policy has been removed for a site collection.|
-|AuditPolicyUpdate*|Document LifeCycle Policy has been updated for a site collection.|
-|AzureStreamingEnabledSet*|A video portal owner has allowed video streaming from Azure.|
-|CollaborationTypeModified*|The type of collaboration allowed on sites (for example, intranet, extranet, or public) has been modified.|
+|AccessRequestRejected|The site administrator or owner of a site or document in SharePoint declines a user request to access the site or document.|
+|ActivationEnabled|Users can browser-enable form templates that don't contain form code, require full trust, enable rendering on a mobile device, or use a data connection managed by a server administrator.|
+|AdministratorAddedToTermStore|Term store administrator added.|
+|AdministratorDeletedFromTermStore|Term store administrator deleted.|
+|AllowGroupCreationSet|Site administrator or owner adds a permission level to a SharePoint or OneDrive for Business site that allows a user assigned that permission to create a group for that site.|
+|AppCatalogCreated|App catalog created to make custom business apps available for your SharePoint Environment.|
+|AuditPolicyRemoved|Document LifeCycle Policy has been removed for a site collection.|
+|AuditPolicyUpdate|Document LifeCycle Policy has been updated for a site collection.|
+|AzureStreamingEnabledSet|A video portal owner has allowed video streaming from Azure.|
+|CollaborationTypeModified|The type of collaboration allowed on sites (for example, intranet, extranet, or public) has been modified.|
 |ConnectedSiteSettingModified|User has either created, modified or deleted the link between a project and a project site or the user modifies the synchronization setting on the link in Project Web App.|
-|CreateSSOApplication*|Target application created in Secure store service.|
+|CreateSSOApplication|Target application created in Secure store service.|
 |CustomFieldOrLookupTableCreated|User created a custom field or lookup table/item in Project Web App.|
 |CustomFieldOrLookupTableDeleted|User deleted a custom field or lookup table/item in Project Web App.|
 |CustomFieldOrLookupTableModified|User modified a custom field or lookup table/item in Project Web App.|
-|CustomizeExemptUsers*|Global administrator customized the list of exempt user agents in SharePoint admin center. You can specify which user agents to exempt from receiving an entire Web page to index. This means when a user agent you've specified as exempt encounters an InfoPath form, the form will be returned as an XML file instead of an entire Web page. This makes indexing InfoPath forms faster.|
+|CustomizeExemptUsers|Global administrator customized the list of exempt user agents in SharePoint admin center. You can specify which user agents to exempt from receiving an entire Web page to index. This means when a user agent you've specified as exempt encounters an InfoPath form, the form will be returned as an XML file instead of an entire Web page. This makes indexing InfoPath forms faster.|
 |DefaultLanguageChangedInTermStore*|Language setting changed in the terminology store.|
 |DelegateModified|User created or modified a security delegate in Project Web App.|
 |DelegateRemoved|User deleted a security delegate in Project Web App.|
-|DeleteSSOApplication*|An SSO application was deleted.|
-|eDiscoveryHoldApplied*|An In-Place Hold was placed on a content source. In-Place Holds are managed by using an eDiscovery site collection (such as the eDiscovery Center) in SharePoint.|
-|eDiscoveryHoldRemoved*|An In-Place Hold was removed from a content source. In-Place Holds are managed by using an eDiscovery site collection (such as the eDiscovery Center) in SharePoint.|
-|eDiscoverySearchPerformed*|An eDiscovery search was performed using an eDiscovery site collection in SharePoint.|
+|DeleteSSOApplication|An SSO application was deleted.|
+|eDiscoveryHoldApplied|An In-Place Hold was placed on a content source. In-Place Holds are managed by using an eDiscovery site collection (such as the eDiscovery Center) in SharePoint.|
+|eDiscoveryHoldRemoved|An In-Place Hold was removed from a content source. In-Place Holds are managed by using an eDiscovery site collection (such as the eDiscovery Center) in SharePoint.|
+|eDiscoverySearchPerformed|An eDiscovery search was performed using an eDiscovery site collection in SharePoint.|
 |EngagementAccepted|User accepts a resource engagement in Project Web App.|
 |EngagementModified|User modifies a resource engagement in Project Web App.|
 |EngagementRejected|User rejects a resource engagement in Project Web App.|
 |EnterpriseCalendarModified|User copies, modifies or delete an enterprise calendar in Project Web App.|
 |EntityDeleted|User deletes a timesheet in Project Web App.|
 |EntityForceCheckedIn|User forces a checkin on a calendar, custom field or lookup table in Project Web App.|
-|ExemptUserAgentSet*|Global administrator adds a user agent to the list of exempt user agents in the SharePoint admin center.|
+|ExemptUserAgentSet|Global administrator adds a user agent to the list of exempt user agents in the SharePoint admin center.|
 |FileAccessed|User or system account accesses a file on a SharePoint or OneDrive for Business site. System accounts can also generate FileAccessed events.|
-|FileCheckOutDiscarded*|User discards (or undos) a checked out file. That means any changes they made to the file when it was checked out are discarded, and not saved to the version of the document in the document library.|
-|FileCheckedIn*|User checks in a document that they checked out from a SharePoint or OneDrive for Business document library.|
-|FileCheckedOut*|User checks out a document located in a SharePoint or OneDrive for Business document library. Users can check out and make changes to documents that have been shared with them.|
+|FileCheckOutDiscarded|User discards (or undos) a checked out file. That means any changes they made to the file when it was checked out are discarded, and not saved to the version of the document in the document library.|
+|FileCheckedIn|User checks in a document that they checked out from a SharePoint or OneDrive for Business document library.|
+|FileCheckedOut|User checks out a document located in a SharePoint or OneDrive for Business document library. Users can check out and make changes to documents that have been shared with them.|
 |FileCopied|User copies a document from a SharePoint or OneDrive for Business site. The copied file can be saved to another folder on the site.|
 |FileDeleted|User deletes a document from a SharePoint or OneDrive for Business site.|
 |FileDeletedFirstStageRecycleBin|User deletes a file from the recycle bin on a SharePoint or OneDrive for Business site.|
@@ -258,8 +256,8 @@ This article provides details on the Common schema as well as each of the produc
 |FileRestored|User restores a document from the recycle bin of a SharePoint or OneDrive for Business site. |
 |FileSyncDownloadedFull|User establishes a sync relationship and successfully downloads files for the first time to their computer from a SharePoint or OneDrive for Business document library.|
 |FileSyncDownloadedPartial|User successfully downloads any changes to files from SharePoint or OneDrive for Business document library. This event indicates that any changes that were made to files in the document library were downloaded to the user's computer. Only changes were downloaded because the document library was previously downloaded by the user (as indicated by the FileSyncDownloadedFull event).|
-|FileSyncUploadedFull*|User establishes a sync relationship and successfully uploads files for the first time from their computer to a SharePoint or OneDrive for Business document library.|
-|FileSyncUploadedPartial*|User successfully uploads changes to files on a SharePoint or OneDrive for Business document library. This event indicates that any changes made to the local version of a file from a document library are successfully uploaded to the document library. Only changes are unloaded because those files were previously uploaded by the user (as indicated by the FileSyncUploadedFull event).|
+|FileSyncUploadedFull|User establishes a sync relationship and successfully uploads files for the first time from their computer to a SharePoint or OneDrive for Business document library.|
+|FileSyncUploadedPartial|User successfully uploads changes to files on a SharePoint or OneDrive for Business document library. This event indicates that any changes made to the local version of a file from a document library are successfully uploaded to the document library. Only changes are unloaded because those files were previously uploaded by the user (as indicated by the FileSyncUploadedFull event).|
 |FileUploaded|User uploads a document to a folder on a SharePoint or OneDrive for Business site. |
 |FileViewed|This event has been replaced by the FileAccessed event, and has been deprecated.|
 |FolderCopied|User copies a folder from a SharePoint or OneDrive for Business site to another location in SharePoint or OneDrive for Business.|
@@ -271,27 +269,27 @@ This article provides details on the Common schema as well as each of the produc
 |FolderMoved|User moves a folder from a SharePoint or OneDrive for Business site.|
 |FolderRenamed|User renames a folder on a SharePoint or OneDrive for Business site.|
 |FolderRestored|User restores a folder from the Recycle Bin on a SharePoint or OneDrive for Business site.|
-|GroupAdded*|Site administrator or owner creates a group for a SharePoint or OneDrive for Business site, or performs a task that results in a group being created. For example, the first time a user creates a link to share a file, a system group is added to the user's OneDrive for Business site. This event can also be a result of a user creating a link with edit permissions to a shared file.|
-|GroupRemoved*|User deletes a group from a SharePoint or OneDrive for Business site. |
-|GroupUpdated*|Site administrator or owner changes the settings of a group for a SharePoint or OneDrive for Business site. This can include changing the group's name, who can view or edit the group membership, and how membership requests are handled.|
-|LanguageAddedToTermStore*|Language added to the terminology store.|
-|LanguageRemovedFromTermStore*|Language removed from the terminology store.|
-|LegacyWorkflowEnabledSet*|Site administrator or owner adds theSharePoint Workflow Task content type to the site. Global administrators can also enable work flows for the entire organization in theSharePoint admin center.|
+|GroupAdded|Site administrator or owner creates a group for a SharePoint or OneDrive for Business site, or performs a task that results in a group being created. For example, the first time a user creates a link to share a file, a system group is added to the user's OneDrive for Business site. This event can also be a result of a user creating a link with edit permissions to a shared file.|
+|GroupRemoved|User deletes a group from a SharePoint or OneDrive for Business site. |
+|GroupUpdated|Site administrator or owner changes the settings of a group for a SharePoint or OneDrive for Business site. This can include changing the group's name, who can view or edit the group membership, and how membership requests are handled.|
+|LanguageAddedToTermStore|Language added to the terminology store.|
+|LanguageRemovedFromTermStore|Language removed from the terminology store.|
+|LegacyWorkflowEnabledSet|Site administrator or owner adds theSharePoint Workflow Task content type to the site. Global administrators can also enable work flows for the entire organization in theSharePoint admin center.|
 |LookAndFeelModified|User modifies a quick launch, gantt chart formats, or group formats.  Or the user creates, modifies, or deletes a view in Project Web App.|
 |ManagedSyncClientAllowed|User successfully establishes a sync relationship with a SharePoint or OneDrive for Business site. The sync relationship is successful because the user's computer is a member of a domain that's been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. For more information, see [Use SharePoint Online PowerShell ](https://go.microsoft.com/fwlink/p/?LinkID=534609) to enable OneDrive sync for domains that are on the safe recipients list.|
-|MaxQuotaModified*|The maximum quota for a site has been modified.|
-|MaxResourceUsageModified*|The maximum allowable resource usage for a site has been modified.|
-|MySitePublicEnabledSet*|The flag enabling users to have public MySites has been set by the SharePoint administrator.|
-|NewsFeedEnabledSet*|Site administrator or owner enables RSS feeds for a SharePoint or OneDrive for Business site. Global administrators can enable RSS feeds for the entire organization in the SharePoint admin center.|
-|ODBNextUXSettings*|New UI for OneDrive for Business has been enabled.|
-|OfficeOnDemandSet*|Site administrator enables Office on Demand, which lets users access the latest version of Office desktop applications. Office on Demand is enabled in the SharePoint admin center and requires an Office 365 subscription that includes full, installed Office applications.|
+|MaxQuotaModified|The maximum quota for a site has been modified.|
+|MaxResourceUsageModified|The maximum allowable resource usage for a site has been modified.|
+|MySitePublicEnabledSet|The flag enabling users to have public MySites has been set by the SharePoint administrator.|
+|NewsFeedEnabledSet|Site administrator or owner enables RSS feeds for a SharePoint or OneDrive for Business site. Global administrators can enable RSS feeds for the entire organization in the SharePoint admin center.|
+|ODBNextUXSettings|New UI for OneDrive for Business has been enabled.|
+|OfficeOnDemandSet|Site administrator enables Office on Demand, which lets users access the latest version of Office desktop applications. Office on Demand is enabled in the SharePoint admin center and requires an Office 365 subscription that includes full, installed Office applications.|
 |PageViewed|User views a page on a SharePoint site or OneDrive for Business site. This does not include viewing document library files from a SharePoint site or One Drive for Business site on a browser.|
-|PeopleResultsScopeSet*|Site administrator creates or changes the result source for People Searches for a SharePoint site.|
+|PeopleResultsScopeSet|Site administrator creates or changes the result source for People Searches for a SharePoint site.|
 |PermissionSyncSettingModified|User modifies the project permission sync settings in Project Web App.|
 |PermissionTemplateModified|User creates, modifies or deletes a permissions template in Project Web App.|
 |PortfolioDataAccessed|User accesses portfolio content (driver library, driver prioritization, portfolio analyses) in Project Web App.|
 |PortfolioDataModified|User creates, modifies, or deletes portfolio data (driver library, driver prioritization, portfolio analyses) in Project Web App.|
-|PreviewModeEnabledSet*|Site administrator enables document preview for a SharePoint site.|
+|PreviewModeEnabledSet|Site administrator enables document preview for a SharePoint site.|
 |ProjectAccessed|User accesses project content in Project Web App.|
 |ProjectCheckedIn|User checks in a project that they checked out from a Project Web App.|
 |ProjectCheckedOut|User checks out a project located in a Project Web App. Users can check out and make changes to projects that they have permission to open.|
@@ -304,8 +302,8 @@ This article provides details on the Common schema as well as each of the produc
 |PWASettingsAccessed|User access the Project Web App settings via CSOM.|
 |PWASettingsModified|User modifies the a Project Web App configuration.|
 |QueueJobStateModified|User cancels or restarts a queue job in Project Web App.|
-|QuotaWarningEnabledModified*|Storage quota warning modified.|
-|RenderingEnabled*|Browser-enabled form templates will be rendered by InfoPath forms services.|
+|QuotaWarningEnabledModified|Storage quota warning modified.|
+|RenderingEnabled|Browser-enabled form templates will be rendered by InfoPath forms services.|
 |ReportingAccessed|User accessed the reporting endpoint in Project Web App.|
 |ReportingSettingModified|User modifies the reporting configuration in Project Web App.|
 |ResourceAccessed|User accesses an enterprise resource content in Project Web App.|
@@ -319,26 +317,26 @@ This article provides details on the Common schema as well as each of the produc
 |ResourcePlanModified|User modifies a resource plan in Project Web App.|
 |ResourcePlanPublished|User publishes a resource plan in Project Web App.|
 |ResourceRedacted|User redacts an enterprise resource removing all personal information in Project Web App.|
-|ResourceWarningEnabledModified*|Resource quota warning modified.|
-|SSOGroupCredentialsSet*|Group credentials set in Secure store service.|
-|SSOUserCredentialsSet*|User credentials set in Secure store service.|
-|SearchCenterUrlSet*|Search center URL set.|
-|SecondaryMySiteOwnerSet*|A user has added a secondary owner to their MySite.|
+|ResourceWarningEnabledModified|Resource quota warning modified.|
+|SSOGroupCredentialsSet|Group credentials set in Secure store service.|
+|SSOUserCredentialsSet|User credentials set in Secure store service.|
+|SearchCenterUrlSet|Search center URL set.|
+|SecondaryMySiteOwnerSet|A user has added a secondary owner to their MySite.|
 |SecurityCategoryModified|User creates, modifies or deletes a security category in Project Web App.|
 |SecurityGroupModified|User creates, modifies or deletes a security group in Project Web App.|
-|SendToConnectionAdded*|Global administrator creates a new Send To connection on the Records management page in the SharePoint admin center. A Send To connection specifies settings for a document repository or a records center. When you create a Send To connection, a Content Organizer can submit documents to the specified location.|
-|SendToConnectionRemoved*|Global administrator deletes a Send To connection on the Records management page in the SharePoint admin center.|
+|SendToConnectionAdded|Global administrator creates a new Send To connection on the Records management page in the SharePoint admin center. A Send To connection specifies settings for a document repository or a records center. When you create a Send To connection, a Content Organizer can submit documents to the specified location.|
+|SendToConnectionRemoved|Global administrator deletes a Send To connection on the Records management page in the SharePoint admin center.|
 |SharedLinkCreated|User creates a link to a shared file in SharePoint or OneDrive for Business. This link can be sent to other people to give them access to the file. A user can create two types of links: a link that allows a user to view and edit the shared file, or a link that allows the user to just view the file.|
-|SharedLinkDisabled*|User disables (permanently) a link that was created to share a file.|
+|SharedLinkDisabled|User disables (permanently) a link that was created to share a file.|
 |SharingInvitationAccepted*|User accepts an invitation to share a file or folder. This event is logged when a user shares a file with other users.|
-|SharingRevoked*|User unshares a file or folder that was previously shared with other users. This event is logged when a user stops sharing a file with other users.|
+|SharingRevoked|User unshares a file or folder that was previously shared with other users. This event is logged when a user stops sharing a file with other users.|
 |SharingSet|User shares a file or folder located in SharePoint or OneDrive for Business with another user inside their organization.|
-|SiteAdminChangeRequest*|User requests to be added as a site collection administrator for a SharePoint site collection. Site collection administrators have full control permissions for the site collection and all subsites.|
+|SiteAdminChangeRequest|User requests to be added as a site collection administrator for a SharePoint site collection. Site collection administrators have full control permissions for the site collection and all subsites.|
 |SiteCollectionAdminAdded*|Site collection administrator or owner adds a person as a site collection administrator for a SharePoint or OneDrive for Business site. Site collection administrators have full control permissions for the site collection and all subsites.|
-|SiteCollectionCreated*| Global administrator creates a new site collection in your SharePoint organization.|
-|SiteRenamed*|Site administrator or owner renames a SharePoint or OneDrive for Business site|
+|SiteCollectionCreated| Global administrator creates a new site collection in your SharePoint organization.|
+|SiteRenamed|Site administrator or owner renames a SharePoint or OneDrive for Business site|
 |StatusReportModified|User creates, modifies or deletes a status report in Project Web App.|
-|SyncGetChanges*|User clicks **Sync** in the action tray on in SharePoint or OneDrive for Business to synchronize any changes to file in a document library to their computer.|
+|SyncGetChanges|User clicks **Sync** in the action tray on in SharePoint or OneDrive for Business to synchronize any changes to file in a document library to their computer.|
 |TaskStatusAccessed|User accesses the status of one or more tasks in Project Web App.|
 |TaskStatusApproved|User approves a status update of one or more tasks in Project Web App.|
 |TaskStatusRejected|User rejects a status update of one or more tasks in Project Web App.|
@@ -350,21 +348,15 @@ This article provides details on the Common schema as well as each of the produc
 |TimesheetSaved|User saves a timesheet in Project Web App.|
 |TimesheetSubmitted|User submits a status timesheet in Project Web App.|
 |UnmanagedSyncClientBlocked|User tries to establish a sync relationship with a SharePoint or OneDrive for Business site from a computer that isn't a member of your organization's domain or is a member of a domain that hasn't been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. The sync relationship is not allowed, and the user's computer is blocked from syncing, downloading, or uploading files on a document library. For information about this feature, see [Use Windows PowerShell cmdlets to enable OneDrive sync for domains that are on the safe recipients list](https://docs.microsoft.com/powershell/module/sharepoint-online/index?view=sharepoint-ps).|
-|UpdateSSOApplication*|Target application updated in Secure store service.|
-|UserAddedToGroup*|Site administrator or owner adds a person to a group on a SharePoint or OneDrive for Business site. Adding a person to a group grants the user the permissions that were assigned to the group. |
-|UserRemovedFromGroup*|Site administrator or owner removes a person from a group on a SharePoint or OneDrive for Business site. After the person is removed, they no longer are granted the permissions that were assigned to the group. |
+|UpdateSSOApplication|Target application updated in Secure store service.|
+|UserAddedToGroup|Site administrator or owner adds a person to a group on a SharePoint or OneDrive for Business site. Adding a person to a group grants the user the permissions that were assigned to the group. |
+|UserRemovedFromGroup|Site administrator or owner removes a person from a group on a SharePoint or OneDrive for Business site. After the person is removed, they no longer are granted the permissions that were assigned to the group. |
 |WorkflowModified|User creates, modifies, or deletes an Enterprise Project Type or Workflow phases or stages in Project Web App.|
 |||||
-
-
-> [!NOTE] 
-> *This operation is in Preview.
 
 ## SharePoint file operations
 
 The file-related SharePoint events listed in the "File and folder activities" section in [Search the audit log in security and compliance center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) use this schema.
-
-
 
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -379,13 +371,10 @@ The file-related SharePoint events listed in the "File and folder activities" se
 |SharingType|Edm.String|No|The type of sharing permissions that were assigned to the user that the resource was shared with. This user is identified by the  _UserSharedWith_ parameter.|
 |||||
 
-
 ## SharePoint Sharing schema
 
  The file share-related SharePoint events. They are different from file- and folder-related events in that a user is taking an action that has some effect on another user. For information about the SharePoint Sharing schema, see [Use sharing auditing in the Office 365 audit log](https://docs.microsoft.com/microsoft-365/compliance/use-sharing-auditing
 ).
-
-
 
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -394,11 +383,9 @@ The file-related SharePoint events listed in the "File and folder activities" se
 |EventData|XML code|No|Conveys follow-up information about the sharing action that has occurred, such as adding a user to a group or granting edit permissions.|
 |||||
 
-
 ## SharePoint schema
 
 The SharePoint events listed in [Search the audit log in security and compliance center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) (excluding the file and folder events) use this schema.
-
 
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -486,7 +473,6 @@ The SharePoint events listed in [Search the audit log in security and compliance
 
 ## Exchange Admin schema
 
-
 |**Parameters**|**Type**|**Mandatory**|**Description**|
 |:-----|:-----|:-----|:-----|
 |ModifiedObjectResolvedName|Edm.String|No|This is the user friendly name of the object that was modified by the cmdlet. This is logged only if the cmdlet modifies the object.|
@@ -498,7 +484,6 @@ The SharePoint events listed in [Search the audit log in security and compliance
 |||||
 
 ## Exchange Mailbox schema
-
 
 |**Parameters**|**Type**|**Mandatory**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -524,7 +509,6 @@ The SharePoint events listed in [Search the audit log in security and compliance
 
 #### LogonType
 
-
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
 |0|Owner|The mailbox owner.|
@@ -537,7 +521,6 @@ The SharePoint events listed in [Search the audit log in security and compliance
 |||||
 
 ### ExchangeMailboxAuditGroupRecord schema
-
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -552,9 +535,7 @@ The SharePoint events listed in [Search the audit log in security and compliance
 |AffectedItems|Collection(Self.[ExchangeItem](#exchangeitem-complex-type))|No|Information about each item in the group.|
 |||||
 
-
 ### ExchangeMailboxAuditRecord schema
-
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -568,7 +549,6 @@ The SharePoint events listed in [Search the audit log in security and compliance
 
 ### ExchangeItem complex type
 
-
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |Id|Edm.String|Yes|The store ID.|
@@ -579,16 +559,13 @@ The SharePoint events listed in [Search the audit log in security and compliance
 
 ### ExchangeFolder complex type
 
-
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |Id|Edm.String|Yes|The store ID of the folder object.|
 |Path|Edm.String|No|The name of the mailbox folder where the message that was accessed is located.|
 |||||
 
-
 ## Azure Active Directory Base schema
-
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -609,7 +586,6 @@ The SharePoint events listed in [Search the audit log in security and compliance
 
 ## Azure Active Directory Account Logon schema
 
-
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |Application|Edm.String|No|The application that triggers the account login event, such as Office 15.|
@@ -618,9 +594,7 @@ The SharePoint events listed in [Search the audit log in security and compliance
 |UserDomain|Edm.String|Yes|The Tenant Identity Information (TII).|
 |||||
 
-
 ### Enum: CredentialType - Type: Edm.Int32
-
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
@@ -638,7 +612,6 @@ The SharePoint events listed in [Search the audit log in security and compliance
 
 ### Enum: LoginType - Type: Edm.Int32
 
-
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
 |-1|Other|Other i type.|
@@ -648,7 +621,6 @@ The SharePoint events listed in [Search the audit log in security and compliance
 |||||
 
 ### Enum: AuthenticationMethod - Type: Edm.Int32
-
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
@@ -674,9 +646,7 @@ The SharePoint events listed in [Search the audit log in security and compliance
 |19|OneTimeCode|The authentication method is a one-time code.|
 |||||
 
-
 ## Azure Active Directory schema
-
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -691,7 +661,6 @@ The SharePoint events listed in [Search the audit log in security and compliance
 |||||
 
 ### Complex Type IdentityTypeValuePair
-
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -712,7 +681,6 @@ The SharePoint events listed in [Search the audit log in security and compliance
 |SPN|The identity of a service principal if the action is performed by the Office 365 service.|
 |UPN|The user principal name.|
 |||||
-
 
 ## Azure Active Directory Secure Token Service (STS) Logon schema
 
@@ -760,7 +728,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |UniqueId|Edm.String|Yes|A guid that identifies the file.|
 |LastModifiedTime|Edm.DateTime|Yes|Timestamp in UTC for when doc was last modified.|
 |||||
-
 
 ### ExchangeMetadata complex type
 
@@ -817,8 +784,9 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |SensitiveInformationDetections|Self.SensitiveInformationDetections|No|An array of objects that contain sensitive information data with the following details – matched value and context of matched value.|
 |||||
 
-### SensitiveInformationDetections complex type 
-DLP sensitive data is only available in the activity feed API to users that have been granted "Read DLP sensitive data" permissions. 
+### SensitiveInformationDetections complex type
+
+DLP sensitive data is only available in the activity feed API to users that have been granted "Read DLP sensitive data" permissions.
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -901,91 +869,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |VersionId|Edm.Int64|No|Version ID of the file in the operation.|
 |||||
 
-## Sway schema
-
-The Sway events listed in [Search the audit log in the Office 365 Protection Center](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&amp;rs=en-US&amp;ad=US) (excluding the file and folder events) will use this schema.
-
-|**Parameter**|**Type**|**Mandatory?**|**Description**|
-|:-----|:-----|:-----|:-----|
-|ObjectType|Self.[ObjectType](#objecttype)|No|The access point for the triggered event. Access points include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>A Sway</p></li><li><p>A Sway that is embedded within a host</p></li><li><p>Sway settings within the Office 365 admin portal</p></li></ul>|
-|Endpoint|Self.[Endpoint](#endpoint)|No|The Sway client endpoint for the triggered event. The Sway client endpoint can be web, iOS, Windows, or Android. |
-|BrowserName|Edm.String|No|The browser used to access Sway for the triggered event. |
-|DeviceType|Self.[DeviceType](#devicetype)|No|The device type used to access Sway for the triggered event. The device type can be desktop, mobile, or tablet.|
-|SwayLookupId|Edm.String|No|The Sway ID. |
-|SiteUrl|Edm.String|No|The URL for the Sway.|
-|OperationResult|Self.[OperationResult](#operationresult)|No|Either success or fail.|
-|||||
-
-
-### Enum: ObjectType - Type Edm.Int32
-
-#### ObjectType
-
-|**Value**|**Member name**|**Description**|
-|:-----|:-----|:-----|
-|0|Sway|The event was triggered from a Sway.|
-|1|SwayEmbedded|The event was triggered from a Sway, which is embedded in a host.|
-|2|SwayAdminPortal|The event was triggered from Sway service settings in Office 365 admin portal.|
-|||||
-
-
-### Enum: OperationResult - Type Edm.Int32
-
-#### OperationResult
-
-|**Value**|**Member name**|**Description**|
-|:-----|:-----|:-----|
-|0|Succeeded|The event was successful.|
-|1|Failed|The event failed.|
-|||||
-
-
-### Enum: Endpoint - Type Edm.Int32
-
-#### Endpoint
-
-|**Value**|**Member name**|**Description**|
-|:-----|:-----|:-----|
-|0|SwayWeb|The event was triggered using the Web client of Sway.|
-|1|SwayIOS|The event was triggered using the iOS client of Sway.|
-|2|SwayWindows|The event was triggered using the Windows client of Sway.|
-|3|SwayAndroid|The event was triggered using the Android client of Sway.|
-|||||
-
-
-### Enum: DeviceType - Type Edm.Int32
-
-#### DeviceType
-
-|**Value**|**Member name**|**Description**|
-|:-----|:-----|:-----|
-|0|Desktop|The event was triggered using the desktop.|
-|1|Mobile|The event was triggered using a mobile device.|
-|2|Tablet|The event was triggered using a tablet device.|
-|||||
-
-### Enum: SwayAuditOperation - Type Edm.Int32
-
-#### SwayAuditOperation
-
-|**Value**|**Member name**|**Description**|
-|:-----|:-----|:-----|
-|1|Create|The user creates a Sway.|
-|2|Delete|The user deletes a Sway.|
-|3|View|The user views a Sway.|
-|4|Edit|The user edits a Sway.|
-|5|Duplicate|The user duplicates a Sway.|
-|7|Share|The user initiates sharing a Sway. This event captures the user action of clicking on a specific share destination within the Sway share menu. The event does not indicate whether the user actually follows through and completes the share action.|
-|8|ChangeShareLevel|The user changes the share level of a Sway. This event captures the user changing the scope of sharing associated with a Sway. For example, public as compared to from within the organization.|
-|9|RevokeShare|The user stops sharing a Sway by revoking access. Revoking access changes the links associated with a Sway.|
-|10|EnableDuplication|The user enables duplication of a Sway (on by default).|
-|11|DisableDuplication|The user disables duplication of a Sway (off by default).|
-|12|ServiceOn|The user enables Sway for the entire organization via the Office 365 admin center (on by default).|
-|13|ServiceOff|The user disables Sway for the entire organization via the Office 365 admin center (off by default).|
-|14|ExternalSharingOn|The user enables external sharing for the entire organization via the Office 365 admin center.|
-|15|ExternalSharingOff|The user disables external sharing for the entire organization via the Office 365 admin center.|
-|||||
-
 ## Data Center Security Base schema
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -997,12 +880,10 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 
 #### DataCenterSecurityEventType
 
-
 |**Member name**|**Description**|
 |:-----|:-----|
 |DataCenterSecurityCmdletAuditEvent|This is the enum value for cmdlet audit type event.|
 |||
-
 
 ## Data Center Security Cmdlet schema
 
@@ -1018,7 +899,6 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |ElevationDuration|Edm.Int32|Yes|The duration for which the elevation was active.|
 |GenericInfo|Edm.String|No|Used for comments and other generic information.|
 |||||
-
 
 ## Microsoft Teams schema
 
@@ -1040,7 +920,6 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |OldValue|Edm.String|No|Only present for settings events. Old value of the setting.|
 |NewValue|Edm.String|No|Only present for settings events. New value of the setting.|
 ||||
-
 
 ### MicrosoftTeamsMember complex type
 
@@ -1069,7 +948,6 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |Key|Edm.String|No|The key of the key-value pair.|
 |Value|Edm.String|No|The value of the key-value pair.|
 |||||
-
 
 ### Enum: AddOnType - Type: Edm.Int32
 
@@ -1211,7 +1089,6 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 |5|PendingDetonationPageOverride|User presented with the detonation page by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links); however user overrode to navigate to the URL.|
 |||||
 
-
 ### File events
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -1257,17 +1134,17 @@ The Sway events listed in [Search the audit log in the Office 365 Protection Cen
 Currently, only automated investigation are logged. (Events for manually generated investigations are coming soon.) The following status values are logged:
 
 - Investigation Started
-- No threats found 
+- No threats found
 - Terminated by System
-- Pending Action 
-- Threats Found 
-- Remediated 
-- Failed 
-- Terminated by throttling 
+- Pending Action
+- Threats Found
+- Remediated
+- Failed
+- Terminated by throttling
 - Terminated By User
 - Running
 
-### Main investigation schema 
+### Main investigation schema
 
 |Name    |Type    |Description  |
 |----|----|----|
@@ -1303,7 +1180,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 
 ### Entities
 
-#### MailMessage (email) 
+#### MailMessage (email)
 
 |Field    |Type    |Description  |
 |----|----|----|
