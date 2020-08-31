@@ -533,20 +533,6 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-
-### Pagination
-
-When listing notification history for a time range, the number of results returned is limited to prevent response timeouts. If there are more results in the specified time range than can be returned in a single response, the results are truncated and a header is added to the response indicating the URL to use to retrieve the next page of results. The URL will contain the same  _startTime_ and _endTime_ parameters that were specified in the original request, together with a parameter indicating the internal ID of the next page. If _startTime_ and _endTime_ were not specified in the original request, they will be set to reflect the 24-hour interval that preceded the original request.
-
-```json
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-NextPageUrl: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscriptions/content?contentType=Audit.SharePoint&amp;startTime=2015-10-01&amp;endTime=2015-10-02&amp;nextPage=2015101900R022885001761
-
-```
-
-To list all available content for a specified time range, you might need to retrieve multiple pages until a response without the **NextPageUrl** header is received.
-
 ## Retrieve resource friendly names
 
 This operation retrieves friendly names for objects in the data feed identified by guids. Currently "DlpSensitiveType" is the only supported object. 
