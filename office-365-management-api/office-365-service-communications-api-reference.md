@@ -13,13 +13,13 @@ localization_priority: Priority
 You can use the Office 365 Service Communications API V2 to access the following data:
 
 - **Get Services**: Get the list of subscribed services.
-    
+
 - **Get Current Status**: Get a real-time view of current and ongoing service incidents.
-    
+
 - **Get Historical Status**: Get a historical view of service incidents.
-    
+
 - **Get Messages**: Find Incident and Message Center communications.
-    
+
 Currently, the Office 365 Service Communications API contains data for Office 365, Yammer, Dynamics CRM and Microsoft Intune cloud services.
 
 ## The fundamentals
@@ -47,7 +47,6 @@ These are the supported request headers for all Office 365 Service Communication
 |**Accept (Optional)**|The following are acceptable representations for the response:<br/>**application/json;odata.metadata=full**<br/>**application/json;odata.metadata=minimal**<br/>[The default if header not specified] **application/json;odata.metadata=none**|
 |**Authorization (Required)**|Authorization token (Bearer JWT Azure AD Token) for the request.|
 
-
 <br/>
 
 ### Response headers
@@ -74,7 +73,6 @@ These are the response headers returned for all Office 365 Service Communication
 <br/>
 
 Following are the Office 365 Service Communications API operations.
-
 
 ## Get Services
 
@@ -130,7 +128,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
     ]
 }
 ```
-
 
 ## Get Current Status
 
@@ -263,21 +260,21 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 ### Status definitions
 
-The status definitions include the following values: 
+The status definitions include the following values:
 
 - Investigating
 - ServiceDegradation
-- ServiceInterruption 
+- ServiceInterruption
 - RestoringService
 - ExtendedRecovery
+- InvestigationSuspended
 - ServiceRestored
-- PostIncidentReportPublished 
+- FalsePositive
+- PostIncidentReportPublished
 - VerifyingService
 - ServiceOperational
-- FalsePositive
 
 For an up-to-date list and description of these status definitions, see [How to check Office 365 service health](https://docs.microsoft.com/office365/enterprise/view-service-health#status-definitions).
-
 
 ## Get Historical Status
 
@@ -479,4 +476,3 @@ When the service encounters an error, it reports the error response code to the 
     } 
 }
 ```
-
