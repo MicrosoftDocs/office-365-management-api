@@ -271,10 +271,9 @@ The status definitions include the following values:
 - ServiceRestored
 - FalsePositive
 - PostIncidentReportPublished
-- VerifyingService
 - ServiceOperational
 
-For an up-to-date list and description of these status definitions, see [How to check Office 365 service health](https://docs.microsoft.com/office365/enterprise/view-service-health#status-definitions).
+For a description of these status definitions, see [How to check Microsoft 365 service health](https://docs.microsoft.com/microsoft-365/enterprise/view-service-health#status-definitions).
 
 ## Get Historical Status
 
