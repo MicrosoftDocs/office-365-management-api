@@ -1,4 +1,5 @@
 ---
+ms.technology: o365-service-communications
 ms.TocTitle: Office 365 Service Communications API reference
 title: Office 365 Service Communications API reference
 description: Use this API to access the following data - Get Services, Get Current Status, Get Historical Status, and Get Messages.
