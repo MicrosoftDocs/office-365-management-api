@@ -20,7 +20,6 @@ The Office 365 Management APIs provide a single extensibility platform for all O
 - [Office 365 Management Activity API reference](office-365-management-activity-api-reference.md)
 - [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md)
 - [Troubleshooting the Office 365 Management Activity API](troubleshooting-the-office-365-management-activity-api.md)
-- [Office 365 Management Activity API frequently asked questions](office-365-management-activity-api-faq.md)
 
 ## See also
 

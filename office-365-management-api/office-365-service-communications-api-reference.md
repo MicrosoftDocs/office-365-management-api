@@ -79,7 +79,7 @@ Following are the Office 365 Service Communications API operations.
 
 Returns the list of subscribed services.
 
-||Service|Description|
+|Information|Service|Description|
 |:-----|:-----|:-----|
 |**Path**| `/Services`||
 |**Query-option**|$select|Pick a subset of properties.|
@@ -140,7 +140,7 @@ Returns the status of the service from the previous 24 hours.
 
 <br/>
 
-||Service|Description|
+|Information|Service|Description|
 |:-----|:-----|:-----|
 |**Path**| `/CurrentStatus`||
 |**Filter**|Workload|Filter by workload (String, default: all).|
@@ -280,7 +280,7 @@ For a description of these status definitions, see [How to check Microsoft 365 s
 
 Returns the historical status of the service, by day, over a certain time range.
 
-||Service|Description|
+|Information|Service|Description|
 |:-----|:-----|:-----|
 |**Path**| `/HistoricalStatus`||
 |**Filters**|Workload|Filter by workload (String, default: all).|
@@ -381,7 +381,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 Returns the messages about the service over a certain time range. Use the type filter to filter for "Service Incident", "Planned Maintenance", or "Message Center" messages.
 
-||Service|Description|
+|Information|Service|Description|
 |:-----|:-----|:-----|
 |**Path**| `/Messages`||
 |**Filters**|Workload|Filter by workload (String, default: all).|

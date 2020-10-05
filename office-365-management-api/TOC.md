@@ -5,4 +5,3 @@
 ## [Management Activity API reference](office-365-management-activity-api-reference.md)
 ## [Management Activity API schema](office-365-management-activity-api-schema.md)
 ## [Troubleshooting the Management Activity API](troubleshooting-the-office-365-management-activity-api.md)
-## [Management Activity API frequently asked questions](office-365-management-activity-api-faq.md)
