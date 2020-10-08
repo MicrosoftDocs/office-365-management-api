@@ -102,21 +102,21 @@ The following sections summarizes the most common questions that customers have 
 
 We'll show a selection of simple PowerShell scripts that can help you answer the most common questions asked by customers or get you started implementing a custom solution by demonstrating the main operations. Not all the operations are explained in these sections, but they are all listed in Office 365 Management Activity API reference.
 
-## Questions about third-party tools and clients
+### Questions about third-party tools and clients
 
 The most common category of questions come from customers using third-party products to download and aggregate auditing data. Depending on the third-party product, customers may encounter difficulty with the setup or experience an interruption or an inconsistency in the data exposed in those products. Here it should be stated that the first action such customers should take is to contact their vendor's support organization. Typically, a tenant-specific vendor configuration or service problem is the cause of customer complaints.
 
-## Enabling unified audit logging in Office 365
+### Enabling unified audit logging in Office 365
 
 If you've just set up an app that's trying to use the Management Activity API and it's not working, be sure that you've enabled unified audit logging for your Office 365 organization. You do this by turning on the Office 365 audit log. For instructions, see [Turn Office 365 audit log search on or off](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
 
 If unified auditing isn't enabled, you will typically receive an error that contains the following string: `Microsoft.Office.Compliance.Audit``.DataServiceException: Tenant <tenantID> does not exist.`
 
-## Connecting to the API
+### Connecting to the API
 
 Most applications connect to the API using a straightforward Client Credentials OAuth2 flow. Therefore, the first step is to create an Azure AD application that has the permissions needed to access the Management Activity API data. It's outside the scope of this article to explain the steps to create an Azure AD App registration. For more information, see [Register your application with your Azure Active Directory tenant](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
 
-### Azure application permissions
+#### Azure application permissions
 
 The three permissions currently used for the Office 365 Management Activity API are:
 
@@ -129,7 +129,7 @@ The three permissions currently used for the Office 365 Management Activity API 
 > [!NOTE]
 > You should enable both the Application Permissions and the Delegated Permissions for at least the first two of the above permission sets. Read DLP policy events will only be necessary if you are interested in the DLP workloads.
 
-### Getting an access token
+#### Getting an access token
 
 The following PowerShell script uses the App ID and a Client Secret to obtain the OAuth2 token from the Management Activity API authentication endpoint. It then places the access token into the `$headerParams` array variable, which you'll attach to your HTTP request. For the value for the API endpoint (in the $resource variable) use one of the following values based on your organization's Microsoft 365 or Office 365 subscription plan:
 
@@ -168,7 +168,7 @@ resource       : https://manage.office.com
 access_token   : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjJLVmN1enFBaWRPTHFXU2FvbDd3Z0ZSR0NZbyIsImtpZCI6IjJLVmN1enFBaWRPTHFXU2FvbDd3Z0ZSR0NZbyJ9.eyJhdWQiOiJodHRwczov…
 ```
 
-## Checking your subscriptions
+### Checking your subscriptions
 
 If you've experienced an interruption in data flowing to an existing Management Activity API client or solution, you might wonder if something happened to your subscription. To check your active subscriptions, add the following to the previous script:
 
@@ -201,7 +201,7 @@ RawContentLength  : 266
 
 This says that the tenant has both Audit.Exchange and Audit.SharePoint subscriptions enabled. The Exchange subscription has no webhook enabled (null) and the SharePoint subscription has a webhook enabled with the address of the registered endpoint shown.
 
-## Creating a new subscription
+### Creating a new subscription
 
 To create a new subscription, you use the /start operation. For the API endpoint, use one of these values base on your subscription plan:
 
@@ -253,7 +253,7 @@ Invoke-WebRequest -Method GET -Headers $headerParams -Uri "$resource/api/v1.0/$t
 >
 > - The *contentCreated* property is not the date that the event being notified was created. This is the date the notification was created. The events detailed in that blob may have been created well before the content blob was created. Therefore, you can never query the API directly for events that occurred within any given period.
 
-### Paging contents for busy tenants
+#### Paging contents for busy tenants
 
 Many larger Office 365 tenants have thousands of events being generated every hour. If this is the case with your organization, and you try to execute a query for a 24-hour period like in the example above, you may need to retrieve more notifications than can be returned in one response. In this case, you'll need to implement a logical loop of some kind, each time checking the response headers for the **NextPageUrl:** header value. See the Pagination section in the Office 365 Management Activity API reference for more details.
 
@@ -267,7 +267,7 @@ ELSE exit the loop
 
 It will be difficult to test this looping code unless you have a very active tenant. In our testing, we tried to execute several thousand update operations in a script and was unable to generate a large enough number of notifications to require the **NextPageUrl** header to be sent.
 
-## Using webhooks
+### Using webhooks
 
 There two ways to get a notification that content blobs have been created. The *push* approach is implemented with a webhook endpoint, which is a web application that you create and host yourself or on a cloud platform. You register the webhook at the time you create a subscription to an audited content type. You may also add a webhook registration to an existing subscription using the approach shown below. The *pull* approach requires you to query for a particular timespan (no more than 24 hours) using the /content operation. The response will tell you which content blobs were created during the period specified.
 
@@ -294,11 +294,11 @@ Invoke-RestMethod -Method Post -uri $uri -Headers $headerParams -Body $body
 
 Immediately following this call, a validation request will be sent out to `https://webhook.myapp.com/o365/ …` and there should be a listener ready to respond, as per the description in the Webhook validation section in the Office 365 Management Activity API reference. Your listener must respond with HTTP 200. If you immediately run the /list operation at this point, you will not see the webhook shown as other than null until the validation has returned successfully.
 
-### Checking notifications to webhooks
+#### Checking notifications to webhooks
 
 It's important to distinguish between the /notifications operation and the /content operation. Checking notifications is only relevant if you have subscribed with a webhook endpoint. This operation will let you know if attempts to send notifications to your webhook have been successful or not. This operation should not be used to list available content. To cross-check the availability of content against what you may have already received in your webhook, you would use the /content operation. But be sure to first check for failed notifications using the /notifications operation.
 
-## Requesting content blobs and throttling
+### Requesting content blobs and throttling
 
 After you've obtained a list of content URIs, you must request the blobs specified by the URIs. The following is an example of requesting a content blob (using the manage.office.com API endpoint for Enterprise organizations) using PowerShell. This example assumes you have already used the previous example in the [Getting an access token](#getting-an-access-token) section in this article to get an access token and have populated the `$headerParams` variable appropriately.
 
