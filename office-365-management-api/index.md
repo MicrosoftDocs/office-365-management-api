@@ -1,4 +1,5 @@
 ---
+ms.technology: o365-service-communications
 ms.TocTitle: Office 365 Management APIs
 title: Welcome to Office 365 Management APIs
 description: The Office 365 Management APIs provide a single extensibility platform for all Office 365 customers' and partners' management tasks, including service communications, security, compliance, reporting, and auditing. 
@@ -20,7 +21,6 @@ The Office 365 Management APIs provide a single extensibility platform for all O
 - [Office 365 Management Activity API reference](office-365-management-activity-api-reference.md)
 - [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md)
 - [Troubleshooting the Office 365 Management Activity API](troubleshooting-the-office-365-management-activity-api.md)
-- [Office 365 Management Activity API frequently asked questions](office-365-management-activity-api-faq.md)
 
 ## See also
 

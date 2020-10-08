@@ -1,0 +1,9 @@
+{
+    "redirections": [
+      {
+        "source_path": "office-365-management-api/office-365-management-activity-api-faq.md",
+        "redirect_url": "https://docs.microsoft.com/en-us/office/office-365-management-api/troubleshooting-the-office-365-management-activity-api#frequently-asked-questions-about-the-office-365-management-api",
+        "redirect_document_id": true
+      }
+    ]
+  }
