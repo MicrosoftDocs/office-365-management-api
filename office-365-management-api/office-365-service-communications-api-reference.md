@@ -1,4 +1,5 @@
 ---
+ms.technology: o365-service-communications
 ms.TocTitle: Office 365 Service Communications API reference
 title: Office 365 Service Communications API reference
 description: Use this API to access the following data - Get Services, Get Current Status, Get Historical Status, and Get Messages.
@@ -78,7 +79,7 @@ Following are the Office 365 Service Communications API operations.
 
 Returns the list of subscribed services.
 
-||Service|Description|
+|Information|Service|Description|
 |:-----|:-----|:-----|
 |**Path**| `/Services`||
 |**Query-option**|$select|Pick a subset of properties.|
@@ -139,7 +140,7 @@ Returns the status of the service from the previous 24 hours.
 
 <br/>
 
-||Service|Description|
+|Information|Service|Description|
 |:-----|:-----|:-----|
 |**Path**| `/CurrentStatus`||
 |**Filter**|Workload|Filter by workload (String, default: all).|
@@ -279,7 +280,7 @@ For a description of these status definitions, see [How to check Microsoft 365 s
 
 Returns the historical status of the service, by day, over a certain time range.
 
-||Service|Description|
+|Information|Service|Description|
 |:-----|:-----|:-----|
 |**Path**| `/HistoricalStatus`||
 |**Filters**|Workload|Filter by workload (String, default: all).|
@@ -380,7 +381,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 Returns the messages about the service over a certain time range. Use the type filter to filter for "Service Incident", "Planned Maintenance", or "Message Center" messages.
 
-||Service|Description|
+|Information|Service|Description|
 |:-----|:-----|:-----|
 |**Path**| `/Messages`||
 |**Filters**|Workload|Filter by workload (String, default: all).|
@@ -405,7 +406,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 ```json
 {
- {
     "value": [
         {
             "Id": "EX20119",
@@ -449,7 +449,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
                 {
                     "PublishedTime": "2015-04-07T23:26:44.643Z",
                     "MessageText": "Final Status: Engineers have validated that the deployed fix has resolved the issue and that service is restored.\r\n\r\nUser Experience: Affected users were unable to send or receive email while using Exchange Web Services (EWS) on their mobile devices.\r\n\r\nCustomer Impact: Customer impact appeared to be limited during this event. This issue was only affecting customers that use third-party Mobile Device Management software from Good Technology. As a workaround to provide immediate relief from impact, engineers implemented a configuration change for customers who reported this issue to Microsoft Support.\r\n\r\nIncident Start Time: Wednesday, April 1, 2015, at 2:00 PM UTC\r\n\r\nIncident End Time: Tuesday, April 7, 2015, at 10:00 PM UTC\r\n\r\nPreliminary Root Cause: As part of our ongoing efforts to improve service resiliency, an update was deployed to the infrastructure that facilitates connections from multiple Exchange Online protocols to mailbox databases. The update, however, contained a code issue that caused connectivity issues in some scenarios. \r\n\r\nNext Steps: The following is a list of known action item(s) associated with this incident. As part of the Office 365 problem management process, additional engineering actions may be identified to improve the overall service.\r\n- Action: Review the infrastructure update process to prevent reoccurrences of this scenario.\r\n\r\nPlease consider this service notification the final update on the event."
-               }
+                }
             ],
             "LastUpdatedTime": "2015-04-07T23:26:45.08Z",
             "Workload": "Exchange Online",
