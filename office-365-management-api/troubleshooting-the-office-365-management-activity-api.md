@@ -246,7 +246,7 @@ Response Code 403: {'error':{'code':'AF429','message':'Too many requests. Method
 
 This is likely due to throttling. Note that the value of the PublisherId parameter likely indicates that the client didn’t specify the *PublisherIdentifier* in the request. Also, keep in mind that the correct parameter name is *PublisherIdentifier* even though you see *PublisherId* listed in the 403 error responses.
 
-> [!NOTE] 
+> [!NOTE]
 > In the API reference, the *PublisherIdentifier* parameter is listed in every operation of the API, but it should also be included in the GET request to the contentUri URL when retrieving the content blob.
 
 If you’re doing simple API calls to troubleshoot problems (for example, checking if a given subscription is active) you can safely omit the *PublisherIdentifier* parameter, but absolutely any code that is eventually meant for production use should include the *PublisherIdentifier* parameter on every call.
@@ -265,64 +265,65 @@ The previous example assumes that the *$response* variable was populated with th
 
 ## Frequently asked questions about the Office 365 Management Activity API
 
-#### What is the maximum time I will have to wait before a notification is sent about a given Office 365 event?
+**What is the maximum time I will have to wait before a notification is sent about a given Office 365 event?**
 
 There is no guaranteed maximum latency for notification delivery (in other words, no SLA). Microsoft Support’s experience has been that most notifications are sent within one hour of the event. Often the latency is much shorter, but often it’s longer as well. This varies somewhat from workload to workload, but a general rule is that most notifications will be delivered within 24 hours of the originating event.
 
-#### Aren’t webhook notifications more immediate? After all, aren’t they are event-driven?
+**Aren’t webhook notifications more immediate? After all, aren’t they are event-driven?**
 
 No. Webhook notifications aren't event-driven in the sense that the event triggers the notification. The content blob must still be created and creating the content blob is what triggers the notification delivery. Recently, there have been longer wait times for notifications when using a webhook compared to querying the API directly with the `/content` operation. Therefore, the Management Activity API shouldn’t be thought of as a real-time security alert system. Microsoft has other products for that. As far as security is concerned, Management Activity API event notifications can more appropriately be used to determine use patterns over extended periods of time. 
 
-#### Can I query the Management Activity API for a particular event ID or RecordType or other properties in the content blob?
+**Can I query the Management Activity API for a particular event ID or RecordType or other properties in the content blob?**
 
 No. Don’t think of the data available through the Management Activity API as being a “log” in the traditional sense. Rather, think of it as a dump of event details. It’s up to you to gather all those event details, store and index them locally, and then implement your own query logic, by using either a custom application or a third-party tool.
 
-#### How do I know the data coming from my existing auditing solution, which collects data from the Management Activity API, is accurate and complete?
+**How do I know the data coming from my existing auditing solution, which collects data from the Management Activity API, is accurate and complete?**
 
 The short answer is that Microsoft doesn’t provide any kind of a log that will allow you to cross-check any given application or third-party (ISV) application. There are other Microsoft security products that draw their data from the same pipeline, but those products fall outside the scope of this discussion and  can’t be used to directly cross-check the Management Activity API. If you’re concerned about discrepancies between what your existing solution is providing and what you expect, you should implement the operations illustrated above. But this can be difficult, depending on how your existing tool or solution lists and indexes data. If your existing solution only presents data sorted by the creation time of the actual event, there’s no way to query the API by event creation time so that you could compare result sets. In this scenario, you’d have to collect the notified content blobs for several days, index or sort them manually, and then do a rough comparison.
 
-#### How long will the content blobs remain available?
+**How long will the content blobs remain available?**
 
 Content blobs are available 7 days after the notification of the content blob’s availability. This means that if there is a significant delay in the creation of the content blob, you will have more time (the delay plus 7 days) after the actual event creation date before the content blob is no longer available.
 
-#### If there is a 24-hour delay in getting a notification, doesn’t that mean I will have only 6 days to retrieve the content blob?
+**If there is a 24-hour delay in getting a notification, doesn’t that mean I will have only 6 days to retrieve the content blob?**
 
 No. Even if the notification is delayed for an unusually long period (for example, in the case of a service interruption), you would still have 7 days after the first availability of the notification to download the content blob related to the originating event.
 
-#### What events are audited for a specific Office 365 service?
+**What events are audited for a specific Office 365 service?**
 
 Office 365 Management Activity API schema documentation has a comprehensive list of events. For details, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md). Also see the "Audited activities" section in [Search the audit log in the Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#audited-activities) for a list of events for most of the Office 365 services that are audited.
 
-#### How do I onboard to the Management Activity API?
+**How do I onboard to the Management Activity API?**
 
 To get started with the Office 365 Management Activity API, see [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md).
- 
-#### We want to programmatically capture all events in all workloads. What is the most reliable way to do this?
+
+**We want to programmatically capture all events in all workloads. What is the most reliable way to do this?**
 
 You can do this by using the Office 365 Management Activity API. Also, we recommend that you use the **pull model** due to issues with using webhooks. For more information, see the "Using webhooks" section in [Troubleshooting the Office 365 Management Activity API](troubleshooting-the-office-365-management-activity-api.md#using-webhooks).
 
-#### Is it true that mailbox auditing in Exchange Online can only be enabled by using PowerShell?
+**Is it true that mailbox auditing in Exchange Online can only be enabled by using PowerShell?**
 
 That used to be the case but since January 2019, mailbox auditing is now turned on by default for all Office 365 organizations. For more information, see [Manage mailbox auditing](https://docs.microsoft.com/office365/securitycompliance/enable-mailbox-auditing).
 
-#### Are there any differences in the records that are fetched by the Management Activity API versus the records that are returned by using the audit log search tool in the Microsoft 365 compliance center?
+**Are there any differences in the records that are fetched by the Management Activity API versus the records that are returned by using the audit log search tool in the Microsoft 365 compliance center?**
 
 The data that is returned by both methods is the same. There is no filtering that happens. The only difference is that with the API, you can get data for the last 7 days at a time. When searching the audit log in the Security & Compliance Center (or by using the corresponding [Search-UnifiedAuditLog](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/search-unifiedauditlog) cmdlet in Exchange Online), you can get data for the last 90 days. 
 
-#### What happens if I disable auditing for my Office 365 organization? Will I still get events via the Management Activity API?
+**What happens if I disable auditing for my Office 365 organization? Will I still get events via the Management Activity API?**
 
 No. Office 365 unified auditing must be enabled for your organization to pull records via the Management Activity API. For instructions, see [Turn Office 365 audit log search on or off](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
 
-#### What is the throttling limit for the  Management Activity API?
+**What is the throttling limit for the  Management Activity API?**
 
-All organizations are initially allocated a baseline of 2,000 requests per minute. This is not a static, predefined limit but is modeled on a combination of factors including the number of seats in the organization and the fact that Office 365 E5 and Microsoft 365 E5 organizations will get approximately twice as much bandwidth as non-E5 organizations. There will also be cap on the maximum bandwidth to protect the health of the service. 
+All organizations are initially allocated a baseline of 2,000 requests per minute. This is not a static, predefined limit but is modeled on a combination of factors including the number of seats in the organization and the fact that Office 365 E5 and Microsoft 365 E5 organizations will get approximately twice as much bandwidth as non-E5 organizations. There will also be cap on the maximum bandwidth to protect the health of the service.
 
-**Note:** Even though each tenant can initially submit up to 2,000 requests per minute, Microsoft cannot guarantee a response rate. The response rate depends on various factors, such as client system performance, network capacity, and network speed.
+> [!NOTE]
+> Even though each tenant can initially submit up to 2,000 requests per minute, Microsoft cannot guarantee a response rate. The response rate depends on various factors, such as client system performance, network capacity, and network speed.
 
-#### I'm encountering a throttling error in the Management Activity API. What should I do?
+**I'm encountering a throttling error in the Management Activity API. What should I do?**
 
 Open a ticket with [Microsoft Support](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online) and request a new throttling limit, and include a business justification for increasing the limit. We will evaluate the request, and if accepted, we will increase the throttling limit.
 
-#### Why are TargetUpdatedProperties no longer in ExtendedProperties in the audit logs for Azure Active Directory activities?
+**Why are TargetUpdatedProperties no longer in ExtendedProperties in the audit logs for Azure Active Directory activities?**
 
 TargetUpdatedProperties were appearing in ExtendedProperties. However, they have been removed from ExtendedProperties and now appear in ModifiedProperties.
