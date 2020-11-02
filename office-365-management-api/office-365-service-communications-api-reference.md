@@ -388,7 +388,7 @@ Returns the messages about the service over a certain time range. Use the type f
 ||StartTime|Filter by Start Time (DateTimeOffset, default: ge CurrentTime - 7 days).|
 ||EndTime|Filter by End Time (DateTimeOffset, default: le CurrentTime).|
 ||MessageType|Filter by MessageType (String, default: all).|
-||ID|Filter by ID (String, default: all).|
+||Id|Filter by Id (String, default: all).|
 |**Query-option**|$select|Pick a subset of properties.|
 ||$top|Pick the top number of results (default and max $top=100).|
 ||$skip|Skip number of results (default: $skip=0).|
