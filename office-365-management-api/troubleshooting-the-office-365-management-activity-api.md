@@ -20,7 +20,7 @@ The Office 365 Management Activity API (also known as the *Unified Auditing API*
 The Management Activity API shouldn't be confused with the Office 365 Service Communications API. The Management Activity API is for auditing end user activities in the various workloads. The Service Communications API is for auditing status and messages that are sent by the services that are available in Office 365 (such as Dynamics CRM or Identity Service).
  
 > [!NOTE]
-> There was an issue with events belonging to the Audit.AzureActiveDirectory content type not being available via the Office 365 Management Activity API, between Oct 22, 2020 to Nov 6, 2020. Azure AD signin events were not affected by this issue. The missing events for the period of impact will be available over the next few days, and is expected to take no later than Nov 20, 2020 to complete. In some cases, customers might notice duplicate event data for events generated between Oct 26, 2020 to Nov 05, 2020.
+> There was an issue with events belonging to the Audit.AzureActiveDirectory content type not being available via the Office 365 Management Activity API between October 22, 2020 and November 6, 2020. Azure AD signin events were not affected by this issue. The missing events for the period of impact will be available over the next few days, and is expected to take no later than November 20, 2020 to complete. In some cases, customers might notice duplicate event data for events generated between October 26, 2020 and November 5, 2020.
 
 ## Frequently asked questions about the Office 365 Management Activity API
 
