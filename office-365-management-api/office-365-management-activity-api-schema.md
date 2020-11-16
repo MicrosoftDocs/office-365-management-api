@@ -169,10 +169,10 @@ This article provides details on the Common schema as well as each of the produc
 |90|MSTIC|Threat intelligence events in Microsoft Defender for Office 365.|
 |91|PhysicalBadgingSignal|Events related to physical badging signals that support the Insider risk management solution.|
 |93|AipDiscover|Azure Information Protection (AIP) scanner events.|
-|94|AipSensitivityLabelAction||
-|95|AipProtectionAction||
-|96|AipFileDeleted||
-|97|AipHeartBeat||
+|94|AipSensitivityLabelAction|AIP sensitivity label events. |
+|95|AipProtectionAction|AIP protection events.|
+|96|AipFileDeleted|AIP file deletion events.|
+|97|AipHeartBeat|AIP heartbeat events.|
 |98|MCASAlerts|Events corresponding to alerts triggered by Microsoft Cloud App Security.|
 |99|OnPremisesFileShareScannerDlp|Events related to scanning for sensitive data on file shares.|
 |100|OnPremisesSharePointScannerDlp|Events related to scanning for sensitive data in SharePoint.|
