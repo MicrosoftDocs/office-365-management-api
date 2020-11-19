@@ -45,9 +45,9 @@ This article provides details on the Common schema as well as each of the produc
 |[Data Center Security Base schema](#data-center-security-base-schema)|Extends the Common schema with the properties specific to all data center security audit data.|
 |[Data Center Security Cmdlet schema](#data-center-security-cmdlet-schema)|Extends the Data Center Security Base schema with the properties specific to all data center security cmdlet audit data.|
 |[Microsoft Teams schema](#microsoft-teams-schema)|Extends the Common schema with the properties specific to all Microsoft Teams events.|
-|[Office 365 Advanced Threat Protection and Threat Investigation and Response schema](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Extends the Common schema with the properties specific to Office 365 Advanced Threat Protection and threat investigation and response data.|
-|[Automated investigation and response events schema](#automated-investigation-and-response-events-in-office-365)|Extends the Common schema with the properties specific to Office 365 automated investigation and response (AIR) events. To see an example, see [Tech Community blog: Improve the Effectiveness of your SOC with Office 365 ATP and the O365 Management API](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185).|
-|[Hygiene events schema](#hygiene-events-schema)|Extends the Common schema with the properties specific to events in Exchange Online Protection and Advanced Threat Protection.|
+|[Microsoft Defender for Office 365 and Threat Investigation and Response schema](#Microsoft-defender-for-office-365-and-threat-investigation-and-response-schema)|Extends the Common schema with the properties specific to Defender for Office 365 and threat investigation and response data.|
+|[Automated investigation and response events schema](#automated-investigation-and-response-events-in-office-365)|Extends the Common schema with the properties specific to Office 365 automated investigation and response (AIR) events. To see an example, see [Tech Community blog: Improve the Effectiveness of your SOC with Microsoft Defender for Office 365 and the O365 Management API](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185).|
+|[Hygiene events schema](#hygiene-events-schema)|Extends the Common schema with the properties specific to events in Exchange Online Protection and Microsoft Defender for Office 365.|
 |[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
 |[Dynamics 365 schema](#dynamics-365-schema)|Extends the Common schema with the properties specific to Dynamics 365 events.|
 |[Workplace Analytics schema](#workplace-analytics-schema)|Extends the Common schema with the properties specific to all Microsoft Workplace Analytics events.|
@@ -107,8 +107,8 @@ This article provides details on the Common schema as well as each of the produc
 |23|SkypeForBusinessCmdlets|Skype for Business events.|
 |24|Discovery|Events for eDiscovery activities performed by running content searches and managing eDiscovery cases in the Security & Compliance Center.|
 |25|MicrosoftTeams|Events from Microsoft Teams.|
-|28|ThreatIntelligence|Phishing and malware events from Exchange Online Protection and Office 365 Advanced Threat Protection.|
-|29|MailSubmission|Submission events from Exchange Online Protection and Office 365 Advanced Threat Protection.|
+|28|ThreatIntelligence|Phishing and malware events from Exchange Online Protection and Microsoft Defender for Office 365.|
+|29|MailSubmission|Submission events from Exchange Online Protection and Microsoft Defender for Office 365.|
 |30|MicrosoftFlow|Microsoft Power Automate (formerly called Microsoft Flow) events.|
 |31|AeD|Advanced eDiscovery events.|
 |32|MicrosoftStream|Microsoft Stream events.|
@@ -120,13 +120,13 @@ This article provides details on the Common schema as well as each of the produc
 |38|DataGovernance|Events related to retention policies and retention labels in the Security & Compliance Center|
 |39|Kaizala|Kaizala events.|
 |40|SecurityComplianceAlerts|Security and compliance alert signals.|
-|41|ThreatIntelligenceUrl|Safe links time-of-block and block override events from Office 365 Advanced Threat Protection.|
+|41|ThreatIntelligenceUrl|Safe links time-of-block and block override events from Microsoft Defender for Office 365.|
 |42|SecurityComplianceInsights|Events related to insights and reports in the Office 365 security and compliance center.|
 |43|MIPLabel|Events related to the detection in the Transport pipeline of email messages that have been tagged (manually or automatically) with sensitivity labels. |
 |44|WorkplaceAnalytics|Workplace Analytics events.|
 |45|PowerAppsApp|Power Apps events.|
 |46|PowerAppsPlan|Subscription plan events for Power Apps. |
-|47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Office 365 Advanced Threat Protection.|
+|47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Microsoft Defender for Office 365.|
 |48|LabelContentExplorer|Events related to [data classification content explorer](https://docs.microsoft.com/microsoft-365/compliance/data-classification-content-explorer).|
 |49|TeamsHealthcare|Events related to the [Patients application](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit) in Microsoft Teams for Healthcare.|
 |50|ExchangeItemAggregated|Events related to the [MailItemsAccessed mailbox auditing action](https://docs.microsoft.com/microsoft-365/compliance/mailitemsaccessed-forensics-investigations).|
@@ -157,7 +157,7 @@ This article provides details on the Common schema as well as each of the produc
 |76|CortanaBriefing|Briefing email events.|
 |77|Search|Events related to performing search queries in SharePoint and Exchange.|
 |78|WDATPAlerts|Events related to alerts generated by Windows Defender for Endpoint.|
-|81|MDATPAudit|Microsoft Defender Advanced Threat Protection (ATP) events.|
+|81|MDATPAudit|Microsoft Defender for Endpoint events.|
 |82|SensitivityLabelPolicyMatch|Events generated when the file labeled with a sensitivity label is opened or renamed.|
 |83|SensitivityLabelAction|Event generated when sensitivity labels are applied, updated, or removed from a file.|
 |84|SensitivityLabeledFileAction|Events generated when a file labeled with a sensitivity label is opened or renamed.|
@@ -1013,20 +1013,20 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |3|Tab|A Microsoft Teams tab.|
 ||||
 
-## Office 365 Advanced Threat Protection and Threat Investigation and Response schema
+## Microsoft Defender for Office 365 and Threat Investigation and Response schema
 
-[Office 365 Advanced Threat Protection](https://docs.microsoft.com/office365/securitycompliance/office-365-atp) (ATP) and Threat Investigation and Response events are available for Office 365 customers who have an Office 365 Advanced Threat Protection Plan 1, Office 365 Advanced Threat Protection Plan 2, or an E5 subscription. Each event in the Office 365 ATP feed corresponds to the following that were determined to contain a threat:
+[Microsoft Defender for Office 365](https://docs.microsoft.com/office365/securitycompliance/office-365-atp) and Threat Investigation and Response events are available for Office 365 customers who have an Defender for Office 365 Plan 1, Defender for Office 365 Plan 2, or an E5 subscription. Each event in the Defender for Office 365 feed corresponds to the following that were determined to contain a threat:
 
 - An email message sent by or received by a user in the organization with detections that are made on messages at delivery time and from [Zero hour auto purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15). 
 
-- URLs clicked by a user in the organization that were detected as malicious at time-of-click based on [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.  
+- URLs clicked by a user in the organization that were detected as malicious at time-of-click based on [Safe Links in Defender for Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) protection.  
 
-- A file within SharePoint Online, OneDrive for Business, or Microsoft Teams that was detected as malicious by [Office 365 ATP](https://docs.microsoft.com/office365/securitycompliance/atp-for-spo-odb-and-teams) protection.
+- A file within SharePoint Online, OneDrive for Business, or Microsoft Teams that was detected as malicious by [Microsoft Defender for Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-for-spo-odb-and-teams) protection.
 
 - An alert that is triggered and that started an [automated investigation](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office).
 
 > [!NOTE]
-> Office 365 Advanced Threat Protection and Office 365 Threat Investigation and Response (formerly known as Office 365 Threat Intelligence) capabilites are now part of Office 365 Advanced Threat Protection Plan 2, with additional threat protection capabilities. To learn more, see [Office 365 ATP plans and pricing](https://products.office.com/exchange/advance-threat-protection) and the [Office 365 ATP Service Description](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description).
+> Microsoft Defender for Office 365 and Office 365 Threat Investigation and Response (formerly known as Office 365 Threat Intelligence) capabilites are now part of Defender for Office 365 Plan 2, with additional threat protection capabilities. To learn more, see [Microsoft Defender for Office 365 plans and pricing](https://products.office.com/exchange/advance-threat-protection) and the [Defender for Office 365 Service Description](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description).
 
 ### Email message events
 
@@ -1034,7 +1034,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |:-----|:-----|:-----|:-----|
 |AttachmentData|Collection(Self.[AttachmentData](#attachmentdata))|No|Data about attachments in the email message that triggered the event.|
 |DetectionType|Edm.String|Yes|The type of detection (for example, **Inline** - detected at delivery time; **Delayed** - detected after delivery; **ZAP** - messages removed by [Zero hour auto purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15)). Events with ZAP detection type will typically be preceded by a message with a **Delayed** detection type.|
-|DetectionMethod|Edm.String|Yes|The method or technology used by Office 365 ATP for the detection.|
+|DetectionMethod|Edm.String|Yes|The method or technology used by Defender for Office 365 for the detection.|
 |InternetMessageId|Edm.String|Yes|The Internet Message Id.|
 |NetworkMessageId|Edm.String|Yes|The Exchange Online Network Message Id.|
 |P1Sender|Edm.String|Yes|The return path of sender of the email message.|
@@ -1091,7 +1091,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |7|Anti-phish, SPOOF|Spoof action in the Anti-phish policy.|
 |8|Anti-phish, GIMP|Mailbox intelligence action in the Anti-phish policy.|
 |9|Anti-malware, AMP| Malware policy action in the Anti-malware policy.|
-|10|Safe attachment, SAP| Policy action in the Office 365 ATP safe attachments policy.|
+|10|Safe attachment, SAP| Policy action in the Safe attachments in Defender for Office 365 policy.|
 |11|Exchange transport rule, ETR| Policy action in the Exchange Transport Rule.|
 |12|Anti-malware, ZAPM| Malware policy action in the Anti-malware policy applied to Zero-hour auto purge (ZAP).|
 |13|Anti-phish, ZAPP| Phish policy action in the Anti-phish policy applied to ZAP.|
@@ -1123,7 +1123,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |:-----|:-----|:-----|:-----|
 |UserId|Edm.String|Yes|Identifier (for example, email address) for the user who clicked on the URL.|
 |AppName|Edm.String|Yes|Office 365 service from which the URL was clicked (for example, Mail).|
-|URLClickAction|Self.[URLClickAction](#urlclickaction)|Yes|Click action for the URL based on the organization's policies for [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
+|URLClickAction|Self.[URLClickAction](#urlclickaction)|Yes|Click action for the URL based on the organization's policies for [Safe Links in Defender for Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
 |SourceId|Edm.String|Yes|Identifier for the Office 365 service from which the URL was clicked (for example, for mail this is the Exchange Online Network Message Id).|
 |TimeOfClick|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the user clicked the URL.|
 |URL|Edm.String|Yes|URL clicked by the user.|
@@ -1136,10 +1136,10 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
-|2|Blockpage|User blocked from navigating to the URL by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
-|3|PendingDetonationPage|User presented with the detonation pending page by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
-|4|BlockPageOverride|User blocked from navigating to the URL by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links); however user overrode block to navigate to the URL.|
-|5|PendingDetonationPageOverride|User presented with the detonation page by [Office 365 ATP Safe Links](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links); however user overrode to navigate to the URL.|
+|2|Blockpage|User blocked from navigating to the URL by [Safe Links in Defender for Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
+|3|PendingDetonationPage|User presented with the detonation pending page by [Safe Links in Defender for Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
+|4|BlockPageOverride|User blocked from navigating to the URL by [Safe Links in Defender for Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links); however user overrode block to navigate to the URL.|
+|5|PendingDetonationPageOverride|User presented with the detonation page by [Safe Links in Defender for Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links); however user overrode to navigate to the URL.|
 |||||
 
 ### File events
@@ -1148,7 +1148,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |:-----|:-----|:-----|:-----|
 |FileData|Self.[FileData](#filedata)|Yes|Data about the file that triggered the event.|
 |SourceWorkload|Self.[SourceWorkload](#sourceworkload)|Yes|Workload or service where teh file was found (for example, SharePoint Online, OneDrive for Business, or Microsoft Teams)
-|DetectionMethod|Edm.String|Yes|The method or technology used by Office 365 ATP for the detection.|
+|DetectionMethod|Edm.String|Yes|The method or technology used by Microsoft Defender for Office 365for the detection.|
 |LastModifiedDate|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the file was created or last modified.|
 |LastModifiedBy|Edm.String|Yes|Identifier (for example, an email address) for the user who created or last modified the file.|
 |EventDeepLink|Edm.String|Yes|Deep-link to the file event in Explorer or Real-time reports in the Security & Compliance Center.|
@@ -1182,7 +1182,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 
 ## Automated investigation and response events in Office 365
 
-[Office 365 automated investigation and response (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) events are available for Office 365 customers who have a subscription that includes Office 365 Advanced Threat Protection Plan 2 or Office 365 E5. Investigation events are logged based on a change in investigation status. For example, when an administrator takes an action that changes the status of an investigation from Pending Actions to Completed, an event is logged. 
+[Office 365 automated investigation and response (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) events are available for Office 365 customers who have a subscription that includes Microsoft Defender for Office 365 Plan 2 or Office 365 E5. Investigation events are logged based on a change in investigation status. For example, when an administrator takes an action that changes the status of an investigation from Pending Actions to Completed, an event is logged.
 
 Currently, only automated investigation are logged. (Events for manually generated investigations are coming soon.) The following status values are logged:
 
