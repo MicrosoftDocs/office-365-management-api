@@ -1148,7 +1148,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |:-----|:-----|:-----|:-----|
 |FileData|Self.[FileData](#filedata)|Yes|Data about the file that triggered the event.|
 |SourceWorkload|Self.[SourceWorkload](#sourceworkload)|Yes|Workload or service where teh file was found (for example, SharePoint Online, OneDrive for Business, or Microsoft Teams)
-|DetectionMethod|Edm.String|Yes|The method or technology used by Microsoft Defender for Office 365for the detection.|
+|DetectionMethod|Edm.String|Yes|The method or technology used by Microsoft Defender for Office 365 for the detection.|
 |LastModifiedDate|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the file was created or last modified.|
 |LastModifiedBy|Edm.String|Yes|Identifier (for example, an email address) for the user who created or last modified the file.|
 |EventDeepLink|Edm.String|Yes|Deep-link to the file event in Explorer or Real-time reports in the Security & Compliance Center.|
