@@ -75,6 +75,11 @@ Open a ticket with Microsoft Support and request a new throttling limit, and inc
 
 TargetUpdatedProperties were appearing in ExtendedProperties. However, they have been removed from ExtendedProperties and now appear in ModifiedProperties.
 
+**For Azure Active Directory sign-in activities, why are errors because of UserAccountNotFound not present in the Audit logs?**
+
+Audit logs read from Azure AD Event Hubs starting from Nov 2020, and sign-in errors because of UserAccountNotFound are not available in those Azure AD Event Hubs, so they are not present in Azure Active Directory sign-in activities any more. 
+
+
 ## Troubleshooting the Office 365 Management Activity API
 
 One thing that should be made clear for anyone who's getting started with the Office 365 Management Activity API is that there is no concept of querying by event specifics, such as date that the event occurred, which site collection an event might have been fired from, or the type of event. Instead, you create subscriptions to specific workloads (for example, SharePoint or Azure AD) and each subscription is per tenant.
