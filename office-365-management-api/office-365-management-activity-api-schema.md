@@ -866,7 +866,7 @@ DLP sensitive data is only available in the activity feed API to users that have
 |CmdletVersion|Edm.String|No|The build version of the cmdlet when it was executed.|
 |EffectiveOrganization|Edm.String|No|The GUID for the organization impacted by the cmdlet. (Deprecated: This parameter will stop appearing in the future.)|
 |UserServicePlan|Edm.String|No|The Exchange Online Protection service plan assigned to the user that executed the cmdlet.|
-|ClientApplication|Edm.String|No|If the cmdlet was executed by an application, as opposed to remote powershell, this field contains that application's name.|
+|ClientApplication|Edm.String|No|If the cmdlet was executed by an application, as opposed to remote PowerShell, this field contains that application's name.|
 |Parameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that do not include Personally Identifiable Information.|
 |NonPiiParameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that include Personally Identifiable Information. (Deprecated: This field will stop appearing in the future and its content merged with the Parameters field.)|
 |||||
@@ -926,7 +926,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|DataCenterSecurityEventType|Self.[DataCenterSecurityEventType](#datacentersecurityeventtype)|Yes|The type of dmdlet event in lock box.|
+|DataCenterSecurityEventType|Self.[DataCenterSecurityEventType](#datacentersecurityeventtype)|Yes|The type of cmdlet event in lock box.|
 |||||
 
 ### Enum: DataCenterSecurityEventType - Type: Edm.Int32
@@ -1371,7 +1371,7 @@ The audit records for events related to model-driven apps in Dynamics 365 events
 |CrmOrganizationUniqueName|Edm.String|Yes|The unique name of the organization.|
 |InstanceUrl|Edm.String|Yes|The URL to the instance.|
 |ItemUrl|Edm.String|No|The URL to the record emitting the log.|
-|ItemType|Edm.String|No|The naame of the entity.|
+|ItemType|Edm.String|No|The name of the entity.|
 |UserAgent|Edm.String|No|The unique identifier of the user GUID in the organization.|
 |Fields|Collection(Common.NameValuePair)|No|A JSON object that contains the property key-value pairs that were created or updated.|
 |||||
