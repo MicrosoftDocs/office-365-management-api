@@ -327,7 +327,7 @@ This article provides details on the Common schema as well as each of the produc
 |GroupUpdated|Site administrator or owner changes the settings of a group for a SharePoint or OneDrive for Business site. This can include changing the group's name, who can view or edit the group membership, and how membership requests are handled.|
 |LanguageAddedToTermStore|Language added to the terminology store.|
 |LanguageRemovedFromTermStore|Language removed from the terminology store.|
-|LegacyWorkflowEnabledSet|Site administrator or owner adds theSharePoint Workflow Task content type to the site. Global administrators can also enable work flows for the entire organization in theSharePoint admin center.|
+|LegacyWorkflowEnabledSet|Site administrator or owner adds the SharePoint Workflow Task content type to the site. Global administrators can also enable work flows for the entire organization in the SharePoint admin center.|
 |LookAndFeelModified|User modifies a quick launch, gantt chart formats, or group formats.  Or the user creates, modifies, or deletes a view in Project Web App.|
 |ManagedSyncClientAllowed|User successfully establishes a sync relationship with a SharePoint or OneDrive for Business site. The sync relationship is successful because the user's computer is a member of a domain that's been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. For more information, see [Use SharePoint Online PowerShell ](https://go.microsoft.com/fwlink/p/?LinkID=534609) to enable OneDrive sync for domains that are on the safe recipients list.|
 |MaxQuotaModified|The maximum quota for a site has been modified.|
@@ -866,7 +866,7 @@ DLP sensitive data is only available in the activity feed API to users that have
 |CmdletVersion|Edm.String|No|The build version of the cmdlet when it was executed.|
 |EffectiveOrganization|Edm.String|No|The GUID for the organization impacted by the cmdlet. (Deprecated: This parameter will stop appearing in the future.)|
 |UserServicePlan|Edm.String|No|The Exchange Online Protection service plan assigned to the user that executed the cmdlet.|
-|ClientApplication|Edm.String|No|If the cmdlet was executed by an application, as opposed to remote powershell, this field contains that application's name.|
+|ClientApplication|Edm.String|No|If the cmdlet was executed by an application, as opposed to remote PowerShell, this field contains that application's name.|
 |Parameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that do not include Personally Identifiable Information.|
 |NonPiiParameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that include Personally Identifiable Information. (Deprecated: This field will stop appearing in the future and its content merged with the Parameters field.)|
 |||||
@@ -926,7 +926,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|DataCenterSecurityEventType|Self.[DataCenterSecurityEventType](#datacentersecurityeventtype)|Yes|The type of dmdlet event in lock box.|
+|DataCenterSecurityEventType|Self.[DataCenterSecurityEventType](#datacentersecurityeventtype)|Yes|The type of cmdlet event in lock box.|
 |||||
 
 ### Enum: DataCenterSecurityEventType - Type: Edm.Int32
@@ -1147,7 +1147,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |FileData|Self.[FileData](#filedata)|Yes|Data about the file that triggered the event.|
-|SourceWorkload|Self.[SourceWorkload](#sourceworkload)|Yes|Workload or service where teh file was found (for example, SharePoint Online, OneDrive for Business, or Microsoft Teams)
+|SourceWorkload|Self.[SourceWorkload](#sourceworkload)|Yes|Workload or service where the file was found (for example, SharePoint Online, OneDrive for Business, or Microsoft Teams)
 |DetectionMethod|Edm.String|Yes|The method or technology used by Microsoft Defender for Office 365 for the detection.|
 |LastModifiedDate|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the file was created or last modified.|
 |LastModifiedBy|Edm.String|Yes|Identifier (for example, an email address) for the user who created or last modified the file.|
@@ -1371,7 +1371,7 @@ The audit records for events related to model-driven apps in Dynamics 365 events
 |CrmOrganizationUniqueName|Edm.String|Yes|The unique name of the organization.|
 |InstanceUrl|Edm.String|Yes|The URL to the instance.|
 |ItemUrl|Edm.String|No|The URL to the record emitting the log.|
-|ItemType|Edm.String|No|The naame of the entity.|
+|ItemType|Edm.String|No|The name of the entity.|
 |UserAgent|Edm.String|No|The unique identifier of the user GUID in the organization.|
 |Fields|Collection(Common.NameValuePair)|No|A JSON object that contains the property key-value pairs that were created or updated.|
 |||||
@@ -1409,7 +1409,7 @@ The quarantine events listed in [Search the audit log in the Office 365 Security
 |RequestType|Self.[RequestType](#enum-requesttype---type-edmint32)|No|The type of quarantine request performed by a user.|
 |RequestSource|Self.[RequestSource](#enum-requestsource---type-edmint32)|No|The source of a quantine request can come from the Security & Compliance Center (SCC), a cmdlet, or a URLlink.|
 |NetworkMessageId|Edm.String|No|The network message id of quarantined email message.|
-|ReleaseTo|Edm.String|No|The reciepient of the email message.|
+|ReleaseTo|Edm.String|No|The recipient of the email message.|
 |||||
 
 ### Enum: RequestType - Type: Edm.Int32
@@ -1434,7 +1434,7 @@ The quarantine events listed in [Search the audit log in the Office 365 Security
 
 ## Microsoft Forms schema
 
-The Micorosft Forms events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) will use this schema.
+The Microsoft Forms events listed in [Search the audit log in the Office 365 Security & Compliance Center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) will use this schema.
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -1471,9 +1471,9 @@ The Micorosft Forms events listed in [Search the audit log in the Office 365 Sec
 
 ## MIP label schema
 
-Events in the Microsoft Information Protection (MIP) label schema are triggered when Microsoft 365 detects an email message processed by agents in the Transport pipeline that has a sensitivity label applied to it. The sensitivity label may have been applied manually or automatically, and it may have been applied within or outside of the Transport pipeline. Sensitiviy labels can be automatically applied to email messages by auto-apply label policies.
+Events in the Microsoft Information Protection (MIP) label schema are triggered when Microsoft 365 detects an email message processed by agents in the Transport pipeline that has a sensitivity label applied to it. The sensitivity label may have been applied manually or automatically, and it may have been applied within or outside of the Transport pipeline. Sensitivity labels can be automatically applied to email messages by auto-apply label policies.
 
-The intent of this audit schema is to represent the sum of all email activity that involves sensitivity labels. In other words, there should be an recored audit activity for each email message that is sent to or from users in the organization that has a sensitivity label applied to it, regardless of when or how the sensitivity label was applied. For more information about sensitivity labels, see:
+The intent of this audit schema is to represent the sum of all email activity that involves sensitivity labels. In other words, there should be an recorded audit activity for each email message that is sent to or from users in the organization that has a sensitivity label applied to it, regardless of when or how the sensitivity label was applied. For more information about sensitivity labels, see:
 
 - [Learn about sensitivity labels](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels)
 
