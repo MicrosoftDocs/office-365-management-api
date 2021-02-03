@@ -363,8 +363,8 @@ Webhook-AuthID: o365activityapinotification
 
 [
     {
-        "tenantId": "{GUID}"
-        "clientId": "{GUID}"
+        "tenantId": "{GUID}",
+        "clientId": "{GUID}",
         "contentType": "Audit.SharePoint",
         "contentId": "492638008028$492638008028$f28ab78ad40140608012736e373933ebspo2015043022$4a81a7c326fc4aed89c62e6039ab833b$04",
         "contentUri": "https://manage.office.com/api/v1.0/f28ab78a-d401-4060-8012-736e373933eb/activity/feed/audit/492638008028$492638008028$f28ab78ad40140608012736e373933ebspo2015043022$4a81a7c326fc4aed89c62e6039ab833b$04",
