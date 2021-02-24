@@ -214,6 +214,7 @@ To create a new subscription, you use the /start operation. For the API endpoint
 
 ```powershell
 Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://<YOUR_API_ENDPOINT>/api/v1.0/$tenantGUID/activity/feed/subscriptions/start?contentType=Audit.AzureActiveDirectory"
+```
 
 > [!NOTE]
 > Remember that `$headerParams` was populated in the first part of the script listed in the [Connecting to the API](#connecting-to-the-api) section in this article.
