@@ -75,9 +75,9 @@ Open a ticket with Microsoft Support and request a new throttling limit, and inc
 
 TargetUpdatedProperties were appearing in ExtendedProperties. However, they have been removed from ExtendedProperties and now appear in ModifiedProperties.
 
-**Why aren't audit logs for UserAccountNotFound errors for Azure Active Directory (Azure AD) sign-in activities available via the Management Activity API?**
+**Why aren't audit logs with UserAccountNotFound "LogonError" for Azure Active Directory (Azure AD) sign-in activities available via the Management Activity API?**
 
-Starting in November 2020, audit logs for Azure AD sign-in activities are ingested into the unified audit log from Azure AD Event Hubs. Because UserAccountNotFound logon errors are not available in Event Hubs, audit logs for UserAccountNotFound errors are no longer returned by the Management Activity API.
+Starting in November 2020, audit logs for Azure AD sign-in activities are ingested into the unified audit log from Azure AD Event Hubs. As a result of this change, populating the "LogonError" property with UserAccountNotFound is not possible. Starting the first week of February 2021, the [ErrorCode property in the Azure AD logon auditing schema](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema#azure-active-directory-secure-token-service-sts-logon-schema) now matches [AADSTS error codes](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#lookup-current-error-code-information). Also, the UserId parameter will not be populated with the user name from the attempted login for UserAccountNotFound errors because that user name doesn't exist in the organization's Azure AD directory.
 
 ## Troubleshooting the Office 365 Management Activity API
 
