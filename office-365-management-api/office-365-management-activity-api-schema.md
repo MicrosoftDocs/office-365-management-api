@@ -823,7 +823,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|ConditionMatchedInNewScheme|Edm.Boolean|Yes|Indicates whether the classification results in new scheme (high, medium and low) result in DLP rule match.|
 |SensitiveInformation|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|No|Information about the type of sensitive information detected.|
 |DocumentProperties|Collection(NameValuePair)|No|Information about document properties that triggered a rule match.|
 |OtherConditions|Collection(NameValuePair)|No|A list of key value pairs describing any other conditions that were matched.|
@@ -833,7 +832,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Confidence|Edm.Int|Yes|The confidence of pattern that matched the detection.|
+|Confidence|Edm.Int|Yes|The aggregated confidence of all pattern matches for the Sensitive Information Type.|
 |Count|Edm.Int|Yes|The total number of sensitive instances detected.|
 |Location|Edm.String|No||
 |SensitiveType|Edm.Guid|Yes|A guid that identifies the type of sensitive data detected.|
