@@ -832,10 +832,23 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Confidence|Edm.Int|Yes|The confidence of pattern that matched the detection.|
-|Count|Edm.Int|Yes|The number of sensitive instances detected.|
+|Confidence|Edm.Int|Yes|The aggregated confidence of all pattern matches for the Sensitive Information Type.|
+|Count|Edm.Int|Yes|The total number of sensitive instances detected.|
+|Location|Edm.String|No||
 |SensitiveType|Edm.Guid|Yes|A guid that identifies the type of sensitive data detected.|
 |SensitiveInformationDetections|Self.SensitiveInformationDetections|No|An array of objects that contain sensitive information data with the following details – matched value and context of matched value.|
+|SensitiveInformationDetailedClassificationAttributes|Collection(SensitiveInformationDetailedConfidenceLevelResult)|Yes|Information about the count of sensitive information type detected for each of the three confidence levels (High, Medium and Low) and wether it matches the DLP rule or not|
+|SensitiveInformationTypeName|Edm.String|No|The name of the sensitive information type.|
+|UniqueCount|Edm.Int32|Yes|The unique count of sensitive instances detected.|
+|||||
+
+### SensitiveInformationDetailedClassificationAttributes complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Confidence|Edm.int32|Yes|The confidence level of the pattern that was detected.|
+|Count|Edm.Int32|Yes|The number of sensitive instances detected for a partcular confidence level.|
+|IsMatch|Edm.Boolean|Yes|Indicates if the given count and confidence level of the sensitive type detected results in a DLP rule match.|
 |||||
 
 ### SensitiveInformationDetections complex type
@@ -844,7 +857,7 @@ DLP sensitive data is only available in the activity feed API to users that have
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Detections|Collection(Self.Detections)|Yes|An array of sensitive information that was detected. Information contains key value pairs with Value = matched value (eg. Value of credit card of SSN) and Context = an excerpt from source content that contains the matched value. |
+|DetectedValues|Collection(Common.NameValuePair)|Yes|An array of sensitive information that was detected. Information contains key value pairs with Value = matched value (eg. Value of credit card) and Context = an excerpt from source content that contains the matched value. |
 |ResultsTruncated|Edm.Boolean|Yes|Indicates if the logs were truncated due to large number of results. |
 |||||
 
