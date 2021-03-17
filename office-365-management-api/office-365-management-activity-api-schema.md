@@ -2,7 +2,7 @@
 ms.technology: o365-service-communications
 ms.TocTitle: Office 365 Management Activity API schema
 title: Office 365 Management Activity API schema
-description: The Office 365 Management Activity API schema is provided as a data service in  two layers - Common schema and product-specific schema.
+description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: 
@@ -13,12 +13,9 @@ localization_priority: Priority
 
 The Office 365 Management Activity API schema is provided as a data service in  two layers:
 
-- **Common schema**. The interface to access core Office 365 auditing concepts such as Record Type, Creation Time, User Type, and Action as well as to provide core dimensions (such as User ID), location specifics (such as Client IP address), and product-specific properties (such as Object ID). It establishes consistent and uniform views for users to extract all Office 365 audit data in a few top level views with the appropriate parameters, and provides a fixed schema for all the data sources, which significantly reduces the cost of learning. Common schema is sourced from product data that is owned by each product team, such as Exchange, SharePoint, Azure Active Directory, Yammer, and OneDrive for Business. The Object ID field can be extended by product teams to add product specific properties.
+- **Common schema**. The interface to access core Office 365 auditing concepts such as Record Type, Creation Time, User Type, and Action as well as to provide core dimensions (such as User ID), location specifics (such as Client IP address), and service-specific properties (such as Object ID). It establishes consistent and uniform views for users to extract all Office 365 audit data in a few top level views with the appropriate parameters, and provides a fixed schema for all the data sources, which significantly reduces the cost of learning. Common schema is sourced from product data that is owned by each product team, such as Exchange, SharePoint, Azure Active Directory, Yammer, and OneDrive for Business. The Object ID field can be extended by Microsoft 365 product teams to add service-specific properties.
 
-- **Product-specific schema**. Built on top of the Common schema to provide a set of product-specific attributes; for example, SharePoint schema, OneDrive for Business schema, and Exchange admin schema.
-
-**Which layer should you use for your scenario?**
-In general, if the data is available in a higher layer, don't go back to a lower layer. In other words, if the data requirement can be fit in a product-specific schema, you don't need to go back to the Common schema. 
+- **Service-specific schema**. Built on top of the Common schema to provide a set of Microsoft 365 service-specific attributes; for example, SharePoint schema, OneDrive for Business schema, and Exchange admin schema.
 
 ## Office 365 Management API schemas
 
@@ -26,7 +23,7 @@ This article provides details on the Common schema as well as each of the produc
 
 |Name of schema|Description|
 |:-----|:-----|
-|[Common schema](#common-schema)|The view to extract Record Type, User ID, Client IP, User type and Action along with core dimensions such as user properties (such as UserID), location properties (such as Client IP), and product-specific properties (such as Object Id).|
+|[Common schema](#common-schema)|The view to extract Record Type, User ID, Client IP, User type and Action along with core dimensions such as user properties (such as UserID), location properties (such as Client IP), and service-specific properties (such as Object Id).|
 |[SharePoint Base schema](#sharepoint-base-schema)|Extends the Common schema with the properties specific to all SharePoint audit data.|
 |[SharePoint File Operations](#sharepoint-file-operations)|Extends the SharePoint Base schema with the properties specific to file access and manipulation in SharePoint.|
 |[SharePoint Sharing schema](#sharepoint-sharing-schema)|Extends the SharePoint Base schema with the properties specific to file sharing.|
