@@ -1059,7 +1059,40 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |Verdict|Edm.String|Yes|The message verdict.|
 |MessageTime|Edm.Date|Yes|Date and time in Coordinated Universal Time (UTC) the email message was received or sent.|
 |EventDeepLink|Edm.String|Yes|Deep-link to the email event in Explorer or Real-time reports in the Office 365 Security & Compliance Center.|
+|Delivery Action (upcoming field) |Edm.String|Yes|The original delivery action on the email message.|
+|Original Delivery location (upcoming field) |Edm.String|Yes|The original delivery location of the email message.|
+|Latest Delivery location (upcoming field) |Edm.String|Yes|The latest delivery location of the email message at the time of the event.|
+|Directionality (upcoming field) |Edm.String|Yes|Identifies whether an email message was inbound, outbound, or an intra-org message.|
+|ThreatsAndDetectionTech (upcoming field) |Edm.String|Yes|The threats and the corresponding detection technologies. This field exposes all the threats on an email message, including the latest addition on spam verdict.  For example, ["Phish: [Spoof DMARC]","Spam: [URL malicious reputation]"]. The different detection threat and detection technologies are described below.|
 |||||
+
+> [!NOTE]
+> We recommend that you use the new ThreatsAndDetectionTech field because it shows multiple verdicts and the updated detection technologies. This also aligns with the values you would see within other experiences like Threat Explorer and Advanced Hunting. 
+
+### Detection technologies
+
+|**Name**|**Description**|
+|:-----|:-----|
+|General filter |Phishing signals based on rules.|
+|Impersonation brand | The file type of the attachment.|
+|Spoof external domain |Sender is trying to spoof some other domain.|
+|Spoof DMARC |DMARC authentication failure for messages.|
+|Impersonation domain |	Impersonation of domains that the customer owns or defines.|
+|File detonation |File attachments found to be bad during detonated analysis.|
+|File reputation |File attachments marked bad due to bad reputation.|
+|File detonation reputation |File attachment marked as bad due to previous detonation reputation.|
+|Fingerprint matching |The message was marked as bad due to previous messages.|
+|Mailbox intelligence impersonation |Impersonation based on mailbox intelligence.|
+|Domain reputation |Analysis based on domain reputation.|
+|Spoof intra-org |	Sender is trying to spoof the recipient domain. |
+|Advanced filter |	Phishing signals based on machine learning.|
+|Anti-malware engine	| Detection from anti-malware engines. |
+|Mixed analysis detection	| Multiple filters contributed to the verdict for this message. |
+|URL malicious reputation	| The message was considered bad due a malicious URL. |
+|URL detonation	| The message was considered bad due to a previous malicious URL detonation. |
+|URL detonation reputation| The message was considered bad due to malicious URL detonation. |
+|Impersonation user|	Impersonation of users defined by admin or learned through mailbox intelligence.|
+|Campaign	|Messages identified as part of a campaign.|
 
 ### AttachmentData complex type
 
@@ -1073,6 +1106,9 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |MalwareFamily|Edm.String|No|The file malware family.|
 |SHA256|Edm.String|Yes|The file SHA256 hash.|
 |||||
+
+> [!NOTE]
+> Within the Malware family, you will be able to see the exact MalwareFamily name (for example, HTML/Phish.VS!MSR) or Malicious Payload as a static string. A Malicious Payload should still be treated as malicious email when a specific name isn't identified.
 
 ### Enum: FileVerdict - Type: Edm.Int32
 
