@@ -1059,11 +1059,11 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |Verdict|Edm.String|Yes|The message verdict.|
 |MessageTime|Edm.Date|Yes|Date and time in Coordinated Universal Time (UTC) the email message was received or sent.|
 |EventDeepLink|Edm.String|Yes|Deep-link to the email event in Explorer or Real-time reports in the Office 365 Security & Compliance Center.|
-|Delivery Action (upcoming field) |Edm.String|Yes|The original delivery action on the email message.|
-|Original Delivery location (upcoming field) |Edm.String|Yes|The original delivery location of the email message.|
-|Latest Delivery location (upcoming field) |Edm.String|Yes|The latest delivery location of the email message at the time of the event.|
-|Directionality (upcoming field) |Edm.String|Yes|Identifies whether an email message was inbound, outbound, or an intra-org message.|
-|ThreatsAndDetectionTech (upcoming field) |Edm.String|Yes|The threats and the corresponding detection technologies. This field exposes all the threats on an email message, including the latest addition on spam verdict.  For example, ["Phish: [Spoof DMARC]","Spam: [URL malicious reputation]"]. The different detection threat and detection technologies are described below.|
+|Delivery Action |Edm.String|Yes|The original delivery action on the email message.|
+|Original Delivery location |Edm.String|Yes|The original delivery location of the email message.|
+|Latest Delivery location |Edm.String|Yes|The latest delivery location of the email message at the time of the event.|
+|Directionality |Edm.String|Yes|Identifies whether an email message was inbound, outbound, or an intra-org message.|
+|ThreatsAndDetectionTech |Edm.String|Yes|The threats and the corresponding detection technologies. This field exposes all the threats on an email message, including the latest addition on spam verdict.  For example, ["Phish: [Spoof DMARC]","Spam: [URL malicious reputation]"]. The different detection threat and detection technologies are described below.|
 |||||
 
 > [!NOTE]
