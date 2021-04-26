@@ -983,6 +983,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |Name|Edm.String|No|Only present for settings events. Name of the setting that changed.|
 |OldValue|Edm.String|No|Only present for settings events. Old value of the setting.|
 |NewValue|Edm.String|No|Only present for settings events. New value of the setting.|
+|MessageURLs|Edm.String|No|Present for any URL sent in Teams messages.|
 ||||
 
 ### MicrosoftTeamsMember complex type
