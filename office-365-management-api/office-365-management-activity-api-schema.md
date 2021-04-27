@@ -738,6 +738,7 @@ The SharePoint events listed in [Search the audit log in security and compliance
 |:-----|:-----|:-----|:-----|
 |ApplicationId|Edm.String|No|The GUID that represents the application that is requesting the login. The display name can be looked up via the Azure Active Directory Graph API.|
 |Client|Edm.String|No|Client device information, provided by the browser performing the login.|
+|DeviceProperties|Collection(Common.NameValuePair)|No|This property includes various device details, including Id, Display name, OS, Browser, IsCompliant, IsCompliantAndManaged, SessionId, and DeviceTrustType. The DeviceTrustType property can have the following values:<br/><br/>**0** - Azure AD registered<br/> **1** - Azure AD joined<br/> **2** - Hybrid Azure AD joined|
 |ErrorCode|Edm.String|No|For failed logins (where the value for the Operation property is UserLoginFailed), this property contains the Azure Active Directory STS (AADSTS) error code. For descriptions of these error codes, see [Authentication and authorization error codes](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes). A value of `0` indicates a successful login.|
 |LogonError|Edm.String|No|For failed logins, this property contains a user-readable description of the reason for the failed login.|
 |||||
