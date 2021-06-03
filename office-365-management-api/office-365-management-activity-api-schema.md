@@ -52,6 +52,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Microsoft Forms schema](#microsoft-forms-schema)|Extends the Common schema with the properties specific to all Microsoft Forms events.|
 |[MIP label schema](#mip-label-schema)|Extends the Common schema with the properties specific to sensitivity labels manually or automatically applied to email messages.|
 |[Communication compliance Exchange schema](#communication-compliance-exchange-schema)|Extends the Common schema with the properties specific to the Communication compliance offensive language model.|
+|[Office Scripts run events schema](#office-scripts-run-events-schema)|Extends the Common schema with the properties specific to Office Scripts run events.|
 |||
 
 ## Common schema
@@ -69,7 +70,7 @@ This article provides details on the Common schema as well as each of the produc
 |UserKey|Edm.String|Yes|An alternative ID for the user identified in the UserId property. For example, this property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange. This property may also specify the same value as the UserID property for events occurring in other services and events performed by system accounts.|
 |Workload|Edm.String|No|The Office 365 service where the activity occurred. 
 |ResultStatus|Edm.String|No|Indicates whether the action (specified in the Operation property) was successful or not. Possible values are **Succeeded**, **PartiallySucceeded**, or **Failed**. For Exchange admin activity, the value is either **True** or **False**.<br/><br/>**Important**: Different workloads may overwrite the value of the ResultStatus property. For example, for Azure Active Directory STS logon events, a value of **Succeeded** for ResultStatus indicates only that the HTTP operation was successful; it doesn't mean the logon was successful. To determine if the actual logon was successful or not, see the LogonError property in the [Azure Active Directory STS Logon schema](#azure-active-directory-secure-token-service-sts-logon-schema). If the logon failed, the value of this property will contain the reason for the failed logon attempt. |
-|ObjectId|Edm.string|No|For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. For Exchange admin audit logging, the name of the object that was modified by the cmdlet.|
+|ObjectId|Edm.string|No|For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. For Exchange admin audit logging, the name of the object that was modified by the cmdlet. For Office Scripts run actions, the full path name of the Office Scripts file that was ran.|
 |UserId|Edm.string|Yes|The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, `my_name@my_domain_name`. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see [The app@sharepoint user in audit records](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records). |
 |ClientIP|Edm.String|Yes|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.<br/><br/>For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. <br/><br/>Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is `null`.|
 |Scope|Self.[AuditLogScope](#auditlogscope)|No|Was this event created by a hosted O365 service or an on-premises server? Possible values are **online** and **onprem**. Note that SharePoint is the only workload currently sending events from on-premises to O365.|
@@ -180,6 +181,7 @@ This article provides details on the Common schema as well as each of the produc
 |106|SecurityComplianceUserChange|Events related to modifying or deleting a user.|
 |107|ComplianceDLPExchangeClassification|Exchange DLP classification events.|
 |109|MipExactDataMatch|Exact Data Match (EDM) classification events.|
+|131|OfficeScriptsRunAction |Office Scripts run events.|
 ||||
 
 ### Enum: User Type - Type: Edm.Int32
@@ -1575,3 +1577,16 @@ The communication compliance events listed in the Office 365 audit log use this 
 | FileType        | Edm.String | The file extension of the file attached to the email message.|
 | SHA256          | Edm.String | The SHA-256 hash of the file attached to the email message.|
 ||||
+
+## Office Scripts run events schema
+
+This schema extends the common schema with the properties specific to Office Scripts run events. For more information, see [Office Scripts in Excel on the web](/office/dev/scripts/overview/excel).
+
+|Paramters  |Type  |Mandatory?  |Description |
+|:---------|:---------|:---------|:---------|
+|FileObjectId     | Edm.String        |Yes          |The full URL path name of the OneDrive or SharePoint file that the script ran on.         |
+|ScriptCreatorId      |Edm.String         |Yes          |The UPN of the user who created the script.         |
+|ScriptLastModifiedBy     | Edm.String        |Yes          |The UPN of the user who last modified the script.         |
+|ScriptLastModifiedDate     | Edm.Date        |Yes          | The date the script was last modified.         |
+|FlowDetailsUrl     | Edm.String         | Yes         | The URL for the Flow Admin center where an admin can perform additional administrative functions, including managing permissions. This parameter is only populated when the script was ran in a Flow using Power Automate.        |
+|||||
