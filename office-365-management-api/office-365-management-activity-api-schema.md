@@ -779,6 +779,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |DocumentSharer|Edm.String|Yes|The user who last modified sharing of the document.|
 |UniqueId|Edm.String|Yes|A guid that identifies the file.|
 |LastModifiedTime|Edm.DateTime|Yes|Timestamp in UTC for when doc was last modified.|
+|IsViewableByExternalUsers|Edm.Boolean|Yes|Determines if the file is accessible to any external user.|
 |||||
 
 ### ExchangeMetadata complex type
