@@ -1067,11 +1067,11 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |Latest Delivery location |Edm.String|Yes|The latest delivery location of the email message at the time of the event.|
 |Directionality |Edm.String|Yes|Identifies whether an email message was inbound, outbound, or an intra-org message.|
 |ThreatsAndDetectionTech |Edm.String|Yes|The threats and the corresponding detection technologies. This field exposes all the threats on an email message, including the latest addition on spam verdict.  For example, ["Phish: [Spoof DMARC]","Spam: [URL malicious reputation]"]. The different detection threat and detection technologies are described below.|
-|AdditionalActionsAndResults |Collection(Edm.String)|No|This covers the different additional actions that were taken on the email like ZAP or Manual Remediation as well as the corresponding results.|
-|Connectors |Edm.String|No|This covers the names and guids of the connectors associated with the email.|
-|AuthDetails |Collection(Self.[AuthDetails](#authdetails))|No|This includes the authentication checks that are done for the email and includes the values for SPF, DKIM, DMARC, CompAuth.|
-|SystemOverrides |Collection(Self.[SystemOverrides](#systemoverrides))|No|Overrides which are applicable on the email. These can be system or user overrides.|
-|Phish Confidence Level |Edm.String|No|Indicates the confidence level associated with Phish verdict. It can be normal or high.|  
+|AdditionalActionsAndResults |Collection(Edm.String)|No|The additional actions that were taken on the email, such as ZAP or Manual Remediation. Also includes the corresponding results.|
+|Connectors |Edm.String|No|The names and GUIDs of the connectors associated with the email.|
+|AuthDetails |Collection(Self.[AuthDetails](#authdetails))|No|The authentication checks that are done for the email. Also includes the values for SPF, DKIM, DMARC, and CompAuth.|
+|SystemOverrides |Collection(Self.[SystemOverrides](#systemoverrides))|No|Overrides that are applicable to the email. These can be system or user overrides.|
+|Phish Confidence Level |Edm.String|No|Indicates the confidence level associated with Phish verdict. It can be Normal or High.|  
 |||||
 
 > [!NOTE]
@@ -1124,10 +1124,10 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Details|Edm.String|No|Covers the details about the specific override (e.g. ETR or Safe Sender which was applicable).|
-|FinalOverride|Edm.String|No|Indicates which was the override which impacted the delivery in case of multiple overrides.|
-|Result|Edm.String|No|Implies whether the email was set to be allowed or blocked due to this override.|
-|Source|Edm.String|No|This implies whether it is a user configured override or a tenant configured override.|
+|Details|Edm.String|No|The details about the specific override (such as ETR or Safe Sender) that was applied.|
+|FinalOverride|Edm.String|No|Indicates the override that impacted the delivery in the case of multiple overrides.|
+|Result|Edm.String|No|Indicates whether the email was set to allowed or blocked based on the override.|
+|Source|Edm.String|No|Indicates whether the override was user-configured or tenant-configured.|
 |||||
 
 ### AuthDetails complex type
@@ -1136,8 +1136,8 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
  
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Name|Edm.String|No|Name of the specific auth check e.g. DKIM, DMARC etc.|
-|Value|Edm.String|No|The value associated with the specific auth check (e.g. true, false etc.).|
+|Name|Edm.String|No|The name of the specific auth check, such as DKIM or DMARC.|
+|Value|Edm.String|No|The value associated with the specific auth check, such as True or False.|
 |||||
  
 ### Enum: FileVerdict - Type: Edm.Int32
