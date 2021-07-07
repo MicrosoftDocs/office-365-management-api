@@ -781,6 +781,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |DocumentSharer|Edm.String|Yes|The user who last modified sharing of the document.|
 |UniqueId|Edm.String|Yes|A guid that identifies the file.|
 |LastModifiedTime|Edm.DateTime|Yes|Timestamp in UTC for when doc was last modified.|
+|IsViewableByExternalUsers|Edm.Boolean|Yes|Determines if the file is accessible to any external user.|
 |||||
 
 ### ExchangeMetadata complex type
@@ -1068,6 +1069,11 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |Latest Delivery location |Edm.String|Yes|The latest delivery location of the email message at the time of the event.|
 |Directionality |Edm.String|Yes|Identifies whether an email message was inbound, outbound, or an intra-org message.|
 |ThreatsAndDetectionTech |Edm.String|Yes|The threats and the corresponding detection technologies. This field exposes all the threats on an email message, including the latest addition on spam verdict.  For example, ["Phish: [Spoof DMARC]","Spam: [URL malicious reputation]"]. The different detection threat and detection technologies are described below.|
+|AdditionalActionsAndResults |Collection(Edm.String)|No|The additional actions that were taken on the email, such as ZAP or Manual Remediation. Also includes the corresponding results.|
+|Connectors |Edm.String|No|The names and GUIDs of the connectors associated with the email.|
+|AuthDetails |Collection(Self.[AuthDetails](#authdetails))|No|The authentication checks that are done for the email. Also includes the values for SPF, DKIM, DMARC, and CompAuth.|
+|SystemOverrides |Collection(Self.[SystemOverrides](#systemoverrides))|No|Overrides that are applicable to the email. These can be system or user overrides.|
+|Phish Confidence Level |Edm.String|No|Indicates the confidence level associated with Phish verdict. It can be Normal or High.|  
 |||||
 
 > [!NOTE]
@@ -1114,6 +1120,28 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 > [!NOTE]
 > Within the Malware family, you will be able to see the exact MalwareFamily name (for example, HTML/Phish.VS!MSR) or Malicious Payload as a static string. A Malicious Payload should still be treated as malicious email when a specific name isn't identified.
 
+### SystemOverrides complex type
+ 
+#### SystemOverrides
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Details|Edm.String|No|The details about the specific override (such as ETR or Safe Sender) that was applied.|
+|FinalOverride|Edm.String|No|Indicates the override that impacted the delivery in the case of multiple overrides.|
+|Result|Edm.String|No|Indicates whether the email was set to allowed or blocked based on the override.|
+|Source|Edm.String|No|Indicates whether the override was user-configured or tenant-configured.|
+|||||
+
+### AuthDetails complex type
+ 
+#### AuthDetails
+ 
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Name|Edm.String|No|The name of the specific auth check, such as DKIM or DMARC.|
+|Value|Edm.String|No|The value associated with the specific auth check, such as True or False.|
+|||||
+ 
 ### Enum: FileVerdict - Type: Edm.Int32
 
 #### FileVerdict
@@ -1231,6 +1259,31 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |2|Microsoft Teams|
 |||||
 
+## Submission schema
+
+[Submission](/microsoft-365/security/office-365-security/report-junk-email-messages-to-microsoft) events are available for every [Office 365 customer since it comes with security](/microsoft-365/security/office-365-security/overview). This includes Exchange Online Protection and Microsoft Defender for Office 365. Each event in the submission feed corresponds to false positives or false negatives that were submitted as an:
+ 
+   -	**Admin submissions**. Messages, files, or URLs submitted to Microsoft for analysis.
+   -	**User-reported items**. Messages reported by end users to the admin or Microsoft for review.
+
+### Submission events
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|AdminSubmissionRegistered|Edm.String|No|Admin submission is registered and is pending for processing.|
+|AdminSubmissionDeliveryCheck|Edm.String|No|Admin submission system checked the email's policy.|
+|AdminSubmissionSubmitting|Edm.String|No|Admin submission system is submitting the email.|
+|AdminSubmissionSubmitted|Edm.String|No|Admin submission system submitted the email.|
+|AdminSubmissionTriage|Edm.String|No|Admin submission is triaged by grader.|
+|AdminSubmissionTimeout|Edm.String|No|Admin submission is timef out with no result.|
+|UserSubmission|Edm.String|No|Submission was first reported by an end user.|
+|UserSubmissionTriage|Edm.String|No|User submission is triaged by grader.|
+|CustomSubmission|Edm.String|No|Message reported by a user was sent to the organization's custom mailbox as set in the user reported messages settings.|
+|AttackSimUserSubmission|Edm.String|No|The user-reported message was actually a phish simulation training message.|
+|AdminSubmissionTablAllow|Edm.String|No|An allow was created at time of submission to immediately take action on similar messages while it is being rescanned.|
+|SubmissionNotification|Edm.String|No|Admin feedback is sent to end user.|
+|||||
+ 
 ## Automated investigation and response events in Office 365
 
 [Office 365 automated investigation and response (AIR)](/office365/securitycompliance/automated-investigation-response-office) events are available for Office 365 customers who have a subscription that includes Microsoft Defender for Office 365 Plan 2 or Office 365 E5. Investigation events are logged based on a change in investigation status. For example, when an administrator takes an action that changes the status of an investigation from Pending Actions to Completed, an event is logged.
