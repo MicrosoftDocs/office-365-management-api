@@ -1257,6 +1257,31 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |2|Microsoft Teams|
 |||||
 
+## Submission schema
+
+[Submission](/microsoft-365/security/office-365-security/report-junk-email-messages-to-microsoft) events are available for every [Office 365 customer since it comes with security](/microsoft-365/security/office-365-security/overview). This includes Exchange Online Protection and Microsoft Defender for Office 365. Each event in the submission feed corresponds to false positives or false negatives that were submitted as an:
+ 
+   -	**Admin submissions**. Messages, files, or URLs submitted to Microsoft for analysis.
+   -	**User-reported items**. Messages reported by end users to the admin or Microsoft for review.
+
+### Submission events
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|AdminSubmissionRegistered|Edm.String|No|Admin submission is registered and is pending for processing.|
+|AdminSubmissionDeliveryCheck|Edm.String|No|Admin submission system checked the email's policy.|
+|AdminSubmissionSubmitting|Edm.String|No|Admin submission system is submitting the email.|
+|AdminSubmissionSubmitted|Edm.String|No|Admin submission system submitted the email.|
+|AdminSubmissionTriage|Edm.String|No|Admin submission is triaged by grader.|
+|AdminSubmissionTimeout|Edm.String|No|Admin submission is timef out with no result.|
+|UserSubmission|Edm.String|No|Submission was first reported by an end user.|
+|UserSubmissionTriage|Edm.String|No|User submission is triaged by grader.|
+|CustomSubmission|Edm.String|No|Message reported by a user was sent to the organization's custom mailbox as set in the user reported messages settings.|
+|AttackSimUserSubmission|Edm.String|No|The user-reported message was actually a phish simulation training message.|
+|AdminSubmissionTablAllow|Edm.String|No|An allow was created at time of submission to immediately take action on similar messages while it is being rescanned.|
+|SubmissionNotification|Edm.String|No|Admin feedback is sent to end user.|
+|||||
+ 
 ## Automated investigation and response events in Office 365
 
 [Office 365 automated investigation and response (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) events are available for Office 365 customers who have a subscription that includes Microsoft Defender for Office 365 Plan 2 or Office 365 E5. Investigation events are logged based on a change in investigation status. For example, when an administrator takes an action that changes the status of an investigation from Pending Actions to Completed, an event is logged.
