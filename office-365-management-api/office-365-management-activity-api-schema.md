@@ -19,7 +19,7 @@ The Office 365 Management Activity API schema is provided as a data service in  
 
 ## Office 365 Management API schemas
 
-This article provides details on the Common schema as well as each of the product specific schemas. The following table describes the available schemas.
+This article provides details on the Common schema as well as service-specific schemas. The following table describes the available schemas.
 
 |Name of schema|Description|
 |:-----|:-----|
@@ -43,6 +43,7 @@ This article provides details on the Common schema as well as each of the produc
 |[Data Center Security Cmdlet schema](#data-center-security-cmdlet-schema)|Extends the Data Center Security Base schema with the properties specific to all data center security cmdlet audit data.|
 |[Microsoft Teams schema](#microsoft-teams-schema)|Extends the Common schema with the properties specific to all Microsoft Teams events.|
 |[Microsoft Defender for Office 365 and Threat Investigation and Response schema](#microsoft-defender-for-office-365-and-threat-investigation-and-response-schema)|Extends the Common schema with the properties specific to Defender for Office 365 and threat investigation and response data.|
+|[Submission schema](#submission-schema)|Extends the Common schema with the properties specific to user and admin submissions in Microsoft Defender for Office 365.|
 |[Automated investigation and response events schema](#automated-investigation-and-response-events-in-office-365)|Extends the Common schema with the properties specific to Office 365 automated investigation and response (AIR) events. To see an example, see [Tech Community blog: Improve the Effectiveness of your SOC with Microsoft Defender for Office 365 and the O365 Management API](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185).|
 |[Hygiene events schema](#hygiene-events-schema)|Extends the Common schema with the properties specific to events in Exchange Online Protection and Microsoft Defender for Office 365.|
 |[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
@@ -1261,10 +1262,10 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 
 ## Submission schema
 
-[Submission](/microsoft-365/security/office-365-security/report-junk-email-messages-to-microsoft) events are available for every [Office 365 customer since it comes with security](/microsoft-365/security/office-365-security/overview). This includes Exchange Online Protection and Microsoft Defender for Office 365. Each event in the submission feed corresponds to false positives or false negatives that were submitted as an:
- 
-   -	**Admin submissions**. Messages, files, or URLs submitted to Microsoft for analysis.
-   -	**User-reported items**. Messages reported by end users to the admin or Microsoft for review.
+[Submission](/microsoft-365/security/office-365-security/report-junk-email-messages-to-microsoft) events are available for every [Office 365 customers since it comes with security](/microsoft-365/security/office-365-security/overview). This includes organizations that use Exchange Online Protection and Microsoft Defender for Office 365. Each event in the submission feed corresponds to false positives or false negatives that were submitted as an:
+
+- **Admin submission**. Messages, files, or URLs submitted to Microsoft for analysis.
+- **User-reported item**. Messages reported by end users to the admin or Microsoft for review.
 
 ### Submission events
 
@@ -1283,7 +1284,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |AdminSubmissionTablAllow|Edm.String|No|An allow was created at time of submission to immediately take action on similar messages while it is being rescanned.|
 |SubmissionNotification|Edm.String|No|Admin feedback is sent to end user.|
 |||||
- 
+
 ## Automated investigation and response events in Office 365
 
 [Office 365 automated investigation and response (AIR)](/office365/securitycompliance/automated-investigation-response-office) events are available for Office 365 customers who have a subscription that includes Microsoft Defender for Office 365 Plan 2 or Office 365 E5. Investigation events are logged based on a change in investigation status. For example, when an administrator takes an action that changes the status of an investigation from Pending Actions to Completed, an event is logged.
