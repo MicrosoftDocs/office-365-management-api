@@ -1067,6 +1067,11 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |Latest Delivery location |Edm.String|Yes|The latest delivery location of the email message at the time of the event.|
 |Directionality |Edm.String|Yes|Identifies whether an email message was inbound, outbound, or an intra-org message.|
 |ThreatsAndDetectionTech |Edm.String|Yes|The threats and the corresponding detection technologies. This field exposes all the threats on an email message, including the latest addition on spam verdict.  For example, ["Phish: [Spoof DMARC]","Spam: [URL malicious reputation]"]. The different detection threat and detection technologies are described below.|
+|AdditionalActionsAndResults |Collection(Edm.String)|No|The additional actions that were taken on the email, such as ZAP or Manual Remediation. Also includes the corresponding results.|
+|Connectors |Edm.String|No|The names and GUIDs of the connectors associated with the email.|
+|AuthDetails |Collection(Self.[AuthDetails](#authdetails))|No|The authentication checks that are done for the email. Also includes the values for SPF, DKIM, DMARC, and CompAuth.|
+|SystemOverrides |Collection(Self.[SystemOverrides](#systemoverrides))|No|Overrides that are applicable to the email. These can be system or user overrides.|
+|Phish Confidence Level |Edm.String|No|Indicates the confidence level associated with Phish verdict. It can be Normal or High.|  
 |||||
 
 > [!NOTE]
@@ -1113,6 +1118,28 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 > [!NOTE]
 > Within the Malware family, you will be able to see the exact MalwareFamily name (for example, HTML/Phish.VS!MSR) or Malicious Payload as a static string. A Malicious Payload should still be treated as malicious email when a specific name isn't identified.
 
+### SystemOverrides complex type
+ 
+#### SystemOverrides
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Details|Edm.String|No|The details about the specific override (such as ETR or Safe Sender) that was applied.|
+|FinalOverride|Edm.String|No|Indicates the override that impacted the delivery in the case of multiple overrides.|
+|Result|Edm.String|No|Indicates whether the email was set to allowed or blocked based on the override.|
+|Source|Edm.String|No|Indicates whether the override was user-configured or tenant-configured.|
+|||||
+
+### AuthDetails complex type
+ 
+#### AuthDetails
+ 
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Name|Edm.String|No|The name of the specific auth check, such as DKIM or DMARC.|
+|Value|Edm.String|No|The value associated with the specific auth check, such as True or False.|
+|||||
+ 
 ### Enum: FileVerdict - Type: Edm.Int32
 
 #### FileVerdict
