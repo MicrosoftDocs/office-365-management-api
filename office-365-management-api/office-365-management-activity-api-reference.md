@@ -542,11 +542,11 @@ When listing notification history for a time range, the number of results return
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
-NextPageUrl: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscriptions/content?contentType=Audit.SharePoint&amp;startTime=2015-10-01&amp;endTime=2015-10-02&amp;nextPage=2015101900R022885001761
+NextPageUri: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscriptions/content?contentType=Audit.SharePoint&amp;startTime=2015-10-01&amp;endTime=2015-10-02&amp;nextPage=2015101900R022885001761
 
 ```
 
-To list all available content for a specified time range, you might need to retrieve multiple pages until a response without the **NextPageUrl** header is received.
+To list all available content for a specified time range, you might need to retrieve multiple pages until a response without the **NextPageUri** header is received.
 
 ## Retrieve resource friendly names
 
