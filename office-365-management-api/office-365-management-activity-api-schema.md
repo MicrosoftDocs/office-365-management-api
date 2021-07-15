@@ -1054,7 +1054,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |ParentMessageId|Edm.String|No|A unique identifier of the parent chat or channel message.|
 |SizeInBytes|Edm.Int64|No|The size of the message in bytes with UTF-16 encoding.|
 |TeamGuid|Edm.String|No|A unique identifier of the team the message belongs to.|
-|TeamName|Edm.String|No|A name of the team the message belongs to.|
+|TeamName|Edm.String|No|The name of the team the message belongs to.|
 |Version|Edm.String|No|The version of the chat or channel message.|
 |||||
  
