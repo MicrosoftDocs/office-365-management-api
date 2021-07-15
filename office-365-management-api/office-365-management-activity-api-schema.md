@@ -971,22 +971,26 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|MessageId|Edm.String|No|An identifier for a chat or channel message.|
-|Members|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|No|A list of users within a Team.|
-|TeamName|Edm.String|No|The name of the team being audited.|
-|TeamGuid|Edm.Guid|No|A unique identifier for the team being audited.|
-|ChannelType|Edm.String|No|The type of channel being audited (Standard/Private).|
-|ChannelName|Edm.String|No|The name of the channel being audited.|
-|ChannelGuid|Edm.Guid|No|A unique identifier for the channel being audited.|
-|ExtraProperties|Collection(Self.[KeyValuePair](#keyvaluepair-complex-type))|No|A list of extra properties.|
-|AddOnType|Self.[AddOnType](#addontype)|No|The type of add-on that generated this event.|
-|AddonName|Edm.String|No|The name of the add-on that generated the event.|
 |AddOnGuid|Edm.Guid|No|A unique identifier for the add-on that generated the event.|
-|TabType|Edm.String|No|Only present for tab events. The type of tab that generated the event.|
-|Name|Edm.String|No|Only present for settings events. Name of the setting that changed.|
-|OldValue|Edm.String|No|Only present for settings events. Old value of the setting.|
-|NewValue|Edm.String|No|Only present for settings events. New value of the setting.|
+|AddOnName|Edm.String|No|The name of the add-on that generated the event.|
+|AddOnType|Self.[AddOnType](#addontype)|No|The type of add-on that generated this event.|
+|ChannelGuid|Edm.Guid|No|A unique identifier for the channel being audited.|
+|ChannelName|Edm.String|No|The name of the channel being audited.|
+|ChannelType|Edm.String|No|The type of channel being audited (Standard/Private).|
+|ExtraProperties|Collection(Self.[KeyValuePair](#keyvaluepair-complex-type))|No|A list of extra properties.|
+|HostedContents|Collection(Self.[HostedContent](#hostedcontent-complex-type))|No|A collection of chat or channel message hosted contents.|
+|Members|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|No|A list of users within a Team.|
+|MessageId|Edm.String|No|An identifier for a chat or channel message.|
 |MessageURLs|Edm.String|No|Present for any URL sent in Teams messages.|
+|Messages|Collection(Self.[Message](#message-complex-type))|No|A collection of chat or channel messages.|
+|MessageSizeInBytes|Edm.Int64|No|The size of a chat or channel message in bytes with UTF-16 encoding.|
+|Name|Edm.String|No|Only present for settings events. Name of the setting that changed.|
+|NewValue|Edm.String|No|Only present for settings events. New value of the setting.|
+|OldValue|Edm.String|No|Only present for settings events. Old value of the setting.|
+|SubscriptionId|Edm.String|No|A unique identifier of a Microsoft Graph change notification subscription.|
+|TabType|Edm.String|No|Only present for tab events. The type of tab that generated the event.|
+|TeamGuid|Edm.Guid|No|A unique identifier for the team being audited.|
+|TeamName|Edm.String|No|The name of the team being audited.|
 ||||
 
 ### MicrosoftTeamsMember complex type
@@ -1028,6 +1032,32 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |3|Tab|A Microsoft Teams tab.|
 ||||
 
+### HostedContent complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Id|Edm.String|Yes|A unique identifier of the message hosted content.|
+|SizeInBytes|Edm.Int64|No|The message hosted content size in bytes.|
+|||||
+
+### Message complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|AADGroupId|Edm.String|No|A unique identifier of the group in Azure Active Directory that the message belongs to.|
+|Id|Edm.String|Yes|A unique identifier of the chat or channel message.|
+|ChannelGuid|Edm.String|No|A unique identifier of  the channel the message belongs to.|
+|ChannelName|Edm.String|No|The name of the channel the message belongs to.|
+|ChannelType|Edm.String|No|The type of the channel the message belongs to.|
+|ChatName|Edm.String|No|The name of the chat the message belongs to.|
+|ChatThreadId|Edm.String|No|A unique identifier of the chat the message belongs to.|
+|ParentMessageId|Edm.String|No|A unique identifier of the parent chat or channel message.|
+|SizeInBytes|Edm.Int64|No|The size of the message in bytes with UTF-16 encoding.|
+|TeamGuid|Edm.String|No|A unique identifier of the team the message belongs to.|
+|TeamName|Edm.String|No|A name of the team the message belongs to.|
+|Version|Edm.String|No|The version of the chat or channel message.|
+|||||
+ 
 ## Microsoft Defender for Office 365 and Threat Investigation and Response schema
 
 [Microsoft Defender for Office 365](/office365/securitycompliance/office-365-atp) and Threat Investigation and Response events are available for Office 365 customers who have an Defender for Office 365 Plan 1, Defender for Office 365 Plan 2, or an E5 subscription. Each event in the Defender for Office 365 feed corresponds to the following that were determined to contain a threat:
