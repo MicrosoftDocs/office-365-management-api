@@ -11,6 +11,9 @@ localization_priority: Priority
 
 # Office 365 Service Communications API reference
 
+> [!IMPORTANT]
+> The service health and communications API in Microsoft Graph is now available. The Microsoft Graph API replaces the Service Communications API that's documented in this article. We'll be retiring the legacy version of the Service Communications API beginning December 17, 2021. For more information about the new Microsoft Graph API, see [Overview for accessing service health and communications through Microsoft Graph](/graph/service-communications-concept-overview).
+
 You can use the Office 365 Service Communications API V2 to access the following data:
 
 - **Get Services**: Get the list of subscribed services.
@@ -274,7 +277,7 @@ The status definitions include the following values:
 - PostIncidentReportPublished
 - ServiceOperational
 
-For a description of these status definitions, see [How to check Microsoft 365 service health](https://docs.microsoft.com/microsoft-365/enterprise/view-service-health#status-definitions).
+For a description of these status definitions, see [How to check Microsoft 365 service health](/enterprise/view-service-health#status-definitions).
 
 ## Get Historical Status
 
@@ -460,7 +463,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
     ]
 }
 ```
-
 
 ## Errors
 
