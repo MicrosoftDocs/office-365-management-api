@@ -913,7 +913,7 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 |Comments|Edm.String|No|Comments left by the users who have viewed the alert. By default, it's "New alert".|
 |Data|Edm.String|No|The detailed data blob of the alert or alert entity.|
 |AlertEntityId|Edm.String|No|The identifier for the alert entity. This parameter is only applicable to AlertEntityGenerated events.|
-|EntityType|Edm.String|No|Type of the alert or alert entity. Entity types include: <ul><li>User</li><li>Recipients</li><li>Sender</li><li>MalwareFamily</li></ul><br/>This parameter is only applicable to AlertEntityGenerated events.|
+|EntityType|Edm.String|No|Type of the alert or alert entity. Entity types include: <ul><li>User</li><li>Recipients</li><li>Sender</li><li>MalwareFamily</li></ul>This parameter is only applicable to AlertEntityGenerated events.|
 |||||
 
 ## Yammer schema
