@@ -6,7 +6,7 @@ description: "Summarizes the most common questions Microsoft Support receives in
 ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: 
-localization_priority: Priority
+ms.localizationpriority: high
 ---
 
 # Office 365 Management Activity API FAQs and troubleshooting
