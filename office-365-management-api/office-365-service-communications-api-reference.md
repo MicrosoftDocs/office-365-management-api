@@ -6,7 +6,7 @@ description: Use this API to access the following data - Get Services, Get Curre
 ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: 
-localization_priority: Priority
+ms.localizationpriority: high
 ---
 
 # Office 365 Service Communications API reference

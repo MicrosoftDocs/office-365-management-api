@@ -6,7 +6,7 @@ description: The Office 365 Management APIs provide a single extensibility platf
 ms.ContentId: a11a6d30-f6b7-3629-28b6-cbab527d8a5e
 ms.topic: reference (API)
 ms.date: 
-localization_priority: Priority
+ms.localizationpriority: high
 ---
 
 # Welcome to Office 365 Management APIs

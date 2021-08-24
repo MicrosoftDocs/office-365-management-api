@@ -6,7 +6,7 @@ description: The APIs use Azure AD to provide authentication services that you c
 ms.ContentId: 74137c9a-29e0-b588-6122-26f4d2c5e3fc
 ms.topic: reference (API)
 ms.date: 
-localization_priority: Priority
+ms.localizationpriority: high
 ---
 
 # Get started with Office 365 Management APIs
