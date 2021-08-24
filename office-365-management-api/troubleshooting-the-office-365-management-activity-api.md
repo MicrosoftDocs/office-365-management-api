@@ -30,11 +30,11 @@ To get started with the Office 365 Management Activity API, see [Get started wit
 
 **What happens if I disable auditing for my Office 365 organization? Will I still get events via the Management Activity API?**
 
-No. Office 365 unified auditing must be enabled for your organization to pull records via the Management Activity API. For instructions, see [Turn audit log search on or off](https://docs.microsoft.com/microsoft-365/compliance/turn-audit-log-search-on-or-off).
+No. Office 365 unified auditing must be enabled for your organization to pull records via the Management Activity API. For instructions, see [Turn audit log search on or off](/microsoft-365/compliance/turn-audit-log-search-on-or-off).
 
 **What events are audited for a specific Office 365 service?**
 
-Office 365 Management Activity API schema documentation has a comprehensive list of events. For details, see Office 365 Management Activity API schema. Also see the "Audited activities" section in [Search the audit log in the Security & Compliance Center](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#audited-activities) for a list of events for most of the Office 365 services that are audited.
+Office 365 Management Activity API schema documentation has a comprehensive list of events. For details, see Office 365 Management Activity API schema. Also see the "Audited activities" section in [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#audited-activities) for a list of events for most of the Office 365 services that are audited.
 
 **Are there any differences in the records that are fetched by the Management Activity API versus the records that are returned by using the audit log search tool in the Microsoft 365 compliance center?**
 
@@ -77,7 +77,7 @@ TargetUpdatedProperties were appearing in ExtendedProperties. However, they have
 
 **Why aren't audit logs with UserAccountNotFound "LogonError" for Azure Active Directory (Azure AD) sign-in activities available via the Management Activity API?**
 
-Starting in November 2020, audit logs for Azure AD sign-in activities are ingested into the unified audit log from Azure AD Event Hubs. As a result of this change, populating the "LogonError" property with the UserAccountNotFound value is not possible. Starting the first week of February 2021, the [ErrorCode property in the Azure AD logon auditing schema](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema#azure-active-directory-secure-token-service-sts-logon-schema) now matches [AADSTS error codes](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#lookup-current-error-code-information). Also, the UserId parameter will not be populated with the user name from the attempted login for UserAccountNotFound errors because that user name doesn't exist in the organization's Azure AD directory.
+Starting in November 2020, audit logs for Azure AD sign-in activities are ingested into the unified audit log from Azure AD Event Hubs. As a result of this change, populating the "LogonError" property with the UserAccountNotFound value is not possible. Starting the first week of February 2021, the [ErrorCode property in the Azure AD logon auditing schema](/office/office-365-management-api/office-365-management-activity-api-schema#azure-active-directory-secure-token-service-sts-logon-schema) now matches [AADSTS error codes](/azure/active-directory/develop/reference-aadsts-error-codes#lookup-current-error-code-information). Also, the UserId parameter will not be populated with the user name from the attempted login for UserAccountNotFound errors because that user name doesn't exist in the organization's Azure AD directory.
 
 ## Troubleshooting the Office 365 Management Activity API
 
@@ -107,13 +107,13 @@ The most common category of questions come from customers using third-party prod
 
 ### Enabling unified audit logging in Office 365
 
-If you've just set up an app that's trying to use the Management Activity API and it's not working, be sure that you've enabled unified audit logging for your Office 365 organization. You do this by turning on the Office 365 audit log. For instructions, see [Turn Office 365 audit log search on or off](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
+If you've just set up an app that's trying to use the Management Activity API and it's not working, be sure that you've enabled unified audit logging for your Office 365 organization. You do this by turning on the Office 365 audit log. For instructions, see [Turn Office 365 audit log search on or off](/microsoft-365/compliance/turn-audit-log-search-on-or-off).
 
 If unified auditing isn't enabled, you will typically receive an error that contains the following string: `Microsoft.Office.Compliance.Audit``.DataServiceException: Tenant <tenantID> does not exist.`
 
 ### Connecting to the API
 
-Most applications connect to the API using a straightforward Client Credentials OAuth2 flow. Therefore, the first step is to create an Azure AD application that has the permissions needed to access the Management Activity API data. It's outside the scope of this article to explain the steps to create an Azure AD App registration. For more information, see [Register your application with your Azure Active Directory tenant](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
+Most applications connect to the API using a straightforward Client Credentials OAuth2 flow. Therefore, the first step is to create an Azure AD application that has the permissions needed to access the Management Activity API data. It's outside the scope of this article to explain the steps to create an Azure AD App registration. For more information, see [Register your application with your Azure Active Directory tenant](/azure/active-directory/develop/active-directory-integrating-applications).
 
 #### Azure application permissions
 
