@@ -903,17 +903,17 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 |**Parameters**|**Type**|**Mandatory**|**Description**|
 |:-----|:-----|:-----|:-----|
 |AlertId|Edm.Guid|Yes|The Guid of the alert.|
-|AlertType|Self.String|Yes|Type of the alert. Alert types include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>System</p></li><li><p>Custom</p></li>|
+|AlertType|Self.String|Yes|Type of the alert. Alert types include: <ul><li>System</li><li>Custom|
 |Name|Edm.String|Yes|Name of the alert.|
 |PolicyId|Edm.Guid|No|The Guid of the policy that triggered the alert.|
-|Status|Edm.String|No|Status of the alert. Statuses include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Active</p></li><li><p>Investigating</p></li><li><p>Resolved</p></li><li><p>Dismissed</p></li></ul>|
-|Severity|Edm.String|No|Severity of the alert. Severity levels include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Low</p></li><li><p>Medium</p></li><li><p>High</p></li></ul>|
-|Category|Edm.String|No|Category of the alert. Categories include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>AccessGovernance</p></li><li><p>DataGovernance</p></li><li><p>DataLossPrevention</p></li><li><p>InsiderRiskManagement</p></li><li><p>MailFlow</p></li><li><p>ThreatManagement</p></li><li><p>Other</p></li></ul>|
-|Source|Edm.String|No|Source of the alert. Sources include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Office 365 Security & Compliance</p></li><li><p>Cloud App Security</p></li></ul>|
+|Status|Edm.String|No|Status of the alert. Statuses include: <ul><li><p>Active</li><li>Investigating</li><li>Resolved</li><li>Dismissed|
+|Severity|Edm.String|No|Severity of the alert. Severity levels include: <ul><li>Low</li><li>Medium</li><li>High</li></ul>|
+|Category|Edm.String|No|Category of the alert. Categories include: <ul><li>AccessGovernance</li><li>DataGovernance</li><li>DataLossPrevention</li><li>InsiderRiskManagement</li><li>MailFlow</li><li>ThreatManagement</li><li>Other|
+|Source|Edm.String|No|Source of the alert. Sources include: <ul><li>Office 365 Security & Compliance</li><li>Cloud App Security|
 |Comments|Edm.String|No|Comments left by the users who have viewed the alert. By default, it's "New alert".|
 |Data|Edm.String|No|The detailed data blob of the alert or alert entity.|
 |AlertEntityId|Edm.String|No|The identifier for the alert entity. This parameter is only applicable to AlertEntityGenerated events.|
-|EntityType|Edm.String|No|Type of the alert or alert entity. Entity types include: <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>User</p></li><li><p>Recipients</p></li><li><p>Sender</p></li><li><p>MalwareFamily</p></li></ul>This parameter is only applicable to AlertEntityGenerated events.|
+|EntityType|Edm.String|No|Type of the alert or alert entity. Entity types include: <ul><li>User</li><li>Recipients</li><li>Sender</li><li>MalwareFamily</li></ul><br/>This parameter is only applicable to AlertEntityGenerated events.|
 |||||
 
 ## Yammer schema
