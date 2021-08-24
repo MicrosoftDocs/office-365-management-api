@@ -6,7 +6,7 @@ description: Provides a single extensibility platform for all Office 365 custome
 ms.ContentId: 4fca85f9-efa6-3b4b-b10d-a07cb31f803f
 ms.topic: reference (API)
 ms.date: 09/28/2016
-localization_priority: Priority
+ms.localizationpriority: high
 ---
 
 # Office 365 Management APIs overview
