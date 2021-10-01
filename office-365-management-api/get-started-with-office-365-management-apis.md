@@ -40,37 +40,32 @@ The Office 365 Management APIs use Azure AD to provide secure authentication to 
 To register your app in Azure AD, you need a subscription to Office 365 and a subscription to Azure that has been associated with your Office 365 subscription. You can use trial subscriptions to both Office 365 and Azure to get started. For more details, see [Welcome to the Office 365 Developer Program](/office/developer-program/office-365-developer-program).
 
 
-### Use the Azure Management Portal to register your application in Azure AD
+### Use the Azure Portal to register your application in Azure AD
 
 After you have a Microsoft tenant with the proper subscriptions, you can register your application in Azure AD.
 
-1. Sign into the [Azure management portal](https://manage.windowsazure.com/), using the credential of your Microsoft tenant that has the subscription to Office 365 you wish to use. You can also access the Azure Management Portal via a link that appears in the left navigation pane in the [Office admin portal](https://portal.office.com/).
+1. Sign into the [Azure portal](https://portal.azure.com), using the credential of your Microsoft tenant that has the subscription to Office 365 you wish to use. You can also access the Azure Portal via a link that appears in the left navigation pane in the [Office admin portal](https://admin.microsoft.com/).
     
-2. In the left navigation panel, choose Active Directory (1). Make sure the Directory tab (2) is selected, and then select the directory name (3).
+2. In the left navigation panel, choose Azure Active Directory (1). Make to select "App registrations" (2), and then click "+ New registration" (3).
     
-   ![O365 Sign-up page](images/o365-sign-up-page.png)
-    
-    
-3. On the directory page, select **Applications**. Azure AD displays a list of the applications currently installed in your tenancy.
-    
-4. Choose **Add**.
-    
-   ![Office 365 Admin page](images/o365-admin-page.png)
-    
-    
-5. Select **Add an application my organization is developing**.
-    
-6. Enter the **NAME** of your application and specify the **Type** as WEB APPLICATION AND/OR WEB API.
-    
-7. Enter the appropriate App properties:
-    
-   - **SIGN-ON URL**. The URL where users can sign in and use your app. You can change this later as needed.
-    
-   - **APP ID URI**. The URI used as a unique logical identifier for your app. The URI must be in a verified custom domain for an external user to grant your app access to their data in Windows Azure AD. For example, if your Microsoft tenant is **contoso.onmicrosoft.com**, the APP ID URI could be **https://app.contoso.onmicrosoft.com**.
-    
-8. Your app is now registered with Azure AD, and has been assigned a client ID. However, there are several important aspects of your app left to configure.
-    
+   ![Azure Portal main page](https://user-images.githubusercontent.com/31192971/135541850-24c35438-c625-4225-9dba-d42fdb3ddf79.png)
+   
+   ![Azure Portal - App registrations window](https://user-images.githubusercontent.com/31192971/135542035-280dd838-109b-46bd-b23f-6cf476db70af.png)
 
+    
+3. In the "App registrations" page, select **+ New registration**. A new window appears for you to start with the registration of your app.
+
+4. Name your App.
+
+5. Choose who can use the app and/or access the API.
+
+6. Provide a redirect URL for user redirect after authentication, if needed.
+    
+7. Choose **Register**.
+    
+   ![Azure Portal - App registrations](https://user-images.githubusercontent.com/31192971/135544686-69892daf-1f50-48ce-8c27-da955825b044.png)
+    
+    
 ### Configure your application properties in Azure AD
 
 Now that your application is registered, there are several important properties you must specify that determine how your application functions within Azure AD and how tenant admins will grant consent to allow your application to access their data by using the Office 365 Management APIs.
@@ -92,19 +87,28 @@ Be sure to choose **Save** after making any changes to these properties.
 Keys, also known as client secrets, are used when exchanging an authorization code for an access token.
 
 
-1. In the Azure Management Portal, select your application and choose **Configure** in the top menu. Scroll down to **keys**.
+1. In the Azure Portal > App registrations, select your application.
     
-2. Select the duration for your key, and choose **Save**.
+    ![Azure Portal - App registrations - All applications - Search for Application](https://user-images.githubusercontent.com/31192971/135546288-bbd68ca3-3fac-4cf3-8859-ba580dde504a.png)
+
+2. Once your app's window opens, choose **Certificates & secrets** in the left side menu.
+
+3. You can now either upload **Certificates** and/or create new **Client Secrets**.
     
-   ![Azure subscription page](images/azure-subscription-page.png)
+    ![Azure Portal - App registrations - Application](https://user-images.githubusercontent.com/31192971/135547885-ffb87f04-5a99-4d51-b6cf-fab24dcebeff.png)
+
+    
+4. When creating new **Client Secrets**, give a description and select the duration for your key, and choose **Add**.
+    
+   ![Azure Portal - App registrations - Application - Client secrets](https://user-images.githubusercontent.com/31192971/135546439-10738f9c-9ed4-40bf-bbf4-f78c90f28b42.png)
     
     
-3. Azure displays the app secret only after saving it. Select the Clipboard icon to copy the client secret to the Clipboard.
+5. After clicking **Add** app secret value is now displayed. Select the Clipboard icon to copy the client secret value to the Clipboard.
     
-   ![Azure portal page](images/azure-portal-page.png)
+   ![Azure Portal - App registrations - Application - Client secrets - Secret Value](https://user-images.githubusercontent.com/31192971/135547752-4f88eb46-0f9a-49e0-94eb-b9dd37f0a668.png)
 
    > [!IMPORTANT] 
-   > Azure only displays the client secret at the time you initially generate it. You cannot navigate back to this page and retrieve the client secret later.
+   > Azure only displays the client secret value at the time you initially generate it. You cannot navigate back to this page and retrieve the client secret value later.
 
 ### Configure an X.509 certificate to enable service-to-service calls
 
@@ -153,11 +157,11 @@ The following instructions show you how to use the Visual Studio or Windows SDK 
     
    Using the values extracted from the certificate and the generated key ID, you must now update your application manifest in Azure AD.
     
-6. In the Azure Management Portal, select your application and choose **Configure** in the top menu.
+6. In the Azure Portal > App registrations > All applications, select your application and choose **Manifest** in the left side menu.
     
-7. In the command bar, choose **Manage manifest**, and then choose **Download Manifest**.
+7. In the top navigation bar, choose **Download**.
     
-   ![Command line certificate display](images/command-line-certificate-display.png)
+   ![Azure Portal - App registrations - All applications - Your Application - Manifest](https://user-images.githubusercontent.com/31192971/135548329-c875cbf0-5414-4a39-b90b-790251568a10.png)
     
     
 8. Open the downloaded manifest for editing and replace the empty KeyCredentials property with the following JSON:
@@ -186,25 +190,29 @@ The following instructions show you how to use the Visual Studio or Windows SDK 
 Finally, you need to specify exactly what permissions your app requires of the Office 365 Management APIs. To do so, you add access to the Office 365 Management APIs to your app, and then you specify the permission(s) you need.
 
 
-1. In the Azure Management Portal, select your application, and choose **Configure** in the top menu. Scroll down to **permissions to other applications**, and choose **Add application**.
+1. In the Azure Portal > App registrations > All applications, select your application, and choose **API Permissions** in the left side menu. Click on **Add a permission**, and select an API.
     
-   ![Azure AD page](images/azure-ad-page.png)
-    
-    
-2. Select the **Office 365 Management APIs** (1) so that it appears in the **Selected** column (2), and then select the check mark in the lower right (3) to save your selection and return to the main configuration page for your application.
-    
-   ![Azure AD apps page](images/azure-ad-apps-page.png)
+   ![Azure Portal - App registrations - All applications - Your Application - API permissions](https://user-images.githubusercontent.com/31192971/135548776-bf11112c-a2b7-4c88-9598-c3b3253f8f69.png)
     
     
-3. The Office Management APIs now appear in the list of applications to which your application requires permissions. Under both **Application Permissions** and **Delegated Permissions**, select the permissions your application requires. Refer to the specific API reference for more details about each permission.  
+2. Select the **Office 365 Management APIs** (4).
+    
+   ![Azure Portal - App registrations - All applications - Your Application - API permissions - Office 365 Management API](https://user-images.githubusercontent.com/31192971/135548861-e5fe11ac-e033-4f6b-8614-cc36f42f1e74.png)
+    
+    
+3. On the next window, select the type of permission(s) that your application require, then **Add permissions**
+    a. Delegated Permissions - Enable your client application to perform operations on behalf of the logged-in user, such as reading their email or modifying their profile
+    b. Application Permissions - Permissions for an application that needs to authenticate as itself without user interaction or consent, such as an application used by background services or daemon apps
+    
+    ![Azure Portal - App registrations - All applications - Your Application - API permissions](https://user-images.githubusercontent.com/31192971/135553032-678934eb-8459-4ccd-85eb-9fe534752250.png)
 
-   > [!NOTE] 
-   > There are currently four unused permissions related to activity reports and threat intelligence that will be removed in the future. Do not select any of these permissions because they are unnecessary.
+
+4. The Office Management APIs now appear in the list of applications to which your application requires permissions. Under both **Application Permissions** and **Delegated Permissions**, if needed, select the permissions your application requires. Refer to the specific API reference for more details about each permission.  
+
+   ![App registrations - Your application - API permissions](https://user-images.githubusercontent.com/31192971/135553667-79a35359-a2ee-425a-8af2-e25655f85ef9.png)
     
-   ![Add an application dialog](images/add-an-application-dialog.png)
     
-    
-4. Choose **Save** to save the configuration.
+4. Choose **Grant admin consent for <Tenant name>** to consent to the permissions given to your app.
     
 
 ## Get Office 365 tenant admin consent
@@ -227,7 +235,7 @@ https://login.windows.net/common/oauth2/authorize?response_type=code&resource=ht
 You can test the consent URL by pasting it into a browser and signing in using the credentials of an Office 365 admin for a tenant other than the tenant that you used to register the application. You will see the request to grant your application permission to use the Office Management APIs.
 
 
-![Azure AD app added page](images/azure-ad-app-added-page.png)
+![Permissions requested page](https://user-images.githubusercontent.com/31192971/135655730-70af9252-9554-4edf-a14c-bddfef957f17.png)
 
 After choosing **Accept**, you are redirected to the specified page, and there will be a code in the query string. 
 
