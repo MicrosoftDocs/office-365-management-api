@@ -1558,6 +1558,7 @@ The quarantine events listed in [Search the audit log in the Office 365 Security
 |2|Release|This is a request from a user to release an email message that is deemed to be harmful.|
 |3|Export|This is a request from a user to export an email message that is deemed to be harmful.|
 |4|ViewHeader|This is a request from a user to view the header an email message that is deemed to be harmful.|
+|5|Release request|This is a release request from a user to release an email message that is deemed to be harmful.|
 ||||
 
 ### Enum: RequestSource - Type: Edm.Int32
