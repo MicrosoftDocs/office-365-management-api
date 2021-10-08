@@ -200,7 +200,7 @@ Finally, you need to specify exactly what permissions your app requires of the O
 
    ![API permissions for your app](images/AzureAppRegistration11.png)
 
-5. Select **Grant admin consent for <tenant name>** to consent to the permissions given to your app.
+5. Select **Grant admin consent for "tenant name"** to consent to the permissions given to your app.
 
 ## Get Office 365 tenant admin consent
 
