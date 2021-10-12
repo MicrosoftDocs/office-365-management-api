@@ -53,6 +53,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Forms schema](#microsoft-forms-schema)|Extends the Common schema with the properties specific to all Microsoft Forms events.|
 |[MIP label schema](#mip-label-schema)|Extends the Common schema with the properties specific to sensitivity labels manually or automatically applied to email messages.|
 |[Communication compliance Exchange schema](#communication-compliance-exchange-schema)|Extends the Common schema with the properties specific to the Communication compliance offensive language model.|
+|[Reports schema](#reports-schema)|Extends the Common schema with the properties specific to all reports events.|
 |||
 
 ## Common schema
@@ -185,6 +186,7 @@ This article provides details on the Common schema as well as service-specific s
 |112|MSDEIndicatorsSettings|Events related to indicator actions in Microsoft Defender for Endpoint.|
 |113|MS365DCustomDetection|Events related to custom detection actions in Microsoft 365 Defender.|
 |114|MSDERolesSettings|Events related to roles actions in Microsoft Defender for Endpoint.|
+|147|CoreReportingSettings|Reports settings events.|
 ||||
 
 ### Enum: User Type - Type: Edm.Int32
@@ -1664,3 +1666,12 @@ The communication compliance events listed in the Office 365 audit log use this 
 | FileType        | Edm.String | The file extension of the file attached to the email message.|
 | SHA256          | Edm.String | The SHA-256 hash of the file attached to the email message.|
 ||||
+
+## Reports schema
+
+The Reports events listed in [Search the audit log in the Office 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#reports-activities) will use this schema.
+
+|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+|:---------------|:-------|:--------------|:--------------|
+| ModifiedProperties | Collection (Common.ModifiedProperty) | No | This property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
+|||||
