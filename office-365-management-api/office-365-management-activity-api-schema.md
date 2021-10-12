@@ -1640,15 +1640,6 @@ The communication compliance events listed in the Office 365 audit log use this 
 | ExchangeDetails |[ExchangeDetails](#exchangedetails)|No|Properties of the email message that triggered the SupervisoryReviewOLAudit event.|
 |||||
 
-## Reports schema
-
-The Reports events listed in [Search the audit log in the Office 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities) will use this schema.
-
-|**Parameters**  |**Type**|**Mandatory?** |**Description**|
-|:---------------|:-------|:--------------|:--------------|
-| ModifiedProperties | Collection (Common.ModifiedProperty) | No | This property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
-|||||
-
 ### Enum: ExchangeDetails - Type: ExchangeDetails
 
 #### ExchangeDetails
@@ -1675,3 +1666,12 @@ The Reports events listed in [Search the audit log in the Office 365 Security & 
 | FileType        | Edm.String | The file extension of the file attached to the email message.|
 | SHA256          | Edm.String | The SHA-256 hash of the file attached to the email message.|
 ||||
+
+## Reports schema
+
+The Reports events listed in [Search the audit log in the Office 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#reports-activities) will use this schema.
+
+|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+|:---------------|:-------|:--------------|:--------------|
+| ModifiedProperties | Collection (Common.ModifiedProperty) | No | This property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
+|||||
