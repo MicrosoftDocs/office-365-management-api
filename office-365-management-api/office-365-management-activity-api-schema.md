@@ -53,7 +53,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Forms schema](#microsoft-forms-schema)|Extends the Common schema with the properties specific to all Microsoft Forms events.|
 |[MIP label schema](#mip-label-schema)|Extends the Common schema with the properties specific to sensitivity labels manually or automatically applied to email messages.|
 |[Communication compliance Exchange schema](#communication-compliance-exchange-schema)|Extends the Common schema with the properties specific to the Communication compliance offensive language model.|
-|[Reports schema](#Reports-schema)|Extends the Common schema with the properties specific to all reports events.|
+|[Reports schema](#reports-schema)|Extends the Common schema with the properties specific to all reports events.|
 |||
 
 ## Common schema
