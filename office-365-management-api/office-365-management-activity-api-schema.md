@@ -311,10 +311,10 @@ This article provides details on the Common schema as well as service-specific s
 |FilePreviewed|User previews a document on a SharePoint or OneDrive for Business site.|
 |FileRenamed|User renames a document on a SharePoint or OneDrive for Business site.|
 |FileRestored|User restores a document from the recycle bin of a SharePoint or OneDrive for Business site. |
-|FileSyncDownloadedFull|User establishes a sync relationship and successfully downloads files for the first time to their computer from a SharePoint or OneDrive for Business document library.|
-|FileSyncDownloadedPartial|User successfully downloads any changes to files from SharePoint or OneDrive for Business document library. This event indicates that any changes that were made to files in the document library were downloaded to the user's computer. Only changes were downloaded because the document library was previously downloaded by the user (as indicated by the FileSyncDownloadedFull event).|
-|FileSyncUploadedFull|User establishes a sync relationship and successfully uploads files for the first time from their computer to a SharePoint or OneDrive for Business document library.|
-|FileSyncUploadedPartial|User successfully uploads changes to files on a SharePoint or OneDrive for Business document library. This event indicates that any changes made to the local version of a file from a document library are successfully uploaded to the document library. Only changes are unloaded because those files were previously uploaded by the user (as indicated by the FileSyncUploadedFull event).|
+|FileSyncDownloadedFull|User downloads files to their computer from a SharePoint document library or OneDrive for Business using OneDrive sync app (OneDrive.exe).|
+|FileSyncDownloadedPartial|This event has been deprecated along with the old OneDrive for Business sync app (Groove.exe).|
+|FileSyncUploadedFull|User uploads new files or changes to files on SharePoint document library or OneDrive for Business using OneDrive sync app (OneDrive.exe).|
+|FileSyncUploadedPartial|This event has been deprecated along with the old OneDrive for Business sync app (Groove.exe).|
 |FileUploaded|User uploads a document to a folder on a SharePoint or OneDrive for Business site. |
 |FileViewed|This event has been replaced by the FileAccessed event, and has been deprecated.|
 |FolderCopied|User copies a folder from a SharePoint or OneDrive for Business site to another location in SharePoint or OneDrive for Business.|
