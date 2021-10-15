@@ -311,9 +311,9 @@ This article provides details on the Common schema as well as service-specific s
 |FilePreviewed|User previews a document on a SharePoint or OneDrive for Business site.|
 |FileRenamed|User renames a document on a SharePoint or OneDrive for Business site.|
 |FileRestored|User restores a document from the recycle bin of a SharePoint or OneDrive for Business site. |
-|FileSyncDownloadedFull|User downloads files to their computer from a SharePoint document library or OneDrive for Business using OneDrive sync app (OneDrive.exe).|
+|FileSyncDownloadedFull|User downloads a file to their computer from a SharePoint document library or OneDrive for Business using OneDrive sync app (OneDrive.exe).|
 |FileSyncDownloadedPartial|This event has been deprecated along with the old OneDrive for Business sync app (Groove.exe).|
-|FileSyncUploadedFull|User uploads new files or changes to files on SharePoint document library or OneDrive for Business using OneDrive sync app (OneDrive.exe).|
+|FileSyncUploadedFull|User uploads a new file or changes to a file in SharePoint document library or OneDrive for Business using OneDrive sync app (OneDrive.exe).|
 |FileSyncUploadedPartial|This event has been deprecated along with the old OneDrive for Business sync app (Groove.exe).|
 |FileUploaded|User uploads a document to a folder on a SharePoint or OneDrive for Business site. |
 |FileViewed|This event has been replaced by the FileAccessed event, and has been deprecated.|
