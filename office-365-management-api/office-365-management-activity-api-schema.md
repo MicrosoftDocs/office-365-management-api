@@ -75,6 +75,7 @@ This article provides details on the Common schema as well as service-specific s
 |UserId|Edm.string|Yes|The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, `my_name@my_domain_name`. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see [The app@sharepoint user in audit records](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records). |
 |ClientIP|Edm.String|Yes|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.<br/><br/>For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. <br/><br/>Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is `null`.|
 |Scope|Self.[AuditLogScope](#auditlogscope)|No|Was this event created by a hosted O365 service or an on-premises server? Possible values are **online** and **onprem**. Note that SharePoint is the only workload currently sending events from on-premises to O365.|
+|AppAccessContext|Collection(Self.[AppAccessContext](#complex-type-appaccesscontext))|No|The application context for the user or service principal that performed the action.|
 |||||
 
 ### Enum: AuditLogRecordType - Type: Edm.Int32
@@ -253,6 +254,17 @@ This article provides details on the Common schema as well as service-specific s
 |0|SharePoint|The event source is SharePoint.|
 |1|ObjectModel|The event source is ObjectModel.|
 ||||
+
+### Complex Type AppAccessContext
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|AADSessionId|Edm.String|No|AAD SessionId of the AAD sign-in that was performed by the app on behalf of the user.|
+|APIId|Edm.String|No|The id for the API pathway that is used to access the resource - e.g. MS Graph API.|
+|ClientAppId|Edm.String|No|The id of the AAD app that is performing the access on behalf of the user.|
+|ClientAppName|Edm.String|No|The name of the AAD app that is performing the access on behalf of the user|
+|CorrelationId|Edm.String|No|An identifier that can be used to correlate a specific user’s actions across M365 services|
+|||||
 
 ### Enum: SharePointAuditOperation - Type: Edm.Int32
 
