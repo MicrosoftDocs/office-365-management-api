@@ -343,15 +343,23 @@ The previous example assumes that the *$response* variable was populated with th
 
 ### Service tags
 
-The Office 365 Management Activity API and Office 365 Management Activity API Webhook now support [service tags](/azure/virtual-network/service-tags-overview) to find the required IP addresses that need to be allowed though the firewall. A service tag represents a pre-defined group of IP address prefixes that is managed and updated by Microsoft. Security tags help minimize the complexity for security rule creation.
+The Office 365 Management Activity API and Office 365 Management Activity API Webhook now support [service tags](/azure/virtual-network/service-tags-overview) to find the required IP address prefixes that need to be allowed though the firewall. A service tag represents a pre-defined group of IP address prefixes that is managed and updated by Microsoft. Security tags help minimize the complexity for security rule creation.
 
-The following service tags include the IP address range the support the Office 365 Management Activity API and Webhook:
+The following service tags include the IP address prefixes the support the Office 365 Management Activity API and Office 365 Management Activity API Webhook:
 
 - M365ManagementActivityApi
 
 - M365ManagementActivityApiWebhook
 
-For a list of required IP addresses, see [Office 365 URLs and IP address ranges](/microsoft-365/enterprise/urls-and-ip-address-ranges).
+For a list of the IP address prefixes that are encompassed by  previous service tags, download one of the following files:
+
+- []
+
+- []
+
+- []
+
+After you download the appropriate file, search for the strings "M365ManagementActivityApi" and "M365ManagementActivityApiWebhook" to find the section that contain the IP address prefixes for each service tag.
 
 #### Configuring service tags for network security groups
 
