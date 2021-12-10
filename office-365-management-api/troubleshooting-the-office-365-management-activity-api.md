@@ -99,6 +99,8 @@ The following sections summarizes the most common questions that customers have 
 
 - [Requesting content blobs and throttling](#requesting-content-blobs-and-throttling)
 
+- [Service tags](#service-tags)
+
 We'll show a selection of simple PowerShell scripts that can help you answer the most common questions asked by customers or get you started implementing a custom solution by demonstrating the main operations. Not all the operations are explained in these sections, but they are all listed in Office 365 Management Activity API reference.
 
 ### Questions about third-party tools and clients
@@ -338,3 +340,19 @@ $contents = Invoke-WebRequest -Method GET -Headers $headerParams -Uri $uri
 ```
 
 The previous example assumes that the *$response* variable was populated with the response to a request to the /content endpoint and that the *$headerParams* variable includes a valid access token. The script grabs the first item in the array of content URIs from the response and then invokes the GET to download that blob and put it in the *$contents* variable. Your code will likely loop through the contentUri collection, issuing the GET for each *contentUri*.
+
+### Service tags
+
+The Office 365 Management Activity API and Office 365 Management Activity API Webhook now support [service tags](/azure/virtual-network/service-tags-overview) to find the required IP addresses that need to be allowed though the firewall. A service tag represents a pre-defined group of IP address prefixes that is managed and updated by Microsoft. Security tags help minimize the complexity for security rule creation.
+
+The following service tags include the IP address range the support the Office 365 Management Activity API and Webhook:
+
+- M365ManagementActivityApi
+
+- M365ManagementActivityApiWebhook
+
+For a list of required IP addresses, see [Office 365 URLs and IP address ranges](/microsoft-365/enterprise/urls-and-ip-address-ranges).
+
+#### Configuring service tags for network security groups
+
+You can use PowerShell commands or the Azure portal to set the network security group rule with service tags. Only a few resources, such as Azure Functions, provide a service tag option to configure network security groups using the Azure portal. For most resources, you have to use PowerShell to configure security group rules with service tags. 
