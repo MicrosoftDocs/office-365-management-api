@@ -351,15 +351,15 @@ The following service tags include the IP address prefixes the support the Offic
 
 - M365ManagementActivityApiWebhook
 
-For a list of the IP address prefixes that are encompassed by  previous service tags, download one of the following files:
+For a list of the IP address prefixes that are encompassed by previous service tags, download one of the following files:
 
-- []
+- [Microsoft Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519)
 
-- []
+- [Microsoft Azure IP Ranges and Service Tags – US Government Cloud](https://www.microsoft.com/download/details.aspx?id=57063)
 
-- []
+- [Microsoft Azure IP Ranges and Service Tags – China Cloud](https://www.microsoft.com/download/details.aspx?id=57062)
 
-After you download the appropriate file, search for the strings "M365ManagementActivityApi" and "M365ManagementActivityApiWebhook" to find the section that contain the IP address prefixes for each service tag.
+After you download the appropriate file, search for the strings "M365ManagementActivityApi" and "M365ManagementActivityApiWebhook" to find the section that contains the IP address prefixes for each service tag.
 
 #### Configuring service tags for network security groups
 
