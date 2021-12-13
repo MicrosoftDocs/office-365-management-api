@@ -363,4 +363,20 @@ After you download the appropriate file, search for the strings "M365ManagementA
 
 #### Configuring service tags for network security groups
 
-You can use PowerShell commands or the Azure portal to set the network security group rule with service tags. Only a few resources, such as Azure Functions, provide a service tag option to configure network security groups using the Azure portal. For most resources, you have to use PowerShell to configure security group rules with service tags. 
+You can use PowerShell commands or the Azure portal to set the network security group rule with service tags. Only a few resources, such as Azure Functions, provide a service tag option to configure network security groups using the Azure portal. For most resources, you have to use PowerShell to configure security group rules with service tags.
+
+PowerShell commands to set up network security rule and newtork security group for a VM are mentioned below with an example:
+
+- [New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig?view=azurermps-6.13.0)
+- [New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworksecuritygroup?view=azurermps-6.13.0)
+
+```json
+$allowMyServiceRule = New-AzureRmNetworkSecurityRuleConfig ` -Name "AllowMyService"  -Access Allow  -Protocol Tcp  -Direction Outbound  -Priority 100 -DestinationAddressPrefix M365ManagementActivityApi  -SourcePortRange * -SourceAddressPrefix * -DestinationPortRange *
+$denyInternetRule = New-AzureRmNetworkSecurityRuleConfig -Name "denyInternetOut" -Access Deny `
+-Protocol Tcp -Direction Outbound  -Priority 4000 -DestinationAddressPrefix Internet -SourcePortRange * -SourceAddressPrefix * -DestinationPortRange *
+$nsg = New-AzureRmNetworkSecurityGroup `
+-ResourceGroupName $resourceGroupName `
+-Location $location `
+-Name $nsgName `
+-SecurityRules $denyInternetRule,$allowMyServiceRule
+```
