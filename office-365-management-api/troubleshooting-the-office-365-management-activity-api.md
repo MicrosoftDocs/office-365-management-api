@@ -367,8 +367,8 @@ You can use PowerShell commands or the Azure portal to set the network security 
 
 PowerShell commands to set up network security rule and newtork security group for a VM are mentioned below with an example:
 
-- [New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig?view=azurermps-6.13.0)
-- [New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworksecuritygroup?view=azurermps-6.13.0)
+- [New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
+- [New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
 
 ```json
 $allowMyServiceRule = New-AzureRmNetworkSecurityRuleConfig ` -Name "AllowMyService"  -Access Allow  -Protocol Tcp  -Direction Outbound  -Priority 100 -DestinationAddressPrefix M365ManagementActivityApi  -SourcePortRange * -SourceAddressPrefix * -DestinationPortRange *
