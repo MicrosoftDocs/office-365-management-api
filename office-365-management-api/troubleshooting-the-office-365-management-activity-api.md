@@ -365,7 +365,7 @@ After you download the appropriate file, search for the strings "M365ManagementA
 
 #### Configuring service tags for network security groups
 
-You can use Az or AzureRM PowerShell cmdlets to set the network security group rule with service tag. You can configure security group rules with service tags, and then add those rules to a new network security group. A few resources, such as Azure Functions also provide a service tag option to configure network security groups using the Azure portal
+You can use Az or AzureRM PowerShell cmdlets to set the network security group rule with service tag. You can configure security group rules with service tags, and then add those rules to a new network security group. A few resources, such as Azure Functions, also provide a service tag option to configure network security groups using the Azure portal
 
 For information about using Az or AzureRM PowerShell to set up network security rules and network security groups, see:
 
@@ -390,4 +390,4 @@ $nsg = New-AzureRmNetworkSecurityGroup `
 -SecurityRules $denyInternetRule,$allowMyServiceRule
 ```
 
-The inbound rule to accept traffic only from M365ManagementActivityApiWebhook can be configured in a similar way. 
+An inbound rule to accept traffic only from M365ManagementActivityApiWebhook can be configured in a similar way.
