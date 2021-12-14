@@ -95,6 +95,8 @@ The following sections summarizes the most common questions that customers have 
 
 - [Creating a new subscription](#creating-a-new-subscription)
 
+- [Checking content availability](#checking-content-availability)
+
 - [Using webhooks](#using-webhooks)
 
 - [Requesting content blobs and throttling](#requesting-content-blobs-and-throttling)
@@ -223,9 +225,9 @@ Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://<YOUR_API_EN
 
 The previous code will create a new subscription to the Audit.AzureActiveDirectory content type, with a webhook that is null. You can then check your subscriptions using the code in the [Checking your subscriptions](#checking-your-subscriptions) section in this article.
 
-## Checking content availability
+### Checking content availability
 
-To check what content blobs were created during a certain period, you can add the following line to the script in the “Connecting to the API” section.
+To check what content blobs were created during a certain period, you can add the following line to the script in the "Connecting to the API" section.
 
 ```powershell
 Invoke-WebRequest -Method GET -Headers $headerParams -Uri "$resource/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint"
