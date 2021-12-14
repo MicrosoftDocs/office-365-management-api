@@ -345,9 +345,9 @@ The previous example assumes that the *$response* variable was populated with th
 
 ### Service tags
 
-The Office 365 Management Activity API and Office 365 Management Activity API Webhook now support [service tags](/azure/virtual-network/service-tags-overview) to find the required IP address prefixes that need to be allowed though the firewall. A service tag represents a pre-defined group of IP address prefixes that is managed and updated by Microsoft. Security tags help minimize the complexity for security rule creation.
+The Office 365 Management Activity API and Office 365 Management Activity API Webhook now support [service tags](/azure/virtual-network/service-tags-overview) to find the required IP address prefixes that need to be allowed through the firewall. A service tag represents a pre-defined group of IP address prefixes that is managed and updated by Microsoft. Service tags help minimize the complexity for security rule creation.
 
-The following service tags include the IP address prefixes the support the Office 365 Management Activity API and Office 365 Management Activity API Webhook:
+The following service tags include the IP address prefixes that support the Office 365 Management Activity API and Office 365 Management Activity API Webhook:
 
 - M365ManagementActivityApi
 
@@ -365,15 +365,19 @@ After you download the appropriate file, search for the strings "M365ManagementA
 
 #### Configuring service tags for network security groups
 
-You can use AzureRM PowerShell cmdlets or the Azure portal to set the network security group rule with service tags. Only a few resources, such as Azure Functions, provide a service tag option to configure network security groups using the Azure portal. For most resources, you have to use AzureRM PowerShell to configure security group rules with service tags, and then add those rules to a new network security group.
+You can use Az or AzureRM PowerShell cmdlets to set the network security group rule with service tag. You can configure security group rules with service tags, and then add those rules to a new network security group. A few resources, such as Azure Functions also provide a service tag option to configure network security groups using the Azure portal
 
-For information about using AzureRM PowerShell to set up network security rules and network security groups, see:
+For information about using Az or AzureRM PowerShell to set up network security rules and network security groups, see:
 
 - [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
 
 - [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
 
-Here's an example of a PowerShell script that creates two outbound network security group rules. The first one allows outbound traffic to only go through the IP address prefixes included in the M365ManagementActivityApi service tag. The second one denies outbound traffic to the Internet. The rules are then added to a network security group, which can then be configured to specific Azure services in the Azure portal.
+- [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)
+
+- [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)
+
+Here's an example of a AzureRM PowerShell script that restricts outbound traffic to all IP address prefixes except for the ones included in M365ManagementActivityApi service tag. The example script creates two outbound network security group rules. The first one allows outbound traffic to the IP address prefixes included in the M365ManagementActivityApi service tag. The second one denies outbound traffic to the Internet. The rules are then added to a network security group, which can then be configured to specific Azure services.
 
 ```powershell
 $allowMyServiceRule = New-AzureRmNetworkSecurityRuleConfig ` -Name "AllowMyService"  -Access Allow  -Protocol Tcp  -Direction Outbound  -Priority 100 -DestinationAddressPrefix M365ManagementActivityApi  -SourcePortRange * -SourceAddressPrefix * -DestinationPortRange *
@@ -385,3 +389,5 @@ $nsg = New-AzureRmNetworkSecurityGroup `
 -Name $nsgName `
 -SecurityRules $denyInternetRule,$allowMyServiceRule
 ```
+
+The inbound rule to accept traffic only from M365ManagementActivityApiWebhook can be configured in a similar way. 
