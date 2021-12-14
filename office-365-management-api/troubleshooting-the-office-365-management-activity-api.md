@@ -95,9 +95,13 @@ The following sections summarizes the most common questions that customers have 
 
 - [Creating a new subscription](#creating-a-new-subscription)
 
+- [Checking content availability](#checking-content-availability)
+
 - [Using webhooks](#using-webhooks)
 
 - [Requesting content blobs and throttling](#requesting-content-blobs-and-throttling)
+
+- [Service tags](#service-tags)
 
 We'll show a selection of simple PowerShell scripts that can help you answer the most common questions asked by customers or get you started implementing a custom solution by demonstrating the main operations. Not all the operations are explained in these sections, but they are all listed in Office 365 Management Activity API reference.
 
@@ -221,9 +225,9 @@ Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://<YOUR_API_EN
 
 The previous code will create a new subscription to the Audit.AzureActiveDirectory content type, with a webhook that is null. You can then check your subscriptions using the code in the [Checking your subscriptions](#checking-your-subscriptions) section in this article.
 
-## Checking content availability
+### Checking content availability
 
-To check what content blobs were created during a certain period, you can add the following line to the script in the “Connecting to the API” section.
+To check what content blobs were created during a certain period, you can add the following line to the script in the "Connecting to the API" section.
 
 ```powershell
 Invoke-WebRequest -Method GET -Headers $headerParams -Uri "$resource/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint"
@@ -338,3 +342,46 @@ $contents = Invoke-WebRequest -Method GET -Headers $headerParams -Uri $uri
 ```
 
 The previous example assumes that the *$response* variable was populated with the response to a request to the /content endpoint and that the *$headerParams* variable includes a valid access token. The script grabs the first item in the array of content URIs from the response and then invokes the GET to download that blob and put it in the *$contents* variable. Your code will likely loop through the contentUri collection, issuing the GET for each *contentUri*.
+
+### Service tags
+
+The Office 365 Management Activity API and Office 365 Management Activity API Webhook now support [service tags](/azure/virtual-network/service-tags-overview) to find the required IP address prefixes that need to be allowed though the firewall. A service tag represents a pre-defined group of IP address prefixes that is managed and updated by Microsoft. Security tags help minimize the complexity for security rule creation.
+
+The following service tags include the IP address prefixes the support the Office 365 Management Activity API and Office 365 Management Activity API Webhook:
+
+- M365ManagementActivityApi
+
+- M365ManagementActivityApiWebhook
+
+For a list of the IP address prefixes that are encompassed by previous service tags, download one of the following files:
+
+- [Microsoft Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519)
+
+- [Microsoft Azure IP Ranges and Service Tags – US Government Cloud](https://www.microsoft.com/download/details.aspx?id=57063)
+
+- [Microsoft Azure IP Ranges and Service Tags – China Cloud](https://www.microsoft.com/download/details.aspx?id=57062)
+
+After you download the appropriate file, search for the strings "M365ManagementActivityApi" and "M365ManagementActivityApiWebhook" to find the section that contains the IP address prefixes for each service tag.
+
+#### Configuring service tags for network security groups
+
+You can use AzureRM PowerShell cmdlets or the Azure portal to set the network security group rule with service tags. Only a few resources, such as Azure Functions, provide a service tag option to configure network security groups using the Azure portal. For most resources, you have to use AzureRM PowerShell to configure security group rules with service tags, and then add those rules to a new network security group.
+
+For information about using AzureRM PowerShell to set up network security rules and network security groups, see:
+
+- [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
+
+- [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
+
+Here's an example of a PowerShell script that creates two outbound network security group rules. The first one allows outbound traffic to only go through the IP address prefixes included in the M365ManagementActivityApi service tag. The second one denies outbound traffic to the Internet. The rules are then added to a network security group, which can then be configured to specific Azure services in the Azure portal.
+
+```powershell
+$allowMyServiceRule = New-AzureRmNetworkSecurityRuleConfig ` -Name "AllowMyService"  -Access Allow  -Protocol Tcp  -Direction Outbound  -Priority 100 -DestinationAddressPrefix M365ManagementActivityApi  -SourcePortRange * -SourceAddressPrefix * -DestinationPortRange *
+$denyInternetRule = New-AzureRmNetworkSecurityRuleConfig -Name "denyInternetOut" -Access Deny `
+-Protocol Tcp -Direction Outbound  -Priority 4000 -DestinationAddressPrefix Internet -SourcePortRange * -SourceAddressPrefix * -DestinationPortRange *
+$nsg = New-AzureRmNetworkSecurityGroup `
+-ResourceGroupName $resourceGroupName `
+-Location $location `
+-Name $nsgName `
+-SecurityRules $denyInternetRule,$allowMyServiceRule
+```
