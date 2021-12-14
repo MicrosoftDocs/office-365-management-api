@@ -371,7 +371,7 @@ For information about using AzureRM PowerShell to set up network security rules 
 
 - [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
 
-Here’s an example of a PowerShell script that creates outbound network security group rules that deny traffic to the Internet and allow traffic to only to the IP address prefixes included in the M365ManagementActivityApi service tag. The rules are then added to a network security group, which will be configured to specific Azure services in the Azure portal.  
+Here's an example of a PowerShell script that creates two outbound network security group rules. The first one allows outbound traffic to only go through the IP address prefixes included in the M365ManagementActivityApi service tag. The second one denies outbound traffic to the Internet. The rules are then added to a network security group, which can then be configured to specific Azure services in the Azure portal.
 
 ```powershell
 $allowMyServiceRule = New-AzureRmNetworkSecurityRuleConfig ` -Name "AllowMyService"  -Access Allow  -Protocol Tcp  -Direction Outbound  -Priority 100 -DestinationAddressPrefix M365ManagementActivityApi  -SourcePortRange * -SourceAddressPrefix * -DestinationPortRange *
