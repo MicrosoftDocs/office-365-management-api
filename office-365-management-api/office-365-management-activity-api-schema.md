@@ -238,6 +238,11 @@ This article provides details on the Common schema as well as service-specific s
 |UserAgent|Edm.String|No|Information about the user's client or browser. This information is provided by the client or browser.|
 |MachineDomainInfo|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|Information about device sync operations. This information is reported only if it's present in the request.|
 |MachineId|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|Information about device sync operations. This information is reported only if it's present in the request.|
+|ListItemUniqueId|Edm.Guid|No|The Guid of uniquely identifiable item of list. This information is present only if it is applicable.|
+|ListId|Edm.Guid|No|The Guid of the list. This information is present only if it is applicable.|
+|ApplicationId|Edm.String|No|The id of the application performing the event.|
+|ApplicationDisplayName|Edm.String|No|The display name of the application performing the event.|
+|IsWorkflow|Edm.Boolean|No|This is true if Workflow created the Audit event.|
 |||||
 
 ### Enum: ItemType - Type: Edm.Int32
