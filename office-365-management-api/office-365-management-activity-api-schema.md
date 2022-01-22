@@ -26,6 +26,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Common schema](#common-schema)|The view to extract Record Type, User ID, Client IP, User type and Action along with core dimensions such as user properties (such as UserID), location properties (such as Client IP), and service-specific properties (such as Object Id).|
 |[SharePoint Base schema](#sharepoint-base-schema)|Extends the Common schema with the properties specific to all SharePoint audit data.|
 |[SharePoint File Operations](#sharepoint-file-operations)|Extends the SharePoint Base schema with the properties specific to file access and manipulation in SharePoint.|
+|[SharePoint List Operations](#sharepoint-list-operations)|Extends the SharePoint Base schema with the properties specific to interactions with lists and list items in SharePoint Online.|
 |[SharePoint Sharing schema](#sharepoint-sharing-schema)|Extends the SharePoint Base schema with the properties specific to file sharing.|
 |[SharePoint schema](#sharepoint-schema)|Extends the SharePoint Base schema with the properties specific to SharePoint, but unrelated to file access and manipulation.|
 |[Project schema](#project-schema)|Extends the SharePoint Base schema with the properties specific to Project.|
@@ -446,6 +447,15 @@ The file-related SharePoint events listed in the "File and folder activities" se
 |DestinationLabel|Edm.String|No|The final label of the file after it is changed by a user action.|
 |SensitivityLabelOwnerEmail|Edm.String|No|Email id of the owner of the sensitivity label.|
 |SensitivityLabelId|Edm.String|No|The current sensitivity label id of the file.|
+|||||
+
+## SharePoint list operations
+
+The SharePoint lists and list item related events listed in the "SharePoint list activities" section in [Search the audit log in security and compliance center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) use this schema.
+
+|**Parameter**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ListTitle|Edm.String|Yes|The title of the SharePoint list.|
 |||||
 
 ## SharePoint Sharing schema
