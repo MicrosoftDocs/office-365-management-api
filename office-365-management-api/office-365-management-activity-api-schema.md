@@ -456,6 +456,12 @@ The SharePoint lists and list item related events listed in the "SharePoint list
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |ListTitle|Edm.String|Yes|The title of the SharePoint list.|
+|ListName|Edm.String|Yes|The name of the SharePoint list.|
+|ListUrl|Edm.String|Yes|The URL of the list relative to the containing website.|
+|ListBaseType|Edm.String|Yes|Specifies the base type for a list.|
+|ListBaseTemplateType|Edm.String|Yes|Gets the list definition type on which the list is based.|
+|IsHiddenList|Edm.Boolean|Yes|This value is true if the SharePoint list is hidden.|
+|IsDocLib|Edm.Boolean|Yes|This value is true if the SharePoint list is of type Document Library.|
 |||||
 
 ## SharePoint Sharing schema
