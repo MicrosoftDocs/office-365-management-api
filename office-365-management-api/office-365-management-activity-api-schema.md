@@ -442,6 +442,11 @@ The file-related SharePoint events listed in the "File and folder activities" se
 |DestinationFileExtension|Edm.String|No|The file extension of a file that is copied or moved. This property is displayed only for FileCopied and FileMoved events.|
 |UserSharedWith|Edm.String|No|The user that a resource was shared with.|
 |SharingType|Edm.String|No|The type of sharing permissions that were assigned to the user that the resource was shared with. This user is identified by the  _UserSharedWith_ parameter.|
+|SourceLabel|Edm.String|No|The original label of the file before it is changed by a user action|
+|DestinationLabel|Edm.String|No|The final label of the file after it is changed by a user action|
+|DocumentVersion|Edm.String|No|The version of the file, if applicable|
+|SensitivityLabelOwnerEmail|Edm.String|No|Email id of the owner of the sensitivity label|
+|SensitivityLabelId|Edm.String|No|The current sensitivity label id of the file|
 |||||
 
 ## SharePoint Sharing schema
