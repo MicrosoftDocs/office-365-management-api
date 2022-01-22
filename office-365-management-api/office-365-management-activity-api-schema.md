@@ -242,7 +242,7 @@ This article provides details on the Common schema as well as service-specific s
 |ListId|Edm.Guid|No|The Guid of the list. This information is present only if it is applicable.|
 |ApplicationId|Edm.String|No|The id of the application performing the event.|
 |ApplicationDisplayName|Edm.String|No|The display name of the application performing the event.|
-|IsWorkflow|Edm.Boolean|No|This is true if Workflow created the Audit event.|
+|IsWorkflow|Edm.Boolean|No|This is true if SharePoint Workflows created the Audit event.|
 |||||
 
 ### Enum: ItemType - Type: Edm.Int32
@@ -442,11 +442,10 @@ The file-related SharePoint events listed in the "File and folder activities" se
 |DestinationFileExtension|Edm.String|No|The file extension of a file that is copied or moved. This property is displayed only for FileCopied and FileMoved events.|
 |UserSharedWith|Edm.String|No|The user that a resource was shared with.|
 |SharingType|Edm.String|No|The type of sharing permissions that were assigned to the user that the resource was shared with. This user is identified by the  _UserSharedWith_ parameter.|
-|SourceLabel|Edm.String|No|The original label of the file before it is changed by a user action|
-|DestinationLabel|Edm.String|No|The final label of the file after it is changed by a user action|
-|DocumentVersion|Edm.String|No|The version of the file, if applicable|
-|SensitivityLabelOwnerEmail|Edm.String|No|Email id of the owner of the sensitivity label|
-|SensitivityLabelId|Edm.String|No|The current sensitivity label id of the file|
+|SourceLabel|Edm.String|No|The original label of the file before it is changed by a user action.|
+|DestinationLabel|Edm.String|No|The final label of the file after it is changed by a user action.|
+|SensitivityLabelOwnerEmail|Edm.String|No|Email id of the owner of the sensitivity label.|
+|SensitivityLabelId|Edm.String|No|The current sensitivity label id of the file.|
 |||||
 
 ## SharePoint Sharing schema
@@ -459,6 +458,11 @@ The file-related SharePoint events listed in the "File and folder activities" se
 |TargetUserOrGroupName |Edm.String|No|Stores the UPN or name of the target user or group that a resource was shared with.|
 |TargetUserOrGroupType|Edm.String|No|Identifies whether the target user or group is a Member, Guest, Group, or Partner. |
 |EventData|XML code|No|Conveys follow-up information about the sharing action that has occurred, such as adding a user to a group or granting edit permissions.|
+|SiteUrl|Edm.String|Yes|The URL of the site where the file or folder accessed by the user is located.|
+|SourceRelativeUrl|Edm.String|No|The URL of the folder that contains the file accessed by the user. The combination of the values for the  _SiteURL_,  _SourceRelativeURL_, and  _SourceFileName_ parameters is the same as the value for the **ObjectID** property, which is the full path name for the file accessed by the user.|
+|SourceFileName|Edm.String|Yes|The name of the file or folder accessed by the user.|
+|SourceFileExtension|Edm.String|No|The file extension of the file that was accessed by the user. This property is blank if the object that was accessed is a folder.|
+|UniqueSharingId|Edm.String|No|The unique sharing id associated with the sharing operation.|
 |||||
 
 ## SharePoint schema
