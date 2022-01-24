@@ -474,9 +474,9 @@ The SharePoint lists and list item related events listed in the "SharePoint list
 |TargetUserOrGroupName |Edm.String|No|Stores the UPN or name of the target user or group that a resource was shared with.|
 |TargetUserOrGroupType|Edm.String|No|Identifies whether the target user or group is a Member, Guest, Group, or Partner. |
 |EventData|XML code|No|Conveys follow-up information about the sharing action that has occurred, such as adding a user to a group or granting edit permissions.|
-|SiteUrl|Edm.String|Yes|The URL of the site where the file or folder accessed by the user is located.|
+|SiteUrl|Edm.String|No|The URL of the site where the file or folder accessed by the user is located.|
 |SourceRelativeUrl|Edm.String|No|The URL of the folder that contains the file accessed by the user. The combination of the values for the  _SiteURL_,  _SourceRelativeURL_, and  _SourceFileName_ parameters is the same as the value for the **ObjectID** property, which is the full path name for the file accessed by the user.|
-|SourceFileName|Edm.String|Yes|The name of the file or folder accessed by the user.|
+|SourceFileName|Edm.String|No|The name of the file or folder accessed by the user.|
 |SourceFileExtension|Edm.String|No|The file extension of the file that was accessed by the user. This property is blank if the object that was accessed is a folder.|
 |UniqueSharingId|Edm.String|No|The unique sharing id associated with the sharing operation.|
 |||||
