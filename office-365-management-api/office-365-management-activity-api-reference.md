@@ -590,7 +590,7 @@ Organizations that access auditing logs through the Office 365 Management Activi
 
 We're moving from a publisher-level limit to a tenant-level limit. The result is that each organization will get their own fully allocated bandwidth quota to access their auditing data. All organizations are initially allocated a baseline of 2,000 requests per minute. This is not a static, predefined limit but is modeled on a combination of factors including the number of seats in the organization and that Office 365 and Microsoft 365 E5 organizations will get approximately twice as much bandwidth as non-E5 organizations. There will also be cap on the maximum bandwidth to protect the health of the service.
 
-For more information, see the "High-bandwidth access to the Office 365 Management Activity API" section in [Advanced audit in Microsoft 365](/compliance/advanced-audit#high-bandwidth-access-to-the-office-365-management-activity-api).
+For more information, see the "High-bandwidth access to the Office 365 Management Activity API" section in [Advanced audit in Microsoft 365](/microsoft-365/compliance/advanced-audit#high-bandwidth-access-to-the-office-365-management-activity-api).
 
 > [!NOTE] 
 > Even though each tenant can initially submit up to 2,000 requests per minute, Microsoft cannot guarantee a response rate. The response rate depends on various factors, such as client system performance, network capacity, and network speed. 
