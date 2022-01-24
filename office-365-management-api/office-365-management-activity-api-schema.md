@@ -26,6 +26,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Common schema](#common-schema)|The view to extract Record Type, User ID, Client IP, User type and Action along with core dimensions such as user properties (such as UserID), location properties (such as Client IP), and service-specific properties (such as Object Id).|
 |[SharePoint Base schema](#sharepoint-base-schema)|Extends the Common schema with the properties specific to all SharePoint audit data.|
 |[SharePoint File Operations](#sharepoint-file-operations)|Extends the SharePoint Base schema with the properties specific to file access and manipulation in SharePoint.|
+|[SharePoint List Operations](#sharepoint-list-operations)|Extends the SharePoint Base schema with the properties specific to interactions with lists and list items in SharePoint Online.|
 |[SharePoint Sharing schema](#sharepoint-sharing-schema)|Extends the SharePoint Base schema with the properties specific to file sharing.|
 |[SharePoint schema](#sharepoint-schema)|Extends the SharePoint Base schema with the properties specific to SharePoint, but unrelated to file access and manipulation.|
 |[Project schema](#project-schema)|Extends the SharePoint Base schema with the properties specific to Project.|
@@ -238,6 +239,11 @@ This article provides details on the Common schema as well as service-specific s
 |UserAgent|Edm.String|No|Information about the user's client or browser. This information is provided by the client or browser.|
 |MachineDomainInfo|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|Information about device sync operations. This information is reported only if it's present in the request.|
 |MachineId|Edm.String Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|Information about device sync operations. This information is reported only if it's present in the request.|
+|ListItemUniqueId|Edm.Guid|No|The Guid of uniquely an identifiable item of list. This information is present only if it is applicable.|
+|ListId|Edm.Guid|No|The Guid of the list. This information is present only if it is applicable.|
+|ApplicationId|Edm.String|No|The ID of the application performing the operation.|
+|ApplicationDisplayName|Edm.String|No|The display name of the application performing the operation.|
+|IsWorkflow|Edm.Boolean|No|This is set to `True` if SharePoint Workflows triggered the audited event.|
 |||||
 
 ### Enum: ItemType - Type: Edm.Int32
@@ -424,7 +430,7 @@ This article provides details on the Common schema as well as service-specific s
 
 ## SharePoint file operations
 
-The file-related SharePoint events listed in the "File and folder activities" section in [Search the audit log in security and compliance center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) use this schema.
+The file-related SharePoint events listed in the "File and folder activities" section in [Search the audit log in the compliance center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#file-and-page-activities) use this schema.
 
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -437,23 +443,46 @@ The file-related SharePoint events listed in the "File and folder activities" se
 |DestinationFileExtension|Edm.String|No|The file extension of a file that is copied or moved. This property is displayed only for FileCopied and FileMoved events.|
 |UserSharedWith|Edm.String|No|The user that a resource was shared with.|
 |SharingType|Edm.String|No|The type of sharing permissions that were assigned to the user that the resource was shared with. This user is identified by the  _UserSharedWith_ parameter.|
+|SourceLabel|Edm.String|No|The original label of the file before it's changed by a user action.|
+|DestinationLabel|Edm.String|No|The final label of the file after it's changed by a user action.|
+|SensitivityLabelOwnerEmail|Edm.String|No|The email address of the owner of the sensitivity label.|
+|SensitivityLabelId|Edm.String|No|The current sensitivity label ID of the file.|
+|||||
+
+## SharePoint list operations
+
+The SharePoint lists and list item related events listed in the "SharePoint list activities" section in [Search the audit log in the compliance center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#sharepoint-list-activities) use this schema.
+
+|**Parameter**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ListTitle|Edm.String|No|The title of the SharePoint list.|
+|ListName|Edm.String|No|The name of the SharePoint list.|
+|ListUrl|Edm.String|No|The URL of the list relative to the containing website.|
+|ListBaseType|Edm.String|No|Specifies the base type for a list.|
+|ListBaseTemplateType|Edm.String|No|The list definition type on which the list is based.|
+|IsHiddenList|Edm.Boolean|No|This value is set to `True` if the SharePoint list is hidden.|
+|IsDocLib|Edm.Boolean|No|This value is set to `True` if the SharePoint list is of the type Document Library.|
 |||||
 
 ## SharePoint Sharing schema
 
- The file share-related SharePoint events. They are different from file- and folder-related events in that a user is taking an action that has some effect on another user. For information about the SharePoint Sharing schema, see [Use sharing auditing in the Office 365 audit log](/microsoft-365/compliance/use-sharing-auditing
-).
+ The file share-related SharePoint events. They are different from file- and folder-related events in that a user is taking an action that has some effect on another user. For information about the SharePoint Sharing schema, see [Use sharing auditing in the audit log](/microsoft-365/compliance/use-sharing-auditing).
 
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |TargetUserOrGroupName |Edm.String|No|Stores the UPN or name of the target user or group that a resource was shared with.|
 |TargetUserOrGroupType|Edm.String|No|Identifies whether the target user or group is a Member, Guest, Group, or Partner. |
 |EventData|XML code|No|Conveys follow-up information about the sharing action that has occurred, such as adding a user to a group or granting edit permissions.|
+|SiteUrl|Edm.String|No|The URL of the site where the file or folder accessed by the user is located.|
+|SourceRelativeUrl|Edm.String|No|The URL of the folder that contains the file accessed by the user. The combination of the values for the  _SiteURL_,  _SourceRelativeURL_, and  _SourceFileName_ parameters is the same as the value for the **ObjectID** property, which is the full path name for the file accessed by the user.|
+|SourceFileName|Edm.String|No|The name of the file or folder accessed by the user.|
+|SourceFileExtension|Edm.String|No|The file extension of the file that was accessed by the user. This property is blank if the object that was accessed is a folder.|
+|UniqueSharingId|Edm.String|No|The unique sharing ID associated with the sharing operation.|
 |||||
 
 ## SharePoint schema
 
-The SharePoint events listed in [Search the audit log in security and compliance center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) (excluding the file and folder events) use this schema.
+The SharePoint events listed in [Search the audit log in the compliance center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) (excluding the file and folder events) use this schema.
 
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
