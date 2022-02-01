@@ -1731,7 +1731,7 @@ Events in the compliance connector schema are triggered when items that are impo
 |ItemSize| Edm.Int64| No |The size of the item being imported.|
 |SourceUserId| Edm.String| No |The unique identifier of the user from the third-party data source. For example, for a Slack data connector, this property specifies the user Id in Slack workspace.|
 |FailureType| Self.[FailureType](#enum-failuretype---type-edmint32)| No |Indicates the type of data import failure. For example, the value **incorrectusermapping** indicates the item wasn't imported because no user mapping between the third-party data source and Microsoft 365 could be found.|
-|ResultMessage| Edm.String|	No |Indicates the type of failure, such as "Duplicted message".|
+|ResultMessage| Edm.String|	No |Indicates the type of failure, such as **Duplicte message**.|
 |IsRetry| Edm.Boolean| No |Indicates whether the data connector retried to import the item.|
 |Attachments| Collection.[Attachment](#attachment-complex-type)| No	|A list of attachments received from the third-party data source.|
 |||||
