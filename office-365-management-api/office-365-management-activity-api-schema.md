@@ -182,11 +182,7 @@ This article provides details on the Common schema as well as service-specific s
 |106|SecurityComplianceUserChange|Events related to modifying or deleting a user.|
 |107|ComplianceDLPExchangeClassification|Exchange DLP classification events.|
 |109|MipExactDataMatch|Exact Data Match (EDM) classification events.|
-|110|MSDEResponseActions|Events related to response actions in Microsoft Defender for Endpoint.|
-|111|MSDEGeneralSettings|Events related to general settings actions in Microsoft Defender for Endpoint.|
-|112|MSDEIndicatorsSettings|Events related to indicator actions in Microsoft Defender for Endpoint.|
 |113|MS365DCustomDetection|Events related to custom detection actions in Microsoft 365 Defender.|
-|114|MSDERolesSettings|Events related to roles actions in Microsoft Defender for Endpoint.|
 |147|CoreReportingSettings|Reports settings events.|
 ||||
 
