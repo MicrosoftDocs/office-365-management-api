@@ -113,6 +113,9 @@ The most common category of questions come from customers using third-party prod
 
 If you've just set up an app that's trying to use the Management Activity API and it's not working, be sure that you've enabled unified audit logging for your Office 365 organization. You do this by turning on the Office 365 audit log. For instructions, see [Turn Office 365 audit log search on or off](/microsoft-365/compliance/turn-audit-log-search-on-or-off).
 
+> [!NOTE]
+> The unified audit log configuration change can take up to 60 minutes to take effect.
+
 If unified auditing isn't enabled, you will typically receive an error that contains the following string: `Microsoft.Office.Compliance.Audit``.DataServiceException: Tenant <tenantID> does not exist.`
 
 ### Connecting to the API
