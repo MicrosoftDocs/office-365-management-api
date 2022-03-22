@@ -44,6 +44,10 @@ The data that is returned by both methods is the same. The only difference is th
 
 There is no guaranteed maximum latency for notification delivery (in other words, there is no SLA). Typically, most notifications are sent within one hour of the event. Often the latency is much shorter, but this period might be longer since this varies from workload to workload.
 
+**How long before events show within the Office 365 service?**
+
+The Office 365 Audit service doesn't guarantee a specified time when events will be delivered. Audit tries to deliver data as quickly as possible. However, some issues may arise (such as server outages) upstream from the Audit service and are unavoidable.  Because audit events are often used for forensic investigations, Microsoft prioritizes data completeness over latency. While observed latencies for event availability is typically 60 minutes to 90 minutes, we acknowledge that anomalies may occur. For these reasons, Audit doesn't commit to a specific delivery time.  
+
 **Aren't webhook notifications more immediate?**
 
 No. Recently, there have been longer wait times for notifications when using a webhook compared to querying the API directly with the `/content` operation.
