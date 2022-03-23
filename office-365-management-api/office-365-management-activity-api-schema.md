@@ -183,11 +183,7 @@ This article provides details on the Common schema as well as service-specific s
 |106|SecurityComplianceUserChange|Events related to modifying or deleting a user.|
 |107|ComplianceDLPExchangeClassification|Exchange DLP classification events.|
 |109|MipExactDataMatch|Exact Data Match (EDM) classification events.|
-|110|MSDEResponseActions|Events related to response actions in Microsoft Defender for Endpoint.|
-|111|MSDEGeneralSettings|Events related to general settings actions in Microsoft Defender for Endpoint.|
-|112|MSDEIndicatorsSettings|Events related to indicator actions in Microsoft Defender for Endpoint.|
 |113|MS365DCustomDetection|Events related to custom detection actions in Microsoft 365 Defender.|
-|114|MSDERolesSettings|Events related to roles actions in Microsoft Defender for Endpoint.|
 |147|CoreReportingSettings|Reports settings events.|
 |148|ComplianceConnector|Events related to importing non-Microsoft data using data connectors in the Microsoft 365 compliance center.|
 ||||
@@ -1019,6 +1015,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
+|Action|Edm.String|No|For shared channel events, the action taken by the invitee or the channel owner for a share with team invite.|
 |AddOnGuid|Edm.Guid|No|A unique identifier for the add-on that generated the event.|
 |AddOnName|Edm.String|No|The name of the add-on that generated the event.|
 |AddOnType|Self.[AddOnType](#addontype)|No|The type of add-on that generated this event.|
@@ -1027,6 +1024,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |ChannelType|Edm.String|No|The type of channel being audited (Standard/Private).|
 |ExtraProperties|Collection(Self.[KeyValuePair](#keyvaluepair-complex-type))|No|A list of extra properties.|
 |HostedContents|Collection(Self.[HostedContent](#hostedcontent-complex-type))|No|A collection of chat or channel message hosted contents.|
+|Invitee|Edm.String|No|For shared channel events, the UPN of the invitee team owner who accepts or declines the invite for a share with team invite.|
 |Members|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|No|A list of users within a Team.|
 |MessageId|Edm.String|No|An identifier for a chat or channel message.|
 |MessageURLs|Edm.String|No|Present for any URL sent in Teams messages.|

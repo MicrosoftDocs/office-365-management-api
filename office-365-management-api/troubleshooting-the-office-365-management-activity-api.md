@@ -44,6 +44,10 @@ The data that is returned by both methods is the same. The only difference is th
 
 There is no guaranteed maximum latency for notification delivery (in other words, there is no SLA). Typically, most notifications are sent within one hour of the event. Often the latency is much shorter, but this period might be longer since this varies from workload to workload.
 
+**How long before events show within the Office 365 service?**
+
+The Office 365 Audit service doesn't guarantee a specified time when events will be delivered. Audit tries to deliver data as quickly as possible. However, some issues may arise (such as server outages) upstream from the Audit service and are unavoidable.  Because audit events are often used for forensic investigations, Microsoft prioritizes data completeness over latency. While observed latencies for event availability is typically 60 minutes to 90 minutes, we acknowledge that anomalies may occur. For these reasons, Audit doesn't commit to a specific delivery time.  
+
 **Aren't webhook notifications more immediate?**
 
 No. Recently, there have been longer wait times for notifications when using a webhook compared to querying the API directly with the `/content` operation.
@@ -112,6 +116,9 @@ The most common category of questions come from customers using third-party prod
 ### Enabling unified audit logging in Office 365
 
 If you've just set up an app that's trying to use the Management Activity API and it's not working, be sure that you've enabled unified audit logging for your Office 365 organization. You do this by turning on the Office 365 audit log. For instructions, see [Turn Office 365 audit log search on or off](/microsoft-365/compliance/turn-audit-log-search-on-or-off).
+
+> [!NOTE]
+> The unified audit log configuration change can take up to 60 minutes to take effect.
 
 If unified auditing isn't enabled, you will typically receive an error that contains the following string: `Microsoft.Office.Compliance.Audit``.DataServiceException: Tenant <tenantID> does not exist.`
 
