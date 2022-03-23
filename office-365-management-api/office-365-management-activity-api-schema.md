@@ -182,7 +182,11 @@ This article provides details on the Common schema as well as service-specific s
 |106|SecurityComplianceUserChange|Events related to modifying or deleting a user.|
 |107|ComplianceDLPExchangeClassification|Exchange DLP classification events.|
 |109|MipExactDataMatch|Exact Data Match (EDM) classification events.|
+|110|MSDEResponseActions|Events related to response actions in Microsoft Defender for Endpoint.|
+|111|MSDEGeneralSettings|Events related to general settings actions in Microsoft Defender for Endpoint.|
+|112|MSDEIndicatorsSettings|Events related to indicator actions in Microsoft Defender for Endpoint.|
 |113|MS365DCustomDetection|Events related to custom detection actions in Microsoft 365 Defender.|
+|114|MSDERolesSettings|Events related to roles actions in Microsoft Defender for Endpoint.|
 |147|CoreReportingSettings|Reports settings events.|
 ||||
 
@@ -1013,7 +1017,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Action|Edm.String|No|For shared channel events, the action taken by the invitee or the channel owner for a share with team invite.|
 |AddOnGuid|Edm.Guid|No|A unique identifier for the add-on that generated the event.|
 |AddOnName|Edm.String|No|The name of the add-on that generated the event.|
 |AddOnType|Self.[AddOnType](#addontype)|No|The type of add-on that generated this event.|
@@ -1022,7 +1025,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |ChannelType|Edm.String|No|The type of channel being audited (Standard/Private).|
 |ExtraProperties|Collection(Self.[KeyValuePair](#keyvaluepair-complex-type))|No|A list of extra properties.|
 |HostedContents|Collection(Self.[HostedContent](#hostedcontent-complex-type))|No|A collection of chat or channel message hosted contents.|
-|Invitee|Edm.String|No|For shared channel events, the UPN of the invitee team owner who accepts or declines the invite for a share with team invite.|
 |Members|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|No|A list of users within a Team.|
 |MessageId|Edm.String|No|An identifier for a chat or channel message.|
 |MessageURLs|Edm.String|No|Present for any URL sent in Teams messages.|
@@ -1115,7 +1117,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 - An alert that is triggered and that started an [automated investigation](/office365/securitycompliance/automated-investigation-response-office).
 
 > [!NOTE]
-> Microsoft Defender for Office 365 and Office 365 Threat Investigation and Response (formerly known as Office 365 Threat Intelligence) capabilites are now part of Defender for Office 365 Plan 2, with additional threat protection capabilities. To learn more, see [Microsoft Defender for Office 365 plans and pricing](https://products.office.com/exchange/advance-threat-protection) and the [Defender for Office 365 Service Description](/office365/servicedescriptions/office-365-advanced-threat-protection-service-description).
+> Microsoft Defender for Office 365 and Office 365 Threat Investigation and Response (formerly known as Office 365 Threat Intelligence) capabilities are now part of Defender for Office 365 Plan 2, with additional threat protection capabilities. To learn more, see [Microsoft Defender for Office 365 plans and pricing](https://products.office.com/exchange/advance-threat-protection) and the [Defender for Office 365 Service Description](/office365/servicedescriptions/office-365-advanced-threat-protection-service-description).
 
 ### Email message events
 
@@ -1645,6 +1647,150 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 |0|Form|Forms that are created with the New Form option.|
 |1|Quiz|Quizzes that are created with the New Quiz option.  A quiz is a special type of form that includes additional features such as point values, auto and manual grading, and commenting.|
 |2|Survey|Surveys that are created with the New Survey option.  A survey is a special type of form that includes additional features such as CMS integration and support for Flow rules.|
+||||
+
+## MIP base schema
+
+ (add intro - suggest listing all record types that use or are extended by the MIP base schema. ALlo note that the schema only includes complex types and enums. It doesn't contain any base properties.)
+
+### EmailReceiver complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+| Receiver | Edm.String |  Yes | |
+|||||
+
+### SensitiveInfoTypeData complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|SensitiveInfoTypeId|Edm.Guid|No||
+|Count|Edm.Int32|No||
+|Confidence|Edm.Int32|No||
+|SensitiveInfoTypeName|Edm.String|No||
+|UniqueCount|Edm.Int32|No||
+|SensitiveInformationDetailedClassificationAttributes|Collection(DLP.SensitiveInformationDetailedConfidenceLevelResult)|No||
+|SensitiveInformationDetectionsInfo|Self.SensitiveInformationDetectionsInfo|No||
+|||||
+|||||
+
+### SensitiveInformationDetectionsInfo complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+| DetectedValues | Collection(Common.NameValuePair) |  No | |
+|||||
+
+### SensitivityLabelEventData complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|SensitivityLabelId|Edm.String|No||
+|SensitivityLabelOwnerEmail|Edm.String|No||
+|OldSensitivityLabelId|Edm.String|No||
+|OldSensitivityLabelOwnerEmail|Edm.String|No||
+|LabelEventType|Self.[LabelEventType](#enum-labeleventtype---type-edmint32)|No||
+|ActionSource|Self.[ActionSource](#enum-actionsource---type-edmint32)|No||
+|ActionSourceDetail|Self.[ActionSourceDetail](#enum-actionsourcedetail---type-edmint32)|No||
+|JustificationText|Edm.String|No||
+|SensitivityLabelPolicyId|Edm.String|No||
+|||||
+
+#### Enum: LabelEventType - Type: Edm.Int32
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|None||
+|1|LabelUpgraded||
+|2|LabelDowngraded||
+|3|LabelRemoved||
+|4|LabelChangedSameOrder||
+||||
+
+#### Enum: ActionSource - Type: Edm.Int32
+
+(comment from schema file: "How the label is applied. 'None' is to cover the scenario where for an operation type this field does not make sense like for Operation='CopiedToUSB'.  The default value will be 'None'.")
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|None||
+|1|Default||
+|2|Auto||
+|3|Manual||
+|4|Recommended||
+||||
+
+#### Enum: ActionSourceDetail - Type: Edm.Int32
+
+(comment from schema file: "Details for the action source")
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|None||
+|1|AutoByPolicyMatch||
+|2|AutoByReplyOrForward||
+|3|AutoByInheritance||
+|4|AutoByDeploymentPipeline||
+|5|PublicAPI||
+|6|AutoByLibraryDefault||
+||||
+
+### EmailInfo complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Sender|Edm.String|Yes||
+|Receivers|Collection(Self.EmailReceiver)|Yes||
+|Subject|Edm.String|No||
+|||||
+
+### PolicyMatchInfo complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|PolicyId|Edm.Guid|Yes||
+|PolicyName|Edm.String|No||
+|RuleId|Edm.Guid|Yes||
+|RuleName|Edm.String|No||
+|||||
+
+### RetentionLabelEventData complext type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RetentionLabelId|Edm.String|No||
+|ActionSource|Self.[ActionSource](#enum-actionsource---type-edmint32)|No||
+|LabelEventType|Self.[LabelEventType](#enum-labeleventtype---type-edmint32)|No||
+|OldRetentionLabelId|Edm.String|No||
+|RetentionLabelPolicyId|Edm.String|No||
+|||||
+
+### Enum: LocationType - Type: Edm.Int32
+
+(this enum is included in the schema but no properties in the schema use or reference this enum. I included it here to make you aware of it in the schema. Please determine if this enum should remain or be removed. This commment is from the schema: "Used by OfficeNative and Delphi". We could include it here and then list the record types that use it; e.g. DLP Endpoint and Office Native)
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|Unknown||
+|1|Local||
+|2|Remote||
+|3|Removable||
+|4|Cloud||
+|5|FileShare||
+||||
+
+### Enum: Platform - Type: Edm.Int32
+
+(this enum is included in the schema but no properties in the schema use or reference this enum. I included it here to make you aware of it in the schema. Please determine if this enum should remain or be removed. This commment is from the schema: "Used by OfficeNative and Delphi". We could include it here and then list the record types that use it; e.g. DLP Endpoint and Office Native)
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|Unknown||
+|1|Windows||
+|2|Mac||
+|3|iOS||
+|4|Android||
+|5|WebBrowser||
 ||||
 
 ## MIP label schema
