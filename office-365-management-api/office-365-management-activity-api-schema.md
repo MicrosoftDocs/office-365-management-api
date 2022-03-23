@@ -1651,8 +1651,6 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 
 ## MIP base schema
 
- (add intro - suggest listing all record types that use or are extended by the MIP base schema. ALlo note that the schema only includes complex types and enums. It doesn't contain any base properties.)
-
 ### EmailReceiver complex type
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -1664,14 +1662,13 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|SensitiveInfoTypeId|Edm.Guid|No||
-|Count|Edm.Int32|No||
-|Confidence|Edm.Int32|No||
+|SensitiveInfoTypeId|Edm.Guid|No|The GUID of the sensitive information type.|
+|Count|Edm.Int32|No|The count of the number of sensitive information matched.|
+|Confidence|Edm.Int32|No|The confidence of the sensitivity information matched. |
 |SensitiveInfoTypeName|Edm.String|No||
-|UniqueCount|Edm.Int32|No||
+|UniqueCount|Edm.Int32|No|The name of the sensitive information type.|
 |SensitiveInformationDetailedClassificationAttributes|Collection(DLP.SensitiveInformationDetailedConfidenceLevelResult)|No||
 |SensitiveInformationDetectionsInfo|Self.SensitiveInformationDetectionsInfo|No||
-|||||
 |||||
 
 ### SensitiveInformationDetectionsInfo complex type
@@ -1685,15 +1682,15 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|SensitivityLabelId|Edm.String|No||
+|SensitivityLabelId|Edm.String|No|The GUID of the sensitivity label.|
 |SensitivityLabelOwnerEmail|Edm.String|No||
-|OldSensitivityLabelId|Edm.String|No||
+|OldSensitivityLabelId|Edm.String|No|The sensitivity label ID that was previously on the content.|
 |OldSensitivityLabelOwnerEmail|Edm.String|No||
 |LabelEventType|Self.[LabelEventType](#enum-labeleventtype---type-edmint32)|No||
 |ActionSource|Self.[ActionSource](#enum-actionsource---type-edmint32)|No||
 |ActionSourceDetail|Self.[ActionSourceDetail](#enum-actionsourcedetail---type-edmint32)|No||
-|JustificationText|Edm.String|No||
-|SensitivityLabelPolicyId|Edm.String|No||
+|JustificationText|Edm.String|No|The justification text provided by the end user.|
+|SensitivityLabelPolicyId|Edm.String|No|The GUID of the sensitivity label policy.|
 |||||
 
 #### Enum: LabelEventType - Type: Edm.Int32
@@ -1709,8 +1706,6 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 
 #### Enum: ActionSource - Type: Edm.Int32
 
-(comment from schema file: "How the label is applied. 'None' is to cover the scenario where for an operation type this field does not make sense like for Operation='CopiedToUSB'.  The default value will be 'None'.")
-
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
 |0|None||
@@ -1721,8 +1716,6 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 ||||
 
 #### Enum: ActionSourceDetail - Type: Edm.Int32
-
-(comment from schema file: "Details for the action source")
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
@@ -1739,9 +1732,9 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Sender|Edm.String|Yes||
-|Receivers|Collection(Self.EmailReceiver)|Yes||
-|Subject|Edm.String|No||
+| Sender|Edm.String|Yes|The sender of the message.|
+| Receivers | Collection(Self.EmailReceiver) | Yes | The recipient(s) of the message. |
+| Subject | Edm.String | No | The subject of the message.|
 |||||
 
 ### PolicyMatchInfo complex type
@@ -1767,8 +1760,6 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 
 ### Enum: LocationType - Type: Edm.Int32
 
-(this enum is included in the schema but no properties in the schema use or reference this enum. I included it here to make you aware of it in the schema. Please determine if this enum should remain or be removed. This commment is from the schema: "Used by OfficeNative and Delphi". We could include it here and then list the record types that use it; e.g. DLP Endpoint and Office Native)
-
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
 |0|Unknown||
@@ -1780,8 +1771,6 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 ||||
 
 ### Enum: Platform - Type: Edm.Int32
-
-(this enum is included in the schema but no properties in the schema use or reference this enum. I included it here to make you aware of it in the schema. Please determine if this enum should remain or be removed. This commment is from the schema: "Used by OfficeNative and Delphi". We could include it here and then list the record types that use it; e.g. DLP Endpoint and Office Native)
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
