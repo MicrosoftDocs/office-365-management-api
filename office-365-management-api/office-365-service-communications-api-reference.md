@@ -277,7 +277,7 @@ The status definitions include the following values:
 - PostIncidentReportPublished
 - ServiceOperational
 
-For a description of these status definitions, see [How to check Microsoft 365 service health](/enterprise/view-service-health#status-definitions).
+For a description of these status definitions, see [How to check Microsoft 365 service health](/microsoft-365/enterprise/view-service-health).
 
 ## Get Historical Status
 
