@@ -46,7 +46,7 @@ There is no guaranteed maximum latency for notification delivery (in other words
 
 **How long before events show within the Office 365 service?**
 
-The Office 365 Audit service doesn't guarantee a specified time when events will be delivered. Audit tries to deliver data as quickly as possible. However, some issues may arise (such as server outages) upstream from the Audit service and are unavoidable.  Because audit events are often used for forensic investigations, Microsoft prioritizes data completeness over latency. While observed latencies for event availability is typically 60 minutes to 90 minutes, we acknowledge that anomalies may occur. For these reasons, Audit doesn't commit to a specific delivery time.  
+The Office 365 Audit service doesn't guarantee a specified time when events will be delivered. Audit tries to deliver data as quickly as possible. However, some issues may arise (such as server outages) upstream from the Audit service and are unavoidable. Because audit events are often used for forensic investigations, Microsoft prioritizes data completeness over latency. For core workloads (Exchange/SharePoint/OneDrive/Teams) event availability is typically 60 minutes - 90 minutes. For other workloads, event availability could be longer. While these are typical event delivery times, we acknowledge that anomalies may occur. For these reasons, Audit doesn't commit to a specific delivery time.  
 
 **Aren't webhook notifications more immediate?**
 
