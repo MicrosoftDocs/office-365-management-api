@@ -55,6 +55,7 @@ This article provides details on the Common schema as well as service-specific s
 |[MIP label schema](#mip-label-schema)|Extends the Common schema with the properties specific to sensitivity labels manually or automatically applied to email messages.|
 |[Communication compliance Exchange schema](#communication-compliance-exchange-schema)|Extends the Common schema with the properties specific to the Communication compliance offensive language model.|
 |[Reports schema](#reports-schema)|Extends the Common schema with the properties specific to all reports events.|
+|[Compliance connector schema](#compliance-connector-schema)|Extends the Common schema with the properties specific to importing non-Microsoft data by using data connectors.|
 |||
 
 ## Common schema
@@ -184,6 +185,7 @@ This article provides details on the Common schema as well as service-specific s
 |109|MipExactDataMatch|Exact Data Match (EDM) classification events.|
 |113|MS365DCustomDetection|Events related to custom detection actions in Microsoft 365 Defender.|
 |147|CoreReportingSettings|Reports settings events.|
+|148|ComplianceConnector|Events related to importing non-Microsoft data using data connectors in the Microsoft 365 compliance center.|
 ||||
 
 ### Enum: User Type - Type: Edm.Int32
@@ -1712,4 +1714,38 @@ The Reports events listed in [Search the audit log in the Office 365 Security & 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
 | ModifiedProperties | Collection (Common.ModifiedProperty) | No | This property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
+|||||
+
+## Compliance connector schema
+
+Events in the compliance connector schema are triggered when items that are imported by a data connector are skipped or failed to be import to user mailboxes. For more information about data connectors, see [Learn about connectors for third-party data](/microsoft-365/compliance/archiving-third-party-data).
+
+|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+|:---------------|:-------|:--------------|:--------------|
+|JobId|	Edm.String|	No |This is a unique identifier of the data connector.|
+|TaskId| Edm.String| No |Unique identifier of the periodic data connector instance. Data connectors import data in periodic intervals.|
+|JobType| Edm.String|	No |The name of the data connector.|
+|ItemId| Edm.String| No	|Unique identifier of the item (for example, an email message) being imported.|
+|ItemSize| Edm.Int64| No |The size of the item being imported.|
+|SourceUserId| Edm.String| No |The unique identifier of the user from the third-party data source. For example, for a Slack data connector, this property specifies the user Id in Slack workspace.|
+|FailureType| Self.[FailureType](#enum-failuretype---type-edmint32)| No |Indicates the type of data import failure. For example, the value **incorrectusermapping** indicates the item wasn't imported because no user mapping between the third-party data source and Microsoft 365 could be found.|
+|ResultMessage| Edm.String|	No |Indicates the type of failure, such as **Duplicte message**.|
+|IsRetry| Edm.Boolean| No |Indicates whether the data connector retried to import the item.|
+|Attachments| Collection.[Attachment](#attachment-complex-type)| No	|A list of attachments received from the third-party data source.|
+|||||
+
+### Enum: FailureType - Type: Edm.Int32
+
+|**Value**|**Member name**|
+|:-----|:-----|
+|0|Default|
+|1|MailboxWrite|
+|||
+
+### Attachment complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|FileName|Edm.String|No|The name of the attachment.|
+|Details|Edm.String|No|Other details about the attachment.|
 |||||
