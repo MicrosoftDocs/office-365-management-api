@@ -424,7 +424,6 @@ This article provides details on the Common schema as well as service-specific s
 |UserAddedToGroup|Site administrator or owner adds a person to a group on a SharePoint or OneDrive for Business site. Adding a person to a group grants the user the permissions that were assigned to the group. |
 |UserRemovedFromGroup|Site administrator or owner removes a person from a group on a SharePoint or OneDrive for Business site. After the person is removed, they no longer are granted the permissions that were assigned to the group. |
 |WorkflowModified|User creates, modifies, or deletes an Enterprise Project Type or Workflow phases or stages in Project Web App.|
-|||||
 
 ## SharePoint file operations
 
@@ -524,7 +523,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |Saved|The user saved an entity.|
 |Sent|The user sent an entity.|
 |Submitted|The user submitted an entity for review or workflow.|
-|||||
+
 
 ### Enum: Project Entity - Type: Edm.Int32
 
@@ -564,7 +563,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |View|Represents a view definition.|
 |WorkflowPhase|Represents a phase in a workflow.|
 |WorkflowStage|Represents a stage in a workflow.|
-|||||
+
 
 ## Exchange Admin schema
 
@@ -613,7 +612,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |4|SystemService|A service account in the Microsoft datacenter|
 |5|BestAccess|Reserved for internal use.|
 |6|DelegatedAdmin|A delegated administrator.|
-|||||
+
 
 ### ExchangeMailboxAuditGroupRecord schema
 
@@ -677,7 +676,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |:-----|:-----|
 |AccountLogon|The account login event.|
 |AzureApplicationAuditEvent|The Azure application security event.|
-|||||
+
 
 ## Azure Active Directory Account Logon schema
 
@@ -703,7 +702,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |14|PasswordIndexCredentialType|User credential is PasswordIndexCredentialType.|
 |16|Device|User credential is a device.|
 |17|ForeignRealmIndex|User credential is ForeignRealmIndex.|
-|||||
+
 
 ### Enum: LoginType - Type: Edm.Int32
 
@@ -713,7 +712,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |1|InitialAuth|Login with initial authentication|
 |2|CookieCopy|Login with cookie.|
 |3|SilentReAuth|Login with silent re-authentication.|
-|||||
+
 
 ### Enum: AuthenticationMethod - Type: Edm.Int32
 
@@ -739,7 +738,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |17|SAML20PostSimpleSign|The authentication method is a SAML20PostSimpleSign.|
 |18|SAML20Post|The authentication method is a SAML20Post.|
 |19|OneTimeCode|The authentication method is a one-time code.|
-|||||
+
 
 ## Azure Active Directory schema
 
@@ -775,7 +774,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |PUID|The audit action actor or the target passport unique ID (PUID).|
 |SPN|The identity of a service principal if the action is performed by the Office 365 service.|
 |UPN|The user principal name.|
-|||||
+
 
 ## Azure Active Directory Secure Token Service (STS) Logon schema
 
@@ -1228,7 +1227,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |-1|Error|Scan / analysis error.|
 |-2|Timeout|Scan / analysis timeout.|
 |-3|Pending|Scan / analysis not complete.|
-|||||
+
 
 ### Enum: Policy - Type: Edm.Int32
 
@@ -1294,7 +1293,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |3|PendingDetonationPage|User presented with the detonation pending page by [Safe Links in Defender for Office 365](/office365/securitycompliance/atp-safe-links).|
 |4|BlockPageOverride|User blocked from navigating to the URL by [Safe Links in Defender for Office 365](/office365/securitycompliance/atp-safe-links); however user overrode block to navigate to the URL.|
 |5|PendingDetonationPageOverride|User presented with the detonation page by [Safe Links in Defender for Office 365](/office365/securitycompliance/atp-safe-links); however user overrode to navigate to the URL.|
-|||||
+
 
 ### File events
 
@@ -1332,7 +1331,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |0|SharePoint Online|
 |1|OneDrive for Business|
 |2|Microsoft Teams|
-|||||
+
 
 ## Submission schema
 

@@ -122,13 +122,13 @@ This operation starts a subscription to the specified content type. If a subscri
     
 ||Subscription|Description|
 |:-----|:-----|:-----|
-|**Path**| `/subscriptions/start?contentType={ContentType}`||
+|**Path**| `/subscriptions/start?contentType={ContentType}`|
 |**Parameters**|contentType|Must be a valid content type.|
 ||PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
 |**Body**|webhook|Optional JSON object with three properties:<ul><li>**address**</b>: Required HTTPS endpoint that can receive notifications.  A test message will be sent to the webhook to validate the webhook before creating the subscription.</li><li>**authId**: Optional string that will be included as the WebHook-AuthID header in notifications sent to the webhook as a means of identifying and authorizing the source of the request to the webhook.</li><li>**expiration**: Optional datetime that indicates a datetime after which notifications should no longer be sent to the webhook.|
 |**Response**|contentType|The content type specified in the call.|
-||status|The status of the subscription. If a subscription is disabled, you will not be able to list or retrieve content.|
-||webhook|The webhook properties specified in the call together with the status of the webhook. If the webhook is disabled, you will not receive notification, but you will still be able to list and retrieve content, provided the subscription is enabled.|
+|status|The status of the subscription. If a subscription is disabled, you will not be able to list or retrieve content.|
+|webhook|The webhook properties specified in the call together with the status of the webhook. If the webhook is disabled, you will not receive notification, but you will still be able to list and retrieve content, provided the subscription is enabled.|
 
 #### Sample request
 
@@ -202,11 +202,11 @@ When a subscription is stopped, you will no longer receive notifications and you
 
 ||Subscription|Description|
 |:-----|:-----|:-----|
-|**Path**| `/subscriptions/stop?contentType={ContentType}`||
+|**Path**| `/subscriptions/stop?contentType={ContentType}`|
 |**Parameters**|contentType|Must be a valid content type.|
 ||PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
-|**Body**|(empty)||
-|**Response**|(empty)|||
+|**Body**|(empty)|
+|**Response**|(empty)|
 
 #### Sample request
 
@@ -277,12 +277,12 @@ Content-Type: application/json; charset=utf-8
 This operation lists the content currently available for retrieval for the specified content type. The content is an aggregation of actions and events harvested from multiple servers across multiple datacenters. The content will be listed in the order in which the aggregations become available, but the events and actions within the aggregations are not guaranteed to be sequential. An error is returned if the subscription status is disabled.
 
 
-||Subscription|Description|
+|Subscription|Description|
 |:-----|:-----|:-----|
-|**Path**| `/subscriptions/content?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`||
+|**Path**| `/subscriptions/content?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`|
 |**Parameters**|contentType|Must be a valid content type.|
-||PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
-||startTime endTime|Optional datetimes (UTC) indicating the time range of content to return, based on when the content became available. The time range is inclusive with respect to startTime (startTime <= contentCreated) and exclusive with respect to endTime (contentCreated < endTime), so that non-overlapping, incrementing time intervals can used to page through available content.<ul><li>YYYY-MM-DD</li><li>YYYY-MM-DDTHH:MM</li><li>YYYY-MM-DDTHH:MM:SS</ul>Both must be specified (or both omitted) and they must be no more than 24 hours apart, with the start time no more than 7 days in the past. By default, if startTime and endTime are omitted, then the content available in the last 24 hours is returned.<p>**NOTE**: Even though it is possible to specify a startTime and endTime more than 24 hours apart, this is not recommended. Furthermore, if you do get any results in response to a request for more than 24 hours, these could be partial results and should not be taken into account. The request should be issued with an interval of no more than 24 hours between the startTime and endTime.</p>|
+|PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
+|startTime endTime|Optional datetimes (UTC) indicating the time range of content to return, based on when the content became available. The time range is inclusive with respect to startTime (startTime <= contentCreated) and exclusive with respect to endTime (contentCreated < endTime), so that non-overlapping, incrementing time intervals can used to page through available content.<ul><li>YYYY-MM-DD</li><li>YYYY-MM-DDTHH:MM</li><li>YYYY-MM-DDTHH:MM:SS</ul>Both must be specified (or both omitted) and they must be no more than 24 hours apart, with the start time no more than 7 days in the past. By default, if startTime and endTime are omitted, then the content available in the last 24 hours is returned.<p>**NOTE**: Even though it is possible to specify a startTime and endTime more than 24 hours apart, this is not recommended. Furthermore, if you do get any results in response to a request for more than 24 hours, these could be partial results and should not be taken into account. The request should be issued with an interval of no more than 24 hours between the startTime and endTime.</p>|
 |**Response**|JSON array|The available content will be represented by JSON objects with the following properties:<ul><li>**contentType**: Indicates the content type.</li><li>**contentId**: An opaque string that uniquely identifies the content.</li><li> **contentUri**: The URL to use when retrieving the content.</li><li>**contentCreated**: The datetime when the content was made available.</li><li> **contentExpiration**: The datetime after which the content will no longer be available for retrieval.|
 
 
@@ -489,12 +489,12 @@ This operation lists all notification attempts for the specified content type. I
 You can use this operation to help investigate issues related to webhooks and notifications, but you should not use it to determine what content is currently available for retrieval. Use the /content operation instead. We return an error if the subscription status is disabled.
 
 
-||Subscription|Description|
+|Subscription|Description|
 |:-----|:-----|:-----|
-|**Path**| `/subscriptions/notifications?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`||
+|**Path**| `/subscriptions/notifications?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`|
 |**Parameters**|contentType|Must be a valid content type.|
-||PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
-||startTime endTime|Optional datetimes (UTC) that indicate the time range of content to return, based on when the content became available. The time range is inclusive with respect to  _startTime_ ( _startTime_ <= contentCreated) and exclusive with respect to _endTime_ (_contentCreated_ < endTime), so that non-overlapping, incrementing time intervals can used to page through available content.<ul><li>YYYY-MM-DD</li><li>YYYY-MM-DDTHH:MM</li><li>YYYY-MM-DDTHH:MM:SS</ul>Both must be specified (or both omitted) and they must be no more than 24 hours apart, with the start time no more than 7 days in the past. By default, if  _startTime_ and _endTime_ are omitted, the content available in the last 24 hours is returned.|
+|PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
+|startTime endTime|Optional datetimes (UTC) that indicate the time range of content to return, based on when the content became available. The time range is inclusive with respect to  _startTime_ ( _startTime_ <= contentCreated) and exclusive with respect to _endTime_ (_contentCreated_ < endTime), so that non-overlapping, incrementing time intervals can used to page through available content.<ul><li>YYYY-MM-DD</li><li>YYYY-MM-DDTHH:MM</li><li>YYYY-MM-DDTHH:MM:SS</ul>Both must be specified (or both omitted) and they must be no more than 24 hours apart, with the start time no more than 7 days in the past. By default, if  _startTime_ and _endTime_ are omitted, the content available in the last 24 hours is returned.|
 |**Response**|JSON array|The notifications will be represented by JSON objects with the following properties: <ul><li>**contentType**: indicates the content type.</li><li>**contentId**: an opaque string that uniquely identifies the content.</li><li>**contentUri**: the URL to use when retrieving the content. </li><li>**contentCreated**: the datetime when the content was made available.</li><li>**contentExpiration**: the datetime after which the content will no longer be available for retrieval.</li><li>**notificationSent**: the datetime when the notification was sent.</li><li>**notificationStatus**: indicates the success or failure of the notification attempt.</li></ul>|
 
 #### Sample request
@@ -611,9 +611,8 @@ When the service encounters an error, it will report the error response code to 
 ```
 
 
-|||
-|:-----|:-----|
 |Code|Message|
+|:-----|:-----|
 |AF10001|The permission set ({0}) sent in the request did not include the expected permission **ActivityFeed.Read**.<br/><br/>{0} = the permission set in the access token.</p></li></ul>|
 |AF20001|Missing parameter: {0}. <br/><br/>{0} = the name of the missing parameter.</p></li></ul>|
 |AF20002|Invalid parameter type: {0}. Expected type: {1}<br/><br/>{0} = the name of the invalid parameter.</p>{1} = the expected type (int, datetime, guid).</p></li></ul>|
@@ -635,4 +634,4 @@ When the service encounters an error, it will report the error response code to 
 |AF20054|Invalid syntax in Accept-Language header.|
 |AF429|Too many requests. Method={0}, PublisherId={1}<br/><br/>{0} = HTTP Method<br/><br/>{1} = Tenant GUID used as PublisherIdentifier</p></li></ul>|
 |AF50000|An internal error occurred. Retry the request.|
-|||
+
