@@ -120,7 +120,7 @@ This operation starts a subscription to the specified content type. If a subscri
     
 - Remove a webhook.
     
-||Subscription|Description|
+|Subscription|Description|
 |:-----|:-----|:-----|
 |**Path**| `/subscriptions/start?contentType={ContentType}`|
 |**Parameters**|contentType|Must be a valid content type.|
@@ -200,7 +200,7 @@ This operation stops a subscription to the specified content type.
 When a subscription is stopped, you will no longer receive notifications and you will not be able to retrieve available content. If the subscription is later restarted, you will have access to new content from that point forward. You will not be able to retrieve content that was available between the time the subscription was stopped and restarted.
 
 
-||Subscription|Description|
+|Subscription|Description|
 |:-----|:-----|:-----|
 |**Path**| `/subscriptions/stop?contentType={ContentType}`|
 |**Parameters**|contentType|Must be a valid content type.|
@@ -278,7 +278,7 @@ This operation lists the content currently available for retrieval for the speci
 
 
 |Subscription|Description|
-|:-----|:-----|:-----|
+|:-----|:-----|
 |**Path**| `/subscriptions/content?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`|
 |**Parameters**|contentType|Must be a valid content type.|
 |PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
@@ -490,7 +490,7 @@ You can use this operation to help investigate issues related to webhooks and no
 
 
 |Subscription|Description|
-|:-----|:-----|:-----|
+|:-----|:-----|
 |**Path**| `/subscriptions/notifications?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`|
 |**Parameters**|contentType|Must be a valid content type.|
 |PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
