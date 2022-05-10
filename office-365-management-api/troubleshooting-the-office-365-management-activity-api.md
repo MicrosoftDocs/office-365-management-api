@@ -1,5 +1,6 @@
 ---
-ms.technology: o365-service-communications
+ms.subservice: office-365-service-communications-api
+ms.service: office-365
 ms.TocTitle: Troubleshooting the Office 365 Management Activity API
 title: Troubleshooting the Office 365 Management Activity API
 description: "Summarizes the most common questions Microsoft Support receives in supporting the Office 365 Management Activity API."

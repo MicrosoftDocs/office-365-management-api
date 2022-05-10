@@ -1,5 +1,6 @@
 ---
-ms.technology: o365-service-communications
+ms.subservice: office-365-service-communications-api
+ms.service: office-365
 ms.TocTitle: Get started with Office 365 Management APIs
 title: Get started with Office 365 Management APIs
 description: The APIs use Azure AD to provide authentication services that you can use to grant rights for your application to access them. 
