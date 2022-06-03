@@ -186,7 +186,7 @@ This article provides details on the Common schema as well as service-specific s
 |109|MipExactDataMatch|Exact Data Match (EDM) classification events.|
 |113|MS365DCustomDetection|Events related to custom detection actions in Microsoft 365 Defender.|
 |147|CoreReportingSettings|Reports settings events.|
-|148|ComplianceConnector|Events related to importing non-Microsoft data using data connectors in the Microsoft 365 compliance center.|
+|148|ComplianceConnector|Events related to importing non-Microsoft data using data connectors in the Microsoft Purview compliance portal.|
 ||||
 
 ### Enum: User Type - Type: Edm.Int32
@@ -1651,7 +1651,7 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 
 ## MIP label schema
 
-Events in the Microsoft Information Protection (MIP) label schema are triggered when Microsoft 365 detects an email message processed by agents in the Transport pipeline that has a sensitivity label applied to it. The sensitivity label may have been applied manually or automatically, and it may have been applied within or outside of the Transport pipeline. Sensitivity labels can be automatically applied to email messages by auto-apply label policies.
+Events in the Microsoft Purview Information Protection label schema are triggered when Microsoft 365 detects an email message processed by agents in the Transport pipeline that has a sensitivity label applied to it. The sensitivity label may have been applied manually or automatically, and it may have been applied within or outside of the Transport pipeline. Sensitivity labels can be automatically applied to email messages by auto-apply label policies.
 
 The intent of this audit schema is to represent the sum of all email activity that involves sensitivity labels. In other words, there should be an recorded audit activity for each email message that is sent to or from users in the organization that has a sensitivity label applied to it, regardless of when or how the sensitivity label was applied. For more information about sensitivity labels, see:
 
