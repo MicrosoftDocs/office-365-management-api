@@ -1,5 +1,6 @@
 ---
-ms.technology: o365-service-communications
+ms.subservice: office-365-service-communications-api
+ms.service: office-365
 ms.TocTitle: Troubleshooting the Office 365 Management Activity API
 title: Troubleshooting the Office 365 Management Activity API
 description: "Summarizes the most common questions Microsoft Support receives in supporting the Office 365 Management Activity API."
@@ -36,7 +37,7 @@ No. Office 365 unified auditing must be enabled for your organization to pull r
 
 Office 365 Management Activity API schema documentation has a comprehensive list of events. For details, see Office 365 Management Activity API schema. Also see the "Audited activities" section in [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#audited-activities) for a list of events for most of the Office 365 services that are audited.
 
-**Are there any differences in the records that are fetched by the Management Activity API versus the records that are returned by using the audit log search tool in the Microsoft 365 compliance center?**
+**Are there any differences in the records that are fetched by the Management Activity API versus the records that are returned by using the audit log search tool in the Microsoft Purview compliance portal?**
 
 The data that is returned by both methods is the same. The only difference is that with the API, you can get data for the last 7 days only (more details in the questions below). When searching the audit log in the Security & Compliance Center (or by using the corresponding **Search-UnifiedAuditLog** cmdlet in Exchange Online PowerShell), you can get data for the retention period in effect when the data is generated (for example, 90 days or one year).
 

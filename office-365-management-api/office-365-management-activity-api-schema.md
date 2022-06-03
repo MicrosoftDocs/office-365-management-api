@@ -1,5 +1,6 @@
 ---
-ms.technology: o365-service-communications
+ms.subservice: office-365-service-communications-api
+ms.service: office-365
 ms.TocTitle: Office 365 Management Activity API schema
 title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
@@ -185,7 +186,7 @@ This article provides details on the Common schema as well as service-specific s
 |109|MipExactDataMatch|Exact Data Match (EDM) classification events.|
 |113|MS365DCustomDetection|Events related to custom detection actions in Microsoft 365 Defender.|
 |147|CoreReportingSettings|Reports settings events.|
-|148|ComplianceConnector|Events related to importing non-Microsoft data using data connectors in the Microsoft 365 compliance center.|
+|148|ComplianceConnector|Events related to importing non-Microsoft data using data connectors in the Microsoft Purview compliance portal.|
 ||||
 
 ### Enum: User Type - Type: Edm.Int32
@@ -424,7 +425,6 @@ This article provides details on the Common schema as well as service-specific s
 |UserAddedToGroup|Site administrator or owner adds a person to a group on a SharePoint or OneDrive for Business site. Adding a person to a group grants the user the permissions that were assigned to the group. |
 |UserRemovedFromGroup|Site administrator or owner removes a person from a group on a SharePoint or OneDrive for Business site. After the person is removed, they no longer are granted the permissions that were assigned to the group. |
 |WorkflowModified|User creates, modifies, or deletes an Enterprise Project Type or Workflow phases or stages in Project Web App.|
-|||||
 
 ## SharePoint file operations
 
@@ -524,7 +524,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |Saved|The user saved an entity.|
 |Sent|The user sent an entity.|
 |Submitted|The user submitted an entity for review or workflow.|
-|||||
+
 
 ### Enum: Project Entity - Type: Edm.Int32
 
@@ -564,7 +564,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |View|Represents a view definition.|
 |WorkflowPhase|Represents a phase in a workflow.|
 |WorkflowStage|Represents a stage in a workflow.|
-|||||
+
 
 ## Exchange Admin schema
 
@@ -613,7 +613,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |4|SystemService|A service account in the Microsoft datacenter|
 |5|BestAccess|Reserved for internal use.|
 |6|DelegatedAdmin|A delegated administrator.|
-|||||
+
 
 ### ExchangeMailboxAuditGroupRecord schema
 
@@ -677,7 +677,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |:-----|:-----|
 |AccountLogon|The account login event.|
 |AzureApplicationAuditEvent|The Azure application security event.|
-|||||
+
 
 ## Azure Active Directory Account Logon schema
 
@@ -703,7 +703,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |14|PasswordIndexCredentialType|User credential is PasswordIndexCredentialType.|
 |16|Device|User credential is a device.|
 |17|ForeignRealmIndex|User credential is ForeignRealmIndex.|
-|||||
+
 
 ### Enum: LoginType - Type: Edm.Int32
 
@@ -713,7 +713,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |1|InitialAuth|Login with initial authentication|
 |2|CookieCopy|Login with cookie.|
 |3|SilentReAuth|Login with silent re-authentication.|
-|||||
+
 
 ### Enum: AuthenticationMethod - Type: Edm.Int32
 
@@ -739,7 +739,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |17|SAML20PostSimpleSign|The authentication method is a SAML20PostSimpleSign.|
 |18|SAML20Post|The authentication method is a SAML20Post.|
 |19|OneTimeCode|The authentication method is a one-time code.|
-|||||
+
 
 ## Azure Active Directory schema
 
@@ -775,7 +775,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |PUID|The audit action actor or the target passport unique ID (PUID).|
 |SPN|The identity of a service principal if the action is performed by the Office 365 service.|
 |UPN|The user principal name.|
-|||||
+
 
 ## Azure Active Directory Secure Token Service (STS) Logon schema
 
@@ -1228,7 +1228,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |-1|Error|Scan / analysis error.|
 |-2|Timeout|Scan / analysis timeout.|
 |-3|Pending|Scan / analysis not complete.|
-|||||
+
 
 ### Enum: Policy - Type: Edm.Int32
 
@@ -1294,7 +1294,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |3|PendingDetonationPage|User presented with the detonation pending page by [Safe Links in Defender for Office 365](/office365/securitycompliance/atp-safe-links).|
 |4|BlockPageOverride|User blocked from navigating to the URL by [Safe Links in Defender for Office 365](/office365/securitycompliance/atp-safe-links); however user overrode block to navigate to the URL.|
 |5|PendingDetonationPageOverride|User presented with the detonation page by [Safe Links in Defender for Office 365](/office365/securitycompliance/atp-safe-links); however user overrode to navigate to the URL.|
-|||||
+
 
 ### File events
 
@@ -1332,7 +1332,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |0|SharePoint Online|
 |1|OneDrive for Business|
 |2|Microsoft Teams|
-|||||
+
 
 ## Submission schema
 
@@ -1651,7 +1651,7 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 
 ## MIP label schema
 
-Events in the Microsoft Information Protection (MIP) label schema are triggered when Microsoft 365 detects an email message processed by agents in the Transport pipeline that has a sensitivity label applied to it. The sensitivity label may have been applied manually or automatically, and it may have been applied within or outside of the Transport pipeline. Sensitivity labels can be automatically applied to email messages by auto-apply label policies.
+Events in the Microsoft Purview Information Protection label schema are triggered when Microsoft 365 detects an email message processed by agents in the Transport pipeline that has a sensitivity label applied to it. The sensitivity label may have been applied manually or automatically, and it may have been applied within or outside of the Transport pipeline. Sensitivity labels can be automatically applied to email messages by auto-apply label policies.
 
 The intent of this audit schema is to represent the sum of all email activity that involves sensitivity labels. In other words, there should be an recorded audit activity for each email message that is sent to or from users in the organization that has a sensitivity label applied to it, regardless of when or how the sensitivity label was applied. For more information about sensitivity labels, see:
 
