@@ -1152,7 +1152,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |||||
 
 > [!NOTE]
-> We recommend that you use the new ThreatsAndDetectionTech field because it shows multiple verdicts and the updated detection technologies. This also aligns with the values you would see within other experiences like Threat Explorer and Advanced Hunting. 
+> We recommend that you use the new ThreatsAndDetectionTech field because it shows multiple verdicts and the updated detection technologies. This field also aligns with the values you would see within other experiences like Threat Explorer and Advanced Hunting. 
 
 ### Detection technologies
 
@@ -1162,8 +1162,8 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |Anti-malware engine|Detection from anti-malware engines.|
 |Campaign|Messages identified as part of a campaign.|
 |Domain reputation|Analysis based on domain reputation.|
-|File detonation reputation|File attachment marked as bad due to previous detonation reputation.|
 |File detonation|File attachments found to be bad during detonated analysis.|
+|File detonation reputation|File attachment marked as bad due to previous detonation reputation.|
 |File reputation|File attachments marked bad due to bad reputation.|
 |Fingerprint matching|The message was marked as bad due to previous messages.|
 |General filter|Phishing signals based on rules.|
@@ -1175,8 +1175,8 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |Spoof DMARC|DMARC authentication failure for messages.|
 |Spoof external domain|Sender is trying to spoof some other domain.|
 |Spoof intra-org|Sender is trying to spoof the recipient domain.|
-|URL detonation reputation|The message was considered bad due to malicious URL detonation.|
 |URL detonation|The message was considered bad due to a previous malicious URL detonation.|
+|URL detonation reputation|The message was considered bad due to malicious URL detonation.|
 |URL malicious reputation|The message was considered bad due a malicious URL.|
 
 ### AttachmentData complex type
