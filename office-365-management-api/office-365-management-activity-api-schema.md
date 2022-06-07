@@ -57,6 +57,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Communication compliance Exchange schema](#communication-compliance-exchange-schema)|Extends the Common schema with the properties specific to the Communication compliance offensive language model.|
 |[Reports schema](#reports-schema)|Extends the Common schema with the properties specific to all reports events.|
 |[Compliance connector schema](#compliance-connector-schema)|Extends the Common schema with the properties specific to importing non-Microsoft data by using data connectors.|
+|[SystemSync schema](#SystemSync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
 |||
 
 ## Common schema
@@ -187,7 +188,8 @@ This article provides details on the Common schema as well as service-specific s
 |113|MS365DCustomDetection|Events related to custom detection actions in Microsoft 365 Defender.|
 |147|CoreReportingSettings|Reports settings events.|
 |148|ComplianceConnector|Events related to importing non-Microsoft data using data connectors in the Microsoft Purview compliance portal.|
-||||
+|174|DataShareOperation|Events related to sharing of data ingested via SystemSync.|
+|181|EduDataLakeDownloadOperation|Events related to the export of SystemSync ingested data from the lake.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -1749,3 +1751,65 @@ Events in the compliance connector schema are triggered when items that are impo
 |FileName|Edm.String|No|The name of the attachment.|
 |Details|Edm.String|No|Other details about the attachment.|
 |||||
+
+ 
+ ## SystemSync schema
+
+Events in the SystemSync schema are triggered when the SystemSync ingested data is either exported via Data Lake or shared via other services.
+
+### DataLakeExportOperationAuditRecord
+
+|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+|:---------------|:-------|:--------------|:--------------|
+|DataStoreType|	DataStoreType|Yes	|Indicates which data store the data was downloaded from. Refer DataStoreType for all possible values.|
+|UserAction|	DataLakeUserAction|Yes	|Indicates what action user had performed on the data store. Refer DataLakeUserAction for all possible values.|
+|ExportTriggeredAt|	Edm.DateTimeOffset|Yes	|Indicates when the data export was triggered.|
+|NameOfDownloadedZipFile|	Edm.String|No	|The name of the compressed file the admin had downloaded from the Data Lake.|
+
+
+
+### DataShareOperationAuditRecord
+
+|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+|:---------------|:-------|:--------------|:--------------|
+|Invitation|	DataShareInvitationType|No	|Details of the invite sent to the recipient of the Data Share.|
+
+
+
+
+#### DataShareInvitationType complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ShareId|Edm.Guid|Yes|System assigned identifier for the Data Share.|
+|Invitees|Collection(Edm.Guid)|Yes|List of admin users the invite was sent to.|
+|InviteeTenantId|Edm.Guid|Yes|The target tenant whom the invite is intended to.|
+|ShareName|Edm.String|Yes|System assigned name for the Data Share.|
+|SyncFrequency|Self.SyncFrequency|Yes|Frequency at which the data is synced to the destination storage account once share is established. See SyncFrequency for possible values.|
+|SyncStartTime|Edm.DateTimeOffset|Yes|Date and time of first sync.|
+
+
+
+
+**Enum: SyncFrequency - Type: Edm.Int32**
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|Hourly|Indicates the data will be synced every hour.|
+|1|Daily|Indicates the data will be synced once a day.|
+
+
+**Enum: DataStoreType - Type: Edm.Int32**
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|CanonicalStore|Indicates data will be downloaded from Canonical store.|
+|1|StagingStore|Indicates data will be downloaded from Staging store.|
+
+
+**Enum: DataLakeUserAction - Type: Edm.Int32**
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|TriggerExport|The admin user triggered export from Data Lake.|
+|1|DownloadZipFile|The admin user downloaded the exported data.|
