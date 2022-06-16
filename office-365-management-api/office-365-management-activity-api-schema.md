@@ -1,6 +1,6 @@
 ---
-ms.subservice: office-365-service-communications-api
 ms.service: office-365
+ms.subservice: office-365-service-communications-api
 ms.TocTitle: Office 365 Management Activity API schema
 title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
@@ -1680,7 +1680,8 @@ The intent of this audit schema is to represent the sum of all email activity th
 The intent of this audit schema is to represent the sum of all portal activity that involves accessing the encrypted mail by external recipients. In other words, there should be an recorded audit activity for recipient that attempts to login to the portal and any activities related to accessing the encrypted mail.sent to or from users in the organization that has a sensitivity label applied to it, regardless of when or how the sensitivity label was applied. For more information about sensitivity labels, see:
  
  - [Learn about encrypted message portal logs](/microsoft-365/compliance/ome-message-access-logs)
- |**Parameters**|**Type**|**Mandatory?**|**Description**|
+ 
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |MessageId|Edm.String|No|The Id of the message.|
 |Recipient|Edm.String|No|Recipient email address.|
