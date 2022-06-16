@@ -1673,7 +1673,7 @@ The intent of this audit schema is to represent the sum of all email activity th
 |ApplicationMode|Edm.String|No|Specifies how the sensitivity label was applied to the email message. The **Privileged** value indicates the label was manually applied by a user. The **Standard** value indicates the label was auto-applied by a client-side or service-side labeling process.|
 |||||
 
-## Encrypted Message Portal Events Schema
+## Encrypted message portal events schema
  
  Events for enrypted message portal schema are trigger when when Purview Message Encryption detects an encrypted email message is accessed through the portal by an external recipient.  The mail may have been encrypted manually with a sensitivity label or an RMS template, or automatically by a transport rule, a Data Loss Prevention policy, or an auto-labeling policy.
  
