@@ -1,6 +1,6 @@
 ---
-ms.subservice: office-365-service-communications-api
 ms.service: office-365
+ms.subservice: office-365-service-communications-api
 ms.TocTitle: Office 365 Management Activity API schema
 title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
@@ -57,6 +57,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Communication compliance Exchange schema](#communication-compliance-exchange-schema)|Extends the Common schema with the properties specific to the Communication compliance offensive language model.|
 |[Reports schema](#reports-schema)|Extends the Common schema with the properties specific to all reports events.|
 |[Compliance connector schema](#compliance-connector-schema)|Extends the Common schema with the properties specific to importing non-Microsoft data by using data connectors.|
+|[Encrypted messsage portal events schema](#encrypted-message-portal-events-schema)|Extends the Common schema with the properties specific to encrypted message portal events generated from Purview Message Encryption.|
 |||
 
 ## Common schema
@@ -187,6 +188,7 @@ This article provides details on the Common schema as well as service-specific s
 |113|MS365DCustomDetection|Events related to custom detection actions in Microsoft 365 Defender.|
 |147|CoreReportingSettings|Reports settings events.|
 |148|ComplianceConnector|Events related to importing non-Microsoft data using data connectors in the Microsoft Purview compliance portal.|
+|154|OMEPortal|Encypted message portal events from Purview Message Encryption.|
 ||||
 
 ### Enum: User Type - Type: Edm.Int32
@@ -1671,6 +1673,27 @@ The intent of this audit schema is to represent the sum of all email activity th
 |ApplicationMode|Edm.String|No|Specifies how the sensitivity label was applied to the email message. The **Privileged** value indicates the label was manually applied by a user. The **Standard** value indicates the label was auto-applied by a client-side or service-side labeling process.|
 |||||
 
+## Encrypted message portal events schema
+ 
+Events for enrypted message portal schema are triggered when when Purview Message Encryption detects an encrypted email message is accessed through the portal by an external recipient. The mail may have been encrypted manually with a sensitivity label or an RMS template, or automatically by a transport rule, a Data Loss Prevention policy, or an auto-labeling policy.
+ 
+The intent of this audit schema is to represent the sum of all portal activity that involves accessing the encrypted mail by external recipients. In other words, there should be a recorded audit activity for a recipient that attempts to sign in to the portal and any activities related to accessing the encrypted mail. This includes mail sent to or from users in the organization when the mail has a sensitivity label applied to it, regardless of when or how the sensitivity label was applied. For more information, see, [Learn about encrypted message portal logs](/microsoft-365/compliance/ome-message-access-logs).
+ 
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|MessageId|Edm.String|No|The Id of the message.|
+|Recipient|Edm.String|No|Recipient email address.|
+|Sender|Edm.String|No|Email address of sender.|
+|AuthenticationMethod|Self.AuthenticationMethod|No|Authentication method when accessing the message, i.e. OTP, Yahoo, Gmail, Microsoft.|
+|AuthenticationStatus|Self.AuthenticationStatus|No|0 – Success, 1- Failure.|
+|OperationStatus|Self.OperationStatus|No|0 – Success, 1- Failure.|
+|AttachmentName|Edm.String|No|Name of the attachment.|
+|OperationProperties|Collection(Common.NameValuePair)|No|Extra properties, i.e. number of OTP passcode sent, email subject, etc.|
+|||||
+ 
+ 
+ 
+ 
 ## Communication compliance Exchange schema
 
 The communication compliance events listed in the Office 365 audit log use this schema. This includes audit records for the **SupervisoryReviewOLAudit** operation that's generated when email message content contains offensive language identified by anti-spam models with a match accuracy of \>= 99.5%.
