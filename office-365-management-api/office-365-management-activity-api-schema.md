@@ -57,7 +57,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Communication compliance Exchange schema](#communication-compliance-exchange-schema)|Extends the Common schema with the properties specific to the Communication compliance offensive language model.|
 |[Reports schema](#reports-schema)|Extends the Common schema with the properties specific to all reports events.|
 |[Compliance connector schema](#compliance-connector-schema)|Extends the Common schema with the properties specific to importing non-Microsoft data by using data connectors.|
-|[SystemSync schema](#SystemSync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
+|[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
 
 ## Common schema
 
@@ -186,7 +186,6 @@ This article provides details on the Common schema as well as service-specific s
 |113|MS365DCustomDetection|Events related to custom detection actions in Microsoft 365 Defender.|
 |147|CoreReportingSettings|Reports settings events.|
 |148|ComplianceConnector|Events related to importing non-Microsoft data using data connectors in the Microsoft Purview compliance portal.|
-
 |174|DataShareOperation|Events related to sharing of data ingested via SystemSync.|
 |181|EduDataLakeDownloadOperation|Events related to the export of SystemSync ingested data from the lake.|
 
