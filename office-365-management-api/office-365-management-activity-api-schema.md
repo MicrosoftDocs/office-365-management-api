@@ -1,6 +1,6 @@
 ---
-ms.subservice: office-365-service-communications-api
 ms.service: office-365
+ms.subservice: office-365-service-communications-api
 ms.TocTitle: Office 365 Management Activity API schema
 title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
@@ -58,7 +58,6 @@ This article provides details on the Common schema as well as service-specific s
 |[Reports schema](#reports-schema)|Extends the Common schema with the properties specific to all reports events.|
 |[Compliance connector schema](#compliance-connector-schema)|Extends the Common schema with the properties specific to importing non-Microsoft data by using data connectors.|
 |[SystemSync schema](#SystemSync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
-|||
 
 ## Common schema
 
@@ -80,7 +79,6 @@ This article provides details on the Common schema as well as service-specific s
 |ClientIP|Edm.String|Yes|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.<br/><br/>For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. <br/><br/>Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is `null`.|
 |Scope|Self.[AuditLogScope](#auditlogscope)|No|Was this event created by a hosted O365 service or an on-premises server? Possible values are **online** and **onprem**. Note that SharePoint is the only workload currently sending events from on-premises to O365.|
 |AppAccessContext|CollectionSelf.[AppAccessContext](#complex-type-appaccesscontext)|No|The application context for the user or service principal that performed the action.|
-|||||
 
 ### Enum: AuditLogRecordType - Type: Edm.Int32
 
@@ -188,6 +186,7 @@ This article provides details on the Common schema as well as service-specific s
 |113|MS365DCustomDetection|Events related to custom detection actions in Microsoft 365 Defender.|
 |147|CoreReportingSettings|Reports settings events.|
 |148|ComplianceConnector|Events related to importing non-Microsoft data using data connectors in the Microsoft Purview compliance portal.|
+
 |174|DataShareOperation|Events related to sharing of data ingested via SystemSync.|
 |181|EduDataLakeDownloadOperation|Events related to the export of SystemSync ingested data from the lake.|
 
@@ -206,7 +205,6 @@ This article provides details on the Common schema as well as service-specific s
 |6|ServicePrincipal|A service principal.|
 |7|CustomPolicy|A custom policy.|
 |8|SystemPolicy|A system policy.|
-||||
 
 ### Enum: AuditLogScope - Type: Edm.Int32
 
@@ -216,7 +214,6 @@ This article provides details on the Common schema as well as service-specific s
 |:-----|:-----|:-----|
 |0|Online|This event was created by a hosted O365 service.|
 |1|Onprem|This event was created by an on-premises server.|
-||||
 
 ### Complex Type AppAccessContext
 
@@ -245,7 +242,6 @@ This article provides details on the Common schema as well as service-specific s
 |ApplicationId|Edm.String|No|The ID of the application performing the operation.|
 |ApplicationDisplayName|Edm.String|No|The display name of the application performing the operation.|
 |IsWorkflow|Edm.Boolean|No|This is set to `True` if SharePoint Workflows triggered the audited event.|
-|||||
 
 ### Enum: ItemType - Type: Edm.Int32
 
@@ -261,7 +257,6 @@ This article provides details on the Common schema as well as service-specific s
 |8|Tenant|The item is a tenant.|
 |9|DocumentLibrary|The item is a document library.|
 |11|Page|The item is a Page.|
-||||
 
 ### Enum: EventSource - Type: Edm.Int32
 
@@ -271,7 +266,6 @@ This article provides details on the Common schema as well as service-specific s
 |:-----|:-----|:-----|
 |0|SharePoint|The event source is SharePoint.|
 |1|ObjectModel|The event source is ObjectModel.|
-||||
 
 ### Enum: SharePointAuditOperation - Type: Edm.Int32
 
@@ -478,7 +472,6 @@ The SharePoint lists and list item related events listed in the "SharePoint list
 |SourceFileName|Edm.String|No|The name of the file or folder accessed by the user.|
 |SourceFileExtension|Edm.String|No|The file extension of the file that was accessed by the user. This property is blank if the object that was accessed is a folder.|
 |UniqueSharingId|Edm.String|No|The unique sharing ID associated with the sharing operation.|
-|||||
 
 ## SharePoint schema
 
@@ -489,7 +482,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |CustomEvent|Edm.String|No|Optional string for custom events.|
 |EventData|Edm.String|No|Optional payload for custom events.|
 |ModifiedProperties|Collection(ModifiedProperty)|No|The property is included for admin events, such as adding a user as a member of a site or a site collection admin group. The property includes the name of the property that was modified (for example, the Site Admin group), the new value of the modified property (such the user who was added as a site admin), and the previous value of the modified object.|
-|||||
 
 ## Project schema
 
@@ -498,7 +490,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |Entity|Edm.String|Yes| [ProjectEntity](#project-entity) the audit was for.|
 |Action|Edm.String|Yes|[ProjectAction](#project-action) that was taken.|
 |OnBehalfOfResId|Edm.Guid|No|The resource Id the action was taken on behalf of.|
-|||||
 
 ### Enum: Project Action - Type: Edm.Int32
 
@@ -567,7 +558,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |WorkflowPhase|Represents a phase in a workflow.|
 |WorkflowStage|Represents a stage in a workflow.|
 
-
 ## Exchange Admin schema
 
 |**Parameters**|**Type**|**Mandatory**|**Description**|
@@ -578,7 +568,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |ExternalAccess|Edm.Boolean|Yes|Specifies whether the cmdlet was run by a user in your organization, by Microsoft datacenter personnel or a datacenter service account, or by a delegated administrator. The value **False** indicates that the cmdlet was run by someone in your organization. The value **True** indicates that the cmdlet was run by datacenter personnel, a datacenter service account, or a delegated administrator.|
 |OriginatingServer|Edm.String|No|The name of the server from which the cmdlet was executed.|
 |OrganizationName|Edm.String|No|The name of the tenant.|
-|||||
 
 ## Exchange Mailbox schema
 
@@ -600,7 +589,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |ClientMachineName|Edm.String|No|The machine name that hosts the Outlook client.|
 |ClientProcessName|Edm.String|No|The email client that was used to access the mailbox. |
 |ClientVersion|Edm.String|No|The version of the email client .|
-|||||
 
 ### Enum: LogonType - Type: Edm.Int32
 
@@ -615,7 +603,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |4|SystemService|A service account in the Microsoft datacenter|
 |5|BestAccess|Reserved for internal use.|
 |6|DelegatedAdmin|A delegated administrator.|
-
 
 ### ExchangeMailboxAuditGroupRecord schema
 
@@ -660,7 +647,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |:-----|:-----|:-----|:-----|
 |Id|Edm.String|Yes|The store ID of the folder object.|
 |Path|Edm.String|No|The name of the mailbox folder where the message that was accessed is located.|
-|||||
 
 ## Azure Active Directory Base schema
 
@@ -669,7 +655,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |AzureActiveDirectoryEventType|Self.[AzureActiveDirectoryEventType](#azureactivedirectoryeventtype)|Yes|The type of Azure AD event. |
 |ExtendedProperties|Collection(Common.NameValuePair)|No|The extended properties of the Azure AD event.|
 |ModifiedProperties|Collection(Common.ModifiedProperty)|No|This property is included for admin events. The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
-|||||
 
 ### Enum: AzureActiveDirectoryEventType - Type -Edm.Int32
 
@@ -689,8 +674,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |Client|Edm.String|No|Details about the client device, device OS, and device browser that was used for the of the account login event.|
 |LoginStatus|Edm.Int32|Yes|This property is from OrgIdLogon.LoginStatus directly. The mapping of various interesting logon failures could be done by alerting algorithms.|
 |UserDomain|Edm.String|Yes|The Tenant Identity Information (TII).|
-|||||
-
 ### Enum: CredentialType - Type: Edm.Int32
 
 |**Value**|**Member name**|**Description**|
@@ -706,7 +689,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |16|Device|User credential is a device.|
 |17|ForeignRealmIndex|User credential is ForeignRealmIndex.|
 
-
 ### Enum: LoginType - Type: Edm.Int32
 
 |**Value**|**Member name**|**Description**|
@@ -715,7 +697,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |1|InitialAuth|Login with initial authentication|
 |2|CookieCopy|Login with cookie.|
 |3|SilentReAuth|Login with silent re-authentication.|
-
 
 ### Enum: AuthenticationMethod - Type: Edm.Int32
 
@@ -741,7 +722,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |17|SAML20PostSimpleSign|The authentication method is a SAML20PostSimpleSign.|
 |18|SAML20Post|The authentication method is a SAML20Post.|
 |19|OneTimeCode|The authentication method is a one-time code.|
-
 
 ## Azure Active Directory schema
 
@@ -778,7 +758,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |SPN|The identity of a service principal if the action is performed by the Office 365 service.|
 |UPN|The user principal name.|
 
-
 ## Azure Active Directory Secure Token Service (STS) Logon schema
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -788,7 +767,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |DeviceProperties|Collection(Common.NameValuePair)|No|This property includes various device details, including Id, Display name, OS, Browser, IsCompliant, IsCompliantAndManaged, SessionId, and DeviceTrustType. The DeviceTrustType property can have the following values:<br/><br/>**0** - Azure AD registered<br/> **1** - Azure AD joined<br/> **2** - Hybrid Azure AD joined|
 |ErrorCode|Edm.String|No|For failed logins (where the value for the Operation property is UserLoginFailed), this property contains the Azure Active Directory STS (AADSTS) error code. For descriptions of these error codes, see [Authentication and authorization error codes](/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes). A value of `0` indicates a successful login.|
 |LogonError|Edm.String|No|For failed logins, this property contains a user-readable description of the reason for the failed login.|
-|||||
 
 ## DLP schema
 
@@ -809,7 +787,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |ExceptionInfo|Edm.String|No|Identifies reasons why a policy no longer applies and/or any information about false positive and/or override noted by the end user.|
 |PolicyDetails|Collection(Self.[PolicyDetails](#policydetails-complex-type))|Yes|Information about 1 or more policies that triggered the DLP event.|
 |SensitiveInfoDetectionIsIncluded|Boolean|Yes|Indicates whether the event contains the value of the sensitive data type and surrounding context from the source content. Accessing sensitive data requires the "Read DLP policy events including sensitive details" permission in Azure Active Directory.|
-|||||
 
 ### SharePointMetadata complex type
 
@@ -1673,6 +1650,27 @@ The intent of this audit schema is to represent the sum of all email activity th
 |ApplicationMode|Edm.String|No|Specifies how the sensitivity label was applied to the email message. The **Privileged** value indicates the label was manually applied by a user. The **Standard** value indicates the label was auto-applied by a client-side or service-side labeling process.|
 |||||
 
+## Encrypted message portal events schema
+ 
+Events for enrypted message portal schema are triggered when when Purview Message Encryption detects an encrypted email message is accessed through the portal by an external recipient. The mail may have been encrypted manually with a sensitivity label or an RMS template, or automatically by a transport rule, a Data Loss Prevention policy, or an auto-labeling policy.
+ 
+The intent of this audit schema is to represent the sum of all portal activity that involves accessing the encrypted mail by external recipients. In other words, there should be a recorded audit activity for a recipient that attempts to sign in to the portal and any activities related to accessing the encrypted mail. This includes mail sent to or from users in the organization when the mail has encryption applied to it, regardless of when or how the encryption was applied. For more information, see, [Learn about encrypted message portal logs](/microsoft-365/compliance/ome-message-access-logs).
+ 
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|MessageId|Edm.String|No|The Id of the message.|
+|Recipient|Edm.String|No|Recipient email address.|
+|Sender|Edm.String|No|Email address of sender.|
+|AuthenticationMethod|Self.AuthenticationMethod|No|Authentication method when accessing the message, i.e. OTP, Yahoo, Gmail, Microsoft.|
+|AuthenticationStatus|Self.AuthenticationStatus|No|0 – Success, 1- Failure.|
+|OperationStatus|Self.OperationStatus|No|0 – Success, 1- Failure.|
+|AttachmentName|Edm.String|No|Name of the attachment.|
+|OperationProperties|Collection(Common.NameValuePair)|No|Extra properties, i.e. number of OTP passcode sent, email subject, etc.|
+|||||
+ 
+ 
+ 
+ 
 ## Communication compliance Exchange schema
 
 The communication compliance events listed in the Office 365 audit log use this schema. This includes audit records for the **SupervisoryReviewOLAudit** operation that's generated when email message content contains offensive language identified by anti-spam models with a match accuracy of \>= 99.5%.
