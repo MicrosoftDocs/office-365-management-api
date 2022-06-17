@@ -57,7 +57,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Communication compliance Exchange schema](#communication-compliance-exchange-schema)|Extends the Common schema with the properties specific to the Communication compliance offensive language model.|
 |[Reports schema](#reports-schema)|Extends the Common schema with the properties specific to all reports events.|
 |[Compliance connector schema](#compliance-connector-schema)|Extends the Common schema with the properties specific to importing non-Microsoft data by using data connectors.|
-|[SystemSync schema](#SystemSync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
+|[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
 
 ## Common schema
 
