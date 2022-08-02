@@ -226,6 +226,8 @@ This article provides details on the Common schema as well as service-specific s
 |ClientAppId|Edm.String|No|The Id of the AAD app that performed the access on behalf of the user.|
 |ClientAppName|Edm.String|No|The name of the AAD app that performed the access on behalf of the user.|
 |CorrelationId|Edm.String|No|An identifier that can be used to correlate a specific user's actions across Microsoft 365 services.|
+|UniqueTokenId|Edm.String|No|UniqueTokenId gets set if the AAD token is available for the request. It's a unique, per-token identifier that is case-sensitive.|
+|IssuedAtTime|Edm.Date|No|"Issued At" gets set if the AAD token is available for the request and it indicates when the authentication for this AAD token occurred.|
 |||||
 
 ## SharePoint Base schema
