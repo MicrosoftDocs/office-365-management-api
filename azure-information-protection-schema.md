@@ -8,7 +8,6 @@ ms.topic: reference (API)
 ms.date: 09/12/2022
 ms.localizationpriority: high
 ---
-## AipDiscover
 
 # AIP-Audit-schema-details
 ## Azure Information Protection (AIP) scanner events
