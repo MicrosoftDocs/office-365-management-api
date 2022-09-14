@@ -9,7 +9,6 @@ ms.date: 09/12/2022
 ms.localizationpriority: high
 ---
 
-# AIP-Audit-schema-details
 ## Azure Information Protection (AIP) scanner events
 
 Audit events from the AIP Unified Labeling client
