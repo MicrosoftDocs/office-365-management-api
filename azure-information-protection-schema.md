@@ -1,4 +1,13 @@
-
+---
+ms.subservice: office-365-service-communications-api
+ms.TocTitle: Office 365 Management Activity API schema
+title: Azure Information Protection (AIP) scanner events
+description: Audit events from the AIP Unified Labeling client
+ms.ContentId: 4c8793f3-d0b4-4d62-87b4-931cc31d99f5
+ms.topic: reference (API)
+ms.date: 09/12/2022
+ms.localizationpriority: high
+---
 ## AipDiscover
 
 # AIP-Audit-schema-details
