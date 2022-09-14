@@ -21,7 +21,7 @@ The five events (also called “AuditLogRecordType”) specific to AIP listed be
 |93|AipDiscover|Azure Information Protection (AIP) scanner events.|
 |94|AipSensitivityLabelAction|AIP sensitivity label events.|
 |[95](#AipProtectionAction)|AipProtectionAction|AIP protection events.|
-|96|AipFileDeleted|AIP file deletion events.|
+|[96](#AipFileDeleted)|AipFileDeleted|AIP file deletion events|
 |97|AipHeartBeat|AIP heartbeat events.|
 
  
