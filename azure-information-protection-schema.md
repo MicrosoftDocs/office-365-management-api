@@ -127,7 +127,7 @@ Azure Information Protection (AIP) scanner events related to  Scanner events rel
 
 ## AipProtectionAction
 ### AIP protection events.
-This is event 95 - This event contains AIP protection events.
+This contains information related to AIP protection events.
 
 ## AipFileDeleted.
 ### AIP file deletion events.
