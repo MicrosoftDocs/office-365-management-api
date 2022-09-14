@@ -190,6 +190,7 @@ This article provides details on the Common schema as well as service-specific s
 |174|DataShareOperation|Events related to sharing of data ingested via SystemSync.|
 |181|EduDataLakeDownloadOperation|Events related to the export of SystemSync ingested data from the lake.|
 |183|MicrosoftGraphDataConnectOperation|Events related to extractions done by Microsoft Graph Data Connect.|
+<insert missing values, see note>
 
 ### Enum: User Type - Type: Edm.Int32
 
