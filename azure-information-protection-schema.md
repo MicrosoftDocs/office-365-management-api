@@ -132,7 +132,7 @@ This contains information related to AIP protection events.
 This event contains information related to AIP file deletion events.
 
 ## AipHeartBeat
-## AIP heartbeat events.
+The following tables contain information related to AIP heartbeat events.
 
 | Column | Potentail Value | Description |
 |:--|:--|:--|
