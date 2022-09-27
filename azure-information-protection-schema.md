@@ -25,7 +25,7 @@ The five events (also called “AuditLogRecordType”) specific to AIP listed be
 |[97](#AipHeartBeat)|AipHeartBeat|AIP heartbeat events|
 
  
-###  AipDiscover - Event type 93
+## AipDiscover
 Azure Information Protection (AIP) scanner events related to  Scanner events related to 
 
 | Column | Potential Value | Description |
