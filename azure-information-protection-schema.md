@@ -61,7 +61,7 @@ The following tables contain information related to Azure Information Protection
 |ProductVersion|2.13.49.0|Verions of the AIP Client|
 
 
-|ProtectionEventData|Potential Value|Description|
+| ProtectionEventData | Potential Value | Description |
 |:--|:--|:--|
 |ProtectionType|Template|Protection type can be template or Ad-hoc|
 |TemplateId |7243257a-99da-42f8-a690-e75383bfc9e7|TemplateID parameter to get a specific template.The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection|
