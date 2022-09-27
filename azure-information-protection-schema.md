@@ -129,7 +129,7 @@ The following tables contain information related to AIP sensitivity label events
 This contains information related to AIP protection events.
 
 ## AipFileDeleted
-This is event 96 - This event contains AIP file deletion events.
+This event contains information related to AIP file deletion events.
 
 ## AipHeartBeat.
 ## AIP heartbeat events.
