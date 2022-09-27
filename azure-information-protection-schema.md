@@ -50,7 +50,7 @@ The following tables contain information related to Azure Information Protection
 |Version|1| Version ID of the file in the operation. |
 |Workload|Aip|Stores The Office 365 service where the activity occurred.|
  
-|Common data regarding Application and Data|Potential Value | Description |  
+| Common data regarding application and data | Potential Value | Description |  
 |:--|:--|:--|
 |ApplicationId|c00e9d32-3c8d-4a7d-832b-029040e7db99|The ID of the application performing the operation.|xx|
 |ApplicationName|Microsoft Azure Information Protection Word Add-In|	Application friendly name of the application performing the operation.Outlook (for email) ,OWA (for email) ,Word (for file),Excel (for file) ,PowerPoint (for file)|
