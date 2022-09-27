@@ -26,7 +26,7 @@ The five events (also called “AuditLogRecordType”) specific to AIP listed be
 
  
 ## AipDiscover
-Azure Information Protection (AIP) scanner events related to  Scanner events related to 
+The following tables contain information related to Azure Information Protection (AIP) scanner events.
 
 | Column | Potential Value | Description |
 |:--|:--|:--|
