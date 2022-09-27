@@ -126,7 +126,6 @@ The following tables contain information related to AIP sensitivity label events
 |Scope|1|xx|
 
 ## AipProtectionAction
-### AIP protection events.
 This contains information related to AIP protection events.
 
 ## AipFileDeleted
