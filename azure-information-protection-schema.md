@@ -19,7 +19,7 @@ The five events (also called “AuditLogRecordType”) specific to AIP listed be
 |Value| Member name | Description|
 |:--|:--|:--|
 |[93](#AipDiscover)|AipDiscover|AIP scanner events|
-|94|AipSensitivityLabelAction|AIP sensitivity label events.|
+|[94](#AipSensitivityLabelAction)|AipSensitivityLabelAction|AIP sensitivity label events|
 |[95](#AipProtectionAction)|AipProtectionAction|AIP protection events.|
 |[96](#AipFileDeleted)|AipFileDeleted|AIP file deletion events|
 |[97](#AipHeartBeat)|AipHeartBeat|AIP heartbeat events|
