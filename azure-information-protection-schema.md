@@ -131,7 +131,7 @@ This contains information related to AIP protection events.
 ## AipFileDeleted
 This event contains information related to AIP file deletion events.
 
-## AipHeartBeat.
+## AipHeartBeat
 ## AIP heartbeat events.
 
 | Column | Potentail Value | Description |
