@@ -41,7 +41,7 @@ The following tables contain information related to Azure Information Protection
 |Scope| 1|Was this event created by a hosted O365 service or an on-premises server? Possible values are online and onprem. Note that SharePoint is the only workload currently sending events from on-premises to O365.|
 |SensitiveInfoTypeData|[]| Stores the datatype of the Sensitive Info Type Data|
 
-|SensitivityLabelEventData|Potential  Value | Description |  
+| SensitivityLabelEventData  |Potential Value | Description |  
 |:--|:--|:--|
 |SensitivityLabelId|dd861593-4fe9-4cd7-8b05-6cf364b34fd4| The current MIP sensitivity label GUID.  You can get the full list use cmdlt Get-Label to get the full values of the GUID|
 |UserId| AdeleV@M365x23987777.OnMicrosoft.com| The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see The app@sharepoint user in audit records. |
