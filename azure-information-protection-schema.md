@@ -69,7 +69,7 @@ The following tables contain information related to Azure Information Protection
 |ProtectionOwner|adelev@m365x23987777.onmicrosoft.com|Rights Management owner in UPN format|
 
 ## AipSensitivityLabelAction
-### AIP sensitivity label events - Event type 94
+The following tables contain information related to AIP sensitivity label events.
 
 | Column | Potential Value | Description |
 |:--|:--|:--|
