@@ -11,7 +11,7 @@ ms.localizationpriority: high
 
 # Azure Information Protection (AIP) scanner events
 
-The AIP Unified Labeling client includes the Add-in for Office, the Scanner, the Viewer for Windows, the client PowerShell, and the Classify-and-Protect shell extension for Windows. All these components generate audit events that show up in the Office 365 activity logs and can be queried using the Office 365 Management Activity API. [click here](https://docs.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference)
+The AIP Unified Labeling client includes the Add-in for Office, the Scanner, the Viewer for Windows, the client PowerShell, and the Classify-and-Protect shell extension for Windows. All these components generate audit events that appear in the Office 365 activity logs and can be queried using the Office 365 Management Activity API. For more information, see the [Office 365 Management Activity API reference](/office/office-365-management-api/office-365-management-activity-api-reference).
 
 The five events (also called “AuditLogRecordType”) specific to AIP listed below, and more details about each can be found within the [API reference](https://docs.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-schema#auditlogrecordtype) 
 
