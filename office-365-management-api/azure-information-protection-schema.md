@@ -21,7 +21,7 @@ The five events (also called “AuditLogRecordType”) specific to AIP listed be
 |[93](#aipdiscover)|AipDiscover|AIP scanner events|
 |[94](#aipsensitivitylabelaction)|AipSensitivityLabelAction|AIP sensitivity label events|
 |[95](#aipprotectionaction)|AipProtectionAction|AIP protection events|
-|[96](#aifiledeleted)|AipFileDeleted|AIP file deletion events|
+|[96](#aipfiledeleted)|AipFileDeleted|AIP file deletion events|
 |[97](#aipheartbeat)|AipHeartBeat|AIP heartbeat events|
  
 ## AipDiscover
@@ -133,21 +133,21 @@ The following tables contain information related to AIP heartbeat events.
 
 | Column | Example value | Description |
 |:--|:--|:--|
-|ApplicationId|c00e9d32-3c8d-4a7d-832b-029040e7db9| The application that where the activity happened and displayed in GUID.|
-|ApplicationName|Microsoft Azure Information Protection Word Add-In|	Application friendly name of the application performing the operation.Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file).|
-|ProcessName|WINWORD| Process name of the Office application. |
-|Platform|1| The platform on which the activity happened. For example, Windows. |
-|DeviceName| AdeleVanceWindo| Device the event was recorded |
-|ProductVersion|2.13.49.0| Version of the Azure Information Protection client that performed the audit action.|
-|UserId| AdeleV@M365x23987777.OnMicrosoft.com| The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the app@sharepoint user in audit records. |
-|ClientIP| 20.237.230.167|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.  For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is null.The IP address is displayed in either an IPv4 or IPv6 address format.|
-|Id|22041f38-45e3-25d3-50f5-043590dae98c||GUID of the current record |
-|RecordType|97|Shows the value of Label Action.The operation type indicated by the record. For a complete updated list and full description of the Log RecordType, please refer to this article. Here we are only listing the relevant MIP Record types.|
+|ApplicationId | c00e9d32-3c8d-4a7d-832b-029040e7db9 | The application that where the activity happened and displayed in GUID.|
+|ApplicationName | Microsoft Azure Information Protection Word Add-In |	Application friendly name of the application performing the operation.Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file).|
+|ProcessName WINWORD | Process name of the Office application. |
+|Platform | 1 | The platform on which the activity happened. For example, Windows. |
+|DeviceName | AdeleVanceWindo | Device the event was recorded on. |
+|ProductVersion |2.13.49.0 | Version of the Azure Information Protection client that performed the audit action.|
+|UserId | AdeleV@M365x23987777.OnMicrosoft.com | The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the app@sharepoint user in audit records. |
+|ClientIP | 20.237.230.167|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is null.The IP address is displayed in either an IPv4 or IPv6 address format.|
+|Id|22041f38-45e3-25d3-50f5-043590dae98c| GUID of the current record |
+|RecordType|97|Shows the value of Label Action. The operation type indicated by the record. For a complete updated list and full description of the Log RecordType, please refer to this article. Here we are only listing the relevant MIP Record types.|
 |CreationTime|2022-08-3T16:14:49| The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
-|Operation|HeartBeat|The name of the user or admin activity. For a description of the most common operations/activities, see  Search the audit log in the Office 365 Protection Center ([title](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide)|
+|Operation|HeartBeat|The name of the user or admin activity. For a description of the most common operations/activities, see Search the audit log in the Office 365 Protection Center ([title](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide)|
 |OrganizationId| 4b080626-0acc-4940-8af8-bfc836ff1a59|The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.|
-|UserType| 0| The type of user that performed the operation. See the UserType table for details on the types of users.0 = Regular ,1 = Reserved ,2 = Admin ,3 = DcAdmin ,4 = Systeml ,5 = Application ,6 = ServicePrincipal ,7 = CustomPolicy,8 = SystemPolicy|
+|UserType| 0| The type of user that performed the operation. See the UserType table for details on the types of users.</br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy|
 |UserKey| AdeleV@M365x23987777.OnMicrosoft.com| An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.| 
 |Workload|Aip|Stores the The Office 365 service where the activity occurred.|
 |Version|1|Version of the Azure Information Protection client that performed the audit action|
-|Scope|1|xx|
+|Scope|1| Specifies scope.|
