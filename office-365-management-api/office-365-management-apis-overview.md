@@ -1,5 +1,4 @@
 ---
-ms.subservice: office-365-service-communications-api
 ms.service: office-365
 ms.TocTitle: Office 365 Management APIs overview
 title: Office 365 Management APIs overview

@@ -1,5 +1,4 @@
 ---
-ms.subservice: office-365-service-communications-api
 ms.TocTitle: Office 365 Management Activity API schema
 title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
