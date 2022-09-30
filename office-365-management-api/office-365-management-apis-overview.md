@@ -5,7 +5,7 @@ ms.TocTitle: Office 365 Management APIs overview
 title: Office 365 Management APIs overview
 description: Provides a single extensibility platform for all Office 365 customers' and partners' management tasks, including service communications, security, compliance, reporting, and auditing.
 ms.ContentId: 4fca85f9-efa6-3b4b-b10d-a07cb31f803f
-ms.topic: reference (API)
+ms.topic: reference
 ms.date: 09/28/2016
 ms.localizationpriority: high
 ---
