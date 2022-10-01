@@ -634,5 +634,5 @@ When the service encounters an error, it will report the error response code to 
 |AF20053|Only one language may be present in the Accept-Language header.|
 |AF20054|Invalid syntax in Accept-Language header.|
 |AF429|Too many requests. Method={0}, PublisherId={1}<br/><br/>{0} = HTTP Method<br/><br/>{1} = Tenant GUID used as PublisherIdentifier</p></li></ul>|
-|AF50000|An internal error occurred. Retry the request.|
+|AF50000|An internal error occurred. Retry the request.| 
 
