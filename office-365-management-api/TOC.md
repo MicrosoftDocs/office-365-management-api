@@ -5,3 +5,4 @@
 ## [Management Activity API reference](office-365-management-activity-api-reference.md)
 ## [Management Activity API schema](office-365-management-activity-api-schema.md)
 ## [Management Activity API FAQs and troubleshooting](troubleshooting-the-office-365-management-activity-api.md)
+## [Azure Information Protection Schema](azure-information-protection-schema.md)
