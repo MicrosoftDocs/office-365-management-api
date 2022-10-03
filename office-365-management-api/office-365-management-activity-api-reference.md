@@ -1,11 +1,9 @@
 ---
-ms.subservice: office-365-service-communications-api
-ms.service: office-365
 ms.TocTitle: Office 365 Management Activity API reference
 title: Office 365 Management Activity API reference
 description: Use the Office 365 Management Activity API to retrieve information about user, admin, system, and policy actions and events from Office 365 and Azure AD activity logs. 
 ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
-ms.topic: reference (API)
+ms.topic: reference
 ms.date: 
 ms.localizationpriority: high
 ---
