@@ -5,7 +5,7 @@ ms.TocTitle: Office 365 Management Activity API schema
 title: Azure Information Protection (AIP) scanner events
 description: Audit events from the Azure Information Protection (AIP) Unified Labeling client
 ms.ContentId: 4c8793f3-d0b4-4d62-87b4-931cc31d99f5
-ms.topic: reference (API)
+ms.topic: reference
 ms.date: 09/26/2022
 ms.localizationpriority: high
 ---
@@ -28,7 +28,7 @@ The five events (also called “AuditLogRecordType”) specific to AIP listed be
 
 The following tables contain information related to Azure Information Protection (AIP) scanner events.
 
-| Column | Description |
+| Event | Description |
 |:--|:--|
 |ClientIP | The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is null. The IP address is displayed in either an IPv4 or IPv6 address format.|
 |CreationTime | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
@@ -62,31 +62,31 @@ The following tables contain information related to Azure Information Protection
 
 The following tables contain information related to AIP sensitivity label events.
 
-| Column | Description |
-|:--|:--|
-|PSComputerName |   Computer Name |
-|RunspaceId |   The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user.|
-|PSShowComputerName |   The value is False for documented edited in Office 365.  |
-|RecordType|  | Shows the value of Lable Action. The operation type indicated by the record. For more information, see the [full list of record types](/office/office-365-management-api/office-365-management-activity-api-schema#auditlogrecordtype).|
-|CreationDate|  The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
-|UserId|  The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the app@sharepoint user in audit records. |
-|Operation| The operation type for the audit log.The name of the user or admin activity. For a description of the most common operations/activities:</br>SensitivityLabelApplied, SensitivityLabelUpdated, SensitivityLabelRemoved, SensitivityLabelPolicyMatched, SensitivityLabeledFileOpened.|
-|Identity|   The identity of the user or service to be authenticated.|
-|IsValid|  Boolean | 
-|ObjectState|  Specifies the state of the object.|
-|SensitiveInfoTypeData|Stores the datatype of the Sensitive Info Type Data |
-|ProtectionType|Protection type can be template or ad-hoc.|
-|TemplateId |TemplateID parameter to get a specific template.The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.|
-|IsProtected|Whether protected: True/False|
-|IsProtectedBefore|	Whether the content was protected before change: True/False|
-|ApplicationId| Corresponds to the Azure AD Application ID. |
-|ApplicationName| Application friendly name of the application performing the operation.</br>Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file).|
-|ProcessName| Process that hosts MIP SDK.|
-|Platform|	Device platform (Win, OSX, Android, iOS). |
-|DeviceName|The name of the user's device.|
-|Location| The location of the document with respect to the user's device. The possible values are unknown, localMedia, removableMedia, fileshare and cloud.|
-|ProductVersion| Version of the Azure Information Protection client that performed the audit action.|
-|DataState| Specifies the state of the data.|
+| Event                | Description |
+|:---------------------|:--..........|
+|PSComputerName        | Computer Name |
+|RunspaceId            | The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user.|
+|PSShowComputerName    | The value is False for documented edited in Office 365. |
+|RecordType            | Shows the value of Lable Action. The operation type indicated by the record. For more information, see the [full list of record types](/office/office-365-management-api/office-365-management-activity-api-schema#auditlogrecordtype).|
+|CreationDate          | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
+|UserId                | The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the app@sharepoint user in audit records. |
+|Operation             | The operation type for the audit log.The name of the user or admin activity. For a description of the most common operations/activities:</br>SensitivityLabelApplied, SensitivityLabelUpdated, SensitivityLabelRemoved, SensitivityLabelPolicyMatched, SensitivityLabeledFileOpened.|
+|Identity              | The identity of the user or service to be authenticated.|
+|IsValid               | Boolean | 
+|ObjectState           | Specifies the state of the object.|
+|SensitiveInfoTypeData | Stores the datatype of the Sensitive Info Type Data |
+|ProtectionType        | Protection type can be template or ad-hoc.|
+|TemplateId     | TemplateID parameter to get a specific template.The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.|
+|IsProtected Whether protected: True/False|
+|IsProtectedBefore     |	Whether the content was protected before change: True/False|
+|ApplicationId         | Corresponds to the Azure AD Application ID. |
+|ApplicationName| Application friendly name of the application performing the operation.</br>Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file). |
+|ProcessName           | Process that hosts MIP SDK.|
+|Platform              |	Device platform (Win, OSX, Android, iOS). |
+|DeviceName            |The name of the user's device.|
+|Location              | The location of the document with respect to the user's device. The possible values are unknown, localMedia, removableMedia, fileshare and cloud.|
+|ProductVersion        | Version of the Azure Information Protection client that performed the audit action.|
+|DataState             | Specifies the state of the data.|
 
 ## AipProtectionAction
 
@@ -100,7 +100,7 @@ This event contains information related to AIP file deletion events.
 
 The following tables contain information related to AIP heartbeat events.
 
-| Column| Description |
+| Event | Description |
 |:--|:--|
 |PSComputerName| Computer Name |
 |RunspaceId| The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user.|
