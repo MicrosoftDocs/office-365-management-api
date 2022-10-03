@@ -90,19 +90,19 @@ The following sections summarizes the most common questions that customers have 
 
 - [Questions about third-party tools and clients](#questions-about-third-party-tools-and-clients)
 
-- [Enabling unified audit logging in Office 365](#enabling-unified-audit-logging-in-office-365)
+- [Enable unified audit logging in Office 365](#enable-unified-audit-logging-in-office-365)
 
-- [Connecting to the API](#connecting-to-the-api)
+- [Connect to the API](#connect-to-the-api)
 
-- [Checking your subscriptions](#checking-your-subscriptions)
+- [Check your subscriptions](#check-your-subscriptions)
 
-- [Creating a new subscription](#creating-a-new-subscription)
+- [Create a new subscription](#create-a-new-subscription)
 
-- [Checking content availability](#checking-content-availability)
+- [Check content availability](#check-content-availability)
 
-- [Using webhooks](#using-webhooks)
+- [Use webhooks](#use-webhooks)
 
-- [Requesting content blobs and throttling](#requesting-content-blobs-and-throttling)
+- [Request content blobs and throttling](#request-content-blobs-and-throttling)
 
 - [Service tags](#service-tags)
 
