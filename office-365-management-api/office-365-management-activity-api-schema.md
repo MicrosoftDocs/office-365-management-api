@@ -5,7 +5,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
-ms.date: 08/02/2022
+ms.date: 09/30/2022
 ms.localizationpriority: high
 ---
 
@@ -190,6 +190,7 @@ This article provides details on the Common schema as well as service-specific s
 |174|DataShareOperation|Events related to sharing of data ingested via SystemSync.|
 |181|EduDataLakeDownloadOperation|Events related to the export of SystemSync ingested data from the lake.|
 |183|MicrosoftGraphDataConnectOperation|Events related to extractions done by Microsoft Graph Data Connect.|
+|186|PowerPagesSite|Activities related to Power Pages site.|
 
 ### Enum: User Type - Type: Edm.Int32
 
