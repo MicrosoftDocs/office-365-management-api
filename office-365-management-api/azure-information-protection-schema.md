@@ -28,7 +28,7 @@ The five events (also called “AuditLogRecordType”) specific to AIP listed be
 
 The following tables contain information related to Azure Information Protection (AIP) scanner events.
 
-| Column | Description |
+| Event | Description |
 |:--|:--|
 |ClientIP | The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is null. The IP address is displayed in either an IPv4 or IPv6 address format.|
 |CreationTime | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
@@ -62,7 +62,7 @@ The following tables contain information related to Azure Information Protection
 
 The following tables contain information related to AIP sensitivity label events.
 
-| Column | Description |
+| Event | Description |
 |:--|:--|
 |PSComputerName |   Computer Name |
 |RunspaceId |   The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user.|
@@ -100,7 +100,7 @@ This event contains information related to AIP file deletion events.
 
 The following tables contain information related to AIP heartbeat events.
 
-| Column| Description |
+| Event | Description |
 |:--|:--|
 |PSComputerName| Computer Name |
 |RunspaceId| The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user.|
