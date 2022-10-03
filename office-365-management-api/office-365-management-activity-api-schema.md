@@ -325,6 +325,7 @@ This article provides details on the Common schema as well as service-specific s
 |FileModified|User or system account modifies the content or the properties of a document located on a SharePoint or OneDrive for Business site.|
 |FileMoved|User moves a document from its current location on a SharePoint or OneDrive for Business site to a new location.|
 |FilePreviewed|User previews a document on a SharePoint or OneDrive for Business site.|
+|FileRecycled|User moves a document into the SharePoint or OneDrive Recycle Bin.|
 |FileRenamed|User renames a document on a SharePoint or OneDrive for Business site.|
 |FileRestored|User restores a document from the recycle bin of a SharePoint or OneDrive for Business site. |
 |FileSyncDownloadedFull|User downloads a file to their computer from a SharePoint document library or OneDrive for Business using OneDrive sync app (OneDrive.exe).|
@@ -340,6 +341,7 @@ This article provides details on the Common schema as well as service-specific s
 |FolderDeletedSecondStageRecycleBin|User deletes a folder from the second-stage recycle bin on a SharePoint or OneDrive for Business site.|
 |FolderModified|User modifies a folder on a SharePoint or OneDrive for Business site. This event includes folder metadata changes, such as tags and properties.|
 |FolderMoved|User moves a folder from a SharePoint or OneDrive for Business site.|
+|FolderRecycled|User moves a folder into the SharePoint or OneDrive Recycle Bin.|
 |FolderRenamed|User renames a folder on a SharePoint or OneDrive for Business site.|
 |FolderRestored|User restores a folder from the Recycle Bin on a SharePoint or OneDrive for Business site.|
 |GroupAdded|Site administrator or owner creates a group for a SharePoint or OneDrive for Business site, or performs a task that results in a group being created. For example, the first time a user creates a link to share a file, a system group is added to the user's OneDrive for Business site. This event can also be a result of a user creating a link with edit permissions to a shared file.|
