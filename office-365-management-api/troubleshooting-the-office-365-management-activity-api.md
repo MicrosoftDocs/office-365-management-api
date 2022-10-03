@@ -227,9 +227,9 @@ Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://<YOUR_API_EN
 ```
 
 > [!NOTE]
-> Remember that `$headerParams` was populated in the first part of the script listed in the [Connecting to the API](#connecting-to-the-api) section in this article.
+> Remember that `$headerParams` was populated in the first part of the script listed in the [Connect to the API](#connect-to-the-api) section in this article.
 
-The previous code will create a new subscription to the Audit.AzureActiveDirectory content type, with a webhook that is null. You can then check your subscriptions using the code in the [Checking your subscriptions](#checking-your-subscriptions) section in this article.
+The previous code will create a new subscription to the Audit.AzureActiveDirectory content type, with a webhook that is null. You can then check your subscriptions using the code in the [Check your subscriptions](#check-your-subscriptions) section in this article.
 
 ### Check content availability
 
@@ -310,7 +310,7 @@ It's important to distinguish between the /notifications operation and the /cont
 
 ### Request content blobs and throttling
 
-After you've obtained a list of content URIs, you must request the blobs specified by the URIs. The following is an example of requesting a content blob (using the manage.office.com API endpoint for Enterprise organizations) using PowerShell. This example assumes you have already used the previous example in the [Getting an access token](#getting-an-access-token) section in this article to get an access token and have populated the `$headerParams` variable appropriately.
+After you've obtained a list of content URIs, you must request the blobs specified by the URIs. The following is an example of requesting a content blob (using the manage.office.com API endpoint for Enterprise organizations) using PowerShell. This example assumes you have already used the previous example in the [Get an access token](#get-an-access-token) section in this article to get an access token and have populated the `$headerParams` variable appropriately.
 
 ```powershell
 # Get a content blob
