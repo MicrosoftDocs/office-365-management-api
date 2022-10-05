@@ -14,13 +14,17 @@ Use the Office 365 Management Activity API to retrieve information about user, a
 
 You can use the actions and events from the Office 365 and Microsoft Azure Active Directory audit and activity logs to create solutions that provide monitoring, analysis, and data visualization. These solutions give organizations greater visibility into actions taken on their content. These actions and events are also available in the Office 365 Activity Reports. For more information, see [Search the audit log in Microsoft 365](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance).
 
+> [!TIP]
+> If you're interested in creating custom reports from Audit Logs, you might find the following blogs helpful.
+> - [Microsoft Purview audit log activities via O365 Management API - Part 1](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/microsoft-365-compliance-audit-log-activities-via-o365/ba-p/2957171)
+> - [Microsoft Purview audit log activities via O365 Management API - Part 2](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/microsoft-365-compliance-audit-log-activities-via-o365/ba-p/2957297) 
+
 The Office 365 Management Activity API is a REST web service that you can use to develop solutions using any language and hosting environment that supports HTTPS and X.509 certificates. The API relies on Azure AD and the OAuth2 protocol for authentication and authorization. To access the API from your application, you'll need to first register it in Azure AD and configure it with appropriate permissions. This will enable your application to request the OAuth2 access tokens it needs to call the API. For more information, see [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md).
 
 For information about the data that the Office 365 Management Activity API returns, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md).
 
 > [!IMPORTANT]
 > Before you can access data through the Office 365 Management Activity API, you must enable unified audit logging for your Office 365 organization. You do this by turning on the Office 365 audit log. For instructions, see [Turn Office 365 audit log search on or off](/microsoft-365/compliance/turn-audit-log-search-on-or-off).
-
 
 ## Working with the Office 365 Management Activity API
 
@@ -42,10 +46,8 @@ To begin retrieving content blobs for a tenant, you first a create subscription 
 
 After you create a subscription, you can poll regularly to discover new content blobs that are available for download, or you can register a webhook endpoint with the subscription and we will send notifications to this endpoint as new content blobs are available.
 
-
 > [!NOTE] 
 > When a subscription is created, it can take up to 12 hours for the first content blobs to become available for that subscription. The content blobs are created by collecting and aggregating actions and events across multiple servers and datacenters. As a result of this distributed process, the actions and events contained in the content blobs will not necessarily appear in the order in which they occurred. One content blob can contain actions and events that occurred prior to the actions and events contained in an earlier content blob. We are working to decrease the latency between the occurrence of actions and events and their availability within a content blob, but we can't guarantee that they appear sequentially.
-
 
 > [!NOTE] 
 > DLP sensitive data is only available in the activity feed API to users that have been granted “Read DLP sensitive data” permissions. For more on Data Loss Prevention (DLP) see [Overview of Data Loss Prevention Policies](https://support.office.com/article/Overview-of-data-loss-prevention-policies-1966b2a7-d1e2-4d92-ab61-42efbb137f5e)
@@ -146,7 +148,6 @@ Authorization: Bearer eyJ0e...Qa6wg
 
 ```
 
-
 #### Sample response
 
 ```json
@@ -191,13 +192,11 @@ HTTP/1.1 200 OK
 
 ```
 
-
 ## Stop a subscription
 
 This operation stops a subscription to the specified content type. 
 
 When a subscription is stopped, you will no longer receive notifications and you will not be able to retrieve available content. If the subscription is later restarted, you will have access to new content from that point forward. You will not be able to retrieve content that was available between the time the subscription was stopped and restarted.
-
 
 |Subscription|Description|
 |:-----|:-----|
@@ -221,7 +220,6 @@ Authorization: Bearer eyJ0e...Qa6wg
 HTTP/1.1 200 OK
 ```
 
-
 ## List current subscriptions
 
 This operation returns a collection of the current subscriptions together with the associated webhooks.
@@ -232,7 +230,6 @@ This operation returns a collection of the current subscriptions together with t
 |**Parameters**|PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
 |**Body**|(empty)||
 |**Response**|JSON array|Each subscription will be represented by a JSON object with three properties:<ul><li>**contentType**: Indicates the content type.</li><li>**status**: Indicates the status of the subscription.</li><li>**webhook**: Indicates the configured webhook, together with the status (enabled, disabled, expired) of the webhook.  If a subscription does not have a webhook, the webhook property will be present but with null value.|
-
 
 #### Sample request
 
@@ -270,11 +267,9 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-
 ## List available content
 
 This operation lists the content currently available for retrieval for the specified content type. The content is an aggregation of actions and events harvested from multiple servers across multiple datacenters. The content will be listed in the order in which the aggregations become available, but the events and actions within the aggregations are not guaranteed to be sequential. An error is returned if the subscription status is disabled.
-
 
 |Subscription|Description|
 |:-----|:-----|
@@ -283,7 +278,6 @@ This operation lists the content currently available for retrieval for the speci
 |PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
 |startTime endTime|Optional datetimes (UTC) indicating the time range of content to return, based on when the content became available. The time range is inclusive with respect to startTime (startTime <= contentCreated) and exclusive with respect to endTime (contentCreated < endTime), so that non-overlapping, incrementing time intervals can used to page through available content.<ul><li>YYYY-MM-DD</li><li>YYYY-MM-DDTHH:MM</li><li>YYYY-MM-DDTHH:MM:SS</ul>Both must be specified (or both omitted) and they must be no more than 24 hours apart, with the start time no more than 7 days in the past. By default, if startTime and endTime are omitted, then the content available in the last 24 hours is returned.<p>**NOTE**: Even though it is possible to specify a startTime and endTime more than 24 hours apart, this is not recommended. Furthermore, if you do get any results in response to a request for more than 24 hours, these could be partial results and should not be taken into account. The request should be issued with an interval of no more than 24 hours between the startTime and endTime.</p>|
 |**Response**|JSON array - The available content will be represented by JSON objects with the following properties:<ul><li>**contentType**: Indicates the content type.</li><li>**contentId**: An opaque string that uniquely identifies the content.</li><li> **contentUri**: The URL to use when retrieving the content.</li><li>**contentCreated**: The datetime when the content was made available.</li><li> **contentExpiration**: The datetime after which the content will no longer be available for retrieval.|
-
 
 #### Sample request
 
@@ -316,7 +310,6 @@ Content-Type: application/json; charset=utf-8
 
 When listing available content for a time range, the number of results returned is limited to prevent response timeouts. If there are more results in the specified time range than can be returned in single response, the results will be truncated and a header will be added to the response indicating the URL to use to retrieve the next page of results. The URL will contain the same  _startTime_ and _endTime_ parameters that were specified in the original request, together with a parameter indicating the internal ID of the next page. If _startTime_ and _endTime_ were not specified in the original request, they will be set to reflect the 24-hour interval that preceded the original request.
 
-
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
@@ -325,7 +318,6 @@ NextPageUri: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscrip
 ```
 
 To list all available content for a specified time range, you might need to retrieve multiple pages until a response without the **NextPageUri** header is received.
-
 
 ## Receiving notifications
 
@@ -375,7 +367,7 @@ Webhook-AuthID: o365activityapinotification
 
 The notification system sends notifications as new content becomes available. If we encounter excessive failures when sending notifications, our retry mechanism will exponentially increase the time between retries. If we continue to encounter failures, we reserve the right to disable the webhook and stop sending notifications to it altogether. The /start operation can be used to re-enable a disabled webhook.
 
-## Retrieving content
+## Retrieve content
 
 To retrieve a content blob, make a GET request against the corresponding content URI that is included in the list of available content and in the notifications sent to a webhook. The returned content will be a collection of one more actions or events in JSON format.
 
@@ -487,7 +479,6 @@ This operation lists all notification attempts for the specified content type. I
 
 You can use this operation to help investigate issues related to webhooks and notifications, but you should not use it to determine what content is currently available for retrieval. Use the /content operation instead. We return an error if the subscription status is disabled.
 
-
 |Subscription|Description|
 |:-----|:-----|
 |**Path**| `/subscriptions/notifications?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`|
@@ -526,7 +517,6 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-
 ### Pagination
 
 When listing notification history for a time range, the number of results returned is limited to prevent response timeouts. If there are more results in the specified time range than can be returned in a single response, the results are truncated and a header is added to the response indicating the URL to use to retrieve the next page of results. The URL will contain the same  _startTime_ and _endTime_ parameters that were specified in the original request, together with a parameter indicating the internal ID of the next page. If _startTime_ and _endTime_ were not specified in the original request, they will be set to reflect the 24-hour interval that preceded the original request.
@@ -544,8 +534,7 @@ To list all available content for a specified time range, you might need to retr
 
 This operation retrieves friendly names for objects in the data feed identified by guids. Currently "DlpSensitiveType" is the only supported object. 
 
-
-||Subscription|Description|
+|Object|Subscription|Description|
 |:-----|:-----|:-----|
 |**Path**| `/resources/dlpSensitiveTypes`||
 |**Parameters**|PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
