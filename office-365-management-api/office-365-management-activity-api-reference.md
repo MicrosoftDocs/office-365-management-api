@@ -5,7 +5,7 @@ description: Use the Office 365 Management Activity API to retrieve information 
 ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference
 ms.date: 10/04/2022
-ms.localizationpriority: high
+ms.localizationpriority: med
 ---
 
 # Office 365 Management Activity API reference
