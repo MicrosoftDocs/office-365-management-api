@@ -1851,7 +1851,6 @@ The following tables contain information related to Azure Information Protection
 |Id| GUID of the current record. |
 |ObjectId | File full path (URL). For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user.|
 |Operation | Describes type of access. |
-
 |OrganizationId | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.|
 |RecordType | The type of operation indicated by the record. See the AuditLogRecordType table for details on the types of audit log records. For a complete updated list and full description of the Log RecordType, see the [Microsoft 365 Compliance audit log activities via O365 Management API](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/microsoft-365-compliance-audit-log-activities-via-o365/ba-p/2957297) blog post. Here we only list the relevant MIP Record types.|
 |Scope | Was this event created by a hosted O365 service or an on-premises server? Possible values are online and onprem. Note that SharePoint is the only workload currently sending events from on-premises to O365.|
