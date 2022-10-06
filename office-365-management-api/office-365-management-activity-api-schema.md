@@ -1894,7 +1894,8 @@ The following tables contain information related to AIP sensitivity label events
 |ObjectState           | Specifies the state of the object.|
 |SensitiveInfoTypeData | Stores the datatype of the Sensitive Info Type Data |
 |ProtectionType        | Protection type can be template or ad-hoc.|
-|TemplateId     | TemplateID parameter to get a specific template.The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.|
+|TemplateId     | TemplateID parameter to get a specific template. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.|
+
 |IsProtected Whether protected: True/False|
 |IsProtectedBefore     |	Whether the content was protected before change: True/False|
 |ApplicationId         | Corresponds to the Azure AD Application ID. |
