@@ -1848,7 +1848,6 @@ The following tables contain information related to Azure Information Protection
 |ClientIP | The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is null. The IP address is displayed in either an IPv4 or IPv6 address format.|
 |CreationTime | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
 |DataState | Describes the state of the data. |
-
 |Id| GUID of the current record. |
 |ObjectId | File full path (URL). For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user.|
 |Operation | Describes type of access. |
