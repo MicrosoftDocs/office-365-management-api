@@ -190,7 +190,7 @@ This article provides details on the Common schema as well as service-specific s
 |181|EduDataLakeDownloadOperation|Events related to the export of SystemSync ingested data from the lake.|
 |183|MicrosoftGraphDataConnectOperation|Events related to extractions done by Microsoft Graph Data Connect.|
 |186|PowerPagesSite|Activities related to Power Pages site.|
-|187|MicrosoftGraphDataConnectConsent|Events related to admin consent actions done by Microsoft Graph Data Connect.|
+|187|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -1954,25 +1954,25 @@ The following table contain information related to AIP heartbeat events.
 |:-----|:-----|:-----|:-----|
 |ApplicationId|Edm.Guid|Yes|The application identification.|
 |ApplicationVersion|Edm.String|Yes|The application version.|
-|AppRegistrationTenantId|Edm.Guid|Yes|The application tenant id.|
-|Approver|Edm.String|Yes|The approver email.|
+|AppRegistrationTenantId|Edm.Guid|Yes|The application registration tenant id.|
+|Approver|Edm.String|Yes|The approver's user principal name.|
 |ApprovalUpdatedDateInUTC|Edm.Date|Yes|The update date time in UTC.|
 |ApprovalExpiryDateInUTC|Edm.Date|Yes|The expiry date time in UTC.|
-|ApprovalValidDays|Edm.Int32|Yes|The approval valid days.|
-|DestinationSinks|Edm.String|Yes|The destinatino sinks.|
-|DestinationTenantId|Edm.Guid|Yes|The destinantion tenant id.|
-|Reason|Edm.String|Yes|The consent operation reason.|
+|ApprovalValidDays|Edm.Int32|Yes|The number of days from update for which the approval will be valid.|
+|DestinationSinks|Edm.String|Yes|The destination sinks.|
+|DestinationTenantId|Edm.Guid|Yes|The destination tenant id.|
+|Reason|Edm.String|No|The reason provided by the admin who performed the operation.|
 |State|Edm.String|Yes|The consent state.|
-|Datasets|CollectionSelf.[MGDCDataset](#complex-type-mgdcdataset)|Yes|The list of datasets under the operation.|
+|Datasets|CollectionSelf.[MGDCDataset](#complex-type-mgdcdataset)|Yes|Details on the datasets which were consented to as part of this operation.|
 
 #### Complex Type MGDCDataset
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|DatasetName|Edm.String|Yes|The dataset name.|
-|DatasetColumns|Edm.String|Yes|The dataset column list.|
-|DenyGroups|Edm.String|Yes|The deny groups list.|
-|Scope|Edm.String|Yes|The scope.|
-|ScopeFiltersUris|Edm.String|Yes|The scope filter URIs list.|
-|ScopeList|Edm.String|Yes|The scope list.|
-|PrivacyPolicyType|Edm.String|Yes|The privacy policy.|
+|DatasetName|Edm.String|Yes|The name of the dataset in the consent operation.|
+|DatasetColumns|Edm.String|Yes|The list of columns for the dataset in the consent operation.|
+|DenyGroups|Edm.String|No|The deny groups list for the dataset in the consent operation.|
+|Scope|Edm.String|Yes|The scope types for the dataset in the consent operation. Possible values are All, List and FilterUri.|
+|ScopeFiltersUris|Edm.String|No|The scope filter URI for the dataset in the consent operation.|
+|ScopeList|Edm.String|No|The scope group list for the dataset in the consent operation.|
+|PrivacyPolicyType|Edm.String|Yes|The privacy policy types for the dataset in the consent operation. Possible values are None and DenyList.|
