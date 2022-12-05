@@ -1905,11 +1905,68 @@ The following table contains information related to AIP sensitivity label events
 
 ## AipProtectionAction
 
-This contains information related to AIP protection events.
+| Event | Description |
+|:--|:--|
+|PSComputerName| Computer name |
+|RunspaceId    | The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user.|
+|PSShowComputerName| The value is false for a documented edited in Office 365.|
+|RecordType        | Shows the value of Label Action. The operation type indicated by the record. Here we are only listing the relevant MIP Record types. For more information, see the [full list of record types](/office/office-365-management-api/office-365-management-activity-api-schema#auditlogrecordtype).|
+|CreationTime      | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
+|UserId            |  The User Principal Name (UPN) of the user who performed the action (specified in the Operation property) that resulted in the record being logged. For example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the [app@sharepoint user in audit records](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#the-appsharepoint-user-in-audit-records). |
+|Operation          | The operation type for the audit log. The name of the user or admin activity. For a description of the most common operations/activities.<br> SensitivityLabelApplied<br>SensitivityLabelUpdated<br>SensitivityLabelRemoved<br>SensitivityLabelPolicyMatched<br>SensitivityLabeledFileOpened.|
+|Identity           | The identity of the user or service to be authenticated.|
+|ObjectState        | State of the Object after the current event. |
+|ApplicationId      | The application where the activity happened and displayed in GUID.|
+|ApplicationName    |	Application friendly name of the application performing the operation.Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file).|
+|ProcessName        | Process name of the Office application. |
+|Platform           | The platform on which the activity happened. For example, Windows. |
+|DeviceName         | Device the event was recorded on. |
+|ProductVersion     | Version of the Azure Information Protection client that performed the audit action.|
+|UserId             | The UPN of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the [app@sharepoint user in audit records](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#the-appsharepoint-user-in-audit-records). |
+|ClientIP           | The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is null. The IP address is displayed in either an IPv4 or IPv6 address format.|
+|Id                 | GUID of the current record. |
+|RecordType         | Shows the value of Label Action. The operation type indicated by the record. Here we are only listing the relevant MIP Record types.|
+|CreationTime       | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
+|Operation          | The name of the user or admin activity. For a description of the most common operations/activities, see [Search the audit log in the Office 365 Protection Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide).|
+|OrganizationId     | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.|
+|UserType         | The type of user that performed the operation. See the UserType table for details on the types of users.</br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy|
+|UserKey          | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.| 
+|Workload         | Stores the Office 365 service where the activity occurred.|
+|Version          | Version of the Azure Information Protection client that performed the audit action|
+|Scope            | Specifies scope.|
 
 ## AipFileDeleted
 
-This contains information related to AIP file deletion events.
+| Event | Description |
+|:--|:--|
+|PSComputerName| Computer name |
+|RunspaceId    | The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user.|
+|PSShowComputerName| The value is false for a documented edited in Office 365.|
+|RecordType        | Shows the value of Label Action. The operation type indicated by the record. Here we are only listing the relevant MIP Record types. For more information, see the [full list of record types](/office/office-365-management-api/office-365-management-activity-api-schema#auditlogrecordtype).|
+|CreationTime      | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
+|UserId            |  The User Principal Name (UPN) of the user who performed the action (specified in the Operation property) that resulted in the record being logged. For example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the [app@sharepoint user in audit records](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#the-appsharepoint-user-in-audit-records). |
+|Operation          | The operation type for the audit log. The name of the user or admin activity. For a description of the most common operations/activities.<br> SensitivityLabelApplied<br>SensitivityLabelUpdated<br>SensitivityLabelRemoved<br>SensitivityLabelPolicyMatched<br>SensitivityLabeledFileOpened.|
+|Identity           | The identity of the user or service to be authenticated.|
+|ObjectState        | State of the Object after the current event. |
+|ApplicationId      | The application where the activity happened and displayed in GUID.|
+|ApplicationName    |	Application friendly name of the application performing the operation.Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file).|
+|ProcessName        | Process name of the Office application. |
+|Platform           | The platform on which the activity happened. For example, Windows. |
+|DeviceName         | Device the event was recorded on. |
+|ProductVersion     | Version of the Azure Information Protection client that performed the audit action.|
+|UserId             | The UPN of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the [app@sharepoint user in audit records](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#the-appsharepoint-user-in-audit-records). |
+|ClientIP           | The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is null. The IP address is displayed in either an IPv4 or IPv6 address format.|
+|Id                 | GUID of the current record. |
+|RecordType         | Shows the value of Label Action. The operation type indicated by the record. Here we are only listing the relevant MIP Record types.|
+|CreationTime       | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
+|Operation          | The name of the user or admin activity. For a description of the most common operations/activities, see [Search the audit log in the Office 365 Protection Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide).|
+|OrganizationId     | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.|
+|UserType         | The type of user that performed the operation. See the UserType table for details on the types of users.</br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy|
+|UserKey          | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.| 
+|Workload         | Stores the Office 365 service where the activity occurred.|
+|Version          | Version of the Azure Information Protection client that performed the audit action|
+|Scope            | Specifies scope.|
+
 
 ## AipHeartBeat
 
