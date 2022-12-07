@@ -44,6 +44,7 @@
 
                                         ],
                   "globalMetadata":  {
+                           "ms.service": "office-365",
                                          "breadcrumb_path":  "/office/office-365-management-api/breadcrumb/toc.json",
                                          "extendBreadcrumb":  true,
                                          "feedback_system":  "None",
@@ -53,7 +54,6 @@
                                          "author":  "o365devx",
                                          "ms.suite": "office",
                                          "ms.author":  "o365devx",
-                                         "ms.prod": "office365",                                         
                                          "ms.topic":  "conceptual",
                                          "contributors_to_exclude": ["nivnar"]
                                      },
