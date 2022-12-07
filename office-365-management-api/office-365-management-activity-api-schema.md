@@ -190,6 +190,7 @@ This article provides details on the Common schema as well as service-specific s
 |181|EduDataLakeDownloadOperation|Events related to the export of SystemSync ingested data from the lake.|
 |183|MicrosoftGraphDataConnectOperation|Events related to extractions done by Microsoft Graph Data Connect.|
 |186|PowerPagesSite|Activities related to Power Pages site.|
+|217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -1946,3 +1947,32 @@ The following table contain information related to AIP heartbeat events.
 |	UserId	|	 The UPN of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the app@sharepoint user in audit records.	|
 |UserType         | The type of user that performed the operation. See the UserType table for details on the types of users.</br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy|
 |UserKey          | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.| 
+
+#### MicrosoftGraphDataConnectConsent complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ApplicationId|Edm.Guid|Yes|The application identification.|
+|ApplicationVersion|Edm.String|Yes|The application version.|
+|AppRegistrationTenantId|Edm.Guid|Yes|The application registration tenant id.|
+|Approver|Edm.String|Yes|The approver's user principal name.|
+|ApprovalUpdatedDateInUTC|Edm.Date|Yes|The update date time in UTC.|
+|ApprovalExpiryDateInUTC|Edm.Date|Yes|The expiry date time in UTC.|
+|ApprovalValidDays|Edm.Int32|Yes|The number of days from update for which the approval will be valid.|
+|DestinationSinks|Edm.String|Yes|The destination sinks.|
+|DestinationTenantId|Edm.Guid|Yes|The destination tenant id.|
+|Reason|Edm.String|No|The reason provided by the admin who performed the operation.|
+|State|Edm.String|Yes|The consent state.|
+|Datasets|CollectionSelf.[MGDCDataset](#complex-type-mgdcdataset)|Yes|Details on the datasets which were consented to as part of this operation.|
+
+#### Complex Type MGDCDataset
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|DatasetName|Edm.String|Yes|The name of the dataset in the consent operation.|
+|DatasetColumns|Edm.String|Yes|The list of columns for the dataset in the consent operation.|
+|DenyGroups|Edm.String|No|The deny groups list for the dataset in the consent operation.|
+|Scope|Edm.String|Yes|The scope types for the dataset in the consent operation. Possible values are All, List and FilterUri.|
+|ScopeFiltersUris|Edm.String|No|The scope filter URI for the dataset in the consent operation.|
+|ScopeList|Edm.String|No|The scope group list for the dataset in the consent operation.|
+|PrivacyPolicyType|Edm.String|Yes|The privacy policy types for the dataset in the consent operation. Possible values are None and DenyList.|
