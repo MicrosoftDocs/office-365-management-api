@@ -1981,26 +1981,27 @@ The following table contain information related to AIP heartbeat events.
 
 ## Viva Goals schema
 
-The audit records for events related to Viva Goals use this schema (in addition to the [Common schema](#common-schema)).  [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) details how you can search for the audit logs from the compliance portal and [Audit log activities](/microsoft-365/compliance/audit-log-activities?view=o365-worldwide) captures the events or activities that are related to Viva Goals. 
+The audit records for events related to Viva Goals use this schema (in addition to the [Common schema](#common-schema)).  [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) details how you can search for the audit logs from the compliance portal and [Audit log activities](/microsoft-365/compliance/audit-log-activities) captures the events or activities that are related to Viva Goals. 
 
-|**Parameters**|**Type**|**Mandatory?**|**Description**|
-|:-----|:-----|:-----|:-----|
-|Detail|Edm.String   |No  |A description of the event or the activity that occurred on Viva Goals. |
+|**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
+|---------|---------|---------|---------|
+|Detail|Edm.String |No |A description of the event or the activity that occurred on Viva Goals.|
 |Username |Edm.String   
 Term="Microsoft.Office.Audit.Schema.PIIFlag"  
-Bool="true" |No  |The name of the user who trigged this event |
-|UserRole |Edm.String |No  |The role of the user who trigged this event within Viva Goals. This will mention if the user is an organisation admin or an owner. |
-|OrganizationName  |Edm.String   
+Bool="true" |No |The name of the user who trigged this event|
+|UserRole |Edm.String |No  |The role of the user who trigged this event within Viva Goals. This will mention if the user is an organisation admin or an owner.|
+|OrganizationName |Edm.String   
 Term="Microsoft.Office.Audit.Schema.PIIFlag"  
-Bool="true" |No  |The name of the organization on Viva Goals where this event was triggered. |
+Bool="true" |No |The name of the organization on Viva Goals where this event was triggered.|
 |OrganizationOwner   |Edm.String   
 Term="Microsoft.Office.Audit.Schema.PIIFlag"  
-Bool="true" |No  |The owner of the organization on Viva Goals in which the event occurred |
+Bool="true" |No |The owner of the organization on Viva Goals in which the event occurred.|
 |OrganizationAdmins |Collection(Edm.String)   
 Term="Microsoft.Office.Audit.Schema.PIIFlag"  
-Bool="true" |No  |The admins of the organization on Viva Goals where the event occurred. There can be one or more admins in the organization. |
-|UserAgent   |Edm.String   
+Bool="true" |No |The admins of the organization on Viva Goals where the event occurred. There can be one or more admins in the organization.|
+|UserAgent |Edm.String   
 Term="Microsoft.Office.Audit.Schema.PIIFlag"  
-Bool="true" |No  |The user agent (browser details) of the user who trigged this event. This might not be present in case of system generated events. |
-|ModifiedFields   |Collection(Common.NameValuePair)  |No  |This field lists the name of the attributes that was modified along with its new and old values as a JSON. |
-|ItemDetails |Collection(Common.NameValuePair) |No  |This field includes additional properties about the object that was modified.  |
+Bool="true" |No |The user agent (browser details) of the user who trigged this event. This might not be present in case of system generated events.|
+|ModifiedFields |Collection(Common.NameValuePair) |No |This field lists the name of the attributes that was modified along with its new and old values as a JSON.|
+|ItemDetails |Collection(Common.NameValuePair) |No |This field includes additional properties about the object that was modified.|
+
