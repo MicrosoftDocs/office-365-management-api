@@ -1995,7 +1995,8 @@ The audit records for events related to Viva Goals use this schema (in addition 
 |OrganizationOwner |Edm.String </br>Term="Microsoft.Office.Audit.Schema.PIIFlag" </br>Bool="true" |No |The owner of the organization in Viva Goals where the event occurred.|
 
 |OrganizationAdmins |Collection(Edm.String) </br>Term="Microsoft.Office.Audit.Schema.PIIFlag" </br>Bool="true" |No |The admin(s) of the organization in Viva Goals where the event occurred. There can be one or more admins in the organization.|
-|UserAgent |Edm.String </br>Term="Microsoft.Office.Audit.Schema.PIIFlag" </br>Bool="true" |No |The user agent (browser details) of the user who trigged this event. This might not be present in case of system generated events.|
+|UserAgent |Edm.String </br>Term="Microsoft.Office.Audit.Schema.PIIFlag" </br>Bool="true" |No |The user agent (browser details) of the user who trigged the event. UserAgent might not be present in case of a system generated event.|
+
 |ModifiedFields |Collection(Common.NameValuePair) |No |A list of attributes that were modified along with its new and old values output as a JSON.|
 |ItemDetails |Collection(Common.NameValuePair) |No |Additional properties about the object that was modified.|
 
