@@ -1986,7 +1986,8 @@ The audit records for events related to Viva Goals use this schema (in addition 
 
 |**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
 |---------|---------|---------|---------|
-|Detail|Edm.String |No |A description of the event or the activity that occurred on Viva Goals.|
+|Detail|Edm.String |No |A description of the event or the activity that occurred in Viva Goals.|
+
 |Username |Edm.String </br>Term="Microsoft.Office.Audit.Schema.PIIFlag"</br>Bool="true"</br> |No |The name of the user who trigged this event|
 |UserRole |Edm.String |No |The role of the user who trigged this event in Viva Goals. This will mention if the user is an organization admin or an owner.|
 |OrganizationName |Edm.String </br>Term="Microsoft.Office.Audit.Schema.PIIFlag" </br>Bool="true" |No |The name of the organization on Viva Goals where this event was triggered.|
