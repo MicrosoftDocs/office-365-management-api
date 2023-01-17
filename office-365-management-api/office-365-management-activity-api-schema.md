@@ -1981,7 +1981,8 @@ The following table contain information related to AIP heartbeat events.
 
 ## Viva Goals schema
 
-The audit records for events related to Viva Goals use this schema (in addition to the [Common schema](#common-schema)).  [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) details how you can search for the audit logs from the compliance portal and [Audit log activities](/microsoft-365/compliance/audit-log-activities) captures the events or activities that are related to Viva Goals. 
+The audit records for events related to Viva Goals use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). For details about capturing events and activities related to Viva Goals, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+
 
 |**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
 |---------|---------|---------|---------|
