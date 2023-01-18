@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 10/06/2022
+ms.date: 01/17/2023
 ms.localizationpriority: high
 ---
 
@@ -57,7 +57,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Reports schema](#reports-schema)|Extends the Common schema with the properties specific to all reports events.|
 |[Compliance connector schema](#compliance-connector-schema)|Extends the Common schema with the properties specific to importing non-Microsoft data by using data connectors.|
 |[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
-|[Viva Goals Schema](#viva-goals-schema)Extends the Common schema with the properties specific to all Viva Goals events.|
+|[Viva Goals Schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
 
 ## Common schema
 
@@ -230,7 +230,6 @@ This article provides details on the Common schema as well as service-specific s
 |CorrelationId|Edm.String|No|An identifier that can be used to correlate a specific user's actions across Microsoft 365 services.|
 |UniqueTokenId|Edm.String|No|UniqueTokenId gets set if the AAD token is available for the request. It's a unique, per-token identifier that is case-sensitive.|
 |IssuedAtTime|Edm.Date|No|"Issued At" gets set if the AAD token is available for the request and it indicates when the authentication for this AAD token occurred.|
-|||||
 
 ## SharePoint Base schema
 
@@ -449,7 +448,6 @@ The file-related SharePoint events listed in the "File and folder activities" se
 |DestinationLabel|Edm.String|No|The final label of the file after it's changed by a user action.|
 |SensitivityLabelOwnerEmail|Edm.String|No|The email address of the owner of the sensitivity label.|
 |SensitivityLabelId|Edm.String|No|The current sensitivity label ID of the file.|
-|||||
 
 ## SharePoint list operations
 
@@ -464,11 +462,10 @@ The SharePoint lists and list item related events listed in the "SharePoint list
 |ListBaseTemplateType|Edm.String|No|The list definition type on which the list is based.|
 |IsHiddenList|Edm.Boolean|No|This value is set to `True` if the SharePoint list is hidden.|
 |IsDocLib|Edm.Boolean|No|This value is set to `True` if the SharePoint list is of the type Document Library.|
-|||||
 
 ## SharePoint Sharing schema
 
- The file share-related SharePoint events. They are different from file- and folder-related events in that a user is taking an action that has some effect on another user. For information about the SharePoint Sharing schema, see [Use sharing auditing in the audit log](/microsoft-365/compliance/use-sharing-auditing).
+The file share-related SharePoint events. They are different from file- and folder-related events in that a user is taking an action that has some effect on another user. For information about the SharePoint Sharing schema, see [Use sharing auditing in the audit log](/microsoft-365/compliance/use-sharing-auditing).
 
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -625,7 +622,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |DestFolder|Self.[ExchangeFolder](#exchangefolder-complex-type)|No|The destination folder, for operations such as Move.|
 |Folders|Collection(Self.[ExchangeFolder](#exchangefolder-complex-type))|No|Information about the source folders involved in an operation; for example, if folders are selected and then deleted.|
 |AffectedItems|Collection(Self.[ExchangeItem](#exchangeitem-complex-type))|No|Information about each item in the group.|
-|||||
 
 ### ExchangeMailboxAuditRecord schema
 
@@ -637,7 +633,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |SendAsUserMailboxGuid|Edm.Guid|No|The Exchange GUID of the mailbox that was accessed to send email as.|
 |SendOnBehalfOfUserSmtp|Edm.String|No|SMTP address of the user on whose behalf the email is sent.|
 |SendOnBehalfOfUserMailboxGuid|Edm.Guid|No|The Exchange GUID of the mailbox that was accessed to send mail on behalf of.|
-|||||
 
 ### ExchangeItem complex type
 
@@ -647,7 +642,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |Subject|Edm.String|No|The subject line of the message that was accessed.|
 |ParentFolder|Edm.ExchangeFolder|No|The name of the folder where the item is located.|
 |Attachments|Edm.String|No|A list of the names and file size of all items that are attached to the message.|
-|||||
 
 ### ExchangeFolder complex type
 
@@ -743,7 +737,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |SupportTicketId|Edm.String|No|The customer support ticket ID for the action in "act-on-behalf-of" situations.|
 |Target|Collection(Self.[IdentityTypeValuePair](#complex-type-identitytypevaluepair))|No|The user that the action (identified by the Operation property) was performed on.|
 |TargetContextId|Edm.String|No|The GUID of the organization that the targeted user belongs to.|
-|||||
 
 ### Complex Type IdentityTypeValuePair
 
@@ -826,7 +819,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |Subject|Edm.String|Yes|Subject of the email message.|
 |Sent|Edm.DateTime|Yes|The time in UTC of when the email was sent.|
 |RecipientCount|Edm.Int32|Yes|The total number of all recipients on the TO, CC, and BCC lines of the message.|
-|||||
 
 ### PolicyDetails complex type
 
@@ -835,7 +827,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |PolicyId|Edm.Guid|Yes|The guid of the DLP policy for this event.|
 |PolicyName|Edm.String|Yes|The friendly name of the DLP policy for this event.|
 |Rules|Collection(Self.[Rules](#rules-complex-type))|Yes|Information about the rules within the policy that were matched for this event.|
-|||||
 
 ### Rules complex type
 
@@ -848,7 +839,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |Severity|Edm.String|No|The severity (Low, Medium and High) of the rule match.|
 |RuleMode|Edm.String|Yes|Indicate whether the DLP Rule was set to Enforce, Audit with Notify, or Audit only.|
 |ConditionsMatched|Self.[ConditionsMatched](#conditionsmatched-complex-type)|No|Details about what conditions of the rule were matched for this event.|
-|||||
 
 ### ConditionsMatched complex type
 
@@ -871,7 +861,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |SensitiveInformationDetailedClassificationAttributes|Collection(SensitiveInformationDetailedConfidenceLevelResult)|Yes|Information about the count of sensitive information type detected for each of the three confidence levels (High, Medium and Low) and wether it matches the DLP rule or not|
 |SensitiveInformationTypeName|Edm.String|No|The name of the sensitive information type.|
 |UniqueCount|Edm.Int32|Yes|The unique count of sensitive instances detected.|
-|||||
 
 ### SensitiveInformationDetailedClassificationAttributes complex type
 
@@ -880,7 +869,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |Confidence|Edm.int32|Yes|The confidence level of the pattern that was detected.|
 |Count|Edm.Int32|Yes|The number of sensitive instances detected for a partcular confidence level.|
 |IsMatch|Edm.Boolean|Yes|Indicates if the given count and confidence level of the sensitive type detected results in a DLP rule match.|
-|||||
 
 ### SensitiveInformationDetections complex type
 
@@ -890,7 +878,6 @@ DLP sensitive data is only available in the activity feed API to users that have
 |:-----|:-----|:-----|:-----|
 |DetectedValues|Collection(Common.NameValuePair)|Yes|An array of sensitive information that was detected. Information contains key value pairs with Value = matched value (eg. Value of credit card) and Context = an excerpt from source content that contains the matched value. |
 |ResultsTruncated|Edm.Boolean|Yes|Indicates if the logs were truncated due to large number of results. |
-|||||
 
 ### ExceptionInfo complex type
 
@@ -900,7 +887,6 @@ DLP sensitive data is only available in the activity feed API to users that have
 |FalsePositive|Edm.Boolean|No|Indicates whether the user designated this event as a false positive.|
 |Justification|Edm.String|No|If the user chose to override policy, any user-specified justification is captured here.|
 |Rules|Collection(Edm.Guid)|No|A collection of guids for each rule that was designated as a false positive or override, or for which an action was undone.|
-|||||
 
 ## Security and Compliance Center schema
 
@@ -914,7 +900,6 @@ DLP sensitive data is only available in the activity feed API to users that have
 |ClientApplication|Edm.String|No|If the cmdlet was executed by an application, as opposed to remote PowerShell, this field contains that application's name.|
 |Parameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that do not include Personally Identifiable Information.|
 |NonPiiParameters|Edm.String|No|The name and value for parameters that were used with the cmdlet that include Personally Identifiable Information. (Deprecated: This field will stop appearing in the future and its content merged with the Parameters field.)|
-|||||
 
 ## Security and Compliance Alerts schema
 
@@ -945,7 +930,6 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 |Data|Edm.String|No|The detailed data blob of the alert or alert entity.|
 |AlertEntityId|Edm.String|No|The identifier for the alert entity. This parameter is only applicable to AlertEntityGenerated events.|
 |EntityType|Edm.String|No|Type of the alert or alert entity. Entity types include: <ul><li>User</li><li>Recipients</li><li>Sender</li><li>MalwareFamily</li></ul>This parameter is only applicable to AlertEntityGenerated events.|
-|||||
 
 ## Yammer schema
 
@@ -965,14 +949,12 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |TargetUserId|Edm.String|No|Email of target user in the operation. Will appear blank if not relevant to the operation.|
 |TargetYammerUserId|Edm.Int64|No|ID of target user in the operation.|
 |VersionId|Edm.Int64|No|Version ID of the file in the operation.|
-|||||
 
 ## Data Center Security Base schema
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |DataCenterSecurityEventType|Self.[DataCenterSecurityEventType](#datacentersecurityeventtype)|Yes|The type of cmdlet event in lock box.|
-|||||
 
 ### Enum: DataCenterSecurityEventType - Type: Edm.Int32
 
@@ -981,7 +963,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |**Member name**|**Description**|
 |:-----|:-----|
 |DataCenterSecurityCmdletAuditEvent|This is the enum value for cmdlet audit type event.|
-|||
 
 ## Data Center Security Cmdlet schema
 
@@ -996,7 +977,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |ElevationRole|Edm.String|No|The role the elevation was requested for.|
 |ElevationDuration|Edm.Int32|Yes|The duration for which the elevation was active.|
 |GenericInfo|Edm.String|No|Used for comments and other generic information.|
-|||||
 
 ## Microsoft Teams schema
 
@@ -1024,7 +1004,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |TabType|Edm.String|No|Only present for tab events. The type of tab that generated the event.|
 |TeamGuid|Edm.Guid|No|A unique identifier for the team being audited.|
 |TeamName|Edm.String|No|The name of the team being audited.|
-||||
 
 ### MicrosoftTeamsMember complex type
 
@@ -1033,7 +1012,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |UPN|Edm.String|No|The user principal name of the user.|
 |Role|Self.[MemberRoleType](#memberroletype)|No|The role of the user within the team.|
 |DisplayName|Edm.String|No|The display name of the user.|
-|||||
 
 ### Enum: MemberRoleType - Type: Edm.Int32
 
@@ -1044,7 +1022,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |0|Member|A user who is a member of the team.|
 |1|Owner|A user who is the owner of the team.|
 |2|Guest|A user who is not a member of the team.|
-||||
 
 ### KeyValuePair complex type
 
@@ -1052,7 +1029,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |:-----|:-----|:-----|:-----|
 |Key|Edm.String|No|The key of the key-value pair.|
 |Value|Edm.String|No|The value of the key-value pair.|
-|||||
 
 ### Enum: AddOnType - Type: Edm.Int32
 
@@ -1063,7 +1039,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |1|Bot|A Microsoft Teams bot.|
 |2|Connector|A Microsoft Teams connector.|
 |3|Tab|A Microsoft Teams tab.|
-||||
 
 ### HostedContent complex type
 
@@ -1071,7 +1046,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |:-----|:-----|:-----|:-----|
 |Id|Edm.String|Yes|A unique identifier of the message hosted content.|
 |SizeInBytes|Edm.Int64|No|The message hosted content size in bytes.|
-|||||
 
 ### Message complex type
 
@@ -1089,7 +1063,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |TeamGuid|Edm.String|No|A unique identifier of the team the message belongs to.|
 |TeamName|Edm.String|No|The name of the team the message belongs to.|
 |Version|Edm.String|No|The version of the chat or channel message.|
-|||||
  
 ## Microsoft Defender for Office 365 and Threat Investigation and Response schema
 
@@ -1136,7 +1109,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |AuthDetails |Collection(Self.[AuthDetails](#authdetails))|No|The authentication checks that are done for the email. Also includes the values for SPF, DKIM, DMARC, and CompAuth.|
 |SystemOverrides |Collection(Self.[SystemOverrides](#systemoverrides))|No|Overrides that are applicable to the email. These can be system or user overrides.|
 |Phish Confidence Level |Edm.String|No|Indicates the confidence level associated with Phish verdict. It can be Normal or High.|  
-|||||
 
 > [!NOTE]
 > We recommend that you use the new ThreatsAndDetectionTech field because it shows multiple verdicts and the updated detection technologies. This field also aligns with the values you would see within other experiences like Threat Explorer and Advanced Hunting. 
@@ -1177,7 +1149,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |FileVerdict|Self.[FileVerdict](#fileverdict)|Yes|The file malware verdict.|
 |MalwareFamily|Edm.String|No|The file malware family.|
 |SHA256|Edm.String|Yes|The file SHA256 hash.|
-|||||
 
 > [!NOTE]
 > Within the Malware family, you will be able to see the exact MalwareFamily name (for example, HTML/Phish.VS!MSR) or Malicious Payload as a static string. A Malicious Payload should still be treated as malicious email when a specific name isn't identified.
@@ -1192,7 +1163,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |FinalOverride|Edm.String|No|Indicates the override that impacted the delivery in the case of multiple overrides.|
 |Result|Edm.String|No|Indicates whether the email was set to allowed or blocked based on the override.|
 |Source|Edm.String|No|Indicates whether the override was user-configured or tenant-configured.|
-|||||
 
 ### AuthDetails complex type
  
@@ -1202,7 +1172,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |:-----|:-----|:-----|:-----|
 |Name|Edm.String|No|The name of the specific auth check, such as DKIM or DMARC.|
 |Value|Edm.String|No|The value associated with the specific auth check, such as True or False.|
-|||||
  
 ### Enum: FileVerdict - Type: Edm.Int32
 
@@ -1215,7 +1184,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |-1|Error|Scan / analysis error.|
 |-2|Timeout|Scan / analysis timeout.|
 |-3|Pending|Scan / analysis not complete.|
-
 
 ### Enum: Policy - Type: Edm.Int32
 
@@ -1239,7 +1207,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |14|Anti-phish, ZAPS| Spam policy action in the Anti-spam policy applied to ZAP.|
 |15|Anti-spam, High confidence phish email (HPHISH)|High confidence Phish policy action in Anti-spam policy.|
 |17|Anti-spam, Outbound spam policy (OSPM)|Policy action in the outbound spam filter policy in Anti-spam.|
-||||
 
 ### Enum: PolicyAction - Type: Edm.Int32
 
@@ -1256,7 +1223,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |6|NoAction| Policy is configured to take no action on the email message.|
 |7|BccMessage|Policy action is to Bcc the email message to email address specificed by the filtering policy.|
 |8|ReplaceAttachment|Policy action is to replace the attachment in the email message as specified by the filtering policy.|
-||||
 
 ### URL time-of-click events
 
@@ -1269,7 +1235,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |TimeOfClick|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the user clicked the URL.|
 |URL|Edm.String|Yes|URL clicked by the user.|
 |UserIp|Edm.String|Yes|The IP address for the user who clicked the URL. The IP address is displayed in either an IPv4 or IPv6 address format.|
-|||||
 
 ### Enum: URLClickAction - Type: Edm.Int32
 
@@ -1987,16 +1952,12 @@ The audit records for events related to Viva Goals use this schema (in addition 
 |**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
 |---------|---------|---------|---------|
 |Detail|Edm.String |No |A description of the event or the activity that occurred in Viva Goals.|
-
 |Username |Edm.String </br>Term="Microsoft.Office.Audit.Schema.PIIFlag"</br>Bool="true"</br> |No |The name of the user who trigged the event.|
-
 |UserRole |Edm.String |No |The role of the user who trigged this event in Viva Goals. This will mention if the user is an organization admin or an owner.|
 |OrganizationName |Edm.String </br>Term="Microsoft.Office.Audit.Schema.PIIFlag" </br>Bool="true" |No |The name of the organization in Viva Goals where the event was triggered.|
 |OrganizationOwner |Edm.String </br>Term="Microsoft.Office.Audit.Schema.PIIFlag" </br>Bool="true" |No |The owner of the organization in Viva Goals where the event occurred.|
-
 |OrganizationAdmins |Collection(Edm.String) </br>Term="Microsoft.Office.Audit.Schema.PIIFlag" </br>Bool="true" |No |The admin(s) of the organization in Viva Goals where the event occurred. There can be one or more admins in the organization.|
 |UserAgent |Edm.String </br>Term="Microsoft.Office.Audit.Schema.PIIFlag" </br>Bool="true" |No |The user agent (browser details) of the user who trigged the event. UserAgent might not be present in case of a system generated event.|
-
 |ModifiedFields |Collection(Common.NameValuePair) |No |A list of attributes that were modified along with its new and old values output as a JSON.|
 |ItemDetails |Collection(Common.NameValuePair) |No |Additional properties about the object that was modified.|
 
