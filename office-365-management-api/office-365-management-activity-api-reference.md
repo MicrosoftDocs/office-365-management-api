@@ -42,7 +42,7 @@ The Office 365 Management Activity API aggregates actions and events into tenant
     
 For details about the events and properties associated with these content types, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md).
 
-To begin retrieving content blobs for a tenant, you first a create subscription to the desired content types. If you are retrieving content blobs for multiple tenants, you create multiple subscriptions to each of the desired content types, one for each tenant.
+To begin retrieving content blobs for a tenant, you first create a subscription to the desired content types. If you are retrieving content blobs for multiple tenants, you create multiple subscriptions to each of the desired content types, one for each tenant.
 
 After you create a subscription, you can poll regularly to discover new content blobs that are available for download, or you can register a webhook endpoint with the subscription and we will send notifications to this endpoint as new content blobs are available.
 
