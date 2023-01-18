@@ -57,7 +57,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Reports schema](#reports-schema)|Extends the Common schema with the properties specific to all reports events.|
 |[Compliance connector schema](#compliance-connector-schema)|Extends the Common schema with the properties specific to importing non-Microsoft data by using data connectors.|
 |[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
-|[Viva Goals Schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
+|[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
 
 ## Common schema
 
