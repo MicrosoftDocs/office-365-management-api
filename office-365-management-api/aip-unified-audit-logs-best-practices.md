@@ -1,5 +1,5 @@
 ---
-ms.TocTitle: Search-UnifiedAuditLog
+ms.TocTitle: Search-UnifiedAuditLog Best Practices
 title: AIP Unified Audit Log Best Practices
 description: Understand the AIP Unified Audit Log Search-UnifiedAuditLog cmdlet tool
 ms.ContentId: c2cdd604-fa79-424c-b8e1-9474f248279e
@@ -8,7 +8,7 @@ ms.date: 01/17/2023
 ms.localizationpriority: high
 ---
 
-# Understand Search-UnifiedAuditLog
+# Best Practices using the Search-UnifiedAuditLog cmdlet tool
 
 The audit log is a tool that records events from a range of workloads. The Search-UnifiedAuditLog cmdlet can be used to search and retrieve data from the audit log. It's important to understand how to use this cmdlet effectively, particularly when it comes to interpreting the information in the AuditData property, as different workloads insert different types of information into this property.
 
