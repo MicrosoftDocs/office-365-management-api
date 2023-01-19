@@ -29,7 +29,7 @@ The audit logs can be accessed using the following methods:
 ![AipProtectionAction audit configurations](images/aip-protection-action-search.png) 
 4. Select Search to run the search using the critera. Click on an event to view the results. 
 
-For more information on the Audit log search tool, see [audit log search tool.](audit-log-search.md).
+For more information on the Audit log search tool, see [audit log search tool](audit-log-search.md).
 
 ## Access the Search Unified Audit Log in PowerShell
 
