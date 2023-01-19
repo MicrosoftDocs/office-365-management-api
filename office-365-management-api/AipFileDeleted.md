@@ -21,24 +21,24 @@ The audit logs can be accessed using the following methods:
 - The [Search-UnifiedAuditLog](#search-unified-audit-log-in-powershell) cmdlet in Exchange Online PowerShell.
 - The [Office 365 Management Activity API](/office/office-365-management-api/office-365-management-activity-api-reference).
 
-## Audit log search tool
+### Audit log search tool
 
-1. Go to https://compliance.microsoft.com and sign in.
+1. Go to the [Microsoft Purview compliance portal](https://sip.compliance.microsoft.com/homepage) and sign in.
 2. In the left pane of the compliance portal, select Audit.
 3. On the Search tab, set Record type to **AipFileDeleted** and configure the other parameters.
-![AipFileDeleted audit configurations](images/aip-file-delete-search.png) 
+![AipFileDeleted audit configurations](images/aip-file-delete-search.png)
 4. Select Search to run the search using the critera. Click on an event to view the results.
-![AipFileDeleted audit results](images/aip-file-delete.png) 
+![AipFileDeleted audit results](images/aip-file-delete.png)
 
-For more information on viewing the logs in the Microsoft Purview compliance portal, see [audit log search tool.](audit-log-search.md).
+For more information on viewing the audit logs in the Microsoft Purview compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
 
-## Search Unified Audit Log in PowerShell
+### Search Unified Audit Log in PowerShell
 
-To access the Unified Audit Log using PowerShell, first connect to an Exchange Online PowerShell session by completing the following steps: 
+To access the Unified Audit Log using PowerShell, first connect to an Exchange Online PowerShell session by completing the following steps.
 
-## Establish remote Powershell session with Exchange Online
+#### Establish remote PowerShell session
 
-Once the connection is established, you can run Exchange Online cmdlets to manage your Exchange Online environment. 
+Once the connection is established, you can run Exchange Online cmdlets to manage your Exchange Online environment.
 
 Open a PowerShell window and run the Install-Module -Name ExchangeOnlineManagement command to install the Exchange Online Management module. This module provides cmdlets that can be used to manage Exchange Online.
 
@@ -51,27 +51,31 @@ Connect-IPPSSession
 Import-Module ExchangeOnlineManagement
 ```
 
-### Connect with a specific user. 
+#### Connect with a specific user
 
-Command to prompt for a specific user for  your Exchange Online credentials.
+Command to prompt for a specific user for your Exchange Online credentials.
+
 ```powershell
 $UserCredential = Get-Credential 
 ```
-Command to connect to Exchange Online using the provided credentials. 
+
+Command to connect to Exchange Online using the provided credentials.
+
 ```powershell
  Connect-ExchangeOnline -Credential $UserCredential -ShowProgress $true 
 ```
 
-### Connect with credentials in the current session
+#### Connect with credentials in the current session
 
 Connect to Exchange Online using the credentials in the current session
+
 ```powershell
 Connect-ExchangeOnline
 ```
 
-### Search-UnifiedAuditLog cmdlet
+## Search-UnifiedAuditLog cmdlet
 
-The Search-UnifiedAuditLog cmdlet is a PowerShell command that can be used to search the Office 365 Unified Audit Log. The Unified Audit Log is a record of user and administrator activity in Office 365 that can be used to track events. For best practices on using this cmdlet, see [Best Practices for using Search-UnifiedAuditLog](BestPractices)
+The Search-UnifiedAuditLog cmdlet is a PowerShell command that can be used to search the Office 365 Unified Audit Log. The Unified Audit Log is a record of user and administrator activity in Office 365 that can be used to track events. For best practices on using this cmdlet, see [Best Practices for using Search-UnifiedAuditLog](aip-unified-audit-logs-best-practices.md).
 
 To extract the AipFileDeleted events from the Unified Audit Log using PowerShell, you can use the following command. This will search the Unified Audit Log for the specified date range and return any events with the record type "AipFileDeleted". The results will be exported to a CSV file at the specified path.
 
@@ -124,7 +128,7 @@ ObjectState  : Unchanged
 
 ## Office 365 Management Activity API
 
-In order to be able to query the Office 365 Management API endpoints, you will need to configure your application with the right permissions. For a step-by-step guide, see [Get started with Office 365 Management APIs](https://learn.microsoft.com/en-us/office/office-365-management-api/get-started-with-office-365-management-apis).
+In order to be able to query the Office 365 Management API endpoints, you'll need to configure your application with the right permissions. For a step-by-step guide, see [Get started with Office 365 Management APIs](https://learn.microsoft.com/office/office-365-management-api/get-started-with-office-365-management-apis).
 
 The following is an example of AipFileDeleted event from REST API.
 

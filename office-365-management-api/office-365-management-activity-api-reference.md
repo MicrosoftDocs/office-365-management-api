@@ -128,8 +128,8 @@ This operation starts a subscription to the specified content type. If a subscri
 |PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
 |**Body**|webhook - Optional JSON object with three properties:<ul><li>**address**</b>: Required HTTPS endpoint that can receive notifications.  A test message will be sent to the webhook to validate the webhook before creating the subscription.</li><li>**authId**: Optional string that will be included as the WebHook-AuthID header in notifications sent to the webhook as a means of identifying and authorizing the source of the request to the webhook.</li><li>**expiration**: Optional datetime that indicates a datetime after which notifications should no longer be sent to the webhook.|
 |**Response**|contentType - The content type specified in the call.|
-|status|The status of the subscription. If a subscription is disabled, you will not be able to list or retrieve content.|
-|webhook|The webhook properties specified in the call together with the status of the webhook. If the webhook is disabled, you will not receive notification, but you will still be able to list and retrieve content, provided the subscription is enabled.|
+|status|The status of the subscription. If a subscription is disabled, you'll not be able to list or retrieve content.|
+|webhook|The webhook properties specified in the call together with the status of the webhook. If the webhook is disabled, you'll not receive notification, but you'll still be able to list and retrieve content, provided the subscription is enabled.|
 
 #### Sample request
 
@@ -196,7 +196,7 @@ HTTP/1.1 200 OK
 
 This operation stops a subscription to the specified content type. 
 
-When a subscription is stopped, you will no longer receive notifications and you will not be able to retrieve available content. If the subscription is later restarted, you will have access to new content from that point forward. You will not be able to retrieve content that was available between the time the subscription was stopped and restarted.
+When a subscription is stopped, you'll no longer receive notifications and you'll not be able to retrieve available content. If the subscription is later restarted, you'll have access to new content from that point forward. You will not be able to retrieve content that was available between the time the subscription was stopped and restarted.
 
 |Subscription|Description|
 |:-----|:-----|

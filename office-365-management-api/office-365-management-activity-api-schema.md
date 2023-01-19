@@ -1151,7 +1151,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |SHA256|Edm.String|Yes|The file SHA256 hash.|
 
 > [!NOTE]
-> Within the Malware family, you will be able to see the exact MalwareFamily name (for example, HTML/Phish.VS!MSR) or Malicious Payload as a static string. A Malicious Payload should still be treated as malicious email when a specific name isn't identified.
+> Within the Malware family, you'll be able to see the exact MalwareFamily name (for example, HTML/Phish.VS!MSR) or Malicious Payload as a static string. A Malicious Payload should still be treated as malicious email when a specific name isn't identified.
 
 ### SystemOverrides complex type
  
