@@ -26,15 +26,15 @@ The audit logs can be accessed using the following methods:
 1. Go to https://compliance.microsoft.com and sign in.
 2. In the left pane of the compliance portal, select Audit.
 3. On the Search tab, set Record type to **AipHeartBeat** and configure the other parameters.
-![AipHeartBeat audit configurations](media/aip-heartbeat-search.png) 
+![AipHeartBeat audit configurations](images/aip-heartbeat-search.png) 
 4. Select Search to run the search using the critera. Click an event to view the results.
-![AipHeartBeat audit results](media/aip-heartbeat.png) 
+![AipHeartBeat audit results](images/aip-heartbeat.png) 
 
 For more information on viewing the logs in the Microsoft Purview compliance portal, see [audit log search tool.](audit-log-search.md).
 
 ## Search Unified Audit Log in PowerShell
 
-To access the Unified Audit Log using PowerShell, first connect to an Exchange Online PowerShell session by completing the following steps: 
+To access the Unified Audit Log using PowerShell, first connect to an Exchange Online PowerShell session by completing the following steps.
 
 ### Establish a remote Powershell session 
 
@@ -125,7 +125,7 @@ ObjectState  : Unchanged
 
 ## Office 365 Management Activity API
 
-In order to be able to query the Office 365 Management API endpoints, you will need to configure your application with the right permissions. For a step-by-step guide, see [Get started with Office 365 Management APIs](https://learn.microsoft.com/en-us/office/office-365-management-api/get-started-with-office-365-management-apis).
+In order to be able to query the Office 365 Management API endpoints, you will need to configure your application with the right permissions. For a step-by-step guide, see [Get started with Office 365 Management APIs](https://learn.microsoft.com/office/office-365-management-api/get-started-with-office-365-management-apis).
 
 ### AipHeartBeat event from REST API
 
@@ -167,7 +167,7 @@ CreationTime | Date/time | The date and time in Coordinated Universal Time (UTC)
 DeviceName | String | The device on which the activity happened.
 Id | GUID | Unique identifier of an audit record.
 Operation | String | The operation type for the audit log (Heartbeat)
-OrganizationId | GUID | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.                                                
+OrganizationId | GUID | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.                                               
 Platform | Double | The platform where the activity occurred from. </br>0 = Unknown</br>1 = Windows</br>2 = MacOS </br>3 = iOS</br>4 = Android</br>5 = Web Browser
 ProcessName | String | The relevant process name (Outlook, MSIP.App, WinWord, etc.) 
 ProductVersion | String | Version of the AIP client.
@@ -175,6 +175,6 @@ RecordType | Double | The type of operation indicated by the record. 97 represen
 Scope | Double | 0 represents that the event was created by a hosted O365 service. 1 represents that the event was created by an on-premises server.                
 UserId | String | The User Principal Name (UPN) of the user who performed the action that resulted in the record being logged.
 UserKey | GUID | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.           
-UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy                                          
+UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy
 Version | Double | Version ID of the file in the operation.                      
 Workload | String | Stores the Office 365 service where the activity occurred (Exchange, SharePoint, OneDrive, etc).
