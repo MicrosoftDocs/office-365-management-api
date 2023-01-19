@@ -26,15 +26,15 @@ The audit logs can be accessed using the following methods:
 1. Go to https://compliance.microsoft.com and sign in.
 2. In the left pane of the compliance portal, select Audit.
 3. On the Search tab, set Record type to **AipSensitivityLabelAction** and configure the other parameters.
-![AipSensitivityLabelAction audit configurations](media/aip-sensitivity-label-action-search.png) 
+![AipSensitivityLabelAction audit configurations](images/aip-sensitivity-label-action-search.png) 
 1. Select Search to run the search using the critera. Click on an event to view the results.
-![AipSensitivityLabelAction audit results](media/aip-sensitivity-label-action.png) 
+![AipSensitivityLabelAction audit results](images/aip-sensitivity-label-action.png) 
 
-For more information on the Audit log search tool, see [audit log search tool.](audit-log-search.md).
+For more information on the Audit log search tool, see [audit log search tool](audit-log-search.md).
 
 ## Search Unified Audit Log in PowerShell
 
-To access the Unified Audit Log using PowerShell, first connect to an Exchange Online PowerShell session by completing the following steps: 
+To access the Unified Audit Log using PowerShell, first connect to an Exchange Online PowerShell session by completing the following steps.
 
 ### Establish remote Powershell session
 
@@ -215,13 +215,13 @@ ObjectState  : Unchanged
 The other operations that can be specifically searched for within AipSensitivityLabelAction include SensitivityLabelRemoved, SensitivityLabelPolicyMatched, and SensitivityLabeledFileOpened. 
 
 > [!NOTE]
-> This is just an example of how the Search-UnifiedAuditLog cmdlet can be used. You may need to adjust the command and specify additional parameters based on your specific requirements. For more information on using PowerShell for unified audit logs, see [search unified audit log.](/powershell/module/exchange/search-unifiedauditlog)
+> This is just an example of how the Search-UnifiedAuditLog cmdlet can be used. You may need to adjust the command and specify additional parameters based on your specific requirements. For more information on using PowerShell for unified audit logs, see [search unified audit log](/powershell/module/exchange/search-unifiedauditlog).
 
 ## Office 365 Management Activity API
 
 In order to be able to query the Office 365 Management API endpoints, you will need to configure your application with the right permissions. For a step-by-step guide, see [Get started with Office 365 Management APIs](https://learn.microsoft.com/en-us/office/office-365-management-api/get-started-with-office-365-management-apis).
 
-### Example of AipSensitivityLabelAction event from REST API
+### AipSensitivityLabelAction event from REST API
 
 The following is an example of AipSensitivityLabelAction event from REST API.
 
@@ -296,6 +296,6 @@ SensitivityLabelId | GUID | The current sensitivity label GUID. Use cmdlt Get-La
 TemplateId | GUID | The id for the template used for protection. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.                                        
 UserId | String | The User Principal Name (UPN) of the user who performed the action that resulted in the record being logged.
 UserKey | GUID | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.           
-UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy                                       
+UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy  
 Version | Double | Version ID of the file in the operation.                      
 Workload | String | Stores the Office 365 service where the activity occurred (Exchange, SharePoint, OneDrive, etc). 
