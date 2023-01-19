@@ -21,7 +21,7 @@ The AIPDiscover event is useful because it shows the users, devices, and locatio
 The audit logs can be accessed using the following methods:
 - The [Audit Log search tool](#audit-log-search-tool) in the Microsoft Purview compliance portal.
 - The [Search-UnifiedAuditLog](#search-unified-audit-log-in-powershell) cmdlet in Exchange Online PowerShell.
-- The [Office 365 Management Activity API](/office/office-365-management-api/office-365-management-activity-api-reference).
+- The [Office 365 Management Activity API](#office-365-management-activity-api).
 
 To view descriptions of the data fields within an audit event, see [Attributes of an AipDiscover event](#attributes-of-the-aipdiscover-event)
 
@@ -256,7 +256,7 @@ ProcessName | String | The relevant process name (Outlook, MSIP.App, WinWord, et
 ProductVersion | String | Version of the AIP client.
 ProtectionOwner | String | Rights Management owner in UPN format.
 ProtectionType | String | The type of protection that was used for the data (Template, Custom, etc.)
-RecordType | Double | The type of operation indicated by the record. 93 represents an AiPDiscover record.
+RecordType | Double | The type of operation indicated by the record. 93 represents an AipDiscover record.
 Scope | Double | 0 represents that the event was created by a hosted O365 service. 1 represents that the event was created by an on-premises server.
 SensitiveInfoTypeData | String | The sensitive information types that have been discovered within the data.
 SensitivityLabelId | GUID | The current MIP sensitivity label GUID. Use cmdlt Get-Label to get the full values of the GUID.

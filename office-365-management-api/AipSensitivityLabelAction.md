@@ -20,7 +20,7 @@ The audit logs can be accessed using the following methods.
 
 - The [audit log search tool](#audit-log-search-tool) in the Microsoft Purview compliance portal.
 - The [Search-UnifiedAuditLog](#search-unified-audit-log-in-powershell) cmdlet in Exchange Online PowerShell.
-- The [Office 365 Management Activity API](/office/office-365-management-api/office-365-management-activity-api-reference).
+- The [Office 365 Management Activity API](#office-365-management-activity-api).
 
 ### Audit log search tool
 
