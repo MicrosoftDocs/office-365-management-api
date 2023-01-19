@@ -108,7 +108,7 @@ Keys, also known as *client secrets*, are used when exchanging an authorization 
 
 An application that is running in the background, such as a daemon or service, can use client credentials to request app-only access tokens without repeatedly requesting consent from the tenant admin after initial consent is granted.
 
-For more information, see [Service to Service Calls Using Client Credentials](https://msdn.microsoft.com/library/azure/dn645543.aspx).
+For more information, see [Service to Service Calls Using Client Credentials](https://learn.microsoft.com/previous-versions/azure/dn645543(v=azure.100)).
 
 You must configure an X.509 certificate with your application to be used as client credentials when requesting app-only access tokens from Azure AD. There are two steps to the process:
 
@@ -171,7 +171,7 @@ The following instructions show you how to use the Visual Studio or Windows SDK 
    ```
 
    > [!NOTE]
-   > The [KeyCredentials](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#KeyCredentialType) property is a collection, making it possible to upload multiple X.509 certificates for rollover scenarios or delete certificates for compromise scenarios.
+   > The [KeyCredentials](https://learn.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type) property is a collection, making it possible to upload multiple X.509 certificates for rollover scenarios or delete certificates for compromise scenarios.
 
 9. Save your changes and upload the updated manifest by choosing **Manage manifest** in the command bar, choosing **Upload manifest**, browsing to your updated manifest file, and then selecting it.
 
