@@ -21,7 +21,7 @@ The AIPDiscover event is useful because it shows the users, devices, and locatio
 The audit logs can be accessed using the following methods:
 - The [Audit Log search tool](#audit-log-search-tool) in the Microsoft Purview compliance portal.
 - The [Search-UnifiedAuditLog](#search-unified-audit-log-in-powershell) cmdlet in Exchange Online PowerShell.
-- The [Office 365 Management Activity API](/office/office-365-management-api/office-365-management-activity-api-reference).
+- The [Office 365 Management Activity API](#office-365-management-activity-api).
 
 To view descriptions of the data fields within an audit event, see [Attributes of an AipDiscover event](#attributes-of-the-aipdiscover-event)
 
