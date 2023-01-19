@@ -12,11 +12,12 @@ ms.localizationpriority: high
 
 Azure Information Protection is a service that allows organizations to classify and label sensitive data, and apply policies to control how that data is accessed and shared.
 
-AipHeartBeat is a type of event that is recorded in the Office 365 Unified Audit Log. AipHeartBeat events are generated automatically and are useful for tracking the health and status of the AIP service. 
+AipHeartBeat is a type of event that is recorded in the Office 365 Unified Audit Log. AipHeartBeat events are generated automatically and are useful for tracking the health and status of the AIP service.
 
 ## Access the Office 365 Unified Audit Log
 
 The audit logs can be accessed using the following methods:
+
 - The [audit log search tool](#audit-log-search-tool) in the Microsoft Purview compliance portal.
 - The [Search-UnifiedAuditLog](#search-unified-audit-log-in-powershell) cmdlet in Exchange Online PowerShell.
 - The [Office 365 Management Activity API](/office/office-365-management-api/office-365-management-activity-api-reference).
@@ -26,9 +27,9 @@ The audit logs can be accessed using the following methods:
 1. Go to the [Microsoft Purview compliance portal](https://sip.compliance.microsoft.com/homepage) and sign in.
 2. In the left pane of the compliance portal, select Audit.
 3. On the Search tab, set Record type to **AipHeartBeat** and configure the other parameters.
-![AipHeartBeat audit configurations](images/aip-heartbeat-search.png) 
+![AipHeartBeat audit configurations](images/aip-heartbeat-search.png)
 4. Select Search to run the search using the critera. Click an event to view the results.
-![AipHeartBeat audit results](images/aip-heartbeat.png) 
+![AipHeartBeat audit results](images/aip-heartbeat.png)
 
 For more information on viewing the audit logs in the Microsoft Purview compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
 
@@ -36,9 +37,9 @@ For more information on viewing the audit logs in the Microsoft Purview complian
 
 To access the Unified Audit Log using PowerShell, first connect to an Exchange Online PowerShell session by completing the following steps.
 
-### Establish a remote PowerShell session 
+### Establish a remote PowerShell session
 
-This will establish a remote PowerShell session with Exchange Online. Once the connection is established, you can run Exchange Online cmdlets to manage your Exchange Online environment. 
+This will establish a remote PowerShell session with Exchange Online. Once the connection is established, you can run Exchange Online cmdlets to manage your Exchange Online environment.
 
 Open a PowerShell window and run the Install-Module -Name ExchangeOnlineManagement command to install the Exchange Online Management module. This module provides cmdlets that can be used to manage Exchange Online.
 
@@ -58,11 +59,13 @@ Command to prompt for a specific user for your Exchange Online credentials.
 ```powershell
 $UserCredential = Get-Credential 
 ```
+
 Command to connect to Exchange Online using the provided credentials.
 
 ```powershell
  Connect-ExchangeOnline -Credential $UserCredential -ShowProgress $true 
 ```
+
 #### Connect with credentials in the current session
 
 Connect to Exchange Online using the credentials in the current session
@@ -160,21 +163,21 @@ Type : AuditGeneral
 
 Event | Type | Description
 ---|---|---
-ApplicationId	| GUID | The ID of the application performing the operation.
+ApplicationId | GUID | The ID of the application performing the operation.
 ApplicationName | String | Friendly name of the application performing the operation. (Outlook, OWA, Word, Excel, PowerPoint, etc.)
 ClientIP | IPv4/IPv6 | The IP address of the device that was used when the activity was logged. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity.
 CreationTime | Date/time | The date and time in Coordinated Universal Time (UTC) when the user performed the activity.
 DeviceName | String | The device on which the activity happened.
 Id | GUID | Unique identifier of an audit record.
 Operation | String | The operation type for the audit log (Heartbeat)
-OrganizationId | GUID | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.                                               
+OrganizationId | GUID | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.
 Platform | Double | The platform where the activity occurred from. </br>0 = Unknown</br>1 = Windows</br>2 = MacOS </br>3 = iOS</br>4 = Android</br>5 = Web Browser
-ProcessName | String | The relevant process name (Outlook, MSIP.App, WinWord, etc.) 
+ProcessName | String | The relevant process name (Outlook, MSIP.App, WinWord, etc.)
 ProductVersion | String | Version of the AIP client.
 RecordType | Double | The type of operation indicated by the record. 97 represents an AipHeartBeat record.
-Scope | Double | 0 represents that the event was created by a hosted O365 service. 1 represents that the event was created by an on-premises server.                
+Scope | Double | 0 represents that the event was created by a hosted O365 service. 1 represents that the event was created by an on-premises server.
 UserId | String | The User Principal Name (UPN) of the user who performed the action that resulted in the record being logged.
-UserKey | GUID | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.           
+UserKey | GUID | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.
 UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy
-Version | Double | Version ID of the file in the operation.                      
+Version | Double | Version ID of the file in the operation.
 Workload | String | Stores the Office 365 service where the activity occurred (Exchange, SharePoint, OneDrive, etc).

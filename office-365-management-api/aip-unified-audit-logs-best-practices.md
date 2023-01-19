@@ -187,7 +187,7 @@ $SessionId = "UnifiedAuditLogSearch 01/02/17"
 The **SessionCommand** tells Search-UnifiedAuditLog how to handle large amounts of audit data. The returned data might contain duplicate records. This parameter can be set to:
 
 * **ReturnLargeSet**: The audit records returned are unsorted. You can fetch up to 50,000 audit records using this method but must remember to sort the data once it is all fetched.
-* **ReturnNextPreviewPage**: Search-UnifiedAuditLog returns audit records sorted by date. However, you can fetch only a maximum of 5,000 records using this method.  The maximum number of records returned through use of either paging or the ResultSize parameter is 5,000 records.
+* **ReturnNextPreviewPage**: Search-UnifiedAuditLog returns audit records sorted by date. However, you can fetch only a maximum of 5,000 records using this method. The maximum number of records returned through use of either paging or the ResultSize parameter is 5,000 records.
 
 > [!NOTE]
 > Always use the same SessionCommand value for a given SessionId value. Don't switch between ReturnLargeSet and ReturnNextPreviewPage for the same session ID. Otherwise, the output is limited to 10,000 results
