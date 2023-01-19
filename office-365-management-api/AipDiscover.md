@@ -30,9 +30,9 @@ To view descriptions of the data fields within an audit event, see [Attributes o
 1. Go to https://compliance.microsoft.com and sign in.
 2. In the left pane of the compliance portal, select Audit.
 3. On the Search tab, set Record type to **AipDiscover** and configure the other parameters.
-![AipDiscover audit configurations](media/aip-discover-search.png) 
+![AipDiscover audit configurations](images/aip-discover-search.png) 
 4. Select Search to run the search using the critera. Click on an event to view the results. Both discover and access operations can be viewed. 
-![AipDiscover audit results](media/aip-discover.png) 
+![AipDiscover audit results](images/aip-discover.png) 
 
 For more information on the Audit log search tool, see [audit log search tool.](audit-log-search.md).
 
@@ -93,7 +93,7 @@ Use the following command to specifically search for discover events - the scena
 Search-UnifiedAuditLog -Operations Discover -RecordType AipDiscover -StartDate (Get-Date).AddDays(-100) -EndDate (Get-Date)
 ```
 
-The following is an example of AipDiscover event from PowerShell #1 - discover:
+The following is an example of AipDiscover event from PowerShell, operation Discover.
 
 ```
 RecordType   : AipDiscover
@@ -146,7 +146,7 @@ Use the following command to specifically search for access events - the scenari
 Search-UnifiedAuditLog -Operations Access -RecordType AipDiscover -StartDate (Get-Date).AddDays(-100) -EndDate (Get-Date)
 ```
 
-The following is an example of AipDiscover event from PowerShell #2 - access.
+The following is an example of AipDiscover event from PowerShell, operation Access.
 
 ```
 RecordType   : AipDiscover
@@ -250,7 +250,7 @@ IsProtected | Boolean | States whether or not the data is protected with encrypt
 Location | String | The location of the document with respect to the user's device.
 ObjectId | String | File full path (URL) that is being accessed by the user.
 Operation | String | The operation type for the audit log. For AipDiscover, operations can include Discover or Access.
-OrganizationId | GUID | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.                                                
+OrganizationId | GUID | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.
 Platform | Double | The platform where the activity occurred from. </br>0 = Unknown</br>1 = Windows</br>2 = MacOS </br>3 = iOS</br>4 = Android</br>5 = Web Browser
 ProcessName | String | The relevant process name (Outlook, MSIP.App, WinWord, etc.) 
 ProductVersion | String | Version of the AIP client.
