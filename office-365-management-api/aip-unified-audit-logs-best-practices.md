@@ -110,7 +110,6 @@ AuditData:
 * SourceFileName: The name of the file involved in the action.
 * UserType: The type of user that performed the action, with values of "0" (regular user), "1" (administrator), or "2" (Microsoft data center administrator or system account).
 * EventSource: Only used by SharePoint Online, indicating whether the source was SharePoint or ObjectMode
-
 * The ResultIndex and ResultCount properties can be useful when working with large record sets. ResultIndex indicates the record number within the returned set, while ResultCount shows the total number of records returned. For example, if ResultIndex is 1 and ResultCount is 125, it means that the record shown is the first of 125 returned in the set.
   * If the search encounters an internal timeout, ResultIndex will be set to -1. As administrators gain experience with the audit log and the PowerShell cmdlets, they will discover that the audit log is a valuable source of information for understanding who interacted with a document or created new documents during a certain time period. It may take some trial and error to fully utilize the information provided in audit records.
 
@@ -154,7 +153,6 @@ If you need to retrieve a large number of audit records from a large tenant, or 
 In this case, you can use the ReturnLargeSet and ReturnNextPreviewPage parameters to fetch audit data in pages of up to 5,000 records at a time. This technique allows you to retrieve up to 50,000 audit records. If you need to search for more than 50,000 records, you can split the work across multiple searches, each of which uses different criteria. You can then store the results of these searches in an external repository for later analysis.
 
 To manage large volumes of data from the Search-UnifiedAuditLog cmdlet, you can use the ReturnLargeSet and ReturnNextPreviewPage parameters. These parameters allow you to perform searches that return large sets of results, and then retrieve the next page of results in subsequent searches.
- 
 
 1. Use the SessionId parameter to identify a search session and specify the number of pages you want to retrieve. This will allow the cmdlet to fetch multiple pages of data and return them to you.
 
