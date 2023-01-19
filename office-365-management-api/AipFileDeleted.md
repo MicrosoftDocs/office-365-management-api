@@ -26,9 +26,9 @@ The audit logs can be accessed using the following methods:
 1. Go to https://compliance.microsoft.com and sign in.
 2. In the left pane of the compliance portal, select Audit.
 3. On the Search tab, set Record type to **AipFileDeleted** and configure the other parameters.
-![AipFileDeleted audit configurations](media/aip-file-delete-search.png) 
+![AipFileDeleted audit configurations](images/aip-file-delete-search.png) 
 4. Select Search to run the search using the critera. Click on an event to view the results.
-![AipFileDeleted audit results](media/aip-file-delete.png) 
+![AipFileDeleted audit results](images/aip-file-delete.png) 
 
 For more information on viewing the logs in the Microsoft Purview compliance portal, see [audit log search tool.](audit-log-search.md).
 
@@ -120,7 +120,7 @@ ObjectState  : Unchanged
 ```
 
 > [!NOTE]
-> This is just an example of how you can use the Search-UnifiedAuditLog cmdlet. You may need to adjust the command and specify additional parameters based on your specific requirements. For more information on using PowerShell for unified audit logs, see [search unified audit log.](/powershell/module/exchange/search-unifiedauditlog)
+> This is just an example of how you can use the Search-UnifiedAuditLog cmdlet. You may need to adjust the command and specify additional parameters based on your specific requirements. For more information on using PowerShell for unified audit logs, see [search unified audit log](/powershell/module/exchange/search-unifiedauditlog).
 
 ## Office 365 Management Activity API
 
@@ -173,7 +173,7 @@ IsProtected | Boolean | States whether or not the data is protected with encrypt
 Location | String | The location of the document with respect to the user's device.
 ObjectId | String | File full path (URL) that is being accessed by the user.
 Operation | String | The operation type for the audit log. For AipDiscover, operations can include Discover or Access.
-OrganizationId | GUID | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.                                                
+OrganizationId | GUID | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.
 Platform | Double | The platform where the activity occurred from. </br>0 = Unknown</br>1 = Windows</br>2 = MacOS </br>3 = iOS</br>4 = Android</br>5 = Web Browser
 ProcessName | String | The relevant process name (Outlook, MSIP.App, WinWord, etc.) 
 ProductVersion | String | Version of the AIP client.
