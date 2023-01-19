@@ -12,7 +12,7 @@ ms.localizationpriority: high
 
 Azure Information Protection is a service that allows organizations to classify and label sensitive data, and apply policies to control how that data is accessed and shared.
 
-AipDiscover is a type of event that is recorded in the Office 365 Unified Audit Log. It represents an attempt to discover or access an Azure Information Protection (AIP) protected file. In the scenario in which an AIPDiscover event shows the operation as discover that means the file has been listed within an on-premise file share, SharePoint server, etc. that is being viewed by a user or information protection scanner and the state of the file is at rest. In the scenario that an AIPDiscover event shows the operations as access that means the file has been opened and is in use by the user when the event was recorded.  
+AipDiscover is a type of event that is recorded in the Office 365 Unified Audit Log. It represents an attempt to discover or access an Azure Information Protection (AIP) protected file. In the scenario in which an AIPDiscover event shows the operation as discover that means the file has been listed within an on-premise file share, SharePoint server, etc. that is being viewed by a user or information protection scanner and the state of the file is at rest. In the scenario that an AIPDiscover event shows the operations as access that means the file has been opened and is in use by the user when the event was recorded.
 
 The AIPDiscover event is useful because it shows the users, devices, and locations that are accessing Azure Information Protection labeled information within an organization.
 
