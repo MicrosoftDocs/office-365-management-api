@@ -14,7 +14,7 @@ Azure Information Protection is a service that allows organizations to classify 
 
 AipDiscover is a type of event that is recorded in the Office 365 Unified Audit Log. It represents an attempt to discover or access an Azure Information Protection (AIP) protected file. In the scenario in which an AIPDiscover event shows the operation as discover that means the file has been listed within an on-premise file share, SharePoint server, etc. that is being viewed by a user or information protection scanner and the state of the file is at rest. In the scenario that an AIPDiscover event shows the operations as access that means the file has been opened and is in use by the user when the event was recorded.  
 
-The AIPDiscover event is useful because it shows the users, devices, and locations that are accessing Azure Information Protection labeled information within an organization. 
+The AIPDiscover event is useful because it shows the users, devices, and locations that are accessing Azure Information Protection labeled information within an organization.
 
 ## Access the Office 365 Unified Audit Log
 
@@ -25,24 +25,24 @@ The audit logs can be accessed using the following methods:
 
 To view descriptions of the data fields within an audit event, see [Attributes of an AipDiscover event](#attributes-of-the-aipdiscover-event)
 
-## Audit log search tool
+### Audit log search tool
 
-1. Go to https://compliance.microsoft.com and sign in.
+1. Go to the [Microsoft Purview compliance portal](https://sip.compliance.microsoft.com/homepage) and sign in.
 2. In the left pane of the compliance portal, select Audit.
 3. On the Search tab, set Record type to **AipDiscover** and configure the other parameters.
-![AipDiscover audit configurations](images/aip-discover-search.png) 
-4. Select Search to run the search using the critera. Click on an event to view the results. Both discover and access operations can be viewed. 
-![AipDiscover audit results](images/aip-discover.png) 
+![AipDiscover audit configurations](images/aip-discover-search.png)
+4. Select Search to run the search using the critera. Click on an event to view the results. Both discover and access operations can be viewed.
+![AipDiscover audit results](images/aip-discover.png)
 
-For more information on the Audit log search tool, see [audit log search tool.](audit-log-search.md).
+For more information on viewing the audit logs in the Microsoft Purview compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
 
 ## Search Unified Audit Log in PowerShell
 
-To access the Unified Audit Log using PowerShell, first connect to an Exchange Online PowerShell session by completing the following steps: 
+To access the Unified Audit Log using PowerShell, first connect to an Exchange Online PowerShell session by completing the following steps.
 
-### Establish a remote Powershell session
+### Establish a remote PowerShell session
 
-This will establish a remote PowerShell session with Exchange Online. Once the connection is established, you can run Exchange Online cmdlets to manage your Exchange Online environment. 
+This will establish a remote PowerShell session with Exchange Online. Once the connection is established, you can run Exchange Online cmdlets to manage your Exchange Online environment.
 
 Open a PowerShell window and run the Install-Module -Name ExchangeOnlineManagement command to install the Exchange Online Management module. This module provides cmdlets that can be used to manage Exchange Online.
 
@@ -57,13 +57,13 @@ Import-Module ExchangeOnlineManagement
 
 #### Connect with a specific user
 
-Command to prompt for a specific user for  your Exchange Online credentials.
+Command to prompt for a specific user for your Exchange Online credentials.
 
 ```powershell
 $UserCredential = Get-Credential 
 ```
 
-Command to connect to Exchange Online using the provided credentials. 
+Command to connect to Exchange Online using the provided credentials.
 
 ```powershell
 Connect-ExchangeOnline -Credential $UserCredential -ShowProgress $true 
@@ -79,7 +79,7 @@ Connect-ExchangeOnline
 
 ## Search-UnifiedAuditLog cmdlet
 
-The Search-UnifiedAuditLog cmdlet is a PowerShell command that can be used to search the Office 365 Unified Audit Log. The Unified Audit Log is a record of user and administrator activity in Office 365 that can be used to track events. For best practices on using this cmdlet, see [Best Practices for using Search-UnifiedAuditLog](BestPractices)
+The Search-UnifiedAuditLog cmdlet is a PowerShell command that can be used to search the Office 365 Unified Audit Log. The Unified Audit Log is a record of user and administrator activity in Office 365 that can be used to track events. For best practices on using this cmdlet, see [Best Practices for using Search-UnifiedAuditLog](aip-unified-audit-logs-best-practices.md).
 
 To extract the AipDiscover events from the Unified Audit Log using PowerShell, you can use the following command. This will search the Unified Audit Log for the specified date range and return any events with the record type "AipDiscover". The results will be exported to a CSV file at the specified path.
 
@@ -95,7 +95,7 @@ Search-UnifiedAuditLog -Operations Discover -RecordType AipDiscover -StartDate (
 
 The following is an example of AipDiscover event from PowerShell, operation Discover.
 
-```
+```json
 RecordType   : AipDiscover
 CreationDate : 12/6/2022 8:51:58 PM
 UserIds      : ipadmin@champion365.onmicrosoft.com
@@ -148,7 +148,7 @@ Search-UnifiedAuditLog -Operations Access -RecordType AipDiscover -StartDate (Ge
 
 The following is an example of AipDiscover event from PowerShell, operation Access.
 
-```
+```json
 RecordType   : AipDiscover
 CreationDate : 11/6/2022 10:56:26 PM
 UserIds      : AdeleV@champion365.onmicrosoft.com
@@ -252,15 +252,15 @@ ObjectId | String | File full path (URL) that is being accessed by the user.
 Operation | String | The operation type for the audit log. For AipDiscover, operations can include Discover or Access.
 OrganizationId | GUID | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.
 Platform | Double | The platform where the activity occurred from. </br>0 = Unknown</br>1 = Windows</br>2 = MacOS </br>3 = iOS</br>4 = Android</br>5 = Web Browser
-ProcessName | String | The relevant process name (Outlook, MSIP.App, WinWord, etc.) 
+ProcessName | String | The relevant process name (Outlook, MSIP.App, WinWord, etc.)
 ProductVersion | String | Version of the AIP client.
 ProtectionOwner | String | Rights Management owner in UPN format.
 ProtectionType | String | The type of protection that was used for the data (Template, Custom, etc.)
 RecordType | Double | The type of operation indicated by the record. 93 represents an AiPDiscover record.
-Scope | Double | 0 represents that the event was created by a hosted O365 service. 1 represents that the event was created by an on-premises server.                                                
+Scope | Double | 0 represents that the event was created by a hosted O365 service. 1 represents that the event was created by an on-premises server.
 SensitiveInfoTypeData | String | The sensitive information types that have been discovered within the data.
 SensitivityLabelId | GUID | The current MIP sensitivity label GUID. Use cmdlt Get-Label to get the full values of the GUID.
-TemplateId | GUID | The id for the template used for protection. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.                                              
+TemplateId | GUID | The id for the template used for protection. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.
 UserId | String | The User Principal Name (UPN) of the user who performed the action that resulted in the record being logged.
-UserKey | GUID | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.           
-UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy 
+UserKey | GUID | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.
+UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy

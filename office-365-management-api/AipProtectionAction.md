@@ -12,7 +12,7 @@ ms.localizationpriority: high
 
 Azure Information Protection is a service that allows organizations to classify and label sensitive data, and apply policies to control how that data is accessed and shared.
 
-AipProtectionAction is a type of event that is recorded in the Office 365 Unified Audit Log. It represents an attempt to apply protection to a file or email. The event is useful because it shows how data is protected within an organization. 
+AipProtectionAction is a type of event that is recorded in the Office 365 Unified Audit Log. It represents an attempt to apply protection to a file or email. The event is useful because it shows how data is protected within an organization.
 
 ## Access the Office 365 Unified Audit Log
 
@@ -21,23 +21,23 @@ The audit logs can be accessed using the following methods:
 - The [Search-UnifiedAuditLog](#search-unified-audit-log-in-powershell) cmdlet in Exchange Online PowerShell.
 - The [Office 365 Management Activity API](/office/office-365-management-api/office-365-management-activity-api-reference).
 
-## Audit log search tool
+### Audit log search tool
 
-1. Go to https://compliance.microsoft.com and sign in.
+1. Go to the [Microsoft Purview compliance portal](https://sip.compliance.microsoft.com/homepage) and sign in.
 2. In the left pane of the compliance portal, select Audit.
 3. On the Search tab, set Record type to **AipProtectionAction** and configure the other parameters.
-![AipProtectionAction audit configurations](images/aip-protection-action-search.png) 
-4. Select Search to run the search using the critera. Click on an event to view the results. 
+![AipProtectionAction audit configurations](images/aip-protection-action-search.png)
+4. Select Search to run the search using the critera. Click on an event to view the results.
 
-For more information on the Audit log search tool, see [audit log search tool](audit-log-search.md).
+For more information on viewing the audit logs in the Microsoft Purview compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
 
-## Access the Search Unified Audit Log in PowerShell
+### Search Unified Audit Log in PowerShell
 
-To access the Unified Audit Log using PowerShell, first connect to an Exchange Online PowerShell session by completing the following steps. 
+To access the Unified Audit Log using PowerShell, first connect to an Exchange Online PowerShell session by completing the following steps.
 
-### Establish remote Powershell session
+#### Establish remote PowerShell session
 
-This will establish a remote PowerShell session with Exchange Online. Once the connection is established, run Exchange Online cmdlets to manage your Exchange Online environment. 
+This will establish a remote PowerShell session with Exchange Online. Once the connection is established, run Exchange Online cmdlets to manage your Exchange Online environment.
 
 Open a PowerShell window and run the Install-Module -Name ExchangeOnlineManagement command to install the Exchange Online Management module. This module provides cmdlets that can be used to manage Exchange Online.
 
@@ -52,12 +52,12 @@ Import-Module ExchangeOnlineManagement
 
 #### Connect with a specific user
 
-Command to prompt for a specific user for  your Exchange Online credentials.
+Command to prompt for a specific user for your Exchange Online credentials.
 
 ```powershell
 $UserCredential = Get-Credential 
 ```
-Command to connect to Exchange Online using the provided credentials. 
+Command to connect to Exchange Online using the provided credentials.
 
 ```powershell
  Connect-ExchangeOnline -Credential $UserCredential -ShowProgress $true 
@@ -71,9 +71,9 @@ Connect to Exchange Online using the credentials in the current session.
 Connect-ExchangeOnline
 ```
 
-### Search-UnifiedAuditLog cmdlet
+## Search-UnifiedAuditLog cmdlet
 
-The Search-UnifiedAuditLog cmdlet is a PowerShell command that can be used to search the Office 365 Unified Audit Log. The Unified Audit Log is a record of user and administrator activity in Office 365 that can be used to track events. For best practices on using this cmdlet, see [Best Practices for using Search-UnifiedAuditLog](BestPractices)
+The Search-UnifiedAuditLog cmdlet is a PowerShell command that can be used to search the Office 365 Unified Audit Log. The Unified Audit Log is a record of user and administrator activity in Office 365 that can be used to track events. For best practices on using this cmdlet, see [Best Practices for using Search-UnifiedAuditLog](aip-unified-audit-logs-best-practices.md).
 
 To extract the AipProtectionAction events from the Unified Audit Log using PowerShell, you can use the following command. This will search the Unified Audit Log for the specified date range and return any events with the record type "AipProtectionAction". The results will be exported to a CSV file at the specified path.
 
@@ -86,7 +86,7 @@ Search-UnifiedAuditLog -RecordType AipProtectionAction -StartDate (Get-Date).Add
 
 ## Office 365 Management Activity API
 
-In order to be able to query the Office 365 Management API endpoints, you will need to configure your application with the right permissions. For a step-by-step guide, see [Get started with Office 365 Management APIs](https://learn.microsoft.com/office/office-365-management-api/get-started-with-office-365-management-apis).
+In order to be able to query the Office 365 Management API endpoints, you'll need to configure your application with the right permissions. For a step-by-step guide, see [Get started with Office 365 Management APIs](https://learn.microsoft.com/office/office-365-management-api/get-started-with-office-365-management-apis).
 
 ### Attributes of the AipProtectionAction event
 
