@@ -256,7 +256,7 @@ ProcessName | String | The relevant process name (Outlook, MSIP.App, WinWord, et
 ProductVersion | String | Version of the AIP client.
 ProtectionOwner | String | Rights Management owner in UPN format.
 ProtectionType | String | The type of protection that was used for the data (Template, Custom, etc.)
-RecordType | Double | The type of operation indicated by the record. 93 represents an AiPDiscover record.
+RecordType | Double | The type of operation indicated by the record. 93 represents an AipDiscover record.
 Scope | Double | 0 represents that the event was created by a hosted O365 service. 1 represents that the event was created by an on-premises server.
 SensitiveInfoTypeData | String | The sensitive information types that have been discovered within the data.
 SensitivityLabelId | GUID | The current MIP sensitivity label GUID. Use cmdlt Get-Label to get the full values of the GUID.
