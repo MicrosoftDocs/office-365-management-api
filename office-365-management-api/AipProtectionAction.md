@@ -25,10 +25,12 @@ The audit logs can be accessed using the following methods:
 ### Audit log search tool
 
 1. Go to the [Microsoft Purview compliance portal](https://sip.compliance.microsoft.com/homepage) and sign in.
-2. In the left pane of the compliance portal, select Audit.
+2. In the left pane of the compliance portal, select **Audit**.
+   > [!Note]
+   > If you don't see **Audit** in the left pane, see [Roles and role groups in Microsoft Defender for Office 365 and Microsoft Purview compliance](/microsoft-365/security/office-365-security/scc-permissions?view=o365-worldwide) for information about permissions.
 3. On the Search tab, set Record type to **AipProtectionAction** and configure the other parameters.
 ![AipProtectionAction audit configurations](images/aip-protection-action-search.png)
-4. Select Search to run the search using the critera. Click on an event to view the results.
+4. Select Search to run the search using the criteria. Click on an event to view the results.
 
 For more information on viewing the audit logs in the Microsoft Purview compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
 
@@ -109,6 +111,6 @@ RecordType | Double | The type of operation indicated by the record.
 Scope | Double | 0 represents that the event was created by a hosted O365 service. 1 represents that the event was created by an on-premises server.
 UserId | String | The User Principal Name (UPN) of the user who performed the action that resulted in the record being logged.
 UserKey | GUID | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.
-UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy
+UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = System</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy
 Version | Double | Version ID of the file in the operation.
 Workload | String | Stores the Office 365 service where the activity occurred (Exchange, SharePoint, OneDrive, etc).
