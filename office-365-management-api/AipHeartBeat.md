@@ -27,7 +27,7 @@ The audit logs can be accessed using the following methods:
 1. Go to the [Microsoft Purview compliance portal](https://sip.compliance.microsoft.com/homepage) and sign in.
 2. In the left pane of the compliance portal, select **Audit**.
    > [!Note]
-   > If you don't see **Audit** in the left pane, see [Roles and role groups in Microsoft Defender for Office 365 and Microsoft Purview compliance](/microsoft-365/security/office-365-security/scc-permissions?view=o365-worldwide) for information about permissions.
+   > If you don't see **Audit** in the left pane, see [Roles and role groups in Microsoft Defender for Office 365 and Microsoft Purview compliance](/microsoft-365/security/office-365-security/scc-permissions?view=o365-worldwide&preserve-view=true) for information about permissions.
 3. On the **New Search** tab, set Record type to **AipDiscover** and configure the other parameters.
 ![AipDiscover audit configurations](images/aip-discover-search.png)
 4. Click **Search** to run the search using the criteria. In the results pane, select an event to view the results. Both discover and access operations can be viewed.
@@ -130,7 +130,7 @@ ObjectState  : Unchanged
 
 ## Office 365 Management Activity API
 
-In order to be able to query the Office 365 Management API endpoints, you'll need to configure your application with the right permissions. For a step-by-step guide, see [Get started with Office 365 Management APIs](https://learn.microsoft.com/office/office-365-management-api/get-started-with-office-365-management-apis).
+In order to be able to query the Office 365 Management API endpoints, you'll need to configure your application with the right permissions. For a step-by-step guide, see [Get started with Office 365 Management APIs](/office/office-365-management-api/get-started-with-office-365-management-apis).
 
 ### AipHeartBeat event from REST API
 
