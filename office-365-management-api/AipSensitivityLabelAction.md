@@ -4,7 +4,7 @@ title: AipSensitivityLabelAction
 description: AipSensitivityLabelAction
 ms.ContentId: 8712d0c3-90af-4aca-8264-4e5ee98c6d40
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 01/24/2023
 ms.localizationpriority: high
 ---
 
@@ -28,10 +28,10 @@ The audit logs can be accessed using the following methods.
 2. In the left pane of the compliance portal, select **Audit**.
    > [!Note]
    > If you don't see **Audit** in the left pane, see [Roles and role groups in Microsoft Defender for Office 365 and Microsoft Purview compliance](/microsoft-365/security/office-365-security/scc-permissions?view=o365-worldwide) for information about permissions.
-3. On the Search tab, set Record type to **AipSensitivityLabelAction** and configure the other parameters.
-![AipSensitivityLabelAction audit configurations](images/aip-sensitivity-label-action-search.png)
-4. Select Search to run the search using the criteria. Click on an event to view the results.
-![AipSensitivityLabelAction audit results](images/aip-sensitivity-label-action.png)
+3. On the **New Search** tab, set Record type to **AipDiscover** and configure the other parameters.
+![AipDiscover audit configurations](images/aip-discover-search.png)
+4. Click **Search** to run the search using the criteria. In the results pane, select an event to view the results. Both discover and access operations can be viewed.
+![AipDiscover audit results](images/aip-discover.png)
 
 For more information on viewing the audit logs in the Microsoft Purview compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
 

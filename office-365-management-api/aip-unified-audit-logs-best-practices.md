@@ -4,7 +4,7 @@ title: AIP Unified Audit Log Best Practices
 description: Understand the AIP Unified Audit Log Search-UnifiedAuditLog cmdlet tool
 ms.ContentId: c2cdd604-fa79-424c-b8e1-9474f248279e
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 01/24/2023
 ms.localizationpriority: high
 ---
 
