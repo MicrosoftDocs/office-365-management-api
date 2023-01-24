@@ -126,7 +126,7 @@ One way to approach this problem is to take steps to generate an audit event for
 
 This will give you a smaller set of events to work with, which you can then analyze and use to perform further searches. It's also a good idea to use the **Operations** / **RecordTypes** values logged for the events to help you refine your searches and find the specific events you're looking for.
 
-Following is an example of filtering data by looking for very specific operations and in a given date range. View [Record Types](https://learn.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema#auditlogrecordtype) to see the record types that can be looked for.
+Following is an example of filtering data by looking for very specific operations and in a given date range. View [Record Types](/office/office-365-management-api/office-365-management-activity-api-schema#auditlogrecordtype) to see the record types that can be looked for.
 
 The following script looks for a specific operation.
 
