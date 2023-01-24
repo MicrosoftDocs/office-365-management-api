@@ -25,10 +25,12 @@ The audit logs can be accessed using the following methods.
 ### Audit log search tool
 
 1. Go to the [Microsoft Purview compliance portal](https://sip.compliance.microsoft.com/homepage) and sign in.
-1. In the left pane of the compliance portal, select Audit.
-1. On the Search tab, set Record type to **AipSensitivityLabelAction** and configure the other parameters.
+2. In the left pane of the compliance portal, select **Audit**.
+   > [!Note]
+   > If you don't see **Audit** in the left pane, see [Roles and role groups in Microsoft Defender for Office 365 and Microsoft Purview compliance](/microsoft-365/security/office-365-security/scc-permissions?view=o365-worldwide) for information about permissions.
+3. On the Search tab, set Record type to **AipSensitivityLabelAction** and configure the other parameters.
 ![AipSensitivityLabelAction audit configurations](images/aip-sensitivity-label-action-search.png)
-1. Select Search to run the search using the critera. Click on an event to view the results.
+4. Select Search to run the search using the criteria. Click on an event to view the results.
 ![AipSensitivityLabelAction audit results](images/aip-sensitivity-label-action.png)
 
 For more information on viewing the audit logs in the Microsoft Purview compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
@@ -297,6 +299,6 @@ SensitivityLabelId | GUID | The current sensitivity label GUID. Use cmdlt Get-La
 TemplateId | GUID | The id for the template used for protection. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.
 UserId | String | The User Principal Name (UPN) of the user who performed the action that resulted in the record being logged.
 UserKey | GUID | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.
-UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy  
+UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = System</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy  
 Version | Double | Version ID of the file in the operation.
 Workload | String | Stores the Office 365 service where the activity occurred (Exchange, SharePoint, OneDrive, etc).

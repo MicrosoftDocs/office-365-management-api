@@ -25,10 +25,12 @@ The audit logs can be accessed using the following methods:
 ### Audit log search tool
 
 1. Go to the [Microsoft Purview compliance portal](https://sip.compliance.microsoft.com/homepage) and sign in.
-2. In the left pane of the compliance portal, select Audit.
+2. In the left pane of the compliance portal, select **Audit**.
+   > [!Note]
+   > If you don't see **Audit** in the left pane, see [Roles and role groups in Microsoft Defender for Office 365 and Microsoft Purview compliance](/microsoft-365/security/office-365-security/scc-permissions?view=o365-worldwide) for information about permissions.
 3. On the Search tab, set Record type to **AipFileDeleted** and configure the other parameters.
 ![AipFileDeleted audit configurations](images/aip-file-delete-search.png)
-4. Select Search to run the search using the critera. Click on an event to view the results.
+4. Select Search to run the search using the criteria. Click on an event to view the results.
 ![AipFileDeleted audit results](images/aip-file-delete.png)
 
 For more information on viewing the audit logs in the Microsoft Purview compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
@@ -115,7 +117,7 @@ AuditData    :
   "OrganizationId":"ac1dff03-7e0e-4ac8-a4c9-9b38d24f062c",
   "UserType":5,
   "UserKey":"cab9530a-5b06-4c61-b09b-590fda6a40f8",
-  "ResultStaus":"Succeeded"
+  "ResultStatus":"Succeeded"
 }
 ResultIndex  : 9
 ResultCount  : 11
@@ -189,4 +191,4 @@ SensitiveInfoTypeData | String | The sensitive information types that have been 
 SensitivityLabelId | GUID | The current MIP sensitivity label GUID. Use cmdlt Get-Label to get the full values of the GUID.
 UserId | String | The User Principal Name (UPN) of the user who performed the action that resulted in the record being logged.
 UserKey | GUID | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.
-UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy
+UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = System</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy

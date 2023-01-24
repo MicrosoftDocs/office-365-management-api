@@ -21,10 +21,11 @@ To use the Search-UnifiedAuditLog cmdlet, your account must have the Exchange Vi
 ## RecordTypes
 
 A RecordType is the workload that generated the record. Examples of different types of events found using the Search-UnifiedAuditLog cmdlet include:
-1. Adding a member to a group in Azure Active Directory (**AzureActiveDIrectory**)
-2. Updating mailbox properties in Exchange (**ExchangeAdmin**)
-3. Deleting a file in SharePoint (**SharePointFileOperation**)
-4. A user logging onto Microsoft Teams (**MicrosoftTeams**)
+
+1. Add a member to a group in Azure Active Directory (**AzureActiveDIrectory**)
+2. Update mailbox properties in Exchange (**ExchangeAdmin**)
+3. Delete a file in SharePoint (**SharePointFileOperation**)
+4. Log a user into Microsoft Teams (**MicrosoftTeams**)
 5. AIP Heartbeat (**AipHeartbeat**)
 
 These events can be searched for and tracked using the Search-UnifiedAuditLog cmdlet, which allows you to filter and view the details of the events that are recorded in the unified audit log.
@@ -41,7 +42,7 @@ AuditData property
 
 ### General properties
 
-General properties that are populated in the same way by all workloads, and the AuditData property that contains workload-specific information. The general properties include the record type, creation date, operation, and user identifier. 
+General properties that are populated in the same way by all workloads, and the AuditData property that contains workload-specific information. The general properties include the record type, creation date, operation, and user identifier.
 
 ```
 RunspaceId   : 136b901e-a6bc-4f24-bb58-5c435090df91
@@ -153,17 +154,15 @@ $Records | Where-Object {$_.CreationDate -eq "2022-09-15 5:49:22 PM"}
 
 If you need to retrieve a large number of audit records from a large tenant, or if you need to search for multiple operations over an extended period, it's likely that a single search will return more than 5,000 records.
 
-In this case, you can use the ReturnLargeSet and ReturnNextPreviewPage parameters to fetch audit data in pages of up to 5,000 records at a time. This technique allows you to retrieve up to 50,000 audit records. If you need to search for more than 50,000 records, you can split the work across multiple searches, each of which uses different criteria. You can then store the results of these searches in an external repository for later analysis.
-
 To manage large volumes of data from the Search-UnifiedAuditLog cmdlet, you can use the ReturnLargeSet and ReturnNextPreviewPage parameters. These parameters allow you to perform searches that return large sets of results, and then retrieve the next page of results in subsequent searches.
 
 1. Use the SessionId parameter to identify a search session and specify the number of pages you want to retrieve. This will allow the cmdlet to fetch multiple pages of data and return them to you.
 2. The SessionId parameter is also used when you want to search for a large amount of audit data using the Search-UnifiedAuditLog cmdlet. The cmdlet will return a maximum of 5000 records per page, so if you want to search for more than that, you'll need to use the SessionId parameter to identify a search session and specify the number of pages you want to retrieve. The cmdlet will then use the session identifier to fetch the additional pages of data and return them to you.
 3. If you need to search for more than 50,000 records, split the work across multiple searches and use different criteria for each search.
-4. Store the results of the searches in an external repository, such as Azure log analytics, Azure Data Explorer, for easy access and analysis. 
+4. Store the results of the searches in an external repository, such as Azure log analytics, Azure Data Explorer, for easy access and analysis.
 5. Regularly review and update your search criteria and audit data management processes to ensure that you are capturing the right data and efficiently managing it. This will help you stay on top of any potential security issues and improve the overall security of your organization.
 
-### Summary
+### Steps to retrieve large amounts of data
 
 To fetch a large amount of audit data, follow these steps:
 
@@ -190,7 +189,7 @@ The **SessionCommand** tells Search-UnifiedAuditLog how to handle large amounts 
 * **ReturnNextPreviewPage**: Search-UnifiedAuditLog returns audit records sorted by date. However, you can fetch only a maximum of 5,000 records using this method. The maximum number of records returned through use of either paging or the ResultSize parameter is 5,000 records.
 
 > [!NOTE]
-> Always use the same SessionCommand value for a given SessionId value. Don't switch between ReturnLargeSet and ReturnNextPreviewPage for the same session ID. Otherwise, the output is limited to 10,000 results
+> Always use the same SessionCommand value for a given SessionId value. Don't switch between ReturnLargeSet and ReturnNextPreviewPage for the same session ID. Otherwise, the output is limited to 10,000 results.
 
 #### SessionId sample script
 

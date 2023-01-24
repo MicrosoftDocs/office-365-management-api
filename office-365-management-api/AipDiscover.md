@@ -19,6 +19,7 @@ The AIPDiscover event is useful because it shows the users, devices, and locatio
 ## Access the Office 365 Unified Audit Log
 
 The audit logs can be accessed using the following methods:
+
 - The [Audit Log search tool](#audit-log-search-tool) in the Microsoft Purview compliance portal.
 - The [Search-UnifiedAuditLog](#search-unified-audit-log-in-powershell) cmdlet in Exchange Online PowerShell.
 - The [Office 365 Management Activity API](#office-365-management-activity-api).
@@ -28,10 +29,12 @@ To view descriptions of the data fields within an audit event, see [Attributes o
 ### Audit log search tool
 
 1. Go to the [Microsoft Purview compliance portal](https://sip.compliance.microsoft.com/homepage) and sign in.
-2. In the left pane of the compliance portal, select Audit.
+2. In the left pane of the compliance portal, select **Audit**.
+   > [!Note]
+   > If you don't see **Audit** in the left pane, see [Roles and role groups in Microsoft Defender for Office 365 and Microsoft Purview compliance](/microsoft-365/security/office-365-security/scc-permissions?view=o365-worldwide) for information about permissions.
 3. On the Search tab, set Record type to **AipDiscover** and configure the other parameters.
 ![AipDiscover audit configurations](images/aip-discover-search.png)
-4. Select Search to run the search using the critera. Click on an event to view the results. Both discover and access operations can be viewed.
+4. Select Search to run the search using the criteria. Click on an event to view the results. Both discover and access operations can be viewed.
 ![AipDiscover audit results](images/aip-discover.png)
 
 For more information on viewing the audit logs in the Microsoft Purview compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
@@ -197,7 +200,7 @@ ObjectState  : Unchanged
 ```
 
 > [!NOTE]
-> This is just an example of how you can use the Search-UnifiedAuditLog cmdlet. You may need to adjust the command and specify additional parameters based on your specific requirements. For more information on using PowerShell for unified audit logs, see [search unified audit log.](/powershell/module/exchange/search-unifiedauditlog)
+> This is just an example of how you can use the Search-UnifiedAuditLog cmdlet. You may need to adjust the command and specify additional parameters based on your specific requirements. For more information on using PowerShell for unified audit logs, see [search unified audit log](/powershell/module/exchange/search-unifiedauditlog).
 
 ## Office 365 Management Activity API
 
@@ -239,7 +242,7 @@ Type : AuditGeneral
 
 Event | Type | Description
 ---|---|---
-ApplicationId	| GUID | The ID of the application performing the operation.
+ApplicationId | GUID | The ID of the application performing the operation.
 ApplicationName | String | Friendly name of the application performing the operation. (Outlook, OWA, Word, Excel, PowerPoint, etc.)
 ClientIP | IPv4/IPv6 | The IP address of the device that was used when the activity was logged. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity.
 CreationTime | Date/time | The date and time in Coordinated Universal Time (UTC) when the user performed the activity.
@@ -263,4 +266,4 @@ SensitivityLabelId | GUID | The current MIP sensitivity label GUID. Use cmdlt Ge
 TemplateId | GUID | The id for the template used for protection. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.
 UserId | String | The User Principal Name (UPN) of the user who performed the action that resulted in the record being logged.
 UserKey | GUID | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.
-UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy
+UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = System</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy
