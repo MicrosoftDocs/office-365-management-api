@@ -10,18 +10,18 @@ ms.localizationpriority: high
 
 # Get started with Office 365 Management APIs
 
-When you create an application that needs access to secured services like the Office 365 Management APIs, you need to provide a way to let the service know if your application has rights to access it. The Office 365 Management APIs use Azure AD to provide authentication services that you can use to grant rights for your application to access them. 
+When you create an application that needs access to secured services like the Office 365 Management APIs, you need to provide a way to let the service know if your application has rights to access it. The Office 365 Management APIs use Azure AD to provide authentication services that you can use to grant rights for your application to access them.
 
 There are four key steps:
 
 1. **Register your application in Azure AD**. To allow your application access to the Office 365 Management APIs, you need to register your application in Azure AD. This allows you to establish an identity for your application and specify the permission levels it needs to access the APIs.
-    
+
 2. **Get Office 365 tenant admin consent**. An Office 365 tenant admin must explicitly grant consent to allow your application to access their tenant data by means of the Office 365 Management APIs. The consent process is a browser-based experience that requires the tenant admin to sign in to the **Azure AD consent UI** and review the access permissions that your application is requesting, and then either grant or deny the request. After consent is granted, the UI redirects the user back to your application with an authorization code in the URL. Your application makes a service-to-service call to Azure AD to exchange this authorization code for an access token, which contains information about both the tenant admin and your application. The tenant ID must be extracted from the access token and stored for future use.
-    
+
 3. **Request access tokens from Azure AD**. Using your application's credentials as configured in Azure AD, your application requests additional access tokens for a consented tenant on an ongoing basis, without the need for further tenant admin interaction. These access tokens are called app-only tokens because they do not include information about the tenant admin.
-    
+
 4. **Call the Office 365 Management APIs**. The app-only access tokens are passed to the Office 365 Management APIs to authenticate and authorize your application.
-    
+
 The following diagram shows the sequence of consent and access token requests.
 
 ![Management APIs getting started authorization flow](images/authorization-flow.png)
@@ -31,7 +31,7 @@ The following diagram shows the sequence of consent and access token requests.
 
 ## Register your application in Azure AD
 
-The Office 365 Management APIs use Azure AD to provide secure authentication to Office 365 tenant data. To access the Office 365 Management APIs, you need to register your app in Azure AD, and as part of the configuration, you will specify the permission levels your app needs to access the APIs.
+The Office 365 Management APIs use Azure AD to provide secure authentication to Office 365 tenant data. To access the Office 365 Management APIs, you need to register your app in Azure AD, and as part of the configuration, you'll specify the permission levels your app needs to access the APIs.
 
 ### Prerequisites
 
@@ -108,7 +108,7 @@ Keys, also known as *client secrets*, are used when exchanging an authorization 
 
 An application that is running in the background, such as a daemon or service, can use client credentials to request app-only access tokens without repeatedly requesting consent from the tenant admin after initial consent is granted.
 
-For more information, see [Service to Service Calls Using Client Credentials](https://msdn.microsoft.com/library/azure/dn645543.aspx).
+For more information, see [Service to Service Calls Using Client Credentials](https://learn.microsoft.com/previous-versions/azure/dn645543(v=azure.100)).
 
 You must configure an X.509 certificate with your application to be used as client credentials when requesting app-only access tokens from Azure AD. There are two steps to the process:
 
@@ -116,7 +116,7 @@ You must configure an X.509 certificate with your application to be used as clie
 
 - Modify your application manifest to include the thumbprint and public key of your certificate.
 
-The following instructions show you how to use the Visual Studio or Windows SDK _makecert_ tool to generate a self-signed certificate and export the public key to a base64-encoded file.
+The following instructions show you how to use the Visual Studio or Windows SDK *makecert* tool to generate a self-signed certificate and export the public key to a base64-encoded file.
 
 1. From the command line, run the following:
 
@@ -134,7 +134,7 @@ The following instructions show you how to use the Visual Studio or Windows SDK 
    > [!NOTE]
    > You can use Windows PowerShell to extract the thumbprint and base64-encoded public key. Other platforms provide similar tools to retrieve properties of certificates.
 
-4. From a Windows PowerShell prompt, type and run the following:
+4. From a Windows PowerShell prompt, enter and run the following:
 
    ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
@@ -157,7 +157,7 @@ The following instructions show you how to use the Visual Studio or Windows SDK 
    ![Download the manifest so you can edit it](images/AzureAppRegistration7.png)
 
 8. Open the downloaded manifest in an editor and replace the empty *keyCredentials* property with the following JSON:
-    
+
    ```json
       "keyCredentials": [
         {
@@ -171,7 +171,7 @@ The following instructions show you how to use the Visual Studio or Windows SDK 
    ```
 
    > [!NOTE]
-   > The [KeyCredentials](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#KeyCredentialType) property is a collection, making it possible to upload multiple X.509 certificates for rollover scenarios or delete certificates for compromise scenarios.
+   > The [KeyCredentials](https://learn.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type) property is a collection, making it possible to upload multiple X.509 certificates for rollover scenarios or delete certificates for compromise scenarios.
 
 9. Save your changes and upload the updated manifest by choosing **Manage manifest** in the command bar, choosing **Upload manifest**, browsing to your updated manifest file, and then selecting it.
 
@@ -235,10 +235,9 @@ Your application uses this authorization code to obtain an access token from Azu
 
 There are two methods for requesting access tokens from Azure AD:
 
-- The [Authorization Code Grant Flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) involves a tenant admin granting explicit consent, which returns an authorization code to your application. Your application then exchanges the authorization code for an access token. This method is required to obtain the initial consent that your application needs to access the tenant data by using the API, and this first access token is needed in order to obtain and store the tenant ID.
-    
-- The [Client Credentials Grant Flow](https://msdn.microsoft.com/library/azure/dn645543.aspx) allows your application to request subsequent access tokens as old ones expire, without requiring the tenant admin to sign in and explicitly grant consent. This method must be used for applications that run continuously in the background calling the APIs once the initial tenant admin consent has been granted.
-    
+- The [Authorization Code Grant Flow](https://learn.microsoft.com/previous-versions/azure/dn645542(v=azure.100)) involves a tenant admin granting explicit consent, which returns an authorization code to your application. Your application then exchanges the authorization code for an access token. This method is required to obtain the initial consent that your application needs to access the tenant data by using the API, and this first access token is needed in order to obtain and store the tenant ID.
+
+- The [Client Credentials Grant Flow](https://learn.microsoft.com/previous-versions/azure/dn645543(v=azure.100)) allows your application to request subsequent access tokens as old ones expire, without requiring the tenant admin to sign in and explicitly grant consent. This method must be used for applications that run continuously in the background calling the APIs once the initial tenant admin consent has been granted.
 
 ### Request an access token using the authorization code
 
@@ -270,8 +269,6 @@ Content-Length: 944
 
 resource=https%3A%2F%2Fmanage.office.com&amp;client_id=a6099727-6b7b-482c-b509-1df309acc563 &amp;redirect_uri= http%3A%2F%2Fwww.mycompany.com%2Fmyapp%2F &amp;client_secret={your_client_key}&amp;grant_type=authorization_code&amp;code=AAABAAAAvPM1KaPlrEqdFSB...
 ```
-
-<br/>
 
 The body of the response will include several properties, including the access token.
 
@@ -337,16 +334,14 @@ PAYLOAD:
 {
   "aud": "https://login.windows.net/{tenantid}/oauth2/token",
   "iss": "{your app client ID}",
-  "sub": "{your app client ID}"
+  "sub": "{your app client ID}",
   "jti": "{random GUID}",
-  "nbf": {epoch time, before which the token is not valid},
-  "exp": {epoch time, after which the token is not valid},
+  "nbf": "{epoch time, before which the token is not valid}",
+  "exp": "{epoch time, after which the token is not valid}"
 }
-
 ```
 
 #### Sample JWT token
-
 
 ```json
 HEADER:
@@ -361,7 +356,7 @@ PAYLOAD:
 {
   "aud": "https://login.windows.net/41463f53-8812-40f4-890f-865bf6e35190/oauth2/token",
   "iss": "a6099727-6b7b-482c-b509-1df309acc563",
-  "sub": "a6099727-6b7b-482c-b509-1df309acc563"
+  "sub": "a6099727-6b7b-482c-b509-1df309acc563",
   "jti": "0ce254c4-81b1-4a2e-8436-9a8c3b49dfb9",
   "nbf": 1427248048,
   "exp": 1427248648,
@@ -370,13 +365,11 @@ PAYLOAD:
 
 The client assertion is then passed to Azure AD as part of a service-to-service call to request an access token. When using client credentials to request an access token, use an HTTP POST to a tenant-specific endpoint, where the previously extracted and stored tenant ID is embedded in the URL.
 
-
 ```http
 https://login.windows.net/{tenantid}/oauth2/token
 ```
 
 The body of the POST contains the following:
-
 
 ```json
 resource=https%3A%2F%2Fmanage.office.com&amp;client_id={your_app_client_id}&amp;grant_type=client_credentials&amp;client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&amp;client_assertion={encoded_signed_JWT_token}
@@ -393,7 +386,7 @@ Content-Length: 994
 resource=https%3A%2F%2Fmanage.office.com&amp;client_id= a6099727-6b7b-482c-b509-1df309acc563&amp;grant_type=client_credentials &amp;client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&amp;client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Ill5ZnNoSkMzclBRLWtwR281ZFVhaVk1dDNpVSJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ud2luZG93cy5uZXRcLzQxNDYzZjUzLTg4MTItNDBmNC04OTBmLTg2NWJmNmUzNTE5MFwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQyNzI0ODY0OCwiaXNzIjoiYTYwOTk3MjctNmI3Yi00ODJjLWI1MDktMWRmMzA5YWNjNTYzIiwianRpIjoiMGNlMjU0YzQtODFiMS00YTJlLTg0MzYtOWE4YzNiNDlkZmI5IiwibmJmIjoxNDI3MjQ4MDQ4LCJzdWIiOiJhNjA5OTcyNy02YjdiLTQ4MmMtYjUwOS0xZGYzMDlhY2M1NjMifQ.vfDrmCjiXgoj2JrTkwyOpr-NOeQTzlXQcGlKGNpLLe0oh4Zvjdcim5C7E0UbI3Z2yb9uKQdx9G7GeqS-gVc9kNV_XSSNP4wEQj3iYNKpf_JD2ikUVIWBkOg41BiTuknRJAYOMjiuBE2a6Wyk-vPCs_JMd7Sr-N3LiNZ-TjluuVzWHfok_HWz_wH8AzdoMF3S0HtrjNd9Ld5eI7MVMt4OTpRfh-Syofi7Ow0HN07nKT5FYeC_ThBpGiIoODnMQQtDA2tM7D3D6OlLQRgLfI8ir73PVXWL7V7Zj2RcOiooIeXx38dvuSwYreJYtdphmrDBZ2ehqtduzUZhaHL1iDvLlw
 ```
 
-The response will be the same as before, but the token will not have the same properties, because it does not contain properties of the admin that granted consent. 
+The response will be the same as before, but the token will not have the same properties, because it does not contain properties of the admin that granted consent.
 
 #### Sample response
 
@@ -428,18 +421,16 @@ Content-Length: 1276
 }
 ```
 
-
 ## Build your app
 
-Now that you have registered your app in Azure AD and configured it with the necessary permissions, you're ready to build your app. The following are some of the key aspects to consider when designing and building your app:
+Now that you've registered your app in Azure AD and configured it with the necessary permissions, you're ready to build your app. The following are some of the key aspects to consider when designing and building your app.
 
 - **The consent experience**. To obtain consent from your customers, you must direct them in a browser to the Azure AD website, using the specially constructed URL described previously, and you must have a website to which Azure AD will redirect the admin once they grant consent. This website must extract the authorization code from the URL and use it to request an access token from which it can obtain the tenant ID.
-    
+
 - **Store the tenant ID in your system**. This will be needed when requesting access tokens from Azure AD and when calling the Office Management APIs.
-    
-- **Managing access tokens**. You will need a component that requests and manages access tokens as needed. If your app calls the APIs periodically, it can request tokens on demand, or if it calls the APIs continuously to retrieve data, it can request tokens at regular intervals (for example, every 45 minutes).
-    
-- **Implement a webhook listener** as needed by the particular API you are using.
-    
+
+- **Manage access tokens**. You'll need a component that requests and manages access tokens as needed. If your app calls the APIs periodically, it can request tokens on demand, or if it calls the APIs continuously to retrieve data, it can request tokens at regular intervals (for example, every 45 minutes).
+
+- **Implement a webhook listener**. As needed by the particular API you are using.
+
 - **Data retrieval and storage**. You'll need a component that retrieves data for each tenant, either by using continuous polling or in response to webhook notifications, depending on the particular API you are using.
-    

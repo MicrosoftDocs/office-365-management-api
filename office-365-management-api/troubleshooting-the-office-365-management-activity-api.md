@@ -119,7 +119,7 @@ If you've just set up an app that's trying to use the Management Activity API an
 > [!NOTE]
 > The unified audit log configuration change can take up to 60 minutes to take effect.
 
-If unified auditing isn't enabled, you will typically receive an error that contains the following string: `Microsoft.Office.Compliance.Audit``.DataServiceException: Tenant <tenantID> does not exist.`
+If unified auditing isn't enabled, you'll typically receive an error that contains the following string: `Microsoft.Office.Compliance.Audit``.DataServiceException: Tenant <tenantID> does not exist.`
 
 ### Connect to the API
 
@@ -302,7 +302,7 @@ $uri = "https://manage.office.com/api/v1.0/$tenantGUID/activity/feed//subscripti
 Invoke-RestMethod -Method Post -uri $uri -Headers $headerParams -Body $body
 ```
 
-Immediately following this call, a validation request will be sent out to `https://webhook.myapp.com/o365/ …` and there should be a listener ready to respond, as per the description in the Webhook validation section in the Office 365 Management Activity API reference. Your listener must respond with HTTP 200. If you immediately run the /list operation at this point, you will not see the webhook shown as other than null until the validation has returned successfully.
+Immediately following this call, a validation request will be sent out to `https://webhook.myapp.com/o365/ …` and there should be a listener ready to respond, as per the description in the Webhook validation section in the Office 365 Management Activity API reference. Your listener must respond with HTTP 200. If you immediately run the /list operation at this point, you'll not see the webhook shown as other than null until the validation has returned successfully.
 
 #### Check notifications to webhooks
 
@@ -339,7 +339,7 @@ If you're doing simple API calls to troubleshoot problems (for example, checking
 
 If you're implementing a client for your company's tenant, the *PublisherIdentifier* is the Tenant GUID. If you are creating an ISV application or add-in for multiple customers, the *PublisherIdentifier* should be the ISV's Tenant GUID, and not the tenant GUID of end user's company.
 
-If you include the valid *PublisherIdentifier*, then you will be in a pool that is allotted 60K requests per minute per tenant. This is an exceptionally large number of requests. However, if you don't include the *PublisherIdentifier* parameter, you will be in the general pool allotted 60K requests per minute for all tenants. In this case, you will more than likely find that your calls are getting throttled. To prevent this, here's how you would request a content blob using the *PublisherIdentifier*:
+If you include the valid *PublisherIdentifier*, then you'll be in a pool that is allotted 60K requests per minute per tenant. This is an exceptionally large number of requests. However, if you don't include the *PublisherIdentifier* parameter, you'll be in the general pool allotted 60K requests per minute for all tenants. In this case, you'll more than likely find that your calls are getting throttled. To prevent this, here's how you would request a content blob using the *PublisherIdentifier*:
 
 ```json
 $contentUri = ($response.Content | ConvertFrom-Json).contentUri[0]

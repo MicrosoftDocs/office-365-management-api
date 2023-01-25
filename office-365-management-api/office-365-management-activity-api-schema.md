@@ -168,11 +168,11 @@ This article provides details on the Common schema as well as service-specific s
 |89|AirAdminActionInvestigation|Events related to admin actions in  Automated investigation and response (AIR).|
 |90|MSTIC|Threat intelligence events in Microsoft Defender for Office 365.|
 |91|PhysicalBadgingSignal|Events related to physical badging signals that support the Insider risk management solution.|
-|[93](#aipdiscover)|AipDiscover|AIP scanner events|
-|[94](#aipsensitivitylabelaction)|AipSensitivityLabelAction|AIP sensitivity label events|
-|[95](#aipprotectionaction)|AipProtectionAction|AIP protection events|
-|[96](#aipfiledeleted)|AipFileDeleted|AIP file deletion events|
-|[97](#aipheartbeat)|AipHeartBeat|AIP heartbeat events|
+|[93](AipDiscover.md)|AipDiscover|AIP scanner events|
+|[94](AipSensitivityLabelAction.md)|AipSensitivityLabelAction|AIP sensitivity label events|
+|[95](AipProtectionAction.md)|AipProtectionAction|AIP protection events|
+|[96](AipFileDeleted.md)|AipFileDeleted|AIP file deletion events|
+|[97](AipHeartBeat.md)|AipHeartBeat|AIP heartbeat events|
 |98|MCASAlerts|Events corresponding to alerts triggered by Microsoft Cloud App Security.|
 |99|OnPremisesFileShareScannerDlp|Events related to scanning for sensitive data on file shares.|
 |100|OnPremisesSharePointScannerDlp|Events related to scanning for sensitive data in SharePoint.|
@@ -1151,7 +1151,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |SHA256|Edm.String|Yes|The file SHA256 hash.|
 
 > [!NOTE]
-> Within the Malware family, you will be able to see the exact MalwareFamily name (for example, HTML/Phish.VS!MSR) or Malicious Payload as a static string. A Malicious Payload should still be treated as malicious email when a specific name isn't identified.
+> Within the Malware family, you'll be able to see the exact MalwareFamily name (for example, HTML/Phish.VS!MSR) or Malicious Payload as a static string. A Malicious Payload should still be treated as malicious email when a specific name isn't identified.
 
 ### SystemOverrides complex type
  
