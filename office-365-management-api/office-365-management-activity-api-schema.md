@@ -58,6 +58,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Compliance connector schema](#compliance-connector-schema)|Extends the Common schema with the properties specific to importing non-Microsoft data by using data connectors.|
 |[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
+|[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
 
 ## Common schema
 
@@ -191,8 +192,16 @@ This article provides details on the Common schema as well as service-specific s
 |181|EduDataLakeDownloadOperation|Events related to the export of SystemSync ingested data from the lake.|
 |183|MicrosoftGraphDataConnectOperation|Events related to extractions done by Microsoft Graph Data Connect.|
 |186|PowerPagesSite|Activities related to Power Pages site.|
+|188|PlannerPlan|Microsoft Planner plan events.|
+|189|PlannerCopyPlan|Microsoft Planner copy plan events.|
+|190|PlannerTask|Microsoft Planner task events.|
+|191|PlannerRoster|Microsoft Planner rostand roster membership events.|
+|192|PlannerPlanList|Microsoft Planner plan list events.|
+|193|PlannerTaskList|Microsoft Planner task list events.|
+|194|PlannerTenantSettings|Microsoft Planner tenant settings events.|
 |216|Viva Goals|Viva Goals Events|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
+|231|PlannerRosterSensitivityLabel|Microsoft Planner roster sensitivity label events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -2018,3 +2027,106 @@ The audit records for events related to Viva Goals use this schema (in addition 
 |ModifiedFields |Collection(Common.NameValuePair) |No |A list of attributes that were modified along with its new and old values output as a JSON.|
 |ItemDetails |Collection(Common.NameValuePair) |No |Additional properties about the object that was modified.|
 
+
+## Microsoft Planner schema
+
+Microsoft Planner overwrites the definition of ObjectId and ResultStatus in the [Common schema](#common-schema). Microsoft Planner's ObjectId definition is bound to each of Microsoft Planner's record type and will be illustrated individually.
+Microsoft Planner's ResultStatus is defined as the following.
+
+### Enum: ResultStatus - Type: Edm.Int32
+
+#### ResultStatus
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|1|Success|The user request succeeded.|
+|2|Failure|The user request failed due to reasons other than authorization.|
+|3|AuthorizationFailure|The user requested failed due to failed authorization.|
+
+Microsoft Planner extends the [Common schema](#common-schema) with the following record types.
+
+### PlannerPlan record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Id of the plan requested.|
+|ContainerType|Self.ContainerType|Type of the container associated with the plan.|
+|ContainerId|Edm.String|Id of the container associated with plan.|
+
+### Enum: ContainerType - Type Edm.Int32
+
+### ContainerType
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|Invalid|Used when plan is not found.|
+|2|Group|The plan is associated with a M365 Group.|
+|3|TeamsConversation|The plan is associated with a Teams conversation.|
+|4|OfficeDocument|The plan is associated with a Office document.|
+|5|Roster|The plan is associated with a roster group.|
+|6|Project|The plan originates from Microsoft Project.|
+
+### PlannerCopyPlan record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Id of the plan being copied.|
+|OriginalPlanId|Edm.String|Id of the plan being copied. Same as ObjectId.|
+|OriginalContainerType|Self.ContainerType|Type of the container associated with the original plan.|
+|OriginalContainerId|Edm.String|Id of the container associated with the original plan.|
+|NewPlanId|Edm.String|Id of the copied plan. Null when the operation failed.|
+|NewContainerType|Self.ContainerType|Type of the container associated with the original plan.|
+|NewContainerId|Edm.String|Id of the container associated with the original plan.|
+
+### PlannerTask record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Id of the task requested.|
+|PlanId|Edm.String|Id of the plan containing the task.|
+
+### PlannerRoster record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Id of the roster requested.|
+|MemberIds|Edm.String|A common-separated string of member ids changed to the roster.|
+
+### PlannerPlanList record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|A representation of the view query for a list of plans.|
+|PlanList|Edm.String|A common-separated string of plan ids queried.|
+
+### PlannerTaskList record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|A representation of the view query for a list of tasks.|
+|PlanList|Edm.String|A common-separated string of task ids queried.|
+
+### PlannerTenantSettings record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Original tenant settings in JSON.|
+|TenantSettings|Edm.String|New tenant settings in JSON.|
+
+### PlannerRosterSensitivityLabel record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Id of the sensitivity label. Null when the sensitivity label is removed.|
+|Roster|Edm.String|Id of the roster to which the sensitivity label is changed.|
+|AssignmentMethod|Self.SensitivityLabelAssignmentMethod|The assignment method of the sensitivity label.|
+
+### Enum: SensitivityLabelAssignmentMethod - Type Edm.Int32
+
+### SensitivityLabelAssignmentMethod
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|Standard|The sensitivity label is automatically applied but not allowed to override a privileged label assignment.|
+|1||Privileged|The sensitivity label is applied manually by a user or by an admin.|
+|2||Auto|The sensitivity label is automatically applied and is allowed to override a privileged label assignment.|
