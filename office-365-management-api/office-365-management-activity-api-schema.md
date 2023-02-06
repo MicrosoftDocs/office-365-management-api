@@ -195,7 +195,7 @@ This article provides details on the Common schema as well as service-specific s
 |188|PlannerPlan|Microsoft Planner plan events.|
 |189|PlannerCopyPlan|Microsoft Planner copy plan events.|
 |190|PlannerTask|Microsoft Planner task events.|
-|191|PlannerRoster|Microsoft Planner rostand roster membership events.|
+|191|PlannerRoster|Microsoft Planner roster and roster membership events.|
 |192|PlannerPlanList|Microsoft Planner plan list events.|
 |193|PlannerTaskList|Microsoft Planner task list events.|
 |194|PlannerTenantSettings|Microsoft Planner tenant settings events.|
