@@ -4,7 +4,7 @@ title: AipHeartBeat
 description: AipHeartBeat
 ms.ContentId: fde24b79-4513-4a9e-b2c4-c0b07de0b688
 ms.topic: reference
-ms.date: 01/24/2023
+ms.date: 02/08/2023
 ms.localizationpriority: high
 ---
 
@@ -171,7 +171,7 @@ ClientIP | IPv4/IPv6 | The IP address of the device that was used when the activ
 CreationTime | Date/time | The date and time in Coordinated Universal Time (UTC) when the user performed the activity.
 DeviceName | String | The device on which the activity happened.
 Id | GUID | Unique identifier of an audit record.
-Operation | String | The operation type for the audit log (Heartbeat)
+Operation | String | The operation type for the audit log. For AipHeartBeat, the operation is Heartbeat.
 OrganizationId | GUID | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.
 Platform | Double | The platform where the activity occurred from. </br>0 = Unknown</br>1 = Windows</br>2 = MacOS </br>3 = iOS</br>4 = Android</br>5 = Web Browser
 ProcessName | String | The relevant process name (Outlook, MSIP.App, WinWord, etc.)

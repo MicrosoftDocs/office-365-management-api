@@ -4,7 +4,7 @@ title: AipProtectionAction
 description: AipProtectionAction
 ms.ContentId: ce562783-e925-4f86-8044-b9dd4e93e784
 ms.topic: reference
-ms.date: 01/24/2023
+ms.date: 02/08/2023
 ms.localizationpriority: high
 ---
 

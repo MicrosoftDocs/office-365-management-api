@@ -4,7 +4,7 @@ title: AipFileDeleted
 description: AipFileDeleted
 ms.ContentId: 2a82d8b6-b03b-468a-b8c8-7f80bfc76da4
 ms.topic: reference
-ms.date: 01/24/2023
+ms.date: 02/08/2023
 ms.localizationpriority: high
 ---
 
@@ -173,13 +173,13 @@ ApplicationId | GUID | The ID of the application performing the operation.
 ApplicationName | String | Friendly name of the application performing the operation. (Outlook, OWA, Word, Excel, PowerPoint, etc.)
 ClientIP | IPv4/IPv6 | The IP address of the device that was used when the activity was logged. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity.
 CreationTime | Date/time | The date and time in Coordinated Universal Time (UTC) when the user performed the activity.
-DataState | String | Describes if the data is at rest or in use.
+DataState | String | Rest = File was not open when event was logged</br> Use = File was in use when event was logged.
 DeviceName | String | The device on which the activity happened.
 Id | GUID | Unique identifier of an audit record.
 IsProtected | Boolean | States whether or not the data is protected with encryption.
 Location | String | The location of the document with respect to the user's device.
 ObjectId | String | File full path (URL) that is being accessed by the user.
-Operation | String | The operation type for the audit log. For AipDiscover, operations can include Discover or Access.
+Operation | String | The operation type for the audit log. For AipFileDeleted, operation is FileDeleted.
 OrganizationId | GUID | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.
 Platform | Double | The platform where the activity occurred from. </br>0 = Unknown</br>1 = Windows</br>2 = MacOS </br>3 = iOS</br>4 = Android</br>5 = Web Browser
 ProcessName | String | The relevant process name (Outlook, MSIP.App, WinWord, etc.)
