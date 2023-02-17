@@ -193,7 +193,7 @@ This article provides details on the Common schema as well as service-specific s
 |186|PowerPagesSite|Activities related to Power Pages site.|
 |216|Viva Goals|Viva Goals Events|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
-|230|MicrosoftTeamsUpdatesApp|Teams Updates App Events.|
+|230|TeamsUpdates|Teams Updates App Events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
