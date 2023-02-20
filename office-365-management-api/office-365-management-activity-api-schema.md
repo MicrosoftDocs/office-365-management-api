@@ -2018,3 +2018,9 @@ The audit records for events related to Viva Goals use this schema (in addition 
 |ModifiedFields |Collection(Common.NameValuePair) |No |A list of attributes that were modified along with its new and old values output as a JSON.|
 |ItemDetails |Collection(Common.NameValuePair) |No |Additional properties about the object that was modified.|
 
+
+## Microsoft Defender for Identity
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|---------|---------|---------|---------|
+|ResultDescription|Edm.String|No|Describing the legacy operation result |
