@@ -2080,7 +2080,8 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |OriginalContainerId|Edm.String|Id of the container associated with the original plan.|
 |NewPlanId|Edm.String|Id of the copied plan. Null when the operation failed.|
 |NewContainerType|Self.ContainerType|Type of the container associated with the original plan.|
-|NewContainerId|Edm.String|Id of the container associated with the original plan.|
+|NewContainerId|Edm.String|Id of the container associated with the new plan.|
+
 
 ### PlannerTask record type
 
