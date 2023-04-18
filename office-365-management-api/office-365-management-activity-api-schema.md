@@ -2062,7 +2062,8 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
-|0|Invalid|Used when plan is not found.|
+|0|Invalid|Used when the requested plan is not found.|
+
 |2|Group|The plan is associated with a M365 Group.|
 |3|TeamsConversation|The plan is associated with a Teams conversation.|
 |4|OfficeDocument|The plan is associated with a Office document.|
