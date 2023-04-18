@@ -2053,7 +2053,8 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |:-----|:-----|:-----|
 |ObjectId|Edm.String|Id of the plan requested.|
 |ContainerType|Self.ContainerType|Type of the container associated with the plan.|
-|ContainerId|Edm.String|Id of the container associated with plan.|
+|ContainerId|Edm.String|Id of the container associated with the plan.|
+
 
 ### Enum: ContainerType - Type Edm.Int32
 
