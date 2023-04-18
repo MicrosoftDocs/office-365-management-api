@@ -201,6 +201,7 @@ This article provides details on the Common schema as well as service-specific s
 |194|PlannerTenantSettings|Microsoft Planner tenant settings events.|
 |216|Viva Goals|Viva Goals Events|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
+|230|TeamsUpdates|Teams Updates App Events.|
 |231|PlannerRosterSensitivityLabel|Microsoft Planner roster sensitivity label events.|
 
 ### Enum: User Type - Type: Edm.Int32
