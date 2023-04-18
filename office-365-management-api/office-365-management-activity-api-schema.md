@@ -199,7 +199,8 @@ This article provides details on the Common schema as well as service-specific s
 |192|PlannerPlanList|Microsoft Planner plan list events.|
 |193|PlannerTaskList|Microsoft Planner task list events.|
 |194|PlannerTenantSettings|Microsoft Planner tenant settings events.|
-|216|Viva Goals|Viva Goals Events.|
+|216|Viva Goals|Viva Goals events.|
+
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
 |230|TeamsUpdates|Teams Updates App Events.|
 |231|PlannerRosterSensitivityLabel|Microsoft Planner roster sensitivity label events.|
