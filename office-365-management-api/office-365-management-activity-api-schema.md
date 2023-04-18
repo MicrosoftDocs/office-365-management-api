@@ -2091,7 +2091,8 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |**Properties**|**Type**|**Description**|
 |:-----|:-----|:-----|
 |ObjectId|Edm.String|Id of the roster requested.|
-|MemberIds|Edm.String|A common-separated string of member ids changed to the roster.|
+|MemberIds|Edm.String|A comma-separated string of member ids changed to the roster.|
+
 
 ### PlannerPlanList record type
 
