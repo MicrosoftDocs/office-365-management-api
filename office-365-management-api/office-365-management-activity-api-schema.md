@@ -2099,7 +2099,8 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |**Properties**|**Type**|**Description**|
 |:-----|:-----|:-----|
 |ObjectId|Edm.String|A representation of the view query for a list of plans.|
-|PlanList|Edm.String|A common-separated string of plan ids queried.|
+|PlanList|Edm.String|A comma-separated string of plan ids queried.|
+
 
 ### PlannerTaskList record type
 
