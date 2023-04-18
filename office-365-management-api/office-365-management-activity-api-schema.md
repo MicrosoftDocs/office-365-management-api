@@ -2031,7 +2031,8 @@ The audit records for events related to Viva Goals use this schema (in addition 
 
 ## Microsoft Planner schema
 
-Microsoft Planner overwrites the definition of ObjectId and ResultStatus in the [Common schema](#common-schema). Microsoft Planner's ObjectId definition is bound to each of Microsoft Planner's record type and will be illustrated individually.
+Microsoft Planner overwrites the definition of ObjectId and ResultStatus in the [Common schema](#common-schema). Microsoft Planner's ObjectId definition is bound to each Microsoft Planner's record type and will be illustrated individually.
+
 Microsoft Planner's ResultStatus is defined as the following.
 
 ### Enum: ResultStatus - Type: Edm.Int32
