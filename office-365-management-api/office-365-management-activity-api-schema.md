@@ -2029,6 +2029,13 @@ The audit records for events related to Viva Goals use this schema (in addition 
 |ItemDetails |Collection(Common.NameValuePair) |No |Additional properties about the object that was modified.|
 
 
+
+## Microsoft Defender for Identity
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|---------|---------|---------|---------|
+|ResultDescription|Edm.String|No|Describing the legacy operation result |
+
 ## Microsoft Planner schema
 
 Microsoft Planner overwrites the definition of ObjectId and ResultStatus in the [Common schema](#common-schema). Microsoft Planner's ObjectId definition is bound to each Microsoft Planner's record type and will be illustrated individually.
