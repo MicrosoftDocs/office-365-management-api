@@ -58,6 +58,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Compliance connector schema](#compliance-connector-schema)|Extends the Common schema with the properties specific to importing non-Microsoft data by using data connectors.|
 |[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
+|[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
 
 ## Common schema
 
@@ -191,8 +192,17 @@ This article provides details on the Common schema as well as service-specific s
 |181|EduDataLakeDownloadOperation|Events related to the export of SystemSync ingested data from the lake.|
 |183|MicrosoftGraphDataConnectOperation|Events related to extractions done by Microsoft Graph Data Connect.|
 |186|PowerPagesSite|Activities related to Power Pages site.|
-|216|Viva Goals|Viva Goals Events|
+|188|PlannerPlan|Microsoft Planner plan events.|
+|189|PlannerCopyPlan|Microsoft Planner copy plan events.|
+|190|PlannerTask|Microsoft Planner task events.|
+|191|PlannerRoster|Microsoft Planner roster and roster membership events.|
+|192|PlannerPlanList|Microsoft Planner plan list events.|
+|193|PlannerTaskList|Microsoft Planner task list events.|
+|194|PlannerTenantSettings|Microsoft Planner tenant settings events.|
+|216|Viva Goals|Viva Goals events.|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
+|230|TeamsUpdates|Teams Updates App Events.|
+|231|PlannerRosterSensitivityLabel|Microsoft Planner roster sensitivity label events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -1877,11 +1887,68 @@ The following table contains information related to AIP sensitivity label events
 
 ## AipProtectionAction
 
-This contains information related to AIP protection events.
+| Event | Description |
+|:--|:--|
+|PSComputerName| Computer name |
+|RunspaceId    | The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user.|
+|PSShowComputerName| The value is false for a documented edited in Office 365.|
+|RecordType        | Shows the value of Label Action. The operation type indicated by the record. Here we are only listing the relevant MIP Record types. For more information, see the [full list of record types](/office/office-365-management-api/office-365-management-activity-api-schema#auditlogrecordtype).|
+|CreationTime      | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
+|UserId            |  The User Principal Name (UPN) of the user who performed the action (specified in the Operation property) that resulted in the record being logged. For example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the [app@sharepoint user in audit records](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#the-appsharepoint-user-in-audit-records). |
+|Operation          | The operation type for the audit log. The name of the user or admin activity. For a description of the most common operations/activities.<br> SensitivityLabelApplied<br>SensitivityLabelUpdated<br>SensitivityLabelRemoved<br>SensitivityLabelPolicyMatched<br>SensitivityLabeledFileOpened.|
+|Identity           | The identity of the user or service to be authenticated.|
+|ObjectState        | State of the Object after the current event. |
+|ApplicationId      | The application where the activity happened and displayed in GUID.|
+|ApplicationName    |	Application friendly name of the application performing the operation.Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file).|
+|ProcessName        | Process name of the Office application. |
+|Platform           | The platform on which the activity happened. For example, Windows. |
+|DeviceName         | Device the event was recorded on. |
+|ProductVersion     | Version of the Azure Information Protection client that performed the audit action.|
+|UserId             | The UPN of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the [app@sharepoint user in audit records](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#the-appsharepoint-user-in-audit-records). |
+|ClientIP           | The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is null. The IP address is displayed in either an IPv4 or IPv6 address format.|
+|Id                 | GUID of the current record. |
+|RecordType         | Shows the value of Label Action. The operation type indicated by the record. Here we are only listing the relevant MIP Record types.|
+|CreationTime       | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
+|Operation          | The name of the user or admin activity. For a description of the most common operations/activities, see [Search the audit log in the Office 365 Protection Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide).|
+|OrganizationId     | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.|
+|UserType         | The type of user that performed the operation. See the UserType table for details on the types of users.</br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy|
+|UserKey          | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.| 
+|Workload         | Stores the Office 365 service where the activity occurred.|
+|Version          | Version of the Azure Information Protection client that performed the audit action|
+|Scope            | Specifies scope.|
 
 ## AipFileDeleted
 
-This contains information related to AIP file deletion events.
+| Event | Description |
+|:--|:--|
+|PSComputerName| Computer name |
+|RunspaceId    | The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user.|
+|PSShowComputerName| The value is false for a documented edited in Office 365.|
+|RecordType        | Shows the value of Label Action. The operation type indicated by the record. Here we are only listing the relevant MIP Record types. For more information, see the [full list of record types](/office/office-365-management-api/office-365-management-activity-api-schema#auditlogrecordtype).|
+|CreationTime      | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
+|UserId            |  The User Principal Name (UPN) of the user who performed the action (specified in the Operation property) that resulted in the record being logged. For example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the [app@sharepoint user in audit records](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#the-appsharepoint-user-in-audit-records). |
+|Operation          | The operation type for the audit log. The name of the user or admin activity. For a description of the most common operations/activities.<br> SensitivityLabelApplied<br>SensitivityLabelUpdated<br>SensitivityLabelRemoved<br>SensitivityLabelPolicyMatched<br>SensitivityLabeledFileOpened.|
+|Identity           | The identity of the user or service to be authenticated.|
+|ObjectState        | State of the Object after the current event. |
+|ApplicationId      | The application where the activity happened and displayed in GUID.|
+|ApplicationName    |	Application friendly name of the application performing the operation.Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file).|
+|ProcessName        | Process name of the Office application. |
+|Platform           | The platform on which the activity happened. For example, Windows. |
+|DeviceName         | Device the event was recorded on. |
+|ProductVersion     | Version of the Azure Information Protection client that performed the audit action.|
+|UserId             | The UPN of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the [app@sharepoint user in audit records](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#the-appsharepoint-user-in-audit-records). |
+|ClientIP           | The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is null. The IP address is displayed in either an IPv4 or IPv6 address format.|
+|Id                 | GUID of the current record. |
+|RecordType         | Shows the value of Label Action. The operation type indicated by the record. Here we are only listing the relevant MIP Record types.|
+|CreationTime       | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.|
+|Operation          | The name of the user or admin activity. For a description of the most common operations/activities, see [Search the audit log in the Office 365 Protection Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide).|
+|OrganizationId     | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.|
+|UserType         | The type of user that performed the operation. See the UserType table for details on the types of users.</br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy|
+|UserKey          | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.| 
+|Workload         | Stores the Office 365 service where the activity occurred.|
+|Version          | Version of the Azure Information Protection client that performed the audit action|
+|Scope            | Specifies scope.|
+
 
 ## AipHeartBeat
 
@@ -1961,3 +2028,123 @@ The audit records for events related to Viva Goals use this schema (in addition 
 |ModifiedFields |Collection(Common.NameValuePair) |No |A list of attributes that were modified along with its new and old values output as a JSON.|
 |ItemDetails |Collection(Common.NameValuePair) |No |Additional properties about the object that was modified.|
 
+
+
+## Microsoft Defender for Identity
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|---------|---------|---------|---------|
+|ResultDescription|Edm.String|No|Describing the legacy operation result |
+
+## Microsoft Planner schema
+
+Microsoft Planner overwrites the definition of ObjectId and ResultStatus in the [Common schema](#common-schema). Microsoft Planner's ObjectId definition is bound to each Microsoft Planner's record type and will be illustrated individually.
+
+Microsoft Planner's ResultStatus is defined as the following.
+
+### Enum: ResultStatus - Type: Edm.Int32
+
+#### ResultStatus
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|1|Success|The user request succeeded.|
+|2|Failure|The user request failed due to reasons other than authorization.|
+|3|AuthorizationFailure|The user requested failed due to failed authorization.|
+
+Microsoft Planner extends the [Common schema](#common-schema) with the following record types.
+
+### PlannerPlan record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Id of the plan requested.|
+|ContainerType|Self.ContainerType|Type of the container associated with the plan.|
+|ContainerId|Edm.String|Id of the container associated with the plan.|
+
+
+### Enum: ContainerType - Type Edm.Int32
+
+### ContainerType
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|Invalid|Used when the requested plan is not found.|
+
+|2|Group|The plan is associated with a M365 Group.|
+|3|TeamsConversation|The plan is associated with a Teams conversation.|
+|4|OfficeDocument|The plan is associated with a Office document.|
+|5|Roster|The plan is associated with a roster group.|
+|6|Project|The plan originates from Microsoft Project.|
+
+### PlannerCopyPlan record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Id of the plan being copied.|
+|OriginalPlanId|Edm.String|Id of the plan being copied. Same as ObjectId.|
+|OriginalContainerType|Self.ContainerType|Type of the container associated with the original plan.|
+|OriginalContainerId|Edm.String|Id of the container associated with the original plan.|
+|NewPlanId|Edm.String|Id of the new plan. Null when the operation failed.|
+
+|NewContainerType|Self.ContainerType|Type of the container associated with the new plan.|
+
+|NewContainerId|Edm.String|Id of the container associated with the new plan.|
+
+
+### PlannerTask record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Id of the task requested.|
+|PlanId|Edm.String|Id of the plan containing the task.|
+
+### PlannerRoster record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Id of the roster requested.|
+|MemberIds|Edm.String|A comma-separated string of member ids changed to the roster.|
+
+
+### PlannerPlanList record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|A representation of the view query for a list of plans.|
+|PlanList|Edm.String|A comma-separated string of plan ids queried.|
+
+
+### PlannerTaskList record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|A representation of the view query for a list of tasks.|
+|PlanList|Edm.String|A comma-separated string of task ids queried.|
+
+
+
+### PlannerTenantSettings record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Original tenant settings in JSON.|
+|TenantSettings|Edm.String|New tenant settings in JSON.|
+
+### PlannerRosterSensitivityLabel record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Id of the sensitivity label. Null when the sensitivity label is removed.|
+|Roster|Edm.String|Id of the roster to which the sensitivity label is changed.|
+|AssignmentMethod|Self.SensitivityLabelAssignmentMethod|The assignment method of the sensitivity label.|
+
+### Enum: SensitivityLabelAssignmentMethod - Type Edm.Int32
+
+### SensitivityLabelAssignmentMethod
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|Standard|The sensitivity label is automatically applied but not allowed to override a privileged label assignment.|
+|1||Privileged|The sensitivity label is applied manually by a user or by an admin.|
+|2||Auto|The sensitivity label is automatically applied and is allowed to override a privileged label assignment.|
