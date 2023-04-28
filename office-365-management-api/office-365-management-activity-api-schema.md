@@ -59,7 +59,7 @@ This article provides details on the Common schema as well as service-specific s
 |[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
-|[Microsoft Project For The Web schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Project For The Web events.|
+|[Microsoft Project For The Web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The Web events.|
 
 ## Common schema
 
@@ -2171,21 +2171,21 @@ Microsoft Project For The Web extends the [Common schema](#common-schema) with t
 |:-----|:-----|:-----|:-----|
 |ProjectId|Edm.Guid|Yes|Id of the Project being audited.|
 |TaskId|Edm.Guid|Yes|Id of the Task being audited.|
-|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
 
 ### ProjectForTheWebRoadmap record type
 
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |RoadmapId|Edm.Guid|Yes|Id of the Roadmap being audited.|
-|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
 
 ### ProjectForTheWebRoadmapItem record type
 
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |RoadmapItemId|Edm.Guid|Yes|Id of the Roadmap Item being audited.|
-|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
 
 ### Complex Type AdditionalInfo
 
