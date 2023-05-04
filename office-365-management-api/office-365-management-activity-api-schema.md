@@ -58,6 +58,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Compliance connector schema](#compliance-connector-schema)|Extends the Common schema with the properties specific to importing non-Microsoft data by using data connectors.|
 |[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
+|[Microsoft Defender Experts schema](#microsoft-defender-experts-schema)|Extends the Common schema with the properties specific to Microsoft Defender Experts customer admin actions.|
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
 
 ## Common schema
@@ -202,8 +203,8 @@ This article provides details on the Common schema as well as service-specific s
 |216|Viva Goals|Viva Goals events.|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
 |230|TeamsUpdates|Teams Updates App Events.|
+|237|DefenderExpertsforXDRAdmin|Microsoft Defender Experts Adminstrator action events.|
 |231|PlannerRosterSensitivityLabel|Microsoft Planner roster sensitivity label events.|
-
 ### Enum: User Type - Type: Edm.Int32
 
 #### User Type
@@ -2028,6 +2029,14 @@ The audit records for events related to Viva Goals use this schema (in addition 
 |ModifiedFields |Collection(Common.NameValuePair) |No |A list of attributes that were modified along with its new and old values output as a JSON.|
 |ItemDetails |Collection(Common.NameValuePair) |No |Additional properties about the object that was modified.|
 
+## Microsoft Defender Experts Schema
+
+The audit records for events related to Microsoft Defender Experts use this schema (in addition to the [Common schema](#common-schema)). 
+
+
+|**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
+|---------|---------|---------|---------|
+|ModifiedProperties|Collection(ModifiedProperty)|No |The property is included for admin events, such as adding or modifying role permissions given to Microsoft Defender Experts. The property includes the name of the property that was modified (for example, "Roles"), the new values of the modified property, and the previous value of the modified object.|
 
 
 ## Microsoft Defender for Identity
