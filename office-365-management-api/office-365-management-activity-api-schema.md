@@ -59,6 +59,7 @@ This article provides details on the Common schema as well as service-specific s
 |[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
+|[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The Web events.|
 |[Purview Governance schema](#purview-governance-schema)|Extends the Common schema with the properties specific to Purview Governance events.|
 
 ## Common schema
@@ -200,6 +201,12 @@ This article provides details on the Common schema as well as service-specific s
 |192|PlannerPlanList|Microsoft Planner plan list events.|
 |193|PlannerTaskList|Microsoft Planner task list events.|
 |194|PlannerTenantSettings|Microsoft Planner tenant settings events.|
+|195|ProjectForTheWebProject|Microsoft Project for the web project events.|
+|196|ProjectForTheWebTask|Microsoft Project for the web task events.|
+|197|ProjectForTheWebRoadmap|Microsoft Project for the web roadmap events.|
+|198|ProjectForTheWebRoadmapItem|Microsoft Project for the web roadmap item events.|
+|199|ProjectForTheWebProjectSettings|Microsoft Project for the web project tenant settings events.|
+|200|ProjectForTheWebRoadmapSettings|Microsoft Project for the web roadmap tenant settings events.|
 |216|Viva Goals|Viva Goals events.|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
 |230|TeamsUpdates|Teams Updates App Events.|
@@ -2149,6 +2156,54 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |1||Privileged|The sensitivity label is applied manually by a user or by an admin.|
 |2||Auto|The sensitivity label is automatically applied and is allowed to override a privileged label assignment.|
 
+## Microsoft Project for the web schema
+Microsoft Project for the web extends the [Common schema](#common-schema) with the following record types.
+
+### ProjectForTheWebProject record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ProjectId|Edm.Guid|No|Id of the project being audited.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
+### ProjectForTheWebTask record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ProjectId|Edm.Guid|Yes|Id of the project being audited.|
+|TaskId|Edm.Guid|Yes|Id of the task being audited.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
+
+### ProjectForTheWebRoadmap record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RoadmapId|Edm.Guid|Yes|Id of the roadmap being audited.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
+
+### ProjectForTheWebRoadmapItem record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RoadmapItemId|Edm.Guid|Yes|Id of the roadmap item being audited.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
+
+### Complex Type AdditionalInfo
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|EnvironmentName|Edm.String|No|Id of the environment where action was performed.|
+
+### ProjectForTheWebProjectSetting record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ProjectEnabled|Edm.Boolean|Yes|The value that was set for project(1= enabled, 0 disabled).|
+
+### ProjectForTheWebRoadampSetting record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RoadmapEnabled|Edm.Boolean|Yes|The value that was set for roadmap (1= enabled, 0 disabled).|
 
 ## Purview Governance schema
 
