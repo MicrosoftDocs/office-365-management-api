@@ -1709,7 +1709,7 @@ The Reports events listed in [Search the audit log in the Office 365 Security & 
 
 ## Compliance connector schema
 
-Events in the compliance connector schema are triggered when items that are imported by a data connector are skipped or failed to be import to user mailboxes. For more information about data connectors, see [Learn about connectors for third-party data](/microsoft-365/compliance/archiving-third-party-data).
+Events in the compliance connector schema are triggered when items that are imported by a data connector are skipped or failed to be import to user mailboxes. For more information about data connectors, see [Learn about connectors for third-party data](/microsoft-365/compliance/archive-partner-third-party-data).
 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
@@ -1763,9 +1763,6 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 |:---------------|:-------|:--------------|:--------------|
 |Invitation|	DataShareInvitationType|No	|Details of the invite sent to the recipient of the Data Share.|
 
-
-
-
 #### DataShareInvitationType complex type
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -1777,16 +1774,12 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 |SyncFrequency|Self.SyncFrequency|Yes|Frequency at which the data is synced to the destination storage account once share is established. See SyncFrequency for possible values.|
 |SyncStartTime|Edm.DateTimeOffset|Yes|Date and time of first sync.|
 
-
-
-
 **Enum: SyncFrequency - Type: Edm.Int32**
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
 |0|Hourly|Indicates the data will be synced every hour.|
 |1|Daily|Indicates the data will be synced once a day.|
-
 
 **Enum: DataStoreType - Type: Edm.Int32**
 
@@ -1890,8 +1883,6 @@ The following table contains information related to AIP sensitivity label events
 |	SensitiveInfoTypeData	|	Stores the datatype of the Sensitive Info Type Data	|
 |	TemplateId	|	TemplateID parameter to get a specific template. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.	|
 |UserId                | The User Principal Name (UPN) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service.|
-
-
 
 ## AipProtectionAction
 
@@ -2078,7 +2069,6 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
 |0|Invalid|Used when the requested plan is not found.|
-
 |2|Group|The plan is associated with a M365 Group.|
 |3|TeamsConversation|The plan is associated with a Teams conversation.|
 |4|OfficeDocument|The plan is associated with a Office document.|
@@ -2153,8 +2143,8 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
 |0|Standard|The sensitivity label is automatically applied but not allowed to override a privileged label assignment.|
-|1||Privileged|The sensitivity label is applied manually by a user or by an admin.|
-|2||Auto|The sensitivity label is automatically applied and is allowed to override a privileged label assignment.|
+|1|Privileged|The sensitivity label is applied manually by a user or by an admin.|
+|2|Auto|The sensitivity label is automatically applied and is allowed to override a privileged label assignment.|
 
 ## Microsoft Project for the web schema
 Microsoft Project for the web extends the [Common schema](#common-schema) with the following record types.
