@@ -60,6 +60,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The Web events.|
+|[Purview Governance schema](#purview-governance-schema)|Extends the Common schema with the properties specific to Purview Governance events.|
 
 ## Common schema
 
@@ -2130,7 +2131,6 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |PlanList|Edm.String|A comma-separated string of task ids queried.|
 
 
-
 ### PlannerTenantSettings record type
 
 |**Properties**|**Type**|**Description**|
@@ -2204,4 +2204,15 @@ Microsoft Project for the web extends the [Common schema](#common-schema) with t
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |RoadmapEnabled|Edm.Boolean|Yes|The value that was set for roadmap (1= enabled, 0 disabled).|
+
+## Purview Governance schema
+
+The audit records for events related to Purview Governance use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). Events for governance are triggered when there is a change in artifacts present in purview governance apps.  A Single User Edit Action (irrespective of number of changes in the object) should produce single Audit log. 
+
+
+|**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
+|---------|---------|---------|---------|
+|ChangerRquestId|Edm.String |Yes |The Correlation Id for the event that generated the Audit Log of the event or the activity that occurred in Purview Governance.|
+|OldValue |JObject |No |The old value of the object before change.|
+|NewValue |JObject |No |The New/current value of the object after change.|
 
