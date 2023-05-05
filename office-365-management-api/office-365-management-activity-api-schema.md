@@ -59,6 +59,7 @@ This article provides details on the Common schema as well as service-specific s
 |[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
+|[Microsoft Todo schema](#microsoft-todo-schema)|Extends the Common schema with the properties specific to Microsoft Todo events.|
 
 ## Common schema
 
@@ -199,6 +200,7 @@ This article provides details on the Common schema as well as service-specific s
 |192|PlannerPlanList|Microsoft Planner plan list events.|
 |193|PlannerTaskList|Microsoft Planner task list events.|
 |194|PlannerTenantSettings|Microsoft Planner tenant settings events.|
+|202|MicrosoftTodoAudit|Microsoft Todo events.|
 |216|Viva Goals|Viva Goals events.|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
 |230|TeamsUpdates|Teams Updates App Events.|
@@ -2027,6 +2029,21 @@ The audit records for events related to Viva Goals use this schema (in addition 
 |UserAgent |Edm.String </br>Term="Microsoft.Office.Audit.Schema.PIIFlag" </br>Bool="true" |No |The user agent (browser details) of the user who trigged the event. UserAgent might not be present in case of a system generated event.|
 |ModifiedFields |Collection(Common.NameValuePair) |No |A list of attributes that were modified along with its new and old values output as a JSON.|
 |ItemDetails |Collection(Common.NameValuePair) |No |Additional properties about the object that was modified.|
+
+
+## Microsoft Todo schema
+
+The audit records for events related to Microsoft Todo use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance)
+
+
+|**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
+|---------|---------|---------|---------|
+|ActorAppId|Edm.String |No |AppID of user or just AppID in case action is initiated by App|
+|ItemType|Edm.String |No |Type of Item. Task or SubTask or TaskFolder|
+|ItemID|Edm.String |No |Item ID of Item on which action was performed|
+|TargetActorId|Edm.String |No |User ID of target actor, ex. User Id of sharee in list sharing event|
+|TargetActorTenantId|Edm.String |No |Tenant ID of target actor, ex. Tenant Id of sharee in list sharing event|
+|ExtraProperties|Collection(Common.NameValuePair) |No |A JSON containing extra values like metadata of Item|
 
 
 
