@@ -58,9 +58,11 @@ This article provides details on the Common schema as well as service-specific s
 |[Compliance connector schema](#compliance-connector-schema)|Extends the Common schema with the properties specific to importing non-Microsoft data by using data connectors.|
 |[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
+|[Microsoft Defender Experts schema](#microsoft-defender-experts-schema)|Extends the Common schema with the properties specific to Microsoft Defender Experts customer admin actions.|
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The Web events.|
 |[Purview Governance schema](#purview-governance-schema)|Extends the Common schema with the properties specific to Purview Governance events.|
+|[Microsoft To Do schema](#microsoft-to-do-schema)|Extends the Common schema with the properties specific to Microsoft To Do events.|
 
 ## Common schema
 
@@ -207,9 +209,11 @@ This article provides details on the Common schema as well as service-specific s
 |198|ProjectForTheWebRoadmapItem|Microsoft Project for the web roadmap item events.|
 |199|ProjectForTheWebProjectSettings|Microsoft Project for the web project tenant settings events.|
 |200|ProjectForTheWebRoadmapSettings|Microsoft Project for the web roadmap tenant settings events.|
+|202|MicrosoftTodoAudit|Microsoft To Do events.|
 |216|Viva Goals|Viva Goals events.|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
 |230|TeamsUpdates|Teams Updates App Events.|
+|237|DefenderExpertsforXDRAdmin|Microsoft Defender Experts Adminstrator action events.|
 |231|PlannerRosterSensitivityLabel|Microsoft Planner roster sensitivity label events.|
 
 ### Enum: User Type - Type: Edm.Int32
@@ -2026,6 +2030,29 @@ The audit records for events related to Viva Goals use this schema (in addition 
 |UserAgent |Edm.String </br>Term="Microsoft.Office.Audit.Schema.PIIFlag" </br>Bool="true" |No |The user agent (browser details) of the user who trigged the event. UserAgent might not be present in case of a system generated event.|
 |ModifiedFields |Collection(Common.NameValuePair) |No |A list of attributes that were modified along with its new and old values output as a JSON.|
 |ItemDetails |Collection(Common.NameValuePair) |No |Additional properties about the object that was modified.|
+
+## Microsoft Defender Experts Schema
+
+The audit records for events related to Microsoft Defender Experts use this schema (in addition to the [Common schema](#common-schema)). 
+
+
+|**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
+|---------|---------|---------|---------|
+|ModifiedProperties|Collection(ModifiedProperty)|No |The property is included for admin events, such as adding or modifying role permissions given to Microsoft Defender Experts. The property includes the name of the property that was modified (for example, "Roles"), the new values of the modified property, and the previous value of the modified object.|
+
+## Microsoft To Do schema
+
+The audit records for events related to Microsoft To Do use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance)
+
+
+|**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
+|---------|---------|---------|---------|
+|ActorAppId|Edm.String |No |AppID of user or just AppID in case action is initiated by App|
+|ItemType|Edm.String |No |Type of Item. Task or SubTask or TaskFolder|
+|ItemID|Edm.String |No |Item ID of Item on which action was performed|
+|TargetActorId|Edm.String |No |User ID of target actor, ex. User Id of sharee in list sharing event|
+|TargetActorTenantId|Edm.String |No |Tenant ID of target actor, ex. Tenant Id of sharee in list sharing event|
+|ExtraProperties|Collection(Common.NameValuePair) |No |A JSON containing extra values like metadata of Item|
 
 
 
