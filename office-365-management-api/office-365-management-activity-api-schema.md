@@ -60,7 +60,9 @@ This article provides details on the Common schema as well as service-specific s
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
 |[Microsoft Defender Experts schema](#microsoft-defender-experts-schema)|Extends the Common schema with the properties specific to Microsoft Defender Experts customer admin actions.|
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
-|[Microsoft Todo schema](#microsoft-todo-schema)|Extends the Common schema with the properties specific to Microsoft Todo events.|
+|[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The Web events.|
+|[Purview Governance schema](#purview-governance-schema)|Extends the Common schema with the properties specific to Purview Governance events.|
+|[Microsoft To Do schema](#microsoft-to-do-schema)|Extends the Common schema with the properties specific to Microsoft To Do events.|
 
 ## Common schema
 
@@ -201,12 +203,19 @@ This article provides details on the Common schema as well as service-specific s
 |192|PlannerPlanList|Microsoft Planner plan list events.|
 |193|PlannerTaskList|Microsoft Planner task list events.|
 |194|PlannerTenantSettings|Microsoft Planner tenant settings events.|
-|202|MicrosoftTodoAudit|Microsoft Todo events.|
+|195|ProjectForTheWebProject|Microsoft Project for the web project events.|
+|196|ProjectForTheWebTask|Microsoft Project for the web task events.|
+|197|ProjectForTheWebRoadmap|Microsoft Project for the web roadmap events.|
+|198|ProjectForTheWebRoadmapItem|Microsoft Project for the web roadmap item events.|
+|199|ProjectForTheWebProjectSettings|Microsoft Project for the web project tenant settings events.|
+|200|ProjectForTheWebRoadmapSettings|Microsoft Project for the web roadmap tenant settings events.|
+|202|MicrosoftTodoAudit|Microsoft To Do events.|
 |216|Viva Goals|Viva Goals events.|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
 |230|TeamsUpdates|Teams Updates App Events.|
 |237|DefenderExpertsforXDRAdmin|Microsoft Defender Experts Adminstrator action events.|
 |231|PlannerRosterSensitivityLabel|Microsoft Planner roster sensitivity label events.|
+
 ### Enum: User Type - Type: Edm.Int32
 
 #### User Type
@@ -1704,7 +1713,7 @@ The Reports events listed in [Search the audit log in the Office 365 Security & 
 
 ## Compliance connector schema
 
-Events in the compliance connector schema are triggered when items that are imported by a data connector are skipped or failed to be import to user mailboxes. For more information about data connectors, see [Learn about connectors for third-party data](/microsoft-365/compliance/archiving-third-party-data).
+Events in the compliance connector schema are triggered when items that are imported by a data connector are skipped or failed to be import to user mailboxes. For more information about data connectors, see [Learn about connectors for third-party data](/microsoft-365/compliance/archive-partner-third-party-data).
 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
@@ -1758,9 +1767,6 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 |:---------------|:-------|:--------------|:--------------|
 |Invitation|	DataShareInvitationType|No	|Details of the invite sent to the recipient of the Data Share.|
 
-
-
-
 #### DataShareInvitationType complex type
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -1772,16 +1778,12 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 |SyncFrequency|Self.SyncFrequency|Yes|Frequency at which the data is synced to the destination storage account once share is established. See SyncFrequency for possible values.|
 |SyncStartTime|Edm.DateTimeOffset|Yes|Date and time of first sync.|
 
-
-
-
 **Enum: SyncFrequency - Type: Edm.Int32**
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
 |0|Hourly|Indicates the data will be synced every hour.|
 |1|Daily|Indicates the data will be synced once a day.|
-
 
 **Enum: DataStoreType - Type: Edm.Int32**
 
@@ -1885,8 +1887,6 @@ The following table contains information related to AIP sensitivity label events
 |	SensitiveInfoTypeData	|	Stores the datatype of the Sensitive Info Type Data	|
 |	TemplateId	|	TemplateID parameter to get a specific template. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.	|
 |UserId                | The User Principal Name (UPN) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service.|
-
-
 
 ## AipProtectionAction
 
@@ -2040,9 +2040,9 @@ The audit records for events related to Microsoft Defender Experts use this sche
 |---------|---------|---------|---------|
 |ModifiedProperties|Collection(ModifiedProperty)|No |The property is included for admin events, such as adding or modifying role permissions given to Microsoft Defender Experts. The property includes the name of the property that was modified (for example, "Roles"), the new values of the modified property, and the previous value of the modified object.|
 
-## Microsoft Todo schema
+## Microsoft To Do schema
 
-The audit records for events related to Microsoft Todo use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance)
+The audit records for events related to Microsoft To Do use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance)
 
 
 |**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
@@ -2096,7 +2096,6 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
 |0|Invalid|Used when the requested plan is not found.|
-
 |2|Group|The plan is associated with a M365 Group.|
 |3|TeamsConversation|The plan is associated with a Teams conversation.|
 |4|OfficeDocument|The plan is associated with a Office document.|
@@ -2149,7 +2148,6 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |PlanList|Edm.String|A comma-separated string of task ids queried.|
 
 
-
 ### PlannerTenantSettings record type
 
 |**Properties**|**Type**|**Description**|
@@ -2172,5 +2170,66 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
 |0|Standard|The sensitivity label is automatically applied but not allowed to override a privileged label assignment.|
-|1||Privileged|The sensitivity label is applied manually by a user or by an admin.|
-|2||Auto|The sensitivity label is automatically applied and is allowed to override a privileged label assignment.|
+|1|Privileged|The sensitivity label is applied manually by a user or by an admin.|
+|2|Auto|The sensitivity label is automatically applied and is allowed to override a privileged label assignment.|
+
+## Microsoft Project for the web schema
+Microsoft Project for the web extends the [Common schema](#common-schema) with the following record types.
+
+### ProjectForTheWebProject record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ProjectId|Edm.Guid|No|Id of the project being audited.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
+### ProjectForTheWebTask record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ProjectId|Edm.Guid|Yes|Id of the project being audited.|
+|TaskId|Edm.Guid|Yes|Id of the task being audited.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
+
+### ProjectForTheWebRoadmap record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RoadmapId|Edm.Guid|Yes|Id of the roadmap being audited.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
+
+### ProjectForTheWebRoadmapItem record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RoadmapItemId|Edm.Guid|Yes|Id of the roadmap item being audited.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
+
+### Complex Type AdditionalInfo
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|EnvironmentName|Edm.String|No|Id of the environment where action was performed.|
+
+### ProjectForTheWebProjectSetting record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ProjectEnabled|Edm.Boolean|Yes|The value that was set for project(1= enabled, 0 disabled).|
+
+### ProjectForTheWebRoadampSetting record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RoadmapEnabled|Edm.Boolean|Yes|The value that was set for roadmap (1= enabled, 0 disabled).|
+
+## Purview Governance schema
+
+The audit records for events related to Purview Governance use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). Events for governance are triggered when there is a change in artifacts present in purview governance apps.  A Single User Edit Action (irrespective of number of changes in the object) should produce single Audit log. 
+
+
+|**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
+|---------|---------|---------|---------|
+|ChangerRquestId|Edm.String |Yes |The Correlation Id for the event that generated the Audit Log of the event or the activity that occurred in Purview Governance.|
+|OldValue |JObject |No |The old value of the object before change.|
+|NewValue |JObject |No |The New/current value of the object after change.|
+
