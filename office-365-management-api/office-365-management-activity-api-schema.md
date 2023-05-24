@@ -63,6 +63,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The Web events.|
 |[Purview Governance schema](#purview-governance-schema)|Extends the Common schema with the properties specific to Purview Governance events.|
 |[Microsoft To Do schema](#microsoft-to-do-schema)|Extends the Common schema with the properties specific to Microsoft To Do events.|
+|[Viva Access Management Schema](#viva-access-management)|Extends the Common schema with the properties specific to Viva Access Management.|
 
 ## Common schema
 
@@ -215,6 +216,9 @@ This article provides details on the Common schema as well as service-specific s
 |230|TeamsUpdates|Teams Updates App Events.|
 |237|DefenderExpertsforXDRAdmin|Microsoft Defender Experts Adminstrator action events.|
 |231|PlannerRosterSensitivityLabel|Microsoft Planner roster sensitivity label events.|
+|251|VfamCreatePolicy|Viva Access Management policy create event.|
+|252|VfamUpdatePolicy|Viva Access Management policy update event.|
+|253|VfamDeletePolicy|Viva Access Management policy delete event.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -2233,3 +2237,47 @@ The audit records for events related to Purview Governance use this schema (in a
 |OldValue |JObject |No |The old value of the object before change.|
 |NewValue |JObject |No |The New/current value of the object after change.|
 
+## Viva Access Management
+
+Viva Access Management comprises of the schema related to  policy management for various viva features. It includes action performed by the tenant IT Admin to create, modify, and delete the policy for various viva features. It uses t the [Common schema](#common-schema) with the following record types.
+
+### Enum Type AllowedModifiedFields
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|1|PolicyName|Attribute Policy|
+|2|ACL|Access Control List. This attribute suggests that either the identity was added or removed from the policy.|
+|3|IsEnabled|Attribute showing state of policy allow/deny.|
+
+### VfamCreatePolicy record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ModuleId|Edm.String|Yes|Viva module Id for which the policy is being created.|
+|FeatureId|Edm.String|Yes|Viva feature Id for which the policy is being created. feature is part of module.|
+|PolicyId|Edm.String|Yes| Policy Id of newly created policy for above module and feature ids.|
+|IsEnabeled|Edm.Boolean|Yes| Status showing if the policy is enabled or disabled for the given feature.|
+|AddedIdentities|Collection(Edm.String)|Yes| List of user/group OIDs that are part of the created policy
+
+### VfamUpdatePolicy record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ModuleId|Edm.String|Yes|Viva module Id for which the policy is being created.|
+|FeatureId|Edm.String|Yes|Viva feature Id for which the policy is being created. feature is part of module.|
+|PolicyId|Edm.String|Yes| Policy Id of newly created policy for above module and feature ids.|
+|IsEnabeled|Edm.Boolean|Yes| Status showing if the policy is enabled or disabled for the given feature.|
+|AddedIdentities|Collection(Edm.String)|Yes| List of newly added user/group OIDs that are part of the policy update|
+|RemovedIdentities|Collection(Edm.String)|Yes| List of removed user/group OIDs that are part of the policy update|
+|ModifiedFields|CollectionSelf.[AllowedModifiedFields](#enum-type-allowedmodifiedfields)|Yes| List of the fields that were modified as a part of the policy update.
+
+### VfamDeletePolicy record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ModuleId|Edm.String|Yes|Viva module Id for which the policy is being created.|
+|FeatureId|Edm.String|Yes|Viva feature Id for which the policy is being created. feature is part of module.|
+|PolicyId|Edm.String|Yes| Policy Id of newly created policy for above module and feature ids.|
+|IsEnabeled|Edm.Boolean|Yes| Status showing if the policy is enabled or disabled for the given feature.|
+|AddedIdentities|Collection(Edm.String)|Yes| List of newly added user/group OIDs that are part of the policy update|
+|RemovedIdentities|Collection(Edm.String)|Yes| List of removed user/group OIDs that are part of the policy update|
