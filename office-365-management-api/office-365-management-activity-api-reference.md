@@ -273,7 +273,7 @@ This operation lists the content currently available for retrieval for the speci
 
 |Subscription|Description|
 |:-----|:-----|
-|**Path**| `/subscriptions/content?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`|
+|**Path**| `/subscriptions/content?contentType={ContentType}&startTime={0}&endTime={1}`|
 |**Parameters**|contentType - Must be a valid content type.|
 |PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
 |startTime endTime|Optional datetimes (UTC) indicating the time range of content to return, based on when the content became available. The time range is inclusive with respect to startTime (startTime <= contentCreated) and exclusive with respect to endTime (contentCreated < endTime), so that non-overlapping, incrementing time intervals can used to page through available content.<ul><li>YYYY-MM-DD</li><li>YYYY-MM-DDTHH:MM</li><li>YYYY-MM-DDTHH:MM:SS</ul>Both must be specified (or both omitted) and they must be no more than 24 hours apart, with the start time no more than 7 days in the past. By default, if startTime and endTime are omitted, then the content available in the last 24 hours is returned.<p>**NOTE**: Even though it is possible to specify a startTime and endTime more than 24 hours apart, this is not recommended. Furthermore, if you do get any results in response to a request for more than 24 hours, these could be partial results and should not be taken into account. The request should be issued with an interval of no more than 24 hours between the startTime and endTime.</p>|
@@ -313,7 +313,7 @@ When listing available content for a time range, the number of results returned 
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
-NextPageUri: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscriptions/content?contentType=Audit.SharePoint&amp;startTime=2015-10-01&amp;endTime=2015-10-02&amp;nextPage=2015101900R022885001761
+NextPageUri: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscriptions/content?contentType=Audit.SharePoint&startTime=2015-10-01&endTime=2015-10-02&nextPage=2015101900R022885001761
 
 ```
 
@@ -481,7 +481,7 @@ You can use this operation to help investigate issues related to webhooks and no
 
 |Subscription|Description|
 |:-----|:-----|
-|**Path**| `/subscriptions/notifications?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`|
+|**Path**| `/subscriptions/notifications?contentType={ContentType}&startTime={0}&endTime={1}`|
 |**Parameters**|contentType - Must be a valid content type.|
 |PublisherIdentifier|The tenant GUID of the vendor coding against the API. This is **not** the application GUID or the GUID of the customer using the application, but the GUID of the company writing the code. This parameter is used for throttling the request rate. Make sure this parameter is specified in all issued requests to get a dedicated quota. All requests received without this parameter will share the same quota.|
 |startTime endTime|Optional datetimes (UTC) that indicate the time range of content to return, based on when the content became available. The time range is inclusive with respect to  _startTime_ ( _startTime_ <= contentCreated) and exclusive with respect to _endTime_ (_contentCreated_ < endTime), so that non-overlapping, incrementing time intervals can used to page through available content.<ul><li>YYYY-MM-DD</li><li>YYYY-MM-DDTHH:MM</li><li>YYYY-MM-DDTHH:MM:SS</ul>Both must be specified (or both omitted) and they must be no more than 24 hours apart, with the start time no more than 7 days in the past. By default, if  _startTime_ and _endTime_ are omitted, the content available in the last 24 hours is returned.|
@@ -524,7 +524,7 @@ When listing notification history for a time range, the number of results return
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
-NextPageUri: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscriptions/content?contentType=Audit.SharePoint&amp;startTime=2015-10-01&amp;endTime=2015-10-02&amp;nextPage=2015101900R022885001761
+NextPageUri: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscriptions/content?contentType=Audit.SharePoint&startTime=2015-10-01&endTime=2015-10-02&nextPage=2015101900R022885001761
 
 ```
 
