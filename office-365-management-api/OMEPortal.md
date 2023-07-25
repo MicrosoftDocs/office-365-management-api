@@ -121,7 +121,7 @@ The following table contains information related to OMEPortal events.
 |Event     |Type       |Description |
 |----------|-----------|------------|
 |Activity  | String    | The activity type for the audit log. For OMEPortal, operations can include: <br/>- AttachmentDownload<br/>- AttachmentReview<br/>- AuthenticateRequest<br/>- MessageAccess<br/>- MessageForward |
-|AttachmentName |String |Part of AuditData. <br/>The name of the attachment in the message.|Details on the operation of the OMEPortal event.<br/>|
+|AttachmentName |String |Part of AuditData. <br/>The name of the attachment in the message.|
 |AuthenticationMethod  |String |Part of AuditData. <br/>The type of authentication used to login to portal. Values are: <br/>- OTP <br/>- Google <br/>- Yahoo <br/>- Microsoft |
 |AuthenticationStatus  |Double |The status of the authentication. <br/>0 = success<br/>1= failure  |
 |CreationTime |Date/time |The date and time in Coordinated Universal Time (UTC) when the user performed the activity. |
