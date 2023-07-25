@@ -37,7 +37,7 @@ The audit logs can be accessed using the following methods.
     > If you don't see **Audit** in the left pane, see [Roles and role groups in Microsoft Defender for Office 365 and Microsoft Purview compliance](/microsoft-365/security/office-365-security/scc-permissions?view=o365-worldwide&preserve-view=true) for information about permissions.
 
 3. On the **New Search** tab, set Record type to **OMEPortal** and configure the other parameters.
-
+:::image type="content" source="images/audit-new-search.png" alt-text="Audit dialog showing new search options":::
 
 For more information on viewing the audit logs in the Microsoft Purview compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities?view=o365-worldwide).
 
