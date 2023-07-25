@@ -24,9 +24,9 @@ OMEPortal is a type of event that is recorded in the Office 365 Unified Audit Lo
 
 The audit logs can be accessed using the following methods.
 
-- The [audit log search tool](/office-365-management-api/aipsensitivitylabelaction#audit-log-search-tool) in the Microsoft Purview compliance portal.
-- The [Search-UnifiedAuditLog](/office-365-management-api/aipsensitivitylabelaction#search-unified-audit-log-in-powershell) cmdlet in Exchange Online PowerShell.
-- The [Office 365 Management Activity API](/office-365-management-api/aipsensitivitylabelaction#office-365-management-activity-api).
+- The [audit log search tool](/office/office-365-management-api/aipsensitivitylabelaction#audit-log-search-tool) in the Microsoft Purview compliance portal.
+- The [Search-UnifiedAuditLog](/office/office-365-management-api/aipsensitivitylabelaction#search-unified-audit-log-in-powershell) cmdlet in Exchange Online PowerShell.
+- The [Office 365 Management Activity API](/office/office-365-management-api/aipsensitivitylabelaction#office-365-management-activity-api).
 
 ### Audit log search tool
 
@@ -47,7 +47,7 @@ To access the Unified Audit Log using PowerShell, first open a PowerShell window
 
 #### Search-UnifiedAuditLog cmdlet
 
-The Search-UnifiedAuditLog cmdlet is a PowerShell command that can be used to search the Office 365 Unified Audit Log. The Unified Audit Log is a record of user and administrator activity in Office 365 that can be used to track events. For best practices on using this cmdlet, see [Best Practices for using Search-UnifiedAuditLog](/office-365-management-api/aip-unified-audit-logs-best-practices).
+The Search-UnifiedAuditLog cmdlet is a PowerShell command that can be used to search the Office 365 Unified Audit Log. The Unified Audit Log is a record of user and administrator activity in Office 365 that can be used to track events. For best practices on using this cmdlet, see [Best Practices for using Search-UnifiedAuditLog](/office/office-365-management-api/aip-unified-audit-logs-best-practices).
 
 To extract the OMEPortal events from the Unified Audit Log using PowerShell, you can use the following command. This will search the Unified Audit Log for the specified date range and return any events with the record type "OMEPortal". The results will be exported to a CSV file at the specified path.
 
