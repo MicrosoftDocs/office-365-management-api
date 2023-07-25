@@ -4,7 +4,7 @@ title: OMEPortal
 description: OMEPortal
 ms.ContentId: c6b4789e-d0e8-44d4-806c-0a63d1218463
 ms.topic: reference
-ms.date: 01/24/2023
+ms.date: 07/25/2023
 ms.localizationpriority: high
 ---
 
@@ -118,20 +118,21 @@ The other operations that can be specifically searched for within OMEPortal incl
 
 The following table contains information related to OMEPortal events.
 
-|Event     |Type       |Description |
-|----------|-----------|------------|
-|Activity  | String    | The activity type for the audit log. For OMEPortal, operations can include: <br/>- AttachmentDownload<br/>- AttachmentReview<br/>- AuthenticateRequest<br/>- MessageAccess<br/>- MessageForward |
-|AttachmentName |String |Part of AuditData. <br/>The name of the attachment in the message.|
+|Event      |Type         |Description |
+|-----------|------------|-------------|
+|Activity  | String      | The activity type for the audit log. For OMEPortal, operations can include: <br/>- AttachmentDownload<br/>- AttachmentReview<br/>- AuthenticateRequest<br/>- MessageAccess<br/>- MessageForward |
+|AttachmentName |String  |Part of AuditData. <br/>The name of the attachment in the message.|
+|AuditData | String      |The log details on the OMEPortal activity.<br/>|
 |AuthenticationMethod  |String |Part of AuditData. <br/>The type of authentication used to login to portal. Values are: <br/>- OTP <br/>- Google <br/>- Yahoo <br/>- Microsoft |
 |AuthenticationStatus  |Double |The status of the authentication. <br/>0 = success<br/>1= failure  |
 |CreationTime |Date/time |The date and time in Coordinated Universal Time (UTC) when the user performed the activity. |
-|Id        |GUID       |Unique identifier of an audit record. |
-|MessageId |String     |The message ID. |
-|Operation |String     |Same value as activity. |
-|OperationProperties   |String |Part of AuditData. <br/>Contains the email subject. |
-|Recipient |String     |Part of AuditData. <br/>The email address of user accessing the message in the encrypted message portal. |
-|RecordType |Double    |The type of operation indicated by the record. 154 represents an OMEPortal record. |
-|ResultsStatus |String |Operation was either successful or a failure. |
-|Sender |String |Part of AuditData. <br/>The email address of user that sent the encrypted message. |
-|Workload |String | Exchange to indicate email in the encrypted message portal. |
-|UserId |String |The User Principal Name (UPN) of the user in your organization who sent the encrypted mail the action that resulted in the record being logged. |
+|Id        |GUID         |Unique identifier of an audit record. |
+|MessageId |String       |The message ID. |
+|Operation |String       |Same value as activity. |
+|OperationProperties     |String |Part of AuditData. <br/>Contains the email subject. |
+|Recipient  |String      |Part of AuditData. <br/>The email address of user accessing the message in the encrypted message portal. |
+|RecordType |Double      |The type of operation indicated by the record. 154 represents an OMEPortal record. |
+|ResultsStatus |String   |Operation was either successful or a failure. |
+|Sender   |String        |Part of AuditData. <br/>The email address of user that sent the encrypted message. |
+|Workload |String        |Exchange to indicate email in the encrypted message portal. |
+|UserId   |String        |The User Principal Name (UPN) of the user in your organization who sent the encrypted mail the action that resulted in the record being logged. |
