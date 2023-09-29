@@ -1377,7 +1377,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 
 ## User Training schema
 
-|Parameters|Type|Mandatory|Description|
+|Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
 |Batch ID|Edm.String|Yes|A unique identifier for a group of records that are processed together.|
 |Campaign ID|Edm.String|Yes|A unique identifier for an attack simulation training campaign.|
