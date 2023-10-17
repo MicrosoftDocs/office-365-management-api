@@ -167,10 +167,10 @@ This article provides details on the Common schema as well as service-specific s
 |82|SensitivityLabelPolicyMatch|Events generated when the file labeled with a sensitivity label is opened or renamed.|
 |83|SensitivityLabelAction|Event generated when sensitivity labels are applied, updated, or removed from a file.|
 |84|SensitivityLabeledFileAction|Events generated when a file labeled with a sensitivity label is opened or renamed.|
-|85|AttackSim|Attack simulator events.|
+|85|AttackSim|Events related to user activities in Attack Simulation & Training in Microsoft Defender for Office 365.|
 |86|AirManualInvestigation|Events related to manual investigations in Automated investigation and response (AIR). |
 |87|SecurityComplianceRBAC|Security and compliance RBAC events.|
-|88|UserTraining|Attack simulator training events in Microsoft Defender for Office 365.|
+|88|UserTraining|Events related to user training in Attack Simulation & Training in Microsoft Defender for Office 365.|
 |89|AirAdminActionInvestigation|Events related to admin actions in  Automated investigation and response (AIR).|
 |90|MSTIC|Threat intelligence events in Microsoft Defender for Office 365.|
 |91|PhysicalBadgingSignal|Events related to physical badging signals that support the Insider risk management solution.|
@@ -213,6 +213,7 @@ This article provides details on the Common schema as well as service-specific s
 |202|MicrosoftTodoAudit|Microsoft To Do events.|
 |216|Viva Goals|Viva Goals events.|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
+|218|AttackSimAdmin|Events related to admin activities in Attack Simulation & Training in Microsoft Defender for Office 365.|
 |230|TeamsUpdates|Teams Updates App Events.|
 |237|DefenderExpertsforXDRAdmin|Microsoft Defender Experts Administrator action events.|
 |231|PlannerRosterSensitivityLabel|Microsoft Planner roster sensitivity label events.|
@@ -1316,9 +1317,9 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |Campaign ID|Edm.String|Yes|A unique identifier for the attack simulation training campaign.|
 |UserDisplayName|Edm.String|No|The display name of the user involved in the attack simulation training campaign.|
 |AttackTechnique|Edm.String|No|The attack technique used in the simulation.|
-|CampaignType|Edm.String|No|The type of attack simulation campaign. The different types are simulation campaign, training campaign, simulation automation, payload automation.|
-|TimeData|Edm.Date|No|The timestamp when the event occurred.|
-|EndTimeData|Edm.Date|No|The timestamp when the event ended.|
+|CampaignType|Edm.String|No|The type of attack simulation campaign. The different types are simulation campaign, training campaign, simulation automation.|
+|TimeData|Edm.Date|No|Campaign launch time.|
+|EndTimeData|Edm.Date|No|Campaign end time.|
 |AttackSimEvent|Self.AttackSimEventType|Yes|Type of event (user activity or message delivery state).|
 |ExtendedProperties|Collection(Common.NameValuePair)|Yes|Additional properties associated with the audit record.|
 
@@ -1326,12 +1327,8 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 
 |Value|Member Name|Description|
 |---|---|---|
-|0|MessageSent|Message sent to recipient.|
 |1|MessageDelivered|Message delivered to recipient successfully.|
 |2|MessageFailed|Message delivery failed.|
-|3|TrainingAssigned|Training assigned to user.|
-|4|TrainingUpdated|Training updated for user.|
-|5|TrainingCompleted|User completed training.|
 |6|CredentialEntered|User entered credentials in the phish simulation for techniques such as Credential Harvesting, Link in attachment.|
 |7|PermissionGranted|User granted permission in the phish simulation for technique such as Oauth consent grant.|
 |8|LinkClicked|User clicked on phish simulation URL.|
@@ -1351,9 +1348,9 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |Batch ID|Edm.String|Yes|A unique identifier for a group of records that are processed together.|
 |Campaign ID|Edm.String|Yes|A unique identifier for an attack simulation training campaign.|
 |AttackTechnique|Edm.String|No|The attack technique used in a simulation.|
-|CampaignType|Edm.String|No|The type of attack simulation campaign. The different types are simulation campaign, training campaign, simulation automation, payload automation.|
-|TimeData|Edm.Date|Yes|The timestamp when the event occurred.|
-|EndTimeData|Edm.Date|Yes|The timestamp when the event ended.|
+|CampaignType|Edm.String|No|The type of attack simulation campaign. The different types are simulation campaign, training campaign, simulation automation.|
+|TimeData|Edm.Date|Yes|Campaign launch time.|
+|EndTimeData|Edm.Date|Yes|Campaign end time.|
 |AttackSimAdminEvent|Self.AttackSimAdminEventType|Yes|The type of attack sim admin event.|
 |ExtendedProperties|Collection(Common.NameValuePair)|Yes|Additional properties associated with the audit record.|
 
@@ -1361,11 +1358,11 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 
 |Value|Member Name|Description|
 |---|---|---|
-|0|CampaignLaunched|When an attack simulation training campaign was launched. The different type of campaigns are simulation, training campaign.|
+|0|CampaignLaunched|When an attack simulation training campaign was launched. The different types of campaigns are simulation, training campaign.|
 |1|CampaignCompleted|When an attack simulation training campaign was completed.|
 |2|CampaignReportDownloaded|Admin downloaded a campaign report.|
 |3|CampaignReportViewed|Admin viewed a campaign report.|
-|4|CamapignCancelled|When an attack simulation training campaign was cancelled.|
+|4|CampaignCancelled|When an attack simulation training campaign was cancelled.|
 |5|CampaignScheduled|When an attack simulation training campaign was scheduled.|
 |6|CampaignDeleted|When an attack simulation training campaign was deleted.|
 |7|SimulationExcluded|When a simulation was excluded from reporting.|
@@ -1381,12 +1378,11 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |---|---|---|---|
 |Batch ID|Edm.String|Yes|A unique identifier for a group of records that are processed together.|
 |Campaign ID|Edm.String|Yes|A unique identifier for an attack simulation training campaign.|
-|Policy ID|Edm.String|Yes|A unique identifier for a policy.|
 |Course ID|Edm.String|Yes|A unique identifier for a training course.|
 |UserDisplayName|Edm.String|No|The display name of the user involved in the attack simulation.|
-|CampaignType|Edm.String|Yes|The type of attack simulation campaign. The different types are simulation campaign, training campaign, simulation automation, payload automation.|
-|TimeData|Edm.Date|Yes|The timestamp when the event occurred.|
-|EndTimeData|Edm.Date|Yes|The timestamp when the event ended.|
+|CampaignType|Edm.String|Yes|The type of attack simulation campaign. The different types are simulation campaign, training campaign, simulation automation.|
+|TimeData|Edm.Date|Yes|Campaign launch time.|
+|EndTimeData|Edm.Date|Yes|Campaign end time.|
 |UserTrainingEvent|Self.UserTrainingEventType |Yes|The type of user training event.|
 |ExtendedProperties|Collection(Common.NameValuePair)|Yes|Additional properties associated with the audit record.|
 
