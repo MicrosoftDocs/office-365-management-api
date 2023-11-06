@@ -221,7 +221,7 @@ This article provides details on the Common schema as well as service-specific s
 |251|VfamCreatePolicy|Viva Access Management policy create events.|
 |252|VfamUpdatePolicy|Viva Access Management policy update events.|
 |253|VfamDeletePolicy|Viva Access Management policy delete events.|
-|261|Copilotinteraction|Copilot interaction events.|
+|[261](copilon-schema.md)|Copilotinteraction|Copilot interaction events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
