@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 11/17/2023
 ms.localizationpriority: high
 ---
 
@@ -23,6 +23,7 @@ This article provides details on the Common schema as well as service-specific s
 |Name of schema|Description|
 |:-----|:-----|
 |[Common schema](#common-schema)|The view to extract Record Type, User ID, Client IP, User type and Action along with core dimensions such as user properties (such as UserID), location properties (such as Client IP), and service-specific properties (such as Object Id).|
+|[Copilot schema](#compilot-schema)|Events include how and when users interact with Copilot, in which Microsoft 365 service the activity took place, and references to the files stored in Microsoft 365 that were accessed during the interaction.
 |[SharePoint Base schema](#sharepoint-base-schema)|Extends the Common schema with the properties specific to all SharePoint audit data.|
 |[SharePoint File Operations](#sharepoint-file-operations)|Extends the SharePoint Base schema with the properties specific to file access and manipulation in SharePoint.|
 |[SharePoint List Operations](#sharepoint-list-operations)|Extends the SharePoint Base schema with the properties specific to interactions with lists and list items in SharePoint Online.|
@@ -220,6 +221,7 @@ This article provides details on the Common schema as well as service-specific s
 |251|VfamCreatePolicy|Viva Access Management policy create events.|
 |252|VfamUpdatePolicy|Viva Access Management policy update events.|
 |253|VfamDeletePolicy|Viva Access Management policy delete events.|
+|261|Copilotinteraction|Copilot interaction events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -1655,6 +1657,8 @@ The quarantine events listed in [Search the audit log in the Office 365 Security
 |3|Export|This is a request from a user to export an email message that is deemed to be harmful.|
 |4|ViewHeader|This is a request from a user to view the header an email message that is deemed to be harmful.|
 |5|Release request|This is a release request from a user to release an email message that is deemed to be harmful.|
+|7|DenyRelease|This is a denial action from an admin for the release request from a user of an email message that is deemed to be harmful.|
+
 
 ### Enum: RequestSource - Type: Edm.Int32
 
