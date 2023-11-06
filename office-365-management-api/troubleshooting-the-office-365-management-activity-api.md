@@ -71,17 +71,17 @@ All organizations are initially allocated a baseline of 2,000 requests per minut
 
 Open a ticket with Microsoft Support and request a new throttling limit, and include a business justification for increasing the limit. We will evaluate the request, and if accepted, we will increase the throttling limit.
 
-**Why are TargetUpdatedProperties no longer in ExtendedProperties in the audit logs for Azure Active Directory activities?**
+**Why are TargetUpdatedProperties no longer in ExtendedProperties in the audit logs for Microsoft Entra activities?**
 
 TargetUpdatedProperties were appearing in ExtendedProperties. However, they have been removed from ExtendedProperties and now appear in ModifiedProperties.
 
-**Why aren't audit logs with UserAccountNotFound "LogonError" for Azure Active Directory (Azure AD) sign-in activities available via the Management Activity API?**
+**Why aren't audit logs with UserAccountNotFound "LogonError" for Microsoft Entra sign-in activities available via the Management Activity API?**
 
-Starting in November 2020, audit logs for Azure AD sign-in activities are ingested into the unified audit log from Azure AD Event Hubs. As a result of this change, populating the "LogonError" property with the UserAccountNotFound value is not possible. Starting the first week of February 2021, the [ErrorCode property in the Azure AD logon auditing schema](/office/office-365-management-api/office-365-management-activity-api-schema#azure-active-directory-secure-token-service-sts-logon-schema) now matches [AADSTS error codes](/azure/active-directory/develop/reference-aadsts-error-codes#lookup-current-error-code-information). Also, the UserId parameter will not be populated with the user name from the attempted login for UserAccountNotFound errors because that user name doesn't exist in the organization's Azure AD directory.
+Starting in November 2020, audit logs for Microsoft Entra sign-in activities are ingested into the unified audit log from Microsoft Entra Event Hubs. As a result of this change, populating the "LogonError" property with the UserAccountNotFound value is not possible. Starting the first week of February 2021, the [ErrorCode property in the Microsoft Entra logon auditing schema](/office/office-365-management-api/office-365-management-activity-api-schema#azure-active-directory-secure-token-service-sts-logon-schema) now matches [AADSTS error codes](/azure/active-directory/develop/reference-aadsts-error-codes#lookup-current-error-code-information). Also, the UserId parameter will not be populated with the user name from the attempted login for UserAccountNotFound errors because that user name doesn't exist in the organization's Microsoft Entra directory.
 
 ## Troubleshooting the Office 365 Management Activity API
 
-One thing that should be made clear for anyone who's getting started with the Office 365 Management Activity API is that there is no concept of querying by event specifics, such as date that the event occurred, which site collection an event might have been fired from, or the type of event. Instead, you create subscriptions to specific workloads (for example, SharePoint or Azure AD) and each subscription is per tenant.
+One thing that should be made clear for anyone who's getting started with the Office 365 Management Activity API is that there is no concept of querying by event specifics, such as date that the event occurred, which site collection an event might have been fired from, or the type of event. Instead, you create subscriptions to specific workloads (for example, SharePoint or Microsoft Entra ID) and each subscription is per tenant.
 
 The following sections summarizes the most common questions that customers have in using the Office 365 Management Activity API:
 
@@ -120,7 +120,7 @@ If unified auditing isn't enabled, you'll typically receive an error that contai
 
 ### Connect to the API
 
-Most applications connect to the API using a straightforward Client Credentials OAuth2 flow. Therefore, the first step is to create an Azure AD application that has the permissions needed to access the Management Activity API data. It's outside the scope of this article to explain the steps to create an Azure AD App registration. For more information, see [Register your application with your Azure Active Directory tenant](/azure/active-directory/develop/active-directory-integrating-applications).
+Most applications connect to the API using a straightforward Client Credentials OAuth2 flow. Therefore, the first step is to create a Microsoft Entra application that has the permissions needed to access the Management Activity API data. It's outside the scope of this article to explain the steps to create a Microsoft Entra App registration. For more information, see [Register your application with your Microsoft Entra tenant](/azure/active-directory/develop/active-directory-integrating-applications).
 
 #### Azure application permissions
 

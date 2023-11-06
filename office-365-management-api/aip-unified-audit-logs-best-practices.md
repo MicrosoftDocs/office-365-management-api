@@ -22,7 +22,7 @@ To use the Search-UnifiedAuditLog cmdlet, your account must have the Exchange Vi
 
 A RecordType is the workload that generated the record. Examples of different types of events found using the Search-UnifiedAuditLog cmdlet include:
 
-1. Add a member to a group in Azure Active Directory (**AzureActiveDIrectory**)
+1. Add a member to a group in Microsoft Entra ID (**AzureActiveDIrectory**)
 2. Update mailbox properties in Exchange (**ExchangeAdmin**)
 3. Delete a file in SharePoint (**SharePointFileOperation**)
 4. Log a user into Microsoft Teams (**MicrosoftTeams**)
@@ -103,15 +103,15 @@ The following table lists the AuditData property details.
 
 |Parameter  |Description|
 |----------|-----------|
-| RecordType| The type of workload that generated the record, such as Azure Active Directory, Microsoft Teams, Exchange Admin, or SharePoint File Operation.|
+| RecordType| The type of workload that generated the record, such as Microsoft Entra ID, Microsoft Teams, Exchange Admin, or SharePoint File Operation.|
 | CreationTime| The date and time in UTC format when the activity was performed.|
 | Operation| The operation logged when someone accesses an item, such as FileViewed in the case of SharePoint Online.|
 | OrganizationId| The unique tenant identifier in the form of a GUID.|
 | UserKey| The identity used to gain access to the item, typically achieved through membership in a group.|
-| Workload| The name of the application that logged the event, such as SharePoint Online, Exchange Online, OneDrive for Business, or Azure AD.|
+| Workload| The name of the application that logged the event, such as SharePoint Online, Exchange Online, OneDrive for Business, or Microsoft Entra ID.|
 | ClientIP| The IP address of the client workstation where the action originated.|
 | ObjectID| The full path to the object that was accessed.|
-| UserID| The Azure AD account identifier for the account that caused the action to occur.|
+| UserID| The Microsoft Entra account identifier for the account that caused the action to occur.|
 | UserAgent| The client used to invoke the action.|
 | SourceFileName| The name of the file involved in the action.|
 | UserType| The type of user that performed the action, with values of "0" (regular user), "1" (administrator), or "2" (Microsoft data center administrator or system account).|

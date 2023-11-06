@@ -1,7 +1,7 @@
 ---
 ms.TocTitle: Office 365 Management Activity API reference
 title: Office 365 Management Activity API reference
-description: Use the Office 365 Management Activity API to retrieve information about user, admin, system, and policy actions and events from Office 365 and Azure AD activity logs. 
+description: Use the Office 365 Management Activity API to retrieve information about user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs. 
 ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference
 ms.date: 10/04/2022
@@ -10,16 +10,16 @@ ms.localizationpriority: med
 
 # Office 365 Management Activity API reference
 
-Use the Office 365 Management Activity API to retrieve information about user, admin, system, and policy actions and events from Office 365 and Azure AD activity logs. 
+Use the Office 365 Management Activity API to retrieve information about user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs. 
 
-You can use the actions and events from the Office 365 and Microsoft Azure Active Directory audit and activity logs to create solutions that provide monitoring, analysis, and data visualization. These solutions give organizations greater visibility into actions taken on their content. These actions and events are also available in the Office 365 Activity Reports. For more information, see [Search the audit log in Microsoft 365](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance).
+You can use the actions and events from the Office 365 and Microsoft Entra audit and activity logs to create solutions that provide monitoring, analysis, and data visualization. These solutions give organizations greater visibility into actions taken on their content. These actions and events are also available in the Office 365 Activity Reports. For more information, see [Search the audit log in Microsoft 365](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance).
 
 > [!TIP]
 > If you're interested in creating custom reports from Audit Logs, you might find the following blogs helpful.
 > - [Microsoft Purview audit log activities via O365 Management API - Part 1](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/microsoft-365-compliance-audit-log-activities-via-o365/ba-p/2957171)
 > - [Microsoft Purview audit log activities via O365 Management API - Part 2](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/microsoft-365-compliance-audit-log-activities-via-o365/ba-p/2957297) 
 
-The Office 365 Management Activity API is a REST web service that you can use to develop solutions using any language and hosting environment that supports HTTPS and X.509 certificates. The API relies on Azure AD and the OAuth2 protocol for authentication and authorization. To access the API from your application, you'll need to first register it in Azure AD and configure it with appropriate permissions. This will enable your application to request the OAuth2 access tokens it needs to call the API. For more information, see [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md).
+The Office 365 Management Activity API is a REST web service that you can use to develop solutions using any language and hosting environment that supports HTTPS and X.509 certificates. The API relies on Microsoft Entra ID and the OAuth2 protocol for authentication and authorization. To access the API from your application, you'll need to first register it in Microsoft Entra ID and configure it with appropriate permissions. This will enable your application to request the OAuth2 access tokens it needs to call the API. For more information, see [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md).
 
 For information about the data that the Office 365 Management Activity API returns, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md).
 
@@ -84,7 +84,7 @@ https://manage.office365.us/api/v1.0/{tenant_id}/activity/feed/{operation}
 https://manage.protection.apps.mil/api/v1.0/{tenant_id}/activity/feed/{operation}
 ```
 
-All API operations require an Authorization HTTP header with an access token obtained from Azure AD. The tenant ID in the access token must match the tenant ID in the root URL of the API and the access token must contain the ActivityFeed.Read claim (this corresponds to the permission [Read activity data for an organization] that you configured for you application in Azure AD).
+All API operations require an Authorization HTTP header with an access token obtained from Microsoft Entra ID. The tenant ID in the access token must match the tenant ID in the root URL of the API and the access token must contain the ActivityFeed.Read claim (this corresponds to the permission [Read activity data for an organization] that you configured for you application in Microsoft Entra ID).
 
 ```json
 Authorization: Bearer eyJ0e...Qa6wg
@@ -622,4 +622,3 @@ When the service encounters an error, it will report the error response code to 
 |AF20054|Invalid syntax in Accept-Language header.|
 |AF429|Too many requests. Method={0}, PublisherId={1}<br/><br/>{0} = HTTP Method<br/><br/>{1} = Tenant GUID used as PublisherIdentifier</p></li></ul>|
 |AF50000|An internal error occurred. Retry the request.|
-
