@@ -167,10 +167,10 @@ This article provides details on the Common schema as well as service-specific s
 |82|SensitivityLabelPolicyMatch|Events generated when the file labeled with a sensitivity label is opened or renamed.|
 |83|SensitivityLabelAction|Event generated when sensitivity labels are applied, updated, or removed from a file.|
 |84|SensitivityLabeledFileAction|Events generated when a file labeled with a sensitivity label is opened or renamed.|
-|85|AttackSim|Attack simulator events.|
+|85|AttackSim|Events related to user activities in Attack Simulation & Training in Microsoft Defender for Office 365.|
 |86|AirManualInvestigation|Events related to manual investigations in Automated investigation and response (AIR). |
 |87|SecurityComplianceRBAC|Security and compliance RBAC events.|
-|88|UserTraining|Attack simulator training events in Microsoft Defender for Office 365.|
+|88|UserTraining|Events related to user training in Attack Simulation & Training in Microsoft Defender for Office 365.|
 |89|AirAdminActionInvestigation|Events related to admin actions in  Automated investigation and response (AIR).|
 |90|MSTIC|Threat intelligence events in Microsoft Defender for Office 365.|
 |91|PhysicalBadgingSignal|Events related to physical badging signals that support the Insider risk management solution.|
@@ -213,6 +213,7 @@ This article provides details on the Common schema as well as service-specific s
 |202|MicrosoftTodoAudit|Microsoft To Do events.|
 |216|Viva Goals|Viva Goals events.|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
+|218|AttackSimAdmin|Events related to admin activities in Attack Simulation & Training in Microsoft Defender for Office 365.|
 |230|TeamsUpdates|Teams Updates App Events.|
 |237|DefenderExpertsforXDRAdmin|Microsoft Defender Experts Administrator action events.|
 |231|PlannerRosterSensitivityLabel|Microsoft Planner roster sensitivity label events.|
@@ -1307,6 +1308,93 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |0|SharePoint Online|
 |1|OneDrive for Business|
 |2|Microsoft Teams|
+
+## Attack Sim schema
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|Batch ID|Edm.String|Yes|A unique identifier for a group of records that are processed together.|
+|Campaign ID|Edm.String|Yes|A unique identifier for the attack simulation training campaign.|
+|UserDisplayName|Edm.String|No|The display name of the user involved in the attack simulation training campaign.|
+|AttackTechnique|Edm.String|No|The attack technique used in the simulation.|
+|CampaignType|Edm.String|No|The type of attack simulation campaign. The different types are simulation campaign, training campaign, simulation automation.|
+|TimeData|Edm.Date|No|Campaign launch time.|
+|EndTimeData|Edm.Date|No|Campaign end time.|
+|AttackSimEvent|Self.AttackSimEventType|Yes|Type of event (user activity or message delivery state).|
+|ExtendedProperties|Collection(Common.NameValuePair)|Yes|Additional properties associated with the audit record.|
+
+### Enum: AttackSimEventType - Type: Edm.Int32
+
+|Value|Member Name|Description|
+|---|---|---|
+|1|MessageDelivered|Message delivered to recipient successfully.|
+|2|MessageFailed|Message delivery failed.|
+|6|CredentialEntered|User entered credentials in the phish simulation for techniques such as Credential Harvesting, Link in attachment.|
+|7|PermissionGranted|User granted permission in the phish simulation for technique such as Oauth consent grant.|
+|8|LinkClicked|User clicked on phish simulation URL.|
+|10|AttachmentOpened|Attachment opened by user for techniques such as Malware attachment, Link in attachment.|
+|12|MessageRead|Message opened and read by recipient.|
+|13|MessageReplied|Recipient replied to the message.|
+|14|MessageForwarded|Message forwarded to another user.|
+|15|MessageReported|Message reported as phish by recipient.|
+|16|MessageDeleted|Message deleted by recipient.|
+|17|OutOfOffice|Automatic replies in Outlook enabled for recipient.|
+|18|PositiveReinforcementMessageDelivered|Positive reinforcement message delivered successfully to recipient.|
+
+## Attack Sim Admin schema
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|Batch ID|Edm.String|Yes|A unique identifier for a group of records that are processed together.|
+|Campaign ID|Edm.String|Yes|A unique identifier for an attack simulation training campaign.|
+|AttackTechnique|Edm.String|No|The attack technique used in a simulation.|
+|CampaignType|Edm.String|No|The type of attack simulation campaign. The different types are simulation campaign, training campaign, simulation automation.|
+|TimeData|Edm.Date|Yes|Campaign launch time.|
+|EndTimeData|Edm.Date|Yes|Campaign end time.|
+|AttackSimAdminEvent|Self.AttackSimAdminEventType|Yes|The type of attack sim admin event.|
+|ExtendedProperties|Collection(Common.NameValuePair)|Yes|Additional properties associated with the audit record.|
+
+### Enum: AttackSimAdminEventType - Type: Edm.Int32
+
+|Value|Member Name|Description|
+|---|---|---|
+|0|CampaignLaunched|When an attack simulation training campaign was launched. The different types of campaigns are simulation, training campaign.|
+|1|CampaignCompleted|When an attack simulation training campaign was completed.|
+|2|CampaignReportDownloaded|Admin downloaded a campaign report.|
+|3|CampaignReportViewed|Admin viewed a campaign report.|
+|4|CampaignCancelled|When an attack simulation training campaign was cancelled.|
+|5|CampaignScheduled|When an attack simulation training campaign was scheduled.|
+|6|CampaignDeleted|When an attack simulation training campaign was deleted.|
+|7|SimulationExcluded|When a simulation was excluded from reporting.|
+|8|AutomationSubmitted|When an automation was submitted, includes simulation and payload automation.|
+|9|AutomationTurnOn|When an automation was turned on, includes simulation and payload automation.|
+|10|AutomationTurnOff|When an automation was turned off, includes simulation and payload automation.|
+|11|AutomationCompleted|When a simulation automation was completed.|
+|12|AutomationDeleted|When an automation was deleted, includes simulation and payload automation.|
+
+## User Training schema
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|Batch ID|Edm.String|Yes|A unique identifier for a group of records that are processed together.|
+|Campaign ID|Edm.String|Yes|A unique identifier for an attack simulation training campaign.|
+|Course ID|Edm.String|Yes|A unique identifier for a training course.|
+|UserDisplayName|Edm.String|No|The display name of the user involved in the attack simulation.|
+|CampaignType|Edm.String|Yes|The type of attack simulation campaign. The different types are simulation campaign, training campaign, simulation automation.|
+|TimeData|Edm.Date|Yes|Campaign launch time.|
+|EndTimeData|Edm.Date|Yes|Campaign end time.|
+|UserTrainingEvent|Self.UserTrainingEventType |Yes|The type of user training event.|
+|ExtendedProperties|Collection(Common.NameValuePair)|Yes|Additional properties associated with the audit record.|
+
+### Enum: UserTrainingEventType - Type: Edm.Int32
+
+|Value|Member Name|Description|
+|---|---|---|
+|1|TrainingAssigned|Training assigned to user.|
+|2|TrainingUpdated|Training updated for user.|
+|3|TrainingCompleted|User completed training.|
+|4|TrainingPreviouslyAssigned|Previously assigned training to user.|
+|5|TrainingNotCompleted|User did not complete assigned training.|
 
 ## Submission schema
 
