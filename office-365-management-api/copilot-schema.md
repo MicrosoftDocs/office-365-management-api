@@ -16,7 +16,7 @@ details are captured when users interact with Copilot. Events include how an
 
 Copilot events can be accessed in the **Audit** solution from the Microsoft Purview compliance portal. To search for copilot events, select **Copilot activities** and **Interacted with Copilot**. You can also select **Copilot** as a workload. More information on searching the audit log can be found in [Audit New Search](/purview/audit-new-search).  
 
-![audit search copilot interaction dialog box](../images/audit-search-copilot-interaction.png)
+![audit search copilot interaction dialog box](/images/audit-search-copilot-interaction.png)
 
 ## Schema example
 
