@@ -16,7 +16,7 @@ details are captured when users interact with Copilot. Events include how an
 
 Copilot events can be accessed in the **Audit** solution from the Microsoft Purview compliance portal. To search for copilot events, select **Copilot activities** and **Interacted with Copilot**. You can also select **Copilot** as a workload. More information on searching the audit log can be found in [Audit New Search](/purview/audit-new-search).  
 
-![audit search copilot interaction dialog box](../images/audit-search-copilot-interaction.png)
+![audit search copilot interaction dialog box](/images/audit-search-copilot-interaction.png)
 
 ## Schema example
 
@@ -66,8 +66,8 @@ Copilot events can be accessed in the **Audit** solution from the Microsoft 
 |*CopilotEventData.AppHos*       |The type of Copilot used during the interaction. <br>For example, bizchat refers to the M365 Chat experience on Bing and Teams. App chat refers to the copilot experiences on apps like Excel, PowerPoint, Teams, and more.<br> Example: "AppHost": "appchat", “AppHost”: “bizchat”   |
 |*CopilotEventData.Contexts*     |Context contains a collection of attributes within AppChat around the user interaction to help describe where the user was during the copilot interaction.  <br>Example: If Copilot is used in Excel, then context will be the identifier of the Excel Spreadsheet and the file type.   |
 |*CopilotEventData.Contexts.ID*           |The identifier of the resource that was being used during the copilot interaction.   |
-|*CopilotEventData.ContextsnType          |The name of the app or service within context. <br> Some examples of supported apps and services include M365 Office (docx, pptx, xlsx), TeamsMeeting, TeamsChannel, and TeamsChat. |
-|*CopilotEventData.ThreadI*               |The ID of the copilot and user interaction thread.  |
+|*CopilotEventData.ContextsnType*          |The name of the app or service within context. <br> Some examples of supported apps and services include M365 Office (docx, pptx, xlsx), TeamsMeeting, TeamsChannel, and TeamsChat. |
+|*CopilotEventData.ThreadId*               |The ID of the copilot and user interaction thread.  |
 |*CopilotEventData.MessageIds*            |This is currently reserved with Microsoft Internal. |
 |*CopilotEventData.AccessedResources*     |References to all the files and documents Copilot used in M365 services like OneDrive and SharePoint Online to respond to the user’s request.   |
 
