@@ -33,9 +33,9 @@ The root URL of the API includes a tenant identifier that scopes the operations 
 https://manage.office.com/api/v1.0/{tenant_identifier}/ServiceComms/{operation}
 ```
 
-The **Office 365 Service Communications API** is a REST service that allows you to develop solutions using any web language and hosting environment that supports HTTPS and X.509 certificates. The API relies on **Microsoft Azure Active Directory** and the **OAuth2** protocol for authentication and authorization. To access the API from your application, you'll need to first register it in Azure AD and configure it with permissions at the appropriate scope. This will enable your application to request OAuth2 access tokens necessary for calling the API. You can find more information about registering and configuring an application in Azure AD at [Office 365 Management APIs getting started](get-started-with-office-365-management-apis.md).
+The **Office 365 Service Communications API** is a REST service that allows you to develop solutions using any web language and hosting environment that supports HTTPS and X.509 certificates. The API relies on **Microsoft Entra ID** and the **OAuth2** protocol for authentication and authorization. To access the API from your application, you'll need to first register it in Microsoft Entra ID and configure it with permissions at the appropriate scope. This will enable your application to request OAuth2 access tokens necessary for calling the API. You can find more information about registering and configuring an application in Microsoft Entra ID at [Office 365 Management APIs getting started](get-started-with-office-365-management-apis.md).
 
-All API requests require an Authorization HTTP header that has a valid OAuth2 JWT access token obtained from Azure AD that contains the **ServiceHealth.Read** claim; and the tenant identifier must match the tenant identifier in the root URL.
+All API requests require an Authorization HTTP header that has a valid OAuth2 JWT access token obtained from Microsoft Entra ID that contains the **ServiceHealth.Read** claim; and the tenant identifier must match the tenant identifier in the root URL.
 
 ```json
 Authorization: Bearer {OAuth2 token}
@@ -48,7 +48,7 @@ These are the supported request headers for all Office 365 Service Communication
 |Header|Description|
 |:-----|:-----|
 |**Accept (Optional)**|The following are acceptable representations for the response:<br/>**application/json;odata.metadata=full**<br/>**application/json;odata.metadata=minimal**<br/>[The default if header not specified] **application/json;odata.metadata=none**|
-|**Authorization (Required)**|Authorization token (Bearer JWT Azure AD Token) for the request.|
+|**Authorization (Required)**|Authorization token (Bearer JWT Microsoft Entra Token) for the request.|
 
 <br/>
 
