@@ -63,9 +63,7 @@ Copilot events can be accessed in the **Audit** solution from the Microsoft 
 |Attribute |Definition  |
 |----------|------------|
 |*AppHost*       |The type of Copilot used during the interaction. <br>For example, bizchat refers to the M365 Chat experience on Bing and Teams. App chat refers to the copilot experiences on apps like Excel, PowerPoint, Teams, and more.<br> Example: "AppHost": "appchat", “AppHost”: “bizchat”   |
-|*Contexts*     |Context contains a collection of attributes within AppChat around the user interaction to help describe where the user was during the copilot interaction.  <br>Example: If Copilot is used in Excel, then context will be the identifier of the Excel Spreadsheet and the file type.   |
-|*Contexts.ID*           |The identifier of the resource that was being used during the copilot interaction.   |
-|*ContextsnType*          |The name of the app or service within context. <br> Some examples of supported apps and services include M365 Office (docx, pptx, xlsx), TeamsMeeting, TeamsChannel, and TeamsChat. |
+|*Contexts*     |Context contains a collection of attributes within AppChat around the user interaction to help describe where the user was during the copilot interaction. ID is  identifier of the resource that was being used during the copilot interaction. Type is the name of the app or service within context.  <br>Example: If Copilot is used in Excel, then context will be the identifier of the Excel Spreadsheet and the file type. Some examples of supported apps and services include M365 Office (docx, pptx, xlsx), TeamsMeeting, TeamsChannel, and TeamsChat. |
 |*ThreadId*               |The ID of the copilot and user interaction thread.  |
 |*MessageIds*            |This is currently reserved with Microsoft Internal. |
 |*AccessedResources*     |References to all the files and documents Copilot used in M365 services like OneDrive and SharePoint Online to respond to the user’s request.   |
