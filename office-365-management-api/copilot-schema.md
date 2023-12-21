@@ -56,6 +56,13 @@ Copilot events can be accessed in the **Audit** solution from the Microsoft 
     </Schema>
 </edmx:DataServices>
 
+Sample Copilot Interaction Log Example
+- RecordID: 99b0a960-13a0-461f-8c5c-cb2316ea273d
+- CreationDate: 12/13/2023 17:12
+- RecordType: 261
+- Operation: CopilotInteraction
+- UserID: admin@MODERNCOMMS975184.onmicrosoft.com
+- AuditData{"CreationTime":"2023-12-13T17:12:36","Id":"99b0a960-13a0-461f-8c5c-cb2316ea273d","Operation":"CopilotInteraction","OrganizationId":"408e31c8-8f05-410a-9221-84335f0ce512","RecordType":261,"UserKey":"12d24f71-64c7-49b3-821f-f8884f3f373e","UserType":0,"Version":1,"Workload":"Copilot","ClientIP":"::ffff:10.11.0.229","UserId":"admin@MODERNCOMMS975184.onmicrosoft.com","CopilotEventData":{"AccessedResources":[],"AppHost":"appchat","Contexts":[{"Id":"https:\/\/moderncomms975184-my.sharepoint.com\/personal\/admin_moderncomms975184_onmicrosoft_com\/_layouts\/15\/Doc.aspx?sourcedoc=%7B9FDE1491-B079-4180-9B1E-B87F4ACA19F7%7D&file=AboutElephants.docx&action=default&mobileredirect=true","Type":"docx"}],"MessageIds":[],"ThreadId":"19:lgojcxwbvhJnfU3IhUJW5M-nSX2U7tjccgSrtYAoG341@thread.v2"}}		
 ```
 
 ## Audit copilot schema definitions
