@@ -55,9 +55,28 @@ Copilot events can be accessed in the **Audit** solution from the Microsoft 
         </EntityType>
     </Schema>
 </edmx:DataServices>
-
 ```
 
+## Audit log examples of CopilotInteraction 
+
+Copilot Interaction logs provide information regarding the RecordID, CreationDate, RecordType, Operation, UserID, and the Audit Data field. The Audit Data field will include any additional information based on the context of user interaction with Copilot, which can include the AppHost, Contexts, ThreadID, MessageIDs, and AccessedResources. More information regarding each of these copilot schema properties can be found in the Audit copilot schema definition section. 
+
+Example 1: Copilot Interaction Experience within M365 Apps
+- RecordID: 99b0a960-13a0-461f-8c5c-cb2316ea273d
+- CreationDate: 12/13/2023 17:12
+- RecordType: 261
+- Operation: CopilotInteraction
+- UserID: admin@MODERNCOMMS975184.onmicrosoft.com
+- AuditData: {"CreationTime":"2023-12-13T17:12:36","Id":"99b0a960-13a0-461f-8c5c-cb2316ea273d","Operation":"CopilotInteraction","OrganizationId":"408e31c8-8f05-410a-9221-84335f0ce512","RecordType":261,"UserKey":"12d24f71-64c7-49b3-821f-f8884f3f373e","UserType":0,"Version":1,"Workload":"Copilot","ClientIP":"::ffff:10.11.0.229","UserId":"admin@MODERNCOMMS975184.onmicrosoft.com","CopilotEventData":{"AccessedResources":[],"AppHost":"appchat","Contexts":[{"Id":"https:\/\/moderncomms975184-my.sharepoint.com\/personal\/admin_moderncomms975184_onmicrosoft_com\/_layouts\/15\/Doc.aspx?sourcedoc=%7B9FDE1491-B079-4180-9B1E-B87F4ACA19F7%7D&file=AboutElephants.docx&action=default&mobileredirect=true","Type":"docx"}],"MessageIds":[],"ThreadId":"19:lgojcxwbvhJnfU3IhUJW5M-nSX2U7tjccgSrtYAoG341@thread.v2"}}
+
+Example 2: Copilot Interaction within M365 Chat Experience 
+- RecordID: 537312b6-dce7-4d9b-8b12-58283204b720
+- CreationDate: 12/14/2023 2:11	
+- RecordType: 261
+- Operation: CopilotInteraction
+- UserID: admin@MODERNCOMMS975184.onmicrosoft.com
+- AuditData: {"CreationTime":"2023-12-14T02:11:55","Id":"537312b6-dce7-4d9b-8b12-58283204b720","Operation":"CopilotInteraction","OrganizationId":"408e31c8-8f05-410a-9221-84335f0ce512","RecordType":261,"UserKey":"12d24f71-64c7-49b3-821f-f8884f3f373e","UserType":0,"Version":1,"Workload":"Copilot","ClientIP"2401:4900:60d2:179b:c004:b6f:b678:b148","UserId":"admin@MODERNCOMMS975184.onmicrosoft.com","CopilotEventData":{"AccessedResources":[],"AppHost":"bizchat","Contexts":[],"MessageIds":[],"ThreadId":"19:Xn3uQZYgZ7f2ue0vp5w9MglEVjFyp5pza1efaC6g2U41@thread.v2"}}
+ 
 ## Audit copilot schema definitions
 
 |Attribute |Definition  |
