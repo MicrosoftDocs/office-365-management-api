@@ -807,11 +807,11 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 
 ## DLP schema
 
-DLP events are available for Exchange Online, SharePoint Online, and OneDrive For Business. Note that DLP events in Exchange are only available for events based on unified DLP policy (e.g. configured via Security & Compliance Center). DLP events based on Exchange Transport Rules are not supported.
+DLP events are available for Exchange Online, Endpoint(devices) and SharePoint Online, and OneDrive For Business. Note that DLP events in Exchange are only available for events based on unified DLP policy (e.g. configured via Security & Compliance Center). DLP events based on Exchange Transport Rules are not supported.
 
 DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the common schema. There are three types of DlpEvents that are stored as the value of the Operation property of the common schema:
 
-- DlpRuleMatch - This indicates a rule was matched. These events exist in both Exchange and SharePoint Online and OneDrive for Business. For Exchange it includes false positive and override information. For SharePoint Online and OneDrive for Business, false positive and overrides generate separate events.
+- DlpRuleMatch - This indicates a rule was matched. These events exist in all Exchange, Endpoint(devices) and SharePoint Online and OneDrive for Business. For Exchange it includes false positive and override information. For SharePoint Online and OneDrive for Business, false positive and overrides generate separate events.
 
 - DlpRuleUndo - These only exist in SharePoint Online and OneDrive for Business, and indicate a previously applied policy action has been "undone" – either because of false positive/override designation by user, or because the document is no longer subject to policy (either due to policy change or change to content in doc).
 
@@ -821,6 +821,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |:-----|:-----|:-----|:-----|
 |SharePointMetaData|Self.[SharePointMetadata](#sharepointmetadata-complex-type)|No|Describes metadata about the document in SharePoint or OneDrive for Business that contained the sensitive information.|
 |ExchangeMetaData|Self.[ExchangeMetadata](#exchangemetadata-complex-type)|No|Describes metadata about the email message that contained the sensitive information.|
+|EndpointMetaData|Self.[EndpointMetadata](#endpointmetadata-complex-type)|No|Describes metadata about the document in endpoint that contained the sensitive information| 
 |ExceptionInfo|Edm.String|No|Identifies reasons why a policy no longer applies and/or any information about false positive and/or override noted by the end user.|
 |PolicyDetails|Collection(Self.[PolicyDetails](#policydetails-complex-type))|Yes|Information about 1 or more policies that triggered the DLP event.|
 |SensitiveInfoDetectionIsIncluded|Boolean|Yes|Indicates whether the event contains the value of the sensitive data type and surrounding context from the source content. Accessing sensitive data requires the "Read DLP policy events including sensitive details" permission in Microsoft Entra ID.|
@@ -841,7 +842,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |UniqueId|Edm.String|Yes|A guid that identifies the file.|
 |LastModifiedTime|Edm.DateTime|Yes|Timestamp in UTC for when doc was last modified.|
 |IsViewableByExternalUsers|Edm.Boolean|Yes|Determines if the file is accessible to any external user.|
-|||||
 
 ### ExchangeMetadata complex type
 
@@ -855,6 +855,16 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |Subject|Edm.String|Yes|Subject of the email message.|
 |Sent|Edm.DateTime|Yes|The time in UTC of when the email was sent.|
 |RecipientCount|Edm.Int32|Yes|The total number of all recipients on the TO, CC, and BCC lines of the message.|
+
+### EndpointMetadata complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|SensitiveInformation|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|No|Information about the type of sensitive information detected.|
+|EnforcementMode|Edm.String|Yes|Indicate whether the DLP Rule set to 1/2/3/4 depicting audit/warn(block with override)/block/allow(audit without alerts) respectively.|
+|FileExtension|Edm.String|No|The file extension of the document that contained the sensitive information.|
+|FileType|Edm.String|No|The file type of the document that conatined the sensitive information.|
+|DeviceName|Edm.String|No|The name of the device on which DLP rule match was detected.|
 
 ### PolicyDetails complex type
 
