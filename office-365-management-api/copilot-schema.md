@@ -57,7 +57,7 @@ Copilot events can be accessed in the **Audit** solution from the Microsoft 
 </edmx:DataServices>
 ```
 # Audit log examples of CopilotInteraction
-Copilot Interaction logs provide information regarding the RecordID, CreationDate, RecordType, Operation, UserID, and the Audit Data field. The Audit Data field will include any additional information based on the context of user interaction with Copilot, which can include the AppHost, Contexts, ThreadID, MessageIDs, and Accessed Rescoures. More information regarding each of these properties can be found in the schema definition table below. 
+Copilot Interaction logs provide information regarding the RecordID, CreationDate, RecordType, Operation, UserID, and the Audit Data field. The Audit Data field will include any additional information based on the context of user interaction with Copilot, which can include the AppHost, Contexts, ThreadID, MessageIDs, and AccessedResources. More information regarding each of these properties can be found in the schema definition table below. 
 
 Example 1: Copilot Interaction Experience within M365 Apps
 - RecordID: 99b0a960-13a0-461f-8c5c-cb2316ea273d
