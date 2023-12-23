@@ -442,6 +442,7 @@ This article provides details on the Common schema as well as service-specific s
 |SiteRenamed|Site administrator or owner renames a SharePoint or OneDrive for Business site|
 |StatusReportModified|User creates, modifies or deletes a status report in Project Web App.|
 |SyncGetChanges|User clicks **Sync** in the action tray on in SharePoint or OneDrive for Business to synchronize any changes to file in a document library to their computer.|
+|SyntexBillingSubscriptionSettingsChanged|The Syntex Billing subscription settings have changed. This event is triggered when a Syntex trial expires.|
 |TaskStatusAccessed|User accesses the status of one or more tasks in Project Web App.|
 |TaskStatusApproved|User approves a status update of one or more tasks in Project Web App.|
 |TaskStatusRejected|User rejects a status update of one or more tasks in Project Web App.|
