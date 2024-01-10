@@ -799,7 +799,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|ApplicationId|Edm.String|No|The GUID that represents the application that is requesting the login. The display name can be looked up via the Azure Active Directory Graph API.|
+|ApplicationId|Edm.String|No|The GUID that represents the application that is requesting the login. The display name can be looked up via the Microsoft Entra Graph API.|
 |Client|Edm.String|No|Client device information, provided by the browser performing the login.|
 |DeviceProperties|Collection(Common.NameValuePair)|No|This property includes various device details, including Id, Display name, OS, Browser, IsCompliant, IsCompliantAndManaged, SessionId, and DeviceTrustType. The DeviceTrustType property can have the following values:<br/><br/>**0** - Microsoft Entra registered<br/> **1** - Microsoft Entra joined<br/> **2** - Microsoft Entra hybrid joined|
 |ErrorCode|Edm.String|No|For failed logins (where the value for the Operation property is UserLoginFailed), this property contains the Microsoft Entra STS (AADSTS) error code. For descriptions of these error codes, see [Authentication and authorization error codes](/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes). A value of `0` indicates a successful login.|
@@ -1133,7 +1133,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |Subject|Edm.String|Yes|The subject line of the message.|
 |Verdict|Edm.String|Yes|The message verdict.|
 |MessageTime|Edm.Date|Yes|Date and time in Coordinated Universal Time (UTC) the email message was received or sent.|
-|EventDeepLink|Edm.String|Yes|Deep-link to the email event in Explorer or Real-time reports in the Office 365 Security & Compliance Center.|
+|EventDeepLink|Edm.String|Yes|Deep-link to the email event in Explorer or Real-time reports in the Microsoft 365 Security & Compliance Center.|
 |Delivery Action |Edm.String|Yes|The original delivery action on the email message.|
 |Original Delivery location |Edm.String|Yes|The original delivery location of the email message.|
 |Latest Delivery location |Edm.String|Yes|The latest delivery location of the email message at the time of the event.|
@@ -1458,7 +1458,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |LastUpdateTimeUtc    |Edm.Date    |UTC time of the last update for an investigation |
 |StartTimeUtc    |Edm.Date    |Start time for an investigation |
 |Status     |Edm.String     |State of investigation, Running, Pending Actions, etc. |
-|DeeplinkURL    |Edm.String    |Deep link URL to an investigation in Office 365 Security & Compliance Center |
+|DeeplinkURL    |Edm.String    |Deep link URL to an investigation in Microsoft 365 Security & Compliance Center |
 |Actions |Collection (Edm.String)    |Collection of actions recommended by an investigation |
 |Data    |Edm.String    |Data string which contains more details about investigation entities, and information about alerts related to the investigation. Entities are available in a separate node within the data blob. |
 
@@ -1622,13 +1622,13 @@ Entity events from model-driven apps in Dynamics 365 use this schema to build on
 |:------------------ | :------------------ | :--------------|:--------------|
 |EntityId|Edm.Guid|No|The unique identifier of the entity.|
 |EntityName|Edm.String|Yes|The name of the entity in the organization. Example of entities include `contact` or `authentication`.|
-|Message|Edm.String|Yes|This parameter contains the operation that was performed in related to the entity. For example, if a new contact was created, the value of the Message property is  `Create` and the corresponding value of the EntityName property is `contact`.|
+|Message|Edm.String|Yes|This parameter contains the operation that was performed in related to the entity. For example, if a new contact was created, the value of the Message property is `Create` and the corresponding value of the EntityName property is `contact`.|
 |Query|Edm.String|No|The parameters of the filter query that was used while executing the FetchXML operation.|
 |PrimaryFieldValue|Edm.String|No|Indicates the value for the attribute that is the primary field for the entity.|
 
 ## Workplace Analytics schema
 
-The WorkPlace Analytics events listed in [Search the audit log in the Office 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities) will use this schema.
+The WorkPlace Analytics events listed in [Search the audit log in the Microsoft 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities) will use this schema.
 
 | **Parameters**     | **Type**            | **Mandatory?** | **Description**|
 |:------------------ | :------------------ | :--------------|:--------------|
@@ -1638,7 +1638,7 @@ The WorkPlace Analytics events listed in [Search the audit log in the Office 365
 
 ## Quarantine schema
 
-The quarantine events listed in [Search the audit log in the Office 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#quarantine-activities) will use this schema. For more information about quarantine, see [Quarantine email messages in Office 365](/microsoft-365/security/office-365-security/quarantine-email-messages).
+The quarantine events listed in [Search the audit log in the Microsoft 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#quarantine-activities) will use this schema. For more information about quarantine, see [Quarantine email messages in Office 365](/microsoft-365/security/office-365-security/quarantine-email-messages).
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -1659,7 +1659,6 @@ The quarantine events listed in [Search the audit log in the Office 365 Security
 |5|Release request|This is a release request from a user to release an email message that is deemed to be harmful.|
 |7|DenyRelease|This is a denial action from an admin for the release request from a user of an email message that is deemed to be harmful.|
 
-
 ### Enum: RequestSource - Type: Edm.Int32
 
 |**Value**|**Member name**|**Description**|
@@ -1670,7 +1669,7 @@ The quarantine events listed in [Search the audit log in the Office 365 Security
 
 ## Microsoft Forms schema
 
-The Microsoft Forms events listed in [Search the audit log in the Office 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) will use this schema.
+The Microsoft Forms events listed in [Search the audit log in the Microsoft 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) will use this schema.
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -1679,7 +1678,7 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 |FormName|Edm.String|No|The name of the current form.|
 |FormId |Edm.String|No|The Id of the target form.|
 |FormTypes|Collection(Self.[FormTypes](#formtypes))|No|Indicates whether this is a Form, Quiz, or Survey.|
-|ActivityParameters|Edm.String|No|JSON string containing activity parameters. See [Search the audit log in the Office 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) for more details.|
+|ActivityParameters|Edm.String|No|JSON string containing activity parameters. See [Search the audit log in the Microsoft 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) for more details.|
 
 ### Enum: FormsUserTypes - Type: Edm.Int32
 
@@ -1727,7 +1726,7 @@ The intent of this audit schema is to represent the sum of all email activity th
 
 Events for encrypted message portal schema are triggered when when Purview Message Encryption detects an encrypted email message is accessed through the portal by an external recipient. The mail may have been encrypted manually with a sensitivity label or an RMS template, or automatically by a transport rule, a Data Loss Prevention policy, or an auto-labeling policy.
 
-The intent of this audit schema is to represent the sum of all portal activity that involves accessing the encrypted mail by external recipients. In other words, there should be a recorded audit activity for a recipient that attempts to sign in to the portal and any activities related to accessing the encrypted mail. This includes mail sent to or from users in the organization when the mail has encryption applied to it, regardless of when or how the encryption was applied. For more information, see, [Learn about encrypted message portal logs](/microsoft-365/compliance/ome-message-access-logs).
+The intent of this audit schema is to represent the sum of all portal activity that involves accessing the encrypted mail by external recipients. In other words, there should be a recorded audit activity for a recipient that attempts to sign in to the portal and any activities related to accessing the encrypted mail. This includes mail sent to or from users in the organization when the mail has encryption applied to it, regardless of when or how the encryption was applied. For more information, see [Learn about encrypted message portal logs](/microsoft-365/compliance/ome-message-access-logs).
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -1775,7 +1774,7 @@ The communication compliance events listed in the Office 365 audit log use this 
 
 ## Reports schema
 
-The Reports events listed in [Search the audit log in the Office 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#reports-activities) will use this schema.
+The Reports events listed in [Search the audit log in the Microsoft 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#reports-activities) will use this schema.
 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
