@@ -10,14 +10,15 @@ ms.localizationpriority: med
 
 # Office 365 Management Activity API reference
 
-Use the Office 365 Management Activity API to retrieve information about user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs. 
+Use the Office 365 Management Activity API to retrieve information about user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs.
 
 You can use the actions and events from the Office 365 and Microsoft Entra audit and activity logs to create solutions that provide monitoring, analysis, and data visualization. These solutions give organizations greater visibility into actions taken on their content. These actions and events are also available in the Office 365 Activity Reports. For more information, see [Search the audit log in Microsoft 365](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance).
 
 > [!TIP]
 > If you're interested in creating custom reports from Audit Logs, you might find the following blogs helpful.
+>
 > - [Microsoft Purview audit log activities via O365 Management API - Part 1](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/microsoft-365-compliance-audit-log-activities-via-o365/ba-p/2957171)
-> - [Microsoft Purview audit log activities via O365 Management API - Part 2](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/microsoft-365-compliance-audit-log-activities-via-o365/ba-p/2957297) 
+> - [Microsoft Purview audit log activities via O365 Management API - Part 2](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/microsoft-365-compliance-audit-log-activities-via-o365/ba-p/2957297)
 
 The Office 365 Management Activity API is a REST web service that you can use to develop solutions using any language and hosting environment that supports HTTPS and X.509 certificates. The API relies on Microsoft Entra ID and the OAuth2 protocol for authentication and authorization. To access the API from your application, you'll need to first register it in Microsoft Entra ID and configure it with appropriate permissions. This will enable your application to request the OAuth2 access tokens it needs to call the API. For more information, see [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md).
 
@@ -31,30 +32,30 @@ For information about the data that the Office 365 Management Activity API retur
 The Office 365 Management Activity API aggregates actions and events into tenant-specific content blobs, which are classified by the type and source of the content they contain. Currently, these content types are supported:
 
 - Audit.AzureActiveDirectory
-    
+
 - Audit.Exchange
-    
+
 - Audit.SharePoint
-    
+
 - Audit.General (includes all other workloads not included in the previous content types)
 
 - DLP.All (DLP events only for all workloads)
-    
+
 For details about the events and properties associated with these content types, see [Office 365 Management Activity API schema](office-365-management-activity-api-schema.md).
 
 To begin retrieving content blobs for a tenant, you first create a subscription to the desired content types. If you are retrieving content blobs for multiple tenants, you create multiple subscriptions to each of the desired content types, one for each tenant.
 
 After you create a subscription, you can poll regularly to discover new content blobs that are available for download, or you can register a webhook endpoint with the subscription and we will send notifications to this endpoint as new content blobs are available.
 
-> [!NOTE] 
+> [!NOTE]
 > When a subscription is created, it can take up to 12 hours for the first content blobs to become available for that subscription. The content blobs are created by collecting and aggregating actions and events across multiple servers and datacenters. As a result of this distributed process, the actions and events contained in the content blobs will not necessarily appear in the order in which they occurred. One content blob can contain actions and events that occurred prior to the actions and events contained in an earlier content blob. We are working to decrease the latency between the occurrence of actions and events and their availability within a content blob, but we can't guarantee that they appear sequentially.
 
-> [!NOTE] 
+> [!NOTE]
 > DLP sensitive data is only available in the activity feed API to users that have been granted “Read DLP sensitive data” permissions. For more on Data Loss Prevention (DLP) see [Overview of Data Loss Prevention Policies](https://support.office.com/article/Overview-of-data-loss-prevention-policies-1966b2a7-d1e2-4d92-ab61-42efbb137f5e)
 
 ## Activity API operations
 
-All API operations are scoped to a single tenant and the root URL of the API includes a tenant ID that specifies the tenant context. The tenant ID is a GUID. For information about how to get the GUID, see [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md). 
+All API operations are scoped to a single tenant and the root URL of the API includes a tenant ID that specifies the tenant context. The tenant ID is a GUID. For information about how to get the GUID, see [Get started with Office 365 Management APIs](get-started-with-office-365-management-apis.md).
 
 Because the notifications we send to your webhook include the tenant ID, you can use the same webhook to receive notifications for all tenants.
 
@@ -93,34 +94,33 @@ Authorization: Bearer eyJ0e...Qa6wg
 The Activity API supports the following operations:
 
 - **Start a subscription** to begin receiving notifications and retrieving activity data for a tenant.
-    
+
 - **Stop a subscription** to discontinue retrieving data for a tenant.
-    
+
 - **List current subscriptions**
-    
+
 - **List available content** and the corresponding content URLs.
-    
+
 - **Receiving notifications** sent by a webhook when new content is available.
-    
+
 - **Retrieving content** by using the content URL.
-    
+
 - **List notifications** sent by a webhook.
 
 - **Retrieve resource friendly names** for objects in the data feed identified by guids.
-    
 
 ## Start a subscription
 
 This operation starts a subscription to the specified content type. If a subscription to the specified content type already exists, this operation is used to:
 
 - Update the properties of an active webhook.
-    
+
 - Enable a webhook that was disabled because of excessive failed notifications.
-    
+
 - Re-enable an expired webhook by specifying a later or null expiration date.
-    
+
 - Remove a webhook.
-    
+
 |Subscription|Description|
 |:-----|:-----|
 |**Path**| `/subscriptions/start?contentType={ContentType}`|
@@ -148,7 +148,7 @@ Authorization: Bearer eyJ0e...Qa6wg
 
 ```
 
-#### Sample response
+### Sample response
 
 ```json
 HTTP/1.1 200 OK
@@ -166,11 +166,12 @@ Content-Type: application/json; charset=utf-8
 }
 
 ```
+
 ## Webhook validation
 
 When the /start operation is called and a webhook is specified, we will send a validation notification to the specified webhook address to validate that an active listener can accept and process notifications. If we do not receive an HTTP 200 OK response, the subscription will not be created. Or, if /start is being called to add a webhook to an existing subscription and a response of HTTP 200 OK is not received, the webhook will not be added and the subscription will remain unchanged.
 
-#### Sample request
+### Sample request
 
 ```json
 POST {webhook address}
@@ -184,7 +185,7 @@ Webhook-ValidationCode: (random opaque string)
 
 ```
 
-#### Sample response
+### Sample response
 
 ```json
 
@@ -194,7 +195,7 @@ HTTP/1.1 200 OK
 
 ## Stop a subscription
 
-This operation stops a subscription to the specified content type. 
+This operation stops a subscription to the specified content type.
 
 When a subscription is stopped, you'll no longer receive notifications and you'll not be able to retrieve available content. If the subscription is later restarted, you'll have access to new content from that point forward. You will not be able to retrieve content that was available between the time the subscription was stopped and restarted.
 
@@ -206,7 +207,7 @@ When a subscription is stopped, you'll no longer receive notifications and you'l
 |**Body**|(empty)|
 |**Response**|(empty)|
 
-#### Sample request
+### Sample request
 
 ```json
 POST {root}/subscriptions/stop?contentType=Audit.SharePoint&PublisherIdentifier=46b472a7-c68e-4adf-8ade-3db49497518e
@@ -214,7 +215,7 @@ Authorization: Bearer eyJ0e...Qa6wg
 
 ```
 
-#### Sample response
+### Sample response
 
 ```json
 HTTP/1.1 200 OK
@@ -231,7 +232,7 @@ This operation returns a collection of the current subscriptions together with t
 |**Body**|(empty)||
 |**Response**|JSON array|Each subscription will be represented by a JSON object with three properties:<ul><li>**contentType**: Indicates the content type.</li><li>**status**: Indicates the status of the subscription.</li><li>**webhook**: Indicates the configured webhook, together with the status (enabled, disabled, expired) of the webhook.  If a subscription does not have a webhook, the webhook property will be present but with null value.|
 
-#### Sample request
+### Sample request
 
 ```json
 GET {root}/subscriptions/list?PublisherIdentifier=46b472a7-c68e-4adf-8ade-3db49497518e
@@ -239,7 +240,7 @@ Authorization: Bearer eyJ0e...Qa6wg
 
 ```
 
-#### Sample response
+### Sample response
 
 ```json
 HTTP/1.1 200 OK
@@ -287,7 +288,7 @@ Authorization: Bearer eyJ0e...Qa6wg
 
 ```
 
-#### Sample response
+### Sample response
 
 ```json
 HTTP/1.1 200 OK
@@ -340,7 +341,7 @@ The body of the request will contain an array of one or more JSON objects that r
 - **contentCreated**: The datetime when the content was made available.
 
 - **contentExpiration**: The datetime after which the content will no longer be available for retrieval.
-    
+
 The following is an example of a notification.
 
 ```json
@@ -378,7 +379,7 @@ GET https://manage.office.com/api/v1.0/41463f53-8812-40f4-890f-865bf6e35190/acti
 Authorization: Bearer eyJ0e...Qa6wg
 ```
 
-#### Sample response
+### Sample response
 
 ```json
 HTTP/1.1 200 OK
@@ -475,7 +476,7 @@ Content-Type: application/json; charset=utf-8
 
 ## List notifications
 
-This operation lists all notification attempts for the specified content type. If you did not include a webhook when starting the subscription to the content type, there will be no notifications to retrieve. Because we retry notifications in the event of failure, this operation can return multiple notifications for the same content, and the order in which the notifications are sent will not necessarily match the order in which the content became available (especially when there are failures and retries). 
+This operation lists all notification attempts for the specified content type. If you did not include a webhook when starting the subscription to the content type, there will be no notifications to retrieve. Because we retry notifications in the event of failure, this operation can return multiple notifications for the same content, and the order in which the notifications are sent will not necessarily match the order in which the content became available (especially when there are failures and retries).
 
 You can use this operation to help investigate issues related to webhooks and notifications, but you should not use it to determine what content is currently available for retrieval. Use the /content operation instead. We return an error if the subscription status is disabled.
 
@@ -495,7 +496,7 @@ Authorization: Bearer eyJ0e...Qa6wg
 
 ```
 
-#### Sample response
+### Sample response
 
 ```json
 HTTP/1.1 200 OK
@@ -532,7 +533,7 @@ To list all available content for a specified time range, you might need to retr
 
 ## Retrieve resource friendly names
 
-This operation retrieves friendly names for objects in the data feed identified by guids. Currently "DlpSensitiveType" is the only supported object. 
+This operation retrieves friendly names for objects in the data feed identified by guids. Currently "DlpSensitiveType" is the only supported object.
 
 |Object|Subscription|Description|
 |:-----|:-----|:-----|
@@ -551,7 +552,7 @@ Accept-Language: {language code}
 
 ```
 
-#### Sample response
+### Sample response
 
 ```json
 HTTP/1.1 200 OK
@@ -580,12 +581,12 @@ We're moving from a publisher-level limit to a tenant-level limit. The result is
 
 For more information, see the "High-bandwidth access to the Office 365 Management Activity API" section in [Advanced audit in Microsoft 365](/microsoft-365/compliance/advanced-audit#high-bandwidth-access-to-the-office-365-management-activity-api).
 
-> [!NOTE] 
-> Even though each tenant can initially submit up to 2,000 requests per minute, Microsoft cannot guarantee a response rate. The response rate depends on various factors, such as client system performance, network capacity, and network speed. 
+> [!NOTE]
+> Even though each tenant can initially submit up to 2,000 requests per minute, Microsoft cannot guarantee a response rate. The response rate depends on various factors, such as client system performance, network capacity, and network speed.
 
 ## Errors
 
-When the service encounters an error, it will report the error response code to the caller, using standard HTTP error-code syntax. . Additional information is included in the body of the failed call as a single JSON object. An example of a full JSON error body is shown below: 
+When the service encounters an error, it will report the error response code to the caller, using standard HTTP error-code syntax. . Additional information is included in the body of the failed call as a single JSON object. An example of a full JSON error body is shown below:
 
 ```json
 
@@ -598,7 +599,6 @@ When the service encounters an error, it will report the error response code to 
 
 ```
 
-
 |Code|Message|
 |:-----|:-----|
 |AF10001|The permission set ({0}) sent in the request did not include the expected permission **ActivityFeed.Read**.<br/><br/>{0} = the permission set in the access token.</p></li></ul>|
@@ -606,9 +606,9 @@ When the service encounters an error, it will report the error response code to 
 |AF20002|Invalid parameter type: {0}. Expected type: {1}<br/><br/>{0} = the name of the invalid parameter.</p>{1} = the expected type (int, datetime, guid).</p></li></ul>|
 |AF20003|Expiration {0} provided is set to past date and time.<br/><br/>{0} = the expiration passed in the API call.</p></li></ul>|
 |AF20010|The tenant ID passed in the URL ({0}) does not match the tenant ID passed in the access token ({1}).<br/><br/>{0} = tenant ID passed in the URL{1} = tenant ID passed in the access token</p></li></ul>|
-|AF20011|Specified tenant ID ({0}) does not exist in the system or has been deleted. <br/><br/>	{0} = tenant ID passed in the URL</p></li></ul>|
-|AF20012|Specified tenant ID ({0}) is incorrectly configured in the system. <br/><br/>	{0} = tenant ID passed in the URL</p></li></ul>|
-|AF20013|The tenant ID passed in the URL ({0}) is not a valid GUID.<br/><br/>	{0} = tenant ID passed in the URL</p></li></ul>|
+|AF20011|Specified tenant ID ({0}) does not exist in the system or has been deleted. <br/><br/> {0} = tenant ID passed in the URL</p></li></ul>|
+|AF20012|Specified tenant ID ({0}) is incorrectly configured in the system. <br/><br/> {0} = tenant ID passed in the URL</p></li></ul>|
+|AF20013|The tenant ID passed in the URL ({0}) is not a valid GUID.<br/><br/> {0} = tenant ID passed in the URL</p></li></ul>|
 |AF20020|The specified content type is not valid.|
 |AF20021|The webhook endpoint {{0}) could not be validated. {1}<br/><br/>{0} = webhook address.<br/><br/>{1} = "The endpoint did not return HTTP 200." or "The address must begin with HTTPS."</p></li></ul>|
 |AF20022|No subscription found for the specified content type.|
@@ -616,7 +616,7 @@ When the service encounters an error, it will report the error response code to 
 |AF20030|Start time and end time must both be specified (or both omitted) and must be less than or equal to 24 hours apart, with the start time no more than 7 days in the past.|
 |AF20031|Invalid nextPage Input: {0}.<br/><br/>{0} = the next page indicator passed in the URL</p></li></ul>|
 |AF20050|The specified content ({0}) does not exist.<br/><br/>{0} = resource id or resource URL</p></li></ul>|
-|AF20051|Content requested with the key {0} has already expired. Content older than 7 days cannot be retrieved.<<br/><br/>	{0} = resource id or resource URL</p></li></ul>|
+|AF20051|Content requested with the key {0} has already expired. Content older than 7 days cannot be retrieved.<<br/><br/> {0} = resource id or resource URL</p></li></ul>|
 |AF20052|Content ID {0} in the URL is invalid.<br/><br/>{0} = resource id or resource URL</p></li></ul>|
 |AF20053|Only one language may be present in the Accept-Language header.|
 |AF20054|Invalid syntax in Accept-Language header.|
