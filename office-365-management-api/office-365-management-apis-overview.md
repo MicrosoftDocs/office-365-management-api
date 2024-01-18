@@ -18,7 +18,7 @@ If you have questions about the Office 365 Management APIs, post your question o
 
 The Office 365 Service Communications API has been released in preview mode. It replaces the Office 365 Service Communications API to provide service health information to tenant administrators and partners. Unlike the previous version, the new Service Communications API delivers a cohesive platform experience, with REST APIs built in a consistent fashion including URL naming, data format, and authentication.
 
-New features are only added to the new version of the API, encouraging early adoption by legacy customers. When the General Announcement of Office 365 Service Communications API was made, the older version of the Service Communications API began a period of deprecation. 
+New features are only added to the new version of the API, encouraging early adoption by legacy customers. When the General Announcement of Office 365 Service Communications API was made, the older version of the Service Communications API began a period of deprecation.
 
 For the operations reference, see [Office 365 Service Communications API reference (preview)](office-365-service-communications-api-reference.md).
 
