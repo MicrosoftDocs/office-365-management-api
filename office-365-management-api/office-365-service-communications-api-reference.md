@@ -50,8 +50,6 @@ These are the supported request headers for all Office 365 Service Communication
 |**Accept (Optional)**|The following are acceptable representations for the response:<br/>**application/json;odata.metadata=full**<br/>**application/json;odata.metadata=minimal**<br/>[The default if header not specified] **application/json;odata.metadata=none**|
 |**Authorization (Required)**|Authorization token (Bearer JWT Microsoft Entra Token) for the request.|
 
-<br/>
-
 ### Response headers
 
 These are the response headers returned for all Office 365 Service Communications API operations:
@@ -71,9 +69,6 @@ These are the response headers returned for all Office 365 Service Communication
 |**Server**|The server used to generate the response (for debugging purposes).|
 |**X-ASPNET-Version**|The version of ASP.Net used by the server that generated the response (for debugging purposes).|
 |**X-Powered-By**|The technologies used in the server that generated the response (for debugging purposes).|
-|||
-
-<br/>
 
 Following are the Office 365 Service Communications API operations.
 
@@ -86,7 +81,6 @@ Returns the list of subscribed services.
 |**Path**| `/Services`||
 |**Query-option**|$select|Pick a subset of properties.|
 |**Response**|List of "Service" entities|"Service" entity contains "Id" (String), "DisplayName" (String), and "FeatureNames" (list of Strings).|
-||||
 
 ### Sample request
 
@@ -136,11 +130,9 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 Returns the status of the service from the previous 24 hours.
 
-> [!NOTE] 
-> The service response will contain the status and any incidents within the previous 24 hours. The StatusDate or StatusTime value returned will be exactly 24 hours in the past. 
-> To get the last update for a particular incident, use the Get Messages functionality and read the LastUpdatedTime value from the response record that matches your incident ID. <br/>
-
-<br/>
+> [!NOTE]
+> The service response will contain the status and any incidents within the previous 24 hours. The StatusDate or StatusTime value returned will be exactly 24 hours in the past.
+> To get the last update for a particular incident, use the Get Messages functionality and read the LastUpdatedTime value from the response record that matches your incident ID.
 
 |Information|Service|Description|
 |:-----|:-----|:-----|
@@ -148,7 +140,6 @@ Returns the status of the service from the previous 24 hours.
 |**Filter**|Workload|Filter by workload (String, default: all).|
 |**Query-option**|$select|Pick a subset of properties.|
 |**Response**|List of "WorkloadStatus" entities.|"WorkloadStatus" entity contains "Id" (String), "Workload" (String), "StatusTime"(DateTimeOffset), "WorkloadDisplayName" (String), "Status" (String), "IncidentIds" (list of Strings), and FeatureGroupStatusCollection (list of "FeatureStatus").<br/><br/>"FeatureStatus" entity contains "Feature" (String), "FeatureGroupDisplayName" (String), and "FeatureStatus" (String).|
-||||
 
 ### Sample request
 
@@ -289,7 +280,6 @@ Returns the historical status of the service, by day, over a certain time range.
 ||StatusTime|Filter by days greater than StatusTime (DateTimeOffset, default: ge CurrentTime - 7 days).|
 |**Query-option**|$select|Pick a subset of properties.|
 |**Response**|List of "WorkloadStatus" entities.|"WorkloadStatus" entity contains "Id" (String), "Workload" (String), "StatusTime"(DateTimeOffset), "WorkloadDisplayName" (String), "Status" (String), "IncidentIds" (list of Strings), and FeatureGroupStatusCollection (list of "FeatureStatus").<br/><br/>"FeatureStatus" entity contains "Feature" (String), "FeatureGroupDisplayName" (String), and "FeatureStatus" (String).|
-||||
 
 ### Sample request
 
@@ -395,7 +385,6 @@ Returns the messages about the service over a certain time range. Use the type f
 ||$top|Pick the top number of results (default and max $top=100).|
 ||$skip|Skip number of results (default: $skip=0).|
 |**Response**|List of "Message" entities.|"Message" entity contains "Id" (String), "StartTime" (DateTimeOffset), "EndTime" (DateTimeOffset), "Status" (String), "Messages" (list of "MessageHistory" entity), "LastUpdatedTime" (DateTimeOffset), "Workload" (String), "WorkloadDisplayName" (String), "Feature" (String), "FeatureDisplayName" (String), "MessageType" (Enum, default: all).<br/><br/>"MessageHistory" entity contains "PublishedTime" (DateTimeOffset), "MessageText" (String).|
-||||
 
 ### Sample request
 
@@ -466,7 +455,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 ## Errors
 
 When the service encounters an error, it reports the error response code to the caller, using standard HTTP error-code syntax. As per [OData V4 specification](http://docs.oasis-open.org/odata/odata/v4.0/odata-v4.0-part1-protocol.html), additional information is included in the body of the failed call as a single JSON object. The following is an example of a full JSON error body:
-
 
 ```json
 { 

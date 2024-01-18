@@ -22,10 +22,9 @@ New features are only added to the new version of the API, encouraging early ado
 
 For the operations reference, see [Office 365 Service Communications API reference (preview)](office-365-service-communications-api-reference.md).
 
-
 ## Office 365 Management Activity API
 
-The Office 365 Management Activity API provides information about various user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs. Customers and partners can use this information to create new or enhance existing operations, security, and compliance-monitoring solutions for the enterprise. 
+The Office 365 Management Activity API provides information about various user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs. Customers and partners can use this information to create new or enhance existing operations, security, and compliance-monitoring solutions for the enterprise.
 
 For the operations reference, see [Office 365 Management Activity API reference](office-365-management-activity-api-reference.md).
 
