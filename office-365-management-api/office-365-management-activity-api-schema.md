@@ -2052,13 +2052,16 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |**Properties**|**Type**|**Description**|
 |:-----|:-----|:-----|
 |ObjectId|Edm.String|Id of the plan requested.|
-|ContainerType|Self.ContainerType|Type of the container associated with the plan.|
+|ContainerType|Self.[ContainerType](#containertype)|Type of the container associated with the plan.|
 |ContainerId|Edm.String|Id of the container associated with the plan.|
+|SharedWithContainerId|Edm.String|Id of the container with shared access to the plan.|
+|SharedWithContainerType|Self.[ContainerType](#containertype)|Type of the container with shared access to the plan.|
+|SharedWithContainerAccessLevel|Self.[PlanAccessLevel](#planaccesslevel)|Level of access given to container with shared access to the plan.|
 
 
 ### Enum: ContainerType - Type Edm.Int32
 
-### ContainerType
+#### ContainerType
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
@@ -2069,18 +2072,26 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |5|Roster|The plan is associated with a roster group.|
 |6|Project|The plan originates from Microsoft Project.|
 
+### Enum: PlanAccessLevel - Type Edm.Int32
+
+#### PlanAccessLevel
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|1|ReadAccess|Access to read Plan|
+|2|ReadWriteAccess|Access to read and write to Plan|
+|3|FullAccess|Access to read, write and configure Plan|
+
 ### PlannerCopyPlan record type
 
 |**Properties**|**Type**|**Description**|
 |:-----|:-----|:-----|
 |ObjectId|Edm.String|Id of the plan being copied.|
 |OriginalPlanId|Edm.String|Id of the plan being copied. Same as ObjectId.|
-|OriginalContainerType|Self.ContainerType|Type of the container associated with the original plan.|
+|OriginalContainerType|Self.[ContainerType](#containertype)|Type of the container associated with the original plan.|
 |OriginalContainerId|Edm.String|Id of the container associated with the original plan.|
 |NewPlanId|Edm.String|Id of the new plan. Null when the operation failed.|
-
-|NewContainerType|Self.ContainerType|Type of the container associated with the new plan.|
-
+|NewContainerType|Self.[ContainerType](#containertype)|Type of the container associated with the new plan.|
 |NewContainerId|Edm.String|Id of the container associated with the new plan.|
 
 
@@ -2129,11 +2140,11 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |:-----|:-----|:-----|
 |ObjectId|Edm.String|Id of the sensitivity label. Null when the sensitivity label is removed.|
 |Roster|Edm.String|Id of the roster to which the sensitivity label is changed.|
-|AssignmentMethod|Self.SensitivityLabelAssignmentMethod|The assignment method of the sensitivity label.|
+|AssignmentMethod|Self.[SensitivityLabelAssignmentMethod](#sensitivitylabelassignmentmethod)|The assignment method of the sensitivity label.|
 
 ### Enum: SensitivityLabelAssignmentMethod - Type Edm.Int32
 
-### SensitivityLabelAssignmentMethod
+#### SensitivityLabelAssignmentMethod
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
