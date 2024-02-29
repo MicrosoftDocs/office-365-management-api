@@ -2054,6 +2054,9 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |ObjectId|Edm.String|Id of the plan requested.|
 |ContainerType|Self.[ContainerType](#containertype)|Type of the container associated with the plan.|
 |ContainerId|Edm.String|Id of the container associated with the plan.|
+|SharedWithContainerId|Edm.String|Id of the container with shared access to the plan.|
+|SharedWithContainerType|Self.[ContainerType](#containertype)|Type of the container with shared access to the plan.|
+|SharedWithContainerAccessLevel|Self.[PlanAccessLevel](#planaccesslevel)|Level of access given to container with shared access to the plan.|
 
 
 ### Enum: ContainerType - Type Edm.Int32
@@ -2068,6 +2071,16 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |4|OfficeDocument|The plan is associated with a Office document.|
 |5|Roster|The plan is associated with a roster group.|
 |6|Project|The plan originates from Microsoft Project.|
+
+### Enum: PlanAccessLevel - Type Edm.Int32
+
+#### PlanAccessLevel
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|1|ReadAccess|Access to read Plan|
+|2|ReadWriteAccess|Access to read and write to Plan|
+|3|FullAccess|Access to read, write and configure Plan|
 
 ### PlannerCopyPlan record type
 
