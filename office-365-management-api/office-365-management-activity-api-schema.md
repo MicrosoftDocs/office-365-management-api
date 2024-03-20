@@ -59,6 +59,7 @@ This article provides details on the Common schema as well as service-specific s
 |[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
+|[Microsoft Project For The Web schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Project For The Web events.|
 
 ## Common schema
 
@@ -199,6 +200,12 @@ This article provides details on the Common schema as well as service-specific s
 |192|PlannerPlanList|Microsoft Planner plan list events.|
 |193|PlannerTaskList|Microsoft Planner task list events.|
 |194|PlannerTenantSettings|Microsoft Planner tenant settings events.|
+|195|ProjectForTheWebProject|Microsoft Project For The Web project events.|
+|196|ProjectForTheWebTask|Microsoft Project For The Web task events.|
+|197|ProjectForTheWebRoadmap|Microsoft Project For The Web roadmap events.|
+|198|ProjectForTheWebRoadmapItem|Microsoft Project For The Web roadmap item events.|
+|199|ProjectForTheWebProjectSettings|Microsoft Project For The Web project tenant settings events.|
+|200|ProjectForTheWebRoadmapSettings|Microsoft Project For The Web roadmap tenant settings events.|
 |216|Viva Goals|Viva Goals events.|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
 |230|TeamsUpdates|Teams Updates App Events.|
@@ -1257,7 +1264,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |4|BlockPageOverride|User blocked from navigating to the URL by [Safe Links in Defender for Office 365](/office365/securitycompliance/atp-safe-links); however user overrode block to navigate to the URL.|
 |5|PendingDetonationPageOverride|User presented with the detonation page by [Safe Links in Defender for Office 365](/office365/securitycompliance/atp-safe-links); however user overrode to navigate to the URL.|
 
-
 ### File events
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -1268,7 +1274,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |LastModifiedDate|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the file was created or last modified.|
 |LastModifiedBy|Edm.String|Yes|Identifier (for example, an email address) for the user who created or last modified the file.|
 |EventDeepLink|Edm.String|Yes|Deep-link to the file event in Explorer or Real-time reports in the Security & Compliance Center.|
-|||||
 
 ### FileData complex type
 
@@ -1283,7 +1288,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |MalwareFamily|Edm.String|No|The file malware family.|
 |SHA256|Edm.String|Yes|The file SHA256 hash.|
 |FileSize|Edm.String|Yes|Size for the file in bytes.|
-|||||
 
 ### Enum: SourceWorkload - Type: Edm.Int32
 
@@ -1294,7 +1298,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |0|SharePoint Online|
 |1|OneDrive for Business|
 |2|Microsoft Teams|
-
 
 ## Submission schema
 
@@ -1319,7 +1322,6 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |AttackSimUserSubmission|Edm.String|No|The user-reported message was actually a phish simulation training message.|
 |AdminSubmissionTablAllow|Edm.String|No|An allow was created at time of submission to immediately take action on similar messages while it is being rescanned.|
 |SubmissionNotification|Edm.String|No|Admin feedback is sent to end user.|
-|||||
 
 ## Automated investigation and response events in Office 365
 
@@ -1351,7 +1353,6 @@ Currently, only automated investigation are logged. (Events for manually generat
 |DeeplinkURL    |Edm.String    |Deep link URL to an investigation in Office 365 Security & Compliance Center |
 |Actions |Collection (Edm.String)    |Collection of actions recommended by an investigation |
 |Data    |Edm.String    |Data string which contains more details about investigation entities, and information about alerts related to the investigation. Entities are available in a separate node within the data blob. |
-||||
 
 ### Actions
 
@@ -1370,7 +1371,6 @@ Currently, only automated investigation are logged. (Events for manually generat
 |Resource Identifiers     |Edm.String     |Consists of the Azure Active Directory tenant ID.|
 |Entities    |Collection(Edm.String)    |List of one or more affected entities by action |
 |Related Alert IDs    |Edm.String    |Alert related to an investigation |
-||||
 
 ### Entities
 
@@ -1388,7 +1388,6 @@ Currently, only automated investigation are logged. (Events for manually generat
 |NetworkMessageId    |Edm.Guid     |The network message id of this mail message  |
 |InternetMessageId    |Edm.String  |The internet message id of this mail message |
 |Subject    |Edm.String    |The subject of this mail message  |
-||||
 
 #### IP
 
@@ -1396,7 +1395,6 @@ Currently, only automated investigation are logged. (Events for manually generat
 |----|----|----|
 |Type    |Edm.String    |"ip" |
 |Address    |Edm.String    |The IP address as a string, such as `127.0.0.1`
-||||
 
 #### URL
 
@@ -1404,7 +1402,6 @@ Currently, only automated investigation are logged. (Events for manually generat
 |----|----|----|
 |Type    |Edm.String    |"url" |
 |Url    |Edm.String    |The full URL to which an entity points  |
-||||
 
 #### Mailbox (also equivalent to the user) 
 
@@ -1414,7 +1411,6 @@ Currently, only automated investigation are logged. (Events for manually generat
 |MailboxPrimaryAddress    |Edm.String    |The mailbox's primary address  |
 |DisplayName    |Edm.String    |The mailbox's display name |
 |Upn    |Edm.String    |The mailbox's UPN  |
-||||
 
 #### File
 
@@ -1423,7 +1419,6 @@ Currently, only automated investigation are logged. (Events for manually generat
 |Type    |Edm.String    |"file" |
 |Name    |Edm.String    |The file name without path |
 FileHashes |Collection (Edm.String)    |The file hashes associated with the file |
-||||
 
 #### FileHash
 
@@ -1432,7 +1427,6 @@ FileHashes |Collection (Edm.String)    |The file hashes associated with the file
 |Type    |Edm.String    |"filehash" |
 |Algorithm    |Edm.String    |The hash algorithm type, which can be one of these values:<br/>- Unknown<br/>- MD5<br/>- SHA1<br/>- SHA256<br/>- SHA256AC
 |Value    |Edm.String    |The hash value  |
-||||
 
 #### MailCluster
 
@@ -1447,7 +1441,6 @@ FileHashes |Collection (Edm.String)    |The file hashes associated with the file
 |QueryTime    |Edm.DateTime    |The query time  |
 |MailCount    |Edm.int    |The number of mail messages that are part of the mail cluster  |
 |Source    |String    |The source of the mail cluster; the value of the cluster source. |
-||||
 
 ## Hygiene events schema
 
@@ -1464,7 +1457,6 @@ Hygiene events are related to outbound spam protection. These events are related
 |EventId|Edm.Int64|No|The ID of the hygiene event type.|
 |EventValue|Edm.String|No|The user who was impacted.|
 |Reason|Edm.String|No|Details about the hygiene event.|
-|||||
 
 ## Power BI schema
 
@@ -1482,7 +1474,6 @@ The Power BI events listed in [Search the audit log in the Office 365 Protection
 | SharingInformation    | Collection([SharingInformationType](#sharinginformationtype-complex-type))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"    |  No  | Information about the person to whom a sharing invitation is sent. |
 | SwitchState           | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | Information about the state of various tenant level switches. |
 | WorkSpaceName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  No  | The name of the workspace where the event occurred. |
-|||||
 
 ### MembershipInformationType complex type
 
@@ -1490,7 +1481,6 @@ The Power BI events listed in [Search the audit log in the Office 365 Protection
 |:-----|:-----|:-----|:-----|
 | MemberEmail | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The email address of the group. |
 | Status      | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | Not currently populated. |
-|||||
 
 ### SharingInformationType complex type
 
@@ -1499,7 +1489,7 @@ The Power BI events listed in [Search the audit log in the Office 365 Protection
 | RecipientEmail    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The email address of the recipient of a sharing invitation. |
 | RecipientName    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The name of the recipient of a sharing invitation. |
 | ResharePermission | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The permission being granted to the recipient. |
-|||||
+
 
 ## Dynamics 365 schema
 
@@ -1515,7 +1505,6 @@ The audit records for events related to model-driven apps in Dynamics 365 events
 |ItemType|Edm.String|No|The name of the entity.|
 |UserAgent|Edm.String|No|The unique identifier of the user GUID in the organization.|
 |Fields|Collection(Common.NameValuePair)|No|A JSON object that contains the property key-value pairs that were created or updated.|
-|||||
 
 ### Dynamics 365 entity operation schema
 
@@ -1528,7 +1517,6 @@ Entity events from model-driven apps in Dynamics 365 use this schema to build on
 |Message|Edm.String|Yes|This parameter contains the operation that was performed in related to the entity. For example, if a new contact was created, the value of the Message property is  `Create` and the corresponding value of the EntityName property is `contact`.|
 |Query|Edm.String|No|The parameters of the filter query that was used while executing the FetchXML operation.|
 |PrimaryFieldValue|Edm.String|No|Indicates the value for the attribute that is the primary field for the entity.|
-|||||
 
 ## Workplace Analytics schema
 
@@ -1539,7 +1527,6 @@ The WorkPlace Analytics events listed in [Search the audit log in the Office 365
 | WpaUserRole        | Edm.String | No     | The Workplace Analytics role of the user who performed the action.|
 | ModifiedProperties | Collection (Common.ModifiedProperty) | No | This property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
 | OperationDetails   | Collection (Common.NameValuePair)    | No | A list of extended properties for the setting that was changed. Each property will have a **Name** and **Value**.|
-||||
 
 ## Quarantine schema
 
@@ -1551,7 +1538,6 @@ The quarantine events listed in [Search the audit log in the Office 365 Security
 |RequestSource|Self.[RequestSource](#enum-requestsource---type-edmint32)|No|The source of a quantine request can come from the Security & Compliance Center (SCC), a cmdlet, or a URLlink.|
 |NetworkMessageId|Edm.String|No|The network message id of quarantined email message.|
 |ReleaseTo|Edm.String|No|The recipient of the email message.|
-|||||
 
 ### Enum: RequestType - Type: Edm.Int32
 
@@ -1563,7 +1549,6 @@ The quarantine events listed in [Search the audit log in the Office 365 Security
 |3|Export|This is a request from a user to export an email message that is deemed to be harmful.|
 |4|ViewHeader|This is a request from a user to view the header an email message that is deemed to be harmful.|
 |5|Release request|This is a release request from a user to release an email message that is deemed to be harmful.|
-||||
 
 ### Enum: RequestSource - Type: Edm.Int32
 
@@ -1572,7 +1557,6 @@ The quarantine events listed in [Search the audit log in the Office 365 Security
 |0|SCC|The Security & Compliance center (SCC) is the source where the request from a user to preview, delete, release, export, or view the header of a potentially harmful email message can originate from. |
 |1|Cmdlet|A cmdlet is the source where the request from a user to preview, delete, release, export, or view the header of a potentially harmful email message can originate from.|
 |2|URLlink|This is a source where the request from a user to preview, delete, release, export, or view the header of potentially harmful email message can originate from.|
-||||
 
 ## Microsoft Forms schema
 
@@ -1586,7 +1570,6 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 |FormId |Edm.String|No|The Id of the target form.|
 |FormTypes|Collection(Self.[FormTypes](#formtypes))|No|Indicates whether this is a Form, Quiz, or Survey.|
 |ActivityParameters|Edm.String|No|JSON string containing activity parameters. See [Search the audit log in the Office 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) for more details.|
-||||
 
 ### Enum: FormsUserTypes - Type: Edm.Int32
 
@@ -1598,7 +1581,6 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 |1|Owner|A user who is the owner of the form.|
 |2|Responder|A user who has submitted a response to a form.|
 |3|Coauthor|A user who has used a collaboration link provided by the form owner to login and edit a form.|
-||||
 
 ### Enum: FormTypes - Type: Edm.Int32
 
@@ -1609,7 +1591,6 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 |0|Form|Forms that are created with the New Form option.|
 |1|Quiz|Quizzes that are created with the New Quiz option.  A quiz is a special type of form that includes additional features such as point values, auto and manual grading, and commenting.|
 |2|Survey|Surveys that are created with the New Survey option.  A survey is a special type of form that includes additional features such as CMS integration and support for Flow rules.|
-||||
 
 ## MIP label schema
 
@@ -1631,7 +1612,6 @@ The intent of this audit schema is to represent the sum of all email activity th
 |LabelAction|Edm.String|No|The actions specified by the sensitivity label that were applied to the email message before the message entered the mail transport pipeline.|
 |LabelAppliedDateTime|Edm.Date|No|The date the sensitivity label was applied to the email message.|
 |ApplicationMode|Edm.String|No|Specifies how the sensitivity label was applied to the email message. The **Privileged** value indicates the label was manually applied by a user. The **Standard** value indicates the label was auto-applied by a client-side or service-side labeling process.|
-|||||
 
 ## Encrypted message portal events schema
  
@@ -1649,10 +1629,6 @@ The intent of this audit schema is to represent the sum of all portal activity t
 |OperationStatus|Self.OperationStatus|No|0 – Success, 1- Failure.|
 |AttachmentName|Edm.String|No|Name of the attachment.|
 |OperationProperties|Collection(Common.NameValuePair)|No|Extra properties, i.e. number of OTP passcode sent, email subject, etc.|
-|||||
- 
- 
- 
  
 ## Communication compliance Exchange schema
 
@@ -1661,7 +1637,6 @@ The communication compliance events listed in the Office 365 audit log use this 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
 | ExchangeDetails |[ExchangeDetails](#exchangedetails)|No|Properties of the email message that triggered the SupervisoryReviewOLAudit event.|
-|||||
 
 ### Enum: ExchangeDetails - Type: ExchangeDetails
 
@@ -1677,7 +1652,6 @@ The communication compliance events listed in the Office 365 audit log use this 
 | MessageTime|Edm.Date|The date and time the email message was sent.|
 | From| Edm.String|The email address in the From field of the email message.|
 | Directionality|Edm.String|The origination status of the email message.|
-||||
 
 ### Enum: AttachmentDetails - Type: Edm.Int32
 
@@ -1688,7 +1662,6 @@ The communication compliance events listed in the Office 365 audit log use this 
 | FileName        | Edm.String | The name of the file attached to the email message.|
 | FileType        | Edm.String | The file extension of the file attached to the email message.|
 | SHA256          | Edm.String | The SHA-256 hash of the file attached to the email message.|
-||||
 
 ## Reports schema
 
@@ -1697,7 +1670,6 @@ The Reports events listed in [Search the audit log in the Office 365 Security & 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
 | ModifiedProperties | Collection (Common.ModifiedProperty) | No | This property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
-|||||
 
 ## Compliance connector schema
 
@@ -1715,7 +1687,6 @@ Events in the compliance connector schema are triggered when items that are impo
 |ResultMessage| Edm.String|	No |Indicates the type of failure, such as **Duplicte message**.|
 |IsRetry| Edm.Boolean| No |Indicates whether the data connector retried to import the item.|
 |Attachments| Collection.[Attachment](#attachment-complex-type)| No	|A list of attachments received from the third-party data source.|
-|||||
 
 ### Enum: FailureType - Type: Edm.Int32
 
@@ -1723,16 +1694,13 @@ Events in the compliance connector schema are triggered when items that are impo
 |:-----|:-----|
 |0|Default|
 |1|MailboxWrite|
-|||
 
 ### Attachment complex type
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |FileName|Edm.String|No|The name of the attachment.|
-|Details|Edm.String|No|Other details about the attachment.|
-|||||
-
+|Details|Edm.String|No|Other details about the attachment.
  
  ## SystemSync schema
 
@@ -1747,16 +1715,11 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 |ExportTriggeredAt|	Edm.DateTimeOffset|Yes	|Indicates when the data export was triggered.|
 |NameOfDownloadedZipFile|	Edm.String|No	|The name of the compressed file the admin had downloaded from the Data Lake.|
 
-
-
 ### DataShareOperationAuditRecord
 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
 |Invitation|	DataShareInvitationType|No	|Details of the invite sent to the recipient of the Data Share.|
-
-
-
 
 #### DataShareInvitationType complex type
 
@@ -1768,9 +1731,6 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 |ShareName|Edm.String|Yes|System assigned name for the Data Share.|
 |SyncFrequency|Self.SyncFrequency|Yes|Frequency at which the data is synced to the destination storage account once share is established. See SyncFrequency for possible values.|
 |SyncStartTime|Edm.DateTimeOffset|Yes|Date and time of first sync.|
-
-
-
 
 **Enum: SyncFrequency - Type: Edm.Int32**
 
@@ -1850,7 +1810,6 @@ The following table contains information related to Azure Information Protection
 |UserType        | The type of user that performed the operation. See the UserType table for details on the types of users.</br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy|
 |	Version	|	Version ID of the file in the operation.	|
 |	Workload	|	Stores The Office 365 service where the activity occurred.	|
-
  
 ## AipSensitivityLabelAction
 
@@ -1882,8 +1841,6 @@ The following table contains information related to AIP sensitivity label events
 |	SensitiveInfoTypeData	|	Stores the datatype of the Sensitive Info Type Data	|
 |	TemplateId	|	TemplateID parameter to get a specific template. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.	|
 |UserId                | The User Principal Name (UPN) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service.|
-
-
 
 ## AipProtectionAction
 
@@ -1948,7 +1905,6 @@ The following table contains information related to AIP sensitivity label events
 |Workload         | Stores the Office 365 service where the activity occurred.|
 |Version          | Version of the Azure Information Protection client that performed the audit action|
 |Scope            | Specifies scope.|
-
 
 ## AipHeartBeat
 
@@ -2015,7 +1971,6 @@ The following table contain information related to AIP heartbeat events.
 
 The audit records for events related to Viva Goals use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). For details about capturing events and activities related to Viva Goals, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
 
-
 |**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
 |---------|---------|---------|---------|
 |Detail|Edm.String |No |A description of the event or the activity that occurred in Viva Goals.|
@@ -2027,7 +1982,6 @@ The audit records for events related to Viva Goals use this schema (in addition 
 |UserAgent |Edm.String </br>Term="Microsoft.Office.Audit.Schema.PIIFlag" </br>Bool="true" |No |The user agent (browser details) of the user who trigged the event. UserAgent might not be present in case of a system generated event.|
 |ModifiedFields |Collection(Common.NameValuePair) |No |A list of attributes that were modified along with its new and old values output as a JSON.|
 |ItemDetails |Collection(Common.NameValuePair) |No |Additional properties about the object that was modified.|
-
 
 ## Microsoft Planner schema
 
@@ -2057,7 +2011,6 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |SharedWithContainerId|Edm.String|Id of the container with shared access to the plan.|
 |SharedWithContainerType|Self.[ContainerType](#containertype)|Type of the container with shared access to the plan.|
 |SharedWithContainerAccessLevel|Self.[PlanAccessLevel](#planaccesslevel)|Level of access given to container with shared access to the plan.|
-
 
 ### Enum: ContainerType - Type Edm.Int32
 
@@ -2094,7 +2047,6 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |NewContainerType|Self.[ContainerType](#containertype)|Type of the container associated with the new plan.|
 |NewContainerId|Edm.String|Id of the container associated with the new plan.|
 
-
 ### PlannerTask record type
 
 |**Properties**|**Type**|**Description**|
@@ -2109,7 +2061,6 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |ObjectId|Edm.String|Id of the roster requested.|
 |MemberIds|Edm.String|A comma-separated string of member ids changed to the roster.|
 
-
 ### PlannerPlanList record type
 
 |**Properties**|**Type**|**Description**|
@@ -2117,15 +2068,12 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |ObjectId|Edm.String|A representation of the view query for a list of plans.|
 |PlanList|Edm.String|A comma-separated string of plan ids queried.|
 
-
 ### PlannerTaskList record type
 
 |**Properties**|**Type**|**Description**|
 |:-----|:-----|:-----|
 |ObjectId|Edm.String|A representation of the view query for a list of tasks.|
 |PlanList|Edm.String|A comma-separated string of task ids queried.|
-
-
 
 ### PlannerTenantSettings record type
 
@@ -2151,3 +2099,52 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |0|Standard|The sensitivity label is automatically applied but not allowed to override a privileged label assignment.|
 |1|Privileged|The sensitivity label is applied manually by a user or by an admin.|
 |2|Auto|The sensitivity label is automatically applied and is allowed to override a privileged label assignment.|
+
+## Microsoft Project For The Web schema
+Microsoft Project For The Web extends the [Common schema](#common-schema) with the following record types.
+
+### ProjectForTheWebProject record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ProjectId|Edm.Guid|No|Id of the Project being audited.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+### ProjectForTheWebTask record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ProjectId|Edm.Guid|Yes|Id of the Project being audited.|
+|TaskId|Edm.Guid|Yes|Id of the Task being audited.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+
+### ProjectForTheWebRoadmap record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RoadmapId|Edm.Guid|Yes|Id of the Roadmap being audited.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+
+### ProjectForTheWebRoadmapItem record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RoadmapItemId|Edm.Guid|Yes|Id of the Roadmap Item being audited.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+
+### Complex Type AdditionalInfo
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|EnvironmentName|Edm.String|No|Id of the environment where action was performed.|
+
+### ProjectForTheWebProjectSetting record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ProjectEnabled|Edm.Boolean|Yes|The value that was set for Project for the web (1= enabled, 0 disabled).|
+
+### ProjectForTheWebRoadampSetting record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RoadmapEnabled|Edm.Boolean|Yes|The value that was set for Roadmap (1= enabled, 0 disabled).|
