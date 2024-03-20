@@ -2103,28 +2103,29 @@ Microsoft Project For The web extends the [Common schema](#common-schema) with t
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |ProjectId|Edm.Guid|No|Id of the Project being audited.|
-|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
+
 ### ProjectForThewebTask record type
 
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |ProjectId|Edm.Guid|Yes|Id of the Project being audited.|
 |TaskId|Edm.Guid|Yes|Id of the Task being audited.|
-|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
 
 ### ProjectForThewebRoadmap record type
 
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |RoadmapId|Edm.Guid|Yes|Id of the Roadmap being audited.|
-|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
 
 ### ProjectForThewebRoadmapItem record type
 
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |RoadmapItemId|Edm.Guid|Yes|Id of the Roadmap Item being audited.|
-|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
 
 ### Complex Type AdditionalInfo
 
