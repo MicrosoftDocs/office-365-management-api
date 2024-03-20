@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 03/20/2024
 ms.localizationpriority: high
 ---
 
@@ -540,7 +540,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |Sent|The user sent an entity.|
 |Submitted|The user submitted an entity for review or workflow.|
 
-
 ### Enum: Project Entity - Type: Edm.Int32
 
 #### Project entity
@@ -684,7 +683,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |AccountLogon|The account login event.|
 |AzureApplicationAuditEvent|The Azure application security event.|
 
-
 ## Azure Active Directory Account Logon schema
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -761,7 +759,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |:-----|:-----|:-----|:-----|
 |ID|Edm.String|Yes|The value of the identity given the type.|
 |Type|Self.IdentityType|Yes|The type of the identity.|
-|||||
 
 ### Enum: IdentityType - Type: Edm.Int32
 
@@ -822,7 +819,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |UniqueId|Edm.String|Yes|A guid that identifies the file.|
 |LastModifiedTime|Edm.DateTime|Yes|Timestamp in UTC for when doc was last modified.|
 |IsViewableByExternalUsers|Edm.Boolean|Yes|Determines if the file is accessible to any external user.|
-|||||
 
 ### ExchangeMetadata complex type
 
@@ -864,7 +860,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |SensitiveInformation|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|No|Information about the type of sensitive information detected.|
 |DocumentProperties|Collection(NameValuePair)|No|Information about document properties that triggered a rule match.|
 |OtherConditions|Collection(NameValuePair)|No|A list of key value pairs describing any other conditions that were matched.|
-|||||
 
 ### SensitiveInformation complex type
 
