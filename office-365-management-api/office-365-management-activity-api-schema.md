@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 03/20/2024
 ms.localizationpriority: high
 ---
 
@@ -59,7 +59,7 @@ This article provides details on the Common schema as well as service-specific s
 |[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
-|[Microsoft Project For The Web schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Project For The Web events.|
+|[Microsoft Project for the web schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
 
 ## Common schema
 
@@ -200,12 +200,12 @@ This article provides details on the Common schema as well as service-specific s
 |192|PlannerPlanList|Microsoft Planner plan list events.|
 |193|PlannerTaskList|Microsoft Planner task list events.|
 |194|PlannerTenantSettings|Microsoft Planner tenant settings events.|
-|195|ProjectForTheWebProject|Microsoft Project For The Web project events.|
-|196|ProjectForTheWebTask|Microsoft Project For The Web task events.|
-|197|ProjectForTheWebRoadmap|Microsoft Project For The Web roadmap events.|
-|198|ProjectForTheWebRoadmapItem|Microsoft Project For The Web roadmap item events.|
-|199|ProjectForTheWebProjectSettings|Microsoft Project For The Web project tenant settings events.|
-|200|ProjectForTheWebRoadmapSettings|Microsoft Project For The Web roadmap tenant settings events.|
+|195|ProjectForThewebProject|Microsoft Project for the web project events.|
+|196|ProjectForThewebTask|Microsoft Project for the web task events.|
+|197|ProjectForThewebRoadmap|Microsoft Project for the web  roadmap events.|
+|198|ProjectForThewebRoadmapItem|Microsoft Project for the web  roadmap item events.|
+|199|ProjectForThewebProjectSettings|Microsoft Project for the web  project tenant settings events.|
+|200|ProjectForThewebRoadmapSettings|Microsoft Project for the web  roadmap tenant settings events.|
 |216|Viva Goals|Viva Goals events.|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
 |230|TeamsUpdates|Teams Updates App Events.|
@@ -274,7 +274,7 @@ This article provides details on the Common schema as well as service-specific s
 |0|Invalid|The item is none of the other item types (that are listed in this table).|
 |1|File|The item is a file.|
 |5|Folder|The item is a folder.|
-|6|Web|The item is a Web.|
+|6|web|The item is a web.|
 |7|Site|The item is a site.|
 |8|Tenant|The item is a tenant.|
 |9|DocumentLibrary|The item is a document library.|
@@ -310,25 +310,25 @@ This article provides details on the Common schema as well as service-specific s
 |AuditPolicyUpdate|Document LifeCycle Policy has been updated for a site collection.|
 |AzureStreamingEnabledSet|A video portal owner has allowed video streaming from Azure.|
 |CollaborationTypeModified|The type of collaboration allowed on sites (for example, intranet, extranet, or public) has been modified.|
-|ConnectedSiteSettingModified|User has either created, modified or deleted the link between a project and a project site or the user modifies the synchronization setting on the link in Project Web App.|
+|ConnectedSiteSettingModified|User has either created, modified or deleted the link between a project and a project site or the user modifies the synchronization setting on the link in Project web app.|
 |CreateSSOApplication|Target application created in Secure store service.|
-|CustomFieldOrLookupTableCreated|User created a custom field or lookup table/item in Project Web App.|
-|CustomFieldOrLookupTableDeleted|User deleted a custom field or lookup table/item in Project Web App.|
-|CustomFieldOrLookupTableModified|User modified a custom field or lookup table/item in Project Web App.|
-|CustomizeExemptUsers|Global administrator customized the list of exempt user agents in SharePoint admin center. You can specify which user agents to exempt from receiving an entire Web page to index. This means when a user agent you've specified as exempt encounters an InfoPath form, the form will be returned as an XML file instead of an entire Web page. This makes indexing InfoPath forms faster.|
+|CustomFieldOrLookupTableCreated|User created a custom field or lookup table/item in Project web app.|
+|CustomFieldOrLookupTableDeleted|User deleted a custom field or lookup table/item in Project web app.|
+|CustomFieldOrLookupTableModified|User modified a custom field or lookup table/item in Project web app.|
+|CustomizeExemptUsers|Global administrator customized the list of exempt user agents in SharePoint admin center. You can specify which user agents to exempt from receiving an entire web page to index. This means when a user agent you've specified as exempt encounters an InfoPath form, the form will be returned as an XML file instead of an entire web page. This makes indexing InfoPath forms faster.|
 |DefaultLanguageChangedInTermStore*|Language setting changed in the terminology store.|
-|DelegateModified|User created or modified a security delegate in Project Web App.|
-|DelegateRemoved|User deleted a security delegate in Project Web App.|
+|DelegateModified|User created or modified a security delegate in Project web app.|
+|DelegateRemoved|User deleted a security delegate in Project web app.|
 |DeleteSSOApplication|An SSO application was deleted.|
 |eDiscoveryHoldApplied|An In-Place Hold was placed on a content source. In-Place Holds are managed by using an eDiscovery site collection (such as the eDiscovery Center) in SharePoint.|
 |eDiscoveryHoldRemoved|An In-Place Hold was removed from a content source. In-Place Holds are managed by using an eDiscovery site collection (such as the eDiscovery Center) in SharePoint.|
 |eDiscoverySearchPerformed|An eDiscovery search was performed using an eDiscovery site collection in SharePoint.|
-|EngagementAccepted|User accepts a resource engagement in Project Web App.|
-|EngagementModified|User modifies a resource engagement in Project Web App.|
-|EngagementRejected|User rejects a resource engagement in Project Web App.|
-|EnterpriseCalendarModified|User copies, modifies or delete an enterprise calendar in Project Web App.|
-|EntityDeleted|User deletes a timesheet in Project Web App.|
-|EntityForceCheckedIn|User forces a checkin on a calendar, custom field or lookup table in Project Web App.|
+|EngagementAccepted|User accepts a resource engagement in Project web app.|
+|EngagementModified|User modifies a resource engagement in Project web app.|
+|EngagementRejected|User rejects a resource engagement in Project web app.|
+|EnterpriseCalendarModified|User copies, modifies or delete an enterprise calendar in Project web app.|
+|EntityDeleted|User deletes a timesheet in Project web app.|
+|EntityForceCheckedIn|User forces a checkin on a calendar, custom field or lookup table in Project web app.|
 |ExemptUserAgentSet|Global administrator adds a user agent to the list of exempt user agents in the SharePoint admin center.|
 |FileAccessed|User or system account accesses a file on a SharePoint or OneDrive for Business site. System accounts can also generate FileAccessed events.|
 |FileCheckOutDiscarded|User discards (or undos) a checked out file. That means any changes they made to the file when it was checked out are discarded, and not saved to the version of the document in the document library.|
@@ -368,7 +368,7 @@ This article provides details on the Common schema as well as service-specific s
 |LanguageAddedToTermStore|Language added to the terminology store.|
 |LanguageRemovedFromTermStore|Language removed from the terminology store.|
 |LegacyWorkflowEnabledSet|Site administrator or owner adds the SharePoint Workflow Task content type to the site. Global administrators can also enable work flows for the entire organization in the SharePoint admin center.|
-|LookAndFeelModified|User modifies a quick launch, gantt chart formats, or group formats.  Or the user creates, modifies, or deletes a view in Project Web App.|
+|LookAndFeelModified|User modifies a quick launch, gantt chart formats, or group formats.  Or the user creates, modifies, or deletes a view in Project web app.|
 |ManagedSyncClientAllowed|User successfully establishes a sync relationship with a SharePoint or OneDrive for Business site. The sync relationship is successful because the user's computer is a member of a domain that's been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. For more information, see [Use SharePoint Online PowerShell ](https://go.microsoft.com/fwlink/p/?LinkID=534609) to enable OneDrive sync for domains that are on the safe recipients list.|
 |MaxQuotaModified|The maximum quota for a site has been modified.|
 |MaxResourceUsageModified|The maximum allowable resource usage for a site has been modified.|
@@ -378,45 +378,45 @@ This article provides details on the Common schema as well as service-specific s
 |OfficeOnDemandSet|Site administrator enables Office on Demand, which lets users access the latest version of Office desktop applications. Office on Demand is enabled in the SharePoint admin center and requires an Office 365 subscription that includes full, installed Office applications.|
 |PageViewed|User views a page on a SharePoint site or OneDrive for Business site. This does not include viewing document library files from a SharePoint site or One Drive for Business site on a browser.|
 |PeopleResultsScopeSet|Site administrator creates or changes the result source for People Searches for a SharePoint site.|
-|PermissionSyncSettingModified|User modifies the project permission sync settings in Project Web App.|
-|PermissionTemplateModified|User creates, modifies or deletes a permissions template in Project Web App.|
-|PortfolioDataAccessed|User accesses portfolio content (driver library, driver prioritization, portfolio analyses) in Project Web App.|
-|PortfolioDataModified|User creates, modifies, or deletes portfolio data (driver library, driver prioritization, portfolio analyses) in Project Web App.|
+|PermissionSyncSettingModified|User modifies the project permission sync settings in Project web app.|
+|PermissionTemplateModified|User creates, modifies or deletes a permissions template in Project web app.|
+|PortfolioDataAccessed|User accesses portfolio content (driver library, driver prioritization, portfolio analyses) in Project web app.|
+|PortfolioDataModified|User creates, modifies, or deletes portfolio data (driver library, driver prioritization, portfolio analyses) in Project web app.|
 |PreviewModeEnabledSet|Site administrator enables document preview for a SharePoint site.|
-|ProjectAccessed|User accesses project content in Project Web App.|
-|ProjectCheckedIn|User checks in a project that they checked out from a Project Web App.|
-|ProjectCheckedOut|User checks out a project located in a Project Web App. Users can check out and make changes to projects that they have permission to open.|
-|ProjectCreated|User creates a project in Project Web App.|
-|ProjectDeleted|User deletes a project in Project Web App.|
-|ProjectForceCheckedIn|User forces a check in on a project in Project Web App.|
-|ProjectModified|User modifies a project in Project Web App.|
-|ProjectPublished|User publishes a project in Project Web App.|
-|ProjectWorkflowRestarted|User restarts a workflow in Project Web App.|
-|PWASettingsAccessed|User access the Project Web App settings via CSOM.|
-|PWASettingsModified|User modifies the a Project Web App configuration.|
-|QueueJobStateModified|User cancels or restarts a queue job in Project Web App.|
+|ProjectAccessed|User accesses project content in Project web app.|
+|ProjectCheckedIn|User checks in a project that they checked out from a Project web app.|
+|ProjectCheckedOut|User checks out a project located in a Project web app. Users can check out and make changes to projects that they have permission to open.|
+|ProjectCreated|User creates a project in Project web app.|
+|ProjectDeleted|User deletes a project in Project web app.|
+|ProjectForceCheckedIn|User forces a check in on a project in Project web app.|
+|ProjectModified|User modifies a project in Project web app.|
+|ProjectPublished|User publishes a project in Project web app.|
+|ProjectWorkflowRestarted|User restarts a workflow in Project web app.|
+|PWASettingsAccessed|User access the Project web app settings via CSOM.|
+|PWASettingsModified|User modifies the a Project web app configuration.|
+|QueueJobStateModified|User cancels or restarts a queue job in Project web app.|
 |QuotaWarningEnabledModified|Storage quota warning modified.|
 |RenderingEnabled|Browser-enabled form templates will be rendered by InfoPath forms services.|
-|ReportingAccessed|User accessed the reporting endpoint in Project Web App.|
-|ReportingSettingModified|User modifies the reporting configuration in Project Web App.|
-|ResourceAccessed|User accesses an enterprise resource content in Project Web App.|
-|ResourceCheckedIn|User checks in an enterprise resource that they checked out from Project Web App.|
-|ResourceCheckedOut|User checks out an enterprise resource located in Project Web App.|
-|ResourceCreated|User creates an enterprise resource in Project Web App.|
-|ResourceDeleted|User deletes an enterprise resource in Project Web App.|
-|ResourceForceCheckedIn|User forces a checkin of an enterprise resource in Project Web App.|
-|ResourceModified|User modifies an enterprise resource in Project Web App.|
-|ResourcePlanCheckedInOrOut|User checks in or out a resource plan in Project Web App.|
-|ResourcePlanModified|User modifies a resource plan in Project Web App.|
-|ResourcePlanPublished|User publishes a resource plan in Project Web App.|
-|ResourceRedacted|User redacts an enterprise resource removing all personal information in Project Web App.|
+|ReportingAccessed|User accessed the reporting endpoint in Project web app.|
+|ReportingSettingModified|User modifies the reporting configuration in Project web app.|
+|ResourceAccessed|User accesses an enterprise resource content in Project web app.|
+|ResourceCheckedIn|User checks in an enterprise resource that they checked out from Project web app.|
+|ResourceCheckedOut|User checks out an enterprise resource located in Project web app.|
+|ResourceCreated|User creates an enterprise resource in Project web app.|
+|ResourceDeleted|User deletes an enterprise resource in Project web app.|
+|ResourceForceCheckedIn|User forces a checkin of an enterprise resource in Project web app.|
+|ResourceModified|User modifies an enterprise resource in Project web app.|
+|ResourcePlanCheckedInOrOut|User checks in or out a resource plan in Project web app.|
+|ResourcePlanModified|User modifies a resource plan in Project web app.|
+|ResourcePlanPublished|User publishes a resource plan in Project web app.|
+|ResourceRedacted|User redacts an enterprise resource removing all personal information in Project web app.|
 |ResourceWarningEnabledModified|Resource quota warning modified.|
 |SSOGroupCredentialsSet|Group credentials set in Secure store service.|
 |SSOUserCredentialsSet|User credentials set in Secure store service.|
 |SearchCenterUrlSet|Search center URL set.|
 |SecondaryMySiteOwnerSet|A user has added a secondary owner to their MySite.|
-|SecurityCategoryModified|User creates, modifies or deletes a security category in Project Web App.|
-|SecurityGroupModified|User creates, modifies or deletes a security group in Project Web App.|
+|SecurityCategoryModified|User creates, modifies or deletes a security category in Project web app.|
+|SecurityGroupModified|User creates, modifies or deletes a security group in Project web app.|
 |SendToConnectionAdded|Global administrator creates a new Send To connection on the Records management page in the SharePoint admin center. A Send To connection specifies settings for a document repository or a records center. When you create a Send To connection, a Content Organizer can submit documents to the specified location.|
 |SendToConnectionRemoved|Global administrator deletes a Send To connection on the Records management page in the SharePoint admin center.|
 |SharedLinkCreated|User creates a link to a shared file in SharePoint or OneDrive for Business. This link can be sent to other people to give them access to the file. A user can create two types of links: a link that allows a user to view and edit the shared file, or a link that allows the user to just view the file.|
@@ -428,23 +428,23 @@ This article provides details on the Common schema as well as service-specific s
 |SiteCollectionAdminAdded*|Site collection administrator or owner adds a person as a site collection administrator for a SharePoint or OneDrive for Business site. Site collection administrators have full control permissions for the site collection and all subsites.|
 |SiteCollectionCreated| Global administrator creates a new site collection in your SharePoint organization.|
 |SiteRenamed|Site administrator or owner renames a SharePoint or OneDrive for Business site|
-|StatusReportModified|User creates, modifies or deletes a status report in Project Web App.|
+|StatusReportModified|User creates, modifies or deletes a status report in Project web app.|
 |SyncGetChanges|User clicks **Sync** in the action tray on in SharePoint or OneDrive for Business to synchronize any changes to file in a document library to their computer.|
-|TaskStatusAccessed|User accesses the status of one or more tasks in Project Web App.|
-|TaskStatusApproved|User approves a status update of one or more tasks in Project Web App.|
-|TaskStatusRejected|User rejects a status update of one or more tasks in Project Web App.|
-|TaskStatusSaved|User saves a status update of one or more tasks in Project Web App.|
-|TaskStatusSubmitted|User submits a status update of one or more tasks in Project Web App.|
-|TimesheetAccessed|User accesses a timesheet in Project Web App.|
-|TimesheetApproved|User approves timesheet in Project Web App.|
-|TimesheetRejected|User rejects a timesheet in Project Web App.|
-|TimesheetSaved|User saves a timesheet in Project Web App.|
-|TimesheetSubmitted|User submits a status timesheet in Project Web App.|
+|TaskStatusAccessed|User accesses the status of one or more tasks in Project web app.|
+|TaskStatusApproved|User approves a status update of one or more tasks in Project web app.|
+|TaskStatusRejected|User rejects a status update of one or more tasks in Project web app.|
+|TaskStatusSaved|User saves a status update of one or more tasks in Project web app.|
+|TaskStatusSubmitted|User submits a status update of one or more tasks in Project web app.|
+|TimesheetAccessed|User accesses a timesheet in Project web app.|
+|TimesheetApproved|User approves timesheet in Project web app.|
+|TimesheetRejected|User rejects a timesheet in Project web app.|
+|TimesheetSaved|User saves a timesheet in Project web app.|
+|TimesheetSubmitted|User submits a status timesheet in Project web app.|
 |UnmanagedSyncClientBlocked|User tries to establish a sync relationship with a SharePoint or OneDrive for Business site from a computer that isn't a member of your organization's domain or is a member of a domain that hasn't been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. The sync relationship is not allowed, and the user's computer is blocked from syncing, downloading, or uploading files on a document library. For information about this feature, see [Use Windows PowerShell cmdlets to enable OneDrive sync for domains that are on the safe recipients list](/powershell/module/sharepoint-online/index).|
 |UpdateSSOApplication|Target application updated in Secure store service.|
 |UserAddedToGroup|Site administrator or owner adds a person to a group on a SharePoint or OneDrive for Business site. Adding a person to a group grants the user the permissions that were assigned to the group. |
 |UserRemovedFromGroup|Site administrator or owner removes a person from a group on a SharePoint or OneDrive for Business site. After the person is removed, they no longer are granted the permissions that were assigned to the group. |
-|WorkflowModified|User creates, modifies, or deletes an Enterprise Project Type or Workflow phases or stages in Project Web App.|
+|WorkflowModified|User creates, modifies, or deletes an Enterprise Project Type or Workflow phases or stages in Project web app.|
 
 ## SharePoint file operations
 
@@ -540,7 +540,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |Sent|The user sent an entity.|
 |Submitted|The user submitted an entity for review or workflow.|
 
-
 ### Enum: Project Entity - Type: Edm.Int32
 
 #### Project entity
@@ -568,7 +567,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |ResourcePlan|Represents a resource plan associated with A project.|
 |SecurityCategory|Represents a security category.|
 |SecurityGroup|Represents a security group.|
-|Setting|Represents a Project Web App setting|
+|Setting|Represents a Project web app setting|
 |Statusing|Represents a task status update.|
 |StatusReport|Represents a status report.|
 |TimeReportingPeriod|Represents a period of time for a timesheet|
@@ -684,7 +683,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |AccountLogon|The account login event.|
 |AzureApplicationAuditEvent|The Azure application security event.|
 
-
 ## Azure Active Directory Account Logon schema
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -761,7 +759,6 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |:-----|:-----|:-----|:-----|
 |ID|Edm.String|Yes|The value of the identity given the type.|
 |Type|Self.IdentityType|Yes|The type of the identity.|
-|||||
 
 ### Enum: IdentityType - Type: Edm.Int32
 
@@ -822,7 +819,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |UniqueId|Edm.String|Yes|A guid that identifies the file.|
 |LastModifiedTime|Edm.DateTime|Yes|Timestamp in UTC for when doc was last modified.|
 |IsViewableByExternalUsers|Edm.Boolean|Yes|Determines if the file is accessible to any external user.|
-|||||
 
 ### ExchangeMetadata complex type
 
@@ -864,7 +860,6 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |SensitiveInformation|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|No|Information about the type of sensitive information detected.|
 |DocumentProperties|Collection(NameValuePair)|No|Information about document properties that triggered a rule match.|
 |OtherConditions|Collection(NameValuePair)|No|A list of key value pairs describing any other conditions that were matched.|
-|||||
 
 ### SensitiveInformation complex type
 
@@ -2100,36 +2095,37 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |1|Privileged|The sensitivity label is applied manually by a user or by an admin.|
 |2|Auto|The sensitivity label is automatically applied and is allowed to override a privileged label assignment.|
 
-## Microsoft Project For The Web schema
-Microsoft Project For The Web extends the [Common schema](#common-schema) with the following record types.
+## Microsoft Project For The web schema
+Microsoft Project For The web extends the [Common schema](#common-schema) with the following record types.
 
-### ProjectForTheWebProject record type
+### ProjectForThewebProject record type
 
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |ProjectId|Edm.Guid|No|Id of the Project being audited.|
-|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
-### ProjectForTheWebTask record type
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
+
+### ProjectForThewebTask record type
 
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |ProjectId|Edm.Guid|Yes|Id of the Project being audited.|
 |TaskId|Edm.Guid|Yes|Id of the Task being audited.|
-|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
 
-### ProjectForTheWebRoadmap record type
+### ProjectForThewebRoadmap record type
 
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |RoadmapId|Edm.Guid|Yes|Id of the Roadmap being audited.|
-|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
 
-### ProjectForTheWebRoadmapItem record type
+### ProjectForThewebRoadmapItem record type
 
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |RoadmapItemId|Edm.Guid|Yes|Id of the Roadmap Item being audited.|
-|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalInfo)|No|Additional information.|
+|AdditionalInfo|CollectionSelf.[AdditionalInfo](#complex-type-additionalinfo)|No|Additional information.|
 
 ### Complex Type AdditionalInfo
 
@@ -2137,13 +2133,13 @@ Microsoft Project For The Web extends the [Common schema](#common-schema) with t
 |:-----|:-----|:-----|:-----|
 |EnvironmentName|Edm.String|No|Id of the environment where action was performed.|
 
-### ProjectForTheWebProjectSetting record type
+### ProjectForThewebProjectSetting record type
 
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |ProjectEnabled|Edm.Boolean|Yes|The value that was set for Project for the web (1= enabled, 0 disabled).|
 
-### ProjectForTheWebRoadampSetting record type
+### ProjectForThewebRoadampSetting record type
 
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
