@@ -59,7 +59,7 @@ This article provides details on the Common schema as well as service-specific s
 |[SystemSync schema](#systemsync-schema)|Extends the Common schema with the properties specific to data ingested via SystemSync.|
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
-|[Microsoft Project for the web schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
+|[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
 
 ## Common schema
 
@@ -2107,7 +2107,7 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |1|Privileged|The sensitivity label is applied manually by a user or by an admin.|
 |2|Auto|The sensitivity label is automatically applied and is allowed to override a privileged label assignment.|
 
-## Microsoft Project For The web schema
+## Microsoft Project for the web schema
 Microsoft Project For The web extends the [Common schema](#common-schema) with the following record types.
 
 ### ProjectForThewebProject record type
