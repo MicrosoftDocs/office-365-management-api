@@ -32,10 +32,10 @@ This article provides details on the Common schema as well as service-specific s
 |[Project schema](#project-schema)|Extends the SharePoint Base schema with the properties specific to Project.|
 |[Exchange Admin schema](#exchange-admin-schema)|Extends the Common schema with the properties specific to all Exchange admin audit data.|
 |[Exchange Mailbox schema](#exchange-mailbox-schema)|Extends the Common schema with the properties specific to all Exchange mailbox audit data.|
-|[Azure Active Directory Base schema](#azure-active-directory-base-schema)|Extends the Common schema with the properties specific to all Azure Active Directory audit data.|
-|[Azure Active Directory Account Logon schema](#azure-active-directory-account-logon-schema)|Extends the Azure Active Directory Base schema with the properties specific to all Azure Active Directory logon events.|
-|[Azure Active Directory Secure STS Logon schema](#azure-active-directory-secure-token-service-sts-logon-schema)|Extends the Azure Active Directory Base schema with the properties specific to all Azure Active Directory Secure Token Service (STS) logon events.|
-|[Azure Active Directory schema](#azure-active-directory-schema)|Extends the Common schema with the properties specific to all Azure Active Directory audit data.|
+|[Microsoft Entra ID Base schema](#azure-active-directory-base-schema)|Extends the Common schema with the properties specific to all Microsoft Entra audit data.|
+|[Microsoft Entra account Logon schema](#azure-active-directory-account-logon-schema)|Extends the Microsoft Entra ID Base schema with the properties specific to all Microsoft Entra logon events.|
+|[Microsoft Entra ID Secure STS Logon schema](#azure-active-directory-secure-token-service-sts-logon-schema)|Extends the Microsoft Entra ID Base schema with the properties specific to all Microsoft Entra ID Secure Token Service (STS) logon events.|
+|[Microsoft Entra schema](#azure-active-directory-schema)|Extends the Common schema with the properties specific to all Microsoft Entra audit data.|
 |[DLP schema](#dlp-schema)|Extends the Common schema with the properties specific to Data Loss Prevention events.|
 |[Security and Compliance Center schema](#security-and-compliance-center-schema)|Extends the Common schema with the properties specific to all Security and Compliance Center events.|
 |[Security and Compliance Alerts schema](#security-and-compliance-alerts-schema)|Extends the Common schema with the properties specific to all Office 365 security and compliance alerts.|
@@ -76,10 +76,10 @@ This article provides details on the Common schema as well as service-specific s
 |UserType|Self.[UserType](#user-type)|Yes|The type of user that performed the operation. See the [UserType](#user-type) table for details on the types of users.|
 |UserKey|Edm.String|Yes|An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange. |
 |Workload|Edm.String|No|The Office 365 service where the activity occurred. 
-|ResultStatus|Edm.String|No|Indicates whether the action (specified in the Operation property) was successful or not. Possible values are **Succeeded**, **PartiallySucceeded**, or **Failed**. For Exchange admin activity, the value is either **True** or **False**.<br/><br/>**Important**: Different workloads may overwrite the value of the ResultStatus property. For example, for Azure Active Directory STS logon events, a value of **Succeeded** for ResultStatus indicates only that the HTTP operation was successful; it doesn't mean the logon was successful. To determine if the actual logon was successful or not, see the LogonError property in the [Azure Active Directory STS Logon schema](#azure-active-directory-secure-token-service-sts-logon-schema). If the logon failed, the value of this property will contain the reason for the failed logon attempt. |
+|ResultStatus|Edm.String|No|Indicates whether the action (specified in the Operation property) was successful or not. Possible values are **Succeeded**, **PartiallySucceeded**, or **Failed**. For Exchange admin activity, the value is either **True** or **False**.<br/><br/>**Important**: Different workloads may overwrite the value of the ResultStatus property. For example, for Microsoft Entra ID STS logon events, a value of **Succeeded** for ResultStatus indicates only that the HTTP operation was successful; it doesn't mean the logon was successful. To determine if the actual logon was successful or not, see the LogonError property in the [Microsoft Entra ID STS Logon schema](#azure-active-directory-secure-token-service-sts-logon-schema). If the logon failed, the value of this property will contain the reason for the failed logon attempt. |
 |ObjectId|Edm.string|No|For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. For Exchange admin audit logging, the name of the object that was modified by the cmdlet.|
 |UserId|Edm.string|Yes|The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, `my_name@my_domain_name`. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see [The app@sharepoint user in audit records](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records). |
-|ClientIP|Edm.String|Yes|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.<br/><br/>For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. <br/><br/>Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is `null`.|
+|ClientIP|Edm.String|Yes|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.<br/><br/>For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. <br/><br/>Also, for Microsoft Entra ID-related events, the IP address isn't logged and the value for the ClientIP property is `null`.|
 |Scope|Self.[AuditLogScope](#auditlogscope)|No|Was this event created by a hosted O365 service or an on-premises server? Possible values are **online** and **onprem**. Note that SharePoint is the only workload currently sending events from on-premises to O365.|
 |AppAccessContext|CollectionSelf.[AppAccessContext](#complex-type-appaccesscontext)|No|The application context for the user or service principal that performed the action.|
 
@@ -95,13 +95,13 @@ This article provides details on the Common schema as well as service-specific s
 |4|SharePoint|SharePoint events.|
 |6|SharePointFileOperation|SharePoint file operation events.|
 |7|OneDrive|OneDrive for Business events.|
-|8|AzureActiveDirectory|Azure Active Directory events.|
-|9|AzureActiveDirectoryAccountLogon|Azure Active Directory OrgId logon events (deprecated).|
+|8|AzureActiveDirectory|Microsoft Entra ID events.|
+|9|AzureActiveDirectoryAccountLogon|Microsoft Entra ID OrgId logon events (deprecated).|
 |10|DataCenterSecurityCmdlet|Data Center security cmdlet events.|
 |11|ComplianceDLPSharePoint|Data loss protection (DLP) events in SharePoint and OneDrive for Business.|
 |13|ComplianceDLPExchange|Data loss protection (DLP) events in Exchange, when configured via Unified DLP Policy. DLP events based on Exchange Transport Rules are not supported.|
 |14|SharePointSharingOperation|SharePoint sharing events.|
-|15|AzureActiveDirectoryStsLogon|Secure Token Service (STS) logon events in Azure Active Directory.|
+|15|AzureActiveDirectoryStsLogon|Secure Token Service (STS) logon events in Microsoft Entra ID.|
 |16|SkypeForBusinessPSTNUsage|Public Switched Telephone Network (PSTN) events from Skype for Business.|
 |17|SkypeForBusinessUsersBlocked|Blocked user events from Skype for Business.|
 |18|SecurityComplianceCenterEOPCmdlet|Admin actions from the Security & Compliance Center.|
@@ -164,10 +164,10 @@ This article provides details on the Common schema as well as service-specific s
 |82|SensitivityLabelPolicyMatch|Events generated when the file labeled with a sensitivity label is opened or renamed.|
 |83|SensitivityLabelAction|Event generated when sensitivity labels are applied, updated, or removed from a file.|
 |84|SensitivityLabeledFileAction|Events generated when a file labeled with a sensitivity label is opened or renamed.|
-|85|AttackSim|Attack simulator events.|
+|85|AttackSim|Events related to user activities in Attack Simulation & Training in Microsoft Defender for Office 365.|
 |86|AirManualInvestigation|Events related to manual investigations in Automated investigation and response (AIR). |
 |87|SecurityComplianceRBAC|Security and compliance RBAC events.|
-|88|UserTraining|Attack simulator training events in Microsoft Defender for Office 365.|
+|88|UserTraining|Events related to user training in Attack Simulation & Training in Microsoft Defender for Office 365.|
 |89|AirAdminActionInvestigation|Events related to admin actions in  Automated investigation and response (AIR).|
 |90|MSTIC|Threat intelligence events in Microsoft Defender for Office 365.|
 |91|PhysicalBadgingSignal|Events related to physical badging signals that support the Insider risk management solution.|
@@ -189,7 +189,7 @@ This article provides details on the Common schema as well as service-specific s
 |113|MS365DCustomDetection|Events related to custom detection actions in Microsoft 365 Defender.|
 |147|CoreReportingSettings|Reports settings events.|
 |148|ComplianceConnector|Events related to importing non-Microsoft data using data connectors in the Microsoft Purview compliance portal.|
-|154|OMEPortal|Encrypted message portal event logs generated by external recipients.|
+|[154](OMEPortal.md)|OMEPortal|Encrypted message portal event logs generated by external recipients.|
 |174|DataShareOperation|Events related to sharing of data ingested via SystemSync.|
 |181|EduDataLakeDownloadOperation|Events related to the export of SystemSync ingested data from the lake.|
 |183|MicrosoftGraphDataConnectOperation|Events related to extractions done by Microsoft Graph Data Connect.|
@@ -209,8 +209,14 @@ This article provides details on the Common schema as well as service-specific s
 |200|ProjectForThewebRoadmapSettings|Microsoft Project for the web  roadmap tenant settings events.|
 |216|Viva Goals|Viva Goals events.|
 |217|MicrosoftGraphDataConnectConsent|Events for consent actions performed by tenant admins for Microsoft Graph Data Connect applications.|
+|218|AttackSimAdmin|Events related to admin activities in Attack Simulation & Training in Microsoft Defender for Office 365.|
 |230|TeamsUpdates|Teams Updates App Events.|
 |231|PlannerRosterSensitivityLabel|Microsoft Planner roster sensitivity label events.|
+|237|DefenderExpertsforXDRAdmin|Microsoft Defender Experts Administrator action events.|
+|251|VfamCreatePolicy|Viva Access Management policy create events.|
+|252|VfamUpdatePolicy|Viva Access Management policy update events.|
+|253|VfamDeletePolicy|Viva Access Management policy delete events.|
+|[261](copilot-schema.md)|CopilotInteraction|Copilot interaction events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -241,13 +247,13 @@ This article provides details on the Common schema as well as service-specific s
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|AADSessionId|Edm.String|No|The Azure Active Directory (AAD) SessionId of the AAD sign-in that was performed by the app on behalf of the user.|
+|AADSessionId|Edm.String|No|The Microsoft Entra SessionId of the Entra sign-in that was performed by the app on behalf of the user.|
 |APIId|Edm.String|No|The Id for the API pathway that is used to access the resource; for example access via the Microsoft Graph API.|
-|ClientAppId|Edm.String|No|The Id of the AAD app that performed the access on behalf of the user.|
-|ClientAppName|Edm.String|No|The name of the AAD app that performed the access on behalf of the user.|
+|ClientAppId|Edm.String|No|The Id of the Microsoft Entra app that performed the access on behalf of the user.|
+|ClientAppName|Edm.String|No|The name of the Microsoft Entra app that performed the access on behalf of the user.|
 |CorrelationId|Edm.String|No|An identifier that can be used to correlate a specific user's actions across Microsoft 365 services.|
-|UniqueTokenId|Edm.String|No|UniqueTokenId gets set if the AAD token is available for the request. It's a unique, per-token identifier that is case-sensitive.|
-|IssuedAtTime|Edm.Date|No|"Issued At" gets set if the AAD token is available for the request and it indicates when the authentication for this AAD token occurred.|
+|UniqueTokenId|Edm.String|No|UniqueTokenId gets set if the Microsoft Entra token is available for the request. It's a unique, per-token identifier that is case-sensitive.|
+|IssuedAtTime|Edm.Date|No|"Issued At" gets set if the Microsoft Entra token is available for the request and it indicates when the authentication for this Microsoft Entra token occurred.|
 
 ## SharePoint Base schema
 
@@ -329,7 +335,7 @@ This article provides details on the Common schema as well as service-specific s
 |EngagementRejected|User rejects a resource engagement in Project web app.|
 |EnterpriseCalendarModified|User copies, modifies or delete an enterprise calendar in Project web app.|
 |EntityDeleted|User deletes a timesheet in Project web app.|
-|EntityForceCheckedIn|User forces a checkin on a calendar, custom field or lookup table in Project web app.|
+|EntityForceCheckedIn|User forces a check-in on a calendar, custom field or lookup table in Project web app.|
 |ExemptUserAgentSet|Global administrator adds a user agent to the list of exempt user agents in the SharePoint admin center.|
 |FileAccessed|User or system account accesses a file on a SharePoint or OneDrive for Business site. System accounts can also generate FileAccessed events.|
 |FileCheckOutDiscarded|User discards (or undos) a checked out file. That means any changes they made to the file when it was checked out are discarded, and not saved to the version of the document in the document library.|
@@ -370,7 +376,7 @@ This article provides details on the Common schema as well as service-specific s
 |LanguageRemovedFromTermStore|Language removed from the terminology store.|
 |LegacyWorkflowEnabledSet|Site administrator or owner adds the SharePoint Workflow Task content type to the site. Global administrators can also enable work flows for the entire organization in the SharePoint admin center.|
 |LookAndFeelModified|User modifies a quick launch, gantt chart formats, or group formats.  Or the user creates, modifies, or deletes a view in Project web app.|
-|ManagedSyncClientAllowed|User successfully establishes a sync relationship with a SharePoint or OneDrive for Business site. The sync relationship is successful because the user's computer is a member of a domain that's been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. For more information, see [Use SharePoint Online PowerShell ](https://go.microsoft.com/fwlink/p/?LinkID=534609) to enable OneDrive sync for domains that are on the safe recipients list.|
+|ManagedSyncClientAllowed|User successfully establishes a sync relationship with a SharePoint or OneDrive for Business site. The sync relationship is successful because the user's computer is a member of a domain that's been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. For more information, see [Use SharePoint Online PowerShell](https://go.microsoft.com/fwlink/p/?LinkID=534609) to enable OneDrive sync for domains that are on the safe recipients list.|
 |MaxQuotaModified|The maximum quota for a site has been modified.|
 |MaxResourceUsageModified|The maximum allowable resource usage for a site has been modified.|
 |MySitePublicEnabledSet|The flag enabling users to have public MySites has been set by the SharePoint administrator.|
@@ -672,8 +678,8 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|AzureActiveDirectoryEventType|Self.[AzureActiveDirectoryEventType](#azureactivedirectoryeventtype)|Yes|The type of Azure AD event. |
-|ExtendedProperties|Collection(Common.NameValuePair)|No|The extended properties of the Azure AD event.|
+|AzureActiveDirectoryEventType|Self.[AzureActiveDirectoryEventType](#azureactivedirectoryeventtype)|Yes|The type of Microsoft Entra event. |
+|ExtendedProperties|Collection(Common.NameValuePair)|No|The extended properties of the Microsoft Entra event.|
 |ModifiedProperties|Collection(Common.ModifiedProperty)|No|This property is included for admin events. The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
 
 ### Enum: AzureActiveDirectoryEventType - Type -Edm.Int32
@@ -781,7 +787,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |:-----|:-----|:-----|:-----|
 |ApplicationId|Edm.String|No|The GUID that represents the application that is requesting the login. The display name can be looked up via the Azure Active Directory Graph API.|
 |Client|Edm.String|No|Client device information, provided by the browser performing the login.|
-|DeviceProperties|Collection(Common.NameValuePair)|No|This property includes various device details, including Id, Display name, OS, Browser, IsCompliant, IsCompliantAndManaged, SessionId, and DeviceTrustType. The DeviceTrustType property can have the following values:<br/><br/>**0** - Azure AD registered<br/> **1** - Azure AD joined<br/> **2** - Hybrid Azure AD joined|
+|DeviceProperties|Collection(Common.NameValuePair)|No|This property includes various device details, including Id, Display name, OS, Browser, IsCompliant, IsCompliantAndManaged, SessionId, and DeviceTrustType. The DeviceTrustType property can have the following values:<br/><br/>**0** - Microsoft Entra registered<br/> **1** - Microsoft Entra joined<br/> **2** - Hybrid Microsoft Entra joined|
 |ErrorCode|Edm.String|No|For failed logins (where the value for the Operation property is UserLoginFailed), this property contains the Azure Active Directory STS (AADSTS) error code. For descriptions of these error codes, see [Authentication and authorization error codes](/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes). A value of `0` indicates a successful login.|
 |LogonError|Edm.String|No|For failed logins, this property contains a user-readable description of the reason for the failed login.|
 
@@ -1825,7 +1831,7 @@ The following table contains information related to AIP sensitivity label events
 
 | Event                | Description |
 |:---------------------|:------------|
-|	ApplicationId	|	Corresponds to the Azure AD Application ID.	|
+|	ApplicationId	|	Corresponds to the Microsoft Entra Application ID.	|
 |	ApplicationName	|	Application friendly name of the application performing the operation.	|
 |	CreationDate	|	The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.	|
 |	DataState	|	Specifies the state of the data.	|
@@ -1920,7 +1926,7 @@ The following table contain information related to AIP heartbeat events.
 
 | Event | Description |
 |:--|:--|
-|	ApplicationId	|	Corresponds to the Azure AD Application ID.	|
+|	ApplicationId	|	Corresponds to the Microsoft Entra Application ID.	|
 |	ApplicationName	|	Application friendly name of the application performing the operation.	|
 |	CreationDate	|	The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.	|
 |	DataState	|	Specifies the state of the data.	|
