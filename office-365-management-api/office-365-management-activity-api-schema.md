@@ -847,7 +847,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |SensitiveInformation|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|No|Information about the type of sensitive information detected.|
-|EnforcementMode|Edm.String|Yes|Indicate whether the DLP Rule set to 1/2/3/4 depicting audit/warn(block with override)/block/allow(audit without alerts) respectively.|
+|EnforcementMode|Edm.String|Yes|Indicate whether the DLP Rule set to 1/2/3/4/5 depicting audit/warn(block with override)/warn and bypass/block/allow(audit without alerts) respectively.|
 |FileExtension|Edm.String|No|The file extension of the document that contained the sensitive information.|
 |FileType|Edm.String|No|The file type of the document that conatined the sensitive information.|
 |DeviceName|Edm.String|No|The name of the device on which DLP rule match was detected.|
