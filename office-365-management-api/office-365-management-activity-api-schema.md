@@ -217,6 +217,7 @@ This article provides details on the Common schema as well as service-specific s
 |252|VfamUpdatePolicy|Viva Access Management policy update events.|
 |253|VfamDeletePolicy|Viva Access Management policy delete events.|
 |[261](copilot-schema.md)|CopilotInteraction|Copilot interaction events.|
+|287|ProjectForThewebAssignedToMeSettings|Microsoft Project for the web assigned to me tenant settings events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -2163,3 +2164,9 @@ Microsoft Project For The web extends the [Common schema](#common-schema) with t
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |RoadmapEnabled|Edm.Boolean|Yes|The value that was set for Roadmap (1= enabled, 0 disabled).|
+
+### ProjectForThewebAssignedToMeSetting record type
+
+|**Properties**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|AssignedToMeEnabled|Edm.Boolean|Yes|The value that was set for AssignedToMe (1= enabled, 0 disabled).|
