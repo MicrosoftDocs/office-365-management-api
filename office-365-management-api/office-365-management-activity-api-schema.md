@@ -61,7 +61,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
-
+|[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 ## Common schema
 
 **EntityType Name**: AuditRecord
@@ -217,6 +217,10 @@ This article provides details on the Common schema as well as service-specific s
 |252|VfamUpdatePolicy|Viva Access Management policy update events.|
 |253|VfamDeletePolicy|Viva Access Management policy delete events.|
 |[261](copilot-schema.md)|CopilotInteraction|Copilot interaction events.|
+|280|VivaPulseResponse|Viva Pulse survey response events.|
+|281|VivaPulseOrganizer|Viva Pulse survey organizer events.|
+|282|VivaPulseAdmin|Viva Pulse admin events.|
+|283|VivaPulseReport|Viva Pulse report related events.|
 |287|ProjectForThewebAssignedToMeSettings|Microsoft Project for the web assigned to me tenant settings events.|
 
 ### Enum: User Type - Type: Edm.Int32
@@ -225,16 +229,20 @@ This article provides details on the Common schema as well as service-specific s
 
 |Value|Member name|Description|
 |:-----|:-----|:-----|
-|0|Regular|A regular user.|
-|1|Reserved|A reserved user.|
-|2|Admin|An administrator.|
-|3|DcAdmin|A Microsoft datacenter operator.|
-|4|System|A system account.|
-|5|Application|An application.|
+|0|Regular|A regular user without admin permissions.|
+|1|Reserved|A reserved value, not for use.|
+|2|Admin|An administrator in your Microsoft 365 organization. **|
+|3|DCAdmin|A Microsoft datacenter administrator or datacenter system account.|
+|4|System|An audit event triggered by server-side logic. For example, Windows services or background processes.|
+|5|Application|An audit event triggered by a Microsoft Entra application.|
 |6|ServicePrincipal|A service principal.|
-|7|CustomPolicy|A custom policy.|
-|8|SystemPolicy|A system policy.|
+|7|CustomPolicy|A customer created or managed policy.|
+|8|SystemPolicy|A Microsoft-managed or system policy.|
+|9|PartnerTechnician|A partner tenant's user working on behalf of the customer tenant (in [GDAP ](/partner-center/gdap-introduction)scenarios).|
+|10|Guest|A guest or anonymous user.|
 
+> [!NOTE]
+> ** For Microsoft Entra related events, the value for an administrator isn't used in an audit record. Audit records for activities performed by administrators will indicate that a regular user (for example, **UserType: 0**) performed the activity. The **UserID** property will identify the person (regular user or administrator) who performed this activity.
 ### Enum: AuditLogScope - Type: Edm.Int32
 
 #### AuditLogScope
@@ -2170,3 +2178,22 @@ Microsoft Project For The web extends the [Common schema](#common-schema) with t
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |AssignedToMeEnabled|Edm.Boolean|Yes|The value that was set for AssignedToMe (1= enabled, 0 disabled).|
+
+## Viva Pulse schema
+
+The audit records for events related to Viva Pulse use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). For details about capturing events and activities related to Viva Pulse, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+
+|**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
+|---------|---------|---------|---------|
+|EventName|Edm.String |No |A description of the event or the activity that occurred in Viva Pulse.|
+|PulseId|Edm.String |No |Id of the pulse survey.|
+|EventDetails|Collection(Common.NameValuePair) |No |Additional properties about the event.|
+
+Each VivaPulse event record different set of properties in EventDetails.
+
+|**EventName** |**PropertName** |**Description**|
+|--------------|----------------|---------------|
+|PulseReportShare|Recipients| List of recipient ids with whom the pulse survey is shared.|
+|PulseCreate|Recipients| List of user ids who are participants of the spcified pulse survey.|
+|PulseInvite|Recipients| List of user IDs who are additionally invited to the pulse.|
+|PulseTenantSettingsUpdate|TenantSettingName| Changed settings name.|
