@@ -225,16 +225,20 @@ This article provides details on the Common schema as well as service-specific s
 
 |Value|Member name|Description|
 |:-----|:-----|:-----|
-|0|Regular|A regular user.|
-|1|Reserved|A reserved user.|
-|2|Admin|An administrator.|
-|3|DcAdmin|A Microsoft datacenter operator.|
-|4|System|A system account.|
-|5|Application|An application.|
+|0|Regular|A regular user without admin permissions.|
+|1|Reserved|A reserved value, not for use.|
+|2|Admin|An administrator in your Microsoft 365 organization. **|
+|3|DCAdmin|A Microsoft datacenter administrator or datacenter system account.|
+|4|System|An audit event triggered by server-side logic. For example, Windows services or background processes.|
+|5|Application|An audit event triggered by a Microsoft Entra application.|
 |6|ServicePrincipal|A service principal.|
-|7|CustomPolicy|A custom policy.|
-|8|SystemPolicy|A system policy.|
+|7|CustomPolicy|A customer created or managed policy.|
+|8|SystemPolicy|A Microsoft-managed or system policy.|
+|9|PartnerTechnician|A partner tenant's user working on behalf of the customer tenant (in [GDAP ](/partner-center/gdap-introduction)scenarios).|
+|10|Guest|A guest or anonymous user.|
 
+> [!NOTE]
+> ** For Microsoft Entra related events, the value for an administrator isn't used in an audit record. Audit records for activities performed by administrators will indicate that a regular user (for example, **UserType: 0**) performed the activity. The **UserID** property will identify the person (regular user or administrator) who performed this activity.
 ### Enum: AuditLogScope - Type: Edm.Int32
 
 #### AuditLogScope
