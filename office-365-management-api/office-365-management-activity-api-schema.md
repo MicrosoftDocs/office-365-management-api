@@ -61,7 +61,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Viva Goals schema](#viva-goals-schema)|Extends the Common schema with the properties specific to all Viva Goals events.|
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
-
+|[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 ## Common schema
 
 **EntityType Name**: AuditRecord
@@ -217,6 +217,10 @@ This article provides details on the Common schema as well as service-specific s
 |252|VfamUpdatePolicy|Viva Access Management policy update events.|
 |253|VfamDeletePolicy|Viva Access Management policy delete events.|
 |[261](copilot-schema.md)|CopilotInteraction|Copilot interaction events.|
+|280|VivaPulseResponse|Viva Pulse survey response events.|
+|281|VivaPulseOrganizer|Viva Pulse survey organizer events.|
+|282|VivaPulseAdmin|Viva Pulse admin events.|
+|283|VivaPulseReport|Viva Pulse report related events.|
 |287|ProjectForThewebAssignedToMeSettings|Microsoft Project for the web assigned to me tenant settings events.|
 
 ### Enum: User Type - Type: Edm.Int32
@@ -2174,3 +2178,22 @@ Microsoft Project For The web extends the [Common schema](#common-schema) with t
 |**Properties**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |AssignedToMeEnabled|Edm.Boolean|Yes|The value that was set for AssignedToMe (1= enabled, 0 disabled).|
+
+## Viva Pulse schema
+
+The audit records for events related to Viva Pulse use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). For details about capturing events and activities related to Viva Pulse, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+
+|**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
+|---------|---------|---------|---------|
+|EventName|Edm.String |No |A description of the event or the activity that occurred in Viva Pulse.|
+|PulseId|Edm.String |No |Id of the pulse survey.|
+|EventDetails|Collection(Common.NameValuePair) |No |Additional properties about the event.|
+
+Each VivaPulse event record different set of properties in EventDetails.
+
+|**EventName** |**PropertName** |**Description**|
+|--------------|----------------|---------------|
+|PulseReportShare|Recipients| List of recipient ids with whom the pulse survey is shared.|
+|PulseCreate|Recipients| List of user ids who are participants of the spcified pulse survey.|
+|PulseInvite|Recipients| List of user IDs who are additionally invited to the pulse.|
+|PulseTenantSettingsUpdate|TenantSettingName| Changed settings name.|
