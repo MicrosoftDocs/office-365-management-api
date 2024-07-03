@@ -2189,7 +2189,7 @@ The audit records for events related to Viva Pulse use this schema (in addition 
 |PulseId|Edm.String |No |Id of the pulse survey.|
 |EventDetails|Collection(Common.NameValuePair) |No |Additional properties about the event.|
 
-Each VivaPulse event record different set of properties in EventDetails.
+Some of the VivaPulse events record different properties in EventDetails. Each property recorded in EventDetail are described in the table.
 
 |**EventName** |**PropertName** |**Description**|
 |--------------|----------------|---------------|
@@ -2197,3 +2197,9 @@ Each VivaPulse event record different set of properties in EventDetails.
 |PulseCreate|Recipients| List of user ids who are participants of the spcified pulse survey.|
 |PulseInvite|Recipients| List of user IDs who are additionally invited to the pulse.|
 |PulseTenantSettingsUpdate|TenantSettingName| Changed settings name.|
+|PulseSubmit| Not Applicable| This event does not record any property into EventDetails.|
+|PulseExtendDeadline| Not Applicable| This event does not record any property into EventDetails.|
+|PulseCancel| Not Applicable| This event does not record any property into EventDetails.|
+|PulseCreateDraft| Not Applicable| This event does not record any property into EventDetails.|
+|PulseDeleteDraft| Not Applicable| This event does not record any property into EventDetails.|
+|PulseDeleteUserData| Not Applicable| This event does not record any property into EventDetails.|
