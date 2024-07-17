@@ -32,6 +32,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Project schema](#project-schema)|Extends the SharePoint Base schema with the properties specific to Project.|
 |[Exchange Admin schema](#exchange-admin-schema)|Extends the Common schema with the properties specific to all Exchange admin audit data.|
 |[Exchange Mailbox schema](#exchange-mailbox-schema)|Extends the Common schema with the properties specific to all Exchange mailbox audit data.|
+|[OWA schema](#exchange-mailbox-schema)|Extends the Common schema with the properties specific to all Exchange mailbox audit data.|
 |[Microsoft Entra ID Base schema](#azure-active-directory-base-schema)|Extends the Common schema with the properties specific to all Microsoft Entra audit data.|
 |[Microsoft Entra account Logon schema](#azure-active-directory-account-logon-schema)|Extends the Microsoft Entra ID Base schema with the properties specific to all Microsoft Entra logon events.|
 |[Microsoft Entra ID Secure STS Logon schema](#azure-active-directory-secure-token-service-sts-logon-schema)|Extends the Microsoft Entra ID Base schema with the properties specific to all Microsoft Entra ID Secure Token Service (STS) logon events.|
