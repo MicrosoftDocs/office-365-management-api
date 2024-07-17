@@ -32,6 +32,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Project schema](#project-schema)|Extends the SharePoint Base schema with the properties specific to Project.|
 |[Exchange Admin schema](#exchange-admin-schema)|Extends the Common schema with the properties specific to all Exchange admin audit data.|
 |[Exchange Mailbox schema](#exchange-mailbox-schema)|Extends the Common schema with the properties specific to all Exchange mailbox audit data.|
+|[OWA Auth schema](#owa-auth-schema)|Extends the Common schema with the properties specific to OWA Auth data.|
 |[Microsoft Entra ID Base schema](#azure-active-directory-base-schema)|Extends the Common schema with the properties specific to all Microsoft Entra audit data.|
 |[Microsoft Entra account Logon schema](#azure-active-directory-account-logon-schema)|Extends the Microsoft Entra ID Base schema with the properties specific to all Microsoft Entra logon events.|
 |[Microsoft Entra ID Secure STS Logon schema](#azure-active-directory-secure-token-service-sts-logon-schema)|Extends the Microsoft Entra ID Base schema with the properties specific to all Microsoft Entra ID Secure Token Service (STS) logon events.|
@@ -217,6 +218,7 @@ This article provides details on the Common schema as well as service-specific s
 |252|VfamUpdatePolicy|Viva Access Management policy update events.|
 |253|VfamDeletePolicy|Viva Access Management policy delete events.|
 |[261](copilot-schema.md)|CopilotInteraction|Copilot interaction events.|
+|275|OWAAuth|Access Token for Resource issued successfully events.|
 |280|VivaPulseResponse|Viva Pulse survey response events.|
 |281|VivaPulseOrganizer|Viva Pulse survey organizer events.|
 |282|VivaPulseAdmin|Viva Pulse admin events.|
@@ -682,6 +684,13 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |:-----|:-----|:-----|:-----|
 |Id|Edm.String|Yes|The store ID of the folder object.|
 |Path|Edm.String|No|The name of the mailbox folder where the message that was accessed is located.|
+
+### OWA Auth schema
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|UniqueTokenIdentifier|Edm.String|No|A unique identifier for the resource.|
+|ResourceURL|Edm.String|No|The resource URL.|
 
 ## Azure Active Directory Base schema
 
