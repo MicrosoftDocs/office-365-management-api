@@ -227,7 +227,6 @@ This article provides details on the Common schema as well as service-specific s
 |282|VivaPulseAdmin|Viva Pulse admin events.|
 |283|VivaPulseReport|Viva Pulse report related events.|
 |287|ProjectForThewebAssignedToMeSettings|Microsoft Project for the web assigned to me tenant settings events.|
-|332|ComplianceSettingsChange|Microsoft Purview Compliance settings change events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
