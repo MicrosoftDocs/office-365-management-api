@@ -63,6 +63,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
+
 ## Common schema
 
 **EntityType Name**: AuditRecord
