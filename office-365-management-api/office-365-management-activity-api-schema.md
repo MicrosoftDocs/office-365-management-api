@@ -64,6 +64,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 |[Microsoft Purview Data Connectors schema](#data-connectors-schema)|Extends the Common schema with the properties specific to Microsoft Purview Data Connectors CRUD events.|
+|[Microsoft Purview Compliance Manager schema](#compliance-manager-schema)|Extends the common schema with the properties specific to Microsoft Purview Compliance manager events|
 ## Common schema
 
 **EntityType Name**: AuditRecord
@@ -2235,3 +2236,18 @@ Values taken by SettingsChange properties in Details for different operations ar
 |Update|OriginalValue | Original value for updated setting.|
 |Update|NewValue | New value for updated setting.|
 
+## Compliance Manager schema
+
+The audit records for events related to Microsoft Purview Compliance Manager use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). For details about capturing events and activities related to Compliance Manager, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+
+|**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
+|---------|---------|---------|---------|
+|Details|Collection(SettingsChange) |No |A description of the event that occurred for a Microsoft Purview Compliance Manager.|
+
+Values taken by SettingsChange properties in Details for different operations are described in the table below.
+
+|**Operation** |**PropertyName** |**Description**|
+|--------------|----------------|---------------|
+|All Operations|Name | Name of setting involved in the compliance manager that triggered the audit event|
+|All Operations|NewValue | New value for new setting depending on the value choosen by the admin during the settings change. For instance can be disabled/enabled |
+|All Operations|OriginalValue | Original value for original setting. Depicts the from state of the triggered event|
