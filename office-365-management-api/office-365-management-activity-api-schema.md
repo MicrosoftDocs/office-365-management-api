@@ -65,6 +65,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 |[Microsoft Purview Data Connectors schema](#data-connectors-schema)|Extends the Common schema with the properties specific to Microsoft Purview Data Connectors CRUD events.|
 |[Microsoft Purview Compliance Manager](#compliance-manager-schema)|Extends the common schema with the properties specific to Compliance Manager events.|
+
 ## Common schema
 
 **EntityType Name**: AuditRecord
