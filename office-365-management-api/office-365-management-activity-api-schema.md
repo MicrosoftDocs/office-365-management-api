@@ -63,6 +63,8 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
+|[Microsoft Purview Data Connectors schema](#data-connectors-schema)|Extends the Common schema with the properties specific to Microsoft Purview Data Connectors CRUD events.|
+|[Microsoft Purview Compliance Manager schema](#compliance-manager-schema)|Extends the common schema with the properties specific to Compliance Manager events.|
 
 ## Common schema
 
@@ -2216,3 +2218,44 @@ Some of the VivaPulse events record different properties in EventDetails. Each p
 |PulseCreateDraft| Not Applicable| This event does not record any property into EventDetails.|
 |PulseDeleteDraft| Not Applicable| This event does not record any property into EventDetails.|
 |PulseDeleteUserData| Not Applicable| This event does not record any property into EventDetails.|
+
+## Microsoft Purview Data Connectors schema
+
+The audit records for events related to Microsoft Purview Data Connectors use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). For details about capturing events and activities related to Data Connectors, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+
+|**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
+|---------|---------|---------|---------|
+|Details|Collection(SettingsChange) |No |A description of the event that occurred for a Microsoft Purview Data Connector.|
+
+Values taken by SettingsChange properties in Details for different operations are described in the table below.
+
+|**Operation** |**PropertyName** |**Description**|
+|--------------|----------------|---------------|
+|All Operations|Name | Name of setting involved in the data connector operation|
+|Create|NewValue | New value for new setting.|
+|Delete|OriginalValue | Original value for deleted setting.|
+|Update|OriginalValue | Original value for updated setting.|
+|Update|NewValue | New value for updated setting.|
+
+## Microsoft Purview Compliance Manager schema
+
+The audit records for events related to Microsoft Purview Compliance Manager use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). For details about capturing events and activities related to Compliance Manager, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+
+|**Parameters**  |**Type**  |**Mandatory?**  |**Description**  |
+|---------|---------|---------|---------|
+|Details|Collection(SettingsChange) |No |A description of the event that occurred for a Microsoft Purview Compliance Manager.|
+
+Values taken by SettingsChange properties in Details for different operations are described in the table below.
+
+|**Operation** |**PropertyName** |**Description**|
+|--------------|----------------|---------------|
+|All Operations |Name | Name of setting involved in the Compliance Manager operation|
+|All Operations |NewValue | New value for the new settings.|
+|All Operations |OriginalValue | Original value for new setting.|
+**Please note -**
+1. For role changes the name would be the role type
+2. The audit record would reflect the change in event, such as user is assigned a role or revoked role
+3. The original and new value would have the emails of the user for which the role has changed
+4. In case there is no change in the role, that role type would not be present in the audit record.
+=======
+
