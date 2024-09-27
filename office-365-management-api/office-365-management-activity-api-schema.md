@@ -65,6 +65,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 |[Compliance Manager schema](#compliance-manager-schema)|Extends the common schema with the properties specific to Compliance Manager events.|
 
+
 ## Common schema
 
 **EntityType Name**: AuditRecord
