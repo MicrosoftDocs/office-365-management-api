@@ -2235,6 +2235,7 @@ Values taken by SettingsChange properties in Details for different operations ar
 |All Operations |NewValue | New value for the new settings.|
 |All Operations |OriginalValue | Original value for new setting.|
 
+
 **Please note -**
 1. For role changes the name would be the role type
 2. The audit record would reflect the change in event, such as user is assigned a role or revoked role
