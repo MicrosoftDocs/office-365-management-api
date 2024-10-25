@@ -64,7 +64,10 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 |[Compliance Manager schema](#compliance-manager-schema)|Extends the common schema with the properties specific to Compliance Manager events.|
-
+|[Backup Policy Schema](#backup-policy-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup Policies.|
+|[Restore Task schema](#restore-task-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup Restore Tasks.|
+|[Backup Item schema](#backup-item-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup artifacts.|
+|[Restore Item schema](#restore-item-schema)|Extends the common schema with the properties specific to Microsoft 365 Backup Restore Items.|
 
 ## Common schema
 
@@ -230,6 +233,10 @@ This article provides details on the Common schema as well as service-specific s
 |282|VivaPulseAdmin|Viva Pulse admin events.|
 |283|VivaPulseReport|Viva Pulse report related events.|
 |287|ProjectForThewebAssignedToMeSettings|Microsoft Project for the web assigned to me tenant settings events.|
+|298|BackupPolicy|Events related to Microsoft 365 Backup Policies.|
+|299|RestoreTask|Events related to Microsoft 365 Backup Restore Tasks.|
+|300|RestoreItem|Events related to artifacts backed up with Microsoft 365 Backup.|
+|301|BackupItem|Events related to items being restored using Microsoft 365 Backup.|
 |332|ComplianceSettingsChange|Microsoft Purview Compliance settings change events.|
 ### Enum: User Type - Type: Edm.Int32
 
@@ -2242,3 +2249,48 @@ Values taken by SettingsChange properties in Details for different operations ar
 3. The original and new value would have the emails of the user for which the role has changed
 1. In case there is no change in the role, that role type would not be present in the audit record.
 
+## Backup Policy schema
+
+|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+|:---------------|:-------|:--------------|:--------------|
+|PolicyID|	Edm.String|	Yes |The ID of the policy.|
+|EditMethodology| Edm.String| No |How the policy was created / edited.|
+|CountOfArtifactsBeingAdded| Edm.Int32 |	No |Number of artifacts being added.|
+|CountOfArtifactsBeingRemoved| Edm.Int32 | No	|Number of artifacts being removed.|
+|ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+
+## Restore Task schema
+
+|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+|:---------------|:-------|:--------------|:--------------|
+|TaskID|	Edm.String|	Yes |The ID of the Restore Task.|
+|CreationMethodology| Edm.String| No |How the Restore Task was created / edited.|
+|CountOfArtifactsBeingAdded| Edm.Int32 |	No |Number of artifacts being added.|
+|CountOfArtifactsBeingRemoved| Edm.Int32 | No	|Number of artifacts being removed.|
+|ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+
+## Restore Item schema
+
+|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+|:---------------|:-------|:--------------|:--------------|
+|RestoreTime|	Edm.DateTime|	Yes |Time which the item is being restored to.|
+|RestoreLocationType| Edm.String| Yes |Location type that the item is being restored to.|
+|RestoreLocation| Edm.String |	No |Location that the item is being restored to.|
+|TaskID| Edm.String | Yes	|The ID of the Restore task.|
+|BackupItemID| Edm.String | Yes	|ID of the Backup Item being restored.|
+|ProtectionUnitID| Edm.String | Yes	|Protection Unit ID of the item being restored.|
+|SuccessStatus| Edm.String | No	|Whether the restore operation was successful.|
+|BackupItemType| Edm.String | Yes	|Whether the Backup Item is a Site / Account / Mailbox.|
+|ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+
+## Backup Item schema
+
+|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+|:---------------|:-------|:--------------|:--------------|
+|PolicyID| Edm.String | Yes	|Policy ID of the Policy the item is getting added to.|
+|ItemID| Edm.String | Yes	|ID of the Backup Item.|
+|ProtectionUnitID| Edm.String | Yes	|Protection Unit ID of the item being backed up.|
+|ResultStatus| Edm.String | No	|Whether the restore operation was successful.|
+|BackupItemType| Edm.String | Yes	|Whether the Backup Item is a Site / Account / Mailbox.|
+|EditMethodology| Edm.String | No	|How the backup item is to be added.|
+|ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
