@@ -920,7 +920,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |Location|Edm.String|No||
 |SensitiveType|Edm.Guid|Yes|A guid that identifies the type of sensitive data detected.|
 |SensitiveInformationDetections|Self.SensitiveInformationDetections|No|An array of objects that contain sensitive information data with the following details – matched value and context of matched value.|
-|SensitiveInformationDetailedClassificationAttributes|Collection(SensitiveInformationDetailedConfidenceLevelResult)|Yes|Information about the count of sensitive information type detected for each of the three confidence levels (High, Medium and Low) and wether it matches the DLP rule or not|
+|SensitiveInformationDetailed<BR>ClassificationAttributes|Collection(SensitiveInformationDetailed<BR>ConfidenceLevelResult)|Yes|Information about the count of sensitive information type detected for each of the three confidence levels (High, Medium and Low) and wether it matches the DLP rule or not|
 |SensitiveInformationTypeName|Edm.String|No|The name of the sensitive information type.|
 |UniqueCount|Edm.Int32|Yes|The unique count of sensitive instances detected.|
 
