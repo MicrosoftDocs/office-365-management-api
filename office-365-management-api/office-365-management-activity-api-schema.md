@@ -1007,7 +1007,8 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |GroupName|Edm.String|No|Name of the group in the operation. Will appear blank if not relevant to the operation.|
 |IsSoftDelete|Edm.Boolean|No|Returns "true" if the network's data retention policy is set to Soft Delete; returns "false" if the network's data retention policy is set to Hard Delete.|
 |MessageId|Edm.Int64|No|ID of the message in the operation.|
-|ModifiedProperties|Collection(ModifiedProperty)|No|This includes the name of the property that was modified, the new value of the modified object and the previous value of the modified object.|
+|ModifiedProperties|Collection(ModifiedProperty)|No|Includes the name of the property that was modified, the new value of the modified object and the previous value of the modified object.|
+
 |YammerNetworkId|Edm.Int64|No|Network ID of the user that performed the operation.|
 |TargetObjectId|Edm.String|No|Entra Id of the target user in the operation.|
 |TargetUserId|Edm.String|No|Email of target user in the operation. Will appear blank if not relevant to the operation.|
