@@ -64,7 +64,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 |[Compliance Manager schema](#compliance-manager-schema)|Extends the common schema with the properties specific to Compliance Manager events.|
-|[M365 Apps Admin Services cloud policy schema ](m365-apps-admin-services-cloud-policy-schema)|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
+|[M365 Apps Admin Services cloud policy schema ](#m365-apps-admin-services-cloud-policy-schema)|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
 
 ## Common schema
 
