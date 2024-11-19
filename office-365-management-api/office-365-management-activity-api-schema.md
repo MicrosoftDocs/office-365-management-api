@@ -2302,7 +2302,7 @@ Values taken by SettingsChange properties in Details for different operations ar
 
 ## M365 Apps Admin Services cloud policy schema
 
-The M365 Apps Admin Services cloud policy related events extend the [Common schema](#common-schema) with the following record types.
+The M365 Apps Admin Services [cloud policy](/microsoft-365-apps/admin-center/overview-cloud-policy) related events extend the [Common schema](#common-schema) with the following record types.
 
 ### CPSPolicyConfigAuditRecord
 
