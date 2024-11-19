@@ -64,10 +64,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 |[Compliance Manager schema](#compliance-manager-schema)|Extends the common schema with the properties specific to Compliance Manager events.|
-|[Backup Policy Schema](#backup-policy-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup Policies.|
-|[Restore Task schema](#restore-task-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup Restore Tasks.|
-|[Backup Item schema](#backup-item-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup artifacts.|
-|[Restore Item schema](#restore-item-schema)|Extends the common schema with the properties specific to Microsoft 365 Backup Restore Items.|
+|[M365 Apps Admin Services cloud policy schema ](#m365-apps-admin-services-cloud-policy-schema)|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
 
 ## Common schema
 
@@ -84,7 +81,7 @@ This article provides details on the Common schema as well as service-specific s
 |UserKey|Edm.String|Yes|An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange. |
 |Workload|Edm.String|Yes|The Office 365 service where the activity occurred.|
 |ResultStatus|Edm.String|No|Indicates whether the action (specified in the Operation property) was successful or not. Possible values are **Succeeded**, **PartiallySucceeded**, or **Failed**. For Exchange admin activity, the value is either **True** or **False**.<br/><br/>**Important**: Different workloads may overwrite the value of the ResultStatus property. For example, for Microsoft Entra ID STS logon events, a value of **Succeeded** for ResultStatus indicates only that the HTTP operation was successful; it doesn't mean the logon was successful. To determine if the actual logon was successful or not, see the LogonError property in the [Microsoft Entra ID STS Logon schema](#azure-active-directory-secure-token-service-sts-logon-schema). If the logon failed, the value of this property will contain the reason for the failed logon attempt. |
-|ObjectId|Edm.string|No|For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. For Exchange admin audit logging, the name of the object that was modified by the cmdlet.|
+|ObjectId|Edm.string|No|For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. For Exchange admin audit logging, the name of the object that was modified by the cmdlet. For Cloud Policy service, the object ID of the policy configuration.|
 |UserId|Edm.string|Yes|The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, `my_name@my_domain_name`. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see [The app@sharepoint user in audit records](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records). |
 |ClientIP|Edm.String|Yes|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.<br/><br/>For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. <br/><br/>Also, for Microsoft Entra ID-related events, the IP address isn't logged and the value for the ClientIP property is `null`.|
 |Scope|Self.[AuditLogScope](#auditlogscope)|No|Was this event created by a hosted O365 service or an on-premises server? Possible values are **online** and **onprem**. Note that SharePoint is the only workload currently sending events from on-premises to O365.|
@@ -233,10 +230,7 @@ This article provides details on the Common schema as well as service-specific s
 |282|VivaPulseAdmin|Viva Pulse admin events.|
 |283|VivaPulseReport|Viva Pulse report related events.|
 |287|ProjectForThewebAssignedToMeSettings|Microsoft Project for the web assigned to me tenant settings events.|
-|298|BackupPolicy|Events related to Microsoft 365 Backup Policies.|
-|299|RestoreTask|Events related to Microsoft 365 Backup Restore Tasks.|
-|300|RestoreItem|Events related to artifacts backed up with Microsoft 365 Backup.|
-|301|BackupItem|Events related to items being restored using Microsoft 365 Backup.|
+|288|CloudPolicyService|Events from the Cloud Policy service.|
 |332|ComplianceSettingsChange|Microsoft Purview Compliance settings change events.|
 ### Enum: User Type - Type: Edm.Int32
 
@@ -878,7 +872,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |SensitiveInformation|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|No|Information about the type of sensitive information detected.|
-|EnforcementMode|Edm.String|Yes|Indicate whether the DLP Rule set to 1/2/3/4/5 depicting audit/warn(block with override)/warn and bypass/block/allow(audit without alerts) respectively.|
+|EnforcementMode|Edm.String|Yes|Indicate whether the DLP Rule set to 1/2/3/4 depicting audit/warn(block with override)/block/allow(audit without alerts) respectively.|
 |FileExtension|Edm.String|No|The file extension of the document that contained the sensitive information.|
 |FileType|Edm.String|No|The file type of the document that conatined the sensitive information.|
 |DeviceName|Edm.String|No|The name of the device on which DLP rule match was detected.|
@@ -920,7 +914,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |Location|Edm.String|No||
 |SensitiveType|Edm.Guid|Yes|A guid that identifies the type of sensitive data detected.|
 |SensitiveInformationDetections|Self.SensitiveInformationDetections|No|An array of objects that contain sensitive information data with the following details – matched value and context of matched value.|
-|SensitiveInformationDetailed<BR>ClassificationAttributes|Collection(SensitiveInformationDetailed<BR>ConfidenceLevelResult)|Yes|Information about the count of sensitive information type detected for each of the three confidence levels (High, Medium and Low) and wether it matches the DLP rule or not.|
+|SensitiveInformationDetailedClassificationAttributes|Collection(SensitiveInformationDetailedConfidenceLevelResult)|Yes|Information about the count of sensitive information type detected for each of the three confidence levels (High, Medium and Low) and wether it matches the DLP rule or not|
 |SensitiveInformationTypeName|Edm.String|No|The name of the sensitive information type.|
 |UniqueCount|Edm.Int32|Yes|The unique count of sensitive instances detected.|
 
@@ -1007,12 +1001,9 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |GroupName|Edm.String|No|Name of the group in the operation. Will appear blank if not relevant to the operation.|
 |IsSoftDelete|Edm.Boolean|No|Returns "true" if the network's data retention policy is set to Soft Delete; returns "false" if the network's data retention policy is set to Hard Delete.|
 |MessageId|Edm.Int64|No|ID of the message in the operation.|
-|ModifiedProperties|Collection(ModifiedProperty)|No|Includes the name of the property that was modified, the new value of the modified object and the previous value of the modified object.|
 |YammerNetworkId|Edm.Int64|No|Network ID of the user that performed the operation.|
-|TargetObjectId|Edm.String|No|Entra Id of the target user in the operation.|
 |TargetUserId|Edm.String|No|Email of target user in the operation. Will appear blank if not relevant to the operation.|
 |TargetYammerUserId|Edm.Int64|No|ID of target user in the operation.|
-|ThreadId| Edm.Int64|No|ID of the Message thread in the operation.|
 |VersionId|Edm.Int64|No|Version ID of the file in the operation.|
 
 ## Data Center Security Base schema
@@ -1392,14 +1383,14 @@ Currently, only automated investigation are logged. (Events for manually generat
 
 |Name    |Type    |Description  |
 |----|----|----|
-|InvestigationId    |Edm.String    |Investigation ID/GUID. |
-|InvestigationName    |Edm.String    |Name of the investigation. |
+|InvestigationId    |Edm.String    |Investigation ID/GUID |
+|InvestigationName    |Edm.String    |Name of the investigation |
 |InvestigationType    |Edm.String    |Type of the investigation. Can take one of the following values:<br/>- User-Reported Messages<br/>- Zapped Malware<br/>- Zapped Phish<br/>- Url Verdict Change<p>(Manual investigations are currently not available and are coming soon.) |
-|LastUpdateTimeUtc    |Edm.Date    |UTC time of the last update for an investigation. |
-|StartTimeUtc    |Edm.Date    |Start time for an investigation. |
+|LastUpdateTimeUtc    |Edm.Date    |UTC time of the last update for an investigation |
+|StartTimeUtc    |Edm.Date    |Start time for an investigation |
 |Status     |Edm.String     |State of investigation, Running, Pending Actions, etc. |
-|DeeplinkURL    |Edm.String    |Deep link URL to an investigation in Office 365 Security & Compliance Center. |
-|Actions |Collection (Edm.String)    |Collection of actions recommended by an investigation. |
+|DeeplinkURL    |Edm.String    |Deep link URL to an investigation in Office 365 Security & Compliance Center |
+|Actions |Collection (Edm.String)    |Collection of actions recommended by an investigation |
 |Data    |Edm.String    |Data string which contains more details about investigation entities, and information about alerts related to the investigation. Entities are available in a separate node within the data blob. |
 
 ### Actions
@@ -1407,18 +1398,18 @@ Currently, only automated investigation are logged. (Events for manually generat
 |Field    |Type    |Description |
 |----|----|----|
 |ID     |Edm.String    |Action ID|
-|ActionType    |Edm.String    |The type of the action, such as email remediation. |
+|ActionType    |Edm.String    |The type of the action, such as email remediation |
 |ActionStatus    |Edm.String    |Values include: <br/>- Pending<br/>- Running<br/>- Waiting on resource<br/>- Completed<br/>- Failed |
 |ApprovedBy    |Edm.String    |Null if auto approved; otherwise, the username/id (this is coming soon) |
-|TimestampUtc    |Edm.DateTime    |The timestamp of the action status change. |
-|ActionId    |Edm.String    |Unique identifier for action. |
-|InvestigationId    |Edm.String    |Unique identifier for investigation. |
-|RelatedAlertIds    |Collection(Edm.String)    |Alerts related to an investigation. |
-|StartTimeUtc    |Edm.DateTime    |Timestamp of action creation. |
-|EndTimeUtc    |Edm.DateTime    |Action final status update timestamp. |
+|TimestampUtc    |Edm.DateTime    |The timestamp of the action status change |
+|ActionId    |Edm.String    |Unique identifier for action |
+|InvestigationId    |Edm.String    |Unique identifier for investigation |
+|RelatedAlertIds    |Collection(Edm.String)    |Alerts related to an investigation |
+|StartTimeUtc    |Edm.DateTime    |Timestamp of action creation |
+|EndTimeUtc    |Edm.DateTime    |Action final status update timestamp |
 |Resource Identifiers     |Edm.String     |Consists of the Azure Active Directory tenant ID.|
-|Entities    |Collection(Edm.String)    |List of one or more affected entities by action. |
-|Related Alert IDs    |Edm.String    |Alert related to an investigation. |
+|Entities    |Collection(Edm.String)    |List of one or more affected entities by action |
+|Related Alert IDs    |Edm.String    |Alert related to an investigation |
 
 ### Entities
 
@@ -1427,67 +1418,67 @@ Currently, only automated investigation are logged. (Events for manually generat
 |Field    |Type    |Description  |
 |----|----|----|
 |Type    |Edm.String    |"mail-message"  |
-|Files    |Collection (Self.File) |Details about the files of this message's attachments. |
-|Recipient    |Edm.String    |The recipient of this mail message. |
-|Urls    |Collection(Self.URL) |The Urls contained in this mail message. |
-|Sender    |Edm.String    |The sender's email address. |
-|SenderIP    |Edm.String    |The sender's IP address. |
-|ReceivedDate    |Edm.DateTime    |The received date of this message. |
-|NetworkMessageId    |Edm.Guid     |The network message id of this mail message. |
-|InternetMessageId    |Edm.String  |The internet message id of this mail message. |
-|Subject    |Edm.String    |The subject of this mail message. |
+|Files    |Collection (Self.File) |Details about the files of this message's attachments |
+|Recipient    |Edm.String    |The recipient of this mail message |
+|Urls    |Collection(Self.URL) |The Urls contained in this mail message  |
+|Sender    |Edm.String    |The sender's email address  |
+|SenderIP    |Edm.String    |The sender's IP address  |
+|ReceivedDate    |Edm.DateTime    |The received date of this message  |
+|NetworkMessageId    |Edm.Guid     |The network message id of this mail message  |
+|InternetMessageId    |Edm.String  |The internet message id of this mail message |
+|Subject    |Edm.String    |The subject of this mail message  |
 
 #### IP
 
 |Field    |Type    |Description  |
 |----|----|----|
 |Type    |Edm.String    |"ip" |
-|Address    |Edm.String    |The IP address as a string, such as `127.0.0.1`.|
+|Address    |Edm.String    |The IP address as a string, such as `127.0.0.1`
 
 #### URL
 
 |Field    |Type    |Description  |
 |----|----|----|
 |Type    |Edm.String    |"url" |
-|Url    |Edm.String    |The full URL to which an entity points.  |
+|Url    |Edm.String    |The full URL to which an entity points  |
 
 #### Mailbox (also equivalent to the user) 
 
 |Field    |Type    |Description |
 |----|----|----|
 |Type    |Edm.String    |"mailbox"  |
-|MailboxPrimaryAddress    |Edm.String    |The mailbox's primary address.  |
-|DisplayName    |Edm.String    |The mailbox's display name. |
-|Upn    |Edm.String    |The mailbox's UPN.  |
+|MailboxPrimaryAddress    |Edm.String    |The mailbox's primary address  |
+|DisplayName    |Edm.String    |The mailbox's display name |
+|Upn    |Edm.String    |The mailbox's UPN  |
 
 #### File
 
 |Field    |Type    |Description  |
 |----|----|----|
 |Type    |Edm.String    |"file" |
-|Name    |Edm.String    |The file name without path. |
-FileHashes |Collection (Edm.String)    |The file hashes associated with the file. |
+|Name    |Edm.String    |The file name without path |
+FileHashes |Collection (Edm.String)    |The file hashes associated with the file |
 
 #### FileHash
 
 |Field    |Type    |Description |
 |----|----|----|
 |Type    |Edm.String    |"filehash" |
-|Algorithm    |Edm.String    |The hash algorithm type, which can be one of these values:<br/>- Unknown<br/>- MD5<br/>- SHA1<br/>- SHA256<br/>- SHA256AC |
-|Value    |Edm.String    |The hash value. |
+|Algorithm    |Edm.String    |The hash algorithm type, which can be one of these values:<br/>- Unknown<br/>- MD5<br/>- SHA1<br/>- SHA256<br/>- SHA256AC
+|Value    |Edm.String    |The hash value  |
 
 #### MailCluster
 
 |Field    |Type    |Description   |
 |----|----|----|
-|Type    |Edm.String    |"MailCluster" <br/>Determines the type of entity being discussed. |
-|NetworkMessageIds    |Collection (Edm.String)    |List of the mail message IDs that are part of the mail cluster. |
-|CountByDeliveryStatus    |Collections (Edm.String)    |Count of mail messages by DeliveryStatus string representation. |
-|CountByThreatType    |Collections (Edm.String) |Count of mail messages by ThreatType string representation. |
+|Type    |Edm.String    |"MailCluster" <br/>Determines the type of entity being discussed |
+|NetworkMessageIds    |Collection (Edm.String)    |List of the mail message IDs that are part of the mail cluster |
+|CountByDeliveryStatus    |Collections (Edm.String)    |Count of mail messages by DeliveryStatus string representation |
+|CountByThreatType    |Collections (Edm.String) |Count of mail messages by ThreatType string representation |
 |Threats    |Collections (Edm.String)    |The threats of mail messages that are part of the mail cluster. Threats include values like Phish and Malware. |
-|Query    |Edm.String    |The query that was used to identify the messages of the mail cluster. |
-|QueryTime    |Edm.DateTime    |The query time. |
-|MailCount    |Edm.int    |The number of mail messages that are part of the mail cluster. |
+|Query    |Edm.String    |The query that was used to identify the messages of the mail cluster  |
+|QueryTime    |Edm.DateTime    |The query time  |
+|MailCount    |Edm.int    |The number of mail messages that are part of the mail cluster  |
 |Source    |String    |The source of the mail cluster; the value of the cluster source. |
 
 ## Hygiene events schema
@@ -1637,8 +1628,8 @@ The Microsoft Forms events listed in [Search the audit log in the Office 365 Sec
 |**Value**|**Form Types**|**Description**|
 |:-----|:-----|:-----|
 |0|Form|Forms that are created with the New Form option.|
-|1|Quiz|Quizzes that are created with the New Quiz option. A quiz is a special type of form that includes additional features such as point values, auto and manual grading, and commenting.|
-|2|Survey|Surveys that are created with the New Survey option. A survey is a special type of form that includes additional features such as CMS integration and support for Flow rules.|
+|1|Quiz|Quizzes that are created with the New Quiz option.  A quiz is a special type of form that includes additional features such as point values, auto and manual grading, and commenting.|
+|2|Survey|Surveys that are created with the New Survey option.  A survey is a special type of form that includes additional features such as CMS integration and support for Flow rules.|
 
 ## MIP label schema
 
@@ -1748,9 +1739,9 @@ Events in the compliance connector schema are triggered when items that are impo
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |FileName|Edm.String|No|The name of the attachment.|
-|Details|Edm.String|No|Other details about the attachment.|
+|Details|Edm.String|No|Other details about the attachment.
  
-## SystemSync schema
+ ## SystemSync schema
 
 Events in the SystemSync schema are triggered when the SystemSync ingested data is either exported via Data Lake or shared via other services.
 
@@ -1804,7 +1795,7 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 |1|DownloadZipFile|The admin user downloaded the exported data.|
 
  
-#### MicrosoftGraphDataConnectOperation complex type
+ #### MicrosoftGraphDataConnectOperation complex type
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -1825,7 +1816,7 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 |Status|Edm.String|Yes|The extraction status.|
 |Reason|Edm.String|No|The error message in case of failure.|
  
-## AipDiscover
+ ## AipDiscover
 
 The following table contains information related to Azure Information Protection (AIP) scanner events.
 
@@ -1873,7 +1864,7 @@ The following table contains information related to AIP sensitivity label events
 |	Identity	|	The identity of the user or service to be authenticated.	|
 |	IsProtected	|	Whether protected: True/False	|
 |	IsProtectedBefore	|	Whether the content was protected before change: True/False	|
-|	IsValid	|	Boolean	| 
+|	IsValid	|	Boolean	|
 |	Location	|	The location of the document with respect to the user's device. The possible values are unknown, localMedia, removableMedia, fileshare, and cloud.	|
 |	ObjectState	|	Specifies the state of the object.	|
 |Operation             | The operation type for the audit log.The name of the user or admin activity. For a description of the most common operations/activities:</br>SensitivityLabelApplied</br>SensitivityLabelUpdated</br>SensitivityLabelRemoved</br>SensitivityLabelPolicyMatched</br>SensitivityLabeledFileOpened.|
@@ -1888,7 +1879,7 @@ The following table contains information related to AIP sensitivity label events
 |	RunspaceId	|	The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user.	|
 |	SensitiveInfoTypeData	|	Stores the datatype of the Sensitive Info Type Data	|
 |	TemplateId	|	TemplateID parameter to get a specific template. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.	|
-|UserId      | The User Principal Name (UPN) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service.|
+|UserId                | The User Principal Name (UPN) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service.|
 
 ## AipProtectionAction
 
@@ -1971,7 +1962,7 @@ The following table contain information related to AIP heartbeat events.
 |	IsValid	|	Boolean	|
 |	Location	|	The location of the document with respect to the user's device. The possible values are unknown, localMedia, removableMedia, fileshare, and cloud.	|
 |	ObjectState	|	Specifies the state of the object.	|
-|	Operation	|	The operation type for the audit log. The name of the user or admin activity.	|
+|	Operation	|	The operation type for the audit log.The name of the user or admin activity. For a description of the most common operations/activities:	|
 |	PSComputerName	|	Computer Name	|
 |	PSShowComputerName	|	The value is False for documented edited in Office 365.	|
 |	Platform	|	Device platform (Win, OSX, Android, iOS). 	|
@@ -1980,7 +1971,7 @@ The following table contain information related to AIP heartbeat events.
 |	ProtectionType	|	Protection type can be template or ad-hoc.	|
 |	RecordType	|	Shows the value of Label Action. The operation type indicated by the record. For more information, see the full list of record types.	|
 |	RunspaceId	|	The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user.	|
-|	SensitiveInfoTypeData	|	Stores the datatype of the Sensitive Info Type Data.	|
+|	SensitiveInfoTypeData	|	Stores the datatype of the Sensitive Info Type Data	|
 |	TemplateId	|	TemplateID parameter to get a specific template. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.	|
 |	UserId	|	 The UPN of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the app@sharepoint user in audit records.	|
 |UserType         | The type of user that performed the operation. See the UserType table for details on the types of users.</br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy|
@@ -2079,9 +2070,9 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
-|1|ReadAccess|Access to read Plan.|
-|2|ReadWriteAccess|Access to read and write to Plan.|
-|3|FullAccess|Access to read, write and configure Plan.|
+|1|ReadAccess|Access to read Plan|
+|2|ReadWriteAccess|Access to read and write to Plan|
+|3|FullAccess|Access to read, write and configure Plan|
 
 ### PlannerCopyPlan record type
 
@@ -2252,48 +2243,83 @@ Values taken by SettingsChange properties in Details for different operations ar
 3. The original and new value would have the emails of the user for which the role has changed
 1. In case there is no change in the role, that role type would not be present in the audit record.
 
-## Backup Policy schema
+## M365 Apps Admin Services cloud policy schema
 
-|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+The M365 Apps Admin Services cloud policy related events extend the [Common schema](#common-schema) with the following record types.
+
+### CPSPolicyConfigAuditRecord
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|PolicyID|	Edm.String|	Yes |The ID of the policy.|
-|EditMethodology| Edm.String| No |How the policy was created / edited.|
-|CountOfArtifactsBeingAdded| Edm.Int32 |	No |Number of artifacts being added.|
-|CountOfArtifactsBeingRemoved| Edm.Int32 | No	|Number of artifacts being removed.|
-|ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+|Name|Edm.String|No|Given name of policy configuration|
+|Description|Edm.String|No|Description provided for policy configuration|
+|CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Scope of policy configuration|
+|Groups|Collection(EdmString)|No|Lists all groups configured as scope in the policy configuration|
+|Configured Settings|Collection(Common.NameValuePair)|No|JSON value of configured policy settings|
+|Number_of_Policies_Configured|Edm.Int32|No|Number of configured policy settings|
+|Number_of_Security_Baselines_Configured|Edm.Int32|No|Number of configured Security Baseline settings|
+|Number_of_Accessibility_Baselines_Configured|Edm.Int32|No|Number of configured Accessibility Baseline settings|
+|Previous_Name|Edm.String|No|Previous given name of policy configuration|
+|Current_Name |Edm.String|Yes|Current given name of policy configuration|
+|Previous_Description|Edm.String|No|Previous description provided for policy configuration|
+|Current_Description|Edm.String|No|Current description provided for policy configuration|
+|Previous_CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Previous scope of policy configuration|
+|Current_CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Current scope of policy configuration|
+|Previous_Groups|Collection(Edm.Guid)|No|List of previously configured groups|
+|Current_Groups|Collection(Edm.Guid)|No|List of currently configured groups|
+|Changes_in_Configured_Settings|Collection(Common.NameValuePair)|No|JSON value of changed policy settings|
+|Previous_Number_of_Policies_Configured|Edm.Int32|No|Number of previously configured policy settings|
+|Current_Number_of_Policies_Configured|Edm.Int32|No|Number of currently configured policy settings|
+|Previous_Priority_Value|Edm.Int32|No|Previously configured priority value of policy configuration|
+|Current_Priority_Value|Edm.Int32|No|Currently configured priority value of policy configuration|
 
-## Restore Task schema
+### PolicyConfigChangeAuditRecord
 
-|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|TaskID|	Edm.String|	Yes |The ID of the Restore Task.|
-|CreationMethodology| Edm.String| No |How the Restore Task was created / edited.|
-|CountOfArtifactsBeingAdded| Edm.Int32 |	No |Number of artifacts being added.|
-|CountOfArtifactsBeingRemoved| Edm.Int32 | No	|Number of artifacts being removed.|
-|ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+|ConfigId|Edm.String|No|ID of the policy configuration|
+|ConfigId|Edm.String|No|ID of the policy configuration|
+|ConfigName|Edm.String|No|Given name of policy configuration|
+|Description|Edm.String|No|Description provided for policy configuration|
+|ConfigScope|Self.[CPSScope](#enum-cpsscope---type-edmint32)|No|Scope of policy configuration|
+|Groups|Collection(Common.NameValuePair)|No|List of configured groups|
+|Priority|Edm.Int32|No|Priority value of policy configuration|
+|Policies|Collection(Self.[Policy](#complex-type-policy))|No|List of configured policy settings|
+|Priorities|Collection(Self.[PrioritySetting](#complex-type-prioritysetting))|No|List of policy configurations and their priority values|
 
-## Restore Item schema
+### Enum: CPSScope - Type: Edm.Int32
 
-|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|1|Tenant|The policy configuration is scoped to all users in the tenant.|
+|1|Tenant|The policy configuration is scoped to all users in the tenant.|
+|2|Anonymous|The policy configuration is scoped to anonymous users.|
+|3|User|The policy configuration is scoped to users in configured Microsoft Entra group(s).|
+
+### Complex Type Policy
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|RestoreTime|	Edm.DateTime|	Yes |Time which the item is being restored to.|
-|RestoreLocationType| Edm.String| Yes |Location type that the item is being restored to.|
-|RestoreLocation| Edm.String |	No |Location that the item is being restored to.|
-|TaskID| Edm.String | Yes	|The ID of the Restore task.|
-|BackupItemID| Edm.String | Yes	|ID of the Backup Item being restored.|
-|ProtectionUnitID| Edm.String | Yes	|Protection Unit ID of the item being restored.|
-|SuccessStatus| Edm.String | No	|Whether the restore operation was successful.|
-|BackupItemType| Edm.String | Yes	|Whether the Backup Item is a Site / Account / Mailbox.|
-|ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+|PolicyId|Edm.String|No|ID of the policy setting|
+|PolicyId|Edm.String|No|ID of the policy setting|
+|PolicyName|Edm.String|No|Name of policy setting|
+|Value|Edm.String|No|Configured value of policy setting|
+|Settings|Collection(Self.[Setting](#complex-type-setting))|No|Configured setting|
 
-## Backup Item schema
+### Complex Type Setting
 
-|**Parameters**  |**Type**|**Mandatory?** |**Description**|
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|PolicyID| Edm.String | Yes	|Policy ID of the Policy the item is getting added to.|
-|ItemID| Edm.String | Yes	|ID of the Backup Item.|
-|ProtectionUnitID| Edm.String | Yes	|Protection Unit ID of the item being backed up.|
-|ResultStatus| Edm.String | No	|Whether the restore operation was successful.|
-|BackupItemType| Edm.String | Yes	|Whether the Backup Item is a Site / Account / Mailbox.|
-|EditMethodology| Edm.String | No	|How the backup item is to be added.|
-|ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+|SettingId|Edm.String|No|ID of the setting|
+|SettingId|Edm.String|No|ID of the setting|
+|SettingName|Edm.String|No|Name of setting|
+|Value|Edm.String|No|Configured value of setting|
+
+### Complex Type PrioritySetting
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:---------------|:-------|:--------------|:--------------|
+|ConfigId|Edm.String|No|ID of the policy configuration|
+|ConfigId|Edm.String|No|ID of the policy configuration|
+|ConfigName|Edm.String|No|Given name of policy configuration|
+|Value|Edm.String|No|Configured priority of policy configuration|
