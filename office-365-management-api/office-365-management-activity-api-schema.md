@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 03/20/2024
+ms.date: 11/19/2024
 ms.localizationpriority: high
 ---
 
@@ -68,6 +68,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Restore Task schema](#restore-task-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup Restore Tasks.|
 |[Backup Item schema](#backup-item-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup artifacts.|
 |[Restore Item schema](#restore-item-schema)|Extends the common schema with the properties specific to Microsoft 365 Backup Restore Items.|
+|[M365 Apps Admin Services cloud policy schema ](#m365-apps-admin-services-cloud-policy-schema)|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
 
 ## Common schema
 
@@ -84,7 +85,7 @@ This article provides details on the Common schema as well as service-specific s
 |UserKey|Edm.String|Yes|An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange. |
 |Workload|Edm.String|Yes|The Office 365 service where the activity occurred.|
 |ResultStatus|Edm.String|No|Indicates whether the action (specified in the Operation property) was successful or not. Possible values are **Succeeded**, **PartiallySucceeded**, or **Failed**. For Exchange admin activity, the value is either **True** or **False**.<br/><br/>**Important**: Different workloads may overwrite the value of the ResultStatus property. For example, for Microsoft Entra ID STS logon events, a value of **Succeeded** for ResultStatus indicates only that the HTTP operation was successful; it doesn't mean the logon was successful. To determine if the actual logon was successful or not, see the LogonError property in the [Microsoft Entra ID STS Logon schema](#azure-active-directory-secure-token-service-sts-logon-schema). If the logon failed, the value of this property will contain the reason for the failed logon attempt. |
-|ObjectId|Edm.string|No|For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. For Exchange admin audit logging, the name of the object that was modified by the cmdlet.|
+|ObjectId|Edm.string|No|For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. For Exchange admin audit logging, the name of the object that was modified by the cmdlet. For Cloud Policy service, the object ID of the policy configuration.|
 |UserId|Edm.string|Yes|The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, `my_name@my_domain_name`. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see [The app@sharepoint user in audit records](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records). |
 |ClientIP|Edm.String|Yes|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.<br/><br/>For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. <br/><br/>Also, for Microsoft Entra ID-related events, the IP address isn't logged and the value for the ClientIP property is `null`.|
 |Scope|Self.[AuditLogScope](#auditlogscope)|No|Was this event created by a hosted O365 service or an on-premises server? Possible values are **online** and **onprem**. Note that SharePoint is the only workload currently sending events from on-premises to O365.|
@@ -233,6 +234,7 @@ This article provides details on the Common schema as well as service-specific s
 |282|VivaPulseAdmin|Viva Pulse admin events.|
 |283|VivaPulseReport|Viva Pulse report related events.|
 |287|ProjectForThewebAssignedToMeSettings|Microsoft Project for the web assigned to me tenant settings events.|
+|288|CloudPolicyService|Events from the Cloud Policy service.|
 |298|BackupPolicy|Events related to Microsoft 365 Backup Policies.|
 |299|RestoreTask|Events related to Microsoft 365 Backup Restore Tasks.|
 |300|RestoreItem|Events related to artifacts backed up with Microsoft 365 Backup.|
@@ -2297,3 +2299,84 @@ Values taken by SettingsChange properties in Details for different operations ar
 |BackupItemType| Edm.String | Yes	|Whether the Backup Item is a Site / Account / Mailbox.|
 |EditMethodology| Edm.String | No	|How the backup item is to be added.|
 |ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+
+## M365 Apps Admin Services cloud policy schema
+
+The M365 Apps Admin Services [cloud policy](/microsoft-365-apps/admin-center/overview-cloud-policy) related events extend the [Common schema](#common-schema) with the following record types.
+
+### CPSPolicyConfigAuditRecord
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:---------------|:-------|:--------------|:--------------|
+|Name|Edm.String|No|Given name of policy configuration|
+|Description|Edm.String|No|Description provided for policy configuration|
+|CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Scope of policy configuration|
+|Groups|Collection(EdmString)|No|Lists all groups configured as scope in the policy configuration|
+|Configured Settings|Collection(Common.NameValuePair)|No|JSON value of configured policy settings|
+|Number_of_Policies_Configured|Edm.Int32|No|Number of configured policy settings|
+|Number_of_Security_Baselines_Configured|Edm.Int32|No|Number of configured Security Baseline settings|
+|Number_of_Accessibility_Baselines_Configured|Edm.Int32|No|Number of configured Accessibility Baseline settings|
+|Previous_Name|Edm.String|No|Previous given name of policy configuration|
+|Current_Name |Edm.String|Yes|Current given name of policy configuration|
+|Previous_Description|Edm.String|No|Previous description provided for policy configuration|
+|Current_Description|Edm.String|No|Current description provided for policy configuration|
+|Previous_CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Previous scope of policy configuration|
+|Current_CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Current scope of policy configuration|
+|Previous_Groups|Collection(Edm.Guid)|No|List of previously configured groups|
+|Current_Groups|Collection(Edm.Guid)|No|List of currently configured groups|
+|Changes_in_Configured_Settings|Collection(Common.NameValuePair)|No|JSON value of changed policy settings|
+|Previous_Number_of_Policies_Configured|Edm.Int32|No|Number of previously configured policy settings|
+|Current_Number_of_Policies_Configured|Edm.Int32|No|Number of currently configured policy settings|
+|Previous_Priority_Value|Edm.Int32|No|Previously configured priority value of policy configuration|
+|Current_Priority_Value|Edm.Int32|No|Currently configured priority value of policy configuration|
+
+### PolicyConfigChangeAuditRecord
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:---------------|:-------|:--------------|:--------------|
+|ConfigId|Edm.String|No|ID of the policy configuration|
+|ConfigId|Edm.String|No|ID of the policy configuration|
+|ConfigName|Edm.String|No|Given name of policy configuration|
+|Description|Edm.String|No|Description provided for policy configuration|
+|ConfigScope|Self.[CPSScope](#enum-cpsscope---type-edmint32)|No|Scope of policy configuration|
+|Groups|Collection(Common.NameValuePair)|No|List of configured groups|
+|Priority|Edm.Int32|No|Priority value of policy configuration|
+|Policies|Collection(Self.[Policy](#complex-type-policy))|No|List of configured policy settings|
+|Priorities|Collection(Self.[PrioritySetting](#complex-type-prioritysetting))|No|List of policy configurations and their priority values|
+
+### Enum: CPSScope - Type: Edm.Int32
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|1|Tenant|The policy configuration is scoped to all users in the tenant.|
+|1|Tenant|The policy configuration is scoped to all users in the tenant.|
+|2|Anonymous|The policy configuration is scoped to anonymous users.|
+|3|User|The policy configuration is scoped to users in configured Microsoft Entra group(s).|
+
+### Complex Type Policy
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:---------------|:-------|:--------------|:--------------|
+|PolicyId|Edm.String|No|ID of the policy setting|
+|PolicyId|Edm.String|No|ID of the policy setting|
+|PolicyName|Edm.String|No|Name of policy setting|
+|Value|Edm.String|No|Configured value of policy setting|
+|Settings|Collection(Self.[Setting](#complex-type-setting))|No|Configured setting|
+
+### Complex Type Setting
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:---------------|:-------|:--------------|:--------------|
+|SettingId|Edm.String|No|ID of the setting|
+|SettingId|Edm.String|No|ID of the setting|
+|SettingName|Edm.String|No|Name of setting|
+|Value|Edm.String|No|Configured value of setting|
+
+### Complex Type PrioritySetting
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:---------------|:-------|:--------------|:--------------|
+|ConfigId|Edm.String|No|ID of the policy configuration|
+|ConfigId|Edm.String|No|ID of the policy configuration|
+|ConfigName|Edm.String|No|Given name of policy configuration|
+|Value|Edm.String|No|Configured priority of policy configuration|
