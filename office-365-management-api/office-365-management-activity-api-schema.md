@@ -2263,7 +2263,7 @@ The M365 Apps Admin Services cloud policy related events extend the [Common sche
 |Current_Name |Edm.String|Yes|Current given name of policy configuration|
 |Previous_Description|Edm.String|No|Previous description provided for policy configuration|
 |Current_Description|Edm.String|No|Current description provided for policy configuration|
-|Previous_CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32)|No|Previous scope of policy configuration|
+|Previous_CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Previous scope of policy configuration|
 |Current_CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Current scope of policy configuration|
 |Previous_Groups|Collection(Edm.Guid)|No|List of previously configured groups|
 |Current_Groups|Collection(Edm.Guid)|No|List of currently configured groups|
