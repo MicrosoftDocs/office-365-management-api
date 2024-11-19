@@ -64,7 +64,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 |[Compliance Manager schema](#compliance-manager-schema)|Extends the common schema with the properties specific to Compliance Manager events.|
-|[M365 Apps Admin Services cloud policy schema ](mM365-apps-admin-services-cloud-policy-schema )|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
+|[M365 Apps Admin Services cloud policy schema ](m365-apps-admin-services-cloud-policy-schema)|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
 
 ## Common schema
 
@@ -2249,12 +2249,11 @@ The M365 Apps Admin Services cloud policy related events extend the [Common sche
 
 ### CPSPolicyConfigAuditRecord
 
-
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:---------------|:-------|:--------------|:--------------|
 |Name|Edm.String|No|Given name of policy configuration|
 |Description|Edm.String|No|Description provided for policy configuration|
-|CPSScope|Collection(Self.CPSScope)|No|Scope of policy configuration|
+|CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Scope of policy configuration|
 |Groups|Collection(EdmString)|No|Lists all groups configured as scope in the policy configuration|
 |Configured Settings|Collection(Common.NameValuePair)|No|JSON value of configured policy settings|
 |Number_of_Policies_Configured|Edm.Int32|No|Number of configured policy settings|
@@ -2264,8 +2263,8 @@ The M365 Apps Admin Services cloud policy related events extend the [Common sche
 |Current_Name |Edm.String|Yes|Current given name of policy configuration|
 |Previous_Description|Edm.String|No|Previous description provided for policy configuration|
 |Current_Description|Edm.String|No|Current description provided for policy configuration|
-|Previous_CPSScope|Collection(Self.CPSScope)|No|Previous scope of policy configuration|
-|Current_CPSScope|Collection(Self.CPSScope)|No|Current scope of policy configuration|
+|Previous_CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32)|No|Previous scope of policy configuration|
+|Current_CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Current scope of policy configuration|
 |Previous_Groups|Collection(Edm.Guid)|No|List of previously configured groups|
 |Current_Groups|Collection(Edm.Guid)|No|List of currently configured groups|
 |Changes_in_Configured_Settings|Collection(Common.NameValuePair)|No|JSON value of changed policy settings|
@@ -2282,11 +2281,11 @@ The M365 Apps Admin Services cloud policy related events extend the [Common sche
 |ConfigId|Edm.String|No|ID of the policy configuration|
 |ConfigName|Edm.String|No|Given name of policy configuration|
 |Description|Edm.String|No|Description provided for policy configuration|
-|ConfigScope|Self.CPSScope|No|Scope of policy configuration|
+|ConfigScope|Self.[CPSScope](#enum-cpsscope---type-edmint32)|No|Scope of policy configuration|
 |Groups|Collection(Common.NameValuePair)|No|List of configured groups|
 |Priority|Edm.Int32|No|Priority value of policy configuration|
-|Policies|Collection(Self.Policy)|No|List of configured policy settings|
-|Priorities|Collection(Self.PrioritySetting)|No|List of policy configurations and their priority values|
+|Policies|Collection(Self.[Policy](#complex-type-policy))|No|List of configured policy settings|
+|Priorities|Collection(Self.[PrioritySetting](#complex-type-prioritysetting))|No|List of policy configurations and their priority values|
 
 ### Enum: CPSScope - Type: Edm.Int32
 
@@ -2305,7 +2304,7 @@ The M365 Apps Admin Services cloud policy related events extend the [Common sche
 |PolicyId|Edm.String|No|ID of the policy setting|
 |PolicyName|Edm.String|No|Name of policy setting|
 |Value|Edm.String|No|Configured value of policy setting|
-|Settings|Collection(Self.Setting)|No|Configured setting|
+|Settings|Collection(Self.[Setting](#complex-type-setting))|No|Configured setting|
 
 ### Complex Type Setting
 
