@@ -65,6 +65,10 @@ This article provides details on the Common schema as well as service-specific s
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 |[Compliance Manager schema](#compliance-manager-schema)|Extends the common schema with the properties specific to Compliance Manager events.|
 |[M365 Apps Admin Services cloud policy schema ](#m365-apps-admin-services-cloud-policy-schema)|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
+|[Backup Policy Schema](#backup-policy-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup Policies.|
+|[Restore Task schema](#restore-task-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup Restore Tasks.|
+|[Backup Item schema](#backup-item-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup artifacts.|
+|[Restore Item schema](#restore-item-schema)|Extends the common schema with the properties specific to Microsoft 365 Backup Restore Items.|
 
 ## Common schema
 
