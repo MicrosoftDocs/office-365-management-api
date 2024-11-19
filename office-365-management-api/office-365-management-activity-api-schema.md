@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 03/20/2024
+ms.date: 11/19/2024
 ms.localizationpriority: high
 ---
 
@@ -236,6 +236,12 @@ This article provides details on the Common schema as well as service-specific s
 |287|ProjectForThewebAssignedToMeSettings|Microsoft Project for the web assigned to me tenant settings events.|
 |288|CloudPolicyService|Events from the Cloud Policy service.|
 |332|ComplianceSettingsChange|Microsoft Purview Compliance settings change events.|
+|298|BackupPolicy|Events related to Microsoft 365 Backup Policies.|
+|299|RestoreTask|Events related to Microsoft 365 Backup Restore Tasks.|
+|300|RestoreItem|Events related to artifacts backed up with Microsoft 365 Backup.|
+|301|BackupItem|Events related to items being restored using Microsoft 365 Backup.|
+|332|ComplianceSettingsChange|Microsoft Purview Compliance settings change events.|
+
 ### Enum: User Type - Type: Edm.Int32
 
 #### User Type
