@@ -64,6 +64,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 |[Compliance Manager schema](#compliance-manager-schema)|Extends the common schema with the properties specific to Compliance Manager events.|
+|[AAD Risk Detection schema](#aad-risk-detection-schema)|Extends the common schema with the properties specific to AAD Risk Detection events.|
 
 
 ## Common schema
@@ -2242,3 +2243,43 @@ Values taken by SettingsChange properties in Details for different operations ar
 3. The original and new value would have the emails of the user for which the role has changed
 1. In case there is no change in the role, that role type would not be present in the audit record.
 
+## AAD Risk Detection schema
+
+The audit records for events related to AAD Risk Detection use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). For details about capturing events and activities related to AAD Risk Detection, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Activity|Edm.String|No|Indicates the activity type the detected risk is linked to.|
+|ActivityDateTime|Edm.Date|No|Date and time that the risky activity occurred.|
+|AdditionalInfo|Edm.String|No|Additional information associated with the risk detection in JSON format.|
+|CorrelationId|Edm.String|No|Correlation ID of the sign-in associated with the risk detection.|
+|DetectedDateTime|Edm.Date|No|Date and time that the risk was detected.|
+|DetectionTimingType|Edm.String|No|Timing of the detected risk (real-time/offline). |
+|LastUpdatedDateTime|Edm.Date|No|Date and time that the risk detection was last updated.|
+|Location|Self.[LocationType](#locationtype-complex-type)|No|Location of the sign-in.|
+|RequestId|Edm.String|No|Request ID of the sign-in associated with the risk detection. This property is null if the risk detection is not associated with a sign-in.|
+|RiskDetail|Edm.String|No|Details of the detected risk.|
+|RiskEventType|Edm.String|No|The type of risk event detected.|
+|RiskId|Edm.String|No|Unique ID of the risk detection.|
+|RiskLevel|Edm.String|No|Level of the detected risk.|
+|RiskState|Edm.String|No|The state of a detected risky user or sign-in.|
+|Source|Edm.String|No|Source of the risk detection.|
+|TokenIssuerType|Edm.String|No|Indicates the type of token issuer for the detected sign-in risk.|
+|UserDisplayName|Edm.String|No|The user principal name (UPN) of the user.|
+
+### LocationType complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|City|Edm.String|No|City where sign-in was performed.|
+|CountryOrRegion|Edm.String|No|Country or Region where sign-in was performed.|
+|GeoCoordinates|Self.[GeoCoordinatesType](#geocoordinatestype-complex-type)|No|Geo Co-ordinates of location where sign-in was performed.|
+|State|Edm.String|No|State where sign-in was performed.|
+
+### GeoCoordinatesType complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Altitude|Edm.String|No|Altitude of location where sign-in was performed.|
+|Latitude|Edm.String|No|Latitude of location where sign-in was performed.|
+|Longitude|Edm.String|No|Longitude of location where sign-in was performed.|
