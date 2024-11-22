@@ -64,6 +64,9 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 |[Compliance Manager schema](#compliance-manager-schema)|Extends the common schema with the properties specific to Compliance Manager events.|
+|[Cloud Update profile configuration schema](#m365-apps-admin-services-cloud-update-profile-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update profile configuration audit data.|
+|[Cloud Update tenant configuration schema](#m365-apps-admin-services-cloud-update-tenant-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update tenant configuration audit data.|
+|[Cloud Update device configuration schema](#m365-apps-admin-services-cloud-update-device-schema)| Extends the Common schema with the properties specific to the Cloud Update device configuration audit data.|
 
 
 ## Common schema
@@ -231,6 +234,10 @@ This article provides details on the Common schema as well as service-specific s
 |283|VivaPulseReport|Viva Pulse report related events.|
 |287|ProjectForThewebAssignedToMeSettings|Microsoft Project for the web assigned to me tenant settings events.|
 |332|ComplianceSettingsChange|Microsoft Purview Compliance settings change events.|
+|337|CloudUpdateProfileConfig| Events from the Cloud Update's profile configuration.|
+|338|CloudUpdateTenantConfig| Events from the Cloud Update's tenant configuration.|
+|339|CloudUpdateDeviceConfig| Events from Cloud Update's managed devices configuration.|
+
 ### Enum: User Type - Type: Edm.Int32
 
 #### User Type
@@ -2242,3 +2249,109 @@ Values taken by SettingsChange properties in Details for different operations ar
 3. The original and new value would have the emails of the user for which the role has changed
 1. In case there is no change in the role, that role type would not be present in the audit record.
 
+## M365 Apps Admin Services cloud update profile configuration schema
+
+The M365 Apps Admin Services [cloud update](/microsoft-365-apps/admin-center/cloud-update) profile configuration related events extend the Common schema with the following record types.
+
+### CloudUpdateProfileConfigAuditRecord
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ProfileName|Edm.String|Yes|Name of profile|
+|ProfileState|Self.[ProfileState](#enum-profilestate---type-edmint32)|No|State of profile|
+|Deadline|Edm.Int32|No|Configured deadline|
+|UpdateValidationState|Self.[UpdateValidationState](#enum-updatevalidationstate---type-edmint32)|No|State of [Update Validation](/microsoft-365-apps/admin-center/update-validation)|
+|Waves|Collection(Self.[Wave](#complex-type-wave))|No|Collection containing configured waves|
+|WaveDelay|Edm.Int32|No|Set delay between waves|
+
+### Enum: ProfileState - Type: Edm.Int32
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|1|Enabled|The profile is enabled and active.|
+|2|Disabled|The profile is disabled.|
+|3|Paused|The profile is enabled, but in paused state.|
+
+### Enum: UpdateValidationState - Type: Edm.Int32
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|1|Enabled|Update Validation is enabled.|
+|2|Disabled|Update Validation is disabled.|
+
+### Complex Type Wave
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Name|Edm.String|No|Name of wave|
+|Type|Self.[WaveType](#enum-wavetype---type-edmint32)|No|Wave specified by administrator or automatic catch-all wave|
+|Groups|Collection(Common.NameValuePair)|No|Collection of groups configured for this wave|
+
+### Enum: WaveType - Type: Edm.Int32
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|1|Groups|Wave was configured by administrator using groups.|
+|2|RemainingDevices|Automatically created wave which includes all devices in profile's scope which are not covered by previous waves.|
+
+## M365 Apps Admin Services cloud update tenant configuration schema
+
+The M365 Apps Admin Services [cloud update](/microsoft-365-apps/admin-center/cloud-update) tenant configuration related events extend the Common schema with the following record types.
+
+### CloudUpdateTenantConfigAuditRecord
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ProfileExclusionWindows|Collection(Self.[ExclusionWindow](#complex-type-exclusionwindow))|No|Collection of configured exclusion windows|
+|ExclusionList|Collection(Common.NameValuePair)|No|Collection of configured exclusions|
+|TAK|Edm.String|No|Tenant Association Key|
+
+### Complex Type ExclusionWindow
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Name|Edm.String|No|Given name of exclusion window|
+|StartDate|Edm.Date|No|Start date of exclusion windows|
+|EndDate|Edm.Date|No|End date of exclusion windows|
+|Groups|Collection(Common.NameValuePair)|No|Collection of groups the exclusion window is scoped to|
+
+## M365 Apps Admin Services cloud update device schema
+
+The M365 Apps Admin Services [cloud update](/microsoft-365-apps/admin-center/cloud-update) device related events extend the Common schema with the following record types.
+
+### CloudUpdateDeviceConfigAuditRecord
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RollbackDevices|Self.[Rollback](#complex-type-rollback)|No|Rollbacks triggered|
+|ChannelChangeDevices|Self.[ChannelChange](#complex-type-channelchange)|No|Channel changes triggered|
+
+### Complex Type Rollback
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RollbackType|Self.[RollbackType](#enum-rollbacktype---type-edmint32)|No|Type of rollback|
+|RollbackBuildNumber|Edm.String|No|Targeted build number to roll back to|
+|Devices|Collection(Edm.String)|No|Collection of devices targeted by rollback|
+
+### Enum: RollbackType - Type: Edm.Int32
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|1|SpecificDevices|Rollback was targeted at a specific subset of devices.|
+|2|AllDevices|Rollback was targeted at all devices within the profile's scope.|
+
+### Complex Type ChannelChange
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ChannelChange|Self.[Channel](#enum-channel---type-edmint32)|No|Targeted update channel|
+|Devices|Collection(Edm.String)|No|Collection of targeted devices|
+|Groups|Collection(Common.NameValuePair)|No|Collection of targeted groups|
+
+### Enum: Channel - Type: Edm.Int32
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|1|MonthlyEnterpriseChannel|Monthly Enterprise Channel|
+|2|CurrentChannel|Current Channel|
