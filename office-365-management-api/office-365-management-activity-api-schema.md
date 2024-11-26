@@ -64,10 +64,10 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 |[Compliance Manager schema](#compliance-manager-schema)|Extends the common schema with the properties specific to Compliance Manager events.|
-|[M365 Apps Admin Services cloud policy schema ](#m365-apps-admin-services-cloud-policy-schema)|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
-|[Cloud Update profile configuration schema](#m365-apps-admin-services-cloud-update-profile-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update profile configuration audit data.|
-|[Cloud Update tenant configuration schema](#m365-apps-admin-services-cloud-update-tenant-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update tenant configuration audit data.|
-|[Cloud Update device configuration schema](#m365-apps-admin-services-cloud-update-device-schema)| Extends the Common schema with the properties specific to the Cloud Update device configuration audit data.|
+|[Cloud Policy service schema](#cloud-policy-service-schema)|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
+|[Cloud Update profile configuration schema](#cloud-update-profile-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update profile configuration audit data.|
+|[Cloud Update tenant configuration schema](#cloud-update-tenant-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update tenant configuration audit data.|
+|[Cloud Update device configuration schema](#cloud-update-device-schema)| Extends the Common schema with the properties specific to the Cloud Update device configuration audit data.|
 
 ## Common schema
 
@@ -2250,9 +2250,9 @@ Values taken by SettingsChange properties in Details for different operations ar
 3. The original and new value would have the emails of the user for which the role has changed
 1. In case there is no change in the role, that role type would not be present in the audit record.
 
-## M365 Apps Admin Services cloud policy schema
+## Cloud Policy service schema
 
-The M365 Apps Admin Services [cloud policy](/microsoft-365-apps/admin-center/overview-cloud-policy) related events extend the [Common schema](#common-schema) with the following record types.
+The [Cloud Policy service](/microsoft-365-apps/admin-center/overview-cloud-policy) related events extend the [Common schema](#common-schema) with the following record types.
 
 ### CPSPolicyConfigAuditRecord
 
@@ -2331,9 +2331,9 @@ The M365 Apps Admin Services [cloud policy](/microsoft-365-apps/admin-center/ove
 |ConfigName|Edm.String|No|Given name of policy configuration|
 |Value|Edm.String|No|Configured priority of policy configuration|
 
-## M365 Apps Admin Services cloud update profile configuration schema
+## Cloud update profile configuration schema
 
-The M365 Apps Admin Services [cloud update](/microsoft-365-apps/admin-center/cloud-update) profile configuration related events extend the Common schema with the following record types.
+The [Cloud Update](/microsoft-365-apps/admin-center/cloud-update) profile configuration related events extend the Common schema with the following record types.
 
 ### CloudUpdateProfileConfigAuditRecord
 
@@ -2376,9 +2376,9 @@ The M365 Apps Admin Services [cloud update](/microsoft-365-apps/admin-center/clo
 |1|Groups|Wave was configured by administrator using groups.|
 |2|RemainingDevices|Automatically created wave which includes all devices in profile's scope which are not covered by previous waves.|
 
-## M365 Apps Admin Services cloud update tenant configuration schema
+## Cloud Update tenant configuration schema
 
-The M365 Apps Admin Services [cloud update](/microsoft-365-apps/admin-center/cloud-update) tenant configuration related events extend the Common schema with the following record types.
+The [Cloud Update](/microsoft-365-apps/admin-center/cloud-update) tenant configuration related events extend the Common schema with the following record types.
 
 ### CloudUpdateTenantConfigAuditRecord
 
@@ -2397,9 +2397,9 @@ The M365 Apps Admin Services [cloud update](/microsoft-365-apps/admin-center/clo
 |EndDate|Edm.Date|No|End date of exclusion windows|
 |Groups|Collection(Common.NameValuePair)|No|Collection of groups the exclusion window is scoped to|
 
-## M365 Apps Admin Services cloud update device schema
+## Cloud Update device schema
 
-The M365 Apps Admin Services [cloud update](/microsoft-365-apps/admin-center/cloud-update) device related events extend the Common schema with the following record types.
+The [Cloud Update](/microsoft-365-apps/admin-center/cloud-update) device related events extend the Common schema with the following record types.
 
 ### CloudUpdateDeviceConfigAuditRecord
 
