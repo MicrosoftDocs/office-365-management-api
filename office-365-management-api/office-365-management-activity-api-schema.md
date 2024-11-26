@@ -2252,39 +2252,12 @@ Values taken by SettingsChange properties in Details for different operations ar
 
 ## Cloud Policy service schema
 
-The [Cloud Policy service](/microsoft-365-apps/admin-center/overview-cloud-policy) related events extend the [Common schema](#common-schema) with the following record types.
-
-### CPSPolicyConfigAuditRecord
-
-|**Parameters**|**Type**|**Mandatory?**|**Description**|
-|:---------------|:-------|:--------------|:--------------|
-|Name|Edm.String|No|Given name of policy configuration|
-|Description|Edm.String|No|Description provided for policy configuration|
-|CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Scope of policy configuration|
-|Groups|Collection(EdmString)|No|Lists all groups configured as scope in the policy configuration|
-|Configured Settings|Collection(Common.NameValuePair)|No|JSON value of configured policy settings|
-|Number_of_Policies_Configured|Edm.Int32|No|Number of configured policy settings|
-|Number_of_Security_Baselines_Configured|Edm.Int32|No|Number of configured Security Baseline settings|
-|Number_of_Accessibility_Baselines_Configured|Edm.Int32|No|Number of configured Accessibility Baseline settings|
-|Previous_Name|Edm.String|No|Previous given name of policy configuration|
-|Current_Name |Edm.String|Yes|Current given name of policy configuration|
-|Previous_Description|Edm.String|No|Previous description provided for policy configuration|
-|Current_Description|Edm.String|No|Current description provided for policy configuration|
-|Previous_CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Previous scope of policy configuration|
-|Current_CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Current scope of policy configuration|
-|Previous_Groups|Collection(Edm.Guid)|No|List of previously configured groups|
-|Current_Groups|Collection(Edm.Guid)|No|List of currently configured groups|
-|Changes_in_Configured_Settings|Collection(Common.NameValuePair)|No|JSON value of changed policy settings|
-|Previous_Number_of_Policies_Configured|Edm.Int32|No|Number of previously configured policy settings|
-|Current_Number_of_Policies_Configured|Edm.Int32|No|Number of currently configured policy settings|
-|Previous_Priority_Value|Edm.Int32|No|Previously configured priority value of policy configuration|
-|Current_Priority_Value|Edm.Int32|No|Currently configured priority value of policy configuration|
+The audit records for events related to the [Cloud Policy service](/microsoft-365-apps/admin-center/overview-cloud-policy) extend the [Common schema](#common-schema) as follows:
 
 ### PolicyConfigChangeAuditRecord
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|ConfigId|Edm.String|No|ID of the policy configuration|
 |ConfigId|Edm.String|No|ID of the policy configuration|
 |ConfigName|Edm.String|No|Given name of policy configuration|
 |Description|Edm.String|No|Description provided for policy configuration|
@@ -2299,7 +2272,6 @@ The [Cloud Policy service](/microsoft-365-apps/admin-center/overview-cloud-polic
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
 |1|Tenant|The policy configuration is scoped to all users in the tenant.|
-|1|Tenant|The policy configuration is scoped to all users in the tenant.|
 |2|Anonymous|The policy configuration is scoped to anonymous users.|
 |3|User|The policy configuration is scoped to users in configured Microsoft Entra group(s).|
 
@@ -2307,7 +2279,6 @@ The [Cloud Policy service](/microsoft-365-apps/admin-center/overview-cloud-polic
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|PolicyId|Edm.String|No|ID of the policy setting|
 |PolicyId|Edm.String|No|ID of the policy setting|
 |PolicyName|Edm.String|No|Name of policy setting|
 |Value|Edm.String|No|Configured value of policy setting|
@@ -2318,7 +2289,6 @@ The [Cloud Policy service](/microsoft-365-apps/admin-center/overview-cloud-polic
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:---------------|:-------|:--------------|:--------------|
 |SettingId|Edm.String|No|ID of the setting|
-|SettingId|Edm.String|No|ID of the setting|
 |SettingName|Edm.String|No|Name of setting|
 |Value|Edm.String|No|Configured value of setting|
 
@@ -2326,7 +2296,6 @@ The [Cloud Policy service](/microsoft-365-apps/admin-center/overview-cloud-polic
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|ConfigId|Edm.String|No|ID of the policy configuration|
 |ConfigId|Edm.String|No|ID of the policy configuration|
 |ConfigName|Edm.String|No|Given name of policy configuration|
 |Value|Edm.String|No|Configured priority of policy configuration|
