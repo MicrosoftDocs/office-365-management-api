@@ -63,7 +63,8 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Planner schema](#microsoft-planner-schema)|Extends the Common schema with the properties specific to Microsoft Planner events.|
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project For The web events.|
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
-|[Compliance Manager schema](#compliance-manager-schema)|Extends the common schema with the properties specific to Compliance Manager events.|
+|[Compliance Manager schema](#compliance-manager-schema)|Extends the Common schema with the properties specific to Compliance Manager events.|
+
 |[Cloud Policy service schema](#cloud-policy-service-schema)|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
 |[Cloud Update profile configuration schema](#cloud-update-profile-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update profile configuration audit data.|
 |[Cloud Update tenant configuration schema](#cloud-update-tenant-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update tenant configuration audit data.|
