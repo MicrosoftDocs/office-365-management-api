@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 11/19/2024
+ms.date: 12/02/2024
 ms.localizationpriority: high
 ---
 
@@ -72,7 +72,6 @@ This article provides details on the Common schema as well as service-specific s
 |[Restore Task schema](#restore-task-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup Restore Tasks.|
 |[Backup Item schema](#backup-item-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup artifacts.|
 |[Restore Item schema](#restore-item-schema)|Extends the common schema with the properties specific to Microsoft 365 Backup Restore Items.|
-|[M365 Apps Admin Services cloud policy schema ](#m365-apps-admin-services-cloud-policy-schema)|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
 
 ## Common schema
 
@@ -2262,10 +2261,6 @@ Values taken by SettingsChange properties in Details for different operations ar
 3. The original and new value would have the emails of the user for which the role has changed
 1. In case there is no change in the role, that role type would not be present in the audit record.
 
-## Cloud Policy service schema
-
-The audit records for events related to the [Cloud Policy service](/microsoft-365-apps/admin-center/overview-cloud-policy) extend the [Common schema](#common-schema) as follows:
-
 ## Backup Policy schema
 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
@@ -2312,35 +2307,9 @@ The audit records for events related to the [Cloud Policy service](/microsoft-36
 |EditMethodology| Edm.String | No	|How the backup item is to be added.|
 |ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
 
-## M365 Apps Admin Services cloud policy schema
+## Cloud Policy service schema
 
-The M365 Apps Admin Services [cloud policy](/microsoft-365-apps/admin-center/overview-cloud-policy) related events extend the [Common schema](#common-schema) with the following record types.
-
-### CPSPolicyConfigAuditRecord
-
-|**Parameters**|**Type**|**Mandatory?**|**Description**|
-|:---------------|:-------|:--------------|:--------------|
-|Name|Edm.String|No|Given name of policy configuration|
-|Description|Edm.String|No|Description provided for policy configuration|
-|CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Scope of policy configuration|
-|Groups|Collection(EdmString)|No|Lists all groups configured as scope in the policy configuration|
-|Configured Settings|Collection(Common.NameValuePair)|No|JSON value of configured policy settings|
-|Number_of_Policies_Configured|Edm.Int32|No|Number of configured policy settings|
-|Number_of_Security_Baselines_Configured|Edm.Int32|No|Number of configured Security Baseline settings|
-|Number_of_Accessibility_Baselines_Configured|Edm.Int32|No|Number of configured Accessibility Baseline settings|
-|Previous_Name|Edm.String|No|Previous given name of policy configuration|
-|Current_Name |Edm.String|Yes|Current given name of policy configuration|
-|Previous_Description|Edm.String|No|Previous description provided for policy configuration|
-|Current_Description|Edm.String|No|Current description provided for policy configuration|
-|Previous_CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Previous scope of policy configuration|
-|Current_CPSScope|Collection(Self.[CPSScope](#enum-cpsscope---type-edmint32))|No|Current scope of policy configuration|
-|Previous_Groups|Collection(Edm.Guid)|No|List of previously configured groups|
-|Current_Groups|Collection(Edm.Guid)|No|List of currently configured groups|
-|Changes_in_Configured_Settings|Collection(Common.NameValuePair)|No|JSON value of changed policy settings|
-|Previous_Number_of_Policies_Configured|Edm.Int32|No|Number of previously configured policy settings|
-|Current_Number_of_Policies_Configured|Edm.Int32|No|Number of currently configured policy settings|
-|Previous_Priority_Value|Edm.Int32|No|Previously configured priority value of policy configuration|
-|Current_Priority_Value|Edm.Int32|No|Currently configured priority value of policy configuration|
+The audit records for events related to the [Cloud Policy service](/microsoft-365-apps/admin-center/overview-cloud-policy) extend the [Common schema](#common-schema) as follows:
 
 ### PolicyConfigChangeAuditRecord
 
