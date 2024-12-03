@@ -64,14 +64,14 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Project for the web schema](#microsoft-project-for-the-web-schema)|Extends the Common schema with the properties specific to Microsoft Project for the web events.|
 |[Viva Pulse schema](#viva-pulse-schema)|Extends the Common schema with the properties specific to all Viva Pulse events.|
 |[Compliance Manager schema](#compliance-manager-schema)|Extends the Common schema with the properties specific to Compliance Manager events.|
-|[Cloud Policy service schema](#cloud-policy-service-schema)|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
-|[Cloud Update profile configuration schema](#cloud-update-profile-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update profile configuration audit data.|
-|[Cloud Update tenant configuration schema](#cloud-update-tenant-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update tenant configuration audit data.|
-|[Cloud Update device configuration schema](#cloud-update-device-schema)| Extends the Common schema with the properties specific to the Cloud Update device configuration audit data.|
 |[Backup Policy Schema](#backup-policy-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup Policies.|
 |[Restore Task schema](#restore-task-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup Restore Tasks.|
 |[Backup Item schema](#backup-item-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup artifacts.|
 |[Restore Item schema](#restore-item-schema)|Extends the common schema with the properties specific to Microsoft 365 Backup Restore Items.|
+|[Cloud Policy service schema](#cloud-policy-service-schema)|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
+|[Cloud Update profile configuration schema](#cloud-update-profile-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update profile configuration audit data.|
+|[Cloud Update tenant configuration schema](#cloud-update-tenant-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update tenant configuration audit data.|
+|[Cloud Update device configuration schema](#cloud-update-device-schema)| Extends the Common schema with the properties specific to the Cloud Update device configuration audit data.|
 
 ## Common schema
 
