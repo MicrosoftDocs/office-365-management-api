@@ -114,7 +114,7 @@ Keys, also known as *client secrets*, are used when exchanging an authorization 
 
 An application that is running in the background, such as a daemon or service, can use client credentials to request app-only access tokens without repeatedly requesting consent from the tenant admin after initial consent is granted.
 
-For more information, see [Service to Service Calls Using Client Credentials](https://learn.microsoft.com/previous-versions/azure/dn645543(v=azure.100)).
+For more information, see [Service to Service Calls Using Client Credentials](/previous-versions/azure/dn645543(v=azure.100)).
 
 You must configure an X.509 certificate with your application to be used as client credentials when requesting app-only access tokens from Microsoft Entra ID. There are two steps to the process:
 
@@ -177,7 +177,7 @@ The following instructions show you how to use the Visual Studio or Windows SDK 
    ```
 
    > [!NOTE]
-   > The [KeyCredentials](https://learn.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type) property is a collection, making it possible to upload multiple X.509 certificates for rollover scenarios or delete certificates for compromise scenarios.
+   > The [KeyCredentials](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type) property is a collection, making it possible to upload multiple X.509 certificates for rollover scenarios or delete certificates for compromise scenarios.
 
 9. Save your changes and upload the updated manifest by choosing **Manage manifest** in the command bar, choosing **Upload manifest**, browsing to your updated manifest file, and then selecting it.
 
@@ -243,9 +243,9 @@ Your application uses this authorization code to obtain an access token from Mic
 
 There are two methods for requesting access tokens from Microsoft Entra ID:
 
-- The [Authorization Code Grant Flow](https://learn.microsoft.com/previous-versions/azure/dn645542(v=azure.100)) involves a tenant admin granting explicit consent, which returns an authorization code to your application. Your application then exchanges the authorization code for an access token. This method is required to obtain the initial consent that your application needs to access the tenant data by using the API, and this first access token is needed in order to obtain and store the tenant ID.
+- The [Authorization Code Grant Flow](/previous-versions/azure/dn645542(v=azure.100)) involves a tenant admin granting explicit consent, which returns an authorization code to your application. Your application then exchanges the authorization code for an access token. This method is required to obtain the initial consent that your application needs to access the tenant data by using the API, and this first access token is needed in order to obtain and store the tenant ID.
 
-- The [Client Credentials Grant Flow](https://learn.microsoft.com/previous-versions/azure/dn645543(v=azure.100)) allows your application to request subsequent access tokens as old ones expire, without requiring the tenant admin to sign in and explicitly grant consent. This method must be used for applications that run continuously in the background calling the APIs once the initial tenant admin consent has been granted.
+- The [Client Credentials Grant Flow](/previous-versions/azure/dn645543(v=azure.100)) allows your application to request subsequent access tokens as old ones expire, without requiring the tenant admin to sign in and explicitly grant consent. This method must be used for applications that run continuously in the background calling the APIs once the initial tenant admin consent has been granted.
 
 ### Request an access token using the authorization code
 
