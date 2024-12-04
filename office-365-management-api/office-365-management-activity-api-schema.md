@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 12/02/2024
+ms.date: 12/03/2024
 ms.localizationpriority: high
 ---
 
@@ -262,11 +262,12 @@ This article provides details on the Common schema as well as service-specific s
 |6|ServicePrincipal|A service principal.|
 |7|CustomPolicy|A customer created or managed policy.|
 |8|SystemPolicy|A Microsoft-managed or system policy.|
-|9|PartnerTechnician|A partner tenant's user working on behalf of the customer tenant (in [GDAP ](/partner-center/gdap-introduction)scenarios).|
+|9|PartnerTechnician|A partner tenant's user working on behalf of the customer tenant (in [GDAP](/partner-center/gdap-introduction)scenarios).|
 |10|Guest|A guest or anonymous user.|
 
 > [!NOTE]
 > ** For Microsoft Entra related events, the value for an administrator isn't used in an audit record. Audit records for activities performed by administrators will indicate that a regular user (for example, **UserType: 0**) performed the activity. The **UserID** property will identify the person (regular user or administrator) who performed this activity.
+
 ### Enum: AuditLogScope - Type: Edm.Int32
 
 #### AuditLogScope
@@ -408,7 +409,7 @@ This article provides details on the Common schema as well as service-specific s
 |LanguageAddedToTermStore|Language added to the terminology store.|
 |LanguageRemovedFromTermStore|Language removed from the terminology store.|
 |LegacyWorkflowEnabledSet|Site administrator or owner adds the SharePoint Workflow Task content type to the site. Global administrators can also enable work flows for the entire organization in the SharePoint admin center.|
-|LookAndFeelModified|User modifies a quick launch, gantt chart formats, or group formats.  Or the user creates, modifies, or deletes a view in Project web app.|
+|LookAndFeelModified|User modifies a quick launch, Gantt chart formats, or group formats.  Or the user creates, modifies, or deletes a view in Project web app.|
 |ManagedSyncClientAllowed|User successfully establishes a sync relationship with a SharePoint or OneDrive for Business site. The sync relationship is successful because the user's computer is a member of a domain that's been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. For more information, see [Use SharePoint Online PowerShell](https://go.microsoft.com/fwlink/p/?LinkID=534609) to enable OneDrive sync for domains that are on the safe recipients list.|
 |MaxQuotaModified|The maximum quota for a site has been modified.|
 |MaxResourceUsageModified|The maximum allowable resource usage for a site has been modified.|
@@ -739,6 +740,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |Client|Edm.String|No|Details about the client device, device OS, and device browser that was used for the of the account login event.|
 |LoginStatus|Edm.Int32|Yes|This property is from OrgIdLogon.LoginStatus directly. The mapping of various interesting logon failures could be done by alerting algorithms.|
 |UserDomain|Edm.String|Yes|The Tenant Identity Information (TII).|
+
 ### Enum: CredentialType - Type: Edm.Int32
 
 |**Value**|**Member name**|**Description**|
@@ -889,7 +891,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |SensitiveInformation|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|No|Information about the type of sensitive information detected.|
 |EnforcementMode|Edm.String|Yes|Indicate whether the DLP Rule set to 1/2/3/4/5 depicting audit/warn(block with override)/warn and bypass/block/allow(audit without alerts) respectively.|
 |FileExtension|Edm.String|No|The file extension of the document that contained the sensitive information.|
-|FileType|Edm.String|No|The file type of the document that conatined the sensitive information.|
+|FileType|Edm.String|No|The file type of the document that contained the sensitive information.|
 |DeviceName|Edm.String|No|The name of the device on which DLP rule match was detected.|
 
 ### PolicyDetails complex type
@@ -938,7 +940,7 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |Confidence|Edm.int32|Yes|The confidence level of the pattern that was detected.|
-|Count|Edm.Int32|Yes|The number of sensitive instances detected for a partcular confidence level.|
+|Count|Edm.Int32|Yes|The number of sensitive instances detected for a particular confidence level.|
 |IsMatch|Edm.Boolean|Yes|Indicates if the given count and confidence level of the sensitive type detected results in a DLP rule match.|
 
 ### SensitiveInformationDetections complex type
@@ -1137,12 +1139,12 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |TeamGuid|Edm.String|No|A unique identifier of the team the message belongs to.|
 |TeamName|Edm.String|No|The name of the team the message belongs to.|
 |Version|Edm.String|No|The version of the chat or channel message.|
- 
+
 ## Microsoft Defender for Office 365 and Threat Investigation and Response schema
 
 [Microsoft Defender for Office 365](/office365/securitycompliance/office-365-atp) and Threat Investigation and Response events are available for Office 365 customers who have an Defender for Office 365 Plan 1, Defender for Office 365 Plan 2, or an E5 subscription. Each event in the Defender for Office 365 feed corresponds to the following that were determined to contain a threat:
 
-- An email message sent by or received by a user in the organization with detections that are made on messages at delivery time and from [Zero hour auto purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15). 
+- An email message sent by or received by a user in the organization with detections that are made on messages at delivery time and from [Zero hour auto purge](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15).
 
 - URLs clicked by a user in the organization that were detected as malicious at time-of-click based on [Safe Links in Defender for Office 365](/office365/securitycompliance/atp-safe-links) protection.  
 
@@ -1228,7 +1230,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 > Within the Malware family, you'll be able to see the exact MalwareFamily name (for example, HTML/Phish.VS!MSR) or Malicious Payload as a static string. A Malicious Payload should still be treated as malicious email when a specific name isn't identified.
 
 ### SystemOverrides complex type
- 
+
 #### SystemOverrides
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -1239,14 +1241,14 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |Source|Edm.String|No|Indicates whether the override was user-configured or tenant-configured.|
 
 ### AuthDetails complex type
- 
+
 #### AuthDetails
- 
+
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |Name|Edm.String|No|The name of the specific auth check, such as DKIM or DMARC.|
 |Value|Edm.String|No|The value associated with the specific auth check, such as True or False.|
- 
+
 ### Enum: FileVerdict - Type: Edm.Int32
 
 #### FileVerdict
@@ -1450,31 +1452,31 @@ Currently, only automated investigation are logged. (Events for manually generat
 
 |Field    |Type    |Description  |
 |----|----|----|
-|Type    |Edm.String    |"ip" |
-|Address    |Edm.String    |The IP address as a string, such as `127.0.0.1`.|
+|Type     |Edm.String    |"ip" |
+|Address  |Edm.String    |The IP address as a string, such as `127.0.0.1`.|
 
 #### URL
 
 |Field    |Type    |Description  |
 |----|----|----|
-|Type    |Edm.String    |"url" |
-|Url    |Edm.String    |The full URL to which an entity points.  |
+|Type     |Edm.String    |"url" |
+|Url      |Edm.String    |The full URL to which an entity points.  |
 
-#### Mailbox (also equivalent to the user) 
+#### Mailbox (also equivalent to the user)
 
 |Field    |Type    |Description |
-|----|----|----|
-|Type    |Edm.String    |"mailbox"  |
-|MailboxPrimaryAddress    |Edm.String    |The mailbox's primary address.  |
+|---------|--------|------------|
+|Type     |Edm.String    |"mailbox"  |
+|MailboxPrimaryAddress   |Edm.String    |The mailbox's primary address.  |
 |DisplayName    |Edm.String    |The mailbox's display name. |
-|Upn    |Edm.String    |The mailbox's UPN.  |
+|Upn      |Edm.String    |The mailbox's UPN.  |
 
 #### File
 
-|Field    |Type    |Description  |
-|----|----|----|
-|Type    |Edm.String    |"file" |
-|Name    |Edm.String    |The file name without path. |
+|Field     |Type    |Description  |
+|----|-----|----|
+|Type      |Edm.String    |"file" |
+|Name      |Edm.String    |The file name without path. |
 FileHashes |Collection (Edm.String)    |The file hashes associated with the file. |
 
 #### FileHash
@@ -1546,7 +1548,6 @@ The Power BI events listed in [Search the audit log in the Office 365 Protection
 | RecipientEmail    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The email address of the recipient of a sharing invitation. |
 | RecipientName    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The name of the recipient of a sharing invitation. |
 | ResharePermission | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  No  | The permission being granted to the recipient. |
-
 
 ## Dynamics 365 schema
 
@@ -1671,11 +1672,11 @@ The intent of this audit schema is to represent the sum of all email activity th
 |ApplicationMode|Edm.String|No|Specifies how the sensitivity label was applied to the email message. The **Privileged** value indicates the label was manually applied by a user. The **Standard** value indicates the label was auto-applied by a client-side or service-side labeling process.|
 
 ## Encrypted message portal events schema
- 
+
 Events for enrypted message portal schema are triggered when when Purview Message Encryption detects an encrypted email message is accessed through the portal by an external recipient. The mail may have been encrypted manually with a sensitivity label or an RMS template, or automatically by a transport rule, a Data Loss Prevention policy, or an auto-labeling policy.
- 
+
 The intent of this audit schema is to represent the sum of all portal activity that involves accessing the encrypted mail by external recipients. In other words, there should be a recorded audit activity for a recipient that attempts to sign in to the portal and any activities related to accessing the encrypted mail. This includes mail sent to or from users in the organization when the mail has encryption applied to it, regardless of when or how the encryption was applied. For more information, see, [Learn about encrypted message portal logs](/microsoft-365/compliance/ome-message-access-logs).
- 
+
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |MessageId|Edm.String|No|The Id of the message.|
@@ -1686,7 +1687,7 @@ The intent of this audit schema is to represent the sum of all portal activity t
 |OperationStatus|Self.OperationStatus|No|0 – Success, 1- Failure.|
 |AttachmentName|Edm.String|No|Name of the attachment.|
 |OperationProperties|Collection(Common.NameValuePair)|No|Extra properties, i.e. number of OTP passcode sent, email subject, etc.|
- 
+
 ## Communication compliance Exchange schema
 
 The communication compliance events listed in the Office 365 audit log use this schema. This includes audit records for the **SupervisoryReviewOLAudit** operation that's generated when email message content contains offensive language identified by anti-spam models with a match accuracy of \>= 99.5%.
@@ -1734,16 +1735,16 @@ Events in the compliance connector schema are triggered when items that are impo
 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|JobId|	Edm.String|	No |This is a unique identifier of the data connector.|
+|JobId | Edm.String| No |This is a unique identifier of the data connector.|
 |TaskId| Edm.String| No |Unique identifier of the periodic data connector instance. Data connectors import data in periodic intervals.|
-|JobType| Edm.String|	No |The name of the data connector.|
-|ItemId| Edm.String| No	|Unique identifier of the item (for example, an email message) being imported.|
+|JobType| Edm.String| No |The name of the data connector.|
+|ItemId| Edm.String| No |Unique identifier of the item (for example, an email message) being imported.|
 |ItemSize| Edm.Int64| No |The size of the item being imported.|
 |SourceUserId| Edm.String| No |The unique identifier of the user from the third-party data source. For example, for a Slack data connector, this property specifies the user Id in Slack workspace.|
 |FailureType| Self.[FailureType](#enum-failuretype---type-edmint32)| No |Indicates the type of data import failure. For example, the value **incorrectusermapping** indicates the item wasn't imported because no user mapping between the third-party data source and Microsoft 365 could be found.|
-|ResultMessage| Edm.String|	No |Indicates the type of failure, such as **Duplicte message**.|
+|ResultMessage| Edm.String| No |Indicates the type of failure, such as **Duplicte message**.|
 |IsRetry| Edm.Boolean| No |Indicates whether the data connector retried to import the item.|
-|Attachments| Collection.[Attachment](#attachment-complex-type)| No	|A list of attachments received from the third-party data source.|
+|Attachments| Collection.[Attachment](#attachment-complex-type)| No |A list of attachments received from the third-party data source.|
 
 ### Enum: FailureType - Type: Edm.Int32
 
@@ -1758,7 +1759,7 @@ Events in the compliance connector schema are triggered when items that are impo
 |:-----|:-----|:-----|:-----|
 |FileName|Edm.String|No|The name of the attachment.|
 |Details|Edm.String|No|Other details about the attachment.|
- 
+
 ## SystemSync schema
 
 Events in the SystemSync schema are triggered when the SystemSync ingested data is either exported via Data Lake or shared via other services.
@@ -1767,16 +1768,16 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|DataStoreType|	DataStoreType|Yes	|Indicates which data store the data was downloaded from. Refer DataStoreType for all possible values.|
-|UserAction|	DataLakeUserAction|Yes	|Indicates what action user had performed on the data store. Refer DataLakeUserAction for all possible values.|
-|ExportTriggeredAt|	Edm.DateTimeOffset|Yes	|Indicates when the data export was triggered.|
-|NameOfDownloadedZipFile|	Edm.String|No	|The name of the compressed file the admin had downloaded from the Data Lake.|
+|DataStoreType| DataStoreType|Yes |Indicates which data store the data was downloaded from. Refer DataStoreType for all possible values.|
+|UserAction| DataLakeUserAction|Yes |Indicates what action user had performed on the data store. Refer DataLakeUserAction for all possible values.|
+|ExportTriggeredAt| Edm.DateTimeOffset|Yes |Indicates when the data export was triggered.|
+|NameOfDownloadedZipFile| Edm.String|No |The name of the compressed file the admin had downloaded from the Data Lake.|
 
 ### DataShareOperationAuditRecord
 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|Invitation|	DataShareInvitationType|No	|Details of the invite sent to the recipient of the Data Share.|
+|Invitation| DataShareInvitationType|No |Details of the invite sent to the recipient of the Data Share.|
 
 #### DataShareInvitationType complex type
 
@@ -1796,14 +1797,12 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 |0|Hourly|Indicates the data will be synced every hour.|
 |1|Daily|Indicates the data will be synced once a day.|
 
-
 **Enum: DataStoreType - Type: Edm.Int32**
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
 |0|CanonicalStore|Indicates data will be downloaded from Canonical store.|
 |1|StagingStore|Indicates data will be downloaded from Staging store.|
-
 
 **Enum: DataLakeUserAction - Type: Edm.Int32**
 
@@ -1812,7 +1811,6 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 |0|TriggerExport|The admin user triggered export from Data Lake.|
 |1|DownloadZipFile|The admin user downloaded the exported data.|
 
- 
 #### MicrosoftGraphDataConnectOperation complex type
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
@@ -1833,40 +1831,40 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 |RowCount|Edm.Int64|No|The number of rows extracted.|
 |Status|Edm.String|Yes|The extraction status.|
 |Reason|Edm.String|No|The error message in case of failure.|
- 
+
 ## AipDiscover
 
 The following table contains information related to Azure Information Protection (AIP) scanner events.
 
-| Event         | Description |
-|:--            |:--|
-|	ApplicationId	|	The ID of the application performing the operation.	|
-|	ApplicationName	|	Friendly name of the application performing the operation. Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file).	|
-|	ClientIP	|	The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is null. The IP address is displayed in either an IPv4 or IPv6 address format.	|
-|	CreationTime	|	The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the audit log record was generated.	|
-|	DataState	|	Describes the state of the data.	|
-|	DeviceName	|	The device on which the activity happened.	|
-|	Id	|	GUID of the current record.	|
-|	IsProtected	|	Whether protected: True/False	|
-|	Location	|	The location of the document with respect to the user's device. The possible values are unknown, localMedia, removableMedia, fileshare and cloud.	|
-|	ObjectId	|	File full path (URL). For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user.	|
-|	Operation	|	Describes type of access.	|
-|	OrganizationId	|	The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.	|
-|	Platform	|	Device platform (Win, OSX, Android, iOS) 	|
-|	ProcessName	|	The relevant process name, eg. Outlook, msip.app, WinWord.	|
-|	ProductVersion	|	Version of the AIP client.	|
-|	ProtectionOwner	|	Rights Management owner in UPN format.	|
-|	ProtectionType	|	Protection type can be template or ad-hoc.	|
-|	RecordType	|	The type of operation indicated by the record. See the AuditLogRecordType table for details on the types of audit log records. For a complete updated list and full description of the Log RecordType, see the Microsoft 365 Compliance audit log activities via O365 Management API blog post. Here we only list the relevant MIP Record types.	|
-|	Scope	|	Was this event created by a hosted O365 service or an on-premises server? Possible values are online and onprem. Note that SharePoint is the only workload currently sending events from on-premises to O365.	|
-|	SensitiveInfoTypeData	|	Stores the datatype of the Sensitive Info type data.	|
-|	SensitivityLabelId	|	The current MIP sensitivity label GUID. Use cmdlt Get-Label to get the full values of the GUID.	|
-|	TemplateId	|	TemplateID parameter to get a specific template. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.	|
-|	UserId	|	The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the app@sharepoint user in audit records.	|
-|	UserKey	|	An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.	|
-|UserType        | The type of user that performed the operation. See the UserType table for details on the types of users.</br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy|
-|	Version	|	Version ID of the file in the operation.	|
-|	Workload	|	Stores The Office 365 service where the activity occurred.	|
+| Event             | Description |
+|:------------------|:------------|
+| ApplicationId     | The ID of the application performing the operation. |
+| ApplicationName   | Friendly name of the application performing the operation. Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file). |
+| ClientIP          | The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. Also, for Azure Active Directory-related events, the IP address isn't logged and the value for the ClientIP property is null. The IP address is displayed in either an IPv4 or IPv6 address format. |
+| CreationTime      | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the audit log record was generated. |
+| DataState         | Describes the state of the data. |
+| DeviceName        | The device on which the activity happened. |
+| Id                | GUID of the current record. |
+| IsProtected       | Whether protected: True/False |
+| Location          | The location of the document with respect to the user's device. The possible values are unknown, localMedia, removableMedia, fileshare and cloud. |
+| ObjectId          | File full path (URL). For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. |
+| Operation         | Describes type of access. |
+| OrganizationId    | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs. |
+| Platform          | Device platform (Win, OSX, Android, iOS)  |
+| ProcessName       | The relevant process name, eg. Outlook, msip.app, WinWord. |
+| ProductVersion    | Version of the AIP client. |
+| ProtectionOwner   | Rights Management owner in UPN format. |
+| ProtectionType    | Protection type can be template or ad-hoc. |
+| RecordType        | The type of operation indicated by the record. See the AuditLogRecordType table for details on the types of audit log records. For a complete updated list and full description of the Log RecordType, see the Microsoft 365 Compliance audit log activities via O365 Management API blog post. Here we only list the relevant MIP Record types. |
+| Scope             | Was this event created by a hosted O365 service or an on-premises server? Possible values are online and onprem. Note that SharePoint is the only workload currently sending events from on-premises to O365. |
+| SensitiveInfoTypeData | Stores the datatype of the Sensitive Info type data. |
+| SensitivityLabelId | The current MIP sensitivity label GUID. Use cmdlt Get-Label to get the full values of the GUID. |
+| TemplateId        | TemplateID parameter to get a specific template. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection. |
+| UserId            | The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the app@sharepoint user in audit records. |
+| UserKey           | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange. |
+|UserType           | The type of user that performed the operation. See the UserType table for details on the types of users.</br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy|
+| Version           | Version ID of the file in the operation. |
+| Workload          | Stores the Office 365 service where the activity occurred. |
 
 ## AipSensitivityLabelAction
 
@@ -1874,29 +1872,29 @@ The following table contains information related to AIP sensitivity label events
 
 | Event                | Description |
 |:---------------------|:------------|
-|	ApplicationId	|	Corresponds to the Microsoft Entra Application ID.	|
-|	ApplicationName	|	Application friendly name of the application performing the operation.	|
-|	CreationDate	|	The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.	|
-|	DataState	|	Specifies the state of the data.	|
-|	DeviceName	|	The name of the user's device.	|
-|	Identity	|	The identity of the user or service to be authenticated.	|
-|	IsProtected	|	Whether protected: True/False	|
-|	IsProtectedBefore	|	Whether the content was protected before change: True/False	|
-|	IsValid	|	Boolean	| 
-|	Location	|	The location of the document with respect to the user's device. The possible values are unknown, localMedia, removableMedia, fileshare, and cloud.	|
-|	ObjectState	|	Specifies the state of the object.	|
+| ApplicationId | Corresponds to the Microsoft Entra Application ID. |
+| ApplicationName | Application friendly name of the application performing the operation. |
+| CreationDate | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity. |
+| DataState | Specifies the state of the data. |
+| DeviceName | The name of the user's device. |
+| Identity | The identity of the user or service to be authenticated. |
+| IsProtected | Whether protected: True/False |
+| IsProtectedBefore | Whether the content was protected before change: True/False |
+| IsValid | Boolean |
+| Location | The location of the document with respect to the user's device. The possible values are unknown, localMedia, removableMedia, fileshare, and cloud. |
+| ObjectState | Specifies the state of the object. |
 |Operation             | The operation type for the audit log.The name of the user or admin activity. For a description of the most common operations/activities:</br>SensitivityLabelApplied</br>SensitivityLabelUpdated</br>SensitivityLabelRemoved</br>SensitivityLabelPolicyMatched</br>SensitivityLabeledFileOpened.|
 |Identity              | The identity of the user or service to be authenticated.|
-|	PSComputerName	|	Computer Name	|
-|	PSShowComputerName	|	The value is False for documented edited in Office 365.	|
-|	Platform	|	Device platform (Win, OSX, Android, iOS). 	|
-|	ProcessName	|	Process that hosts MIP SDK.	|
-|	ProductVersion	|	Version of the Azure Information Protection client that performed the audit action.	|
-|	ProtectionType	|	Protection type can be template or ad-hoc.	|
-|	RecordType	|	Shows the value of Label Action. The operation type indicated by the record. For more information, see the full list of record types.	|
-|	RunspaceId	|	The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user.	|
-|	SensitiveInfoTypeData	|	Stores the datatype of the Sensitive Info Type Data	|
-|	TemplateId	|	TemplateID parameter to get a specific template. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.	|
+| PSComputerName | Computer Name |
+| PSShowComputerName | The value is False for documented edited in Office 365. |
+| Platform | Device platform (Win, OSX, Android, iOS).  |
+| ProcessName | Process that hosts MIP SDK. |
+| ProductVersion | Version of the Azure Information Protection client that performed the audit action. |
+| ProtectionType | Protection type can be template or ad-hoc. |
+| RecordType | Shows the value of Label Action. The operation type indicated by the record. For more information, see the full list of record types. |
+| RunspaceId | The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user. |
+| SensitiveInfoTypeData | Stores the datatype of the Sensitive Info Type Data |
+| TemplateId | TemplateID parameter to get a specific template. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection. |
 |UserId      | The User Principal Name (UPN) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. <br><br>Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service.|
 
 ## AipProtectionAction
@@ -1913,7 +1911,7 @@ The following table contains information related to AIP sensitivity label events
 |Identity           | The identity of the user or service to be authenticated.|
 |ObjectState        | State of the Object after the current event. |
 |ApplicationId      | The application where the activity happened and displayed in GUID.|
-|ApplicationName    |	Application friendly name of the application performing the operation.Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file).|
+|ApplicationName    | Application friendly name of the application performing the operation.Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file).|
 |ProcessName        | Process name of the Office application. |
 |Platform           | The platform on which the activity happened. For example, Windows. |
 |DeviceName         | Device the event was recorded on. |
@@ -1945,7 +1943,7 @@ The following table contains information related to AIP sensitivity label events
 |Identity           | The identity of the user or service to be authenticated.|
 |ObjectState        | State of the Object after the current event. |
 |ApplicationId      | The application where the activity happened and displayed in GUID.|
-|ApplicationName    |	Application friendly name of the application performing the operation.Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file).|
+|ApplicationName    | Application friendly name of the application performing the operation.Outlook (for email), OWA (for email), Word (for file), Excel (for file), PowerPoint (for file).|
 |ProcessName        | Process name of the Office application. |
 |Platform           | The platform on which the activity happened. For example, Windows. |
 |DeviceName         | Device the event was recorded on. |
@@ -1969,33 +1967,33 @@ The following table contain information related to AIP heartbeat events.
 
 | Event | Description |
 |:--|:--|
-|	ApplicationId	|	Corresponds to the Microsoft Entra Application ID.	|
-|	ApplicationName	|	Application friendly name of the application performing the operation.	|
-|	CreationDate	|	The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity.	|
-|	DataState	|	Specifies the state of the data.	|
-|	DeviceName	|	The name of the user's device.	|
-|	Identity	|	The identity of the user or service to be authenticated.	|
-|	IsProtected	|	Whether protected: True/False	|
-|	IsProtectedBefore	|	Whether the content was protected before change: True/False	|
-|	IsValid	|	Boolean	|
-|	Location	|	The location of the document with respect to the user's device. The possible values are unknown, localMedia, removableMedia, fileshare, and cloud.	|
-|	ObjectState	|	Specifies the state of the object.	|
-|	Operation	|	The operation type for the audit log. The name of the user or admin activity.	|
-|	PSComputerName	|	Computer Name	|
-|	PSShowComputerName	|	The value is False for documented edited in Office 365.	|
-|	Platform	|	Device platform (Win, OSX, Android, iOS). 	|
-|	ProcessName	|	Process that hosts MIP SDK.	|
-|	ProductVersion	|	Version of the Azure Information Protection client that performed the audit action.	|
-|	ProtectionType	|	Protection type can be template or ad-hoc.	|
-|	RecordType	|	Shows the value of Label Action. The operation type indicated by the record. For more information, see the full list of record types.	|
-|	RunspaceId	|	The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user.	|
-|	SensitiveInfoTypeData	|	Stores the datatype of the Sensitive Info Type Data.	|
-|	TemplateId	|	TemplateID parameter to get a specific template. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.	|
-|	UserId	|	 The UPN of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the app@sharepoint user in audit records.	|
+| ApplicationId | Corresponds to the Microsoft Entra Application ID. |
+| ApplicationName | Application friendly name of the application performing the operation. |
+| CreationDate | The date and time in Coordinated Universal Time (UTC) in ISO8601 format when the user performed the activity. |
+| DataState | Specifies the state of the data. |
+| DeviceName | The name of the user's device. |
+| Identity | The identity of the user or service to be authenticated. |
+| IsProtected | Whether protected: True/False |
+| IsProtectedBefore | Whether the content was protected before change: True/False |
+| IsValid | Boolean |
+| Location | The location of the document with respect to the user's device. The possible values are unknown, localMedia, removableMedia, fileshare, and cloud. |
+| ObjectState | Specifies the state of the object. |
+| Operation | The operation type for the audit log. The name of the user or admin activity. |
+| PSComputerName | Computer Name |
+| PSShowComputerName | The value is False for documented edited in Office 365. |
+| Platform | Device platform (Win, OSX, Android, iOS).  |
+| ProcessName | Process that hosts MIP SDK. |
+| ProductVersion | Version of the Azure Information Protection client that performed the audit action. |
+| ProtectionType | Protection type can be template or ad-hoc. |
+| RecordType | Shows the value of Label Action. The operation type indicated by the record. For more information, see the full list of record types. |
+| RunspaceId | The Runspace is a specific instance of PowerShell which contains modifiable collections of commands, providers, variables, functions, and language elements that are available to the command line user. |
+| SensitiveInfoTypeData | Stores the datatype of the Sensitive Info Type Data. |
+| TemplateId | TemplateID parameter to get a specific template. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection. |
+| UserId |  The UPN of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the app@sharepoint user in audit records. |
 |UserType         | The type of user that performed the operation. See the UserType table for details on the types of users.</br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy|
 |UserKey          | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.| 
 
-#### MicrosoftGraphDataConnectConsent complex type
+### MicrosoftGraphDataConnectConsent complex type
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -2158,6 +2156,7 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |2|Auto|The sensitivity label is automatically applied and is allowed to override a privileged label assignment.|
 
 ## Microsoft Project for the web schema
+
 Microsoft Project For The web extends the [Common schema](#common-schema) with the following record types.
 
 ### ProjectForThewebProject record type
@@ -2250,62 +2249,62 @@ Values taken by SettingsChange properties in Details for different operations ar
 
 |**Operation** |**PropertyName** |**Description**|
 |--------------|----------------|---------------|
-|All Operations |Name | Name of setting involved in the Compliance Manager operation|
+|All Operations |Name | Name of setting involved in the Compliance Manager operation.|
 |All Operations |NewValue | New value for the new settings.|
 |All Operations |OriginalValue | Original value for new setting.|
 
-
-**Please note -**
-1. For role changes the name would be the role type
-2. The audit record would reflect the change in event, such as user is assigned a role or revoked role
-3. The original and new value would have the emails of the user for which the role has changed
-1. In case there is no change in the role, that role type would not be present in the audit record.
+> [!NOTE]
+>
+> 1. For role changes the name will be the role type.
+> 2. The audit record will reflect the change in event, such as user is assigned a role or revoked role.
+> 3. The original and new value will have the emails of the user for which the role has changed.
+> 4. In case there is no change in the role, that role type will not be present in the audit record.
 
 ## Backup Policy schema
 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|PolicyID|	Edm.String|	Yes |The ID of the policy.|
+|PolicyID| Edm.String| Yes |The ID of the policy.|
 |EditMethodology| Edm.String| No |How the policy was created / edited.|
-|CountOfArtifactsBeingAdded| Edm.Int32 |	No |Number of artifacts being added.|
-|CountOfArtifactsBeingRemoved| Edm.Int32 | No	|Number of artifacts being removed.|
-|ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+|CountOfArtifactsBeingAdded| Edm.Int32 | No |Number of artifacts being added.|
+|CountOfArtifactsBeingRemoved| Edm.Int32 | No |Number of artifacts being removed.|
+|ServiceType| Edm.String| No |Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
 
 ## Restore Task schema
 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|TaskID|	Edm.String|	Yes |The ID of the Restore Task.|
+|TaskID| Edm.String| Yes |The ID of the Restore Task.|
 |CreationMethodology| Edm.String| No |How the Restore Task was created / edited.|
-|CountOfArtifactsBeingAdded| Edm.Int32 |	No |Number of artifacts being added.|
-|CountOfArtifactsBeingRemoved| Edm.Int32 | No	|Number of artifacts being removed.|
-|ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+|CountOfArtifactsBeingAdded| Edm.Int32 | No |Number of artifacts being added.|
+|CountOfArtifactsBeingRemoved| Edm.Int32 | No |Number of artifacts being removed.|
+|ServiceType| Edm.String| No |Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
 
 ## Restore Item schema
 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|RestoreTime|	Edm.DateTime|	Yes |Time which the item is being restored to.|
+|RestoreTime| Edm.DateTime| Yes |Time which the item is being restored to.|
 |RestoreLocationType| Edm.String| Yes |Location type that the item is being restored to.|
-|RestoreLocation| Edm.String |	No |Location that the item is being restored to.|
-|TaskID| Edm.String | Yes	|The ID of the Restore task.|
-|BackupItemID| Edm.String | Yes	|ID of the Backup Item being restored.|
-|ProtectionUnitID| Edm.String | Yes	|Protection Unit ID of the item being restored.|
-|SuccessStatus| Edm.String | No	|Whether the restore operation was successful.|
-|BackupItemType| Edm.String | Yes	|Whether the Backup Item is a Site / Account / Mailbox.|
-|ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+|RestoreLocation| Edm.String | No |Location that the item is being restored to.|
+|TaskID| Edm.String | Yes |The ID of the Restore task.|
+|BackupItemID| Edm.String | Yes |ID of the Backup Item being restored.|
+|ProtectionUnitID| Edm.String | Yes |Protection Unit ID of the item being restored.|
+|SuccessStatus| Edm.String | No |Whether the restore operation was successful.|
+|BackupItemType| Edm.String | Yes |Whether the Backup Item is a Site / Account / Mailbox.|
+|ServiceType| Edm.String| No |Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
 
 ## Backup Item schema
 
 |**Parameters**  |**Type**|**Mandatory?** |**Description**|
 |:---------------|:-------|:--------------|:--------------|
-|PolicyID| Edm.String | Yes	|Policy ID of the Policy the item is getting added to.|
-|ItemID| Edm.String | Yes	|ID of the Backup Item.|
-|ProtectionUnitID| Edm.String | Yes	|Protection Unit ID of the item being backed up.|
-|ResultStatus| Edm.String | No	|Whether the restore operation was successful.|
-|BackupItemType| Edm.String | Yes	|Whether the Backup Item is a Site / Account / Mailbox.|
-|EditMethodology| Edm.String | No	|How the backup item is to be added.|
-|ServiceType| Edm.String| No	|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+|PolicyID| Edm.String | Yes |Policy ID of the Policy the item is getting added to.|
+|ItemID| Edm.String | Yes |ID of the Backup Item.|
+|ProtectionUnitID| Edm.String | Yes |Protection Unit ID of the item being backed up.|
+|ResultStatus| Edm.String | No |Whether the restore operation was successful.|
+|BackupItemType| Edm.String | Yes |Whether the Backup Item is a Site / Account / Mailbox.|
+|EditMethodology| Edm.String | No |How the backup item is to be added.|
+|ServiceType| Edm.String| No |Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
 
 ## Cloud Policy service schema
 

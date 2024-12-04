@@ -4,7 +4,7 @@ title: Get started with Office 365 Management APIs
 description: The APIs use Microsoft Entra ID to provide authentication services that you can use to grant rights for your application to access them. 
 ms.ContentId: 74137c9a-29e0-b588-6122-26f4d2c5e3fc
 ms.topic: reference
-ms.date: 
+ms.date: 12/03/2024
 ms.localizationpriority: high
 ---
 
