@@ -4,7 +4,7 @@ title: Office 365 Service Communications API reference
 description: Use this API to access the following data - Get Services, Get Current Status, Get Historical Status, and Get Messages.
 ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference
-ms.date: 
+ms.date: 12/03/2024
 ms.localizationpriority: high
 ---
 
@@ -33,7 +33,7 @@ The root URL of the API includes a tenant identifier that scopes the operations 
 https://manage.office.com/api/v1.0/{tenant_identifier}/ServiceComms/{operation}
 ```
 
-The **Office 365 Service Communications API** is a REST service that allows you to develop solutions using any web language and hosting environment that supports HTTPS and X.509 certificates. The API relies on **Microsoft Entra ID** and the **OAuth2** protocol for authentication and authorization. To access the API from your application, you'll need to first register it in Microsoft Entra ID and configure it with permissions at the appropriate scope. This will enable your application to request OAuth2 access tokens necessary for calling the API. You can find more information about registering and configuring an application in Microsoft Entra ID at [Office 365 Management APIs getting started](get-started-with-office-365-management-apis.md).
+The **Office 365 Service Communications API** is a REST service that allows you to develop solutions using any web language and hosting environment that supports HTTPS and X.509 certificates. The API relies on **Microsoft Entra ID** and the **OAuth2** protocol for authentication and authorization. To access the API from your application, you'll need to first register it in Microsoft Entra ID and configure it with permissions at the appropriate scope. This will enable your application to request OAuth2 access tokens necessary for calling the API. For more information about registering and configuring an application in Microsoft Entra ID, see [Office 365 Management APIs getting started](get-started-with-office-365-management-apis.md).
 
 All API requests require an Authorization HTTP header that has a valid OAuth2 JWT access token obtained from Microsoft Entra ID that contains the **ServiceHealth.Read** claim; and the tenant identifier must match the tenant identifier in the root URL.
 
