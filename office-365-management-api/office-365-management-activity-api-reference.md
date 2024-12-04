@@ -4,8 +4,8 @@ title: Office 365 Management Activity API reference
 description: Use the Office 365 Management Activity API to retrieve information about user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs. 
 ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference
-ms.date: 10/04/2022
-ms.localizationpriority: med
+ms.date: 12/03/2024
+ms.localizationpriority: medium
 ---
 
 # Office 365 Management Activity API reference
