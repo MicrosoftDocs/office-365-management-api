@@ -2249,37 +2249,37 @@ The audit records for events related to AAD Risk Detection use this schema (in a
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Activity|Edm.String|No|Indicates the activity type the detected risk is linked to.|
-|ActivityDateTime|Edm.Date|No|Date and time that the risky activity occurred.|
-|AdditionalInfo|Edm.String|No|Additional information associated with the risk detection in JSON format.|
-|CorrelationId|Edm.String|No|Correlation ID of the sign-in associated with the risk detection.|
-|DetectedDateTime|Edm.Date|No|Date and time that the risk was detected.|
-|DetectionTimingType|Edm.String|No|Timing of the detected risk (real-time/offline). |
-|LastUpdatedDateTime|Edm.Date|No|Date and time that the risk detection was last updated.|
-|Location|Self.[LocationType](#locationtype-complex-type)|No|Location of the sign-in.|
-|RequestId|Edm.String|No|Request ID of the sign-in associated with the risk detection. This property is null if the risk detection is not associated with a sign-in.|
-|RiskDetail|Edm.String|No|Details of the detected risk.|
-|RiskEventType|Edm.String|No|The type of risk event detected.|
-|RiskId|Edm.String|No|Unique ID of the risk detection.|
-|RiskLevel|Edm.String|No|Level of the detected risk.|
-|RiskState|Edm.String|No|The state of a detected risky user or sign-in.|
-|Source|Edm.String|No|Source of the risk detection.|
-|TokenIssuerType|Edm.String|No|Indicates the type of token issuer for the detected sign-in risk.|
-|UserDisplayName|Edm.String|No|The user principal name (UPN) of the user.|
+|Activity|Edm.String|No|The activity type for which risk was detected.|
+|ActivityDateTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the risky activity occurred.|
+|AdditionalInfo|Edm.String|No|Additional Information in JSON format for the detected risk.|
+|CorrelationId|Edm.String|No|An identifier that can used to correlate sign-in activities associated with a risk detection. |
+|DetectedDateTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the risk was detected. |
+|DetectionTimingType|Edm.String|No|Indicates the timing type of the detected risk. Possible values are real-time/offline. |
+|LastUpdatedDateTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the risk detection was last updated. |
+|Location|Self.[LocationType](#locationtype-complex-type)|No|Information about the location from which the sign-in activity was detected.|
+|RequestId|Edm.String|No|Indicates the Request Id of the sign-in activity for which risk was detected. If risk detection is not associated with sign-in then this property is null. |
+|RiskDetail|Edm.String|No|The details of the detected risk. |
+|RiskEventType|Edm.String|No|The type of event for which risk was detected. |
+|RiskId|Edm.String|No|An unique identifier for the risk detection. |
+|RiskLevel|Edm.String|No|The level of the risk detected. |
+|RiskState|Edm.String|No|The risk state of a risky user or a sign-in linked to the risk detection. |
+|Source|Edm.String|No|The source of the detected risk. |
+|TokenIssuerType|Edm.String|No|The type of token issuer for the sign-in linked to the risk detection.|
+|UserDisplayName|Edm.String|No|The user principal name (UPN) of the user for whom the risk was detected.|
 
 ### LocationType complex type
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|City|Edm.String|No|City where sign-in was performed.|
-|CountryOrRegion|Edm.String|No|Country or Region where sign-in was performed.|
-|GeoCoordinates|Self.[GeoCoordinatesType](#geocoordinatestype-complex-type)|No|Geo Co-ordinates of location where sign-in was performed.|
-|State|Edm.String|No|State where sign-in was performed.|
+|City|Edm.String|No|The city where the sign-in was performed. |
+|CountryOrRegion|Edm.String|No|The country or region where the sign-in was performed. |
+|GeoCoordinates|Self.[GeoCoordinatesType](#geocoordinatestype-complex-type)|No|The geo co-ordinates of the location where the sign-in was performed. |
+|State|Edm.String|No|The state where the sign-in was performed. |
 
 ### GeoCoordinatesType complex type
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Altitude|Edm.String|No|Altitude of location where sign-in was performed.|
-|Latitude|Edm.String|No|Latitude of location where sign-in was performed.|
-|Longitude|Edm.String|No|Longitude of location where sign-in was performed.|
+|Altitude|Edm.String|No|The altitude of the location where the sign-in was performed. |
+|Latitude|Edm.String|No|The latitude of the location where the sign-in was performed. |
+|Longitude|Edm.String|No|The longitude of the location where the sign-in was performed. |
