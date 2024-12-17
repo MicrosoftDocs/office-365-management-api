@@ -1025,7 +1025,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |TargetYammerUserId|Edm.Int64|No|ID of target user in the operation.|
 |ThreadId| Edm.Int64|No|ID of the Message thread in the operation.|
 |VersionId|Edm.Int64|No|Version ID of the file in the operation.|
-|CreationMode|Edm.String|No|It indicates whether content is imported or created natively. Values: "migration" for imported content and "" (Empty) for content created directly within Viva Engage.
+|CreationMode|Edm.String|No|It indicates whether content is imported or created natively. Values: "migration" for imported content and "" (Empty) for content created directly within Viva Engage.|
 
 ## Data Center Security Base schema
 
