@@ -72,6 +72,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Cloud Update profile configuration schema](#cloud-update-profile-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update profile configuration audit data.|
 |[Cloud Update tenant configuration schema](#cloud-update-tenant-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update tenant configuration audit data.|
 |[Cloud Update device configuration schema](#cloud-update-device-schema)| Extends the Common schema with the properties specific to the Cloud Update device configuration audit data.|
+|[AAD Risk Detection schema](#aad-risk-detection-schema)| Extends the Common schema with the properties specific to AAD Risk Detection events.|
 
 ## Common schema
 
@@ -2463,3 +2464,44 @@ The [Cloud Update](/microsoft-365-apps/admin-center/cloud-update) device related
 |:-----|:-----|:-----|
 |1|MonthlyEnterpriseChannel|Monthly Enterprise Channel|
 |2|CurrentChannel|Current Channel|
+
+## AAD Risk Detection schema
+
+The audit records for events related to AAD Risk Detection use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). For details about capturing events and activities related to AAD Risk Detection, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Activity|Edm.String|No|The activity type for which risk was detected.|
+|ActivityDateTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the risky activity occurred.|
+|AdditionalInfo|Edm.String|No|Additional Information in JSON format for the detected risk.|
+|CorrelationId|Edm.String|No|An identifier that can used to correlate sign-in activities associated with a risk detection. |
+|DetectedDateTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the risk was detected. |
+|DetectionTimingType|Edm.String|No|Indicates the timing type of the detected risk. Possible values are real-time/offline. |
+|LastUpdatedDateTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the risk detection was last updated. |
+|Location|Self.[LocationType](#locationtype-complex-type)|No|Information about the location from which the sign-in activity was detected.|
+|RequestId|Edm.String|No|Indicates the Request Id of the sign-in activity for which risk was detected. If risk detection is not associated with sign-in then this property is null. |
+|RiskDetail|Edm.String|No|The details of the detected risk. |
+|RiskEventType|Edm.String|No|The type of event for which risk was detected. |
+|RiskId|Edm.String|No|An unique identifier for the risk detection. |
+|RiskLevel|Edm.String|No|The level of the risk detected. |
+|RiskState|Edm.String|No|The risk state of a risky user or a sign-in linked to the risk detection. |
+|Source|Edm.String|No|The source of the detected risk. |
+|TokenIssuerType|Edm.String|No|The type of token issuer for the sign-in linked to the risk detection.|
+|UserDisplayName|Edm.String|No|The user principal name (UPN) of the user for whom the risk was detected.|
+
+### LocationType complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|City|Edm.String|No|The city where the sign-in was performed. |
+|CountryOrRegion|Edm.String|No|The country or region where the sign-in was performed. |
+|GeoCoordinates|Self.[GeoCoordinatesType](#geocoordinatestype-complex-type)|No|The geo co-ordinates of the location where the sign-in was performed. |
+|State|Edm.String|No|The state where the sign-in was performed. |
+
+### GeoCoordinatesType complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Altitude|Edm.String|No|The altitude of the location where the sign-in was performed. |
+|Latitude|Edm.String|No|The latitude of the location where the sign-in was performed. |
+|Longitude|Edm.String|No|The longitude of the location where the sign-in was performed. |
