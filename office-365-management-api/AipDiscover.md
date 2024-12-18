@@ -240,30 +240,30 @@ Type : AuditGeneral
 
 ## Attributes of the AipDiscover event
 
-Event | Type | Description
----|---|---
-ApplicationId | GUID | The ID of the application performing the operation.
-ApplicationName | String | Friendly name of the application performing the operation. (Outlook, OWA, Word, Excel, PowerPoint, etc.)
-ClientIP | IPv4/IPv6 | The IP address of the device that was used when the activity was logged. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity.
-CreationTime | Date/time | The date and time in Coordinated Universal Time (UTC) when the user performed the activity.
-DataState | String | Rest = File was not open when event was logged</br> Use = File was in use when event was logged.
-DeviceName | String | The device on which the activity happened.
-Id | GUID | Unique identifier of an audit record.
-IsProtected | Boolean | States whether or not the data is protected with encryption.
-Location | String | The location of the document with respect to the user's device (on-premises file shares).
-ObjectId | String | File full path (URL) that is being accessed by the user.
-Operation | String | The operation type for the audit log.</br> Discover = File viewed at rest by user or information protection scanner</br> Access = File was opened and in use by user when event was recorded.
-OrganizationId | GUID | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.
-Platform | Double | The platform where the activity occurred from. </br>0 = Unknown</br>1 = Windows</br>2 = MacOS </br>3 = iOS</br>4 = Android</br>5 = Web Browser
-ProcessName | String | The relevant process name (Outlook, MSIP.App, WinWord, etc.)
-ProductVersion | String | Version of the AIP client.
-ProtectionOwner | String | Rights Management owner in UPN format.
-ProtectionType | String | The type of protection that was used for the data. Template means that protection was predefined by the admin. Custom means the user defined the protection.
-RecordType | Double | The type of operation indicated by the record. 93 represents an AipDiscover record.
-Scope | Double | 0 represents that the event was created by a hosted O365 service. 1 represents that the event was created by an on-premises server.
-SensitiveInfoTypeData | String | The sensitive information types that have been discovered within the data.
-SensitivityLabelId | GUID | The current MIP sensitivity label GUID. Use cmdlt Get-Label to get the full values of the GUID.
-TemplateId | GUID | The id for the template used for protection. If ProtectionType = Template, TemplateId will have GUID. If ProtectionType = Custom, TemplateId will be blank. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.
-UserId | String | The User Principal Name (UPN) of the user who performed the action that resulted in the record being logged.
-UserKey | GUID | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.
-UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = System</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy
+| Event | Type | Description |
+| ---|---|---|
+| ApplicationId | GUID | The ID of the application performing the operation.|
+| ApplicationName | String | Friendly name of the application performing the operation. (Outlook, OWA, Word, Excel, PowerPoint, etc.)|
+| ClientIP | IPv4/IPv6 | The IP address of the device that was used when the activity was logged. For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity.|
+| CreationTime | Date/time | The date and time in Coordinated Universal Time (UTC) when the user performed the activity.|
+| DataState | String | Rest = File was not open when event was logged</br> Use = File was in use when event was logged.|
+| DeviceName | String | The device on which the activity happened.|
+| Id | GUID | Unique identifier of an audit record.|
+| IsProtected | Boolean | States whether or not the data is protected with encryption.|
+| Location | String | The location of the document with respect to the user's device (on-premises file shares).|
+| ObjectId | String | File full path (URL) that is being accessed by the user.|
+| Operation | String | The operation type for the audit log.</br> Discover = File viewed at rest by user or information protection scanner</br> Access = File was opened and in use by user when event was recorded.|
+| OrganizationId | GUID | The GUID for your organization's Office 365 tenant. This value will always be the same for your organization, regardless of the Office 365 service in which it occurs.|
+| Platform | Double | The platform where the activity occurred from. </br>0 = Unknown</br>1 = Windows</br>2 = MacOS </br>3 = iOS</br>4 = Android</br>5 = Web Browser|
+| ProcessName | String | The relevant process name (Outlook, MSIP.App, WinWord, etc.)|
+| ProductVersion | String | Version of the AIP client.|
+| ProtectionOwner | String | Rights Management owner in UPN format.|
+| ProtectionType | String | The type of protection that was used for the data. Template means that protection was predefined by the admin. Custom means the user defined the protection.|
+| RecordType | Double | The type of operation indicated by the record. 93 represents an AipDiscover record.|
+| Scope | Double | 0 represents that the event was created by a hosted O365 service. 1 represents that the event was created by an on-premises server.|
+| SensitiveInfoTypeData | String | The sensitive information types that have been discovered within the data.|
+| SensitivityLabelId | GUID | The current MIP sensitivity label GUID. Use cmdlt Get-Label to get the full values of the GUID.|
+| TemplateId | GUID | The id for the template used for protection. If ProtectionType = Template, TemplateId will have GUID. If ProtectionType = Custom, TemplateId will be blank. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection.|
+| UserId | String | The User Principal Name (UPN) of the user who performed the action that resulted in the record being logged.|
+| UserKey | GUID | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.|
+| UserType | Double | The type of user that performed the operation. </br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = System</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy|

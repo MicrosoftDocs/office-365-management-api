@@ -1027,6 +1027,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |ThreadId| Edm.Int64|No|ID of the Message thread in the operation.|
 |VersionId|Edm.Int64|No|Version ID of the file in the operation.|
 
+
 ## Data Center Security Base schema
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
