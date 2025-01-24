@@ -867,20 +867,20 @@ The eDiscovery audit schema is designed to capture and log activities related to
 |ObjectId|Edm.String|No|The GUID of the object (for example, a search, hold, or review set) that was created, accessed, or changed.|
 |ObjectName|Edm.String|No|The name of the object (for example, a search, hold or review set) that was created, accessed, or changed.|
 |ObjectType|Edm.String|No|The type of eDiscovery object that the user created, deleted, or modified.|
-|StartTime|Edm.Date|No|
-|EndTime|Edm.Date|No|
-|UserCancelled|Edm.Boolean|No|
-|ItemIds
-|ItemNames
-|DataSources
-|QueryIds
-|QueryText
-|QueryFiles
-|Settings
-|ExtendedProperties
-|ExportName
-|JobId
-|RecordNumber
+|StartTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the eDiscovery activity was started.|
+|EndTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the eDiscovery activity was ended.|
+|UserCancelled|Edm.Boolean|No|Whether the specific activitiy was cancelled by the user. |
+|ItemIds|Edm.String|No|The GUID of the item associated with the activity.|
+|ItemNames|Edm.String|No|The name of the item associated with the activity.|
+|DataSources|Edm.String|No|A list of source ID, source name and location details associated to the activity.
+|QueryIds|Edm.String|No|The GUID of the query associated with the activity.|
+|QueryText|Edm.String|No|The query text associated with the activity, such as a search statistic process or add to review process.|
+|QueryFiles|Edm.String|No|The name of the input file used to generate the query. This is specific to the search by file gesture.|
+|Settings|Collection(Common.NameValuePair)|No|Settings applied to the eDiscovery activity. |
+|ExtendedProperties|Collection(Common.NameValuePair)|No
+|ExportName|Edm.String|No|Additional properties related to the eDiscovery activity.| 
+|JobId|Edm.String|No|The GUID of the eDiscovery process.|
+|RecordNumber|Edm.String|No|
 
 
 ### SharePointMetadata complex type
