@@ -855,6 +855,34 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |PolicyDetails|Collection(Self.[PolicyDetails](#policydetails-complex-type))|Yes|Information about 1 or more policies that triggered the DLP event.|
 |SensitiveInfoDetectionIsIncluded|Boolean|Yes|Indicates whether the event contains the value of the sensitive data type and surrounding context from the source content. Accessing sensitive data requires the "Read DLP policy events including sensitive details" permission in Azure Active Directory.|
 
+### eDiscovery schema
+
+The eDiscovery audit schema is designed to capture and log activities related to eDiscovery processes within the organization. 
+
+
+|**Parameters**|**Type**|**Mandatory**|**Description**|
+|:-----|:-----|:-----|:-----|
+|CaseId|Edm.Guid|No|The identity (GUID) of the eDiscovery case.|
+|CaseName|Edm.String|No|The name of the eDiscovery case.|
+|ObjectId|Edm.String|No|The GUID of the object (for example, a search, hold, or review set) that was created, accessed, or changed.|
+|ObjectName|Edm.String|No|The name of the object (for example, a search, hold or review set) that was created, accessed, or changed.|
+|ObjectType|Edm.String|No|The type of eDiscovery object that the user created, deleted, or modified.|
+|StartTime|Edm.Date|No|
+|EndTime|Edm.Date|No|
+|UserCancelled|Edm.Boolean|No|
+|ItemIds
+|ItemNames
+|DataSources
+|QueryIds
+|QueryText
+|QueryFiles
+|Settings
+|ExtendedProperties
+|ExportName
+|JobId
+|RecordNumber
+
+
 ### SharePointMetadata complex type
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
