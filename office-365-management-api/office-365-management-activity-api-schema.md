@@ -873,12 +873,12 @@ The eDiscovery audit schema is designed to capture and log activities related to
 |StartTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the eDiscovery activity was started.|
 |EndTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the eDiscovery activity was ended.|
 |UserCancelled|Edm.Boolean|No|Whether the specific activitiy was cancelled by the user. |
-|ItemIds|Collection(Edm.String)|No|The IDs of the items associated with the activity.|
-|ItemNames|Collection(Edm.String)|No|The names of the items associated with the activity.|
+|ItemIds|Collection(Edm.String)|No|Item IDs associated with the activity.|
+|ItemNames|Collection(Edm.String)|No|Item names associated with the activity.|
 |DataSources|Collection(Edm.String)|No|A list of source IDs, source names and locations associated to the activity.|
 |QueryId|Edm.String|No|The ID of the query associated with the activity.|
 |QueryText|Edm.String|No|The query text associated with the activity, such as a search statistic process or add to review process.|
-|QueryFiles|Collection(Edm.String)|No|The names of the input files used to generate the query. This is specific to the search by file gesture.|
+|QueryFiles|Collection(Edm.String)|No|Input file names used to generate the query. This is specific to the search by file gesture.|
 |Settings|Collection(Common.NameValuePair)|No|Settings applied to the eDiscovery activity. |
 |ExtendedProperties|Collection(Common.NameValuePair)|No|Additional properties related to the eDiscovery activity. |
 |ExportName|Edm.String|No|Name of the eDiscovery export.|
