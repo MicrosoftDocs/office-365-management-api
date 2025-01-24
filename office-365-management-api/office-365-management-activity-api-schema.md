@@ -864,23 +864,26 @@ The eDiscovery audit schema is designed to capture and log activities related to
 |:-----|:-----|:-----|:-----|
 |CaseId|Edm.Guid|No|The identity (GUID) of the eDiscovery case.|
 |CaseName|Edm.String|No|The name of the eDiscovery case.|
-|ObjectId|Edm.String|No|The GUID of the object (for example, a search, hold, or review set) that was created, accessed, or changed.|
-|ObjectName|Edm.String|No|The name of the object (for example, a search, hold or review set) that was created, accessed, or changed.|
-|ObjectType|Edm.String|No|The type of eDiscovery object that the user created, deleted, or modified.|
+|Object1Id|Edm.String|No|The ID of the object (for example, a search, hold, or review set) that was created, accessed, or changed.|
+|Object1Name|Edm.String|No|The name of the object (for example, a search, hold or review set) that was created, accessed, or changed.|
+|Object1Type|Edm.String|No|The type of the eDiscovery object that the user created, deleted, or modified.|
+|Object2Id|Edm.String|No|The ID of the object (for example, a search, hold, or review set) that was created, accessed, or changed. |
+|Object2Name|Edm.String|No|The name of the object (for example, a search, hold or review set) that was created, accessed, or changed.|
+|Object2Type|Edm.String|No|The type of the eDiscovery object that the user created, deleted, or modified.|
 |StartTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the eDiscovery activity was started.|
 |EndTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the eDiscovery activity was ended.|
 |UserCancelled|Edm.Boolean|No|Whether the specific activitiy was cancelled by the user. |
-|ItemIds|Edm.String|No|The GUID of the item associated with the activity.|
-|ItemNames|Edm.String|No|The name of the item associated with the activity.|
-|DataSources|Edm.String|No|A list of source ID, source name and location details associated to the activity.
-|QueryIds|Edm.String|No|The GUID of the query associated with the activity.|
+|ItemIds|Collection(Edm.String)|No|The IDs of the items associated with the activity.|
+|ItemNames|Collection(Edm.String)|No|The names of the items associated with the activity.|
+|DataSources|Collection(Edm.String)|No|A list of source IDs, source names and locations associated to the activity.|
+|QueryId|Edm.String|No|The ID of the query associated with the activity.|
 |QueryText|Edm.String|No|The query text associated with the activity, such as a search statistic process or add to review process.|
-|QueryFiles|Edm.String|No|The name of the input file used to generate the query. This is specific to the search by file gesture.|
+|QueryFiles|Collection(Edm.String)|No|The names of the input files used to generate the query. This is specific to the search by file gesture.|
 |Settings|Collection(Common.NameValuePair)|No|Settings applied to the eDiscovery activity. |
 |ExtendedProperties|Collection(Common.NameValuePair)|No|Additional properties related to the eDiscovery activity. |
-|ExportName|Edm.String|No|Name of the eDiscovery export.| 
+|ExportName|Edm.String|No|Name of the eDiscovery export.|
 |JobId|Edm.String|No|The GUID of the eDiscovery process.|
-|RecordNumber|Edm.String|No|
+|RecordNumber|Edm.String|No|Used when an audit record is divided into multiple parts due to size. It indicates the sequence of each part within the total splits.|
 
 
 ### SharePointMetadata complex type
