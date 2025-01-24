@@ -877,8 +877,8 @@ The eDiscovery audit schema is designed to capture and log activities related to
 |QueryText|Edm.String|No|The query text associated with the activity, such as a search statistic process or add to review process.|
 |QueryFiles|Edm.String|No|The name of the input file used to generate the query. This is specific to the search by file gesture.|
 |Settings|Collection(Common.NameValuePair)|No|Settings applied to the eDiscovery activity. |
-|ExtendedProperties|Collection(Common.NameValuePair)|No
-|ExportName|Edm.String|No|Additional properties related to the eDiscovery activity.| 
+|ExtendedProperties|Collection(Common.NameValuePair)|No|Additional properties related to the eDiscovery activity. |
+|ExportName|Edm.String|No|Name of the eDiscovery export.| 
 |JobId|Edm.String|No|The GUID of the eDiscovery process.|
 |RecordNumber|Edm.String|No|
 
