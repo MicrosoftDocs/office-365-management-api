@@ -855,6 +855,37 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |PolicyDetails|Collection(Self.[PolicyDetails](#policydetails-complex-type))|Yes|Information about 1 or more policies that triggered the DLP event.|
 |SensitiveInfoDetectionIsIncluded|Boolean|Yes|Indicates whether the event contains the value of the sensitive data type and surrounding context from the source content. Accessing sensitive data requires the "Read DLP policy events including sensitive details" permission in Azure Active Directory.|
 
+### eDiscovery schema
+
+The eDiscovery audit schema is designed to capture and log activities related to eDiscovery processes within the organization. 
+
+
+|**Parameters**|**Type**|**Mandatory**|**Description**|
+|:-----|:-----|:-----|:-----|
+|CaseId|Edm.Guid|No|The identity (GUID) of the eDiscovery case.|
+|CaseName|Edm.String|No|The name of the eDiscovery case.|
+|Object1Id|Edm.String|No|The ID of the object (for example, a search, hold, or review set) that was created, accessed, or changed.|
+|Object1Name|Edm.String|No|The name of the object (for example, a search, hold or review set) that was created, accessed, or changed.|
+|Object1Type|Edm.String|No|The type of the eDiscovery object that the user created, deleted, or modified.|
+|Object2Id|Edm.String|No|The ID of the object (for example, a search, hold, or review set) that was created, accessed, or changed. |
+|Object2Name|Edm.String|No|The name of the object (for example, a search, hold or review set) that was created, accessed, or changed.|
+|Object2Type|Edm.String|No|The type of the eDiscovery object that the user created, deleted, or modified.|
+|StartTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the eDiscovery activity was started.|
+|EndTime|Edm.Date|No|The date and time in Coordinated Universal Time (UTC) when the eDiscovery activity was ended.|
+|UserCancelled|Edm.Boolean|No|Whether the specific activitiy was cancelled by the user. |
+|ItemIds|Collection(Edm.String)|No|Item IDs associated with the activity.|
+|ItemNames|Collection(Edm.String)|No|Item names associated with the activity.|
+|DataSources|Collection(Edm.String)|No|A list of source IDs, source names and locations associated to the activity.|
+|QueryId|Edm.String|No|The ID of the query associated with the activity.|
+|QueryText|Edm.String|No|The query text associated with the activity, such as a search statistic process or add to review process.|
+|QueryFiles|Collection(Edm.String)|No|Input file names used to generate the query. This is specific to the search by file gesture.|
+|Settings|Collection(Common.NameValuePair)|No|Settings applied to the eDiscovery activity. |
+|ExtendedProperties|Collection(Common.NameValuePair)|No|Additional properties related to the eDiscovery activity. |
+|ExportName|Edm.String|No|Name of the eDiscovery export.|
+|JobId|Edm.String|No|The GUID of the eDiscovery process.|
+|RecordNumber|Edm.String|No|Used when an audit record is divided into multiple parts due to size. It indicates the sequence of each part within the total splits.|
+
+
 ### SharePointMetadata complex type
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
