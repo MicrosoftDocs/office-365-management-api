@@ -247,6 +247,7 @@ This article provides details on the Common schema as well as service-specific s
 |337|CloudUpdateProfileConfig| Events from the Cloud Update's profile configuration.|
 |338|CloudUpdateTenantConfig| Events from the Cloud Update's tenant configuration.|
 |339|CloudUpdateDeviceConfig| Events from Cloud Update's managed devices configuration.|
+|339|TrainableClassifier| Events from Purview Data Classification.|
 
 ### Enum: User Type - Type: Edm.Int32
 
