@@ -2275,8 +2275,6 @@ Some of the VivaPulse events record different properties in EventDetails. Each p
 |PulseConfidentialConversationResponded| Not Applicable| | This event does not record any property into EventDetails.|
 |PulseConfidentialConversationMessageDeleted| Not Applicable| | This event does not record any property into EventDetails.|
 
-
-
 ## Compliance Manager schema
 
 The audit records for events related to Microsoft Purview Compliance Manager use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). For details about capturing events and activities related to Compliance Manager, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
