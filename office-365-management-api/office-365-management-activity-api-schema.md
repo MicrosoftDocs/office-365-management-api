@@ -2270,10 +2270,10 @@ Some of the VivaPulse events record different properties in EventDetails. Each p
 |PulseDeleteDraft| Not Applicable| This event does not record any property into EventDetails.|
 |PulseDeleteUserData| Not Applicable| This event does not record any property into EventDetails.|
 |PulseQuestionDeleted| Not Applicable| This event does not record any property into EventDetails.|
-|PulseDataExport| ExportType,ExportCompletedDate | ExportType describes the data export type and ExportCompletedDate describes when the data export was completed.|
-|PulseConfidentialConversationStarted| Not Applicable| | This event does not record any property into EventDetails.|
-|PulseConfidentialConversationResponded| Not Applicable| | This event does not record any property into EventDetails.|
-|PulseConfidentialConversationMessageDeleted| Not Applicable| | This event does not record any property into EventDetails.|
+|PulseDataExport| ExportType,ExportCompletedDate | ExportType indicates whether the data export is an Admin-level or Author-level export, ExportCompletedDate specifies when the data export was finalized.|
+|PulseConfidentialConversationStarted| Not Applicable| This event does not record any property into EventDetails.|
+|PulseConfidentialConversationResponded| Not Applicable| This event does not record any property into EventDetails.|
+|PulseConfidentialConversationMessageDeleted| Not Applicable| This event does not record any property into EventDetails.|
 
 ## Compliance Manager schema
 
