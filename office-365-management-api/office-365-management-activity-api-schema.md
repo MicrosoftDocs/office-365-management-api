@@ -73,6 +73,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Cloud Update tenant configuration schema](#cloud-update-tenant-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update tenant configuration audit data.|
 |[Cloud Update device configuration schema](#cloud-update-device-schema)| Extends the Common schema with the properties specific to the Cloud Update device configuration audit data.|
 |[AAD Risk Detection schema](#aad-risk-detection-schema)| Extends the Common schema with the properties specific to AAD Risk Detection events.|
+|[WebContentFiltering schema](#webcontentfiltering-schema)| Extends the Common schema with the properties specific to Microsoft Edge WebContentFiltering events.|
 
 ## Common schema
 
@@ -248,6 +249,7 @@ This article provides details on the Common schema as well as service-specific s
 |338|CloudUpdateTenantConfig| Events from the Cloud Update's tenant configuration.|
 |339|CloudUpdateDeviceConfig| Events from Cloud Update's managed devices configuration.|
 |358|TrainableClassifier| Events from Purview Data Classification.|
+|359|WebContentFiltering| Events from Microsoft Edge WebContentFiltering.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -2537,3 +2539,13 @@ The audit records for events related to AAD Risk Detection use this schema (in a
 |Altitude|Edm.String|No|The altitude of the location where the sign-in was performed. |
 |Latitude|Edm.String|No|The latitude of the location where the sign-in was performed. |
 |Longitude|Edm.String|No|The longitude of the location where the sign-in was performed. |
+
+## WebContentFiltering schema
+
+The audit records for events related to Microsoft Edge WebContentFiltering use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance).
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|URLPath|Edm.String|Yes|The URL that was browsed.|
+|DomainURL|Edm.String|Yes|The domain URL that was browsed.|
+|Category|Edm.String|Yes|Category of browsed URL.|
