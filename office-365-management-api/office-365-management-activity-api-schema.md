@@ -73,6 +73,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Cloud Update tenant configuration schema](#cloud-update-tenant-configuration-schema)| Extends the Common schema with the properties specific to the Cloud Update tenant configuration audit data.|
 |[Cloud Update device configuration schema](#cloud-update-device-schema)| Extends the Common schema with the properties specific to the Cloud Update device configuration audit data.|
 |[AAD Risk Detection schema](#aad-risk-detection-schema)| Extends the Common schema with the properties specific to AAD Risk Detection events.|
+|[WebContentFiltering schema](#webcontentfiltering-schema)| Extends the Common schema with the properties specific to Microsoft Edge WebContentFiltering events.|
 
 ## Common schema
 
@@ -89,7 +90,7 @@ This article provides details on the Common schema as well as service-specific s
 |UserKey|Edm.String|Yes|An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange. |
 |Workload|Edm.String|Yes|The Office 365 service where the activity occurred.|
 |ResultStatus|Edm.String|No|Indicates whether the action (specified in the Operation property) was successful or not. Possible values are **Succeeded**, **PartiallySucceeded**, or **Failed**. For Exchange admin activity, the value is either **True** or **False**.<br/><br/>**Important**: Different workloads may overwrite the value of the ResultStatus property. For example, for Microsoft Entra ID STS logon events, a value of **Succeeded** for ResultStatus indicates only that the HTTP operation was successful; it doesn't mean the logon was successful. To determine if the actual logon was successful or not, see the LogonError property in the [Microsoft Entra ID STS Logon schema](#azure-active-directory-secure-token-service-sts-logon-schema). If the logon failed, the value of this property will contain the reason for the failed logon attempt. |
-|ObjectId|Edm.string|No|For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. For Exchange admin audit logging, the name of the object that was modified by the cmdlet. For Cloud Policy service, the object ID of the policy configuration.|
+|ObjectId|Edm.string|No|For SharePoint and OneDrive for Business activity, the full path name of the file or folder accessed by the user. For Exchange admin audit logging, the name of the object that was modified by the cmdlet. For Cloud Policy service, the object ID of the policy configuration. For TrainableClassifier activity, the id of the model created, published, updated, or deleted by the user.|
 |UserId|Edm.string|Yes|The UPN (User Principal Name) of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, `my_name@my_domain_name`. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see [The app@sharepoint user in audit records](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records). |
 |ClientIP|Edm.String|Yes|The IP address of the device that was used when the activity was logged. The IP address is displayed in either an IPv4 or IPv6 address format.<br/><br/>For some services, the value displayed in this property might be the IP address for a trusted application (for example, Office on the web apps) calling into the service on behalf of a user and not the IP address of the device used by person who performed the activity. <br/><br/>Also, for Microsoft Entra ID-related events, the IP address isn't logged and the value for the ClientIP property is `null`.|
 |Scope|Self.[AuditLogScope](#auditlogscope)|No|Was this event created by a hosted O365 service or an on-premises server? Possible values are **online** and **onprem**. Note that SharePoint is the only workload currently sending events from on-premises to O365.|
@@ -248,6 +249,7 @@ This article provides details on the Common schema as well as service-specific s
 |338|CloudUpdateTenantConfig| Events from the Cloud Update's tenant configuration.|
 |339|CloudUpdateDeviceConfig| Events from Cloud Update's managed devices configuration.|
 |358|TrainableClassifier| Events from Purview Data Classification.|
+|359|WebContentFiltering| Events from Microsoft Edge WebContentFiltering.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -2542,3 +2544,13 @@ The audit records for events related to AAD Risk Detection use this schema (in a
 |Altitude|Edm.String|No|The altitude of the location where the sign-in was performed. |
 |Latitude|Edm.String|No|The latitude of the location where the sign-in was performed. |
 |Longitude|Edm.String|No|The longitude of the location where the sign-in was performed. |
+
+## WebContentFiltering schema
+
+The audit records for events related to Microsoft Edge WebContentFiltering use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance).
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|URLPath|Edm.String|Yes|The URL that was browsed.|
+|DomainURL|Edm.String|Yes|The domain URL that was browsed.|
+|Category|Edm.String|Yes|Category of browsed URL.|
