@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/86c5c3ec-ffb0-424f-ad07-251e1636d73c)---
+---
 ms.TocTitle: Office 365 Management Activity API schema
 title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
