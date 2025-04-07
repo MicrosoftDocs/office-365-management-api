@@ -640,6 +640,9 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |ExternalAccess|Edm.Boolean|Yes|Specifies whether the cmdlet was run by a user in your organization, by Microsoft datacenter personnel or a datacenter service account, or by a delegated administrator. The value **False** indicates that the cmdlet was run by someone in your organization. The value **True** indicates that the cmdlet was run by datacenter personnel, a datacenter service account, or a delegated administrator.|
 |OriginatingServer|Edm.String|No|The name of the server from which the cmdlet was executed.|
 |OrganizationName|Edm.String|No|The name of the tenant.|
+|DeviceId|Edm.String|No|Available only for registered/domain joined device.|
+|TokenObjectId|Edm.String|Yes|oid claim of the Microsoft Entra tokens.|
+|TokenTenantId|Edm.String|Yes|tid claim of the Microsoft Entra tokens.|
 
 ## Exchange Mailbox schema
 
@@ -659,8 +662,11 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 |ClientInfoString|Edm.String|No|Information about the email client that was used to perform the operation, such as a browser version, Outlook version, and mobile device information.|
 |ClientIPAddress|Edm.String|No|The IP address of the device that was used when the operation was logged. The IP address is displayed in either an IPv4 or IPv6 address format.|
 |ClientMachineName|Edm.String|No|The machine name that hosts the Outlook client.|
-|ClientProcessName|Edm.String|No|The email client that was used to access the mailbox. |
-|ClientVersion|Edm.String|No|The version of the email client .|
+|ClientProcessName|Edm.String|No|The email client that was used to access the mailbox.|
+|ClientVersion|Edm.String|No|The version of the email client.|
+|DeviceId|Edm.String|No|Available only for registered/domain joined device.|
+|TokenObjectId|Edm.String|Yes|oid claim of the Microsoft Entra tokens.|
+|TokenTenantId|Edm.String|Yes|tid claim of the Microsoft Entra tokens.|
 
 ### Enum: LogonType - Type: Edm.Int32
 
