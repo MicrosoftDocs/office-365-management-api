@@ -2156,6 +2156,20 @@ The following table contain information related to AIP heartbeat events.
 |ScopeList|Edm.String|No|The scope group list for the dataset in the consent operation.|
 |PrivacyPolicyType|Edm.String|Yes|The privacy policy types for the dataset in the consent operation. Possible values are None and DenyList.|
 
+## Viva Glint schema
+
+The audit records for events related to Viva Glint use this schema (in addition to the [Common schema](/office/office-365-management-api/office-365-management-activity-api-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). For details about capturing events and activities related to Viva Glint, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+
+|Parameters|Type|Mandatory?|Description|
+| -------- | -------- | -------- | -------- |
+|ClientUUID|Edm.String|Y|The Client UUID of the Viva Glint instance.|
+|ImportType |Edm.String|N|The data import source type.|
+|DataDSRControl|Edm.String|N|This in-platform control determines whether survey data is deleted when a user is removed from the Viva Glint platform.|
+|DiscardEmployeeIds|Edm.String|N|This in-platform control specifies whether the Employee IDs of previously deleted employees are disregarded or retained in the Viva Glint platform.|
+|JobName|Edm.String|N|The name of a Glint data app job that was run.|
+|ExtendedCompletionDate|Edm.Date|N|The new date to which a closed survey cycle has been extended.|
+|FeedBackComponentName  |Edm.String|N|The name of a specific component within the 360 feedback program.|
+
 ## Viva Goals schema
 
 The audit records for events related to Viva Goals use this schema (in addition to the [Common schema](#common-schema)). For details how you can search for the audit logs from the compliance portal, see [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance). For details about capturing events and activities related to Viva Goals, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
