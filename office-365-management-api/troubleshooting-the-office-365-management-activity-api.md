@@ -79,6 +79,10 @@ TargetUpdatedProperties were appearing in ExtendedProperties. However, they have
 
 Starting in November 2020, audit logs for Microsoft Entra sign-in activities are ingested into the unified audit log from Microsoft Entra Event Hubs. As a result of this change, populating the "LogonError" property with the UserAccountNotFound value is not possible. Starting the first week of February 2021, the [ErrorCode property in the Microsoft Entra logon auditing schema](/office/office-365-management-api/office-365-management-activity-api-schema#azure-active-directory-secure-token-service-sts-logon-schema) now matches [AADSTS error codes](/azure/active-directory/develop/reference-aadsts-error-codes#lookup-current-error-code-information). Also, the UserId parameter will not be populated with the user name from the attempted login for UserAccountNotFound errors because that user name doesn't exist in the organization's Microsoft Entra directory.
 
+**I can see duplicate audit logs when using the Management Activity API. Why is this happening?**
+
+This duplication of events is an expected and designed behavior intended to prevent the loss of any audit events. When an error is encountered by an audit event, the audit service retries the process, which may result in duplicate audit events being generated and stored in the audit log storage(s). While exporting audit search results using the UI from the Microsoft Purview portal automatically removes duplicates, the Office 365 Management Activity API does not have this de-duplication feature. Consequently, duplicates may appear in the results returned by the Office 365 Management Activity API. It is the responsibility of the SIEM solution to implement logic to remove such duplicated events upon ingestion.
+
 ## Troubleshooting the Office 365 Management Activity API
 
 One thing that should be made clear for anyone who's getting started with the Office 365 Management Activity API is that there is no concept of querying by event specifics, such as date that the event occurred, which site collection an event might have been fired from, or the type of event. Instead, you create subscriptions to specific workloads (for example, SharePoint or Microsoft Entra ID) and each subscription is per tenant.
@@ -371,10 +375,6 @@ After you download the appropriate file, search for the strings "M365ManagementA
 You can use Az or AzureRM PowerShell cmdlets to set the network security group rule with service tag. You can configure security group rules with service tags, and then add those rules to a new network security group. A few resources, such as Azure Functions, also provide a service tag option to configure network security groups using the Azure portal
 
 For information about using Az or AzureRM PowerShell to set up network security rules and network security groups, see:
-
-- [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
-
-- [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
 
 - [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)
 
