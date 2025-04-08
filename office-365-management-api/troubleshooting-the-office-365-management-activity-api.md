@@ -376,10 +376,6 @@ You can use Az or AzureRM PowerShell cmdlets to set the network security group r
 
 For information about using Az or AzureRM PowerShell to set up network security rules and network security groups, see:
 
-- [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
-
-- [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
-
 - [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)
 
 - [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)
