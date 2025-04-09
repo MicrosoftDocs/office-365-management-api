@@ -25,6 +25,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Common schema](#common-schema)|The view to extract Record Type, User ID, Client IP, User type and Action along with core dimensions such as user properties (such as UserID), location properties (such as Client IP), and service-specific properties (such as Object Id).|
 |[Copilot schema](copilot-schema.md)|Events include how and when to interact with Copilot, in which Microsoft 365 service the activity took place, and references to the files stored in Microsoft 365 that were accessed during the interaction.|
 |[SharePoint Base schema](#sharepoint-base-schema)|Extends the Common schema with the properties specific to all SharePoint audit data.|
+|[SharePoint Content Security Policy schema](#sharepoint-content-security-policy-schema)|Extends the SharePoint Base schema with the properties specific to Content Security Policy reporting and enforcement in SharePoint.|
 |[SharePoint File Operations](#sharepoint-file-operations)|Extends the SharePoint Base schema with the properties specific to file access and manipulation in SharePoint.|
 |[SharePoint List Operations](#sharepoint-list-operations)|Extends the SharePoint Base schema with the properties specific to interactions with lists and list items in SharePoint Online.|
 |[SharePoint Sharing schema](#sharepoint-sharing-schema)|Extends the SharePoint Base schema with the properties specific to file sharing.|
@@ -250,6 +251,7 @@ This article provides details on the Common schema as well as service-specific s
 |300|RestoreItem|Events related to artifacts backed up with Microsoft 365 Backup.|
 |301|BackupItem|Events related to items being restored using Microsoft 365 Backup.|
 |332|ComplianceSettingsChange|Microsoft Purview Compliance settings change events.|
+|336|SharePointContentSecurityPolicy|Events related to Content Security Policy reporting and enforcement in SharePoint|
 |337|CloudUpdateProfileConfig| Events from the Cloud Update's profile configuration.|
 |338|CloudUpdateTenantConfig| Events from the Cloud Update's tenant configuration.|
 |339|CloudUpdateDeviceConfig| Events from Cloud Update's managed devices configuration.|
@@ -496,6 +498,38 @@ This article provides details on the Common schema as well as service-specific s
 |UserAddedToGroup|Site administrator or owner adds a person to a group on a SharePoint or OneDrive for Business site. Adding a person to a group grants the user the permissions that were assigned to the group. |
 |UserRemovedFromGroup|Site administrator or owner removes a person from a group on a SharePoint or OneDrive for Business site. After the person is removed, they no longer are granted the permissions that were assigned to the group. |
 |WorkflowModified|User creates, modifies, or deletes an Enterprise Project Type or Workflow phases or stages in Project web app.|
+
+## SharePoint Content Security Policy schema
+
+The Content Security Policy SharePoint events listed in the [TODO: Add reference in [Search the audit log in the compliance center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#file-and-page-activities)].
+
+|**Parameter**|**Type**|**Mandatory?**|**Description**|
+| -------- | -------- | -------- | -------- |
+|BlockedUrl|Edm.String|Yes|The URL of the resource that violated the Content Security Policy when accessed.|
+|DocumentUrl|Edm.String|Yes|The URL of the page on which the violation occured.|
+|Directive|Edm.String String="Microsoft.Office.Audit.Schema.SharePoint.[ContentSecurityPolicyDirective](#contentsecuritypolicydirective )"|Yes|The URL of the folder that contains the file accessed by the user. The combination of the values for the  *SiteURL*,  *SourceRelativeURL*, and  *SourceFileName* parameters is the same as the value for the **ObjectID** property, which is the full path name for the file accessed by the user.|
+
+### Enum: ContentSecurityPolicyDirective - Type: Edm.Int32
+
+### ContentSecurityPolicyDirective 
+
+|**Value**|**Member name**|**Description**|
+| -------- | -------- | -------- |
+|0|ChildSrc|'child-src' directive was violated.|
+|1|ConnectSrc|'connect-src' directive was violated.|
+|2|DefaultSrc|'default-src' directive was violated.|
+|3|FencedFrameSrc|'fenced-frame-src' directive was violated.|
+|4|FontSrc|'font-src' directive was violated.|
+|5|FrameSrc|'frame-src' directive was violated.|
+|6|ImgSrc|'img-src' directive was violated.|
+|7|ManifestSrc|'manifest-src' directive was violated.|
+|8|MediaSrc|'media-src' directive was violated.|
+|9|ObjectSrc|'object-src' directive was violated.|
+|10|PrefetchSrc|'prefetch-src' directive was violated.|
+|11|ScriptSrc|'script-src' directive was violated.|
+|12|ScriptSrcElem|'script-src-elem' directive was violated.|
+|13|ScriptSrcAttr|'script-src-attr' directive was violated.|
+|14|FrameAncestors|'frame-ancestors' directive was violated.|
 
 ## SharePoint file operations
 
