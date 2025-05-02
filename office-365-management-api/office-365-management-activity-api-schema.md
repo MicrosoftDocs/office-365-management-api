@@ -74,6 +74,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Cloud Update device configuration schema](#cloud-update-device-schema)| Extends the Common schema with the properties specific to the Cloud Update device configuration audit data.|
 |[AAD Risk Detection schema](#aad-risk-detection-schema)| Extends the Common schema with the properties specific to AAD Risk Detection events.|
 |[WebContentFiltering schema](#webcontentfiltering-schema)| Extends the Common schema with the properties specific to Microsoft Edge WebContentFiltering events.|
+|[Microsoft365 Copilot Scheduled Prompt schema ](#microsoft365-copilot-scheduled-prompt-schema)|Extends the Common schema with the properties specific to Microsoft365 Copilot Scheduled Prompt audit data.|
 
 ## Common schema
 
@@ -255,6 +256,7 @@ This article provides details on the Common schema as well as service-specific s
 |339|CloudUpdateDeviceConfig| Events from Cloud Update's managed devices configuration.|
 |358|TrainableClassifier| Events from Purview Data Classification.|
 |359|WebContentFiltering| Events from Microsoft Edge WebContentFiltering.|
+|363|Microsoft365CopilotScheduledPrompt| Events from Microsoft365 Copilot ScheduledPrompt.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -2666,3 +2668,14 @@ The audit records for events related to Microsoft Edge WebContentFiltering use t
 |URLPath|Edm.String|Yes|The URL that was browsed.|
 |DomainURL|Edm.String|Yes|The domain URL that was browsed.|
 |Category|Edm.String|Yes|Category of browsed URL.|
+
+## Microsoft365 Copilot Scheduled Prompt schema 
+
+Copilot Scheduled Prompts allow users to automate Copilot prompts so they run on a defined schedule in M365 Copilot chat. The audit records for events related to Copilot Scheduled Prompts use this schema ([Common schema](#common-schema)). For details on how you can search for the audit logs from the compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ScenarioType|Edm.String|Yes|The name of automation.|
+|PromptText|Edm.String|No|The Copilot prompt that will be run by the LLM.|
+|AutomationId|Edm.String|Yes|A unique identifier that correlates all activities related to each run of the Copilot prompt.|
+|TriggerMode|Edm.String|No|The schedule for when the Copilot prompt will run, shown in cron format.|
