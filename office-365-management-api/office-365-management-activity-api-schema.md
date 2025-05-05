@@ -256,7 +256,8 @@ This article provides details on the Common schema as well as service-specific s
 |339|CloudUpdateDeviceConfig| Events from Cloud Update's managed devices configuration.|
 |358|TrainableClassifier| Events from Purview Data Classification.|
 |359|WebContentFiltering| Events from Microsoft Edge WebContentFiltering.|
-|363|Microsoft365CopilotScheduledPrompt| Events from Microsoft365 Copilot ScheduledPrompt.|
+|363|Microsoft365CopilotScheduledPrompt| Events from Microsoft 365 Copilot scheduled prompt.|
+
 
 ### Enum: User Type - Type: Edm.Int32
 
