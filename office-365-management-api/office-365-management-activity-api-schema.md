@@ -74,7 +74,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Cloud Update device configuration schema](#cloud-update-device-schema)| Extends the Common schema with the properties specific to the Cloud Update device configuration audit data.|
 |[AAD Risk Detection schema](#aad-risk-detection-schema)| Extends the Common schema with the properties specific to AAD Risk Detection events.|
 |[WebContentFiltering schema](#webcontentfiltering-schema)| Extends the Common schema with the properties specific to Microsoft Edge WebContentFiltering events.|
-|[Microsoft365 Copilot Scheduled Prompt schema ](#microsoft365-copilot-scheduled-prompt-schema)|Extends the Common schema with the properties specific to Microsoft365 Copilot Scheduled Prompt audit data.|
+|[Microsoft 365 Copilot scheduled prompt schema](#microsoft-365-copilot-scheduled-prompt-schema)|Extends the Common schema with the properties specific to Microsoft 365 Copilot scheduled prompt audit data.|
 
 ## Common schema
 
