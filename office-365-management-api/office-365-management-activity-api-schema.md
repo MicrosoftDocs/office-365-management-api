@@ -2669,7 +2669,7 @@ The audit records for events related to Microsoft Edge WebContentFiltering use t
 |DomainURL|Edm.String|Yes|The domain URL that was browsed.|
 |Category|Edm.String|Yes|Category of browsed URL.|
 
-## Microsoft365 Copilot Scheduled Prompt schema 
+## Microsoft 365 Copilot scheduled prompt schema 
 
 Copilot Scheduled Prompts allow users to automate Copilot prompts so they run on a defined schedule in M365 Copilot chat. The audit records for events related to Copilot Scheduled Prompts use this schema (in addition to the [Common schema](#common-schema)). For details on how you can search for the audit logs from the compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
 
