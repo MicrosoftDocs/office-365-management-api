@@ -501,7 +501,7 @@ This article provides details on the Common schema as well as service-specific s
 
 ## SharePoint Content Security Policy schema
 
-The Content Security Policy SharePoint events listed in the [TODO: Add reference in [Search the audit log in the compliance center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#file-and-page-activities)].
+The Content Security Policy SharePoint events listed in the "SharePoint Content Security Policy activities" section in [Search the audit log in the compliance center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#sharepoint-content-security-policy-activities) use this schema.
 
 |**Parameter**|**Type**|**Mandatory?**|**Description**|
 | -------- | -------- | -------- | -------- |
