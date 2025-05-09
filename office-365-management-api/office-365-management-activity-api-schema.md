@@ -2230,6 +2230,9 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |4|OfficeDocument|The plan is associated with a Office document.|
 |5|Roster|The plan is associated with a roster group.|
 |6|Project|The plan originates from Microsoft Project.|
+|7|User|The plan is associated with a user.|
+|8|TeamsChannel|The plan is associated with a Teams channel.|
+|10|PlannerTask|The plan is associated with a Planner task.|
 
 ### Enum: PlanAccessLevel - Type Edm.Int32
 
