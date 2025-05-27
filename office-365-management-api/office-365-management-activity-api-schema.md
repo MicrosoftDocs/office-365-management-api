@@ -258,7 +258,7 @@ This article provides details on the Common schema as well as service-specific s
 |358|TrainableClassifier| Events from Purview Data Classification.|
 |359|WebContentFiltering| Events from Microsoft Edge WebContentFiltering.|
 |363|Microsoft365CopilotScheduledPrompt| Events from Microsoft 365 Copilot scheduled prompt.|
-|363|PlacesDirectory| Events from Microsoft Places Directory.|
+|364|PlacesDirectory| Events from Microsoft Places Directory.|
 
 ### Enum: User Type - Type: Edm.Int32
 
