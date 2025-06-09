@@ -2691,6 +2691,6 @@ The audit records for events related to Places Directory operations use this sch
 
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|PlaceType|Edm.String|No|This is the type for the place item created/updated/deleted by the request, e.g. "Building", "Room" and "Desk", etc.
+|PlaceType|Edm.String|No|The type for the place item that is created/updated/deleted by the request. For example, "Building", "Room", "Desk", and so on.|
 |Parameters|Collection(Common.NameValuePair)|No|The name and value for all parameters that were used with the cmdlet that is identified in the Operations property.|
 |ModifiedProperties|Collection(Common.ModifiedProperty)|No|The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified object.|
