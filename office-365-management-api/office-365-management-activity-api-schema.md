@@ -75,6 +75,7 @@ This article provides details on the Common schema as well as service-specific s
 |[AAD Risk Detection schema](#aad-risk-detection-schema)| Extends the Common schema with the properties specific to AAD Risk Detection events.|
 |[WebContentFiltering schema](#webcontentfiltering-schema)| Extends the Common schema with the properties specific to Microsoft Edge WebContentFiltering events.|
 |[Microsoft 365 Copilot scheduled prompt schema](#microsoft-365-copilot-scheduled-prompt-schema)|Extends the Common schema with the properties specific to Microsoft 365 Copilot scheduled prompt audit data.|
+|[Microsoft Places Directory schema](#microsoft-places-directory-schema)|Extends the Common schema with the properties specific to Microsoft Places Directory audit data.|
 
 ## Common schema
 
@@ -257,7 +258,7 @@ This article provides details on the Common schema as well as service-specific s
 |358|TrainableClassifier| Events from Purview Data Classification.|
 |359|WebContentFiltering| Events from Microsoft Edge WebContentFiltering.|
 |363|Microsoft365CopilotScheduledPrompt| Events from Microsoft 365 Copilot scheduled prompt.|
-
+|364|PlacesDirectory| Events from Microsoft Places Directory.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -2683,3 +2684,13 @@ Copilot scheduled prompts allow users to automate Copilot prompts, so they run o
 |PromptText|Edm.String|No|The Copilot prompt that will be run by the LLM.|
 |AutomationId|Edm.String|Yes|A unique identifier that correlates all activities related to each run of the Copilot prompt.|
 |TriggerMode|Edm.String|No|The schedule for when the Copilot prompt will run, shown in cron format.|
+
+## Microsoft Places Directory schema
+
+The audit records for events related to Places Directory operations use this schema (in addition to the [Common schema](#common-schema)). For details on how you can search for the audit logs from the compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|PlaceType|Edm.String|No|The type for the place item that is created/updated/deleted by the request. For example, "Building", "Room", "Desk", and so on.|
+|Parameters|Collection(Common.NameValuePair)|No|The name and value for all parameters that were used with the cmdlet that is identified in the Operations property.|
+|ModifiedProperties|Collection(Common.ModifiedProperty)|No|The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified object.|
