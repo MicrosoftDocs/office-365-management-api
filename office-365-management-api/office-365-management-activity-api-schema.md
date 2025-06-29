@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 12/03/2024
+ms.date: 06/29/2025
 ms.localizationpriority: high
 ---
 
@@ -259,6 +259,12 @@ This article provides details on the Common schema as well as service-specific s
 |359|WebContentFiltering| Events from Microsoft Edge WebContentFiltering.|
 |363|Microsoft365CopilotScheduledPrompt| Events from Microsoft 365 Copilot scheduled prompt.|
 |364|PlacesDirectory| Events from Microsoft Places Directory.|
+|365|SentinelNotebookOnLake |	Events from notebook execution on Sentinel Data Lake.|
+|366|SentinelJob | Events from operations on jobs in Sentinel Data Lake.|
+|367|SentinelKQLOnLake | Events from running KQL on Sentinel Data Lake.|
+|368|SentinelLakeOnboarding	| Events from onboarding to Sentinel Data Lake.|
+|369|SentinelLakeDataOnboarding | Data loading events into Sentinel Data Lake.|
+
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -2694,3 +2700,78 @@ The audit records for events related to Places Directory operations use this sch
 |PlaceType|Edm.String|No|The type for the place item that is created/updated/deleted by the request. For example, "Building", "Room", "Desk", and so on.|
 |Parameters|Collection(Common.NameValuePair)|No|The name and value for all parameters that were used with the cmdlet that is identified in the Operations property.|
 |ModifiedProperties|Collection(Common.ModifiedProperty)|No|The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified object.|
+
+
+## Microsoft Sentinel data lake schema
+
+The audit records for events related to Microsoft Sentinel data lake operations use this schema (in addition to the [Common schema](#common-schema)). For details on how you can search for the audit logs from the compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+
+### SentinelNotebookOnLake
+ 
+| **Parameter**            | **Type**    | **Mandatory?** | **Description**                                                        |
+|--------------------------|-------------|:--------------:|------------------------------------------------------------------------|
+| EventTime                | Edm.Date    | Yes               | Timestamp when the Spark Notebook execution was submitted/started.      |
+| Compute                  | Edm.String  | No              | Compute selected.                                                      |
+| DatabaseName             | Edm.String  | No              | The workspace the command ran on.                                      |
+| TableName                | Edm.String  | No              | Name of the table.                                                     |
+| SessionDurationInSecs    | Edm.String  | Yes               | Total duration of the session.                                         |
+| SessionStartTime         | Edm.Date    | No              | Start time for the session.                                            |
+| SessionEndTime           | Edm.Date    | No              | End time for the session.                                              |
+| KernalId                 | Edm.Guid    | Yes               | Jupyter KernelId, uniquely identifies the Notebook session.             |
+| SessionId                | Edm.Guid    | No              | Correlation ID for the various code blocks executed with a Spark session.|
+| Interface                | Edm.String  | Yes               | Interface from where the notebook was run.                             |
+
+### SentinelJob
+
+| **Parameter**               | **Type**    | **Mandatory?** | **Description**                                         |
+|-----------------------------|-------------|:--------------:|---------------------------------------------------------|
+| EventTime                   | Edm.Date    | Yes               | Timestamp when the operation on job was initiated.      |
+| Operation                   | Edm.String  | Yes               | Job Operation name.                                     |
+| Job Type                    | Edm.String  | Yes               | Type of Job like Notebook, KQL.                         |
+| Job ID                      | Edm.Guid    | Yes               | Unique identifier of a job.                             |
+| Job Name                    | Edm.String  | Yes               | Name of the job.                                        |
+| Compute                     | Edm.String  | No              | Compute configuration of the job.                       |
+| Schedule                    | Edm.String  | No              | Schedule details, if configured for the job.            |
+| Run ID                      | Edm.Guid    | No              | ID of a specific job run instance.                      |
+| JobRunStatus                | Edm.String  | No              | Status of the job execution.                            |
+| Logs                        | Edm.String  | No              | Logs from the notebook run.                             |
+| JobExecutionDurationInSecs  | Edm.Int64   | No              | Time taken for job execution.                           |
+| JobTotalDurationInSecs      | Edm.Int64   | No              | Total Duration of the job operation including session.  |
+| JobStartTime                | Edm.Date    | No              | Start time of the job.                                  |
+| JobEndTime                  | Edm.Date    | No              | End time of the job.                                    |
+| Interface                   | Edm.String  | Yes               | Interface from where the job operation was done.        |
+
+### SentinelKQLOnLake
+
+| **Parameter**    | **Type**            | **Mandatory?** | **Description**      |
+|------------------|---------------------|:--------------:|----------------------|
+| EventTime        | Edm.Date            | Yes               | Timestamp of KQL query execution.      |
+| DatabaseName     | Edm.String          | Yes               | The workspace the KQL query ran on.    |
+| ResultTableCount | Edm.Int64           | No              | Output Table Count.                    |
+| QueryResponse    | Edm.String          | Yes               | Response from executing the KQL query. |
+| TotalRows        | Collection(Edm.Int64)| Yes               | Total Rows returned from query execution. List of values if multiple queries executed at once.    |
+| ComponentFault   | Edm.String          | No              | The entity that caused the query to fail. For example, if the query result is too large, the ComponentFault will be 'Client'. If an internal error occurred, it will be 'Server'.             |
+| FailureReason    | Edm.String          | No              | If KQL query failed, the reason for failure.    |
+| ExecutionDuration| Edm.Int64           | Yes               | Time taken for query execution, in milliseconds.|
+| TotalCPU         | Edm.Int64           | Yes               | Total CPU Duration of the run.                  |
+| MemoryPeak       | Edm.Int64           | Yes               | Memory Peak of the KQL query execution.         |
+| Interface        | Edm.String          | Yes               | Interface from where the KQL query was executed.|
+
+### SentinelLakeOnboarding
+
+| Parameter                    | Type        | Mandatory? | Description                                             |
+|------------------------------|-------------|------------|---------------------------------------------------------|
+| BillingAzureSubscriptionId   | Edm.String  | No          | Azure subscription chosen for Sentinel Data Lake billing.|
+| BillingAzureResourceGroupName| Edm.String  | No          | Azure resource group chosen for Sentinel Data Lake billing.|
+| TenantId                     | Edm.String  | No          | Tenant ID associated with the lake setup or update.     |
+| ProvisioningStatus           | Edm.String  | No          | Status of provisioning the lake.                        |
+
+### SentinelLakeDataOnboarding 
+
+| Property Name            | Type                   | Mandatory? | Description                                                    |
+|--------------------------|------------------------|------------|----------------------------------------------------------------|
+| DataOnboardingAtSetup    | Edm.String             | No          | Data sets ingested during Sentinel Data Lake onboarding.        |
+| Tables                   | Collection(Edm.String) | No          | List of table names ingested during Sentinel Data Lake onboarding. |
+| SubscriptionsEnabled     | Collection(Edm.String) | No          | List of subscriptions enabled for ARG ingestion.                |
+| DataOnboardingStatus     | Edm.String             | No          | Status of operation.                                           |
+
