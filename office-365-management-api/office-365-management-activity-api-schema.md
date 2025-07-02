@@ -2783,9 +2783,53 @@ The audit records for events related to Purview On-demand classification use thi
 
 ### DataScanClassification schema
 
-The DataScanClassification audit schema is designed to capture and log activities when a file was evaluated for sensitive content as part of an On-demand classification scan for SharePoint or OneDrive for business.. 
+The DataScanClassification audit schema is designed to capture and log activities when a file was evaluated for sensitive content as part of an On-demand classification scan for SharePoint or OneDrive for business.
 
 |**Parameters**|**Type**|**Mandatory**|**Description**|
 |:-----|:-----|:-----|:-----|
-|CaseId|Edm.Guid|No|The identity (GUID) of the eDiscovery case.|
-|CaseName|Edm.String|No|The name of the eDiscovery case.|
+|ClassificationInfo|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|No| Details about sensitive information found in the file after the scan.|
+|PolicyId|Edm.Guid|Yes|The guid of the On-demand classification scan.|
+|ClassificationMode|Edm.Int32|Yes|Whether scan was executed for specific classifiers or all.|
+|ClassificationPosture|Edm.Int32|Yes|Comparison of sensitive info discovered before and after the scan.|
+|ClassificationResult|Edm.Int32|Yes|<To be added>.|
+|DocumentMetaData|Self.[DocumentMetadata](#documentmetadata-complex-type)|No|Describes metadata about the document in SharePoint or OneDrive for Business that contained the sensitive information.|
+|PreviousClassificationInfo|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|No| Details about sensitive information found in the file after the scan.|
+
+#### DocumentMetaData complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|itemCreationTime|Edm.Date|Yes|Datetimestamp in UTC of when event logged.|
+|SiteCollectionGuid|Edm.Guid|Yes|The GUID of the site collection.|
+|SiteCollectionUrl|Edm.String|Yes|Name of the SharePoint site.|
+|FileName|Edm.String|Yes|Name of the path.|
+|FileOwner|Edm.String|Yes|The document owner.|
+|FileOwnerEmail|Edm.String|Yes|Email address of document owner.|
+|FilePathUrl|Edm.String|Yes|The URL of the document|
+|DocumentLastModifier|Edm.String|Yes|The user who last modified the document.|
+|UniqueId|Edm.String|Yes|A guid that identifies the file.|
+|LastModifiedTime|Edm.DateTime|Yes|Timestamp in UTC for when doc was last modified.|
+
+#### Enum: ClassificationMode - Type: Edm.Int32
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|Member|A user who is a member of the team.|
+|1|Owner|A user who is the owner of the team.|
+|2|Guest|A user who is not a member of the team.|
+
+#### Enum: ClassificationPosture - Type: Edm.Int32
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|Member|A user who is a member of the team.|
+|1|Owner|A user who is the owner of the team.|
+|2|Guest|A user who is not a member of the team.|
+
+#### Enum: ClassificationResult - Type: Edm.Int32
+
+|**Value**|**Member name**|**Description**|
+|:-----|:-----|:-----|
+|0|Member|A user who is a member of the team.|
+|1|Owner|A user who is the owner of the team.|
+|2|Guest|A user who is not a member of the team.|
