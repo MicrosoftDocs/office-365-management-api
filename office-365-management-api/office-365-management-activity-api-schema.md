@@ -2812,24 +2812,24 @@ The DataScanClassification audit schema is designed to capture and log activitie
 
 #### Enum: ClassificationMode - Type: Edm.Int32
 
-|**Value**|**Member name**|**Description**|
-|:-----|:-----|:-----|
-|0|Member|A user who is a member of the team.|
-|1|Owner|A user who is the owner of the team.|
-|2|Guest|A user who is not a member of the team.|
+|**Value**|**Description**|
+|:-----|:-----|
+|0|A user who is a member of the team.|
+|1|A user who is the owner of the team.|
+|2|A user who is not a member of the team.|
 
 #### Enum: ClassificationPosture - Type: Edm.Int32
 
-|**Value**|**Member name**|**Description**|
-|:-----|:-----|:-----|
-|0|Member|A user who is a member of the team.|
-|1|Owner|A user who is the owner of the team.|
-|2|Guest|A user who is not a member of the team.|
+|**Value**|**Description**|
+|:-----|:-----|
+|0|A user who is a member of the team.|
+|1|A user who is the owner of the team.|
+|2|A user who is not a member of the team.|
 
 #### Enum: ClassificationResult - Type: Edm.Int32
 
-|**Value**|**Member name**|**Description**|
-|:-----|:-----|:-----|
-|0|Member|A user who is a member of the team.|
-|1|Owner|A user who is the owner of the team.|
-|2|Guest|A user who is not a member of the team.|
+|**Value**|**Description**|
+|:-----|:-----|
+|0|A user who is a member of the team.|
+|1|A user who is the owner of the team.|
+|2|A user who is not a member of the team.|
