@@ -2777,3 +2777,15 @@ The audit records for events related to Microsoft Sentinel data lake operations 
 | SubscriptionsEnabled     | Collection(Edm.String) | No          | List of subscriptions enabled for ARG ingestion.                |
 | DataOnboardingStatus     | Edm.String             | No          | Status of operation.                                           |
 
+## Purview On-demand classification schema
+
+The audit records for events related to Purview On-demand classification use this schema. For more information about On-demand classification, see [Learn about On-demand classification in Microsoft Purview](on-demand-classification.md)
+
+### DataScanClassification schema
+
+The DataScanClassification audit schema is designed to capture and log activities when a file was evaluated for sensitive content as part of an On-demand classification scan for SharePoint or OneDrive for business.. 
+
+|**Parameters**|**Type**|**Mandatory**|**Description**|
+|:-----|:-----|:-----|:-----|
+|CaseId|Edm.Guid|No|The identity (GUID) of the eDiscovery case.|
+|CaseName|Edm.String|No|The name of the eDiscovery case.|
