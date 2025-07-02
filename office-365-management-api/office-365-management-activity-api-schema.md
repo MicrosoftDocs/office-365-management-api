@@ -2791,7 +2791,7 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |PolicyId|Edm.Guid|Yes|The guid of the On-demand classification scan.|
 |ClassificationMode|Edm.Int32|Yes|Whether scan was executed for specific classifiers or all.|
 |ClassificationPosture|Edm.Int32|Yes|Comparison of sensitive info discovered before and after the scan.|
-|ClassificationResult|Edm.Int32|Yes|<To be added>.|
+|ClassificationResult|Edm.Int32|Yes|File classification status.|
 |DocumentMetaData|Self.[DocumentMetadata](#documentmetadata-complex-type)|No|Describes metadata about the document in SharePoint or OneDrive for Business that contained the sensitive information.|
 |PreviousClassificationInfo|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|No| Details about sensitive information found in the file after the scan.|
 
@@ -2814,22 +2814,25 @@ The DataScanClassification audit schema is designed to capture and log activitie
 
 |**Value**|**Description**|
 |:-----|:-----|
-|0|A user who is a member of the team.|
-|1|A user who is the owner of the team.|
-|2|A user who is not a member of the team.|
+|1|File evaluated for all classifiers configured in tenant.|
+|2|File evaluated only for selected classifiers specified in scan.|
 
 #### Enum: ClassificationPosture - Type: Edm.Int32
 
 |**Value**|**Description**|
 |:-----|:-----|
-|0|A user who is a member of the team.|
-|1|A user who is the owner of the team.|
-|2|A user who is not a member of the team.|
+|1|File did not match any classifiers both before and after the scan.|
+|2|No new classifer found after the scan.|
+|3|File did not match any classifier before the scan. One or more classifiers found in file after the scan.|
+|4|File matched some classifiers before the scan. One or more classifiers no longer match|
+|5|File matched some classifiers before the scan. New classifier or change in existing classifier count or confidence level after the scan. |
+
+
 
 #### Enum: ClassificationResult - Type: Edm.Int32
 
 |**Value**|**Description**|
 |:-----|:-----|
-|0|A user who is a member of the team.|
-|1|A user who is the owner of the team.|
-|2|A user who is not a member of the team.|
+|1|File classification completed successfully.|
+|2|File classification completed with error. One or more classifier evaluation failed. |
+|3|File classification failed. |
