@@ -247,6 +247,7 @@ This article provides details on the Common schema as well as service-specific s
 |283|VivaPulseReport|Viva Pulse report related events.|
 |287|ProjectForThewebAssignedToMeSettings|Microsoft Project for the web assigned to me tenant settings events.|
 |288|CloudPolicyService|Events from the Cloud Policy service.|
+|291|SensitiveInfoDiscovered| Events from Purview On-Demand classification for Endpoint devices.|
 |298|BackupPolicy|Events related to Microsoft 365 Backup Policies.|
 |299|RestoreTask|Events related to Microsoft 365 Backup Restore Tasks.|
 |300|RestoreItem|Events related to artifacts backed up with Microsoft 365 Backup.|
@@ -257,6 +258,7 @@ This article provides details on the Common schema as well as service-specific s
 |339|CloudUpdateDeviceConfig| Events from Cloud Update's managed devices configuration.|
 |358|TrainableClassifier| Events from Purview Data Classification.|
 |359|WebContentFiltering| Events from Microsoft Edge WebContentFiltering.|
+|361|DataScanClassification| Events from Purview On-Demand classification for SharePoint and OneDrive for business.|
 |363|Microsoft365CopilotScheduledPrompt| Events from Microsoft 365 Copilot scheduled prompt.|
 |364|PlacesDirectory| Events from Microsoft Places Directory.|
 |365|SentinelNotebookOnLake |	Events from notebook execution on Sentinel Data Lake.|
