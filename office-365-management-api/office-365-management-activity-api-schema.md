@@ -2777,3 +2777,62 @@ The audit records for events related to Microsoft Sentinel data lake operations 
 | SubscriptionsEnabled     | Collection(Edm.String) | No          | List of subscriptions enabled for ARG ingestion.                |
 | DataOnboardingStatus     | Edm.String             | No          | Status of operation.                                           |
 
+## Purview On-demand classification schema
+
+The audit records for events related to Purview On-demand classification use this schema. For more information about On-demand classification, see [Learn about On-demand classification in Microsoft Purview](on-demand-classification.md)
+
+### DataScanClassification schema
+
+The DataScanClassification audit schema is designed to capture and log activities when a file was evaluated for sensitive content as part of an On-demand classification scan for SharePoint or OneDrive for business.
+
+|**Parameters**|**Type**|**Mandatory**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ClassificationInfo|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|No| Details about sensitive information found in the file after the scan.|
+|PolicyId|Edm.Guid|Yes|The guid of the On-demand classification scan.|
+|ClassificationMode|Edm.Int32|Yes|Whether scan was executed for specific classifiers or all.|
+|ClassificationPosture|Edm.Int32|Yes|Comparison of sensitive info discovered before and after the scan.|
+|ClassificationResult|Edm.Int32|Yes|File classification status.|
+|DocumentMetaData|Self.[DocumentMetadata](#documentmetadata-complex-type)|No|Describes metadata about the document in SharePoint or OneDrive for Business that contained the sensitive information.|
+|PreviousClassificationInfo|Collection(Self.[SensitiveInformation](#sensitiveinformation-complex-type))|No| Details about sensitive information found in the file after the scan.|
+
+#### DocumentMetaData complex type
+
+|**Parameters**|**Type**|**Mandatory?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|itemCreationTime|Edm.Date|Yes|Datetimestamp in UTC of when event logged.|
+|SiteCollectionGuid|Edm.Guid|Yes|The GUID of the site collection.|
+|SiteCollectionUrl|Edm.String|Yes|Name of the SharePoint site.|
+|FileName|Edm.String|Yes|Name of the path.|
+|FileOwner|Edm.String|Yes|The document owner.|
+|FileOwnerEmail|Edm.String|Yes|Email address of document owner.|
+|FilePathUrl|Edm.String|Yes|The URL of the document|
+|DocumentLastModifier|Edm.String|Yes|The user who last modified the document.|
+|UniqueId|Edm.String|Yes|A guid that identifies the file.|
+|LastModifiedTime|Edm.DateTime|Yes|Timestamp in UTC for when doc was last modified.|
+
+#### Enum: ClassificationMode - Type: Edm.Int32
+
+|**Value**|**Description**|
+|:-----|:-----|
+|1|File evaluated for all classifiers configured in tenant.|
+|2|File evaluated only for selected classifiers specified in scan.|
+
+#### Enum: ClassificationPosture - Type: Edm.Int32
+
+|**Value**|**Description**|
+|:-----|:-----|
+|1|File did not match any classifiers both before and after the scan.|
+|2|No new classifer found after the scan.|
+|3|File did not match any classifier before the scan. One or more classifiers found in file after the scan.|
+|4|File matched some classifiers before the scan. One or more classifiers no longer match|
+|5|File matched some classifiers before the scan. New classifier or change in existing classifier count or confidence level after the scan. |
+
+
+
+#### Enum: ClassificationResult - Type: Edm.Int32
+
+|**Value**|**Description**|
+|:-----|:-----|
+|1|File classification completed successfully.|
+|2|File classification completed with error. One or more classifier evaluation failed. |
+|3|File classification failed. |
