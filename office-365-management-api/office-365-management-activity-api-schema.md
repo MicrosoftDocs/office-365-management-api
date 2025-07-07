@@ -2779,7 +2779,7 @@ The audit records for events related to Microsoft Sentinel data lake operations 
 
 ## Purview On-demand classification schema
 
-The audit records for events related to Purview On-demand classification use this schema. For more information about On-demand classification, see [Learn about On-demand classification in Microsoft Purview](on-demand-classification.md)
+The audit records for events related to Purview On-demand classification use this schema. For more information about On-demand classification, see [Learn about On-demand classification in Microsoft Purview](https://go.microsoft.com/fwlink/?linkid=2309600)
 
 ### DataScanClassification schema
 
