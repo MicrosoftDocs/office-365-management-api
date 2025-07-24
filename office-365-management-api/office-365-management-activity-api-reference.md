@@ -620,5 +620,6 @@ When the service encounters an error, it will report the error response code to 
 |AF20052|Content ID {0} in the URL is invalid.<br/><br/>{0} = resource id or resource URL</p></li></ul>|
 |AF20053|Only one language may be present in the Accept-Language header.|
 |AF20054|Invalid syntax in Accept-Language header.|
+|AF20055|Start time and end time must both be specified (or both omitted) and must be less than or equal to 24 hours apart, with the start time prior to end time and start time no more than 7 days in the past.|
 |AF429|Too many requests. Method={0}, PublisherId={1}<br/><br/>{0} = HTTP Method<br/><br/>{1} = Tenant GUID used as PublisherIdentifier</p></li></ul>|
 |AF50000|An internal error occurred. Retry the request.|
