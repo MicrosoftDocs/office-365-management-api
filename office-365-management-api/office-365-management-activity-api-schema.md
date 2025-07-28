@@ -234,20 +234,31 @@ This article provides details on the Common schema as well as service-specific s
 |218|AttackSimAdmin|Events related to admin activities in Attack Simulation & Training in Microsoft Defender for Office 365.|
 |230|TeamsUpdates|Teams Updates App Events.|
 |231|PlannerRosterSensitivityLabel|Microsoft Planner roster sensitivity label events.|
+|235|MicrosoftDefenderForIdentityAudit|Microsoft Defender for Identity audit events.|
 |237|DefenderExpertsforXDRAdmin|Microsoft Defender Experts Administrator action events.|
 |251|VfamCreatePolicy|Viva Access Management policy create events.|
 |252|VfamUpdatePolicy|Viva Access Management policy update events.|
 |253|VfamDeletePolicy|Viva Access Management policy delete events.|
 |256|PowerPlatformAdministratorActivity|Power Platform Administrator activity events.|
+|257|Windows365CustomerLockbox|Windows365 Customer Lockbox audit events.|
 |[261](copilot-schema.md)|CopilotInteraction|Copilot interaction events.|
+|265|VivaLearning|User activities in Viva Learning.|
+|266|VivaLearningAdmin|Admin activities in Viva Learning. |
 |275|OWAAuth|Access Token for Resource issued successfully events.|
+|277|SharePointESignature|SharePoint eSignature audit events.|
+|278|Dynamics365BusinessCentral|Audit events for Dynamics365 Business Central.|
+|279|MeshWorlds|Audit events for Mesh.|
 |280|VivaPulseResponse|Viva Pulse survey response events.|
 |281|VivaPulseOrganizer|Viva Pulse survey organizer events.|
 |282|VivaPulseAdmin|Viva Pulse admin events.|
 |283|VivaPulseReport|Viva Pulse report related events.|
+|[284](/purview/audit-copilot)|AIAppInteraction|Audit events for user interactions with [third-party (non-Microsoft and non-custom-built) AI applications](/purview/audit-copilot).|
 |287|ProjectForThewebAssignedToMeSettings|Microsoft Project for the web assigned to me tenant settings events.|
 |288|CloudPolicyService|Events from the Cloud Policy service.|
 |291|SensitiveInfoDiscovered| Events from Purview On-Demand classification for Endpoint devices.|
+|295|AuditSearch|Audit events for an admin interacting with Search in Purview Audit.|
+|296|AuditRetentionPolicy|Audit events for an admin interacting with Retention Policies in Purview Audit.|
+|297|AuditConfig|Audit events for an admin interacting with configuration settings related to Purview Audit.|
 |298|BackupPolicy|Events related to Microsoft 365 Backup Policies.|
 |299|RestoreTask|Events related to Microsoft 365 Backup Restore Tasks.|
 |300|RestoreItem|Events related to artifacts backed up with Microsoft 365 Backup.|
@@ -2422,11 +2433,11 @@ Values taken by SettingsChange properties in Details for different operations ar
 |All Operations |OriginalValue | Original value for new setting.|
 
 > [!NOTE]
->
 > 1. For role changes the name will be the role type.
-> 2. The audit record will reflect the change in event, such as user is assigned a role or revoked role.
-> 3. The original and new value will have the emails of the user for which the role has changed.
-> 4. In case there is no change in the role, that role type will not be present in the audit record.
+2. The audit record will reflect the change in event, such as user is assigned a role or revoked role.
+3. The original and new value will have the emails of the user for which the role has changed.
+4. In case there is no change in the role, that role type will not be present in the audit record.
+
 
 ## Backup Policy schema
 
