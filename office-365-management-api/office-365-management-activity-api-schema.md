@@ -246,7 +246,8 @@ This article provides details on the Common schema as well as service-specific s
 |266|VivaLearningAdmin|Admin activities in Viva Learning. |
 |275|OWAAuth|Access Token for Resource issued successfully events.|
 |277|SharePointESignature|SharePoint eSignature audit events.|
-|278|Dynamics365BusinessCentral|Audit events for Dynamics365 Business Central.|
+|278|Dynamics365BusinessCentral|Audit events for Dynamics 365 Business Central.|
+
 |279|MeshWorlds|Audit events for Mesh.|
 |280|VivaPulseResponse|Viva Pulse survey response events.|
 |281|VivaPulseOrganizer|Viva Pulse survey organizer events.|
