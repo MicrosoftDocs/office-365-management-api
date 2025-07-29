@@ -247,7 +247,6 @@ This article provides details on the Common schema as well as service-specific s
 |275|OWAAuth|Access Token for Resource issued successfully events.|
 |277|SharePointESignature|SharePoint eSignature audit events.|
 |278|Dynamics365BusinessCentral|Audit events for Dynamics 365 Business Central.|
-
 |279|MeshWorlds|Audit events for Mesh.|
 |280|VivaPulseResponse|Viva Pulse survey response events.|
 |281|VivaPulseOrganizer|Viva Pulse survey organizer events.|
@@ -273,12 +272,11 @@ This article provides details on the Common schema as well as service-specific s
 |361|DataScanClassification| Events from Purview On-Demand classification for SharePoint and OneDrive for business.|
 |363|Microsoft365CopilotScheduledPrompt| Events from Microsoft 365 Copilot scheduled prompt.|
 |364|PlacesDirectory| Events from Microsoft Places Directory.|
-|365|SentinelNotebookOnLake |	Events from notebook execution on Sentinel Data Lake.|
+|365|SentinelNotebookOnLake | Events from notebook execution on Sentinel Data Lake.|
 |366|SentinelJob | Events from operations on jobs in Sentinel Data Lake.|
 |367|SentinelKQLOnLake | Events from running KQL on Sentinel Data Lake.|
-|368|SentinelLakeOnboarding	| Events from onboarding to Sentinel Data Lake.|
+|368|SentinelLakeOnboarding | Events from onboarding to Sentinel Data Lake.|
 |369|SentinelLakeDataOnboarding | Data loading events into Sentinel Data Lake.|
-
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -888,15 +886,14 @@ DLP (Data Loss Prevention) events will always have UserKey="DlpAgent" in the com
 |:-----|:-----|:-----|:-----|
 |SharePointMetaData|Self.[SharePointMetadata](#sharepointmetadata-complex-type)|No|Describes metadata about the document in SharePoint or OneDrive for Business that contained the sensitive information.|
 |ExchangeMetaData|Self.[ExchangeMetadata](#exchangemetadata-complex-type)|No|Describes metadata about the email message that contained the sensitive information.|
-|EndpointMetaData|Self.[EndpointMetadata](#endpointmetadata-complex-type)|No|Describes metadata about the document in endpoint that contained the sensitive information| 
+|EndpointMetaData|Self.[EndpointMetadata](#endpointmetadata-complex-type)|No|Describes metadata about the document in endpoint that contained the sensitive information|
 |ExceptionInfo|Edm.String|No|Identifies reasons why a policy no longer applies and/or any information about false positive and/or override noted by the end user.|
 |PolicyDetails|Collection(Self.[PolicyDetails](#policydetails-complex-type))|Yes|Information about 1 or more policies that triggered the DLP event.|
 |SensitiveInfoDetectionIsIncluded|Boolean|Yes|Indicates whether the event contains the value of the sensitive data type and surrounding context from the source content. Accessing sensitive data requires the "Read DLP policy events including sensitive details" permission in Azure Active Directory.|
 
 ### eDiscovery schema
 
-The eDiscovery audit schema is designed to capture and log activities related to eDiscovery processes within the organization. 
-
+The eDiscovery audit schema is designed to capture and log activities related to eDiscovery processes within the organization.
 
 |**Parameters**|**Type**|**Mandatory**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -922,7 +919,6 @@ The eDiscovery audit schema is designed to capture and log activities related to
 |ExportName|Edm.String|No|Name of the eDiscovery export.|
 |JobId|Edm.String|No|The GUID of the eDiscovery process.|
 |RecordNumber|Edm.String|No|Used when an audit record is divided into multiple parts due to size. It indicates the sequence of each part within the total splits.|
-
 
 ### SharePointMetadata complex type
 
@@ -1258,7 +1254,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |Phish Confidence Level |Edm.String|No|Indicates the confidence level associated with Phish verdict. It can be Normal or High.|  
 
 > [!NOTE]
-> We recommend that you use the new ThreatsAndDetectionTech field because it shows multiple verdicts and the updated detection technologies. This field also aligns with the values you would see within other experiences like Threat Explorer and Advanced Hunting. 
+> We recommend that you use the new ThreatsAndDetectionTech field because it shows multiple verdicts and the updated detection technologies. This field also aligns with the values you would see within other experiences like Threat Explorer and Advanced Hunting.
 
 ### Detection technologies
 
@@ -1399,7 +1395,7 @@ The Yammer events listed in [Search the audit log in the Security & Compliance C
 |**Parameters**|**Type**|**Mandatory?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |FileData|Self.[FileData](#filedata)|Yes|Data about the file that triggered the event.|
-|SourceWorkload|Self.[SourceWorkload](#sourceworkload)|Yes|Workload or service where the file was found (for example, SharePoint Online, OneDrive for Business, or Microsoft Teams)
+|SourceWorkload|Self.[SourceWorkload](#sourceworkload)|Yes|Workload or service where the file was found (for example, SharePoint Online, OneDrive for Business, or Microsoft Teams)|
 |DetectionMethod|Edm.String|Yes|The method or technology used by Microsoft Defender for Office 365 for the detection.|
 |LastModifiedDate|Edm.Date|Yes|The date and time in Coordinated Universal Time (UTC) when the file was created or last modified.|
 |LastModifiedBy|Edm.String|Yes|Identifier (for example, an email address) for the user who created or last modified the file.|
@@ -1563,7 +1559,7 @@ Currently, only automated investigation are logged. (Events for manually generat
 |----|----|----|
 |InvestigationId    |Edm.String    |Investigation ID/GUID. |
 |InvestigationName    |Edm.String    |Name of the investigation. |
-|InvestigationType    |Edm.String    |Type of the investigation. Can take one of the following values:<br/>- User-Reported Messages<br/>- Zapped Malware<br/>- Zapped Phish<br/>- Url Verdict Change<p>(Manual investigations are currently not available and are coming soon.) |
+|InvestigationType    |Edm.String    |Type of the investigation. Can take one of the following values:<br/>- User-Reported Messages<br/>- Zapped Malware<br/>- Zapped Phish<br/>- Url Verdict Change<br/>(Manual investigations are currently not available and are coming soon.) |
 |LastUpdateTimeUtc    |Edm.Date    |UTC time of the last update for an investigation. |
 |StartTimeUtc    |Edm.Date    |Start time for an investigation. |
 |Status     |Edm.String     |State of investigation, Running, Pending Actions, etc. |
@@ -2149,7 +2145,7 @@ The following table contain information related to AIP heartbeat events.
 | TemplateId | TemplateID parameter to get a specific template. The Get-AipServiceTemplate cmdlet gets all existing or selected protection templates from Azure Information Protection. |
 | UserId |  The UPN of the user who performed the action (specified in the Operation property) that resulted in the record being logged; for example, my_name@my_domain_name. Note that records for activity performed by system accounts (such as SHAREPOINT\system or NT AUTHORITY\SYSTEM) are also included. In SharePoint, another value display in the UserId property is app@sharepoint. This indicates that the "user" who performed the activity was an application that has the necessary permissions in SharePoint to perform organization-wide actions (such as search a SharePoint site or OneDrive account) on behalf of a user, admin, or service. For more information, see the app@sharepoint user in audit records. |
 |UserType         | The type of user that performed the operation. See the UserType table for details on the types of users.</br>0 = Regular</br>1 = Reserved</br>2 = Admin </br>3 = DcAdmin</br>4 = Systeml</br>5 = Application</br>6 = ServicePrincipal</br>7 = CustomPolicy</br>8 = SystemPolicy|
-|UserKey          | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.| 
+|UserKey          | An alternative ID for the user identified in the UserId property. This property is populated with the passport unique ID (PUID) for events performed by users in SharePoint, OneDrive for Business, and Exchange.|
 
 ### MicrosoftGraphDataConnectConsent complex type
 
@@ -2434,11 +2430,11 @@ Values taken by SettingsChange properties in Details for different operations ar
 |All Operations |OriginalValue | Original value for new setting.|
 
 > [!NOTE]
+>
 > 1. For role changes the name will be the role type.
-2. The audit record will reflect the change in event, such as user is assigned a role or revoked role.
-3. The original and new value will have the emails of the user for which the role has changed.
-4. In case there is no change in the role, that role type will not be present in the audit record.
-
+> 2. The audit record will reflect the change in event, such as user is assigned a role or revoked role.
+> 3. The original and new value will have the emails of the user for which the role has changed.
+> 4. In case there is no change in the role, that role type will not be present in the audit record.
 
 ## Backup Policy schema
 
@@ -2694,7 +2690,7 @@ The audit records for events related to Microsoft Edge WebContentFiltering use t
 |DomainURL|Edm.String|Yes|The domain URL that was browsed.|
 |Category|Edm.String|Yes|Category of browsed URL.|
 
-## Microsoft 365 Copilot scheduled prompt schema 
+## Microsoft 365 Copilot scheduled prompt schema
 
 Copilot scheduled prompts allow users to automate Copilot prompts, so they run on a defined schedule in Microsoft 365 Copilot Chat. The audit records for events related to Copilot scheduled prompts use this schema (in addition to the [Common schema](#common-schema)). For details on how you can search for the audit logs from the compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
 
@@ -2715,13 +2711,12 @@ The audit records for events related to Places Directory operations use this sch
 |Parameters|Collection(Common.NameValuePair)|No|The name and value for all parameters that were used with the cmdlet that is identified in the Operations property.|
 |ModifiedProperties|Collection(Common.ModifiedProperty)|No|The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified object.|
 
-
 ## Microsoft Sentinel data lake schema
 
 The audit records for events related to Microsoft Sentinel data lake operations use this schema (in addition to the [Common schema](#common-schema)). For details on how you can search for the audit logs from the compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
 
 ### SentinelNotebookOnLake
- 
+
 | **Parameter**            | **Type**    | **Mandatory?** | **Description**                                                        |
 |--------------------------|-------------|:--------------:|------------------------------------------------------------------------|
 | EventTime                | Edm.Date    | Yes               | Timestamp when the Spark Notebook execution was submitted/started.      |
@@ -2838,8 +2833,6 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |3|File did not match any classifier before the scan. One or more classifiers found in file after the scan.|
 |4|File matched some classifiers before the scan. One or more classifiers no longer match|
 |5|File matched some classifiers before the scan. New classifier or change in existing classifier count or confidence level after the scan. |
-
-
 
 #### Enum: ClassificationResult - Type: Edm.Int32
 
