@@ -244,6 +244,7 @@ This article provides details on the Common schema as well as service-specific s
 |[261](copilot-schema.md)|CopilotInteraction|Copilot interaction events.|
 |265|VivaLearning|User activities in Viva Learning.|
 |266|VivaLearningAdmin|Admin activities in Viva Learning. |
+|269|PeopleAdminSettings|Audit events for People Admin settings.|
 |275|OWAAuth|Access Token for Resource issued successfully events.|
 |277|SharePointESignature|SharePoint eSignature audit events.|
 |278|Dynamics365BusinessCentral|Audit events for Dynamics 365 Business Central.|
@@ -253,9 +254,14 @@ This article provides details on the Common schema as well as service-specific s
 |282|VivaPulseAdmin|Viva Pulse admin events.|
 |283|VivaPulseReport|Viva Pulse report related events.|
 |[284](/purview/audit-copilot)|AIAppInteraction|Audit events for user interactions with [third-party (non-Microsoft and non-custom-built) AI applications](/purview/audit-copilot).|
+|285|ComplianceDLMExchange|ComplianceDLMExchange events.|
+|286|ComplianceDLMSharePoint|ComplianceDLMSharePoint events.|
 |287|ProjectForThewebAssignedToMeSettings|Microsoft Project for the web assigned to me tenant settings events.|
 |288|CloudPolicyService|Events from the Cloud Policy service.|
 |291|SensitiveInfoDiscovered| Events from Purview On-Demand classification for Endpoint devices.|
+|292|InsiderRiskScopedUserInsights|Events related to scoped user insights in Insider Risk Management.|
+|293|MicrosoftTeamsRetentionLabelAction|Audit events for retention labels in Microsoft Teams. |
+|294|AadRiskDetection|Audit events for Risk Detection in Microsoft Entra (previously called Azure Active Directory).|
 |295|AuditSearch|Audit events for an admin interacting with Search in Purview Audit.|
 |296|AuditRetentionPolicy|Audit events for an admin interacting with Retention Policies in Purview Audit.|
 |297|AuditConfig|Audit events for an admin interacting with configuration settings related to Purview Audit.|
@@ -263,20 +269,90 @@ This article provides details on the Common schema as well as service-specific s
 |299|RestoreTask|Events related to Microsoft 365 Backup Restore Tasks.|
 |300|RestoreItem|Events related to artifacts backed up with Microsoft 365 Backup.|
 |301|BackupItem|Events related to items being restored using Microsoft 365 Backup.|
+|302|URBACAssignment|Events related to Unified RBAC assignments.|
+|303|URBACRole|Events related to Unified RBAC roles.|
+|304|URBACEnableState|Events related to Unified RBAC state enablement.|
+|306|PurviewInsiderRiskCases|Events related to Purview Insider Risk cases.|
+|307|PurviewInsiderRiskAlerts|Events related to Purview Insider Risk alerts.|
+|308|InsiderRiskScopedUsers|Events related to Purview Insider Risk scoped users.|
+|310|CreateCopilotPlugin|Audit events for Copilot plugin creation.|
+|311|UpdateCopilotPlugin|Audit events for updating a Copilot plugin.|
+|312|DeleteCopilotPlugin|Audit events for deleting a Copilot plugin.|
+|313|EnableCopilotPlugin|Audit events for enabling a Copilot plugin.|
+|314|DisableCopilotPlugin|Audit events for disabling a Copilot plugin.|
+|315|CreateCopilotWorkspace|Audit events for creating a Copilot workspace.|
+|316|UpdateCopilotWorkspace|Audit events for updating a Copilot workspace.|
+|317|DeleteCopilotWorkspace|Audit events for deleting a Copilot workspace.|
+|318|EnableCopilotWorkspace|Audit events for enabling a Copilot workspace.|
+|319|DisableCopilotWorkspace|Audit events for disabling a Copilot workspace.|
+|320|CreateCopilotPromptBook|Audit events for creating a Copilot promptbook.|
+|321|UpdateCopilotPromptBook|Audit events for updating a Copilot promptbook.|
+|322|DeleteCopilotPromptBook|Audit events for deleting a Copilot promptbook.|
+|323|EnableCopilotPromptBook|Audit events for enabling a Copilot promptbook.|
+|324|DisableCopilotPromptBook|Audit events for disabling a Copilot promptbook.|
+|325|UpdateCopilotSettings|Audit event for updating user or tenant settings related to Copilot.|
+|328|ConnectedAIAppInteraction|Audit events related to user interactions with third-party (non-Microsoft developed) AI applications which are deployed within the organization's Microsoft tenant.|
+|329|PrivaPrivacyConsentOperation|Audit events related to Consent in Microsoft Priva.|
+|330|PrivaPrivacyAssessmentOperation|Audit events related to Assessments in Microsoft Priva.|
+|331|DataCatalogAccessRequests|Audit events related to Data Catalog access requests.|
 |332|ComplianceSettingsChange|Microsoft Purview Compliance settings change events.|
-|337|CloudUpdateProfileConfig| Events from the Cloud Update's profile configuration.|
-|338|CloudUpdateTenantConfig| Events from the Cloud Update's tenant configuration.|
-|339|CloudUpdateDeviceConfig| Events from Cloud Update's managed devices configuration.|
-|358|TrainableClassifier| Events from Purview Data Classification.|
-|359|WebContentFiltering| Events from Microsoft Edge WebContentFiltering.|
-|361|DataScanClassification| Events from Purview On-Demand classification for SharePoint and OneDrive for business.|
-|363|Microsoft365CopilotScheduledPrompt| Events from Microsoft 365 Copilot scheduled prompt.|
-|364|PlacesDirectory| Events from Microsoft Places Directory.|
-|365|SentinelNotebookOnLake | Events from notebook execution on Sentinel Data Lake.|
-|366|SentinelJob | Events from operations on jobs in Sentinel Data Lake.|
-|367|SentinelKQLOnLake | Events from running KQL on Sentinel Data Lake.|
-|368|SentinelLakeOnboarding | Events from onboarding to Sentinel Data Lake.|
-|369|SentinelLakeDataOnboarding | Data loading events into Sentinel Data Lake.|
+|333|DataSecurityInvestigation|Events from Data Security Investigations in Microsoft Purview.|
+|334|TeamCopilotInteraction|Audit events for user interactions with Facilitator and activities performed by Facilitator in Microsoft Teams.|
+|335|IRMActivityAuditTrail|Events from Purview Insider Risk Management.|
+|336|SharePointContentSecurityPolicy|Events from Content Security Policy in SharePoint.|
+|337|CloudUpdateProfileConfig|Events from the Cloud Update's profile configuration.|
+|338|CloudUpdateTenantConfig|Events from the Cloud Update's tenant configuration.|
+|339|CloudUpdateDeviceConfig|Events from Cloud Update's managed devices configuration.|
+|341|DeviceDiscoverySettingsExclusion|Events related to Exclusions in Device Discovery settings.|
+|342|DeviceDiscoverySettingsAuthenticatedScans|Events related to Authenticated Scans in Device Discovery settings.|
+|344|DeviceDiscoverySettings|Events related to settings in Device Discovery.|
+|345|USXWorkspaceOnboarding|Events related to workspace onboarding in Microsoft Defender USX.|
+|346|VivaGlintAdvancedConfiguration|Events related to Advanced Configuration in Viva Glint.|
+|347|VivaGlintPulseProgram|Events related to Pulse Program in Viva Glint.|
+|348|VivaGlintPulseProgramRespondentRate|Events related to Pulse Program Respondent Rate in Viva Glint.|
+|349|VivaGlintQuestion|Events related to Questions in Viva Glint.|
+|350|VivaGlintRole|Events related to Roles in Viva Glint.|
+|351|VivaGlintRubicon|Events related to Rubicon in Viva Glint.|
+|352|VivaGlintSupportAccess|Events related to Support Access in Viva Glint.|
+|353|VivaGlintSystem|Events related to system activities in Viva Glint.|
+|354|VivaGlintUser|Events related to user activities in Viva Glint.|
+|355|VivaGlintUserGroup|Events related to user group activities in Viva Glint.|
+|356|VivaGlintFeedbackProgram|Events related to Feedback Programs in Viva Glint.|
+|357|FabricAudit|Events related to Microsoft Fabric.|
+|358|TrainableClassifier|Events from Purview Data Classification.|
+|359|WebContentFiltering|Events from Microsoft Edge WebContentFiltering.|
+|360|NoisyAlertPolicy|Events related to Noisy Alert Policies in Microsoft Defender.|
+|361|DataScanClassification|Events from Purview On-Demand classification for SharePoint and OneDrive for business.|
+|362|AIInteractionsExport|Events related to export of AI interactions.|
+|363|Microsoft365CopilotScheduledPrompt|Events from Microsoft 365 Copilot scheduled prompt.|
+|364|PlacesDirectory|Events from Microsoft Places Directory.|
+|365|SentinelNotebookOnLake |Events from notebook execution on Sentinel Data Lake.|
+|366|SentinelJob |Events from operations on jobs in Sentinel Data Lake.|
+|367|SentinelKQLOnLake |Events from running KQL on Sentinel Data Lake.|
+|368|SentinelLakeOnboarding |Events from onboarding to Sentinel Data Lake.|
+|369|SentinelLakeDataOnboarding |Data loading events into Sentinel Data Lake.|
+|370|CrossTenantAccessPolicy|Events from Cross Tenant Access Policies.|
+|371|OutlookCopilotAutomation|Events related to back-end automation (without an explicit user interaction) in Microsoft Outlook driven by Agents, Copilot, or other AI scenarios.|
+|372|VivaEngageNetworkAssociation|Events related to Network Association in Viva Engage.|
+|373|AppAdminActivity|Events related to app admin activity.|
+|374|AppSettingsAdminActivity|Events related to app settings admin activity.|
+|375|UniversalPrintPrintJob|Audit events related to Print Jobs in Microsoft Universal Print.|
+|376|SentinelNotebookOnLake|Events related to Notebook on Lake in Microsoft Sentinel.|
+|377|SentinelJob|Events related to Jobs in Microsoft Sentinel.|
+|378|SentinelGraph|Events related to Graph in Microsoft Sentinel.|
+|379|SentinelKQLOnLake|Events related to KQL on Lake in Microsoft Sentinel.|
+|380|SentinelPackage|Events related to Package in Microsoft Sentinel.|
+|381|VivaAmplifyOutlookSensitivityLabel|Events related to Outlook Sensitivity Labels in Viva Amplify.|
+|382||Deprecated. This value is not used.|
+|383|AIInteractionsSubscription|Events related to AI interaction subscriptions.|
+|384|AIInteractionsChangeNotification|Events related to AI interaction change notifications.|
+|385|FilteringMailMetadataExtended|Events related to filtering mail metadata.|
+|386|SentinelLakeOnboarding|Events related to Lake Onboarding in Microsoft Sentinel.|
+|387|SentinelLakeDataOnboarding|Events related to Lake Data Onboarding in Microsoft Sentinel.|
+|388|OfficeRestrictedModeAction|Audit events related to activities performed in Office Restricted Mode. |
+|389|CopilotForSecurityTrigger|Events related to triggers for Security Copilot agents. |
+|390|CopilotAgentManagement|Events related to admin activities for Microsoft Copilot agents.|
+|391|P4AIAssessmentFabricScannerRecord|Events related to Purview for AI Assessment Fabric Scanner.|
 
 ### Enum: User Type - Type: Edm.Int32
 
