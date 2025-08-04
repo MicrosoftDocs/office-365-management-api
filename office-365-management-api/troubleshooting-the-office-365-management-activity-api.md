@@ -356,7 +356,7 @@ The Office 365 Management Activity API and Office 365 Management Activity API We
 
 The following service tags include the IP address prefixes that support the Office 365 Management Activity API and Office 365 Management Activity API Webhook:
 
-- M365ManagementActivityApi
+- AzureFrontDoor.MicrosoftSecurity
 
 - M365ManagementActivityApiWebhook
 
