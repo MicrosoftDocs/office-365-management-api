@@ -51,7 +51,8 @@ After you create a subscription, you can poll regularly to discover new content 
 > When a subscription is created, it can take up to 12 hours for the first content blobs to become available for that subscription. The content blobs are created by collecting and aggregating actions and events across multiple servers and datacenters. As a result of this distributed process, the actions and events contained in the content blobs will not necessarily appear in the order in which they occurred. One content blob can contain actions and events that occurred prior to the actions and events contained in an earlier content blob. We are working to decrease the latency between the occurrence of actions and events and their availability within a content blob, but we can't guarantee that they appear sequentially.
 
 > [!NOTE]
-> Please do not submit multiple requests to start a subscription within a short period. Once a subscription request has been submitted, a waiting period of 15 minutes is required before another start subscription request can be made. This throttling policy does not apply to stop a subscription. You may submit a request to stop a subscription at any time.
+> Please don't submit multiple requests to start a subscription within a short period. Once you submit a subscription request, a waiting period of 15 minutes is required before another request can be made. This throttling policy doesn't apply to stop a subscription. You may submit a request to stop a subscription at any time.
+
 
 > [!NOTE]
 > DLP sensitive data is only available in the activity feed API to users that have been granted “Read DLP sensitive data” permissions. For more on Data Loss Prevention (DLP) see [Overview of Data Loss Prevention Policies](https://support.office.com/article/Overview-of-data-loss-prevention-policies-1966b2a7-d1e2-4d92-ab61-42efbb137f5e)
