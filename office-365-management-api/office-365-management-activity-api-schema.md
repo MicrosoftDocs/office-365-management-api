@@ -575,7 +575,9 @@ This article provides details on the Common schema as well as service-specific s
 |SiteAdminChangeRequest|User requests to be added as a site collection administrator for a SharePoint site collection. Site collection administrators have full control permissions for the site collection and all subsites.|
 |SiteCollectionAdminAdded*|Site collection administrator or owner adds a person as a site collection administrator for a SharePoint or OneDrive for Business site. Site collection administrators have full control permissions for the site collection and all subsites.|
 |SiteCollectionCreated| Global administrator creates a new site collection in your SharePoint organization.|
+|SitePermanentlyDeleted|A SharePoint or global administrator permanently deletes a site from SharePoint Admin Center Deleted Sites.|
 |SiteRenamed|Site administrator or owner renames a SharePoint or OneDrive for Business site|
+|SiteRestored|A SharePoint or global administrator restores a site from SharePoint Admin Center Deleted Sites.|
 |StatusReportModified|User creates, modifies or deletes a status report in Project web app.|
 |SyncGetChanges|User clicks **Sync** in the action tray on in SharePoint or OneDrive for Business to synchronize any changes to file in a document library to their computer.|
 |SyntexBillingSubscriptionSettingsChanged|The Syntex Billing subscription settings have changed. This event is triggered when a Syntex trial expires.|
@@ -590,6 +592,7 @@ This article provides details on the Common schema as well as service-specific s
 |TimesheetSaved|User saves a timesheet in Project web app.|
 |TimesheetSubmitted|User submits a status timesheet in Project web app.|
 |UnmanagedSyncClientBlocked|User tries to establish a sync relationship with a SharePoint or OneDrive for Business site from a computer that isn't a member of your organization's domain or is a member of a domain that hasn't been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. The sync relationship is not allowed, and the user's computer is blocked from syncing, downloading, or uploading files on a document library. For information about this feature, see [Use Windows PowerShell cmdlets to enable OneDrive sync for domains that are on the safe recipients list](/powershell/module/sharepoint-online/index).|
+|UpdateDisableSiteBranding|A SharePoint or global administrator enables or disables site branding.|
 |UpdateSSOApplication|Target application updated in Secure store service.|
 |UserAddedToGroup|Site administrator or owner adds a person to a group on a SharePoint or OneDrive for Business site. Adding a person to a group grants the user the permissions that were assigned to the group. |
 |UserRemovedFromGroup|Site administrator or owner removes a person from a group on a SharePoint or OneDrive for Business site. After the person is removed, they no longer are granted the permissions that were assigned to the group. |
