@@ -885,7 +885,7 @@ The SharePoint events listed in [Search the audit log in the compliance center](
 
 |**Value**|**Member name**|**Description**|
 |:-----|:-----|:-----|
-|0|Min|The authentication method is a Min|
+|0|Min|The authentication method is a Min |
 |1|Password|The authentication method is a password.|
 |2|Digest|The authentication method is a digest.|
 |3|ProxyAuth|The authentication method is a ProxyAuth.|
