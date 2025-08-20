@@ -2303,6 +2303,13 @@ Microsoft Planner's ResultStatus is defined as the following.
 
 Microsoft Planner extends the [Common schema](#common-schema) with the following record types.
 
+### PlannerGoal record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Id of the goal requested.|
+|PlanId|Edm.String|Id of the plan containing the goal.|
+
 ### PlannerPlan record type
 
 |**Properties**|**Type**|**Description**|
@@ -2366,6 +2373,13 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |ObjectId|Edm.String|Id of the roster requested.|
 |MemberIds|Edm.String|A comma-separated string of member ids changed to the roster.|
 
+### PlannerGoalList record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|A representation of the view query for a list of goals.|
+|GoalList|Edm.String|A comma-separated string of goal ids queried.|
+
 ### PlannerPlanList record type
 
 |**Properties**|**Type**|**Description**|
@@ -2378,7 +2392,7 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |**Properties**|**Type**|**Description**|
 |:-----|:-----|:-----|
 |ObjectId|Edm.String|A representation of the view query for a list of tasks.|
-|PlanList|Edm.String|A comma-separated string of task ids queried.|
+|TaskList|Edm.String|A comma-separated string of task ids queried.|
 
 ### PlannerTenantSettings record type
 
@@ -2920,3 +2934,4 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |1|File classification completed successfully.|
 |2|File classification completed with error. One or more classifier evaluation failed. |
 |3|File classification failed. |
+
