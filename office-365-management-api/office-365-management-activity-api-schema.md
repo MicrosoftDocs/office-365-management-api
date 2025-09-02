@@ -143,7 +143,7 @@ This article provides details on the Common schema as well as service-specific s
 |41|ThreatIntelligenceUrl|Safe links time-of-block and block override events from Microsoft Defender for Office 365.|
 |42|SecurityComplianceInsights|Events related to insights and reports in the Office 365 security and compliance center.|
 |43|MIPLabel|Events related to the detection in the Transport pipeline of email messages that have been tagged (manually or automatically) with sensitivity labels. |
-|44|WorkplaceAnalytics|Viva Insights events.|
+|44|VivaInsights|Viva Insights events.|
 |45|PowerAppsApp|Power Apps events.|
 |46|PowerAppsPlan|Subscription plan events for Power Apps. |
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Microsoft Defender for Office 365.|
@@ -2921,5 +2921,6 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |1|File classification completed successfully.|
 |2|File classification completed with error. One or more classifier evaluation failed. |
 |3|File classification failed. |
+
 
 
