@@ -517,7 +517,7 @@ This article provides details on the Common schema as well as service-specific s
 |LanguageRemovedFromTermStore|Language removed from the terminology store.|
 |LegacyWorkflowEnabledSet|Site administrator or owner adds the SharePoint Workflow Task content type to the site. Global administrators can also enable work flows for the entire organization in the SharePoint admin center.|
 |LookAndFeelModified|User modifies a quick launch, Gantt chart formats, or group formats.  Or the user creates, modifies, or deletes a view in Project web app.|
-|ManagedSyncClientAllowed|User successfully establishes a sync relationship with a SharePoint or OneDrive for Business site. The sync relationship is successful because the user's computer is a member of a domain that's been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. For more information, see [Use SharePoint Online PowerShell](https://go.microsoft.com/fwlink/p/?LinkID=534609) to enable OneDrive sync for domains that are on the safe recipients list.|
+|ManagedSyncClientAllowed|User successfully establishes a sync relationship with a SharePoint or OneDrive for Business site. The sync relationship is successful because the user's computer is a member of a domain that's been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. For more information, see [Use SharePoint Online PowerShell](/powershell/sharepoint/sharepoint-online/connect-sharepoint-online) to enable OneDrive sync for domains that are on the safe recipients list.|
 |MaxQuotaModified|The maximum quota for a site has been modified.|
 |MaxResourceUsageModified|The maximum allowable resource usage for a site has been modified.|
 |MySitePublicEnabledSet|The flag enabling users to have public MySites has been set by the SharePoint administrator.|
@@ -591,7 +591,7 @@ This article provides details on the Common schema as well as service-specific s
 |TimesheetRejected|User rejects a timesheet in Project web app.|
 |TimesheetSaved|User saves a timesheet in Project web app.|
 |TimesheetSubmitted|User submits a status timesheet in Project web app.|
-|UnmanagedSyncClientBlocked|User tries to establish a sync relationship with a SharePoint or OneDrive for Business site from a computer that isn't a member of your organization's domain or is a member of a domain that hasn't been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. The sync relationship is not allowed, and the user's computer is blocked from syncing, downloading, or uploading files on a document library. For information about this feature, see [Use Windows PowerShell cmdlets to enable OneDrive sync for domains that are on the safe recipients list](/powershell/module/sharepoint-online/index).|
+|UnmanagedSyncClientBlocked|User tries to establish a sync relationship with a SharePoint or OneDrive for Business site from a computer that isn't a member of your organization's domain or is a member of a domain that hasn't been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. The sync relationship is not allowed, and the user's computer is blocked from syncing, downloading, or uploading files on a document library. For information about this feature, see [Use Windows PowerShell cmdlets to enable OneDrive sync for domains that are on the safe recipients list](/powershell/scripting/developer/cmdlet/windows-powershell-cmdlet-concepts).|
 |UpdateDisableSiteBranding|A SharePoint or global administrator enables or disables site branding.|
 |UpdateSSOApplication|Target application updated in Secure store service.|
 |UserAddedToGroup|Site administrator or owner adds a person to a group on a SharePoint or OneDrive for Business site. Adding a person to a group grants the user the permissions that were assigned to the group. |
@@ -2921,4 +2921,5 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |1|File classification completed successfully.|
 |2|File classification completed with error. One or more classifier evaluation failed. |
 |3|File classification failed. |
+
 
