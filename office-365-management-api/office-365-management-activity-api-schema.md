@@ -50,7 +50,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Hygiene events schema](#hygiene-events-schema)|Extends the Common schema with the properties specific to events in Exchange Online Protection and Microsoft Defender for Office 365.|
 |[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
 |[Dynamics 365 schema](#dynamics-365-schema)|Extends the Common schema with the properties specific to Dynamics 365 events.|
-|[Workplace Analytics schema](#workplace-analytics-schema)|Extends the Common schema with the properties specific to all Microsoft Workplace Analytics events.|
+|[Viva Insights schema](#viva-insights-schema)|Extends the Common schema with the properties specific to all Microsoft Viva Insights events.|
 |[Quarantine schema](#quarantine-schema)|Extends the Common schema with the properties specific to all quarantine events.|
 |[Microsoft Forms schema](#microsoft-forms-schema)|Extends the Common schema with the properties specific to all Microsoft Forms events.|
 |[MIP label schema](#mip-label-schema)|Extends the Common schema with the properties specific to sensitivity labels manually or automatically applied to email messages.|
@@ -143,7 +143,7 @@ This article provides details on the Common schema as well as service-specific s
 |41|ThreatIntelligenceUrl|Safe links time-of-block and block override events from Microsoft Defender for Office 365.|
 |42|SecurityComplianceInsights|Events related to insights and reports in the Office 365 security and compliance center.|
 |43|MIPLabel|Events related to the detection in the Transport pipeline of email messages that have been tagged (manually or automatically) with sensitivity labels. |
-|44|WorkplaceAnalytics|Workplace Analytics events.|
+|44|VivaInsights|Viva Insights events.|
 |45|PowerAppsApp|Power Apps events.|
 |46|PowerAppsPlan|Subscription plan events for Power Apps. |
 |47|ThreatIntelligenceAtpContent|Phishing and malware events for files in SharePoint, OneDrive for Business, and Microsoft Teams from Microsoft Defender for Office 365.|
@@ -517,7 +517,7 @@ This article provides details on the Common schema as well as service-specific s
 |LanguageRemovedFromTermStore|Language removed from the terminology store.|
 |LegacyWorkflowEnabledSet|Site administrator or owner adds the SharePoint Workflow Task content type to the site. Global administrators can also enable work flows for the entire organization in the SharePoint admin center.|
 |LookAndFeelModified|User modifies a quick launch, Gantt chart formats, or group formats.  Or the user creates, modifies, or deletes a view in Project web app.|
-|ManagedSyncClientAllowed|User successfully establishes a sync relationship with a SharePoint or OneDrive for Business site. The sync relationship is successful because the user's computer is a member of a domain that's been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. For more information, see [Use SharePoint Online PowerShell](https://go.microsoft.com/fwlink/p/?LinkID=534609) to enable OneDrive sync for domains that are on the safe recipients list.|
+|ManagedSyncClientAllowed|User successfully establishes a sync relationship with a SharePoint or OneDrive for Business site. The sync relationship is successful because the user's computer is a member of a domain that's been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. For more information, see [Use SharePoint Online PowerShell](/powershell/sharepoint/sharepoint-online/connect-sharepoint-online) to enable OneDrive sync for domains that are on the safe recipients list.|
 |MaxQuotaModified|The maximum quota for a site has been modified.|
 |MaxResourceUsageModified|The maximum allowable resource usage for a site has been modified.|
 |MySitePublicEnabledSet|The flag enabling users to have public MySites has been set by the SharePoint administrator.|
@@ -591,7 +591,7 @@ This article provides details on the Common schema as well as service-specific s
 |TimesheetRejected|User rejects a timesheet in Project web app.|
 |TimesheetSaved|User saves a timesheet in Project web app.|
 |TimesheetSubmitted|User submits a status timesheet in Project web app.|
-|UnmanagedSyncClientBlocked|User tries to establish a sync relationship with a SharePoint or OneDrive for Business site from a computer that isn't a member of your organization's domain or is a member of a domain that hasn't been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. The sync relationship is not allowed, and the user's computer is blocked from syncing, downloading, or uploading files on a document library. For information about this feature, see [Use Windows PowerShell cmdlets to enable OneDrive sync for domains that are on the safe recipients list](/powershell/module/sharepoint-online/index).|
+|UnmanagedSyncClientBlocked|User tries to establish a sync relationship with a SharePoint or OneDrive for Business site from a computer that isn't a member of your organization's domain or is a member of a domain that hasn't been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. The sync relationship is not allowed, and the user's computer is blocked from syncing, downloading, or uploading files on a document library. For information about this feature, see [Use Windows PowerShell cmdlets to enable OneDrive sync for domains that are on the safe recipients list](/powershell/scripting/developer/cmdlet/windows-powershell-cmdlet-concepts).|
 |UpdateDisableSiteBranding|A SharePoint or global administrator enables or disables site branding.|
 |UpdateSSOApplication|Target application updated in Secure store service.|
 |UserAddedToGroup|Site administrator or owner adds a person to a group on a SharePoint or OneDrive for Business site. Adding a person to a group grants the user the permissions that were assigned to the group. |
@@ -1810,13 +1810,13 @@ Entity events from model-driven apps in Dynamics 365 use this schema to build on
 |Query|Edm.String|No|The parameters of the filter query that was used while executing the FetchXML operation.|
 |PrimaryFieldValue|Edm.String|No|Indicates the value for the attribute that is the primary field for the entity.|
 
-## Workplace Analytics schema
+## Viva Insights schema
 
-The WorkPlace Analytics events listed in [Search the audit log in the Office 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities) will use this schema.
+The Viva Insights events listed in [Search the audit log in the Office 365 Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities) will use this schema.
 
 | **Parameters**     | **Type**            | **Mandatory?** | **Description**|
 |:------------------ | :------------------ | :--------------|:--------------|
-| WpaUserRole        | Edm.String | No     | The Workplace Analytics role of the user who performed the action.|
+| WpaUserRole        | Edm.String | No     | The Viva Insights role of the user who performed the action.|
 | ModifiedProperties | Collection (Common.ModifiedProperty) | No | This property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
 | OperationDetails   | Collection (Common.NameValuePair)    | No | A list of extended properties for the setting that was changed. Each property will have a **Name** and **Value**.|
 
@@ -2921,3 +2921,6 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |1|File classification completed successfully.|
 |2|File classification completed with error. One or more classifier evaluation failed. |
 |3|File classification failed. |
+
+
+
