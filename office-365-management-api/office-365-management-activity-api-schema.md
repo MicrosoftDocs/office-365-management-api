@@ -593,7 +593,7 @@ This article provides details on the Common schema as well as service-specific s
 |TimesheetRejected|User rejects a timesheet in Project web app.|
 |TimesheetSaved|User saves a timesheet in Project web app.|
 |TimesheetSubmitted|User submits a status timesheet in Project web app.|
-|UnmanagedSyncClientBlocked|User tries to establish a sync relationship with a SharePoint or OneDrive for Business site from a computer that isn't a member of your organization's domain or is a member of a domain that hasn't been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. The sync relationship is not allowed, and the user's computer is blocked from syncing, downloading, or uploading files on a document library. For information about this feature, see [Use Windows PowerShell cmdlets to enable OneDrive sync for domains that are on the safe recipients list](/powershell/scripting/developer/cmdlet/windows-powershell-cmdlet-concepts).|
+|UnmanagedSyncClientBlocked|User tries to establish a sync relationship with a SharePoint or OneDrive for Business site from a computer that isn't a member of your organization's domain or is a member of a domain that hasn't been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. The sync relationship is not allowed, and the user's computer is blocked from syncing, downloading, or uploading files on a document library.|
 |UpdateDisableSiteBranding|A SharePoint or global administrator enables or disables site branding.|
 |UpdateSSOApplication|Target application updated in Secure store service.|
 |UserAddedToGroup|Site administrator or owner adds a person to a group on a SharePoint or OneDrive for Business site. Adding a person to a group grants the user the permissions that were assigned to the group. |
@@ -2937,3 +2937,4 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |1|File classification completed successfully.|
 |2|File classification completed with error. One or more classifier evaluation failed. |
 |3|File classification failed. |
+
