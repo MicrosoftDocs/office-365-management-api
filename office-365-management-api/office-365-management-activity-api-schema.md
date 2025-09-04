@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 06/29/2025
+ms.date: 09/04/2025
 ms.localizationpriority: high
 ---
 
@@ -12,7 +12,7 @@ ms.localizationpriority: high
 
 The Office 365 Management Activity API schema is provided as a data service in  two layers:
 
-- **Common schema**. The interface to access core Office 365 auditing concepts such as Record Type, Creation Time, User Type, and Action as well as to provide core dimensions (such as User ID), location specifics (such as Client IP address), and service-specific properties (such as Object ID). It establishes consistent and uniform views for users to extract all Office 365 audit data in a few top level views with the appropriate parameters, and provides a fixed schema for all the data sources, which significantly reduces the cost of learning. Common schema is sourced from product data that is owned by each product team, such as Exchange, SharePoint, Azure Active Directory, Yammer, and OneDrive for Business. The Object ID field can be extended by Microsoft 365 product teams to add service-specific properties.
+- **Common schema**. The interface to access core Office 365 auditing concepts such as Record Type, Creation Time, User Type, and Action as well as to provide core dimensions (such as User ID), location specifics (such as Client IP address), and service-specific properties (such as Object ID). It establishes consistent and uniform views for users to extract all Office 365 audit data in a few top level views with the appropriate parameters, and provides a fixed schema for all the data sources, which significantly reduces the cost of learning. Common schema is sourced from product data that is owned by each product team, such as Exchange, SharePoint, Azure Active Directory, Viva Engage, and OneDrive for Business. The Object ID field can be extended by Microsoft 365 product teams to add service-specific properties.
 
 - **Service-specific schema**. Built on top of the Common schema to provide a set of Microsoft 365 service-specific attributes; for example, SharePoint schema, OneDrive for Business schema, and Exchange admin schema.
 
@@ -40,7 +40,7 @@ This article provides details on the Common schema as well as service-specific s
 |[DLP schema](#dlp-schema)|Extends the Common schema with the properties specific to Data Loss Prevention events.|
 |[Security and Compliance Center schema](#security-and-compliance-center-schema)|Extends the Common schema with the properties specific to all Security and Compliance Center events.|
 |[Security and Compliance Alerts schema](#security-and-compliance-alerts-schema)|Extends the Common schema with the properties specific to all Office 365 security and compliance alerts.|
-|[Yammer schema](#yammer-schema)|Extends the Common schema with the properties specific to all Yammer events.|
+|[Viva Engage schema](#viva-engage-schema)|Extends the Common schema with the properties specific to all Viva Engage events.|
 |[Data Center Security Base schema](#data-center-security-base-schema)|Extends the Common schema with the properties specific to all data center security audit data.|
 |[Data Center Security Cmdlet schema](#data-center-security-cmdlet-schema)|Extends the Data Center Security Base schema with the properties specific to all data center security cmdlet audit data.|
 |[Microsoft Teams schema](#microsoft-teams-schema)|Extends the Common schema with the properties specific to all Microsoft Teams events.|
@@ -123,7 +123,7 @@ This article provides details on the Common schema as well as service-specific s
 |19|ExchangeAggregatedOperation|Aggregated Exchange mailbox auditing events.|
 |20|PowerBIAudit|Power BI events.|
 |21|CRM|Dynamics 365 events.|
-|22|Yammer|Yammer events.|
+|22|Viva Engage|Viva Engage events.|
 |23|SkypeForBusinessCmdlets|Skype for Business events.|
 |24|Discovery|Events for eDiscovery activities performed by running content searches and managing eDiscovery cases in the Security & Compliance Center.|
 |25|MicrosoftTeams|Events from Microsoft Teams.|
@@ -353,6 +353,8 @@ This article provides details on the Common schema as well as service-specific s
 |389|CopilotForSecurityTrigger|Events related to triggers for Security Copilot agents. |
 |390|CopilotAgentManagement|Events related to admin activities for Microsoft Copilot agents.|
 |391|P4AIAssessmentFabricScannerRecord|Events related to Purview for AI Assessment Fabric Scanner.|
+|392|PlannerGoal|Microsoft Planner goal events.|
+|393|PlannerGoalList|Microsoft Planner goal list events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -591,7 +593,7 @@ This article provides details on the Common schema as well as service-specific s
 |TimesheetRejected|User rejects a timesheet in Project web app.|
 |TimesheetSaved|User saves a timesheet in Project web app.|
 |TimesheetSubmitted|User submits a status timesheet in Project web app.|
-|UnmanagedSyncClientBlocked|User tries to establish a sync relationship with a SharePoint or OneDrive for Business site from a computer that isn't a member of your organization's domain or is a member of a domain that hasn't been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. The sync relationship is not allowed, and the user's computer is blocked from syncing, downloading, or uploading files on a document library. For information about this feature, see [Use Windows PowerShell cmdlets to enable OneDrive sync for domains that are on the safe recipients list](/powershell/scripting/developer/cmdlet/windows-powershell-cmdlet-concepts).|
+|UnmanagedSyncClientBlocked|User tries to establish a sync relationship with a SharePoint or OneDrive for Business site from a computer that isn't a member of your organization's domain or is a member of a domain that hasn't been added to the list of domains (called the safe recipients list) that can access document libraries in your organization. The sync relationship is not allowed, and the user's computer is blocked from syncing, downloading, or uploading files on a document library.|
 |UpdateDisableSiteBranding|A SharePoint or global administrator enables or disables site branding.|
 |UpdateSSOApplication|Target application updated in Secure store service.|
 |UserAddedToGroup|Site administrator or owner adds a person to a group on a SharePoint or OneDrive for Business site. Adding a person to a group grants the user the permissions that were assigned to the group. |
@@ -1149,9 +1151,9 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 |AlertEntityId|Edm.String|No|The identifier for the alert entity. This parameter is only applicable to AlertEntityGenerated events.|
 |EntityType|Edm.String|No|Type of the alert or alert entity. Entity types include: <ul><li>User</li><li>Recipients</li><li>Sender</li><li>MalwareFamily</li></ul>This parameter is only applicable to AlertEntityGenerated events.|
 
-## Yammer schema
+## Viva Engage schema
 
-The Yammer events listed in [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#yammer-activities) will use this schema.
+The Viva Engage events listed in [Search the audit log in the Security & Compliance Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#yammer-activities) will use this schema.
 
 |**Parameters**|**Type**|**Mandatory**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -2304,6 +2306,13 @@ Microsoft Planner's ResultStatus is defined as the following.
 
 Microsoft Planner extends the [Common schema](#common-schema) with the following record types.
 
+### PlannerGoal record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|Id of the goal requested.|
+|PlanId|Edm.String|Id of the plan containing the goal.|
+
 ### PlannerPlan record type
 
 |**Properties**|**Type**|**Description**|
@@ -2367,6 +2376,13 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |ObjectId|Edm.String|Id of the roster requested.|
 |MemberIds|Edm.String|A comma-separated string of member ids changed to the roster.|
 
+### PlannerGoalList record type
+
+|**Properties**|**Type**|**Description**|
+|:-----|:-----|:-----|
+|ObjectId|Edm.String|A representation of the view query for a list of goals.|
+|GoalList|Edm.String|A comma-separated string of goal ids queried.|
+
 ### PlannerPlanList record type
 
 |**Properties**|**Type**|**Description**|
@@ -2379,7 +2395,7 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |**Properties**|**Type**|**Description**|
 |:-----|:-----|:-----|
 |ObjectId|Edm.String|A representation of the view query for a list of tasks.|
-|PlanList|Edm.String|A comma-separated string of task ids queried.|
+|TaskList|Edm.String|A comma-separated string of task ids queried.|
 
 ### PlannerTenantSettings record type
 
@@ -2921,6 +2937,5 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |1|File classification completed successfully.|
 |2|File classification completed with error. One or more classifier evaluation failed. |
 |3|File classification failed. |
-
 
 
