@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 09/04/2025
+ms.date: 09/15/2025
 ms.localizationpriority: high
 ---
 
@@ -2807,9 +2807,9 @@ The audit records for events related to Places Directory operations use this sch
 |Parameters|Collection(Common.NameValuePair)|No|The name and value for all parameters that were used with the cmdlet that is identified in the Operations property.|
 |ModifiedProperties|Collection(Common.ModifiedProperty)|No|The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified object.|
 
-## Microsoft Sentinel data lake schema
+## Microsoft Sentinel data lake and graph schema
 
-The audit records for events related to Microsoft Sentinel data lake operations use this schema (in addition to the [Common schema](#common-schema)). For details on how you can search for the audit logs from the compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+The audit records for events related to Microsoft Sentinel data lake and graphoperations use this schema (in addition to the [Common schema](#common-schema)). For details on how you can search for the audit logs from the compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
 
 ### SentinelNotebookOnLake
 
@@ -2845,13 +2845,18 @@ The audit records for events related to Microsoft Sentinel data lake operations 
 | JobStartTime                | Edm.Date    | No              | Start time of the job.                                  |
 | JobEndTime                  | Edm.Date    | No              | End time of the job.                                    |
 | Interface                   | Edm.String  | Yes               | Interface from where the job operation was done.        |
+| DatabasesRead               | Collection(Edm.String) | No         | The list of workspaces read by the job.           |
+| DatabasesWrite              | Collection(Edm.String) | No         | The list of workspaces written to by the job      |
+| TablesRead                  | Collection(Edm.String) | No         | The list of tables read by the job.               |
+| TablesWrite                 | Collection(Edm.String) | No         | The list of tables written to by the job.         |
+| Query                       | Edm.String             | No         | KQL query or notebook executed in the job.        |
 
 ### SentinelKQLOnLake
 
 | **Parameter**    | **Type**            | **Mandatory?** | **Description**      |
 |------------------|---------------------|:--------------:|----------------------|
 | EventTime        | Edm.Date            | Yes               | Timestamp of KQL query execution.      |
-| DatabaseName     | Edm.String          | Yes               | The workspace the KQL query ran on.    |
+| DatabaseName     | Collection(Edm.String)  | Yes               | The workspaces the KQL query ran on.    |
 | ResultTableCount | Edm.Int64           | No              | Output Table Count.                    |
 | QueryResponse    | Edm.String          | Yes               | Response from executing the KQL query. |
 | TotalRows        | Collection(Edm.Int64)| Yes               | Total Rows returned from query execution. List of values if multiple queries executed at once.    |
@@ -2861,6 +2866,8 @@ The audit records for events related to Microsoft Sentinel data lake operations 
 | TotalCPU         | Edm.Int64           | Yes               | Total CPU Duration of the run.                  |
 | MemoryPeak       | Edm.Int64           | Yes               | Memory Peak of the KQL query execution.         |
 | Interface        | Edm.String          | Yes               | Interface from where the KQL query was executed.|
+| TablesRead       | Collection(Edm.String) | Yes            | The list of tables read in the KQL query. |
+| QueryText        | Edm.String             | Yes            | The KQL query executed in scrubbed form.  |
 
 ### SentinelLakeOnboarding
 
@@ -2879,6 +2886,37 @@ The audit records for events related to Microsoft Sentinel data lake operations 
 | Tables                   | Collection(Edm.String) | No          | List of table names ingested during Sentinel Data Lake onboarding. |
 | SubscriptionsEnabled     | Collection(Edm.String) | No          | List of subscriptions enabled for ARG ingestion.                |
 | DataOnboardingStatus     | Edm.String             | No          | Status of operation.                                           |
+
+### SentinelAITool
+
+| Parameter          | Type                   | Mandatory? | Description                                      |
+| ------------------ | ---------------------- | ---------- | ------------------------------------------------ |
+| EventOccurenceTime | Edm.Date               | Yes        | Timestamp of the operation.                      |
+| ToolID             | Edm.Guid               | Yes        | Identifier of the AI Tool.                       |
+| ToolName           | Edm.String             | Yes        | Name of the AI Tool.                             |
+| Interface          | Edm.String             | Yes        | Interface from where the AI Tool was run.        |
+| InputParameters    | Edm.String             | No         | Parameters given to the tool.                    |
+| DatabasesRead      | Collection(Edm.String) | No         | The list of databases read from in the run.      |
+| TablesRead         | Collection(Edm.String) | No         | The list of tables read from in the run.         |
+| APIsCalled         | Collection(Edm.String) | No         | APIs called by the AI Tool.                      |
+| FailureReason      | Edm.String             | No         | If the run failed, the reason for failure.       |
+| TotalRows          | Collection(Edm.Int64)  | No         | Total Rows returned.                             |
+| DataScanned        | Edm.Int64              | No         | Total GBs Scanned.                               |
+| ExecutionDuration  | Edm.Int64              | No         | Time taken for query execution, in milliseconds. |
+| TotalCpuHours      | Edm.Int64              | No         | Total CPU Duration of the run.                   |
+| TotalSCUHours      | Edm.Int64              | No         | Total SCUs used in the run.                      |
+
+### SentinelGraph
+
+| Parameters        | Type       | Mandatory? | Description                                      |
+| ----------------- | ---------- | ---------- | ------------------------------------------------ |
+| EventTime         | Edm.Date   | Yes        | Timestamp of the operation.                      |
+| GraphName         | Edm.String | Yes        | Name of the graph instance.                      |
+| Operation         | Edm.string | Yes        | Action taken on graph.                           |
+| OperationInput    | Edm.string | No         | Parameters of graph action.                      |
+| GraphQuery Stats  | Edm.string | No         | Collection of response metadata.                 |
+| GraphQuery Status | Edm.String | No         | Response of the query or action on graph.        |
+| Interface         | Edm.String | Yes        | Interface from where the graph action was taken. |
 
 ## Purview On-demand classification schema
 
