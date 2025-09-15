@@ -326,11 +326,11 @@ This article provides details on the Common schema as well as service-specific s
 |362|AIInteractionsExport|Events related to export of AI interactions.|
 |363|Microsoft365CopilotScheduledPrompt|Events from Microsoft 365 Copilot scheduled prompt.|
 |364|PlacesDirectory|Events from Microsoft Places Directory.|
-|365|SentinelNotebookOnLake |Events from notebook execution on Sentinel Data Lake.|
-|366|SentinelJob |Events from operations on jobs in Sentinel Data Lake.|
-|367|SentinelKQLOnLake |Events from running KQL on Sentinel Data Lake.|
-|368|SentinelLakeOnboarding |Events from onboarding to Sentinel Data Lake.|
-|369|SentinelLakeDataOnboarding |Data loading events into Sentinel Data Lake.|
+|365|SentinelNotebookOnLake |Events from notebook execution on Sentinel data lake.|
+|366|SentinelJob |Events from operations on jobs in Sentinel data lake.|
+|367|SentinelKQLOnLake |Events from running KQL on Sentinel data lake.|
+|368|SentinelLakeOnboarding |Events from onboarding to Sentinel data lake.|
+|369|SentinelLakeDataOnboarding |Data loading events into Sentinel data lake.|
 |370|CrossTenantAccessPolicy|Events from Cross Tenant Access Policies.|
 |371|OutlookCopilotAutomation|Events related to back-end automation (without an explicit user interaction) in Microsoft Outlook driven by Agents, Copilot, or other AI scenarios.|
 |372|VivaEngageNetworkAssociation|Events related to Network Association in Viva Engage.|
@@ -2873,8 +2873,8 @@ The audit records for events related to Microsoft Sentinel data lake and graphop
 
 | Parameter                    | Type        | Mandatory? | Description                                             |
 |------------------------------|-------------|------------|---------------------------------------------------------|
-| BillingAzureSubscriptionId   | Edm.String  | No          | Azure subscription chosen for Sentinel Data Lake billing.|
-| BillingAzureResourceGroupName| Edm.String  | No          | Azure resource group chosen for Sentinel Data Lake billing.|
+| BillingAzureSubscriptionId   | Edm.String  | No          | Azure subscription chosen for Sentinel data lake billing.|
+| BillingAzureResourceGroupName| Edm.String  | No          | Azure resource group chosen for Sentinel data lake billing.|
 | TenantId                     | Edm.String  | No          | Tenant ID associated with the lake setup or update.     |
 | ProvisioningStatus           | Edm.String  | No          | Status of provisioning the lake.                        |
 
@@ -2882,8 +2882,8 @@ The audit records for events related to Microsoft Sentinel data lake and graphop
 
 | Property Name            | Type                   | Mandatory? | Description                                                    |
 |--------------------------|------------------------|------------|----------------------------------------------------------------|
-| DataOnboardingAtSetup    | Edm.String             | No          | Data sets ingested during Sentinel Data Lake onboarding.        |
-| Tables                   | Collection(Edm.String) | No          | List of table names ingested during Sentinel Data Lake onboarding. |
+| DataOnboardingAtSetup    | Edm.String             | No          | Data sets ingested during Sentinel data lake onboarding.        |
+| Tables                   | Collection(Edm.String) | No          | List of table names ingested during Sentinel data lake onboarding. |
 | SubscriptionsEnabled     | Collection(Edm.String) | No          | List of subscriptions enabled for ARG ingestion.                |
 | DataOnboardingStatus     | Edm.String             | No          | Status of operation.                                           |
 
