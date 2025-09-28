@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 09/15/2025
+ms.date: 09/28/2025
 ms.localizationpriority: high
 ---
 
@@ -331,30 +331,26 @@ This article provides details on the Common schema as well as service-specific s
 |367|SentinelKQLOnLake |Events from running KQL on Sentinel data lake.|
 |368|SentinelLakeOnboarding |Events from onboarding to Sentinel data lake.|
 |369|SentinelLakeDataOnboarding |Data loading events into Sentinel data lake.|
-|370|CrossTenantAccessPolicy|Events from Cross Tenant Access Policies.|
-|371|OutlookCopilotAutomation|Events related to back-end automation (without an explicit user interaction) in Microsoft Outlook driven by Agents, Copilot, or other AI scenarios.|
-|372|VivaEngageNetworkAssociation|Events related to Network Association in Viva Engage.|
-|373|AppAdminActivity|Events related to app admin activity.|
-|374|AppSettingsAdminActivity|Events related to app settings admin activity.|
-|375|UniversalPrintPrintJob|Audit events related to Print Jobs in Microsoft Universal Print.|
-|376|SentinelNotebookOnLake|Events related to Notebook on Lake in Microsoft Sentinel.|
-|377|SentinelJob|Events related to Jobs in Microsoft Sentinel.|
-|378|SentinelGraph|Events related to Graph in Microsoft Sentinel.|
-|379|SentinelKQLOnLake|Events related to KQL on Lake in Microsoft Sentinel.|
-|380|SentinelPackage|Events related to Package in Microsoft Sentinel.|
-|381|VivaAmplifyOutlookSensitivityLabel|Events related to Outlook Sensitivity Labels in Viva Amplify.|
-|382||Deprecated. This value is not used.|
-|383|AIInteractionsSubscription|Events related to AI interaction subscriptions.|
-|384|AIInteractionsChangeNotification|Events related to AI interaction change notifications.|
-|385|FilteringMailMetadataExtended|Events related to filtering mail metadata.|
-|386|SentinelLakeOnboarding|Events related to Lake Onboarding in Microsoft Sentinel.|
-|387|SentinelLakeDataOnboarding|Events related to Lake Data Onboarding in Microsoft Sentinel.|
-|388|OfficeRestrictedModeAction|Audit events related to activities performed in Office Restricted Mode. |
-|389|CopilotForSecurityTrigger|Events related to triggers for Security Copilot agents. |
-|390|CopilotAgentManagement|Events related to admin activities for Microsoft Copilot agents.|
-|391|P4AIAssessmentFabricScannerRecord|Events related to Purview for AI Assessment Fabric Scanner.|
-|392|PlannerGoal|Microsoft Planner goal events.|
-|393|PlannerGoalList|Microsoft Planner goal list events.|
+|370|SentinelAITool|Events from AI tools in Microsoft Sentinel.|
+|371|SentinelGraph|Events related to Graph in Microsoft Sentinel.|
+|372|SentinelPackage|Events related to Package in Microsoft Sentinel.|
+|373|CrossTenantAccessPolicy|Events from Cross Tenant Access Policies.|
+|374|OutlookCopilotAutomation|Events related to back-end automation (without an explicit user interaction) in Microsoft Outlook driven by Agents, Copilot, or other AI scenarios.|
+|375|VivaEngageNetworkAssociation|Events related to Network Association in Viva Engage.|
+|376|AppAdminActivity|Events related to app admin activity.|
+|377|AppSettingsAdminActivity|Events related to app settings admin activity.|
+|378|UniversalPrintPrintJob|Audit events related to Print Jobs in Microsoft Universal Print.|
+|379|VivaAmplifyOutlookSensitivityLabel|Events related to Outlook Sensitivity Labels in Viva Amplify.|
+|380||Deprecated. This value is not used.|
+|381|AIInteractionsSubscription|Events related to AI interaction subscriptions.|
+|382|AIInteractionsChangeNotification|Events related to AI interaction change notifications.|
+|383|FilteringMailMetadataExtended|Events related to filtering mail metadata.|
+|384|OfficeRestrictedModeAction|Audit events related to activities performed in Office Restricted Mode. |
+|385|CopilotForSecurityTrigger|Events related to triggers for Security Copilot agents. |
+|386|CopilotAgentManagement|Events related to admin activities for Microsoft Copilot agents.|
+|387|P4AIAssessmentFabricScannerRecord|Events related to Purview for AI Assessment Fabric Scanner.|
+|388|PlannerGoal|Microsoft Planner goal events.|
+|389|PlannerGoalList|Microsoft Planner goal list events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
