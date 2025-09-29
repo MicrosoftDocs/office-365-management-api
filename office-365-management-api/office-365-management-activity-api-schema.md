@@ -331,7 +331,7 @@ This article provides details on the Common schema as well as service-specific s
 |367|SentinelKQLOnLake |Events from running KQL on Sentinel data lake.|
 |368|SentinelLakeOnboarding |Events from onboarding to Sentinel data lake.|
 |369|SentinelLakeDataOnboarding |Data loading events into Sentinel data lake.|
-|370|SentinelAITool|Events from AI tools in Microsoft Sentinel.|
+|370|SentinelAITool|Events from operations on AI tool in Microsoft Sentinel|
 |371|SentinelGraph|Events related to Graph in Microsoft Sentinel.|
 |372|CrossTenantAccessPolicy|Events from Cross Tenant Access Policies.|
 |373|OutlookCopilotAutomation|Events related to back-end automation (without an explicit user interaction) in Microsoft Outlook driven by Agents, Copilot, or other AI scenarios.|
