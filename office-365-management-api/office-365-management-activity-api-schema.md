@@ -333,24 +333,22 @@ This article provides details on the Common schema as well as service-specific s
 |369|SentinelLakeDataOnboarding |Data loading events into Sentinel data lake.|
 |370|SentinelAITool|Events from AI tools in Microsoft Sentinel.|
 |371|SentinelGraph|Events related to Graph in Microsoft Sentinel.|
-|372|SentinelPackage|Events related to Package in Microsoft Sentinel.|
-|373|CrossTenantAccessPolicy|Events from Cross Tenant Access Policies.|
-|374|OutlookCopilotAutomation|Events related to back-end automation (without an explicit user interaction) in Microsoft Outlook driven by Agents, Copilot, or other AI scenarios.|
-|375|VivaEngageNetworkAssociation|Events related to Network Association in Viva Engage.|
-|376|AppAdminActivity|Events related to app admin activity.|
-|377|AppSettingsAdminActivity|Events related to app settings admin activity.|
-|378|UniversalPrintPrintJob|Audit events related to Print Jobs in Microsoft Universal Print.|
-|379|VivaAmplifyOutlookSensitivityLabel|Events related to Outlook Sensitivity Labels in Viva Amplify.|
-|380||Deprecated. This value is not used.|
-|381|AIInteractionsSubscription|Events related to AI interaction subscriptions.|
-|382|AIInteractionsChangeNotification|Events related to AI interaction change notifications.|
-|383|FilteringMailMetadataExtended|Events related to filtering mail metadata.|
-|384|OfficeRestrictedModeAction|Audit events related to activities performed in Office Restricted Mode. |
-|385|CopilotForSecurityTrigger|Events related to triggers for Security Copilot agents. |
-|386|CopilotAgentManagement|Events related to admin activities for Microsoft Copilot agents.|
-|387|P4AIAssessmentFabricScannerRecord|Events related to Purview for AI Assessment Fabric Scanner.|
-|388|PlannerGoal|Microsoft Planner goal events.|
-|389|PlannerGoalList|Microsoft Planner goal list events.|
+|372|CrossTenantAccessPolicy|Events from Cross Tenant Access Policies.|
+|373|OutlookCopilotAutomation|Events related to back-end automation (without an explicit user interaction) in Microsoft Outlook driven by Agents, Copilot, or other AI scenarios.|
+|374|VivaEngageNetworkAssociation|Events related to Network Association in Viva Engage.|
+|375|AppAdminActivity|Events related to app admin activity.|
+|376|AppSettingsAdminActivity|Events related to app settings admin activity.|
+|377|UniversalPrintPrintJob|Audit events related to Print Jobs in Microsoft Universal Print.|
+|378|VivaAmplifyOutlookSensitivityLabel|Events related to Outlook Sensitivity Labels in Viva Amplify.|
+|379|AIInteractionsSubscription|Events related to AI interaction subscriptions.|
+|380|AIInteractionsChangeNotification|Events related to AI interaction change notifications.|
+|381|FilteringMailMetadataExtended|Events related to filtering mail metadata.|
+|382|OfficeRestrictedModeAction|Audit events related to activities performed in Office Restricted Mode. |
+|383|CopilotForSecurityTrigger|Events related to triggers for Security Copilot agents. |
+|384|CopilotAgentManagement|Events related to admin activities for Microsoft Copilot agents.|
+|385|P4AIAssessmentFabricScannerRecord|Events related to Purview for AI Assessment Fabric Scanner.|
+|386|PlannerGoal|Microsoft Planner goal events.|
+|387|PlannerGoalList|Microsoft Planner goal list events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
