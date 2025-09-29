@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 09/04/2025
+ms.date: 09/28/2025
 ms.localizationpriority: high
 ---
 
@@ -326,35 +326,29 @@ This article provides details on the Common schema as well as service-specific s
 |362|AIInteractionsExport|Events related to export of AI interactions.|
 |363|Microsoft365CopilotScheduledPrompt|Events from Microsoft 365 Copilot scheduled prompt.|
 |364|PlacesDirectory|Events from Microsoft Places Directory.|
-|365|SentinelNotebookOnLake |Events from notebook execution on Sentinel Data Lake.|
-|366|SentinelJob |Events from operations on jobs in Sentinel Data Lake.|
-|367|SentinelKQLOnLake |Events from running KQL on Sentinel Data Lake.|
-|368|SentinelLakeOnboarding |Events from onboarding to Sentinel Data Lake.|
-|369|SentinelLakeDataOnboarding |Data loading events into Sentinel Data Lake.|
-|370|CrossTenantAccessPolicy|Events from Cross Tenant Access Policies.|
-|371|OutlookCopilotAutomation|Events related to back-end automation (without an explicit user interaction) in Microsoft Outlook driven by Agents, Copilot, or other AI scenarios.|
-|372|VivaEngageNetworkAssociation|Events related to Network Association in Viva Engage.|
-|373|AppAdminActivity|Events related to app admin activity.|
-|374|AppSettingsAdminActivity|Events related to app settings admin activity.|
-|375|UniversalPrintPrintJob|Audit events related to Print Jobs in Microsoft Universal Print.|
-|376|SentinelNotebookOnLake|Events related to Notebook on Lake in Microsoft Sentinel.|
-|377|SentinelJob|Events related to Jobs in Microsoft Sentinel.|
-|378|SentinelGraph|Events related to Graph in Microsoft Sentinel.|
-|379|SentinelKQLOnLake|Events related to KQL on Lake in Microsoft Sentinel.|
-|380|SentinelPackage|Events related to Package in Microsoft Sentinel.|
-|381|VivaAmplifyOutlookSensitivityLabel|Events related to Outlook Sensitivity Labels in Viva Amplify.|
-|382||Deprecated. This value is not used.|
-|383|AIInteractionsSubscription|Events related to AI interaction subscriptions.|
-|384|AIInteractionsChangeNotification|Events related to AI interaction change notifications.|
-|385|FilteringMailMetadataExtended|Events related to filtering mail metadata.|
-|386|SentinelLakeOnboarding|Events related to Lake Onboarding in Microsoft Sentinel.|
-|387|SentinelLakeDataOnboarding|Events related to Lake Data Onboarding in Microsoft Sentinel.|
-|388|OfficeRestrictedModeAction|Audit events related to activities performed in Office Restricted Mode. |
-|389|CopilotForSecurityTrigger|Events related to triggers for Security Copilot agents. |
-|390|CopilotAgentManagement|Events related to admin activities for Microsoft Copilot agents.|
-|391|P4AIAssessmentFabricScannerRecord|Events related to Purview for AI Assessment Fabric Scanner.|
-|392|PlannerGoal|Microsoft Planner goal events.|
-|393|PlannerGoalList|Microsoft Planner goal list events.|
+|365|SentinelNotebookOnLake |Events from notebook execution on Sentinel data lake.|
+|366|SentinelJob |Events from operations on jobs in Sentinel data lake.|
+|367|SentinelKQLOnLake |Events from running KQL on Sentinel data lake.|
+|368|SentinelLakeOnboarding |Events from onboarding to Sentinel data lake.|
+|369|SentinelLakeDataOnboarding |Data loading events into Sentinel data lake.|
+|370|SentinelAITool|Events from operations on AI tool in Microsoft Sentinel|
+|371|SentinelGraph|Events related to Graph in Microsoft Sentinel.|
+|372|CrossTenantAccessPolicy|Events from Cross Tenant Access Policies.|
+|373|OutlookCopilotAutomation|Events related to back-end automation (without an explicit user interaction) in Microsoft Outlook driven by Agents, Copilot, or other AI scenarios.|
+|374|VivaEngageNetworkAssociation|Events related to Network Association in Viva Engage.|
+|375|AppAdminActivity|Events related to app admin activity.|
+|376|AppSettingsAdminActivity|Events related to app settings admin activity.|
+|377|UniversalPrintPrintJob|Audit events related to Print Jobs in Microsoft Universal Print.|
+|378|VivaAmplifyOutlookSensitivityLabel|Events related to Outlook Sensitivity Labels in Viva Amplify.|
+|379|AIInteractionsSubscription|Events related to AI interaction subscriptions.|
+|380|AIInteractionsChangeNotification|Events related to AI interaction change notifications.|
+|381|FilteringMailMetadataExtended|Events related to filtering mail metadata.|
+|382|OfficeRestrictedModeAction|Audit events related to activities performed in Office Restricted Mode. |
+|383|CopilotForSecurityTrigger|Events related to triggers for Security Copilot agents. |
+|384|CopilotAgentManagement|Events related to admin activities for Microsoft Copilot agents.|
+|385|P4AIAssessmentFabricScannerRecord|Events related to Purview for AI Assessment Fabric Scanner.|
+|386|PlannerGoal|Microsoft Planner goal events.|
+|387|PlannerGoalList|Microsoft Planner goal list events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -2807,9 +2801,9 @@ The audit records for events related to Places Directory operations use this sch
 |Parameters|Collection(Common.NameValuePair)|No|The name and value for all parameters that were used with the cmdlet that is identified in the Operations property.|
 |ModifiedProperties|Collection(Common.ModifiedProperty)|No|The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified object.|
 
-## Microsoft Sentinel data lake schema
+## Microsoft Sentinel data lake and graph schema
 
-The audit records for events related to Microsoft Sentinel data lake operations use this schema (in addition to the [Common schema](#common-schema)). For details on how you can search for the audit logs from the compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
+The audit records for events related to Microsoft Sentinel data lake and graphoperations use this schema (in addition to the [Common schema](#common-schema)). For details on how you can search for the audit logs from the compliance portal, see [Audit log activities](/microsoft-365/compliance/audit-log-activities).
 
 ### SentinelNotebookOnLake
 
@@ -2845,13 +2839,18 @@ The audit records for events related to Microsoft Sentinel data lake operations 
 | JobStartTime                | Edm.Date    | No              | Start time of the job.                                  |
 | JobEndTime                  | Edm.Date    | No              | End time of the job.                                    |
 | Interface                   | Edm.String  | Yes               | Interface from where the job operation was done.        |
+| DatabasesRead               | Collection(Edm.String) | No         | The list of workspaces read by the job.           |
+| DatabasesWrite              | Collection(Edm.String) | No         | The list of workspaces written to by the job      |
+| TablesRead                  | Collection(Edm.String) | No         | The list of tables read by the job.               |
+| TablesWrite                 | Collection(Edm.String) | No         | The list of tables written to by the job.         |
+| Query                       | Edm.String             | No         | KQL query or notebook executed in the job.        |
 
 ### SentinelKQLOnLake
 
 | **Parameter**    | **Type**            | **Mandatory?** | **Description**      |
 |------------------|---------------------|:--------------:|----------------------|
 | EventTime        | Edm.Date            | Yes               | Timestamp of KQL query execution.      |
-| DatabaseName     | Edm.String          | Yes               | The workspace the KQL query ran on.    |
+| DatabaseName     | Collection(Edm.String)  | Yes               | The workspaces the KQL query ran on.    |
 | ResultTableCount | Edm.Int64           | No              | Output Table Count.                    |
 | QueryResponse    | Edm.String          | Yes               | Response from executing the KQL query. |
 | TotalRows        | Collection(Edm.Int64)| Yes               | Total Rows returned from query execution. List of values if multiple queries executed at once.    |
@@ -2861,13 +2860,15 @@ The audit records for events related to Microsoft Sentinel data lake operations 
 | TotalCPU         | Edm.Int64           | Yes               | Total CPU Duration of the run.                  |
 | MemoryPeak       | Edm.Int64           | Yes               | Memory Peak of the KQL query execution.         |
 | Interface        | Edm.String          | Yes               | Interface from where the KQL query was executed.|
+| TablesRead       | Collection(Edm.String) | Yes            | The list of tables read in the KQL query. |
+| QueryText        | Edm.String             | Yes            | The KQL query executed in scrubbed form.  |
 
 ### SentinelLakeOnboarding
 
 | Parameter                    | Type        | Mandatory? | Description                                             |
 |------------------------------|-------------|------------|---------------------------------------------------------|
-| BillingAzureSubscriptionId   | Edm.String  | No          | Azure subscription chosen for Sentinel Data Lake billing.|
-| BillingAzureResourceGroupName| Edm.String  | No          | Azure resource group chosen for Sentinel Data Lake billing.|
+| BillingAzureSubscriptionId   | Edm.String  | No          | Azure subscription chosen for Sentinel data lake billing.|
+| BillingAzureResourceGroupName| Edm.String  | No          | Azure resource group chosen for Sentinel data lake billing.|
 | TenantId                     | Edm.String  | No          | Tenant ID associated with the lake setup or update.     |
 | ProvisioningStatus           | Edm.String  | No          | Status of provisioning the lake.                        |
 
@@ -2875,10 +2876,41 @@ The audit records for events related to Microsoft Sentinel data lake operations 
 
 | Property Name            | Type                   | Mandatory? | Description                                                    |
 |--------------------------|------------------------|------------|----------------------------------------------------------------|
-| DataOnboardingAtSetup    | Edm.String             | No          | Data sets ingested during Sentinel Data Lake onboarding.        |
-| Tables                   | Collection(Edm.String) | No          | List of table names ingested during Sentinel Data Lake onboarding. |
+| DataOnboardingAtSetup    | Edm.String             | No          | Data sets ingested during Sentinel data lake onboarding.        |
+| Tables                   | Collection(Edm.String) | No          | List of table names ingested during Sentinel data lake onboarding. |
 | SubscriptionsEnabled     | Collection(Edm.String) | No          | List of subscriptions enabled for ARG ingestion.                |
 | DataOnboardingStatus     | Edm.String             | No          | Status of operation.                                           |
+
+### SentinelAITool
+
+| Parameter          | Type                   | Mandatory? | Description                                      |
+| ------------------ | ---------------------- | ---------- | ------------------------------------------------ |
+| EventOccurenceTime | Edm.Date               | Yes        | Timestamp of the operation.                      |
+| ToolID             | Edm.Guid               | Yes        | Identifier of the AI Tool.                       |
+| ToolName           | Edm.String             | Yes        | Name of the AI Tool.                             |
+| Interface          | Edm.String             | Yes        | Interface from where the AI Tool was run.        |
+| InputParameters    | Edm.String             | No         | Parameters given to the tool.                    |
+| DatabasesRead      | Collection(Edm.String) | No         | The list of databases read from in the run.      |
+| TablesRead         | Collection(Edm.String) | No         | The list of tables read from in the run.         |
+| APIsCalled         | Collection(Edm.String) | No         | APIs called by the AI Tool.                      |
+| FailureReason      | Edm.String             | No         | If the run failed, the reason for failure.       |
+| TotalRows          | Collection(Edm.Int64)  | No         | Total Rows returned.                             |
+| DataScanned        | Edm.Int64              | No         | Total GBs Scanned.                               |
+| ExecutionDuration  | Edm.Int64              | No         | Time taken for query execution, in milliseconds. |
+| TotalCpuHours      | Edm.Int64              | No         | Total CPU Duration of the run.                   |
+| TotalSCUHours      | Edm.Int64              | No         | Total SCUs used in the run.                      |
+
+### SentinelGraph
+
+| Parameters        | Type       | Mandatory? | Description                                      |
+| ----------------- | ---------- | ---------- | ------------------------------------------------ |
+| EventTime         | Edm.Date   | Yes        | Timestamp of the operation.                      |
+| GraphName         | Edm.String | Yes        | Name of the graph instance.                      |
+| Operation         | Edm.string | Yes        | Action taken on graph.                           |
+| OperationInput    | Edm.string | No         | Parameters of graph action.                      |
+| GraphQuery Stats  | Edm.string | No         | Collection of response metadata.                 |
+| GraphQuery Status | Edm.String | No         | Response of the query or action on graph.        |
+| Interface         | Edm.String | Yes        | Interface from where the graph action was taken. |
 
 ## Purview On-demand classification schema
 
