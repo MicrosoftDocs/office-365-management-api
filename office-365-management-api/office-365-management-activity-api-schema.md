@@ -474,6 +474,8 @@ This article provides details on the Common schema as well as service-specific s
 |EntityDeleted|User deletes a timesheet in Project web app.|
 |EntityForceCheckedIn|User forces a check-in on a calendar, custom field or lookup table in Project web app.|
 |ExemptUserAgentSet|Global administrator adds a user agent to the list of exempt user agents in the SharePoint admin center.|
+|FeatureActivated|Site admin activates a site collection feature.|
+|FeatureDeactivated|Site admin deactivates a site collection feature.|
 |FileAccessed|User or system account accesses a file on a SharePoint or OneDrive site. System accounts can also generate FileAccessed events.|
 |FileCheckOutDiscarded|User discards a checked out file. That means any changes they made to the file when it was checked out are discarded, and not saved to the version of the document in the document library.|
 |FileCheckedIn|User checks in a document that they checked out from a SharePoint or OneDrive document library.|
