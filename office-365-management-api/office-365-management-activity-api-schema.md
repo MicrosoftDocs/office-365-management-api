@@ -474,6 +474,8 @@ This article provides details on the Common schema as well as service-specific s
 |EntityDeleted|User deletes a timesheet in Project web app.|
 |EntityForceCheckedIn|User forces a check-in on a calendar, custom field or lookup table in Project web app.|
 |ExemptUserAgentSet|Global administrator adds a user agent to the list of exempt user agents in the SharePoint admin center.|
+|FeatureActivated|Site admin activates a site collection feature.|
+|FeatureDeactivated|Site admin deactivates a site collection feature.|
 |FileAccessed|User or system account accesses a file on a SharePoint or OneDrive site. System accounts can also generate FileAccessed events.|
 |FileCheckOutDiscarded|User discards a checked out file. That means any changes they made to the file when it was checked out are discarded, and not saved to the version of the document in the document library.|
 |FileCheckedIn|User checks in a document that they checked out from a SharePoint or OneDrive document library.|
@@ -751,8 +753,8 @@ SharePoint events (excluding the file and folder events) returned in [audit log 
 
 |Parameters|Type|Mandatory|Description|
 |---|---|---|---|
-|LogonType|Self.[LogonType](#logontype)|No|Indicates the type of user who accessed the mailbox and performed the operation that was logged.|
-|InternalLogonType|Self.[LogonType](#logontype)|No|Reserved for internal use.|
+|LogonType|Self.[LogonType](#logontype)|Yes|Indicates the type of user who accessed the mailbox and performed the operation that was logged.|
+|InternalLogonType|Self.[LogonType](#logontype)|Yes|Reserved for internal use.|
 |MailboxGuid|Edm.String|No|The Exchange GUID of the mailbox that was accessed.|
 |MailboxOwnerUPN|Edm.String|No|The email address of the person who owns the mailbox that was accessed.|
 |MailboxOwnerSid|Edm.String|No|The SID of the mailbox owner.|
@@ -767,9 +769,21 @@ SharePoint events (excluding the file and folder events) returned in [audit log 
 |ClientMachineName|Edm.String|No|The machine name that hosts the Outlook client.|
 |ClientProcessName|Edm.String|No|The email client that was used to access the mailbox.|
 |ClientVersion|Edm.String|No|The version of the email client.|
+|SessionId|Edm.String|No|Unique identifier for the session. It helps to differentiate attacker actions vs day-to-day user activities on the same account (useful for compromised accounts)|
+|AppId|Edm.String|No|Application Identifier|
+|ClientAppId|Edm.String|No|Original caller(service/protocol) identifier of the request.|
+|HostAppId|Edm.String|No|The executing service/protocol identifier.|
+|OperationProperties|Collection(Common.NameValuePair)|No|Collection of operation-specific properties.|
+|ClientRequestId|Edm.String|No|Identifier for the client request.|
+|ExternalUserTenantId|Edm.String|No|Tenant identifier for external users.|
+|ActorIP|Edm.String|No|IP address of the actor performing the operation.|
+|ActorInfoString|Edm.String|No|Name of the cloud instance (e.g., Public, GCC, GCC-H)|
 |DeviceId|Edm.String|No|Available only for registered/domain joined device.|
-|TokenObjectId|Edm.String|Yes|oid claim of the Microsoft Entra tokens.|
-|TokenTenantId|Edm.String|Yes|tid claim of the Microsoft Entra tokens.|
+|CloudInstanceName|Edm.String|No|Name of the cloud instance (e.g., Public, GCC, GCC-H)|
+|TokenObjectId|Edm.String|No|oid claim of the Microsoft Entra tokens.|
+|TokenTenantId|Edm.String|No|tid claim of the Microsoft Entra tokens.|
+|AuthType|Edm.String|No|Specifies the authentication scheme used by the client to access the service.|
+|TokenType|Edm.String|No|Indicates the type of token presented during authentication, providing context on the token’s role and scope.|
 
 ### Enum: LogonType - Type: Edm.Int32
 
@@ -798,17 +812,44 @@ SharePoint events (excluding the file and folder events) returned in [audit log 
 |DestFolder|Self.[ExchangeFolder](#exchangefolder-complex-type)|No|The destination folder, for operations such as Move.|
 |Folders|Collection(Self.[ExchangeFolder](#exchangefolder-complex-type))|No|Information about the source folders involved in an operation; for example, if folders are selected and then deleted.|
 |AffectedItems|Collection(Self.[ExchangeItem](#exchangeitem-complex-type))|No|Information about each item in the group.|
+|Teams|Self.TeamsData|No|Microsoft Teams-related data for group operations.|
 
 ### ExchangeMailboxAuditRecord schema
 
 |Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
 |Item|Self.[ExchangeItem](#exchangeitem-complex-type)|No|Represents the item upon which the operation was performed|
-|ModifiedProperties|Collection(Edm.String)|No|TBD|
+|ModifiedProperties|Collection(Edm.String)|No|Properties that are modified.|
+|MbxLoginLocalQueueADLookupInfo|Self.[LocalQueueADLookupInfo](#localqueueadlookupinfo-complex-type)|No|Contains Active Directory lookup details for the mailbox login context.|
 |SendAsUserSmtp|Edm.String|No|SMTP address of the user who is being impersonated.|
 |SendAsUserMailboxGuid|Edm.Guid|No|The Exchange GUID of the mailbox that was accessed to send email as.|
 |SendOnBehalfOfUserSmtp|Edm.String|No|SMTP address of the user on whose behalf the email is sent.|
 |SendOnBehalfOfUserMailboxGuid|Edm.Guid|No|The Exchange GUID of the mailbox that was accessed to send mail on behalf of.|
+|ContactEmail1EmailAddress|Edm.String|No|First email address for contact information.|
+|ContactEmail1DisplayName|Edm.String|No|Display name for first contact email.|
+|ContactEmail2EmailAddress|Edm.String|No|Second email address for contact information.|
+|ContactEmail2DisplayName|Edm.String|No|Display name for second contact email.|
+|ContactEmail3EmailAddress|Edm.String|No|Third email address for contact information.|
+|ContactEmail3DisplayName|Edm.String|No|Display name for third contact email.|
+|AttachmentId|Edm.String|No|Identifier for email attachment.|
+|AttachmentSizeInBytes|Edm.Int64|No|Size of attachment in bytes.|
+|SaveToSentItems|Edm.Boolean|No|Flag indicating whether item should be saved to sent items folder.|
+|Teams|Self.TeamsData|No|Microsoft Teams-related data.|
+
+### ExchangeAggregatedMailboxAuditRecord schema
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|OperationCount|Edm.Int32|No|The total number of operations performed on the aggregated set of items.|
+|Folders|Collection(Self.[ExchangeAggregatedFolder](#exchangeaggregatedfolder-complex-type))|No|A collection of aggregated folder objects involved in the operation.|
+|Messages|Collection(Self.[ExchangeAggregatedMessage](#exchangeaggregatedmessage-complex-type))|No|A collection of aggregated message objects involved in the operation.|
+
+### ExchangeAggregatedOperationRecord schema
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|OperationCount|Edm.Int32|No|The total number of operations included aggregated in this record.|
+|AggregateDurationInSeconds|Edm.Int32|No|Combined duration of all aggregated operations in seconds.|
 
 ### ExchangeItem complex type
 
@@ -816,8 +857,33 @@ SharePoint events (excluding the file and folder events) returned in [audit log 
 |---|---|---|---|
 |Id|Edm.String|Yes|The store ID.|
 |Subject|Edm.String|No|The subject line of the message that was accessed.|
-|ParentFolder|Edm.ExchangeFolder|No|The name of the folder where the item is located.|
+|ParentFolder|Self.[ExchangeFolder](#exchangefolder-complex-type)|No|The name of the folder where the item is located.|
+|ParentMessage|Self.[ExchangeMessage](#exchangemessage-complex-type)|No|Parent message if this item is nested.|
 |Attachments|Edm.String|No|A list of the names and file size of all items that are attached to the message.|
+|ImmutableId|Edm.String|No|A permanent, unchanging identifier for the item.|
+|InternetMessageId|Edm.String|No|Internet message identifier.|
+|ComplianceLabel|Edm.String|No|Compliance label applied to the item.|
+|IsRecord|Edm.Boolean|No|Flag indicating if the item is a record.|
+|IsPriorityCleanup|Edm.Boolean|No|Flag for priority cleanup processing |
+|SizeInBytes|Edm.Int64|No|Size of the Exchange item in bytes.|
+|Sensitivity|Edm.String|No|Indicates the sensitivity level of the item (e.g., Normal, Personal, Private, Confidential).|
+
+### LocalQueueADLookupInfo complex type
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|Puid|Edm.String|No|Passport unique identifier (Puid) for a Microsoft account or user object.|
+|OrgIdPuid|Edm.String|No|Organization identifier PUID.|
+|Smtp|Edm.String|No|SMTP address for AD lookup.|
+|SearchScope|Edm.String|No|Active Directory search scope|
+|ConsumerMailbox|Edm.String|No|Flag indicating if this is a consumer mailbox.|
+
+### EmailAddress complex type
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|Address|Edm.String|No|Email address associated with user.|
+|Name|Edm.String|No|Display name for email address.|
 
 ### ExchangeFolder complex type
 
@@ -825,6 +891,54 @@ SharePoint events (excluding the file and folder events) returned in [audit log 
 |---|---|---|---|
 |Id|Edm.String|Yes|The store ID of the folder object.|
 |Path|Edm.String|No|The name of the mailbox folder where the message that was accessed is located.|
+|Name|Edm.String|No|Folder Name|
+|MemberSid|Edm.String|No|Member security identifier|
+|MemberRights|Edm.String|No|Access Rights on the folder|
+|MemberUpn|Edm.String|No|Member user principal name|
+
+### ExchangeMessage complex type
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|Id|Edm.String|Yes|Unique identifier for the Message.|
+|Path|Edm.String|No|The path where the message is located|
+
+### ExchangeFolderItem complex type
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|Id|Edm.String|No|A guid that identifies the folder item within Exchange.|
+|ImmutableId|Edm.String|No|Immutable identifier for each Exchange folder item.|
+|InternetMessageId|Edm.String|No|Internet message identifier for each folder item.|
+|CreationTime|Edm.Date|No|Time when Record/item was created.|
+|Subject|Edm.String|No|Subject of the record/item.|
+|SizeInBytes|Edm.Int64|No|Size of the record/item in bytes.|
+|Sensitivity|Edm.String|No|Sensitivity labels of the record/item.|
+|ClientRequestId|Edm.String|No|A unique identifier for the client request that triggered the operation.|
+|Teams|Self.TeamsData|No|Microsoft Teams-related data |
+
+### ExchangeMessageItem complex type
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|Id|Edm.String|No|A guid that identifies the Exchange Message Item.|
+|SizeInBytes|Edm.Int64|No|The size of the message in bytes, including any attachments.|
+
+### ExchangeAggregatedFolder complex type
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|Id|Edm.String|Yes|The guid of the aggregated folder.|
+|Path|Edm.String|No|The path of the aggregated folder.|
+|FolderItems|Collection(Self.[ExchangeFolderItem](#exchangefolderitem-complex-type))|No|The collection of Exchange folder items.|
+
+### ExchangeAggregatedMessage complex type
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|Id|Edm.String|Yes|The guid of the aggregated message container.|
+|Path|Edm.String|No|The path of the aggregated message.|
+|MessageItems|Collection(Self.[ExchangeMessageItem](#exchangemessageitem-complex-type))|No|The collection of exchange message items.|
 
 ### OWA Auth schema
 
@@ -3004,3 +3118,4 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |1|File classification completed successfully.|
 |2|File classification completed with error. One or more classifier evaluation failed.|
 |3|File classification failed.|
+
