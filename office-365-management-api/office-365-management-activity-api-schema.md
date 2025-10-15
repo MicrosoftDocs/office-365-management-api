@@ -46,7 +46,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Teams schema](#microsoft-teams-schema)|Extends the Common schema with the properties specific to all Microsoft Teams events.|
 |[Microsoft Defender for Office 365 and Threat Investigation and Response schema](#microsoft-defender-for-office-365-and-threat-investigation-and-response-schema)|Extends the Common schema with the properties specific to Defender for Office 365 and threat investigation and response data.|
 |[Submission schema](#submission-schema)|Extends the Common schema with the properties specific to user and admin submissions in Microsoft Defender for Office 365.|
-|[Automated investigation and response events schema](#automated-investigation-and-response-events-in-office-365)|Extends the Common schema with the properties specific to Office 365 automated investigation and response (AIR) events. To see an example, see [Tech Community blog: Improve the Effectiveness of your SOC with Microsoft Defender for Office 365 and the Office 365 Management API](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185).|
+|[Automated investigation and response events in Microsoft Defender for Office 365 Plan 2](#automated-investigation-and-response-events-in-microsoft-defender-for-office-365-plan-2)|Extends the Common schema with the properties specific to Office 365 automated investigation and response (AIR) events. To see an example, see [Tech Community blog: Improve the Effectiveness of your SOC with Microsoft Defender for Office 365 and the Office 365 Management API](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185).|
 |[Hygiene events schema](#hygiene-events-schema)|Extends the Common schema with the properties specific to events in Baseline Email Protection and Microsoft Defender for Office 365.|
 |[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
 |[Dynamics 365 schema](#dynamics-365-schema)|Extends the Common schema with the properties specific to Dynamics 365 events.|
@@ -1294,12 +1294,13 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 
 [Threat Investigation and Response](/defender-office-365/office-365-ti) events are available only to customers with Defender for Office 365 Plan 2.
 
-Each event in the Defender for Office 365 feed corresponds to the following events that were determined to contain a threat:
+Each event in the Defender for Office 365 feed corresponds to the following features:
 
 - Delivered email messages detected and acted on by [zero-hour auto purge (ZAP)](/defender-office-365/zero-hour-auto-purge).
 - URLs detected at time-of-click by [Safe Links](/defender-office-365/safe-links-about).
 - Files detected by [Safe Attachments for SharePoint, OneDrive, and Microsoft Teams](/defender-office-365/safe-attachments-for-spo-odfb-teams-about).
 - Alerts that triggered [automated investigations](/defender-office-365/air-about) (Defender for Office 365 Plan 2 only).
+- [Attack simulation training](/defender-office-365/attack-simulation-training-get-started) events (Defender for Office 365 Plan 2 only).
 
 ### Email message events
 
@@ -1372,7 +1373,7 @@ Each event in the Defender for Office 365 feed corresponds to the following even
 |SHA256|Edm.String|Yes|The file SHA256 hash.|
 
 > [!NOTE]
-> Within the Malware family, you'll be able to see the exact MalwareFamily name (for example, HTML/Phish.VS!MSR) or Malicious Payload as a static string. A Malicious Payload should still be treated as malicious email when a specific name isn't identified.
+> Within the Malware family, you see the exact MalwareFamily name (for example, HTML/Phish.VS!MSR) or Malicious Payload as a static string. A Malicious Payload should still be treated as malicious email when a specific name isn't identified.
 
 ### SystemOverrides complex type
 
@@ -1503,9 +1504,11 @@ Each event in the Defender for Office 365 feed corresponds to the following even
 |1|OneDrive|
 |2|Microsoft Teams|
 
-## Attack Sim schema
+<a name='attack-sim-schema'></a>
 
-For more information about attack simulation and training in Defender for Office 365 Plan 2, see [Get started using Attack simulation training](/defender-office-365/attack-simulation-training-get-started).
+## Attack Sim schema in Microsoft Defender for Office 365 Plan 2
+
+[Attack simulation training](/defender-office-365/attack-simulation-training-get-started) events are available for Microsoft 365 customers who have Defender for Office 365 Plan 2, either included or as an add-on subscription. For example Microsoft 365 A5/E5/G5 includes Defender for Office 365 Plan 2.
 
 |Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
@@ -1537,7 +1540,11 @@ For more information about attack simulation and training in Defender for Office
 |17|OutOfOffice|Automatic replies in Outlook enabled for recipient.|
 |18|PositiveReinforcementMessageDelivered|Positive reinforcement message delivered successfully to recipient.|
 
-## Attack Sim Admin schema
+<a name='attack-sim-admin-schema'></a>
+
+## Attack Sim Admin schema in Microsoft Defender for Office 365 Plan 2
+
+[Attack simulation training](/defender-office-365/attack-simulation-training-get-started) admin events are available for Microsoft 365 customers who have Defender for Office 365 Plan 2, either included or as an add-on subscription. For example Microsoft 365 A5/E5/G5 includes Defender for Office 365 Plan 2.
 
 |Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
@@ -1616,7 +1623,9 @@ Events for submitting false positives or false negatives to Microsoft for analys
 |AdminSubmissionTablAllow|Edm.String|No|An allow entry in the [Tenant Allow/Block List](/defender-office-365/tenant-allow-block-list-about) was created at time of submission to immediately take action on similar messages while it is being rescanned.|
 |SubmissionNotification|Edm.String|No|Admin feedback is sent to end user.|
 
-## Automated investigation and response events in Office 365
+<a name='automated-investigation-and-response-events-in-office-365'></a>
+
+## Automated investigation and response events in Microsoft Defender for Office 365 Plan 2
 
 [Automated investigation and response (AIR)](/defender-office-365/air-about) events are available for Microsoft 365 customers who have Defender for Office 365 Plan 2, either included or as an add-on subscription. For example Microsoft 365 A5/E5/G5 includes Defender for Office 365 Plan 2.
 
