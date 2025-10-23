@@ -98,6 +98,16 @@ This article provides details on the Common schema as well as service-specific s
 |Scope|Self.[AuditLogScope](#auditlogscope)|No|Event created by one of the following sources: <ul><li>**online**: A service in Microsoft 365.</li><li>**onprem**: A service in an on-premises organization. Currently, SharePoint is the only workload sending events from on-premises to Microsoft 365.</li></ul>|
 |AppAccessContext|CollectionSelf.[AppAccessContext](#complex-type-appaccesscontext)|No|The application context for the user or service principal that performed the action.|
 
+### AgentAdminActivity
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|AgentID|Edm.String|Yes|Unique identifier of the Agent|
+|AgentName|Edm.String|Yes|The name of the Agent|
+|AgentType|Edm.Int32|Yes|The type of the Agent - Microsoft (1P), External (3P), Shared by users (Shared), Built by your org (External). |
+|UserAssignments|Collection (Edm.Guid)|No|Collection of GUID of Users and Groups associated with the agent activity.|
+|ForAllUsers|Edm.Boolean|Yes|Whether the activity associated with the agent was captured for the entire organization or not. True when it applies to all users in the organization. False when it applies to specific users/group.|
+
 ### Enum: AuditLogRecordType - Type: Edm.Int32
 
 #### AuditLogRecordType
