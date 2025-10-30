@@ -359,6 +359,7 @@ This article provides details on the Common schema as well as service-specific s
 |385|P4AIAssessmentFabricScannerRecord|Events related to Purview for AI Assessment Fabric Scanner.|
 |386|PlannerGoal|Microsoft Planner goal events.|
 |387|PlannerGoalList|Microsoft Planner goal list events.|
+|414|VivaEngageSegment|Viva Engage segmentation events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -3120,5 +3121,6 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |1|File classification completed successfully.|
 |2|File classification completed with error. One or more classifier evaluation failed.|
 |3|File classification failed.|
+
 
 
