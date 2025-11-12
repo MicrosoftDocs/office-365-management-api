@@ -594,6 +594,9 @@ This article provides details on the Common schema as well as service-specific s
 |TaskStatusApproved|User approves a status update of one or more tasks in Project web app.|
 |TaskStatusRejected|User rejects a status update of one or more tasks in Project web app.|
 |TaskStatusSaved|User saves a status update of one or more tasks in Project web app.|
+|TenantThemeCreated|A SharePoint or global administrator, or a brand manager creates a tenant theme.|
+|TenantThemeDeleted|A SharePoint or global administrator, or a brand manager deletes a tenant theme.|
+|TenantThemeUpdated|A SharePoint or global administrator, or a brand manager updates a tenant theme.|
 |TaskStatusSubmitted|User submits a status update of one or more tasks in Project web app.|
 |TimesheetAccessed|User accesses a timesheet in Project web app.|
 |TimesheetApproved|User approves timesheet in Project web app.|
@@ -605,6 +608,7 @@ This article provides details on the Common schema as well as service-specific s
 |UpdateSSOApplication|Target application updated in Secure store service.|
 |UserAddedToGroup|Site administrator or owner adds a person to a group on a SharePoint or OneDrive site. Adding a person to a group grants the user the permissions that were assigned to the group.|
 |UserRemovedFromGroup|Site administrator or owner removes a person from a group on a SharePoint or OneDrive site. After the person is removed, they no longer are granted the permissions that were assigned to the group.|
+|WebThemeApplied|A SharePoint or global administrator, or a site owner applies a web theme.|
 |WorkflowModified|User creates, modifies, or deletes an Enterprise Project Type or Workflow phases or stages in Project web app.|
 
 ## SharePoint file operations
