@@ -595,9 +595,9 @@ This article provides details on the Common schema as well as service-specific s
 |TaskStatusRejected|User rejects a status update of one or more tasks in Project web app.|
 |TaskStatusSaved|User saves a status update of one or more tasks in Project web app.|
 |TaskStatusSubmitted|User submits a status update of one or more tasks in Project web app.|
-|TenantThemeCreated|A SharePoint or global administrator, or a brand manager creates a tenant theme.|
-|TenantThemeDeleted|A SharePoint or global administrator, or a brand manager deletes a tenant theme.|
-|TenantThemeUpdated|A SharePoint or global administrator, or a brand manager updates a tenant theme.|
+|TenantWideThemeCreated|A SharePoint administrator, global administrator, or brand manager creates a custom theme that applies across all SharePoint sites in your organization.|
+|TenantWideThemeDeleted|A SharePoint administrator, global administrator, or brand manager deletes a custom theme that applies across all SharePoint sites in your organization.|
+|TenantWideThemeUpdated|A SharePoint administrator, global administrator, or brand manager updates a custom theme that applies across all SharePoint sites in your organization.|
 |TimesheetAccessed|User accesses a timesheet in Project web app.|
 |TimesheetApproved|User approves timesheet in Project web app.|
 |TimesheetRejected|User rejects a timesheet in Project web app.|
