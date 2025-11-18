@@ -360,6 +360,7 @@ This article provides details on the Common schema as well as service-specific s
 |386|PlannerGoal|Microsoft Planner goal events.|
 |387|PlannerGoalList|Microsoft Planner goal list events.|
 |414|VivaEngageSegment|Viva Engage segmentation events.|
+|422|VivaEngageEvents|Events related to Viva Engage hosted events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
