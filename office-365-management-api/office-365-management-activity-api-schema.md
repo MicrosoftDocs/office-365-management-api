@@ -47,7 +47,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Defender for Office 365 and Threat Investigation and Response schema](#microsoft-defender-for-office-365-and-threat-investigation-and-response-schema)|Extends the Common schema with the properties specific to Defender for Office 365 and threat investigation and response data.|
 |[Submission schema](#submission-schema)|Extends the Common schema with the properties specific to user and admin submissions in Microsoft Defender for Office 365.|
 |[Automated investigation and response events in Microsoft Defender for Office 365 Plan 2](#automated-investigation-and-response-events-in-microsoft-defender-for-office-365-plan-2)|Extends the Common schema with the properties specific to Office 365 automated investigation and response (AIR) events. To see an example, see [Tech Community blog: Improve the Effectiveness of your SOC with Microsoft Defender for Office 365 and the Office 365 Management API](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185).|
-|[Hygiene events schema](#hygiene-events-schema)|Extends the Common schema with the properties specific to events in Baseline Email Protection and Microsoft Defender for Office 365.|
+|[Hygiene events schema](#hygiene-events-schema)|Extends the Common schema with the properties specific to events in [the built-in security features for all cloud mailboxes](/defender-office-365/eop-about) and Microsoft Defender for Office 365.|
 |[Power BI schema](#power-bi-schema)|Extends the Common schema with the properties specific to all Power BI events.|
 |[Dynamics 365 schema](#dynamics-365-schema)|Extends the Common schema with the properties specific to Dynamics 365 events.|
 |[Viva Insights schema](#viva-insights-schema)|Extends the Common schema with the properties specific to all Microsoft Viva Insights events.|
@@ -129,7 +129,7 @@ This article provides details on the Common schema as well as service-specific s
 |15|AzureActiveDirectoryStsLogon|Secure Token Service (STS) logon events in Microsoft Entra ID.|
 |16|SkypeForBusinessPSTNUsage|Public Switched Telephone Network (PSTN) events from Skype for Business.|
 |17|SkypeForBusinessUsersBlocked|Blocked user events from Skype for Business.|
-|18|SecurityComplianceCenterEOPCmdlet|Admin actions in [Baseline Email Protection for cloud mailboxes](/defender-office-365/eop-about) from the Microsoft 365 Defender portal.|
+|18|SecurityComplianceCenterEOPCmdlet|Admin actions in [the built-in security features for all cloud mailboxes](/defender-office-365/eop-about) from the Microsoft Defender portal.|
 |19|ExchangeAggregatedOperation|Aggregated Exchange mailbox auditing events.|
 |20|PowerBIAudit|Power BI events.|
 |21|CRM|Dynamics 365 events.|
@@ -137,8 +137,8 @@ This article provides details on the Common schema as well as service-specific s
 |23|SkypeForBusinessCmdlets|Skype for Business events.|
 |24|Discovery|Events for eDiscovery activities performed by running content searches and managing eDiscovery cases in the Microsoft Purview portal.|
 |25|MicrosoftTeams|Events from Microsoft Teams.|
-|28|ThreatIntelligence|Phishing and malware events from Baseline Email Protection and Microsoft Defender for Office 365.|
-|29|MailSubmission|Submission events from Baseline Email Protection and Microsoft Defender for Office 365.|
+|28|ThreatIntelligence|Phishing and malware events from [the built-in security features for all cloud mailboxes](/defender-office-365/eop-about) and Microsoft Defender for Office 365.|
+|29|MailSubmission|Submission events from [the built-in security features for all cloud mailboxes](/defender-office-365/eop-about) and Microsoft Defender for Office 365.|
 |30|MicrosoftFlow|Microsoft Power Automate (formerly called Microsoft Flow) events.|
 |31|AeD|Advanced eDiscovery events.|
 |32|MicrosoftStream|Microsoft Stream events.|
