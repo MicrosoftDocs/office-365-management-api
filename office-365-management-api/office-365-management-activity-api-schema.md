@@ -98,6 +98,16 @@ This article provides details on the Common schema as well as service-specific s
 |Scope|Self.[AuditLogScope](#auditlogscope)|No|Event created by one of the following sources: <ul><li>**online**: A service in Microsoft 365.</li><li>**onprem**: A service in an on-premises organization. Currently, SharePoint is the only workload sending events from on-premises to Microsoft 365.</li></ul>|
 |AppAccessContext|CollectionSelf.[AppAccessContext](#complex-type-appaccesscontext)|No|The application context for the user or service principal that performed the action.|
 
+### AgentAdminActivity
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|AgentID|Edm.String|Yes|Unique identifier of the Agent|
+|AgentName|Edm.String|Yes|The name of the Agent|
+|AgentType|Edm.Int32|Yes|The type of the Agent - Microsoft (1P), External (3P), Shared by users (Shared), Built by your org (External). |
+|UserAssignments|Collection (Edm.Guid)|No|Collection of GUID of Users and Groups associated with the agent activity.|
+|ForAllUsers|Edm.Boolean|Yes|Whether the activity associated with the agent was captured for the entire organization or not. True when it applies to all users in the organization. False when it applies to specific users/group.|
+
 ### Enum: AuditLogRecordType - Type: Edm.Int32
 
 #### AuditLogRecordType
@@ -349,6 +359,8 @@ This article provides details on the Common schema as well as service-specific s
 |385|P4AIAssessmentFabricScannerRecord|Events related to Purview for AI Assessment Fabric Scanner.|
 |386|PlannerGoal|Microsoft Planner goal events.|
 |387|PlannerGoalList|Microsoft Planner goal list events.|
+|414|VivaEngageSegment|Viva Engage segmentation events.|
+|422|VivaEngageEvents|Events related to Viva Engage hosted events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -584,6 +596,9 @@ This article provides details on the Common schema as well as service-specific s
 |TaskStatusRejected|User rejects a status update of one or more tasks in Project web app.|
 |TaskStatusSaved|User saves a status update of one or more tasks in Project web app.|
 |TaskStatusSubmitted|User submits a status update of one or more tasks in Project web app.|
+|TenantWideThemeCreated|A SharePoint administrator, global administrator, or brand manager creates a custom theme that applies across all SharePoint sites in your organization.|
+|TenantWideThemeDeleted|A SharePoint administrator, global administrator, or brand manager deletes a custom theme that applies across all SharePoint sites in your organization.|
+|TenantWideThemeUpdated|A SharePoint administrator, global administrator, or brand manager updates a custom theme that applies across all SharePoint sites in your organization.|
 |TimesheetAccessed|User accesses a timesheet in Project web app.|
 |TimesheetApproved|User approves timesheet in Project web app.|
 |TimesheetRejected|User rejects a timesheet in Project web app.|
@@ -594,6 +609,7 @@ This article provides details on the Common schema as well as service-specific s
 |UpdateSSOApplication|Target application updated in Secure store service.|
 |UserAddedToGroup|Site administrator or owner adds a person to a group on a SharePoint or OneDrive site. Adding a person to a group grants the user the permissions that were assigned to the group.|
 |UserRemovedFromGroup|Site administrator or owner removes a person from a group on a SharePoint or OneDrive site. After the person is removed, they no longer are granted the permissions that were assigned to the group.|
+|WebThemeApplied|A SharePoint or global administrator, or a site owner applies a web theme.|
 |WorkflowModified|User creates, modifies, or deletes an Enterprise Project Type or Workflow phases or stages in Project web app.|
 
 ## SharePoint file operations
@@ -3049,7 +3065,7 @@ For audit log activities, see [Microsoft Sentinel AI tool activities](/purview/a
 
 ### SentinelGraph
 
-For audit log activities, see [Microsoft Sentinel graph activities]/purview/audit-log-activities#microsoft-sentinel-graph-activities).
+For audit log activities, see [Microsoft Sentinel graph activities](/purview/audit-log-activities#microsoft-sentinel-graph-activities).
 
 |Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
@@ -3118,4 +3134,6 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |1|File classification completed successfully.|
 |2|File classification completed with error. One or more classifier evaluation failed.|
 |3|File classification failed.|
+
+
 
