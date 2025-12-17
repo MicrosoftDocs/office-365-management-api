@@ -108,6 +108,17 @@ This article provides details on the Common schema as well as service-specific s
 |UserAssignments|Collection (Edm.Guid)|No|Collection of GUID of Users and Groups associated with the agent activity.|
 |ForAllUsers|Edm.Boolean|Yes|Whether the activity associated with the agent was captured for the entire organization or not. True when it applies to all users in the organization. False when it applies to specific users/group.|
 
+### AgentSettingsAdminActivity
+
+| Parameters|Type||Mandatory?|Description|
+| -------- | -------- | -------- | -------- | -------- |
+|Property   |Edm.String|| Yes|The tenant wide setting name that was updated by the admin.|
+|RemovedIdentities|Collection(Edm.Guid)||No|Collection of GUID of Users or Groups that were removed.|
+|AddedIdentities|Collection(Edm.Guid)||No|Collection of GUID of Users or Groups that were added. |
+|NewValue|Edm.String||Yes|The new value of the setting.|
+|ForAllUsers|Edm.Boolean||Yes|Boolean value indicating if the tenant wide setting impacted all users.|
+| OldValue |Edm.String||Yes  |The old value or the new setting.|
+
 ### Enum: AuditLogRecordType - Type: Edm.Int32
 
 #### AuditLogRecordType
