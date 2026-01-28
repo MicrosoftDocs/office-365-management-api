@@ -1432,7 +1432,7 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 
 ## Microsoft Defender for Office 365 and Threat Investigation and Response schema
 
-[Microsoft Defender for Office 365](/defender-office-365/mdo-about) events are available for Microsoft 365 customers who have Defender for Office 365, ether included or as an add-on subscription. For example, Microsoft 365 Business Premium includes Defender for Office 365 Plan 1, and Microsoft 365 A5/E5/G5 includes Defender for Office 365 Plan 2.
+[Microsoft Defender for Office 365](/defender-office-365/mdo-about) events are available for Microsoft 365 customers who have Defender for Office 365, either included or as an add-on subscription. For example, Microsoft 365 Business Premium includes Defender for Office 365 Plan 1, and Microsoft 365 A5/E5/G5 includes Defender for Office 365 Plan 2.
 
 [Threat Investigation and Response](/defender-office-365/office-365-ti) events are available only to customers with Defender for Office 365 Plan 2.
 
@@ -3146,6 +3146,7 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |1|File classification completed successfully.|
 |2|File classification completed with error. One or more classifier evaluation failed.|
 |3|File classification failed.|
+
 
 
 
