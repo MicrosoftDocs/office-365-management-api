@@ -2219,6 +2219,8 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 |Status|Edm.String|Yes|The extraction status.|
 |Reason|Edm.String|No|The error message in case of failure.|
 
+## DSPM Posture Agent
+
 ## AipDiscover
 
 The following table contains information related to Azure Information Protection (AIP) scanner events.
