@@ -2220,8 +2220,6 @@ Events in the SystemSync schema are triggered when the SystemSync ingested data 
 |Status|Edm.String|Yes|The extraction status.|
 |Reason|Edm.String|No|The error message in case of failure.|
 
-## DSPM Posture Agent
-
 ## AipDiscover
 
 The following table contains information related to Azure Information Protection (AIP) scanner events.
@@ -3172,6 +3170,7 @@ The PurviewPostureAgent audit schema is designed to capture and log activities r
 |---|---|---|---|
 |Type|Edm.String|Yes|The type of the search location.|
 |Id|Edm.String|Yes|The identifier of the search location.|
+
 
 
 
