@@ -373,7 +373,7 @@ This article provides details on the Common schema as well as service-specific s
 |414|VivaEngageSegment|Viva Engage segmentation events.|
 |422|VivaEngageEvents|Events related to Viva Engage hosted events.|
 |427|UniversalPrintManagement| Audit events related to Management events in Microsoft Universal Print.|
-|430|PurviewPostureAgent|Microsoft Purview Posture Agent events.|
+|430|PurviewPostureAgent|Data Security Posture Agent events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -3150,11 +3150,11 @@ The DataScanClassification audit schema is designed to capture and log activitie
 
 ## PurviewPostureAgent schema
 
-Microsoft Purview Posture Agent in Data Security Posture Management (DSPM) events, returned in [audit log searches](/purview/audit-search) use this schema (and also the [Common schema](#common-schema)).
+Data Security Posture Agent events, returned in [audit log searches](/purview/audit-search) use this schema (and also the [Common schema](#common-schema)).
 
 ### PurviewPostureAgent schema
 
-The PurviewPostureAgent audit schema is designed to capture and log activities related to the Purview Posture Agent in DSPM.
+The PurviewPostureAgent audit schema is designed to capture and log activities related to the Data Security Posture Agent.
 
 |Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
