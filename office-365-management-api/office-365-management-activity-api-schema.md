@@ -373,6 +373,7 @@ This article provides details on the Common schema as well as service-specific s
 |414|VivaEngageSegment|Viva Engage segmentation events.|
 |422|VivaEngageEvents|Events related to Viva Engage hosted events.|
 |427|UniversalPrintManagement| Audit events related to Management events in Microsoft Universal Print.|
+|430|PurviewPostureAgent|Data Security Posture Agent events.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -3146,6 +3147,31 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |1|File classification completed successfully.|
 |2|File classification completed with error. One or more classifier evaluation failed.|
 |3|File classification failed.|
+
+## PurviewPostureAgent schema
+
+Data Security Posture Agent events, returned in [audit log searches](/purview/audit-search) use this schema (and also the [Common schema](#common-schema)).
+
+### PurviewPostureAgent schema
+
+The PurviewPostureAgent audit schema is designed to capture and log activities related to the Data Security Posture Agent.
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|DiscoveryId|Edm.String|No|Unique identifier for the exploration event.|
+|Scope|Collection(Self.[PostureAgentSearchLocation](#postureagentsearchlocation-complex-type))|No|Collection of search location information for the posture agent.|
+|OldLabel|Edm.String|No|The previous label value before the change.|
+|NewLabel|Edm.String|No|The new label value after the change.|
+|FileName|Edm.String|No|The name of the file associated with the posture agent event.|
+
+#### PostureAgentSearchLocation complex type
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|Type|Edm.String|Yes|The type of the search location.|
+|Id|Edm.String|Yes|The identifier of the search location.|
+
+
 
 
 
