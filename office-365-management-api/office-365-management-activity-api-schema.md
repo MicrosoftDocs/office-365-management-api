@@ -1497,7 +1497,7 @@ Each event in the Defender for Office 365 feed corresponds to the following feat
 |Impersonation user|Impersonation of protected senders that you specified in anti-phishing policies.|
 |IP reputation|The message was sent from an IP that was identified as potentially malicious.|
 |LLM content analysis|Analysis by Microsoft's purpose-built large language models to detect harmful email.|
-|Mail bombing|A distributed denial of service (DDoS) attack that typically subscribes recipients to a large number of legitimate newsletters and services. The resulting rate and volume of incoming email within minutes intends to overwhelm the recipient's mailbox and email security systems, and acts as a precursor to malware, ransomware, or data exfiltration.|
+|Mail bombing|A distributed denial of service (DDoS) attack that typically subscribes recipients to a large number of legitimate newsletters and services. The resulting volume of incoming email within minutes intends to overwhelm the recipient's mailbox and email security systems, and acts as a precursor to malware, ransomware, or data exfiltration.|
 |Mailbox intelligence impersonation|Sender detected as impersonating an address in the user's personal sender map.|
 |Mixed analysis detection|Multiple filters contributed to the verdict for this message.|
 |Spoof DMARC|The message failed DMARC authentication.|
