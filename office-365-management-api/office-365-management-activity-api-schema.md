@@ -370,6 +370,8 @@ This article provides details on the Common schema as well as service-specific s
 |385|P4AIAssessmentFabricScannerRecord|Events related to Purview for AI Assessment Fabric Scanner.|
 |386|PlannerGoal|Microsoft Planner goal events.|
 |387|PlannerGoalList|Microsoft Planner goal list events.|
+|401|PlannerChatMessage|Microsoft Planner chat message events.|
+|402|PlannerChatMessageList|Microsoft Planner chat message list events.|
 |414|VivaEngageSegment|Viva Engage segmentation events.|
 |422|VivaEngageEvents|Events related to Viva Engage hosted events.|
 |427|UniversalPrintManagement| Audit events related to Management events in Microsoft Universal Print.|
@@ -2575,6 +2577,29 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |0|Standard|The sensitivity label is automatically applied but not allowed to override a privileged label assignment.|
 |1|Privileged|The sensitivity label is applied manually by a user or by an admin.|
 |2|Auto|The sensitivity label is automatically applied and is allowed to override a privileged label assignment.|
+
+### PlannerChatMessage record type
+
+|Properties|Type|Description|
+|---|---|---|
+|ObjectId|Edm.String|Id of the chat message|
+|ThreadType|Self.[ThreadType](#threadtype)|The type of chat. Only option is Task, for a chat scoped to a single Task.|
+|ParentEntityId|Edm.String|Id of the element containing the chat, the Task id.|
+
+### Enum: ThreadType - Type Edm.Int32
+
+#### ThreadType
+
+|Value|Member name|Description|
+|---|---|---|
+|0|Task|Chat is contained inside of a Task.|
+
+### PlannerChatMessageList record type
+
+|Properties|Type|Description|
+|---|---|---|
+|ObjectId|Edm.String|A representation of the view query for a list of chat messages.|
+|MessageList|Edm.String|A comma-separated string of chat message ids queried.|
 
 ## Microsoft Project for the web schema
 
