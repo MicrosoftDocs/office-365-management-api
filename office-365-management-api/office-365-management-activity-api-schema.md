@@ -370,6 +370,8 @@ This article provides details on the Common schema as well as service-specific s
 |385|P4AIAssessmentFabricScannerRecord|Events related to Purview for AI Assessment Fabric Scanner.|
 |386|PlannerGoal|Microsoft Planner goal events.|
 |387|PlannerGoalList|Microsoft Planner goal list events.|
+|401|PlannerChatMessage|Microsoft Planner chat message events.|
+|402|PlannerChatMessageList|Microsoft Planner chat message list events.|
 |414|VivaEngageSegment|Viva Engage segmentation events.|
 |422|VivaEngageEvents|Events related to Viva Engage hosted events.|
 |427|UniversalPrintManagement| Audit events related to Management events in Microsoft Universal Print.|
@@ -1482,26 +1484,30 @@ Each event in the Defender for Office 365 feed corresponds to the following feat
 
 |Name|Description|
 |---|---|
-|Advanced filter|Phishing signals based on machine learning.|
-|Anti-malware engine|Detection from anti-malware engines.|
-|Campaign|Messages identified as part of a campaign.|
-|Domain reputation|Analysis based on domain reputation.|
-|File detonation|File attachments found to be bad during detonated analysis.|
-|File detonation reputation|File attachment marked as bad due to previous detonation reputation.|
-|File reputation|File attachments marked bad due to bad reputation.|
-|Fingerprint matching|The message was marked as bad due to previous messages.|
-|General filter|Phishing signals based on rules.|
-|Impersonation brand|The file type of the attachment.|
-|Impersonation domain|Impersonation of domains that the customer owns or defines.|
-|Impersonation user|Impersonation of users defined by admin or learned through mailbox intelligence.|
-|Mailbox intelligence impersonation|Impersonation based on mailbox intelligence.|
+|Advanced filter|Machine learning models to detect phishing and spam.|
+|Antimalware protection|Detection from signature-based anti-malware.|
+|Bulk|Detection for advertising/marketing and similar message types with their relative bulk complaint levels (BCL).|
+|Campaign|Messages identified and grouped as part of a malware or phishing campaign.|
+|Domain reputation|The message was sent from a domain that was identified as spam or phishing domain, based on internal or external signals.|
+|File detonation|Safe Attachments detected a malicious attachment during detonation within a sandbox.|
+|File detonation reputation|File attachments previously detected by Safe Attachments during detonation.|
+|File reputation|The message contains a file that was previously identified as malicious by other sources.|
+|Fingerprint matching|The message resembles a previously detected malicious or spam message.|
+|General filter|Phishing or spam signals based on analyst heuristics.|
+|Impersonation brand|Sender impersonation of well-known brands.|
+|Impersonation domain|Impersonation of sender domains that you own or specified for protection in anti-phishing policies.|
+|Impersonation user|Impersonation of protected senders that you specified in anti-phishing policies.|
+|IP reputation|The message was sent from an IP that was identified as potentially malicious.|
+|LLM content analysis|Analysis by Microsoft's purpose-built large language models to detect harmful email.|
+|Mail bombing|A distributed denial of service (DDoS) attack that typically subscribes recipients to a large number of legitimate newsletters and services. The resulting volume of incoming email within minutes intends to overwhelm the recipient's mailbox and email security systems, and acts as a precursor to malware, ransomware, or data exfiltration.|
+|Mailbox intelligence impersonation|Sender detected as impersonating an address in the user's personal sender map.|
 |Mixed analysis detection|Multiple filters contributed to the verdict for this message.|
-|Spoof DMARC|DMARC authentication failure for messages.|
-|Spoof external domain|Sender is trying to spoof some other domain.|
-|Spoof intra-org|Sender is trying to spoof the recipient domain.|
-|URL detonation|The message was considered bad due to a previous malicious URL detonation.|
-|URL detonation reputation|The message was considered bad due to malicious URL detonation.|
-|URL malicious reputation|The message was considered bad due a malicious URL.|
+|Spoof DMARC|The message failed DMARC authentication.|
+|Spoof external domain|Spoof intelligence detected email spoofing of a domain that is external to your organization.|
+|Spoof intra-org|Spoof intelligence detected email spoofing of a user or domain that is internal to your organization.|
+|URL detonation|Safe Links detected a malicious URL in the message during detonation within a sandbox.|
+|URL detonation reputation|URLs previously detected by Safe Links during detonation.|
+|URL malicious reputation|The message contains a URL that was previously identified as malicious or spam by other sources.|
 
 ### AttachmentData complex type
 
@@ -2575,6 +2581,29 @@ Microsoft Planner extends the [Common schema](#common-schema) with the following
 |0|Standard|The sensitivity label is automatically applied but not allowed to override a privileged label assignment.|
 |1|Privileged|The sensitivity label is applied manually by a user or by an admin.|
 |2|Auto|The sensitivity label is automatically applied and is allowed to override a privileged label assignment.|
+
+### PlannerChatMessage record type
+
+|Properties|Type|Description|
+|---|---|---|
+|ObjectId|Edm.String|Id of the chat message|
+|ThreadType|Self.[ThreadType](#threadtype)|The type of chat. Only option is Task, for a chat scoped to a single Task.|
+|ParentEntityId|Edm.String|Id of the element containing the chat, the Task id.|
+
+### Enum: ThreadType - Type Edm.Int32
+
+#### ThreadType
+
+|Value|Member name|Description|
+|---|---|---|
+|0|Task|Chat is contained inside of a Task.|
+
+### PlannerChatMessageList record type
+
+|Properties|Type|Description|
+|---|---|---|
+|ObjectId|Edm.String|A representation of the view query for a list of chat messages.|
+|MessageList|Edm.String|A comma-separated string of chat message ids queried.|
 
 ## Microsoft Project for the web schema
 
