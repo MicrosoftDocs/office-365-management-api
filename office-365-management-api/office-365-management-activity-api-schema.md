@@ -482,6 +482,10 @@ This article provides details on the Common schema as well as service-specific s
 |AzureStreamingEnabledSet|A video portal owner has allowed video streaming from Azure.|
 |CollaborationTypeModified|The type of collaboration allowed on sites (for example, intranet, extranet, or public) has been modified.|
 |ConnectedSiteSettingModified|User has either created, modified or deleted the link between a project and a project site or the user modifies the synchronization setting on the link in Project web app.|
+|ContainerTypeCreated|A SharePoint Embedded container type was created.|
+|ContainerTypeDeleted|A SharePoint Embedded container type was deleted.|
+|ContainerTypeOwnersUpdated|The owners of a SharePoint Embedded container type were updated.|
+|ContainerTypeUpdated|A SharePoint Embedded container type was updated.|
 |CreateSSOApplication|Target application created in Secure store service.|
 |CustomFieldOrLookupTableCreated|User created a custom field or lookup table/item in Project web app.|
 |CustomFieldOrLookupTableDeleted|User deleted a custom field or lookup table/item in Project web app.|
