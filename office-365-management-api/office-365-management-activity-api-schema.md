@@ -1981,7 +1981,7 @@ This schema includes [eSignature for Microsoft 365](/microsoft-365/documentproce
 |---|---|---|---|
 |AgreementId|Edm.Guid|Yes|ID of the electronic signature request.|
 |AgreementSender|Edm.String|Yes|Sender of the electronic signature request.|
-|AgreementCreationDateTime|Edm.Date|Yes|Date & time was request was sent.|
+|AgreementCreationDateTime|Edm.Date|Yes|Date & time request was sent.|
 |AgreementStatus|Self.AgreementStatusType|Yes|Status of the request.|
 |AgreementRecipients|Collection(Self.AgreementRecipient)|Yes|Recipients of the request.|
 
