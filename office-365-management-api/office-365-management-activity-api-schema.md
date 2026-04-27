@@ -68,6 +68,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Restore Task schema](#restore-task-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup Restore Tasks.|
 |[Backup Item schema](#backup-item-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup artifacts.|
 |[Restore Item schema](#restore-item-schema)|Extends the common schema with the properties specific to Microsoft 365 Backup Restore Items.|
+|[Granular Browse Task schema](#granular-browse-task-schema)|Extends the Common schema with the properties specific to Microsoft 365 Backup Granular Browse Tasks.|
 |[Cloud Policy service schema](#cloud-policy-service-schema)|Extends the Common schema with the properties specific to all Cloud Policy service audit data.|
 |[Cloud Update profile configuration schema](#cloud-update-profile-configuration-schema)|Extends the Common schema with the properties specific to the Cloud Update profile configuration audit data.|
 |[Cloud Update tenant configuration schema](#cloud-update-tenant-configuration-schema)|Extends the Common schema with the properties specific to the Cloud Update tenant configuration audit data.|
@@ -376,6 +377,7 @@ This article provides details on the Common schema as well as service-specific s
 |422|VivaEngageEvents|Events related to Viva Engage hosted events.|
 |427|UniversalPrintManagement| Audit events related to Management events in Microsoft Universal Print.|
 |430|PurviewPostureAgent|Data Security Posture Agent events.|
+|431|GranularBrowseTask|Events related to browsing backed up site's restore point using Microsoft 365 Backup.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -2728,6 +2730,16 @@ Values taken by SettingsChange properties in Details for different operations ar
 |CountOfArtifactsBeingAdded|Edm.Int32|No|Number of artifacts being added.|
 |CountOfArtifactsBeingRemoved|Edm.Int32|No|Number of artifacts being removed.|
 |ServiceType|Edm.String|No|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+
+## Granular Browse Task schema
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|SessionId|Edm.String|Yes|The ID of the Browse Task.|
+|RestoreTime|Edm.Date|No|Restore Point dateTime on which browse session was created.|
+|BackupItemId |Edm.String|No|Artifact Id for which browse session was created.|
+|ServiceType|Edm.String|Yes|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+
 
 ## Restore Task schema
 
