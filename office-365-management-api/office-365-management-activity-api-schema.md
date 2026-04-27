@@ -1978,6 +1978,18 @@ Entity events from model-driven apps in Dynamics 365 use this schema to build on
 |Query|Edm.String|No|The parameters of the filter query that was used while executing the FetchXML operation.|
 |PrimaryFieldValue|Edm.String|No|Indicates the value for the attribute that is the primary field for the entity.|
 
+## eSignature schema
+
+This schema includes [eSignature for Microsoft 365](/microsoft-365/documentprocessing/esignature-overview?view=o365-worldwide) events returned in audit log searches.
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|AgreementId|Edm.Guid|Yes|ID of the electronic signature request.|
+|AgreementSender|Edm.String|Yes|Sender of the electronic signature request.|
+|AgreementCreationDateTime|Edm.Date|Yes|Date & time request was sent.|
+|AgreementStatus|Self.AgreementStatusType|Yes|Status of the request.|
+|AgreementRecipients|Collection(Self.AgreementRecipient)|Yes|Recipients of the request.|
+
 ## Viva Insights schema
 
 [Viva Insights events](/purview/audit-log-activities#microsoft-viva-insights-activities) returned in [audit log searches](/purview/audit-search) use this schema.
