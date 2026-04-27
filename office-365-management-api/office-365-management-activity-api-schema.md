@@ -819,6 +819,9 @@ SharePoint events (excluding the file and folder events) returned in [audit log 
 |TokenTenantId|Edm.String|No|tid claim of the Microsoft Entra tokens.|
 |AuthType|Edm.String|No|Specifies the authentication scheme used by the client to access the service.|
 |TokenType|Edm.String|No|Indicates the type of token presented during authentication, providing context on the token’s role and scope.|
+|recipientCount|Edm.Int64|No|Represents the total number of recipients, to whom email was sent.|
+|recipientList|Collection(Self.[EmailAddress](#emailaddress-complex-type))|No|Captures the list of mailbox recipients, maximum 1000|
+
 
 ### Enum: LogonType - Type: Edm.Int32
 
