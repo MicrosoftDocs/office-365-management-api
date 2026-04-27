@@ -2733,6 +2733,7 @@ Values taken by SettingsChange properties in Details for different operations ar
 |CountOfArtifactsBeingAdded|Edm.Int32|No|Number of artifacts being added.|
 |CountOfArtifactsBeingRemoved|Edm.Int32|No|Number of artifacts being removed.|
 |ServiceType|Edm.String|No|Whether it is a SharePoint, Exchange, or OneDriveForBusiness policy.|
+|BillingPolicyId|Edm.String|No|The ID of the associated Billing Policy.|
 
 ## Granular Browse Task schema
 
