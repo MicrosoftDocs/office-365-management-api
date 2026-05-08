@@ -378,6 +378,7 @@ This article provides details on the Common schema as well as service-specific s
 |427|UniversalPrintManagement| Audit events related to Management events in Microsoft Universal Print.|
 |430|PurviewPostureAgent|Data Security Posture Agent events.|
 |431|GranularBrowseTask|Events related to browsing backed up site's restore point using Microsoft 365 Backup.|
+|462|MicrosoftTeamsUserConcern|Events related to user security concern in Microsoft Teams.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -1441,6 +1442,15 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 |TeamGuid|Edm.String|No|A unique identifier of the team the message belongs to.|
 |TeamName|Edm.String|No|The name of the team the message belongs to.|
 |Version|Edm.String|No|The version of the chat or channel message.|
+
+## Microsoft Teams user concern schema
+
+[Microsoft Teams user concern events](/purview/audit-log-activities#teams-user-concern-activities) returned in [audit log searches](/purview/audit-search) use this schema. These events have `RecordType` set to `MicrosoftTeamsUserConcern`(462), and apply to the following operations: `MessageReported`, `CallReported`, and `UserReported`.
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|SubmissionId|Edm.String|Yes|A unique identifier of the user concern report submission.|
+|ReportMetadata|Edm.String|Yes|A JSON-encoded string containing metadata about the report, including the report reason and details about the reported entity (message, call, or user).|
 
 ## Microsoft Defender for Office 365 and Threat Investigation and Response schema
 
