@@ -1364,11 +1364,13 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 |AddOnGuid|Edm.Guid|No|A unique identifier for the add-on that generated the event.|
 |AddOnName|Edm.String|No|The name of the add-on that generated the event.|
 |AddOnType|Self.[AddOnType](#addontype)|No|The type of add-on that generated this event.|
+|CallId|Edm.String|No|A unique identifier for the call.|
 |ChannelGuid|Edm.Guid|No|A unique identifier for the channel being audited.|
 |ChannelName|Edm.String|No|The name of the channel being audited.|
 |ChannelType|Edm.String|No|The type of channel being audited (Standard/Private).|
 |ExtraProperties|Collection(Self.[KeyValuePair](#keyvaluepair-complex-type))|No|A list of extra properties.|
 |HostedContents|Collection(Self.[HostedContent](#hostedcontent-complex-type))|No|A collection of chat or channel message hosted contents.|
+|ImpersonationType|Edm.String|No|The type of impersonation detected, such as Brand, Domain, or User.|
 |Invitee|Edm.String|No|For shared channel events, the UPN of the invitee team owner who accepts or declines the invite for a share with team invite.|
 |Members|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|No|A list of users within a Team.|
 |MessageId|Edm.String|No|An identifier for a chat or channel message.|
@@ -1378,6 +1380,7 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 |Name|Edm.String|No|Only present for settings events. Name of the setting that changed.|
 |NewValue|Edm.String|No|Only present for settings events. New value of the setting.|
 |OldValue|Edm.String|No|Only present for settings events. Old value of the setting.|
+|Organizer|Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type)|No|The organizer of the meeting or call.|
 |SubscriptionId|Edm.String|No|A unique identifier of a Microsoft Graph change notification subscription.|
 |TabType|Edm.String|No|Only present for tab events. The type of tab that generated the event.|
 |TeamGuid|Edm.Guid|No|A unique identifier for the team being audited.|
