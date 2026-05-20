@@ -1370,7 +1370,7 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 |ChannelType|Edm.String|No|The type of channel being audited (Standard/Private).|
 |ExtraProperties|Collection(Self.[KeyValuePair](#keyvaluepair-complex-type))|No|A list of extra properties.|
 |HostedContents|Collection(Self.[HostedContent](#hostedcontent-complex-type))|No|A collection of chat or channel message hosted contents.|
-|ImpersonationType|Edm.String|No|The type of impersonation detected, such as Brand, Domain, or User.|
+|ImpersonationType|Edm.String|No|The type of impersonation detected, such as brand, domain, or user.|
 |Invitee|Edm.String|No|For shared channel events, the UPN of the invitee team owner who accepts or declines the invite for a share with team invite.|
 |Members|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|No|A list of users within a Team.|
 |MessageId|Edm.String|No|An identifier for a chat or channel message.|
