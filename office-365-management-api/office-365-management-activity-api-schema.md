@@ -77,6 +77,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Edge WebContentFiltering schema](#microsoft-edge-webcontentfiltering-schema)|Extends the Common schema with the properties specific to Microsoft Edge WebContentFiltering events.|
 |[Microsoft 365 Copilot scheduled prompt schema](#microsoft-365-copilot-scheduled-prompt-schema)|Extends the Common schema with the properties specific to Microsoft 365 Copilot scheduled prompt audit data.|
 |[Microsoft Places Directory schema](#microsoft-places-directory-schema)|Extends the Common schema with the properties specific to Microsoft Places Directory audit data.|
+| Teams Evaluation Data Hub schema | Extends the Common schema with the properties specific to Teams Evaluation Data Hub data-access and permission-change events. |
 
 ## Common schema
 
@@ -378,6 +379,8 @@ This article provides details on the Common schema as well as service-specific s
 |427|UniversalPrintManagement| Audit events related to Management events in Microsoft Universal Print.|
 |430|PurviewPostureAgent|Data Security Posture Agent events.|
 |431|GranularBrowseTask|Events related to browsing backed up site's restore point using Microsoft 365 Backup.|
+|444| TeamsEvalDataHubDataAccess | Teams Evaluation Data Hub data access events. |
+|445| TeamsEvalDataHubPermissionChange | Teams Evaluation Data Hub permission change events. |
 |462|MicrosoftTeamsUserConcern|Events related to user security concern in Microsoft Teams.|
 
 ### Enum: User Type - Type: Edm.Int32
@@ -3037,6 +3040,14 @@ Copilot scheduled prompts allow users to automate Copilot prompts, so they run o
 |PlaceType|Edm.String|No|The type for the place item that is created/updated/deleted by the request. For example, "Building", "Room", "Desk", and so on.|
 |Parameters|Collection(Common.NameValuePair)|No|The name and value for all parameters that were used with the cmdlet that is identified in the Operations property.|
 |ModifiedProperties|Collection(Common.ModifiedProperty)|No|The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified object.|
+
+## Teams Evaluation Data Hub schema
+
+[Teams Evaluation Data Hub events](/en-us/purview/audit-log-activities#teams-evaluation-data-hub-activities) returned in [audit log searches](/en-us/purview/audit-search) use the Common schema. Teams Evaluation Data Hub doesn't introduce additional service-specific properties; events are fully described by the Common schema. For these events:
+
+- The `Workload` property is set to `TeamsEvalDataHub`.
+- The `RecordType` property is `TeamsEvalDataHubDataAccess` (444) for `DataRead` and `DataWrite` operations, and `TeamsEvalDataHubPermissionChange` (445) for `PermissionGranted` and `PermissionRevoked` operations.
+- The `ObjectId` property identifies the data set or access-control object that the operation targets.
 
 ## Microsoft Sentinel data lake and graph schema
 
