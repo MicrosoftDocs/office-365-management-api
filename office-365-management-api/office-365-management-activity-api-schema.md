@@ -3248,7 +3248,7 @@ The PurviewPostureAgent audit schema is designed to capture and log activities r
 
 [Dragon Copilot admin events](/purview/audit-log-activities#dragon-copilot-admin-activities) returned in [audit log searches](/purview/audit-search) use this schema (and also the [Common schema](#common-schema)). These events have `RecordType` set to `DragonCopilotAdmin` (454).
 
-For more information about Dragon Copilot, see the [Dragon Copilot documentation](https://learn.microsoft.com/industry/healthcare/dragon-copilot/).
+For more information about Dragon Copilot, see the [Dragon Copilot documentation](/industry/healthcare/dragon-copilot/).
 
 |Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
