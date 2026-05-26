@@ -77,6 +77,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Edge WebContentFiltering schema](#microsoft-edge-webcontentfiltering-schema)|Extends the Common schema with the properties specific to Microsoft Edge WebContentFiltering events.|
 |[Microsoft 365 Copilot scheduled prompt schema](#microsoft-365-copilot-scheduled-prompt-schema)|Extends the Common schema with the properties specific to Microsoft 365 Copilot scheduled prompt audit data.|
 |[Microsoft Places Directory schema](#microsoft-places-directory-schema)|Extends the Common schema with the properties specific to Microsoft Places Directory audit data.|
+|[Dragon Copilot Admin schema](#dragon-copilot-admin-schema)|Extends the Common schema with the properties specific to Dragon Copilot administrative audit data.|
 
 ## Common schema
 
@@ -378,6 +379,7 @@ This article provides details on the Common schema as well as service-specific s
 |427|UniversalPrintManagement| Audit events related to Management events in Microsoft Universal Print.|
 |430|PurviewPostureAgent|Data Security Posture Agent events.|
 |431|GranularBrowseTask|Events related to browsing backed up site's restore point using Microsoft 365 Backup.|
+|454|DragonCopilotAdmin|Events from Dragon Copilot administrative operations.|
 |462|MicrosoftTeamsUserConcern|Events related to user security concern in Microsoft Teams.|
 
 ### Enum: User Type - Type: Edm.Int32
@@ -3242,8 +3244,14 @@ The PurviewPostureAgent audit schema is designed to capture and log activities r
 |Type|Edm.String|Yes|The type of the search location.|
 |Id|Edm.String|Yes|The identifier of the search location.|
 
+## Dragon Copilot Admin schema
 
+[Dragon Copilot admin events](/purview/audit-log-activities#dragon-copilot-admin-activities) returned in [audit log searches](/purview/audit-search) use this schema (and also the [Common schema](#common-schema)). These events have `RecordType` set to `DragonCopilotAdmin` (454).
 
+For more information about Dragon Copilot, see the [Dragon Copilot documentation](https://learn.microsoft.com/industry/healthcare/dragon-copilot/).
 
-
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|EnvironmentId|Edm.String|No|The Dragon Copilot environment GUID. Enables customers to scope or filter audit logs by organizational unit. Only present for environment-scoped operations.|
+|ProductType|Edm.String|No|The Dragon Copilot product the operation is scoped to. Possible values: `Physician`, `Nursing`, `Radiology`. Only present when the operation is product-scoped (for example, `ProvisionedProduct`, `DeprovisionedProduct`).|
 
