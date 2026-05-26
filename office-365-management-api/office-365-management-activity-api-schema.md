@@ -77,6 +77,8 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Edge WebContentFiltering schema](#microsoft-edge-webcontentfiltering-schema)|Extends the Common schema with the properties specific to Microsoft Edge WebContentFiltering events.|
 |[Microsoft 365 Copilot scheduled prompt schema](#microsoft-365-copilot-scheduled-prompt-schema)|Extends the Common schema with the properties specific to Microsoft 365 Copilot scheduled prompt audit data.|
 |[Microsoft Places Directory schema](#microsoft-places-directory-schema)|Extends the Common schema with the properties specific to Microsoft Places Directory audit data.|
+|[Teams Evaluation Data Hub schema](#teams-evaluation-data-hub-schema)|Extends the Common schema with the properties specific to Teams Evaluation Data Hub data-access and permission-change events.|
+|[Dragon Copilot Admin schema](#dragon-copilot-admin-schema)|Extends the Common schema with the properties specific to Dragon Copilot administrative audit data.|
 
 ## Common schema
 
@@ -378,6 +380,9 @@ This article provides details on the Common schema as well as service-specific s
 |427|UniversalPrintManagement| Audit events related to Management events in Microsoft Universal Print.|
 |430|PurviewPostureAgent|Data Security Posture Agent events.|
 |431|GranularBrowseTask|Events related to browsing backed up site's restore point using Microsoft 365 Backup.|
+|444|TeamsEvalDataHubDataAccess|Teams Evaluation Data Hub data access events.|
+|445|TeamsEvalDataHubPermissionChange|Teams Evaluation Data Hub permission change events.|
+|454|DragonCopilotAdmin|Events from Dragon Copilot administrative operations.|
 |462|MicrosoftTeamsUserConcern|Events related to user security concern in Microsoft Teams.|
 
 ### Enum: User Type - Type: Edm.Int32
@@ -3041,6 +3046,17 @@ Copilot scheduled prompts allow users to automate Copilot prompts, so they run o
 |Parameters|Collection(Common.NameValuePair)|No|The name and value for all parameters that were used with the cmdlet that is identified in the Operations property.|
 |ModifiedProperties|Collection(Common.ModifiedProperty)|No|The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified object.|
 
+## Teams Evaluation Data Hub schema
+
+[Teams Evaluation Data Hub events](/purview/audit-log-activities#teams-evaluation-data-hub-activities) returned in [audit log searches](/purview/audit-search) use the [Common schema](#common-schema). Teams Evaluation Data Hub doesn't introduce additional service-specific properties beyond the Common schema. For these events, the following Common schema properties have service-specific meanings.
+
+|Parameters|Type|Mandatory?|Description |
+| --- | --- | --- | --- |
+|Workload |Edm.String |Yes |The Office 365 service where the activity occurred. Always `TeamsEvalDataHub`. |
+|RecordType |Self.AuditLogRecordType |Yes |The type of operation indicated by the record. `TeamsEvalDataHubDataAccess` (444) for `DataRead` and `DataWrite` operations; `TeamsEvalDataHubPermissionChange` (445) for `PermissionGranted` and `PermissionRevoked` operations. |
+|Operation |Edm.String |Yes |The name of the user or service activity. One of `DataRead`, `DataWrite`, `PermissionGranted`, or `PermissionRevoked`. |
+|ObjectId |Edm.String |No |Identifies the data set or access-control object that the operation targets. |
+
 ## Microsoft Sentinel data lake and graph schema
 
 The following Microsoft Sentinel events returned in [audit log searches](/purview/audit-search) use these schemas (and also the [Common schema](#common-schema)).
@@ -3245,8 +3261,14 @@ The PurviewPostureAgent audit schema is designed to capture and log activities r
 |Type|Edm.String|Yes|The type of the search location.|
 |Id|Edm.String|Yes|The identifier of the search location.|
 
+## Dragon Copilot Admin schema
 
+[Dragon Copilot admin events](/purview/audit-log-activities#dragon-copilot-admin-activities) returned in [audit log searches](/purview/audit-search) use this schema (and also the [Common schema](#common-schema)). These events have `RecordType` set to `DragonCopilotAdmin` (454).
 
+For more information about Dragon Copilot, see the [Dragon Copilot documentation](/industry/healthcare/dragon-copilot/).
 
-
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|EnvironmentId|Edm.String|No|The Dragon Copilot environment GUID. Enables customers to scope or filter audit logs by organizational unit. Only present for environment-scoped operations.|
+|ProductType|Edm.String|No|The Dragon Copilot product the operation is scoped to. Possible values: `Physician`, `Nursing`, `Radiology`. Only present when the operation is product-scoped (for example, `ProvisionedProduct`, `DeprovisionedProduct`).|
 
