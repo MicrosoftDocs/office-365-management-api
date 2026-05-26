@@ -384,6 +384,7 @@ This article provides details on the Common schema as well as service-specific s
 |445|TeamsEvalDataHubPermissionChange|Teams Evaluation Data Hub permission change events.|
 |454|DragonCopilotAdmin|Events from Dragon Copilot administrative operations.|
 |462|MicrosoftTeamsUserConcern|Events related to user security concern in Microsoft Teams.|
+|463|VivaGlintAgenticCampaign|Events related to agentic campaigns in Viva Glint.|
 
 ### Enum: User Type - Type: Edm.Int32
 
