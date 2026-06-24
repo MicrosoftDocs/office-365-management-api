@@ -3272,4 +3272,5 @@ For more information about Dragon Copilot, see the [Dragon Copilot documentation
 |---|---|---|---|
 |EnvironmentId|Edm.String|No|The Dragon Copilot environment GUID. Enables customers to scope or filter audit logs by organizational unit. Only present for environment-scoped operations.|
 |ProductType|Edm.String|No|The Dragon Copilot product the operation is scoped to. Possible values: `Physician`, `Nursing`, `Radiology`. Only present when the operation is product-scoped (for example, `ProvisionedProduct`, `DeprovisionedProduct`).|
+|ModifiedProperties|Collection(Common.ModifiedProperty)|No|This property is included for certain admin events. The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
 
