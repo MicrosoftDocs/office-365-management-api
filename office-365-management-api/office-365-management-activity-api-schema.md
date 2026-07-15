@@ -1941,10 +1941,13 @@ The Power BI events listed in [Search the audit log](/purview/audit-search) use 
 
 |Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
+|A|
+|ctivityStatus|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The status of the Gen1 dataflow migration audit event. Possible values include `Started`, `Succeeded`, and `Failed`.|
 |AppName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the app where the event occurred.|
 |DashboardName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the dashboard where the event occurred.|
 |DataClassification|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The [data classification](/power-bi/service-data-classification), if any, for the dashboard where the event occurred.|
 |DatasetName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the dataset where the event occurred.|
+|MigrationTriggerType|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The source that triggered the Gen1 dataflow migration, such as the Upgrade Wizard or another migration entry point.|
 |MembershipInformation|Collection([MembershipInformationType](#membershipinformationtype-complex-type))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|Membership information about the group.|
 |OrgAppPermission|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|Permissions list for an organizational app (entire organization, specific users, or specific groups).|
 |ReportName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the report where the event occurred.|
