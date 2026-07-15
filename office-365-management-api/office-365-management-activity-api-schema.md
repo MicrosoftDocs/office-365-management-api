@@ -1941,8 +1941,6 @@ The Power BI events listed in [Search the audit log](/purview/audit-search) use 
 
 |Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
-|A|
-|ctivityStatus|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The status of the Gen1 dataflow migration audit event. Possible values include `Started`, `Succeeded`, and `Failed`.|
 |AppName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the app where the event occurred.|
 |DashboardName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the dashboard where the event occurred.|
 |DataClassification|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The [data classification](/power-bi/service-data-classification), if any, for the dashboard where the event occurred.|
@@ -2000,7 +1998,7 @@ Entity events from model-driven apps in Dynamics 365 use this schema to build on
 
 ## eSignature schema
 
-This schema includes [eSignature for Microsoft 365](/microsoft-365/documentprocessing/esignature-overview?view=o365-worldwide) events returned in audit log searches.
+This schema includes [eSignature for Microsoft 365](/microsoft-365/documentprocessing/esignature-overview) events returned in audit log searches.
 
 |Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
