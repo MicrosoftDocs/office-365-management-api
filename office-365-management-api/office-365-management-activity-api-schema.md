@@ -1997,7 +1997,7 @@ Entity events from model-driven apps in Dynamics 365 use this schema to build on
 
 ## eSignature schema
 
-This schema includes [eSignature for Microsoft 365](/microsoft-365/documentprocessing/esignature-overview?view=o365-worldwide) events returned in audit log searches.
+This schema includes [eSignature for Microsoft 365](/microsoft-365/documentprocessing/esignature-overview) events returned in audit log searches.
 
 |Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
