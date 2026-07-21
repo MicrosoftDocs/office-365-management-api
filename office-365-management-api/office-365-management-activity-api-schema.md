@@ -385,6 +385,7 @@ This article provides details on the Common schema as well as service-specific s
 |454|DragonCopilotAdmin|Events from Dragon Copilot administrative operations.|
 |462|MicrosoftTeamsUserConcern|Events related to user security concern in Microsoft Teams.|
 |463|VivaGlintAgenticCampaign|Events related to agentic campaigns in Viva Glint.|
+|479|VivaGlintVivaInsightsIntegration|Events related to the Viva Insights to Viva Glint integration.|
 
 ### Enum: User Type - Type: Edm.Int32
 
