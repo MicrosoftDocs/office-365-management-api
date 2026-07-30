@@ -3343,8 +3343,3 @@ AI guardrail events use this schema and the [Common schema](#common-schema). The
 |2|high|The finding has high severity.|
 |3|critical|The finding has critical severity.|
 |4|none|No risk severity was assigned.
-
-
-
-
-
