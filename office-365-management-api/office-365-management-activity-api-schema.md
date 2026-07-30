@@ -3305,7 +3305,6 @@ AI guardrail events use this schema and the [Common schema](#common-schema). The
 |TargetId|Edm.String|No|The identifier of the resource or target evaluated by the guardrail.|
 |TargetType|Edm.String|Yes|The type of resource or target evaluated by the guardrail.|
 |TraceId|Edm.String|Yes|The identifier used to correlate the evaluation with other spans in the same distributed trace.|
-|ContentId|Edm.String|No|A reference to the content associated with the guardrail event.|
 
 #### Complex Type AIGuardrailFinding
 
