@@ -79,6 +79,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Microsoft Places Directory schema](#microsoft-places-directory-schema)|Extends the Common schema with the properties specific to Microsoft Places Directory audit data.|
 |[Teams Evaluation Data Hub schema](#teams-evaluation-data-hub-schema)|Extends the Common schema with the properties specific to Teams Evaluation Data Hub data-access and permission-change events.|
 |[Dragon Copilot Admin schema](#dragon-copilot-admin-schema)|Extends the Common schema with the properties specific to Dragon Copilot administrative audit data.|
+|[Microsoft Defender for Cloud schema](#microsoft-defender-for-cloud-schema)|Extends the Common schema with the properties specific to Microsoft Defender for Cloud management, connector, and enablement audit data.|
 
 ## Common schema
 
@@ -385,6 +386,9 @@ This article provides details on the Common schema as well as service-specific s
 |454|DragonCopilotAdmin|Events from Dragon Copilot administrative operations.|
 |462|MicrosoftTeamsUserConcern|Events related to user security concern in Microsoft Teams.|
 |463|VivaGlintAgenticCampaign|Events related to agentic campaigns in Viva Glint.|
+|485|CloudSecurityManagement|Microsoft Defender for Cloud management events for rule collections, rules, and global settings.|
+|486|CloudSecurityConnector|Microsoft Defender for Cloud environment connector events (create, modify, delete).|
+|487|CloudSecurityEnablement|Microsoft Defender for Cloud enablement rule collection events for Defender plans and extensions.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -3274,3 +3278,24 @@ For more information about Dragon Copilot, see the [Dragon Copilot documentation
 |ProductType|Edm.String|No|The Dragon Copilot product the operation is scoped to. Possible values: `Physician`, `Nursing`, `Radiology`. Only present when the operation is product-scoped (for example, `ProvisionedProduct`, `DeprovisionedProduct`).|
 |ModifiedProperties|Collection(Common.ModifiedProperty)|No|This property is included for certain admin events. The property includes the name of the property that was modified, the new value of the modified property, and the previous value of the modified property.|
 
+## Microsoft Defender for Cloud schema
+
+[Microsoft Defender for Cloud events](/purview/audit-log-activities#microsoft-defender-for-cloud-activities) returned in [audit log searches](/purview/audit-search) use this schema (and also the [Common schema](#common-schema)). These events have `RecordType` set to `CloudSecurityManagement`, `CloudSecurityConnector`, or `CloudSecurityEnablement`.
+
+For more information about Microsoft Defender for Cloud, see the [Microsoft Defender for Cloud documentation](/azure/defender-for-cloud/defender-for-cloud-introduction).
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|ObjectName|Edm.String|No|The display name of the object (rule collection, rule, connector, or global setting) that the operation acted on. Applies to the `CloudSecurityManagement`, `CloudSecurityConnector`, and `CloudSecurityEnablement` record types.|
+|Environments|Collection(Edm.String)|No|The list of environment (scope) identifiers affected by the operation. Applies to the `CloudSecurityManagement` and `CloudSecurityEnablement` record types.|
+|Category|Edm.String|No|The category of the rule collection or enablement operation. Applies to the `CloudSecurityManagement` and `CloudSecurityEnablement` record types.|
+|Environment|Edm.String|No|The native identifier of the environment associated with the connector. Applies to the `CloudSecurityConnector` record type.|
+|EnablementDetails|Collection(EnablementDetail)|No|The list of Defender plans and extensions changed by an enablement operation. Applies to the `CloudSecurityEnablement` record type. See the [EnablementDetail complex type](#enablementdetail-complex-type).|
+
+### EnablementDetail complex type
+
+|Parameters|Type|Mandatory?|Description|
+|---|---|---|---|
+|Type|Edm.String|No|The type of enablement item. Possible values are `Plan` and `Extension`.|
+|Name|Edm.String|No|The name of the plan or extension (for example, `Containers` or `VMScanning`).|
+|Value|Edm.Boolean|No|Whether the plan or extension is enabled (`true`) or disabled (`false`).|
