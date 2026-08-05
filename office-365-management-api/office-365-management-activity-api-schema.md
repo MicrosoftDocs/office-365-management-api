@@ -386,6 +386,21 @@ This article provides details on the Common schema as well as service-specific s
 |462|MicrosoftTeamsUserConcern|Events related to user security concern in Microsoft Teams.|
 |463|VivaGlintAgenticCampaign|Events related to agentic campaigns in Viva Glint.|
 |479|VivaGlintVivaInsightsIntegration|Events related to the Viva Insights to Viva Glint integration.|
+|480|PeopleSkillsAdmin|People Skills (Viva) events for tenant administrator and application (service-to-service) operations. |
+|481|PeopleSkillsUser |People Skills (Viva) events for tenant administrator and application (service-to-service) operations. |
+
+### People Skills schema
+
+Extends the Common schema with the properties specific to People Skills (Viva) audit data. These properties apply to both the PeopleSkillsAdmin (476) and PeopleSkillsUser (477) record types. For more information about this feature, see **[People Skills documentation](https://learn.microsoft.com/en-us/microsoft-365/copilot/people-skills-overview)**. 
+
+|Parameters| Type|Mandatory?|Description|
+| -------- | -------- | -------- | -------- |
+| APIEndpoint |Edm.String  |Yes |The originating API route or processor name for the operation. |
+| RequestId |Edm.String   |Yes |The per-request correlation ID, present on every record. |
+|SkillId |Edm.String |No |The identifier of the affected skill. Emitted for skill-scoped operations. |
+|OperationCount |Edm.Int32 |No |The count of affected items for the operation. |
+|SourceApp |Edm.String |No |The originating client app or source of the operation. |
+|ResponseTimeMs |Edm.Double |No |The server-side response time, in milliseconds. |
 
 ### Enum: User Type - Type: Edm.Int32
 
