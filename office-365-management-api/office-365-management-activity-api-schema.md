@@ -385,6 +385,7 @@ This article provides details on the Common schema as well as service-specific s
 |454|DragonCopilotAdmin|Events from Dragon Copilot administrative operations.|
 |462|MicrosoftTeamsUserConcern|Events related to user security concern in Microsoft Teams.|
 |463|VivaGlintAgenticCampaign|Events related to agentic campaigns in Viva Glint.|
+|479|VivaGlintVivaInsightsIntegration|Events related to the Viva Insights to Viva Glint integration.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -1999,7 +2000,7 @@ Entity events from model-driven apps in Dynamics 365 use this schema to build on
 
 ## eSignature schema
 
-This schema includes [eSignature for Microsoft 365](/microsoft-365/documentprocessing/esignature-overview?view=o365-worldwide) events returned in audit log searches.
+This schema includes [eSignature for Microsoft 365](/microsoft-365/documentprocessing/esignature-overview) events returned in audit log searches.
 
 |Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
