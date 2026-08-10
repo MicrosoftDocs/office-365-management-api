@@ -3239,6 +3239,75 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |2|File classification completed with error. One or more classifier evaluation failed.|
 |3|File classification failed.|
 
+## Purview Permissions schema
+
+The SecurityComplianceRBAC audit schema is designed to capture and log activities when role and role groups management and assignments occur.
+Some of the fields and values specific to the common audit schema are listed below.
+
+| Parameters | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| `Operation` | `Edm.String` | Yes | Name of the SecurityComplianceRBAC operation. |
+| `RecordType` | `Self.AuditLogRecordType` | Yes | Audit record type. SecurityComplianceRBAC record value is 87. |
+| `ResultStatus` | `Edm.String` | Yes | Result of the operation. Values emitted by this workload are `Success` and `Failed`. |
+| `PreExecutionMessage` | `Edm.String` | No | Operation-specific input details. See the applicable operation schema. |
+| `PostExecutionMessage` | `Edm.String` | No | Operation-specific result details. See the applicable operation schema. |
+| `AssociatedAdminUnits` | `Collection(Edm.Guid)` | No | Administrative units associated with the record. |
+
+### CreateRBACRoleGroupDefinition Operation
+
+Creates an RBAC role-group definition.
+
+| Parameters | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| `PreExecutionMessage` | `Edm.String` | Yes | Custom role group object information. |
+| `PreExecutionMessage.RoleGroupId` | `Edm.Guid` | Yes | Identifier of the role group. |
+| `PreExecutionMessage.RoleGroupName` | `Edm.String` | Yes | Internal name of the role group. |
+| `PreExecutionMessage.RoleGroupDisplayName` | `Edm.String` | No | User-facing display name of the role group. |
+| `PreExecutionMessage.RoleGroupDescription` | `Edm.String` | No | Description of the role group. |
+| `PreExecutionMessage.RolesDetail` | `Collection(RoleDetail)` | No | Roles included in the role group. |
+| `PreExecutionMessage.RolesDetail[].RoleId` | `Edm.Guid` | No | Identifier of an included role. |
+| `PreExecutionMessage.RolesDetail[].RoleName` | `Edm.String` | No | Name of an included role. |
+| `PostExecutionMessage` | `Edm.String` | No | New custom role group object information. |
+| `PostExecutionMessage.RoleGroupId` | `Edm.Guid` | No | Identifier of the created role group. |
+| `PostExecutionMessage.RoleGroupName` | `Edm.String` | No | Internal name of the created role group. |
+| `PostExecutionMessage.RoleGroupDisplayName` | `Edm.String` | No | Display name of the created role group. |
+| `PostExecutionMessage.RoleGroupDescription` | `Edm.String` | No | Description of the created role group. |
+| `PostExecutionMessage.RolesDetail` | `Collection(RoleDetail)` | No | Roles included in the created role group. |
+| `PostExecutionMessage.RolesDetail[].RoleId` | `Edm.Guid` | No | Identifier of an included role. |
+| `PostExecutionMessage.RolesDetail[].RoleName` | `Edm.String` | No | Name of an included role. |
+
+### UpdateRBACRoleGroupDefinition Operation
+
+Updates an existing RBAC role-group definition.
+
+| Parameters | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| `PreExecutionMessage` | `Edm.String` | Yes | Custom role group object information. |
+| `PreExecutionMessage.RoleGroupId` | `Edm.Guid` | Yes | Identifier of the role group. |
+| `PreExecutionMessage.RoleGroupName` | `Edm.String` | Yes | Internal name of the role group. |
+| `PreExecutionMessage.RoleGroupDisplayName` | `Edm.String` | No | Updated display name of the role group. |
+| `PreExecutionMessage.RoleGroupDescription` | `Edm.String` | No | Updated description of the role group. |
+| `PreExecutionMessage.RolesDetail` | `Collection(RoleDetail)` | No | Updated collection of roles included in the role group. |
+| `PreExecutionMessage.RolesDetail[].RoleId` | `Edm.Guid` | No | Identifier of an included role. |
+| `PreExecutionMessage.RolesDetail[].RoleName` | `Edm.String` | No | Name of an included role. |
+| `PostExecutionMessage` | `Edm.String` | No | Empty field. |
+
+### DeleteRBACRoleGroupDefinition Operation
+
+Deletes an RBAC role-group definition.
+
+| Parameters | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| `PreExecutionMessage` | `Edm.String` | Yes | Custom role group object information. |
+| `PreExecutionMessage.RoleGroupId` | `Edm.Guid` | Yes | Identifier of the role group being deleted. |
+| `PreExecutionMessage.RoleGroupName` | `Edm.String` | Yes | Internal name of the role group being deleted. |
+| `PreExecutionMessage.RoleGroupDisplayName` | `Edm.String` | No | Display name of the role group being deleted. |
+| `PreExecutionMessage.RoleGroupDescription` | `Edm.String` | No | Description of the role group being deleted. |
+| `PreExecutionMessage.RolesDetail` | `Collection(RoleDetail)` | No | Roles included in the role group being deleted. |
+| `PreExecutionMessage.RolesDetail[].RoleId` | `Edm.Guid` | No | Identifier of an included role. |
+| `PreExecutionMessage.RolesDetail[].RoleName` | `Edm.String` | No | Name of an included role. |
+| `PostExecutionMessage` | `Edm.String` | No | Empty field. |
+
 ## PurviewPostureAgent schema
 
 Data Security Posture Agent events, returned in [audit log searches](/purview/audit-search) use this schema (and also the [Common schema](#common-schema)).
