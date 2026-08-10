@@ -3239,9 +3239,9 @@ The DataScanClassification audit schema is designed to capture and log activitie
 |2|File classification completed with error. One or more classifier evaluation failed.|
 |3|File classification failed.|
 
-## Purview Permissions schema
+## Security and Compliance RBAC schema
 
-The SecurityComplianceRBAC audit schema is designed to capture and log activities when role and role groups management and assignments occur.
+The Securityand Compliance RBAC audit schema is designed to capture and log activities when role and role groups management and assignments occur in the Microsoft Purview portal and Microsoft Defender portal.
 Some of the fields and values specific to the common audit schema are listed below.
 
 | Parameters | Type | Mandatory | Description |
