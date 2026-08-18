@@ -2469,6 +2469,7 @@ The following table contain information related to AIP heartbeat events.
 |JobName|Edm.String|N|The name of a Glint data app job that was run.|
 |ExtendedCompletionDate|Edm.Date|N|The new date to which a closed survey cycle has been extended.|
 |FeedBackComponentName|Edm.String|N|The name of a specific component within the 360 feedback program.|
+|ExportApiClientAppId|Edm.String|N|The application ID which made the data export request using APIs|
 
 ## Viva Goals schema
 
