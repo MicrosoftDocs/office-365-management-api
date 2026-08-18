@@ -387,7 +387,9 @@ This article provides details on the Common schema as well as service-specific s
 |462|MicrosoftTeamsUserConcern|Events related to user security concern in Microsoft Teams.|
 |463|VivaGlintAgenticCampaign|Events related to agentic campaigns in Viva Glint.|
 |479|VivaGlintVivaInsightsIntegration|Events related to the Viva Insights to Viva Glint integration.|
-|489|AIGuardrail|Events generated when an AI guardrail evaluates content and applies a guardrail decision.
+|480|PeopleSkillsAdmin|People Skills (Viva) events for tenant administrator and application (service-to-service) operations.|
+|481|PeopleSkillsUser|People Skills (Viva) events for user and system operations on user skills.|
+|489|AIGuardrail|Events generated when an AI guardrail evaluates content and applies a guardrail decision.|
 
 ### Enum: User Type - Type: Edm.Int32
 
@@ -3413,3 +3415,16 @@ AI guardrail events use this schema and the [Common schema](#common-schema). The
 |2|high|The finding has high severity.|
 |3|critical|The finding has critical severity.|
 |4|none|No risk severity was assigned.
+
+## People Skills schema
+
+Extends the Common schema with the properties specific to People Skills (Viva) audit data. These properties apply to both the `PeopleSkillsAdmin` (476) and `PeopleSkillsUser` (477) record types. For more information about this feature, see [People Skills documentation](/microsoft-365/copilot/people-skills-overview).
+
+| Parameters | Type | Mandatory? | Description |
+| --- | --- | --- | --- |
+| APIEndpoint | Edm.String | Yes | The originating API route or processor name for the operation. |
+| RequestId | Edm.String | Yes | The per-request correlation id, present on every record. |
+| SkillId | Edm.String | No | The identifier of the affected skill. Emitted for skill-scoped operations. |
+| OperationCount | Edm.Int32 | No | The count of affected items for the operation. |
+| SourceApp | Edm.String | No | The originating client app or source of the operation. |
+| ResponseTimeMs | Edm.Double | No | The server-side response time, in milliseconds. |
