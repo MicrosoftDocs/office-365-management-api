@@ -3418,7 +3418,7 @@ AI guardrail events use this schema and the [Common schema](#common-schema). The
 
 ## People Skills schema
 
-Extends the Common schema with the properties specific to People Skills (Viva) audit data. These properties apply to both the `PeopleSkillsAdmin` (476) and `PeopleSkillsUser` (477) record types. For more information about this feature, see [People Skills documentation](<https://learn.microsoft.com/microsoft-365/copilot/people-skills-overview>).
+Extends the Common schema with the properties specific to People Skills (Viva) audit data. These properties apply to both the `PeopleSkillsAdmin` (476) and `PeopleSkillsUser` (477) record types. For more information about this feature, see [People Skills documentation](/microsoft-365/copilot/people-skills-overview).
 
 | Parameters | Type | Mandatory? | Description |
 | --- | --- | --- | --- |
