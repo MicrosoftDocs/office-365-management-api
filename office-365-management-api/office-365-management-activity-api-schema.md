@@ -3415,7 +3415,7 @@ The PurviewPostureAgent audit schema is designed to capture and log activities r
 |Type|Edm.String|Yes|The type of the search location.|
 |Id|Edm.String|Yes|The identifier of the search location.|
 
-## Dragon Copilot Admin schem
+## Dragon Copilot Admin schema
 
 [Dragon Copilot admin events](/purview/audit-log-activities#dragon-copilot-admin-activities) returned in [audit log searches](/purview/audit-search) use this schema (and also the [Common schema](#common-schema)). These events have `RecordType` set to `DragonCopilotAdmin` (454).
 
