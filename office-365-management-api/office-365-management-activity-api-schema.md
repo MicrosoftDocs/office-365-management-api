@@ -1953,6 +1953,8 @@ The Power BI events listed in [Search the audit log](/purview/audit-search) use 
 |DashboardName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the dashboard where the event occurred.|
 |DataClassification|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The [data classification](/power-bi/service-data-classification), if any, for the dashboard where the event occurred.|
 |DatasetName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the dataset where the event occurred.|
+|ActivityStatus|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The status of the Gen1 dataflow migration audit event. Possible values include `Started`, `Succeeded`, and `Failed`.|
+|MigrationTriggerType|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The source that triggered the Gen1 dataflow migration, such as the Upgrade Wizard or another migration entry point.|
 |MembershipInformation|Collection([MembershipInformationType](#membershipinformationtype-complex-type))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|Membership information about the group.|
 |OrgAppPermission|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|Permissions list for an organizational app (entire organization, specific users, or specific groups).|
 |ReportName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the report where the event occurred.|
@@ -2474,6 +2476,7 @@ The following table contain information related to AIP heartbeat events.
 |JobName|Edm.String|N|The name of a Glint data app job that was run.|
 |ExtendedCompletionDate|Edm.Date|N|The new date to which a closed survey cycle has been extended.|
 |FeedBackComponentName|Edm.String|N|The name of a specific component within the 360 feedback program.|
+|ExportApiClientAppId|Edm.String|N|The application ID which made the data export request using APIs.|
 
 ## Viva Goals schema
 
@@ -3312,6 +3315,88 @@ Deletes an RBAC role-group definition.
 | `PreExecutionMessage.RolesDetail[].RoleId` | `Edm.Guid` | No | Identifier of an included role. |
 | `PreExecutionMessage.RolesDetail[].RoleName` | `Edm.String` | No | Name of an included role. |
 | `PostExecutionMessage` | `Edm.String` | No | Empty field. |
+
+### DeletePermissionAsync
+
+Remove assigned members from a role-group.
+
+| Parameters | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| `PreExecutionMessage` | `Edm.String` | Yes | Input container. |
+| `PreExecutionMessage.MemberDetail` | `MemberDetail` | No | Member assigned to role group. |
+| `PreExecutionMessage.MemberDetail.MemberId` | `Edm.Guid` | No | Identifier of the assigned member. |
+| `PreExecutionMessage.MemberDetail.MemberType` | `Edm.String` | No | Member category, such as `User`, `SecurityGroup`, `ServicePrincipal`, `Application`. |
+| `PreExecutionMessage.MemberDetail.MemberName` | `Edm.String` | No | Name of the assigned member. |
+| `PreExecutionMessage.MemberDetail.MemberDisplayName` | `Edm.String` | No | Display name of the assigned member. |
+| `PreExecutionMessage.RoleGroupDetail` | `RoleGroupDetail` | No | Role group being removed from the member. |
+| `PreExecutionMessage.RoleGroupDetail.RoleGroupId` | `Edm.Guid` | No | Identifier of the role group. |
+| `PreExecutionMessage.RoleGroupDetail.RoleGroupName` | `Edm.String` | No | Name of the role group. |
+| `PreExecutionMessage.ScopeDetail` | `ScopeDetail` | No | Scope of the role assignment. Null for global scope. |
+| `PreExecutionMessage.ScopeDetail.ScopeId` | `Edm.Guid` | No | Identifier of the assigned scope. |
+| `PreExecutionMessage.ScopeDetail.ScopeType` | `Edm.String` | No | Resource type of the assigned scope. |
+| `PreExecutionMessage.ScopeDetail.ScopeFeature` | `Edm.String` | No | Feature associated with the assigned scope. |
+| `PreExecutionMessage.ScopeDetail.ScopePathById` | `Edm.String` | No | Resource path identifying the assigned scope. |
+| `PreExecutionMessage.ExceptionMessage` | `Edm.String` | No | Reserved field, currently `null`. |
+| `PreExecutionMessage.ExpiresAt` | `Edm.String` | No | Expiration of the role assignment. |
+| `PostExecutionMessage` | `Edm.String` | No | Empty. |
+
+### GrantPermissionsAsync
+
+Assigns members to a role-group.
+
+| Parameters | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| `PreExecutionMessage` | `Edm.String` | Yes | Input container. |
+| `PreExecutionMessage.MemberDetail` | `MemberDetail` | No | Member assigned to role group. |
+| `PreExecutionMessage.MemberDetail.MemberId` | `Edm.Guid` | No | Identifier of the assigned member. |
+| `PreExecutionMessage.MemberDetail.MemberType` | `Edm.String` | No | Member category, such as `User`, `SecurityGroup`, `ServicePrincipal`, `Application`. |
+| `PreExecutionMessage.MemberDetail.MemberName` | `Edm.String` | No | Name of the assigned member. |
+| `PreExecutionMessage.MemberDetail.MemberDisplayName` | `Edm.String` | No | Display name of the assigned member. |
+| `PreExecutionMessage.RoleGroupDetail` | `RoleGroupDetail` | No | Role group being assigned. |
+| `PreExecutionMessage.RoleGroupDetail.RoleGroupId` | `Edm.Guid` | No | Identifier of the assigned role group. |
+| `PreExecutionMessage.RoleGroupDetail.RoleGroupName` | `Edm.String` | No | Name of the assigned role group. |
+| `PreExecutionMessage.ScopeDetail` | `ScopeDetail` | No | Scope of the role assignment. Null for global scope. |
+| `PreExecutionMessage.ScopeDetail.ScopeId` | `Edm.Guid` | No | Identifier of the assigned scope. |
+| `PreExecutionMessage.ScopeDetail.ScopeType` | `Edm.String` | No | Resource type of the assigned scope, such as `Case`. |
+| `PreExecutionMessage.ScopeDetail.ScopeFeature` | `Edm.String` | No | Feature associated with the assigned scope, such as `InsiderRiskManagement` |
+| `PreExecutionMessage.ScopeDetail.ScopePathById` | `Edm.String` | No | Resource path identifying the assigned scope. |
+| `PreExecutionMessage.ExceptionMessage` | `Edm.String` | No | Reserved field, currently `null`. |
+| `PreExecutionMessage.ExpiresAt` | `Edm.String` | No | Expiration of the assignment. The value is `Permanent` or an ISO 8601 UTC timestamp. |
+| `PostExecutionMessage` | `Edm.String` | No | Result role assignment output container. Empty when the operation fails before returning a result. |
+| `PostExecutionMessage.MemberDetail` | `MemberDetail` | No | Member contained in the resulting assignment. Uses the same `MemberDetail` schema as the input. |
+| `PostExecutionMessage.RoleGroupDetail` | `RoleGroupDetail` | No | Role group contained in the resulting assignment. Uses the same `RoleGroupDetail` schema as the input. |
+| `PostExecutionMessage.ScopeDetail` | `ScopeDetail` | No | Scope contained in the resulting permission. Uses the same `ScopeDetail` schema as the input. |
+| `PostExecutionMessage.ExceptionMessage` | `Edm.String` | No | Reserved field, currently `null`. |
+| `PostExecutionMessage.ExpiresAt` | `Edm.String` | No | Expiration of the resulting assignment. The value is `Permanent` or an ISO 8601 UTC timestamp. |
+
+## UpdatePermission
+
+Updates role assignment expiration in a role-group.
+
+| Parameters | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| `PreExecutionMessage` | `Edm.String` | Yes | Input container. |
+| `PreExecutionMessage.MemberDetail` | `MemberDetail` | No | Member assigned to role group. |
+| `PreExecutionMessage.MemberDetail.MemberId` | `Edm.Guid` | No | Identifier of the assigned member. |
+| `PreExecutionMessage.MemberDetail.MemberType` | `Edm.String` | No | Member category, such as `User`, `SecurityGroup`, `ServicePrincipal`, `Application`. |
+| `PreExecutionMessage.MemberDetail.MemberName` | `Edm.String` | No | Name of the assigned member. |
+| `PreExecutionMessage.MemberDetail.MemberDisplayName` | `Edm.String` | No | Display name of the assigned member. |
+| `PreExecutionMessage.RoleGroupDetail` | `RoleGroupDetail` | No | Role group being assigned. |
+| `PreExecutionMessage.RoleGroupDetail.RoleGroupId` | `Edm.Guid` | No | Identifier of the assigned role group. |
+| `PreExecutionMessage.RoleGroupDetail.RoleGroupName` | `Edm.String` | No | Name of the assigned role group. |
+| `PreExecutionMessage.ScopeDetail.ScopeId` | `Edm.Guid` | No | Identifier of the assigned scope. |
+| `PreExecutionMessage.ScopeDetail.ScopeType` | `Edm.String` | No | Resource type of the assigned scope, such as `Case`. |
+| `PreExecutionMessage.ScopeDetail.ScopeFeature` | `Edm.String` | No | Feature associated with the assigned scope, such as `InsiderRiskManagement` |
+| `PreExecutionMessage.ScopeDetail.ScopePathById` | `Edm.String` | No | Resource path identifying the assigned scope. |
+| `PreExecutionMessage.ExceptionMessage` | `Edm.String` | No | Reserved field, currently `null`. |
+| `PreExecutionMessage.ExpiresAt` | `Edm.String` | No | Updated role assignment expiration. The value is `Permanent` or an ISO 8601 UTC timestamp. |
+| `PostExecutionMessage` | `Edm.String` | No | Result role assignment output container. |
+| `PostExecutionMessage.MemberDetail` | `MemberDetail` | No | Member contained in the resulting assignment. Uses the same `MemberDetail` schema as the input. |
+| `PostExecutionMessage.RoleGroupDetail` | `RoleGroupDetail` | No | Role group contained in the resulting assignment. Uses the same `RoleGroupDetail` schema as the input. |
+| `PostExecutionMessage.ScopeDetail` | `ScopeDetail` | No | Scope contained in the resulting permission. Uses the same `ScopeDetail` schema as the input. |
+| `PostExecutionMessage.ExceptionMessage` | `Edm.String` | No | Reserved field, currently `null`. |
+| `PostExecutionMessage.ExpiresAt` | `Edm.String` | No | Expiration of the resulting assignment. The value is `Permanent` or an ISO 8601 UTC timestamp. |
+
 
 ## PurviewPostureAgent schema
 
