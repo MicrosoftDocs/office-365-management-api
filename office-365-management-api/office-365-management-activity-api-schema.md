@@ -4,7 +4,8 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 10/15/2025
+ms.date: 09/10/2026
+ai-usage: ai-assisted
 ms.localizationpriority: high
 ---
 
@@ -44,6 +45,7 @@ This article provides details on the Common schema as well as service-specific s
 |[Data Center Security Base schema](#data-center-security-base-schema)|Extends the Common schema with the properties specific to all data center security audit data.|
 |[Data Center Security Cmdlet schema](#data-center-security-cmdlet-schema)|Extends the Data Center Security Base schema with the properties specific to all data center security cmdlet audit data.|
 |[Microsoft Teams schema](#microsoft-teams-schema)|Extends the Common schema with the properties specific to all Microsoft Teams events.|
+|[Microsoft Defender XDR automation schema](#microsoft-defender-xdr-automation-schema)|Describes the Common schema properties used for Microsoft Defender XDR automation rule and generated playbook events.|
 |[Microsoft Defender for Office 365 and Threat Investigation and Response schema](#microsoft-defender-for-office-365-and-threat-investigation-and-response-schema)|Extends the Common schema with the properties specific to Defender for Office 365 and threat investigation and response data.|
 |[Submission schema](#submission-schema)|Extends the Common schema with the properties specific to user and admin submissions in Microsoft Defender for Office 365.|
 |[Automated investigation and response events in Microsoft Defender for Office 365 Plan 2](#automated-investigation-and-response-events-in-microsoft-defender-for-office-365-plan-2)|Extends the Common schema with the properties specific to Office 365 automated investigation and response (AIR) events. To see an example, see [Tech Community blog: Improve the Effectiveness of your SOC with Microsoft Defender for Office 365 and the Office 365 Management API](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185).|
@@ -1454,6 +1456,22 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 |TeamGuid|Edm.String|No|A unique identifier of the team the message belongs to.|
 |TeamName|Edm.String|No|The name of the team the message belongs to.|
 |Version|Edm.String|No|The version of the chat or channel message.|
+
+## Microsoft Defender XDR automation schema
+
+Microsoft Defender XDR automation rule and generated playbook events use the [Common schema](#common-schema). The following Common schema properties describe these events.
+
+For more information, see [Search the audit log for events in Microsoft Defender XDR](/defender-xdr/microsoft-xdr-auditing).
+
+|Parameter|Type|Mandatory?|Description|
+|---|---|---|---|
+|Id|Edm.Guid|Yes|The unique identifier of the audit record.|
+|RecordType|Self.[AuditLogRecordType](#auditlogrecordtype)|Yes|The type of audit record. The value is `AutomationRule` for automation rule events or `SOARPlaybook` for generated playbook events.|
+|Operation|Edm.String|Yes|The activity that generated the record. Automation rule operations are `AutomationRuleCreated`, `AutomationRuleDisabled`, `AutomationRuleEdited`, `AutomationRuleEnabled`, and `AutomationRuleRemoved`. Generated playbook operations are `GeneratedPlaybookCreated`, `GeneratedPlaybookDisabled`, `GeneratedPlaybookEdited`, `GeneratedPlaybookEnabled`, `GeneratedPlaybookRemoved`, and `TriggerGeneratedPlaybook`.|
+|UserType|Self.[UserType](#user-type)|Yes|The type of user that performed the operation.|
+|Workload|Edm.String|Yes|The service where the activity occurred. The value is `Automation`.|
+|ResultStatus|Edm.String|No|Indicates whether the operation succeeded or failed.|
+|ObjectId|Edm.String|No|The identifier of the automation rule or generated playbook associated with the operation.|
 
 ## Microsoft Teams user concern schema
 
