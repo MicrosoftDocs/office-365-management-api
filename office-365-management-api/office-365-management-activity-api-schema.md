@@ -4,7 +4,7 @@ title: Office 365 Management Activity API schema
 description: The Office 365 Management Activity API schema is provided as a data service in two layers - Common schema and service-specific schema.
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference
-ms.date: 10/15/2025
+ms.date: 09/23/2026
 ms.localizationpriority: high
 ---
 
@@ -2468,6 +2468,14 @@ The following table contain information related to AIP heartbeat events.
 |Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
 |ClientUUID|Edm.String|Y|The Client UUID of the Viva Glint instance.|
+|CampaignUUID|Edm.String|N|The stable internal identifier of the agentic campaign.|
+|DataSubjectUUID|Edm.String|N|The stable internal identifier of the data subject affected by a data subject rights deletion.|
+|ExportFormat|Edm.String|N|The format of the exported agentic campaign data.|
+|ModifiedProperties|Edm.String|N|The properties that were changed by the operation.|
+|PolicyUUID|Edm.String|N|The stable internal identifier of the agentic policy.|
+|ReportUUID|Edm.String|N|The stable internal identifier of the agentic campaign report.|
+|RetentionCutoff|Edm.Date|N|The retention cutoff date used when agentic campaign data is deleted by the retention process.|
+|SharedWith|Edm.String|N|The recipients or scope with which an agentic campaign report was shared.|
 |ImportType|Edm.String|N|The data import source type.|
 |DataDSRControl|Edm.String|N|This in-platform control determines whether survey data is deleted when a user is removed from the Viva Glint platform.|
 |DiscardEmployeeIds|Edm.String|N|This in-platform control specifies whether the Employee IDs of previously deleted employees are disregarded or retained in the Viva Glint platform.|
