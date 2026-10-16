@@ -1457,6 +1457,18 @@ The UserId and UserKey of these events are always SecurityComplianceAlerts. Ther
 |TeamName|Edm.String|No|The name of the team the message belongs to.|
 |Version|Edm.String|No|The version of the chat or channel message.|
 
+## Microsoft Teams meeting security risk detection schema
+
+Microsoft Teams meeting security risk detection events returned in audit log searches use this schema. These events have  `RecordType`  set to  `MicrosoftTeams`  (25) and apply to the  `SecurityRiskInMeetingDetected`  operation.
+
+|Parameters|Type|Mandatory?|Description|
+| -------- | -------- | -------- | -------- |
+|CallId| Edm.String| No | A unique identifier for the meeting in which the security risk was detected. |
+|DisplayName| Edm.String|No| For impersonation detections, the display name of the protected user associated with the detection.|
+|ImpersonationType|Edm.String|No|The type of impersonation detected, such as Brand, User, or Domain. Multiple types can be  represented as a comma-separated string.|
+|SuspectedThreatActor|Self.Member|No| Information about the suspected threat actor, including their identity and whether they  were the meeting organizer.   |
+|SuspectedThreatActorAccountType|Edm.String|No|The account classification of the suspected threat actor, such as Tfw, Tfl, Sfc, Sfb, or Anonymous|
+
 ## Microsoft Teams user concern schema
 
 [Microsoft Teams user concern events](/purview/audit-log-activities#teams-user-concern-activities) returned in [audit log searches](/purview/audit-search) use this schema. These events have `RecordType` set to `MicrosoftTeamsUserConcern`(462), and apply to the following operations: `MessageReported`, `CallReported`, and `UserReported`.
