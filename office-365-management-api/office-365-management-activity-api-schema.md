@@ -1990,6 +1990,8 @@ The Power BI events listed in [Search the audit log](/purview/audit-search) use 
 |Parameters|Type|Mandatory?|Description|
 |---|---|---|---|
 |AppName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the app where the event occurred.|
+|ArtifactId|Edm.String|No|The unique identifier of the artifact affected by the operation.|
+|ArtifactKind|Edm.String|No|The type of artifact affected by the operation.|
 |DashboardName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the dashboard where the event occurred.|
 |DataClassification|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The [data classification](/power-bi/service-data-classification), if any, for the dashboard where the event occurred.|
 |DatasetName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the dataset where the event occurred.|
@@ -2000,6 +2002,7 @@ The Power BI events listed in [Search the audit log](/purview/audit-search) use 
 |ReportName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the report where the event occurred.|
 |SharingInformation|Collection([SharingInformationType](#sharinginformationtype-complex-type))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|Information about the person to whom a sharing invitation is sent.|
 |SwitchState|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|Information about the state of various tenant level switches.|
+|WorkspaceId|Edm.String|No|The unique identifier of the workspace that contains the artifact.|
 |WorkSpaceName|Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"|No|The name of the workspace where the event occurred.|
 
 ### MembershipInformationType complex type
